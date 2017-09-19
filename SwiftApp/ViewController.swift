@@ -62,7 +62,17 @@ class ViewController: UIViewController
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+//    func dispatchToMainQueue(_ block: dispatch_block_t) -> Void {
+//        dispatch_async(dispatch_get_main_queue(), block);
+//    }
 
 
+//    + (void)dispatchToMainQueue:(dispatch_block_t)block
+//    {
+//    dispatch_async(dispatch_get_main_queue(), block);
+//    }
+
+    
 }
 
