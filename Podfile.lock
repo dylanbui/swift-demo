@@ -18,15 +18,15 @@ PODS:
   - MBProgressHUD (1.0.0)
 
 DEPENDENCIES:
-  - AFNetworking
-  - IQKeyboardManagerSwift
-  - MBProgressHUD
+  - AFNetworking (= 3.1.0)
+  - IQKeyboardManagerSwift (= 4.0.10)
+  - MBProgressHUD (= 1.0.0)
 
 SPEC CHECKSUMS:
   AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   IQKeyboardManagerSwift: 75ba21a23794a1e6b6fe6d9a267ea17f80e06771
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
 
-PODFILE CHECKSUM: cfd39a7109ecd6bb7f61a432979239c9c02d29eb
+PODFILE CHECKSUM: bb8e47268e8da57e144967fcbbac7b7b650fd920
 
 COCOAPODS: 1.2.1

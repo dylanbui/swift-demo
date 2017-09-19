@@ -8,6 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		5D8EEB4F713F5AE16C2A184E /* Pods_SwiftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */; };
+		BBC02E611F71747A0011FDE6 /* artists.json in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E541F71747A0011FDE6 /* artists.json */; };
+		BBC02E621F71747A0011FDE6 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E561F71747A0011FDE6 /* FontAwesome.ttf */; };
+		BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E571F71747A0011FDE6 /* OpenSans-Bold.ttf */; };
+		BBC02E641F71747A0011FDE6 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E581F71747A0011FDE6 /* OpenSans-BoldItalic.ttf */; };
+		BBC02E651F71747A0011FDE6 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E591F71747A0011FDE6 /* OpenSans-ExtraBold.ttf */; };
+		BBC02E661F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E5A1F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf */; };
+		BBC02E671F71747A0011FDE6 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E5B1F71747A0011FDE6 /* OpenSans-Italic.ttf */; };
+		BBC02E681F71747A0011FDE6 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E5C1F71747A0011FDE6 /* OpenSans-Light.ttf */; };
+		BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E5D1F71747A0011FDE6 /* OpenSans-LightItalic.ttf */; };
+		BBC02E6A1F71747A0011FDE6 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E5E1F71747A0011FDE6 /* OpenSans-Regular.ttf */; };
+		BBC02E6B1F71747A0011FDE6 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E5F1F71747A0011FDE6 /* OpenSans-Semibold.ttf */; };
+		BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */; };
+		BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */; };
+		BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E701F717DD20011FDE6 /* DemoData.plist */; };
 		BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */; };
 		BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEF11F70CFE50028425E /* ViewController.swift */; };
 		BBD3CEF51F70CFE50028425E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CEF31F70CFE50028425E /* Main.storyboard */; };
@@ -38,6 +52,20 @@
 		64F2635626968B4B3D75864E /* Pods-SwiftAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftAppTests/Pods-SwiftAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BBC02E541F71747A0011FDE6 /* artists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = artists.json; sourceTree = "<group>"; };
+		BBC02E561F71747A0011FDE6 /* FontAwesome.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = FontAwesome.ttf; sourceTree = "<group>"; };
+		BBC02E571F71747A0011FDE6 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		BBC02E581F71747A0011FDE6 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		BBC02E591F71747A0011FDE6 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		BBC02E5A1F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		BBC02E5B1F71747A0011FDE6 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		BBC02E5C1F71747A0011FDE6 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		BBC02E5D1F71747A0011FDE6 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		BBC02E5E1F71747A0011FDE6 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		BBC02E5F1F71747A0011FDE6 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
+		BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPlistManager.swift; sourceTree = "<group>"; };
+		BBC02E701F717DD20011FDE6 /* DemoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DemoData.plist; sourceTree = "<group>"; };
 		BBD3CEEC1F70CFE50028425E /* SwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD3CEF11F70CFE50028425E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -88,6 +116,40 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BBC02E531F71747A0011FDE6 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				BBC02E541F71747A0011FDE6 /* artists.json */,
+				BBC02E551F71747A0011FDE6 /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		BBC02E551F71747A0011FDE6 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				BBC02E561F71747A0011FDE6 /* FontAwesome.ttf */,
+				BBC02E571F71747A0011FDE6 /* OpenSans-Bold.ttf */,
+				BBC02E581F71747A0011FDE6 /* OpenSans-BoldItalic.ttf */,
+				BBC02E591F71747A0011FDE6 /* OpenSans-ExtraBold.ttf */,
+				BBC02E5A1F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf */,
+				BBC02E5B1F71747A0011FDE6 /* OpenSans-Italic.ttf */,
+				BBC02E5C1F71747A0011FDE6 /* OpenSans-Light.ttf */,
+				BBC02E5D1F71747A0011FDE6 /* OpenSans-LightItalic.ttf */,
+				BBC02E5E1F71747A0011FDE6 /* OpenSans-Regular.ttf */,
+				BBC02E5F1F71747A0011FDE6 /* OpenSans-Semibold.ttf */,
+				BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BBC02E6D1F7174890011FDE6 /* Task-App */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Task-App";
+			sourceTree = "<group>";
+		};
 		BBD3CEE31F70CFE50028425E = {
 			isa = PBXGroup;
 			children = (
@@ -112,18 +174,22 @@
 			isa = PBXGroup;
 			children = (
 				BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */,
+				BBD3CF101F70F80D0028425E /* RootViewController.swift */,
+				BBC02E6D1F7174890011FDE6 /* Task-App */,
+				BBC02E531F71747A0011FDE6 /* Resources */,
 				BBD3CEF11F70CFE50028425E /* ViewController.swift */,
 				BBD3CEF31F70CFE50028425E /* Main.storyboard */,
 				BBD3CEF61F70CFE50028425E /* Assets.xcassets */,
 				BBD3CEF81F70CFE50028425E /* LaunchScreen.storyboard */,
 				BBD3CEFB1F70CFE50028425E /* Info.plist */,
 				BBD3CF0F1F70D1760028425E /* ObjeCBridgingHeader.h */,
-				BBD3CF101F70F80D0028425E /* RootViewController.swift */,
 				BBD3CF121F70F8480028425E /* DemoTableViewController.swift */,
 				BBD3CF131F70F8480028425E /* DemoTableViewController.xib */,
 				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
 				BBD3CF181F7102D80028425E /* ToDoCell.swift */,
 				BBD3CF191F7102D80028425E /* ToDoCell.xib */,
+				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
+				BBC02E701F717DD20011FDE6 /* DemoData.plist */,
 			);
 			path = SwiftApp;
 			sourceTree = "<group>";
@@ -239,11 +305,24 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBC02E681F71747A0011FDE6 /* OpenSans-Light.ttf in Resources */,
 				BBD3CF151F70F8480028425E /* DemoTableViewController.xib in Resources */,
+				BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */,
+				BBC02E621F71747A0011FDE6 /* FontAwesome.ttf in Resources */,
+				BBC02E6B1F71747A0011FDE6 /* OpenSans-Semibold.ttf in Resources */,
+				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
+				BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
 				BBD3CEFA1F70CFE50028425E /* LaunchScreen.storyboard in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
+				BBC02E641F71747A0011FDE6 /* OpenSans-BoldItalic.ttf in Resources */,
+				BBC02E611F71747A0011FDE6 /* artists.json in Resources */,
+				BBC02E6A1F71747A0011FDE6 /* OpenSans-Regular.ttf in Resources */,
 				BBD3CEF51F70CFE50028425E /* Main.storyboard in Resources */,
+				BBC02E671F71747A0011FDE6 /* OpenSans-Italic.ttf in Resources */,
+				BBC02E661F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				BBC02E651F71747A0011FDE6 /* OpenSans-ExtraBold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -360,6 +439,7 @@
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
+				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -505,7 +585,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vn.propzy.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/dylanbui/Documents/_iOS_SSD/SwiftApp/SwiftApp/ObjeCBridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SwiftApp/ObjeCBridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -521,7 +601,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vn.propzy.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/dylanbui/Documents/_iOS_SSD/SwiftApp/SwiftApp/ObjeCBridgingHeader.h;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SwiftApp/ObjeCBridgingHeader.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
@@ -534,6 +614,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = KXK7W469S4;
 				INFOPLIST_FILE = SwiftAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vn.propzy.SwiftAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -550,6 +631,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = KXK7W469S4;
 				INFOPLIST_FILE = SwiftAppTests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vn.propzy.SwiftAppTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";

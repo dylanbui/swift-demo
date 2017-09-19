@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import IQKeyboardManagerSwift
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,8 +16,40 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
         // Override point for customization after application launch.
+        IQKeyboardManager.sharedManager().enable = true
+        
+        // https://github.com/rebeloper/SwiftyPlistManager
+        // https://rebeloper.com/read-write-plist-file-swift/
+        SwiftyPlistManager.shared.start(plistNames: ["DemoData"], logging: true)
+        
+        self.performSelector(inBackground: #selector(initGolbalParams), with: nil)
+        
         return true
+    }
+    
+    func initGolbalParams() -> Void
+    {
+        SwiftyPlistManager.shared.removeValueKeyPair(for: "DemoJob", fromPlistWithName: "DemoData") { (err) in
+            if err == nil {
+                print("Clear all data.")
+            }
+        }
+        
+        let item_1:[String:String] = ["title": "Cong viec thu 1", "name": "Hoang Thai Thanh", "datetime": "1234567898"]
+        let item_2:[String:String] = ["title": "Cong viec thu 2", "name": "Hoang Thai Thanh", "datetime": "1234567898"]
+        let item_3:[String:String] = ["title": "Cong viec thu 3", "name": "Hoang Thai Thanh", "datetime": "1234567898"]
+        let item_4:[String:String] = ["title": "Cong viec thu 4", "name": "Hoang Thai Thanh", "datetime": "1234567898"]
+        let item_5:[String:String] = ["title": "Cong viec thu 5", "name": "Hoang Thai Thanh", "datetime": "1234567898"]
+        
+        let arr:[Any] = [item_1, item_2, item_3, item_4, item_5]
+        
+        SwiftyPlistManager.shared.addNew(arr, key: "DemoJob", toPlistWithName: "DemoData") { (err) in
+            if err == nil {
+                print("Value successfully added into plist.")
+            }
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
