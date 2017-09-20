@@ -17,7 +17,8 @@ class RootViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         
-        let vcl = DemoTableViewController()
+        //let vcl = DemoTableViewController()
+        let vcl = TaskListViewController()
         
         self.navigationController?.pushViewController(vcl, animated: false)        
     }

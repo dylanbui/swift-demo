@@ -24,7 +24,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // https://rebeloper.com/read-write-plist-file-swift/
         SwiftyPlistManager.shared.start(plistNames: ["DemoData"], logging: true)
         
-        self.performSelector(inBackground: #selector(initGolbalParams), with: nil)
+        //self.performSelector(inBackground: #selector(initGolbalParams), with: nil)
+        self.initGolbalParams()
         
         return true
     }
