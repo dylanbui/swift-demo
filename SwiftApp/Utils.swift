@@ -21,9 +21,10 @@ class Utils: NSObject
     {
         //dispatch_async(dispatch_get_main_queue(), dispatch_block);
         DispatchQueue.global().async {
-            DispatchQueue.main.async {
-                dispatch_block()
-            }
+            DispatchQueue.main.async(execute: dispatch_block)
+//            DispatchQueue.main.async {
+//                dispatch_block()
+//            }
         }
     }
 

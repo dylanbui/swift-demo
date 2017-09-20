@@ -29,13 +29,16 @@ class TaskUpdateViewController: BaseViewController {
 
     @IBAction func btnSave_Click(_ sender: UIButton)
     {
-        let params = ["name": self.txtName.text, "datetime": self.txtDatetime.text, "title": self.txtvDesc.text] as [String:AnyObject]
+        let params = ["name": self.txtName.text as AnyObject,
+                      "datetime": self.txtDatetime.text as AnyObject,
+                      "title": self.txtvDesc.text as AnyObject] as [String:AnyObject]
         self.returnParamsDelegate.onReturn(params: params, callerId: 1)
         self.btnCance_Click(nil)
     }
     
     @IBAction func btnCance_Click(_ sender: UIButton!)
     {
-        self.navigationController?.popViewController(animated: true)
+        //self.navigationController?.popViewController(animated: true)
+        self.navigationController!.popViewController(animated: true)
     }
 }

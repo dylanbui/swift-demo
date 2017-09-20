@@ -29,7 +29,7 @@ class TaskDetailViewController: BaseViewController {
     
     @IBAction func btnDone_Click(_ sender: UIButton)
     {
-        self.navigationController?.popViewController(animated: true)
+        self.navigationController!.popViewController(animated: true)
         
     }
 }

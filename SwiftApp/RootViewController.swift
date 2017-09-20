@@ -8,7 +8,7 @@
 
 import UIKit
 
-class RootViewController: UIViewController {
+class RootViewController: BaseViewController {
 
     override func viewDidLoad()
     {
@@ -20,10 +20,41 @@ class RootViewController: UIViewController {
         //let vcl = DemoTableViewController()
         let vcl = TaskListViewController()
         
-        self.navigationController?.pushViewController(vcl, animated: false)        
+        self.navigationController?.pushViewController(vcl, animated: false)
+        
+        // weak var weakSelf = self
+        Utils.dispatchToBgQueue {
+            print("Bg : Say helooo delay")
+            self.delayWithSeconds(5, completion: {
+                for index in 1...100 {
+                    if index % 10 == 0 {
+                        print("index = \(index)")
+                    }
+                }
+            })
+        }
+        
+        Utils.dispatchToMainQueue { 
+            print("Main : Say helooo")
+            for index in 1...100 {
+                if index % 10 == 0 {
+                    print("Main = index = \(index)")
+                }
+            }
+
+        }
+        
+        
+        
     }
 
+    func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
+            completion()
+        }
+    }
+
+
+
     
-
-
 }
