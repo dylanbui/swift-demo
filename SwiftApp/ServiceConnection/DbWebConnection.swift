@@ -9,6 +9,11 @@
 import UIKit
 import AFNetworking
 
+typealias DataTaskSuccessHandler = (URLResponse?, AnyObject?) -> ()
+typealias DataTaskErrorHandler = (URLResponse?, AnyObject?, Error?) -> ()
+typealias DataTaskProcessHandler = (Progress?) -> ()
+
+
 class DbResponse: NSObject
 {
     var message: String?
@@ -61,14 +66,24 @@ class DbWebConnection: NSObject
         self.sessionManager = AFHTTPSessionManager()
     }
     
+//    - (void)request:(NSString *)strURL
+//    method:(NSString *)method
+//    parameters:(NSDictionary *)dictParams
+//    progress:(void (^)(NSProgress *))downloadProgress
+//    success:(void (^)(NSURLSessionDataTask *, id))success
+//    failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
 
-    func sayhi()
+    func request(_ strUrl: String, withMethod method: String, parameters params: [String:AnyObject]?
+        ,progress: DataTaskProcessHandler?
+        ,success: DataTaskSuccessHandler?
+        ,failure: DataTaskErrorHandler? ) -> Void
     {
+        
         self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
         self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
         
         var serializationError: NSError?
-        let request = self.sessionManager?.requestSerializer.request(withMethod: "POST", urlString: "", parameters: nil, error: &serializationError)
+        let request = self.sessionManager?.requestSerializer.request(withMethod: method, urlString: strUrl, parameters: params, error: &serializationError)
         
         request?.addValue("gzip", forHTTPHeaderField: "Accept-Encoding")
         request?.addValue("vi-VN", forHTTPHeaderField: "Accept-Language")
@@ -78,11 +93,30 @@ class DbWebConnection: NSObject
             return
         }
         
-        var dataTask: URLSessionDataTask?
+//        open func dataTask(with request: URLRequest, uploadProgress uploadProgressBlock: ((Progress) -> Swift.Void)?, downloadProgress downloadProgressBlock: ((Progress) -> Swift.Void)?, completionHandler: ((URLResponse, Any?, Error?) -> Swift.Void)? = nil) -> URLSessionDataTask
 
-        dataTask = self.sessionManager?.dataTask(with: request as URLRequest, completionHandler: { (urlResponse, anyData, error) in
-            
+        
+        var dataTask: URLSessionDataTask?
+        
+
+//        dataTask = self.sessionManager?.dataTask(with: request as URLRequest!, completionHandler: { (urlResponse, anyData, error) in
+//            
+//        })
+        
+        dataTask = self.sessionManager?.dataTask(with: request as URLRequest!, uploadProgress: { (progress) in
+            // -- Dont process --
+        }, downloadProgress: { (progressData) in
+            if let progress = progress {
+                progress(progressData)
+            }
+        }, completionHandler: { (urlResponse, anyData, error) in
+            if let error = error, let failure = failure {
+                failure(urlResponse, anyData as AnyObject!, error)
+            } else if let success = success {
+                success(urlResponse, anyData as AnyObject!)
+            }
         })
+        
         dataTask?.resume()
         
         // -- Set Request is Json --
