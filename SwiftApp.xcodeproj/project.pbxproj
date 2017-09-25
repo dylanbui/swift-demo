@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D8EEB4F713F5AE16C2A184E /* Pods_SwiftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */; };
+		BB330BA51F780B0D00BEEA9A /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA41F780B0D00BEEA9A /* DbViewFromXib.swift */; };
+		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
 		BBA7C7531F721D8200328377 /* TaskListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7511F721D8200328377 /* TaskListViewController.swift */; };
 		BBA7C7541F721D8200328377 /* TaskListViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA7C7521F721D8200328377 /* TaskListViewController.xib */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
@@ -63,6 +65,8 @@
 		64F2635626968B4B3D75864E /* Pods-SwiftAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftAppTests/Pods-SwiftAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB330BA41F780B0D00BEEA9A /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
+		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BBA7C7511F721D8200328377 /* TaskListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TaskListViewController.swift; path = SwiftApp/TaskListViewController.swift; sourceTree = SOURCE_ROOT; };
 		BBA7C7521F721D8200328377 /* TaskListViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = TaskListViewController.xib; path = SwiftApp/TaskListViewController.xib; sourceTree = SOURCE_ROOT; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +211,7 @@
 				BBD3CF101F70F80D0028425E /* RootViewController.swift */,
 				BBA7C7551F721DAF00328377 /* BaseViewController.swift */,
 				BBA7C7631F725D3F00328377 /* Utils.swift */,
+				BB330BA61F7815D900BEEA9A /* Constant.swift */,
 				BBF540521F736B9600AF7AC2 /* ServiceConnection */,
 				BBC02E6D1F7174890011FDE6 /* Task-App */,
 				BBC02E531F71747A0011FDE6 /* Resources */,
@@ -240,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */,
+				BB330BA41F780B0D00BEEA9A /* DbViewFromXib.swift */,
 			);
 			path = ServiceConnection;
 			sourceTree = "<group>";
@@ -483,12 +489,14 @@
 				BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
+				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BBA7C75D1F7247C900328377 /* TaskDetailViewController.swift in Sources */,
+				BB330BA51F780B0D00BEEA9A /* DbViewFromXib.swift in Sources */,
 				BBA7C7531F721D8200328377 /* TaskListViewController.swift in Sources */,
 				BBA7C7591F72225E00328377 /* TaskViewCell.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
