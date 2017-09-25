@@ -26,6 +26,11 @@ class DbResponse: NSObject
         super.init()
         
     }
+    
+    func parse(_ responseData: Any?, error: Error?)
+    {
+
+    }
 }
 
 class DbUploadData: NSObject
@@ -44,7 +49,7 @@ protocol IDbWebConnectionDelegate
     func onRequestProgress(_ downloadProgress: Progress, andCallerId callerId: Int);
 }
 
-typealias DbResponseBlock = (Any, NSError) -> Void
+typealias DbResponseBlock = (Any?, Error?) -> Void
 
 class DbWebConnection: NSObject
 {
@@ -66,17 +71,40 @@ class DbWebConnection: NSObject
         self.sessionManager = AFHTTPSessionManager()
     }
     
-//    - (void)request:(NSString *)strURL
-//    method:(NSString *)method
-//    parameters:(NSDictionary *)dictParams
-//    progress:(void (^)(NSProgress *))downloadProgress
-//    success:(void (^)(NSURLSessionDataTask *, id))success
-//    failure:(void (^)(NSURLSessionDataTask *, NSError *))failure
+    func get(Url url: String, params: [String: AnyObject]?, block: DbResponseBlock?) -> Void
+    {
+        self.request(Url: url, withMethod: "GET", parameters: params,
+                     progressHandler: nil,
+                     successHandler: { (urlResponse, anyData) in
+                        if let block = block {
+                            block(anyData, nil)
+                        }
+        }) { (urlResponse, anyData, error) in
+            if let block = block {
+                block(nil, error)
+            }
+        }
+    }
+    
+    func post(Url url: String, params: [String: AnyObject]?, block: DbResponseBlock?) -> Void
+    {
+        self.request(Url: url, withMethod: "POST", parameters: params,
+                     progressHandler: nil,
+                     successHandler: { (urlResponse, anyData) in
+                        if let block = block {
+                            block(anyData, nil)
+                        }
+        }) { (urlResponse, anyData, error) in
+            if let block = block {
+                block(nil, error)
+            }
+        }
+    }
 
-    func request(_ strUrl: String, withMethod method: String, parameters params: [String:AnyObject]?
-        ,progress: DataTaskProcessHandler?
-        ,success: DataTaskSuccessHandler?
-        ,failure: DataTaskErrorHandler? ) -> Void
+    func request(Url strUrl: String, withMethod method: String, parameters params: [String:AnyObject]?
+        ,progressHandler progress: DataTaskProcessHandler?
+        ,successHandler success: DataTaskSuccessHandler?
+        ,failureHandler failure: DataTaskErrorHandler? )
     {
         
         self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
