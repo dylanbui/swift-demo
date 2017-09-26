@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class DbActionView: UIControl
+class DbActionView: UIControl, UIGestureRecognizerDelegate
 {
     @IBInspectable
     public var masksToBounds: Bool = false {
@@ -45,18 +45,12 @@ class DbActionView: UIControl
     @IBInspectable
     public var touchUpInsideColor: UIColor?
     
-    @IBInspectable
     override var isEnabled: Bool {
         didSet {
-            if self.isEnabled {
-                self.alpha = 1.0;
-            } else {
-                self.alpha = self.disableAlpha;
-            }
             initialize()
+            self.setNeedsDisplay()
         }
     }
-    
     
     private var dictOldProperty: [String: AnyObject] = [:]
     
@@ -94,20 +88,47 @@ class DbActionView: UIControl
     
     fileprivate func defaultSetup()
     {
-        
-        
+        if let bgColor = self.backgroundColor {
+            dictOldProperty["backgroundColor"] = bgColor
+        }
     }
 
     fileprivate func initialize()
     {
         self.defaultSetup()
         
-        if let bgColor = self.backgroundColor {
-            dictOldProperty["backgroundColor"] = bgColor
-        }
+        let singleFingerTap = UITapGestureRecognizer(target: self, action: #selector(self.btnView_Click))
         
+        singleFingerTap.delegate = nil;
+        self.removeGestureRecognizer(singleFingerTap)
+        
+        if self.isEnabled {
+            self.alpha = 1.0;
+            singleFingerTap.delegate = self;
+            self.addGestureRecognizer(singleFingerTap)
+        } else {
+            self.alpha = self.disableAlpha;
+        }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.backgroundColor = self.touchUpInsideColor
+    }
+    
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.backgroundColor = self.dictOldProperty["backgroundColor"] as? UIColor
     }
 
+    func btnView_Click(sender:UIButton!)
+    {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.backgroundColor = self.dictOldProperty["backgroundColor"] as? UIColor
+        }) { (finished) in
+            self.sendActions(for: UIControlEvents.touchUpInside)
+        }
+    }
     
     
 }

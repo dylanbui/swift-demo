@@ -14,6 +14,8 @@ class TaskDetailViewController: BaseViewController {
     @IBOutlet weak var lblDate: UILabel!
     @IBOutlet weak var lblDesc: UILabel!
     
+    @IBOutlet weak var btnTest: DbActionView!
+    
     
     override func viewDidLoad()
     {
@@ -24,12 +26,20 @@ class TaskDetailViewController: BaseViewController {
         
         self.lblName.text = self.stranferParams["name"] as? String
         self.lblDate.text = self.stranferParams["datetime"] as? String
-        self.lblDesc.text = self.stranferParams["title"] as? String        
+        self.lblDesc.text = self.stranferParams["title"] as? String
+        
+        self.btnTest.isEnabled = false
+        
     }
     
     @IBAction func btnDone_Click(_ sender: UIButton)
     {
         self.navigationController!.popViewController(animated: true)
         
+    }
+    
+    @IBAction func btnTest_Click(_ sender: DbActionView)
+    {
+        print("btnTest_Click")
     }
 }

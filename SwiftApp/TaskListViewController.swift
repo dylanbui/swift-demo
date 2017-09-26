@@ -84,7 +84,6 @@ class TaskListViewController: BaseViewController, UITableViewDataSource, UITable
         let vcl = TaskDetailViewController()
         vcl.stranferParams = item
         self.navigationController?.pushViewController(vcl, animated: true)
-        
     }
 
     override func onReturn(params: [String : AnyObject], callerId: Int)
