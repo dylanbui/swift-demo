@@ -1,0 +1,81 @@
+//
+//  Post.swift
+//  SwiftApp
+//
+//  Created by Dylan Bui on 9/27/17.
+//  Copyright © 2017 Propzy Viet Nam. All rights reserved.
+//
+
+import UIKit
+import ObjectMapper
+
+class Post: Mappable
+{
+    var id: Int?
+    var userId: Int?
+    var title: String?
+    var body: String?
+    
+    required init?(map: Map)
+    {
+        
+    }
+    
+    // Mappable
+    func mapping(map: Map)
+    {
+        id                  <- map["id"]
+        userId              <- map["userId"]
+        title               <- map["title"]
+        body                <- map["body"]
+    }
+    
+    static func getAll(_ complete: @escaping ([Post]) -> ())
+    {
+        DbWebConnection.shared.get(Url: "https://jsonplaceholder.typicode.com/posts", params: nil) { (anyObject, error) in
+            if error != nil {
+                print("error.debugDescription = \(error.debugDescription)")
+                return
+            }
+            
+            guard let anyObject = anyObject else {
+                print("AnyObject = nil")
+                return
+            }
+            
+            var arr: [Post] = []
+            for obj in anyObject as! [AnyObject] {
+                let u:Post = Post(JSON: obj as! [String: Any])!
+                arr.append(u)
+            }
+            complete(arr)
+        }
+        
+    }
+    
+    static func getByUser(_ user: User, complete: @escaping ([Post]) -> ())
+    {
+        let url = "https://jsonplaceholder.typicode.com/posts?userId=\(user.id!)"// + String(user.id!)
+        print("url = " + url)
+        DbWebConnection.shared.get(Url: url, params: nil) { (anyObject, error) in
+            if error != nil {
+                print("error.debugDescription = \(error.debugDescription)")
+                return
+            }
+            
+            guard let anyObject = anyObject else {
+                print("AnyObject = nil")
+                return
+            }
+            
+            var arr: [Post] = []
+            for obj in anyObject as! [AnyObject] {
+                let u:Post = Post(JSON: obj as! [String: Any])!
+                arr.append(u)
+            }
+            complete(arr)
+        }
+        
+    }
+
+}

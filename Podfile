@@ -12,6 +12,9 @@ target 'SwiftApp' do
     pod 'AFNetworking', '3.1.0'
     pod 'MBProgressHUD', '1.0.0'
     pod 'IQKeyboardManagerSwift', '4.0.10'
+    pod 'SVPullToRefresh', '0.4.1'
+    pod 'DZNEmptyDataSet', '1.8.1'
+    pod 'ObjectMapper', '2.2.7'
 
 
   # Pods for SwiftApp
