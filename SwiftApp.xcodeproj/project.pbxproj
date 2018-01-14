@@ -9,6 +9,11 @@
 /* Begin PBXBuildFile section */
 		5D8EEB4F713F5AE16C2A184E /* Pods_SwiftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */; };
 		BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10D3F31F79225100B7DF4B /* DbActionView.swift */; };
+		BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D43200BBFAA005514C3 /* DbConstant.swift */; };
+		BB197D46200BC051005514C3 /* DbUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D45200BC051005514C3 /* DbUtils.swift */; };
+		BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */; };
+		BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */; };
+		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
 		BB330BA51F780B0D00BEEA9A /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA41F780B0D00BEEA9A /* DbViewFromXib.swift */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
@@ -73,6 +78,11 @@
 		7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		BB10D3F31F79225100B7DF4B /* DbActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbActionView.swift; sourceTree = "<group>"; };
+		BB197D43200BBFAA005514C3 /* DbConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConstant.swift; sourceTree = "<group>"; };
+		BB197D45200BC051005514C3 /* DbUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUtils.swift; sourceTree = "<group>"; };
+		BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
+		BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDictionaryExtensions.swift; sourceTree = "<group>"; };
+		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		BB330BA41F780B0D00BEEA9A /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
@@ -154,6 +164,18 @@
 				7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				BB197D43200BBFAA005514C3 /* DbConstant.swift */,
+				BB197D45200BC051005514C3 /* DbUtils.swift */,
+				BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */,
+				BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */,
+				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
+			);
+			path = DbLibraries;
 			sourceTree = "<group>";
 		};
 		BBB569D11F7B5B870014A7A9 /* Task-App */ = {
@@ -242,6 +264,7 @@
 		BBD3CEEE1F70CFE50028425E /* SwiftApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB197D42200BBF4B005514C3 /* DbLibraries */,
 				BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */,
 				BBD3CF101F70F80D0028425E /* RootViewController.swift */,
 				BBA7C7551F721DAF00328377 /* BaseViewController.swift */,
@@ -526,6 +549,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
+				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
@@ -533,6 +557,8 @@
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
+				BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */,
+				BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
@@ -542,8 +568,10 @@
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
+				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
+				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 			);

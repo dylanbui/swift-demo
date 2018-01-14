@@ -72,7 +72,7 @@ extension UIFont {
 
 }
 
-class Macro
+class Macro_Ex
 {
     // MARK: -
     // MARK: -
