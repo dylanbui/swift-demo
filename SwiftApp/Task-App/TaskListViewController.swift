@@ -43,7 +43,7 @@ class TaskListViewController: BaseViewController, UITableViewDataSource, UITable
         self.navigationItem.rightBarButtonItem = btnAdd
     }
     
-    func addItem(sender: UIBarButtonItem)
+    @objc func addItem(sender: UIBarButtonItem)
     {
         let vcl = TaskUpdateViewController()
         let item = self.arrTasks[0] as? [String:AnyObject]

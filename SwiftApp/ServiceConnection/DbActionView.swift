@@ -121,7 +121,7 @@ class DbActionView: UIControl, UIGestureRecognizerDelegate
         self.backgroundColor = self.dictOldProperty["backgroundColor"] as? UIColor
     }
 
-    func btnView_Click(sender:UIButton!)
+    @objc func btnView_Click(sender:UIButton!)
     {
         UIView.animate(withDuration: 0.1, animations: {
             self.backgroundColor = self.dictOldProperty["backgroundColor"] as? UIColor
