@@ -59,6 +59,8 @@
 		BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF181F7102D80028425E /* ToDoCell.swift */; };
 		BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CF191F7102D80028425E /* ToDoCell.xib */; };
 		BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */; };
+		BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */; };
+		BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FC200D243700718E95 /* DbViewController.swift */; };
 		E30D5F2105DB6D031E1304FB /* Pods_SwiftAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -133,6 +135,8 @@
 		BBD3CF181F7102D80028425E /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		BBD3CF191F7102D80028425E /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbWebConnection.swift; sourceTree = "<group>"; };
+		BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAppDelegate.swift; sourceTree = "<group>"; };
+		BBFAA0FC200D243700718E95 /* DbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbViewController.swift; sourceTree = "<group>"; };
 		CEFA6F353D569F5651FF6856 /* Pods-SwiftApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp.debug.xcconfig"; sourceTree = "<group>"; };
 		F4143BFB2AB8643E03288BB2 /* Pods-SwiftApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -174,6 +178,8 @@
 				BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */,
 				BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */,
 				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
+				BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */,
+				BBFAA0FC200D243700718E95 /* DbViewController.swift */,
 			);
 			path = DbLibraries;
 			sourceTree = "<group>";
@@ -562,6 +568,7 @@
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
+				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BB330BA51F780B0D00BEEA9A /* DbViewFromXib.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
@@ -573,6 +580,7 @@
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
+				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

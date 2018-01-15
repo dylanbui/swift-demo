@@ -8,6 +8,31 @@
 
 import Foundation
 
+///***************** Define Notification ******************/
+//
+//#define NOTIFY_SERVER_PUSH_MESSAGE             @"NOTIFY_SERVER_PUSH_MESSAGE"
+//
+//#define NOTIFY_REACHABLE_NETWORK               @"NOTIFY_REACHABLE_NETWORK"
+//
+//#define NOTIFY_VCL_DID_LOAD                    @"NOTIFY_VCL_DID_LOAD"
+//#define NOTIFY_VCL_WILL_APPEAR                 @"NOTIFY_VCL_WILL_APPEAR"
+//#define NOTIFY_VCL_DID_APPEAR                  @"NOTIFY_VCL_DID_APPEAR"
+//#define NOTIFY_VCL_WILL_DISAPPEAR              @"NOTIFY_VCL_WILL_DISAPPEAR"
+//#define NOTIFY_VCL_DID_DISAPPEAR               @"NOTIFY_VCL_DID_DISAPPEAR"
+
+enum DbNotify {
+    case ServerPushMessage
+    case ReachableNetwork
+    case VclDidLoad
+    case VclWillAppear
+    case VclDidAppear
+    case VclWillDisAppear
+    case VclDidDisAppear
+}
+
+protocol DbIReturnDelegate {
+    func onReturn(params: [String:AnyObject], callerId: Int);
+}
 
 class Macro
 {
@@ -63,6 +88,10 @@ class Macro
     
     static func screenHeight() -> Float {
         return Float(UIScreen.main.bounds.size.height)
+    }
+    
+    static func isSimulator() -> Bool {
+        return TARGET_OS_SIMULATOR != 0
     }
     
     

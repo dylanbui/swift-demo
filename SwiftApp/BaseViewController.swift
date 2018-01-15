@@ -8,15 +8,10 @@
 
 import UIKit
 
-protocol IReturnParamsDelegate {
-    func onReturn(params: [String:AnyObject], callerId: Int);
-}
 
-class BaseViewController: UIViewController, IReturnParamsDelegate
+class BaseViewController: DbViewController
 {
     
-    var stranferParams: [String:AnyObject]!
-    var returnParamsDelegate: IReturnParamsDelegate!
 
     override func viewDidLoad()
     {
@@ -31,10 +26,20 @@ class BaseViewController: UIViewController, IReturnParamsDelegate
         // Dispose of any resources that can be recreated.
     }
     
-    // MARK: - IReturnParamsDelegate
-    // MARK: -
-    func onReturn(params: [String : AnyObject], callerId: Int) {
+    
+    override func onReturn(params: [String : AnyObject], callerId: Int) {
         
     }
 
 }
+
+// MARK: - IReturnDelegate
+// MARK: -
+//extension BaseViewController: DbIReturnDelegate {
+//    
+//     func onReturn(params: [String : AnyObject], callerId: Int) {
+//        
+//    }
+//    
+//}
+
