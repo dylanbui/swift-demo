@@ -37,12 +37,10 @@ public extension UINavigationController {
     }
     
     public func db_pushArrayViewControllerToFirstViewController(_ arrViewController: [UIViewController], animated: Bool) {
-//        var editableViewControllers = [UIViewController]
-//        editableViewControllers.append(&viewControllers[0])
-//        editableViewControllers.append(&arrViewController)
-//        NSMutableArray *editableViewControllers = [NSMutableArray arrayWithObjects:[[self viewControllers] firstObject], nil];
-//        [editableViewControllers addObjectsFromArray:arrViewController];
-//        [self setViewControllers:editableViewControllers animated:animated];
+        var editableViewControllers = [UIViewController]()
+        editableViewControllers.append(viewControllers[0])
+        editableViewControllers.append(contentsOf: arrViewController)
+        setViewControllers(editableViewControllers, animated: animated)
     }
     
     /// SwifterSwift: Pop ViewController with completion handler.
