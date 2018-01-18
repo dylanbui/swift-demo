@@ -8,13 +8,15 @@ inhibit_all_warnings! # this will disable all the warnings for all pods
 
 target 'SwiftApp' do
 
-    # Libraries system
+    # Libraries system Objective C
     pod 'AFNetworking', '3.1.0'
     pod 'MBProgressHUD', '1.0.0'
-    pod 'IQKeyboardManagerSwift', '4.0.10'
     pod 'SVPullToRefresh', '0.4.1'
     pod 'DZNEmptyDataSet', '1.8.1'
-    pod 'ObjectMapper', '2.2.7'
+    # Libraries system Swift 4
+    pod 'IQKeyboardManagerSwift', '5.0.6'
+    pod 'SnapKit', '4.0.0' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
+    pod 'ObjectMapper', '3.1.0'
 
 
   # Pods for SwiftApp

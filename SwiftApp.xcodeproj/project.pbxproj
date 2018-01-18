@@ -16,6 +16,7 @@
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
 		BB330BA51F780B0D00BEEA9A /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA41F780B0D00BEEA9A /* DbViewFromXib.swift */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
+		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
 		BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569D21F7B5B870014A7A9 /* TaskDetailViewController.swift */; };
@@ -87,6 +88,7 @@
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		BB330BA41F780B0D00BEEA9A /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BBB569D21F7B5B870014A7A9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
@@ -180,6 +182,7 @@
 				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
 				BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */,
 				BBFAA0FC200D243700718E95 /* DbViewController.swift */,
+				BB6F6DE42011192100D81CA3 /* DbErrorView.swift */,
 			);
 			path = DbLibraries;
 			sourceTree = "<group>";
@@ -463,13 +466,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		67704D1E9EF219CC4319BF8D /* [CP] Copy Pods Resources */ = {
@@ -493,13 +499,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwiftAppTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		95A12BF0CEC920308F27F5A0 /* [CP] Embed Pods Frameworks */ = {
@@ -523,9 +532,24 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -556,6 +580,7 @@
 			files = (
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
+				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
