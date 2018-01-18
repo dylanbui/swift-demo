@@ -11,7 +11,7 @@ import DZNEmptyDataSet
 
 class TpUsersViewController: BaseViewController
 {
-    @IBOutlet weak var tblContent: UITableView!
+    // @IBOutlet weak var tblContent: UITableView!
     var arrUser: [User] = []
     
     override func viewDidLoad()

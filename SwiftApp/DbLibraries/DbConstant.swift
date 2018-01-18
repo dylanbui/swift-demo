@@ -20,15 +20,16 @@ import Foundation
 //#define NOTIFY_VCL_WILL_DISAPPEAR              @"NOTIFY_VCL_WILL_DISAPPEAR"
 //#define NOTIFY_VCL_DID_DISAPPEAR               @"NOTIFY_VCL_DID_DISAPPEAR"
 
-enum DbNotify {
-    case ServerPushMessage
-    case ReachableNetwork
-    case VclDidLoad
-    case VclWillAppear
-    case VclDidAppear
-    case VclWillDisAppear
-    case VclDidDisAppear
+enum DbNotify : String {
+    case ServerPushMessage = "ServerPushMessage"
+    case ReachableNetwork = "ReachableNetwork"
+    case VclDidLoad = "VclDidLoad"
+    case VclWillAppear = "VclWillAppear"
+    case VclDidAppear = "VclDidAppear"
+    case VclWillDisAppear = "VclWillDisAppear"
+    case VclDidDisAppear = "VclDidDisAppear"
 }
+
 
 protocol DbIReturnDelegate {
     func onReturn(params: [String:AnyObject], callerId: Int);

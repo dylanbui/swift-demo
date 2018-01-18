@@ -10,7 +10,7 @@ import UIKit
 
 class TpPostsViewController: BaseViewController
 {
-    @IBOutlet weak var tblContent: UITableView!
+    // @IBOutlet weak var tblContent: UITableView!
     var user: User!
     var arrPost: [Post] = []
     

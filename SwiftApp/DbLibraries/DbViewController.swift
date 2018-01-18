@@ -8,43 +8,94 @@
 
 import Foundation
 import UIKit
+import DZNEmptyDataSet
+import SVPullToRefresh
 
-class DbViewController: UIViewController
+class DbViewController: UIViewController, DZNEmptyDataSetSource, DZNEmptyDataSetDelegate
 {
+//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+//        return 0;
+//    }
+//
+//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+//        return nil;
+//    }
+    
     
     var stranferParams: [String:AnyObject]!
     var returnParamsDelegate: DbIReturnDelegate!
     
+    @IBOutlet weak var tblContent: UITableView!
     
-//    @property (nonatomic, strong) NSMutableDictionary* stranferParams;
-//    @property (strong) AppDelegate *appDelegate;
-//    @property (weak) id <ICallbackParentDelegate> callbackParentDelegate;
-//
-//
-//    @property (nonatomic) BOOL isLoadingDataSource;
-//
-//    @property (weak, nonatomic) IBOutlet UITableView *tblContent;
-//
-//    @property (nonatomic) float verticalOffsetForEmptyDataSet;
-//    @property (nonatomic, strong) NSString  *titleForEmptyDataSet;
-//    @property (nonatomic, strong) UIImage *defaultImageForEmptyDataSet;
-//
-//
-//    - (void)initLoadDataForController:(id)params;
-//
-//    - (void)navigationBarHiddenForThisController;
+    var isLoadingDataSource: Bool = true
+    var verticalOffsetForEmptyDataSet: Float = 0
+    var titleForEmptyDataSet: String? = nil
+    var defaultImageForEmptyDataSet: UIImage? = nil
+    
+    fileprivate var isNavigationBarHidden: Bool = false
+    
+    var appDelegate: AppDelegate? = nil
+    var errorCode: Int = 0
+    
 //
 //    // -- Will be callback when network available --
 //    - (void)loadDataFromServer;
+    
+    init() {
+        super.init(nibName: nil, bundle: nil)
+        self.initDbControllerData()
+    }
+    
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        self.initDbControllerData()
+    }
 
+    func initDbControllerData() {
+        self.appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        // self.appDelegate = UIApplication.shared.delegate as? AppDelegate
+    }
     
-    
+    func initLoadDataForController(_ params: [String: AnyObject]? = nil) {
+//        [String:AnyObject]!
+        self.stranferParams = params
+    }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view.
+        DbUtils.postNotification(DbNotify.VclDidLoad.rawValue, object: self)
+        
+        // -- Define push notification --
+        DbUtils.removeNotification(self, name: DbNotify.ReachableNetwork.rawValue)
+        DbUtils.addNotification(DbNotify.ReachableNetwork.rawValue, observer: self, selector: Selector(("loadDataFromServer")), object: nil)
+        
+        // -- Show loading first in UITableView --
+        self.isLoadingDataSource = true;
+        
+        self.titleForEmptyDataSet = nil;
+        self.defaultImageForEmptyDataSet = nil;
+        self.verticalOffsetForEmptyDataSet = 0;
+        
+        if let tbl = self.tblContent {
+            tbl.rowHeight = UITableViewAutomaticDimension;
+            tbl.estimatedRowHeight = 44;
+            tbl.delegate = self as? UITableViewDelegate;
+            tbl.dataSource = self as? UITableViewDataSource;
+            
+            tbl.emptyDataSetSource = self;
+            tbl.emptyDataSetDelegate = self;
+        }
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+        super.viewWillAppear(animated)
+        self.navigationController?.setNavigationBarHidden(self.isNavigationBarHidden, animated: true)
+        //[self.navigationController setNavigationBarHidden:self.isNavigationBarHidden animated:YES];
     }
     
     override func didReceiveMemoryWarning()
@@ -53,16 +104,23 @@ class DbViewController: UIViewController
         // Dispose of any resources that can be recreated.
     }
     
+    func navigationBarHiddenForThisController() {
+        self.isNavigationBarHidden = true;
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     
+    func loadDataFromServer() {
+        
+    }
+    
+//    @objc func loadDataFromServer() {
+//
+//    }
+    
+    // MARK: - DZNEmptyDataSetSource
+    // MARK: -
     
 }
 
-extension DbViewController: DbIReturnDelegate {
-    // MARK: - IReturnParamsDelegate
-    // MARK: -
-    func onReturn(params: [String : AnyObject], callerId: Int) {
-        
-    }
-}
 
 

@@ -11,7 +11,7 @@ import UIKit
 class TaskListViewController: BaseViewController, UITableViewDataSource, UITableViewDelegate
 {
     
-    @IBOutlet weak var tblContent: UITableView!
+    // @IBOutlet weak var tblContent: UITableView!
     var arrTasks: [AnyObject]!
 
     override func viewDidLoad()
@@ -86,10 +86,12 @@ class TaskListViewController: BaseViewController, UITableViewDataSource, UITable
         self.navigationController?.pushViewController(vcl, animated: true)
     }
 
-    override func onReturn(params: [String : AnyObject], callerId: Int)
+    
+}
+
+extension TaskListViewController: DbIReturnDelegate {
+    func onReturn(params: [String : AnyObject], callerId: Int)
     {
-        super.onReturn(params: params, callerId: callerId)
-        
         print("\(callerId)")
         print("\(params.debugDescription)")
         
@@ -105,4 +107,7 @@ class TaskListViewController: BaseViewController, UITableViewDataSource, UITable
         
     }
     
+    
 }
+
+

@@ -26,20 +26,32 @@ class BaseViewController: DbViewController
         // Dispose of any resources that can be recreated.
     }
     
-    
-    override func onReturn(params: [String : AnyObject], callerId: Int) {
-        
-    }
+//    override func onReturn(params: [String : AnyObject], callerId: Int) {
+//        
+//        
+//    }
+
 
 }
 
+//extension BaseViewController: DbIReturnDelegate {
+//
+//    func onReturn(params: [String : AnyObject], callerId: Int) {
+//
+//
+//    }
+//
+//}
+
 // MARK: - IReturnDelegate
 // MARK: -
-//extension BaseViewController: DbIReturnDelegate {
-//    
-//     func onReturn(params: [String : AnyObject], callerId: Int) {
-//        
+//extension DbIReturnDelegate where Self: BaseViewController {
+//
+//    func onReturn(params: [String : AnyObject], callerId: Int) {
+//
+//
+//
 //    }
-//    
+//
 //}
 
