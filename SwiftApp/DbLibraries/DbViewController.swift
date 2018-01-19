@@ -145,6 +145,9 @@ extension DbViewController: DZNEmptyDataSetSource {
     func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
         // -- Network connection --
         if (errorCode == 1005) {
+            let vwError = DbErrorView()
+            vwError.errorNetworkConnection()
+            return vwError
 //            DbErrorView *vwError = [[DbErrorView alloc] init];
 //            [vwError errorNetworkConnection];
 //            return vwError;
@@ -152,6 +155,15 @@ extension DbViewController: DZNEmptyDataSetSource {
         
         // -- Empty data --
         if (!self.isLoadingDataSource) {
+            let vwError = DbErrorView()
+            vwError.errorEmptyData()
+            if self.titleForEmptyDataSet != nil {
+                vwError.lblTitle.text = self.titleForEmptyDataSet;
+            }
+            if self.defaultImageForEmptyDataSet != nil {
+                vwError.imgError.image = self.defaultImageForEmptyDataSet;
+            }
+            return vwError
 //            DbErrorView *vwError = [[DbErrorView alloc] init];
 //            [vwError errorEmptyData];
 //            if (self.titleForEmptyDataSet != nil) {

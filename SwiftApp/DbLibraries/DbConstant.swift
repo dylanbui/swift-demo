@@ -83,12 +83,12 @@ class Macro
         return UIScreen.main.scale >= 2.0
     }
     
-    static func screenWidth() -> Float {
-        return Float(UIScreen.main.bounds.size.width)
+    static func screenWidth() -> Int {
+        return Int(UIScreen.main.bounds.size.width)
     }
     
-    static func screenHeight() -> Float {
-        return Float(UIScreen.main.bounds.size.height)
+    static func screenHeight() -> Int {
+        return Int(UIScreen.main.bounds.size.height)
     }
     
     static func isSimulator() -> Bool {

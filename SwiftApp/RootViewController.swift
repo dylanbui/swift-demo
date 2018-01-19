@@ -9,11 +9,14 @@
 import UIKit
 
 
-class RootViewController: BaseViewController {
+class RootViewController: DbViewController {
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.navigationBarHiddenForThisController()
+        
+        
 
         // Do any additional setup after loading the view.
         

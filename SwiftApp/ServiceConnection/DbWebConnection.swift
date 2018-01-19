@@ -49,7 +49,7 @@ protocol IDbWebConnectionDelegate
     func onRequestProgress(_ downloadProgress: Progress, andCallerId callerId: Int);
 }
 
-typealias DbResponseBlock = (Any?, Error?) -> Void
+typealias DbWebConnectionBlock = (Any?, Error?) -> Void
 
 class DbWebConnection: NSObject
 {
@@ -71,7 +71,7 @@ class DbWebConnection: NSObject
         self.sessionManager = AFHTTPSessionManager()
     }
     
-    func get(Url url: String, params: [String: AnyObject]?, block: DbResponseBlock?) -> Void
+    func get(Url url: String, params: [String: AnyObject]?, block: DbWebConnectionBlock?) -> Void
     {
         self.request(Url: url, withMethod: "GET", parameters: params,
                      progressHandler: nil,
@@ -86,7 +86,7 @@ class DbWebConnection: NSObject
         }
     }
     
-    func post(Url url: String, params: [String: AnyObject]?, block: DbResponseBlock?) -> Void
+    func post(Url url: String, params: [String: AnyObject]?, block: DbWebConnectionBlock?) -> Void
     {
         self.request(Url: url, withMethod: "POST", parameters: params,
                      progressHandler: nil,

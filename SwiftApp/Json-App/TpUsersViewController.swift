@@ -18,6 +18,8 @@ class TpUsersViewController: BaseViewController
     {
         super.viewDidLoad()
         self.navigationItem.title = "Users List"
+        //self.navigationBarHiddenForThisController()
+        self.navigationItem.hidesBackButton = true
         
         print("TpUsersViewController")
 
@@ -26,15 +28,19 @@ class TpUsersViewController: BaseViewController
         //var arrUser:[User] = []
         
         
-        User.getAll { (arrUser) in
-            self.arrUser = arrUser
-//            print("arrUser.debugDescription = \(arrUser.debugDescription)")
-//            print("arrUser.count = \(arrUser.count)")
-//            let u = arrUser[0] as User
-//            print("User = \(u.toJSONString(prettyPrint: true))")
-            self.tblContent.reloadData()
-            
+
+        // -- lay du lieu sau 2s --
+        DbUtils.performAfter(delay: 2.0) {
+            User.getAll { (arrUser) in
+                self.arrUser = arrUser
+    //            print("arrUser.debugDescription = \(arrUser.debugDescription)")
+    //            print("arrUser.count = \(arrUser.count)")
+    //            let u = arrUser[0] as User
+    //            print("User = \(u.toJSONString(prettyPrint: true))")
+                self.tblContent.reloadData()
+            }
         }
+        
     }
 
 

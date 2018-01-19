@@ -59,6 +59,9 @@
 		BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF161F70FBDC0028425E /* ToDoItem.swift */; };
 		BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF181F7102D80028425E /* ToDoCell.swift */; };
 		BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CF191F7102D80028425E /* ToDoCell.xib */; };
+		BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E8E20119C4F0089DD32 /* DbObject.swift */; };
+		BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E902011B18C0089DD32 /* DbSession.swift */; };
+		BBDD5E932011F18D0089DD32 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E922011F18D0089DD32 /* Reachability.swift */; };
 		BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */; };
 		BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */; };
 		BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FC200D243700718E95 /* DbViewController.swift */; };
@@ -136,6 +139,9 @@
 		BBD3CF161F70FBDC0028425E /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		BBD3CF181F7102D80028425E /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		BBD3CF191F7102D80028425E /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
+		BBDD5E8E20119C4F0089DD32 /* DbObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbObject.swift; sourceTree = "<group>"; };
+		BBDD5E902011B18C0089DD32 /* DbSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSession.swift; sourceTree = "<group>"; };
+		BBDD5E922011F18D0089DD32 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbWebConnection.swift; sourceTree = "<group>"; };
 		BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAppDelegate.swift; sourceTree = "<group>"; };
 		BBFAA0FC200D243700718E95 /* DbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbViewController.swift; sourceTree = "<group>"; };
@@ -183,6 +189,8 @@
 				BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */,
 				BBFAA0FC200D243700718E95 /* DbViewController.swift */,
 				BB6F6DE42011192100D81CA3 /* DbErrorView.swift */,
+				BBDD5E8E20119C4F0089DD32 /* DbObject.swift */,
+				BBDD5E902011B18C0089DD32 /* DbSession.swift */,
 			);
 			path = DbLibraries;
 			sourceTree = "<group>";
@@ -282,20 +290,10 @@
 				BBF540521F736B9600AF7AC2 /* ServiceConnection */,
 				BBB569D11F7B5B870014A7A9 /* Task-App */,
 				BBB569E21F7B60270014A7A9 /* Json-App */,
+				BBDD5E962011F3F70089DD32 /* Demo-App */,
 				BBC02E531F71747A0011FDE6 /* Resources */,
-				BBD3CEF11F70CFE50028425E /* ViewController.swift */,
-				BBD3CEF31F70CFE50028425E /* Main.storyboard */,
+				BBDD5E952011F3B10089DD32 /* Supporting Files */,
 				BBD3CEF61F70CFE50028425E /* Assets.xcassets */,
-				BBD3CEF81F70CFE50028425E /* LaunchScreen.storyboard */,
-				BBD3CEFB1F70CFE50028425E /* Info.plist */,
-				BBD3CF0F1F70D1760028425E /* ObjeCBridgingHeader.h */,
-				BBD3CF121F70F8480028425E /* DemoTableViewController.swift */,
-				BBD3CF131F70F8480028425E /* DemoTableViewController.xib */,
-				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
-				BBD3CF181F7102D80028425E /* ToDoCell.swift */,
-				BBD3CF191F7102D80028425E /* ToDoCell.xib */,
-				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
-				BBC02E701F717DD20011FDE6 /* DemoData.plist */,
 			);
 			path = SwiftApp;
 			sourceTree = "<group>";
@@ -309,12 +307,47 @@
 			path = SwiftAppTests;
 			sourceTree = "<group>";
 		};
+		BBDD5E942011F38B0089DD32 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				BBD3CEF31F70CFE50028425E /* Main.storyboard */,
+				BBD3CEF81F70CFE50028425E /* LaunchScreen.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		BBDD5E952011F3B10089DD32 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BBDD5E942011F38B0089DD32 /* Storyboard */,
+				BBD3CEF11F70CFE50028425E /* ViewController.swift */,
+				BBD3CEFB1F70CFE50028425E /* Info.plist */,
+				BBD3CF0F1F70D1760028425E /* ObjeCBridgingHeader.h */,
+				BBC02E701F717DD20011FDE6 /* DemoData.plist */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BBDD5E962011F3F70089DD32 /* Demo-App */ = {
+			isa = PBXGroup;
+			children = (
+				BBD3CF121F70F8480028425E /* DemoTableViewController.swift */,
+				BBD3CF131F70F8480028425E /* DemoTableViewController.xib */,
+				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
+				BBD3CF181F7102D80028425E /* ToDoCell.swift */,
+				BBD3CF191F7102D80028425E /* ToDoCell.xib */,
+				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
+			);
+			path = "Demo-App";
+			sourceTree = "<group>";
+		};
 		BBF540521F736B9600AF7AC2 /* ServiceConnection */ = {
 			isa = PBXGroup;
 			children = (
 				BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */,
 				BB330BA41F780B0D00BEEA9A /* DbViewFromXib.swift */,
 				BB10D3F31F79225100B7DF4B /* DbActionView.swift */,
+				BBDD5E922011F18D0089DD32 /* Reachability.swift */,
 			);
 			path = ServiceConnection;
 			sourceTree = "<group>";
@@ -593,6 +626,7 @@
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
+				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BB330BA51F780B0D00BEEA9A /* DbViewFromXib.swift in Sources */,
@@ -602,10 +636,12 @@
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
+				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
+				BBDD5E932011F18D0089DD32 /* Reachability.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -761,12 +797,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 99JD3QH9V9;
-				INFOPLIST_FILE = SwiftApp/Info.plist;
+				INFOPLIST_FILE = "SwiftApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vn.propzy.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SwiftApp/ObjeCBridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SwiftApp/Supporting Files/ObjeCBridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
@@ -778,12 +814,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 99JD3QH9V9;
-				INFOPLIST_FILE = SwiftApp/Info.plist;
+				INFOPLIST_FILE = "SwiftApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = vn.propzy.SwiftApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SwiftApp/ObjeCBridgingHeader.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/SwiftApp/Supporting Files/ObjeCBridgingHeader.h";
 				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
 				SWIFT_VERSION = 4.0;
 			};
