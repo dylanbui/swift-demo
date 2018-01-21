@@ -9,6 +9,40 @@
 // MARK: - Methods
 public extension Dictionary {
     
+    public func db_string(key: Key) -> String {
+        return db_string(key: key, default: "")
+    }
+    
+    public func db_string(key: Key, default def: String ) -> String {
+        if let val = self[key] as? String {
+            return val
+        }
+        return def
+    }
+    
+    public func db_float(key: Key) -> Float {
+        return db_float(key: key, default: 0)
+    }
+    
+    public func db_float(key: Key, default def: Float ) -> Float {
+        if let val = self[key] as? Float {
+            return val
+        }
+        return def
+    }
+    
+    public func db_int(key: Key) -> Int {
+        return db_int(key: key, default: 0)
+    }
+    
+    public func db_int(key: Key, default def: Int ) -> Int {
+        if let val = self[key] as? Int {
+            return val
+        }
+        return def
+        //return index(forKey: key) != nil ? self[key] as! Int : def
+    }
+    
     /// SwifterSwift: Check if key exists in dictionary.
     ///
     ///        let dict: [String : Any] = ["testKey": "testValue", "testArrayKey": [1, 2, 3, 4, 5]]

@@ -62,6 +62,8 @@
 		BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E8E20119C4F0089DD32 /* DbObject.swift */; };
 		BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E902011B18C0089DD32 /* DbSession.swift */; };
 		BBDD5E932011F18D0089DD32 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E922011F18D0089DD32 /* Reachability.swift */; };
+		BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */; };
+		BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */; };
 		BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */; };
 		BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */; };
 		BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FC200D243700718E95 /* DbViewController.swift */; };
@@ -142,6 +144,8 @@
 		BBDD5E8E20119C4F0089DD32 /* DbObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbObject.swift; sourceTree = "<group>"; };
 		BBDD5E902011B18C0089DD32 /* DbSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSession.swift; sourceTree = "<group>"; };
 		BBDD5E922011F18D0089DD32 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbArrayExtensions.swift; sourceTree = "<group>"; };
+		BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDateExtensions.swift; sourceTree = "<group>"; };
 		BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbWebConnection.swift; sourceTree = "<group>"; };
 		BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAppDelegate.swift; sourceTree = "<group>"; };
 		BBFAA0FC200D243700718E95 /* DbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbViewController.swift; sourceTree = "<group>"; };
@@ -183,14 +187,12 @@
 			children = (
 				BB197D43200BBFAA005514C3 /* DbConstant.swift */,
 				BB197D45200BC051005514C3 /* DbUtils.swift */,
-				BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */,
-				BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */,
-				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
 				BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */,
 				BBFAA0FC200D243700718E95 /* DbViewController.swift */,
 				BB6F6DE42011192100D81CA3 /* DbErrorView.swift */,
 				BBDD5E8E20119C4F0089DD32 /* DbObject.swift */,
 				BBDD5E902011B18C0089DD32 /* DbSession.swift */,
+				BBEC9E442012611E00FFF182 /* UtilsExtension */,
 			);
 			path = DbLibraries;
 			sourceTree = "<group>";
@@ -339,6 +341,18 @@
 				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
 			);
 			path = "Demo-App";
+			sourceTree = "<group>";
+		};
+		BBEC9E442012611E00FFF182 /* UtilsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */,
+				BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */,
+				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
+				BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */,
+				BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */,
+			);
+			path = UtilsExtension;
 			sourceTree = "<group>";
 		};
 		BBF540521F736B9600AF7AC2 /* ServiceConnection */ = {
@@ -636,6 +650,8 @@
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
+				BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */,
+				BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,

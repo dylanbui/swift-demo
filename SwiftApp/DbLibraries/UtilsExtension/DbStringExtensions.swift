@@ -6,8 +6,6 @@
 //  Copyright © 2018 Propzy Viet Nam. All rights reserved.
 //  Base on : https://github.com/SwifterSwift/SwifterSwift/blob/master/Sources/Extensions/SwiftStdlib/StringExtensions.swift
 
-import UIKit
-
 
 // MARK: - Properties
 public extension String {
