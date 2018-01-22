@@ -59,7 +59,6 @@ class DbActionView: UIControl, UIGestureRecognizerDelegate
         super.prepareForInterfaceBuilder()
         initialize()
     }
-
     
     //MARK: Initializers
     override init(frame : CGRect)

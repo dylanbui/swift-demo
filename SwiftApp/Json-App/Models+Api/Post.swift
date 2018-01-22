@@ -77,5 +77,24 @@ class Post: Mappable
         }
         
     }
+    
+    static func getPostDetai(_ post: Post, complete: @escaping (Post) -> Void) {
+        let url = "https://jsonplaceholder.typicode.com/posts/\(post.id!)"// + String(post.id!)
+        print("url = " + url)
+        DbWebConnection.shared.get(Url: url, params: nil) { (anyObject, error) in
+            if error != nil {
+                print("error.debugDescription = \(error.debugDescription)")
+                return
+            }
+            
+            guard let anyObject = anyObject else {
+                print("AnyObject = nil")
+                return
+            }
+            
+            let post:Post = Post(JSON: anyObject as! [String: Any])!
+            complete(post)            
+        }
+    }
 
 }

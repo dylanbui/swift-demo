@@ -30,6 +30,8 @@ enum DbNotify : String {
     case VclDidDisAppear = "VclDidDisAppear"
 }
 
+// -- Xu ly tra ve cua cac UIView action DbHandleViewAction(owner, id, params, error) --
+typealias DbHandleViewAction = (AnyObject, Int, [String:AnyObject]?, Error?) -> ()
 
 protocol DbIReturnDelegate {
     func onReturn(params: [String:AnyObject], callerId: Int);

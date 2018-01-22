@@ -10,7 +10,6 @@ import UIKit
 
 class TpPostsViewController: BaseViewController
 {
-    // @IBOutlet weak var tblContent: UITableView!
     var user: User!
     var arrPost: [Post] = []
     
@@ -55,6 +54,17 @@ extension TpPostsViewController: UITableViewDelegate
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
         tableView.deselectRow(at: indexPath, animated: true)
+        let post: Post = self.arrPost[indexPath.row]
+        
+        let detailView: TpPostDetailView = TpPostDetailView() //.loadNib() as! TpPostDetailView
+        detailView.loadData(post)
+        
+//        self.view.addSubview(detailView)
+        
+        detailView.showPopupWithCompletion({ (finished) in
+            print("Show hang xong")
+        })
+        
     }
     
 }
