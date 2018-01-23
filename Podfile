@@ -18,9 +18,13 @@ target 'SwiftApp' do
     pod 'SnapKit', '4.0.0' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
     pod 'ObjectMapper', '3.1.0'
 
-
     # Libraries needed Objective C
     pod 'APNumberPad', '1.2.0' # Use for DecimalTextField
+
+    # Libraries needed Swift 4
+    pod 'DKImagePickerController', '3.8.1'
+    pod 'CropViewController', '2.3.6' # Swift version of TOCropViewController
+
 
 
   # Pods for SwiftApp

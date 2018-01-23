@@ -74,6 +74,7 @@
 		BBE813FD2017458100B21B1F /* ic_show_password.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813F92017458000B21B1F /* ic_show_password.png */; };
 		BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FA2017458100B21B1F /* ic_show_password@2x.png */; };
 		BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */; };
+		BBE814012017551B00B21B1F /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE814002017551B00B21B1F /* PhotoGalleryViewController.swift */; };
 		BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */; };
 		BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */; };
 		BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */; };
@@ -168,6 +169,7 @@
 		BBE813F92017458000B21B1F /* ic_show_password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_show_password.png; sourceTree = "<group>"; };
 		BBE813FA2017458100B21B1F /* ic_show_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_show_password@2x.png"; sourceTree = "<group>"; };
 		BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hide_password@2x.png"; sourceTree = "<group>"; };
+		BBE814002017551B00B21B1F /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
 		BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbArrayExtensions.swift; sourceTree = "<group>"; };
 		BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDateExtensions.swift; sourceTree = "<group>"; };
 		BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbWebConnection.swift; sourceTree = "<group>"; };
@@ -397,6 +399,7 @@
 			children = (
 				BBE813F52017210C00B21B1F /* DecimalTextField */,
 				BBE813F220171D7A00B21B1F /* UITextField+PasswordField */,
+				BBE814002017551B00B21B1F /* PhotoGalleryViewController.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -723,6 +726,7 @@
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
+				BBE814012017551B00B21B1F /* PhotoGalleryViewController.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
