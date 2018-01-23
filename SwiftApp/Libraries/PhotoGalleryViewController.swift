@@ -22,11 +22,11 @@ class PhotoGalleryViewController: UIViewController {
     
     static let sharedInstance = PhotoGalleryViewController()
     
-    private var pickerController: DKImagePickerController?
+    private let pickerController = DKImagePickerController()
     
     private override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
-        initPrivate()
+        initPrivate() // Tao bang code chay vao day
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -35,14 +35,14 @@ class PhotoGalleryViewController: UIViewController {
     }
     
     private func initPrivate() -> Void {
-        self.pickerController = DKImagePickerController()
+        //self.pickerController = DKImagePickerController()
         //self.pickerController.autoDismissViewController = NO;
-        self.pickerController?.showsCancelButton = true
-        self.pickerController?.showsEmptyAlbums = true
-        self.pickerController?.allowMultipleTypes = false
-        self.pickerController?.singleSelect = false;
-        self.pickerController?.assetType = .allPhotos
-        self.pickerController?.sourceType = .both;
+        self.pickerController.showsCancelButton = true
+        self.pickerController.showsEmptyAlbums = true
+        self.pickerController.allowMultipleTypes = false
+        self.pickerController.singleSelect = false;
+        self.pickerController.assetType = .allPhotos
+        self.pickerController.sourceType = .both;
         // -- Init variable --
         self.maxSelected = 5;
         self.sourceType = .both;
@@ -52,56 +52,58 @@ class PhotoGalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.pickerController?.didSelectAssets = { [unowned self] (assets: [DKAsset]) in
-            self.updateAssets(assets: assets)
-            guard let didSelectAssets = self.didSelectAssets, assets.count <= 0 else {
+        print("viewDidLoad")
+        
+//        self.pickerController?.didSelectAssets = { (assets: [DKAsset]) in
+//            print("didSelectAssets")
+//            print(assets)
+//        }
+
+        
+        self.pickerController.didSelectAssets = { (assets: [DKAsset]) in
+            
+            print("didSelectAssets")
+            
+            if assets.count <= 0 {
+                return
+            }
+            
+            guard let didSelectAssets = self.didSelectAssets else {
                 return
             }
             didSelectAssets(assets)
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
 
-        self.pickerController?.didCancel = { () -> Void in
+        self.pickerController.didCancel = { () -> Void in
+            
+            print("didCancel")
+            
             guard let didCancel = self.didCancel else {
                 return
             }
             didCancel()
             self.presentingViewController?.dismiss(animated: true, completion: nil)
         }
+
+        self.pickerController.view.translatesAutoresizingMaskIntoConstraints = true
+        self.view.frame = self.pickerController.view.frame
+        self.view.addSubview(self.pickerController.view)
         
-        self.view.frame = (self.pickerController?.view!.frame)!
-        self.view.addSubview((self.pickerController?.view!)!)
-    }
-    
-    func updateAssets(assets: [DKAsset]) {
-        print("didSelectAssets")
-//        self.assets = assets
-//        self.previewView?.reloadData()
-//
-//        if pickerController.exportsWhenCompleted {
-//            for asset in assets {
-//                if let error = asset.error {
-//                    print("exporterDidEndExporting with error:\(error.localizedDescription)")
-//                } else {
-//                    print("exporterDidEndExporting:\(asset.localTemporaryPath!)")
-//                }
-//            }
-//        }
-//
-//        if self.exportManually {
-//            DKImageAssetExporter.sharedInstance.exportAssetsAsynchronously(assets: assets, completion: nil)
-//        }
+
+        
+//        self.present(self.pickerController!, animated: false) {}
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        self.pickerController?.maxSelectableCount = (self.maxSelected <= 0) ? 5 : self.maxSelected
-        self.pickerController?.sourceType = self.sourceType
-        self.pickerController?.singleSelect = self.singleSelect
+        self.pickerController.maxSelectableCount = (self.maxSelected <= 0) ? 5 : self.maxSelected
+        self.pickerController.sourceType = self.sourceType
+        self.pickerController.singleSelect = self.singleSelect
 
         // -- Remove old select --
-        self.pickerController?.deselectAllAssets()
+        self.pickerController.deselectAllAssets()
     }
     
 //    private init() {

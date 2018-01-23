@@ -22,13 +22,14 @@ extension UITextField {
     }
     
     @objc func touchUpInside() {
+        
         let hideShow = self.rightView as? UIButton
         if self.isSecureTextEntry {
-            self.isSecureTextEntry = true
-            hideShow?.setImage(UIImage(named: "ic_hide_password.png") , for: .normal)
-        } else {
             self.isSecureTextEntry = false
             hideShow?.setImage(UIImage(named: "ic_show_password.png") , for: .normal)
+        } else {
+            self.isSecureTextEntry = true
+            hideShow?.setImage(UIImage(named: "ic_hide_password.png") , for: .normal)
         }
         self.becomeFirstResponder()
     }

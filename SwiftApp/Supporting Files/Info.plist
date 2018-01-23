@@ -24,6 +24,22 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+    
+    <key>NSCameraUsageDescription</key>
+    <string>$(PRODUCT_NAME) camera use.</string>
+    <key>NSContactsUsageDescription</key>
+    <string>$(PRODUCT_NAME) contact use</string>
+    <key>NSLocationUsageDescription</key>
+    <string>Need location access for updating nearby friends</string>
+    <key>NSLocationWhenInUseUsageDescription</key>
+    <string>Your current location will be displayed on the map and used for search result</string>
+    <key>NSMicrophoneUsageDescription</key>
+    <string>This app requires to access your microphone to record video with your voice send via chat</string>
+    <key>NSPhotoLibraryAddUsageDescription</key>
+    <string>$(PRODUCT_NAME) photo use</string>
+    <key>NSPhotoLibraryUsageDescription</key>
+    <string>$(PRODUCT_NAME) photos use.</string>
+    
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>

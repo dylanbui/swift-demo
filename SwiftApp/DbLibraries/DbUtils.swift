@@ -186,4 +186,8 @@ class DbUtils: NSObject
         )
     }
     
+    static func getTopViewController() -> UIViewController? {
+        return UIApplication.shared.keyWindow?.rootViewController
+    }
+    
 }

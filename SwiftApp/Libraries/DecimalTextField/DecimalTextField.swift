@@ -59,7 +59,7 @@ class DecimalTextField: UITextField {
         self.textFieldType = type
         
         // -- Set number pad --
-        self.numberPad = APNumberPad.init(delegate: self)
+        self.numberPad = APNumberPad.init(delegate: self as APNumberPadDelegate)
         // configure function button
         if self.textFieldType == .Decimal {
             self.numberPad?.leftFunctionButton.setTitle(self.decimalSeparator, for: .normal)
@@ -120,33 +120,55 @@ class DecimalTextField: UITextField {
             textFieldText.slice(from: 0, to: self.integerSize)
         }
         
+//        NSString *formattedOutput = [self.numberFormatter stringFromNumber:[NSNumber numberWithDouble:[textFieldText doubleValue]]];
+        
+        textFieldText = self.numberFormatter?.string(for: Double(textFieldText)) ?? ""
+        
         if arrSplit.count > 1 {
             var decimalPart = arrSplit[1]
             // -- Limit Decimal Size --
             if decimalPart.count > self.decimalSize {
                 decimalPart.slice(from: 0, to: self.decimalSize)
             }
-            textFieldText = String("\(textFieldText)\(self.decimalSeparator)\(decimalPart)")
+            textFieldText = String("\(textFieldText)\(self.decimalSeparator!)\(decimalPart)")
         }
         
         return textFieldText
     }
     
+//    func numberPad(_ numberPad: APNumberPad, functionButtonAction functionButton: UIButton, textInput: UIResponder & UITextInput) {
+//
+//        guard let str = self.text, str.isEmpty, str.contains(self.decimalSeparator!) else {
+//            return
+//        }
+//        textInput.insertText(self.decimalSeparator!)
+//        //        if (![self.text isEqualToString:@""] && ![self.text containsString:self.decimalSeparator]) {
+//        //            [textInput insertText:self.decimalSeparator];
+//        //        }
+//
+//    }
+    
 }
 
 extension DecimalTextField: APNumberPadDelegate {
-    
+
     func numberPad(_ numberPad: APNumberPad, functionButtonAction functionButton: UIButton, textInput: UIResponder & UITextInput) {
-        
-        guard let str = self.text, str.isEmpty, str.contains(self.decimalSeparator) else {
+
+        guard let str = self.text else {
+            print("\(self.text!)")
             return
         }
-        textInput.insertText(self.decimalSeparator)
+        
+        if (!str.isEmpty && !str.contains(self.decimalSeparator!)) {
+            textInput.insertText(self.decimalSeparator!)
+        }
+        
+
 //        if (![self.text isEqualToString:@""] && ![self.text containsString:self.decimalSeparator]) {
 //            [textInput insertText:self.decimalSeparator];
 //        }
-        
+
     }
-    
+
 }
 
