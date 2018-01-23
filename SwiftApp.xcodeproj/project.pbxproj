@@ -66,6 +66,14 @@
 		BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E8E20119C4F0089DD32 /* DbObject.swift */; };
 		BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E902011B18C0089DD32 /* DbSession.swift */; };
 		BBDD5E932011F18D0089DD32 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E922011F18D0089DD32 /* Reachability.swift */; };
+		BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */; };
+		BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */; };
+		BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */; };
+		BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813F62017211A00B21B1F /* DecimalTextField.swift */; };
+		BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813F82017458000B21B1F /* ic_hide_password.png */; };
+		BBE813FD2017458100B21B1F /* ic_show_password.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813F92017458000B21B1F /* ic_show_password.png */; };
+		BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FA2017458100B21B1F /* ic_show_password@2x.png */; };
+		BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */; };
 		BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */; };
 		BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */; };
 		BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */; };
@@ -152,6 +160,14 @@
 		BBDD5E8E20119C4F0089DD32 /* DbObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbObject.swift; sourceTree = "<group>"; };
 		BBDD5E902011B18C0089DD32 /* DbSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSession.swift; sourceTree = "<group>"; };
 		BBDD5E922011F18D0089DD32 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTableViewCell.swift; sourceTree = "<group>"; };
+		BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DbAssets.xcassets; sourceTree = "<group>"; };
+		BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordField.swift"; sourceTree = "<group>"; };
+		BBE813F62017211A00B21B1F /* DecimalTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecimalTextField.swift; sourceTree = "<group>"; };
+		BBE813F82017458000B21B1F /* ic_hide_password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_hide_password.png; sourceTree = "<group>"; };
+		BBE813F92017458000B21B1F /* ic_show_password.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_show_password.png; sourceTree = "<group>"; };
+		BBE813FA2017458100B21B1F /* ic_show_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_show_password@2x.png"; sourceTree = "<group>"; };
+		BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hide_password@2x.png"; sourceTree = "<group>"; };
 		BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbArrayExtensions.swift; sourceTree = "<group>"; };
 		BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDateExtensions.swift; sourceTree = "<group>"; };
 		BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbWebConnection.swift; sourceTree = "<group>"; };
@@ -193,15 +209,14 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
-				BB2FA67420159BF100590C94 /* CustomViews */,
 				BB197D43200BBFAA005514C3 /* DbConstant.swift */,
 				BB197D45200BC051005514C3 /* DbUtils.swift */,
-				BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */,
-				BBFAA0FC200D243700718E95 /* DbViewController.swift */,
 				BB6F6DE42011192100D81CA3 /* DbErrorView.swift */,
-				BBDD5E8E20119C4F0089DD32 /* DbObject.swift */,
 				BBDD5E902011B18C0089DD32 /* DbSession.swift */,
+				BBE813EC2016EB0600B21B1F /* BaseUIKit */,
+				BB2FA67420159BF100590C94 /* CustomViews */,
 				BBEC9E442012611E00FFF182 /* UtilsExtension */,
+				BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */,
 			);
 			path = DbLibraries;
 			sourceTree = "<group>";
@@ -305,6 +320,7 @@
 		BBD3CEEE1F70CFE50028425E /* SwiftApp */ = {
 			isa = PBXGroup;
 			children = (
+				BBE813F120171CF100B21B1F /* Libraries */,
 				BB197D42200BBF4B005514C3 /* DbLibraries */,
 				BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */,
 				BBD3CF101F70F80D0028425E /* RootViewController.swift */,
@@ -363,6 +379,46 @@
 				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
 			);
 			path = "Demo-App";
+			sourceTree = "<group>";
+		};
+		BBE813EC2016EB0600B21B1F /* BaseUIKit */ = {
+			isa = PBXGroup;
+			children = (
+				BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */,
+				BBFAA0FC200D243700718E95 /* DbViewController.swift */,
+				BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */,
+				BBDD5E8E20119C4F0089DD32 /* DbObject.swift */,
+			);
+			path = BaseUIKit;
+			sourceTree = "<group>";
+		};
+		BBE813F120171CF100B21B1F /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				BBE813F52017210C00B21B1F /* DecimalTextField */,
+				BBE813F220171D7A00B21B1F /* UITextField+PasswordField */,
+			);
+			path = Libraries;
+			sourceTree = "<group>";
+		};
+		BBE813F220171D7A00B21B1F /* UITextField+PasswordField */ = {
+			isa = PBXGroup;
+			children = (
+				BBE813F82017458000B21B1F /* ic_hide_password.png */,
+				BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */,
+				BBE813F92017458000B21B1F /* ic_show_password.png */,
+				BBE813FA2017458100B21B1F /* ic_show_password@2x.png */,
+				BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */,
+			);
+			path = "UITextField+PasswordField";
+			sourceTree = "<group>";
+		};
+		BBE813F52017210C00B21B1F /* DecimalTextField */ = {
+			isa = PBXGroup;
+			children = (
+				BBE813F62017211A00B21B1F /* DecimalTextField.swift */,
+			);
+			path = DecimalTextField;
 			sourceTree = "<group>";
 		};
 		BBEC9E442012611E00FFF182 /* UtilsExtension */ = {
@@ -491,12 +547,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				BBC02E681F71747A0011FDE6 /* OpenSans-Light.ttf in Resources */,
+				BBE813FD2017458100B21B1F /* ic_show_password.png in Resources */,
 				BBD3CF151F70F8480028425E /* DemoTableViewController.xib in Resources */,
 				BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */,
 				BBC02E621F71747A0011FDE6 /* FontAwesome.ttf in Resources */,
 				BBC02E6B1F71747A0011FDE6 /* OpenSans-Semibold.ttf in Resources */,
+				BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */,
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
 				BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */,
+				BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */,
 				BBB569EF1F7BC8880014A7A9 /* TpPostsViewController.xib in Resources */,
 				BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */,
@@ -510,8 +569,10 @@
 				BBC02E641F71747A0011FDE6 /* OpenSans-BoldItalic.ttf in Resources */,
 				BBB569E11F7B5B880014A7A9 /* TaskViewCell.xib in Resources */,
 				BBC02E611F71747A0011FDE6 /* artists.json in Resources */,
+				BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */,
 				BBC02E6A1F71747A0011FDE6 /* OpenSans-Regular.ttf in Resources */,
 				BBD3CEF51F70CFE50028425E /* Main.storyboard in Resources */,
+				BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */,
 				BBC02E671F71747A0011FDE6 /* OpenSans-Italic.ttf in Resources */,
 				BBC02E661F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				BBC02E651F71747A0011FDE6 /* OpenSans-ExtraBold.ttf in Resources */,
@@ -543,7 +604,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		67704D1E9EF219CC4319BF8D /* [CP] Copy Pods Resources */ = {
@@ -576,7 +637,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
 		95A12BF0CEC920308F27F5A0 /* [CP] Embed Pods Frameworks */ = {
@@ -664,6 +725,7 @@
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
+				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
@@ -677,6 +739,8 @@
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
+				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
+				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
 				BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,

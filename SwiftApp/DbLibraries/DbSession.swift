@@ -40,7 +40,7 @@ class DbSession: DbObject {
     // MARK: - Push Notification Token
     // MARK: -
     func getDevicePushNotificationToken() -> String? {
-        if Macro.isSimulator() {
+        if DbMacro.isSimulator() {
             return "notuser659ef7634ff919e6a866aab41b7bc60039339ac8cd85b90c888fb"
         }
         return self.getUserDefaultsData(forKey: DEVICE_PUSH_TOKEN) as? String

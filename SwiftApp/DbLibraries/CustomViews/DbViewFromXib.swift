@@ -5,7 +5,7 @@
 //  Created by Dylan Bui on 9/24/17.
 //  Copyright © 2017 Propzy Viet Nam. All rights reserved.
 //
-
+// -- KHONG SU DUNG THANG NAY NUA : THAY THE DbLoadableView --
 import UIKit
 
 // http://justabeech.com/2014/07/27/xcode-6-live-rendering-from-nib/

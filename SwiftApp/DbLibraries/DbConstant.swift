@@ -20,7 +20,7 @@ import Foundation
 //#define NOTIFY_VCL_WILL_DISAPPEAR              @"NOTIFY_VCL_WILL_DISAPPEAR"
 //#define NOTIFY_VCL_DID_DISAPPEAR               @"NOTIFY_VCL_DID_DISAPPEAR"
 
-enum DbNotify : String {
+public enum DbNotify : String {
     case ServerPushMessage = "ServerPushMessage"
     case ReachableNetwork = "ReachableNetwork"
     case VclDidLoad = "VclDidLoad"
@@ -31,13 +31,13 @@ enum DbNotify : String {
 }
 
 // -- Xu ly tra ve cua cac UIView action DbHandleViewAction(owner, id, params, error) --
-typealias DbHandleViewAction = (AnyObject, Int, [String:AnyObject]?, Error?) -> ()
+public typealias DbHandleViewAction = (AnyObject, Int, [String:AnyObject]?, Error?) -> ()
 
-protocol DbIReturnDelegate {
+public protocol DbIReturnDelegate {
     func onReturn(params: [String:AnyObject], callerId: Int);
 }
 
-class Macro
+open class DbMacro
 {
     // MARK: -
     // MARK: -

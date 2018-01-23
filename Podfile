@@ -19,6 +19,10 @@ target 'SwiftApp' do
     pod 'ObjectMapper', '3.1.0'
 
 
+    # Libraries needed Objective C
+    pod 'APNumberPad', '1.2.0' # Use for DecimalTextField
+
+
   # Pods for SwiftApp
 
   target 'SwiftAppTests' do

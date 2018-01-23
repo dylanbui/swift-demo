@@ -16,7 +16,7 @@ class DbErrorView: UIView {
     var lblTitle = UILabel()
     
     init() {
-        super.init(frame: CGRect(x: 0, y: 0, width: Macro.screenWidth(), height: Macro.screenHeight()))
+        super.init(frame: CGRect(x: 0, y: 0, width: DbMacro.screenWidth(), height: DbMacro.screenHeight()))
         createLayout()
     }
     

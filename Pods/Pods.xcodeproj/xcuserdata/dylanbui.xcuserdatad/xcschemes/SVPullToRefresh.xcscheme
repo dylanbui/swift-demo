@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "A1B8D3311DF2FC40219E74A8214983C0"
+               BlueprintIdentifier = "7D26767E0AD992C55506AE2EC17AD225"
                BuildableName = "SVPullToRefresh.framework"
                BlueprintName = "SVPullToRefresh"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -47,7 +47,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "A1B8D3311DF2FC40219E74A8214983C0"
+            BlueprintIdentifier = "7D26767E0AD992C55506AE2EC17AD225"
             BuildableName = "SVPullToRefresh.framework"
             BlueprintName = "SVPullToRefresh"
             ReferencedContainer = "container:Pods.xcodeproj">

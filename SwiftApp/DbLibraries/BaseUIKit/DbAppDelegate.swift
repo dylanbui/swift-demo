@@ -21,10 +21,7 @@ class DbAppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: -
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-//        registerForRemoteNotification()
         self.registerForRemoteNotification()
-        
         return true
     }
     
@@ -52,7 +49,7 @@ class DbAppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func registerForRemoteNotification() {
-        if Macro.isSimulator() {
+        if DbMacro.isSimulator() {
             return
         }
         
