@@ -16,6 +16,10 @@ class DbUtils: NSObject
         print("Say hiiii")
     }
     
+    static func getTopViewController() -> UIViewController? {
+        return UIApplication.shared.keyWindow?.rootViewController
+    }
+    
     // DbUtils.dispatchToMainQueue {}
     static func dispatchToMainQueue(_ dispatch_block: @escaping () -> Void)
     {
@@ -184,10 +188,6 @@ class DbUtils: NSObject
             blue: CGFloat(HexValue & 0x0000FF) / 255.0,
             alpha: CGFloat(alpha)
         )
-    }
-    
-    static func getTopViewController() -> UIViewController? {
-        return UIApplication.shared.keyWindow?.rootViewController
     }
     
 }

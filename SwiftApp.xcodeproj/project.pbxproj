@@ -55,6 +55,7 @@
 		BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */; };
 		BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */; };
 		BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E701F717DD20011FDE6 /* DemoData.plist */; };
+		BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD002802018A39E00293AC8 /* MediaGallery.swift */; };
 		BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */; };
 		BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEF11F70CFE50028425E /* ViewController.swift */; };
 		BBD3CEF51F70CFE50028425E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CEF31F70CFE50028425E /* Main.storyboard */; };
@@ -149,6 +150,7 @@
 		BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPlistManager.swift; sourceTree = "<group>"; };
 		BBC02E701F717DD20011FDE6 /* DemoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DemoData.plist; sourceTree = "<group>"; };
+		BBD002802018A39E00293AC8 /* MediaGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGallery.swift; sourceTree = "<group>"; };
 		BBD3CEEC1F70CFE50028425E /* SwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD3CEF11F70CFE50028425E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -420,6 +422,7 @@
 				BBE813F52017210C00B21B1F /* DecimalTextField */,
 				BBE813F220171D7A00B21B1F /* UITextField+PasswordField */,
 				BBE814002017551B00B21B1F /* PhotoGalleryViewController.swift */,
+				BBD002802018A39E00293AC8 /* MediaGallery.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -765,6 +768,7 @@
 				BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */,
 				BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
+				BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
