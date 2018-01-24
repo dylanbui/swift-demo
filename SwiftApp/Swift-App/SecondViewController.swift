@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import DKImagePickerController
+//import DKImagePickerController
 
 class SecondViewController: BaseViewController {
 
@@ -33,39 +33,61 @@ class SecondViewController: BaseViewController {
     
     @IBAction func btnPhoto_Click(_ sender: Any) {
         
-//        let pickerController = DKImagePickerController()
+//        let media = MediaGallery.sharedInstance
 //
-//        pickerController.showsCancelButton = true
-//        pickerController.showsEmptyAlbums = true
-//        pickerController.allowMultipleTypes = false
-//        pickerController.singleSelect = false;
-//        pickerController.assetType = .allPhotos
-//        pickerController.sourceType = .both;
-//
-//        pickerController.didSelectAssets = { (assets: [DKAsset]) in
+//        media.didSelectAssets = { (assets: [DbAsset]) -> Void in
 //            print("didSelectAssets")
 //            print(assets)
 //        }
 //
-//        self.present(pickerController, animated: true) {}
+//        media.didCancel = { () -> Void in
+//            print("didCancel")
+//        }
+//
+//        media.didCropToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+//            self.imgvAvatar.image = image
+//            print("\(cropRect)")
+//        }
+//
+////        media.show()
+////        media.show(with: self)
+//        media.showAvatar(with: self)
+        
 
         
-        let vclPhoto: PhotoGalleryViewController = PhotoGalleryViewController.sharedInstance
-        vclPhoto.sourceType = .photo
+        let pickerController = DbMediaPickerController()
 
-        vclPhoto.didSelectAssets = { (assets: [DKAsset]) -> Void in
+        pickerController.showsCancelButton = true
+        pickerController.showsEmptyAlbums = true
+        pickerController.allowMultipleTypes = false
+        pickerController.singleSelect = false;
+        pickerController.assetType = .allPhotos
+        pickerController.sourceType = .both;
+
+        pickerController.didSelectAssets = { (assets: [DbAsset]) in
             print("didSelectAssets")
             print(assets)
         }
 
-        vclPhoto.didCancel = { () -> Void in
-            print("didCancel")
-        }
+        self.present(pickerController, animated: true) {}
+
         
-        DbUtils.getTopViewController()?.present(vclPhoto, animated: true
-            , completion: {
-                
-        })
+//        let vclPhoto: PhotoGalleryViewController = PhotoGalleryViewController.sharedInstance
+//        vclPhoto.sourceType = .photo
+//
+//        vclPhoto.didSelectAssets = { (assets: [DKAsset]) -> Void in
+//            print("didSelectAssets")
+//            print(assets)
+//        }
+//
+//        vclPhoto.didCancel = { () -> Void in
+//            print("didCancel")
+//        }
+//
+//        DbUtils.getTopViewController()?.present(vclPhoto, animated: true
+//            , completion: {
+//
+//        })
 
 //        self.present(vclPhoto, animated: true) {
 //
