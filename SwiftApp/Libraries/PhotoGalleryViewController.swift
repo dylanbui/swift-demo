@@ -9,6 +9,8 @@
 import Foundation
 import DKImagePickerController
 
+// -- Khong su dung --
+
 class PhotoGalleryViewController: UIViewController {
     
     var assetType: DKImagePickerControllerAssetType = .allPhotos

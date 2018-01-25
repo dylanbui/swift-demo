@@ -20,6 +20,7 @@ target 'SwiftApp' do
 
     # Libraries needed Objective C
     pod 'APNumberPad', '1.2.0' # Use for DecimalTextField
+    pod 'INTULocationManager', '4.2.0'
 
     # Libraries needed Swift 4
     pod 'DKImagePickerController', '3.8.1'

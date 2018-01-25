@@ -57,6 +57,7 @@
 		BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */; };
 		BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E701F717DD20011FDE6 /* DemoData.plist */; };
 		BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD002802018A39E00293AC8 /* MediaGallery.swift */; };
+		BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */; };
 		BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */; };
 		BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEF11F70CFE50028425E /* ViewController.swift */; };
 		BBD3CEF51F70CFE50028425E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CEF31F70CFE50028425E /* Main.storyboard */; };
@@ -153,6 +154,7 @@
 		BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPlistManager.swift; sourceTree = "<group>"; };
 		BBC02E701F717DD20011FDE6 /* DemoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DemoData.plist; sourceTree = "<group>"; };
 		BBD002802018A39E00293AC8 /* MediaGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGallery.swift; sourceTree = "<group>"; };
+		BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BBD3CEEC1F70CFE50028425E /* SwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD3CEF11F70CFE50028425E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -249,10 +251,10 @@
 		BB5473162017885D0055CAD9 /* Swift-App */ = {
 			isa = PBXGroup;
 			children = (
-				BB547319201789300055CAD9 /* SecondViewController.swift */,
-				BB54731A201789300055CAD9 /* SecondViewController.xib */,
 				BB54731D201789460055CAD9 /* FirstViewController.swift */,
 				BB54731E201789460055CAD9 /* FirstViewController.xib */,
+				BB547319201789300055CAD9 /* SecondViewController.swift */,
+				BB54731A201789300055CAD9 /* SecondViewController.xib */,
 			);
 			path = "Swift-App";
 			sourceTree = "<group>";
@@ -426,6 +428,7 @@
 				BBE814002017551B00B21B1F /* PhotoGalleryViewController.swift */,
 				BBD002802018A39E00293AC8 /* MediaGallery.swift */,
 				BB79169020190264007A83E6 /* DbMediaPickerController.swift */,
+				BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -768,6 +771,7 @@
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
+				BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */,
 				BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */,
 				BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,

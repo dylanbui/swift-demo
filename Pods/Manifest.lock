@@ -22,6 +22,7 @@ PODS:
   - DKImagePickerController/Camera (3.8.1)
   - DKImagePickerController/ImageManager (3.8.1)
   - DZNEmptyDataSet (1.8.1)
+  - INTULocationManager (4.2.0)
   - IQKeyboardManagerSwift (5.0.6)
   - MBProgressHUD (1.0.0)
   - ObjectMapper (3.1.0)
@@ -31,9 +32,10 @@ PODS:
 DEPENDENCIES:
   - AFNetworking (= 3.1.0)
   - APNumberPad (= 1.2.0)
-  - CropViewController
-  - DKImagePickerController
+  - CropViewController (= 2.3.6)
+  - DKImagePickerController (= 3.8.1)
   - DZNEmptyDataSet (= 1.8.1)
+  - INTULocationManager
   - IQKeyboardManagerSwift (= 5.0.6)
   - MBProgressHUD (= 1.0.0)
   - ObjectMapper (= 3.1.0)
@@ -46,12 +48,13 @@ SPEC CHECKSUMS:
   CropViewController: e6d4bd512d15a1709e9ddf71fe7d98ffd05dda0f
   DKImagePickerController: 51ad6ee2ba05414bb741db54a72cd7f4fb178e34
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
+  INTULocationManager: 73f8254b3d05c897c56bb13c190e5b7c648c0998
   IQKeyboardManagerSwift: 02bfbb0dff71c66d0ab77d80d25dfce0c3717735
   MBProgressHUD: 4890f671c94e8a0f3cf959aa731e9de2f036d71a
   ObjectMapper: 20505058f54e5c3ca69e1d6de9897d152a5369a6
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: 8dc389839c43d75eac3ad066de6088fd5caa2d66
+PODFILE CHECKSUM: 7a6fbba243e1e896daa53d9ab8755807a291f84d
 
 COCOAPODS: 1.2.1

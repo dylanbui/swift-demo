@@ -13,8 +13,9 @@ import CropViewController
 //var didSelectAssets: (([DKAsset]) -> Void)?
 //var didCancel: (() -> Void)?
 
+// -- Khong su dung --
 
-typealias DbAsset = DKAsset
+//typealias DbAsset = DKAsset
 
 protocol MediaGalleryDelegate {
     func didSelectAssets(_ asset: DbAsset)
