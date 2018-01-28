@@ -20,12 +20,14 @@
 		BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA6792015D37B00590C94 /* DbLoadableView.swift */; };
 		BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
+		BB34D82C201E35490048F2B8 /* StdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34D82B201E35490048F2B8 /* StdlibExtensions.swift */; };
 		BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB547319201789300055CAD9 /* SecondViewController.swift */; };
 		BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731A201789300055CAD9 /* SecondViewController.xib */; };
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
 		BB547320201789460055CAD9 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731E201789460055CAD9 /* FirstViewController.xib */; };
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB79169020190264007A83E6 /* DbMediaPickerController.swift */; };
+		BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
 		BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569D21F7B5B870014A7A9 /* TaskDetailViewController.swift */; };
@@ -118,12 +120,14 @@
 		BB2FA6792015D37B00590C94 /* DbLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLoadableView.swift; sourceTree = "<group>"; };
 		BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB34D82B201E35490048F2B8 /* StdlibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StdlibExtensions.swift; sourceTree = "<group>"; };
 		BB547319201789300055CAD9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		BB54731A201789300055CAD9 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BB54731E201789460055CAD9 /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BB79169020190264007A83E6 /* DbMediaPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMediaPickerController.swift; sourceTree = "<group>"; };
+		BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSelectorActionSheet.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BBB569D21F7B5B870014A7A9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
@@ -246,6 +250,7 @@
 				BB10D3F31F79225100B7DF4B /* DbActionView.swift */,
 				BB2FA67220158E7700590C94 /* DbPopupView.swift */,
 				BB2FA6792015D37B00590C94 /* DbLoadableView.swift */,
+				BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */,
 			);
 			path = CustomViews;
 			sourceTree = "<group>";
@@ -464,6 +469,7 @@
 				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
 				BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */,
 				BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */,
+				BB34D82B201E35490048F2B8 /* StdlibExtensions.swift */,
 			);
 			path = UtilsExtension;
 			sourceTree = "<group>";
@@ -752,6 +758,7 @@
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
+				BB34D82C201E35490048F2B8 /* StdlibExtensions.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
@@ -780,6 +787,7 @@
 				BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */,
+				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */,

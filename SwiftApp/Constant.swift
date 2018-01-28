@@ -72,6 +72,27 @@ extension UIFont {
 
 }
 
+class MacroExx {
+
+    //==========================================================================================================
+    // MARK: - Singleton
+    //==========================================================================================================
+    
+    class var instance : MacroExx {
+        struct Static {
+            static let inst : MacroExx = MacroExx()
+        }
+        return Static.inst
+    }
+    
+    
+    open func systemVersion() -> String {
+        return UIDevice.current.systemVersion
+    }
+
+    
+}
+
 class Macro_Ex
 {
     // MARK: -
