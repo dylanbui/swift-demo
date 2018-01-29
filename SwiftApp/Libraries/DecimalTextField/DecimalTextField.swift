@@ -117,7 +117,7 @@ class DecimalTextField: UITextField {
         var textFieldText = arrSplit[0].replacingOccurrences(of: self.groupingSeparator, with: "") as String
         if textFieldText.count > 1 {
             // -- Use String extension --
-            textFieldText.slice(from: 0, to: self.integerSize)
+            textFieldText.db_slice(from: 0, to: self.integerSize)
         }
         
 //        NSString *formattedOutput = [self.numberFormatter stringFromNumber:[NSNumber numberWithDouble:[textFieldText doubleValue]]];
@@ -128,7 +128,7 @@ class DecimalTextField: UITextField {
             var decimalPart = arrSplit[1]
             // -- Limit Decimal Size --
             if decimalPart.count > self.decimalSize {
-                decimalPart.slice(from: 0, to: self.decimalSize)
+                decimalPart.db_slice(from: 0, to: self.decimalSize)
             }
             textFieldText = String("\(textFieldText)\(self.decimalSeparator!)\(decimalPart)")
         }

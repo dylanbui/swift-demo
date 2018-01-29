@@ -14,6 +14,8 @@
 		BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */; };
 		BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */; };
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
+		BB1E34E7201ECD55008F0679 /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E6201ECD55008F0679 /* CGRectExtensions.swift */; };
+		BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */; };
 		BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67220158E7700590C94 /* DbPopupView.swift */; };
 		BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */; };
 		BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2FA67720159F8400590C94 /* TpPostDetailView.xib */; };
@@ -114,6 +116,8 @@
 		BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
 		BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDictionaryExtensions.swift; sourceTree = "<group>"; };
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
+		BB1E34E6201ECD55008F0679 /* CGRectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectExtensions.swift; sourceTree = "<group>"; };
+		BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
 		BB2FA67220158E7700590C94 /* DbPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPopupView.swift; sourceTree = "<group>"; };
 		BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpPostDetailView.swift; sourceTree = "<group>"; };
 		BB2FA67720159F8400590C94 /* TpPostDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TpPostDetailView.xib; sourceTree = "<group>"; };
@@ -369,6 +373,7 @@
 				BBC02E531F71747A0011FDE6 /* Resources */,
 				BBDD5E952011F3B10089DD32 /* Supporting Files */,
 				BBD3CEF61F70CFE50028425E /* Assets.xcassets */,
+				BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */,
 			);
 			path = SwiftApp;
 			sourceTree = "<group>";
@@ -470,6 +475,7 @@
 				BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */,
 				BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */,
 				BB34D82B201E35490048F2B8 /* StdlibExtensions.swift */,
+				BB1E34E6201ECD55008F0679 /* CGRectExtensions.swift */,
 			);
 			path = UtilsExtension;
 			sourceTree = "<group>";
@@ -753,8 +759,10 @@
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
+				BB1E34E7201ECD55008F0679 /* CGRectExtensions.swift in Sources */,
 				BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
+				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,

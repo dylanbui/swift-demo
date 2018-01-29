@@ -13,6 +13,18 @@ class FirstViewController: BaseViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationItem.hidesBackButton = true
+        self.navigationBarHiddenForThisController()
+        
+        let service = ServiceUrl.shared
+        service.addChangeModeControl(self.view, selectHandle: { (serviceMode) in
+            print("serviceMode after = \(serviceMode.name)")
+            print("serviceMode.configData = \(serviceMode.configData)")
+            
+            print("service.serverMode = \(service.getServiceUrl(ServerKey.API_BASE_URL_KEY))")
+            print("service.serverMode = \(service.serverMode.name)")
+        })
+
         
 //        let location = LocationManager.sharedInstance()
 //
@@ -43,6 +55,17 @@ class FirstViewController: BaseViewController {
     }
     
     @IBAction func btnButton_Click(_ sender: UIButton) {
+        
+        if sender.tag == 4 {
+            let sas = DbSelectorActionSheet(title: "Chon server", dismissButtonTitle: "Chon print", otherButtonTitles: ["Server Dev", "Server Test", "Server Prodution"])
+
+            sas.showIn(self, selectorActionSheetBlock: { (selectedIndex, show) in
+                print("da chon : \(selectedIndex)")
+            })
+            
+        }
+        
+        
         if sender.tag == 1 {
             DbAlertController.alert("Title string", message: "Alert message")
         } else if sender.tag == 2 {

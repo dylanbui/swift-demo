@@ -6,21 +6,23 @@
 //  Copyright © 2018 Propzy Viet Nam. All rights reserved.
 //
 
-let sas_CELL_HEIGHT             = 50
-
-let sas_TITLE_VIEW_HEIGHT       = 35
-let sas_DISMISS_BUTTON_HEIGHT   = 65
-let sas_ImageChecked            = UIImage(named: "sas_checked.png")
-let sas_ImageUnCheck            = UIImage(named: "sas_uncheck.png")
-
-let sas_ActionTitleFontSize     = 14.5
-let sas_ActionTitleColor        = UIColor.black
-let sas_ActionButtonTitleColor  = UIColor.black
-
-let sas_OptionTextColor = UIColor.init(red: 68.0/255.0, green: 68.0/255.0, blue: 68.0/255.0, alpha: 1.0)
-let sas_SeletedOptionTextColor = UIColor.init(red: 255.0/255.0, green: 160.0/255.0, blue: 48.0/255.0, alpha: 1.0)
-let sas_ActionSeparatorColor  = UIColor.init(red: 232.0/255.0, green: 232.0/255.0, blue: 232.0/255.0, alpha: 1.0)
-let sas_ActionDoneButtonColor  = UIColor.init(red: 0.0/255.0, green: 153.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+enum Sas {
+    static let CELL_HEIGHT              = 55
+    static let TITLE_VIEW_HEIGHT        = 35
+    static let DISMISS_BUTTON_HEIGHT    = 65
+    
+    static let ImageChecked             = UIImage(named: "sas_checked.png")
+    static let ImageUnCheck             = UIImage(named: "sas_uncheck.png")
+    
+    static let ActionTitleFontSize      = 14.5
+    static let ActionTitleColor         = UIColor.black
+    static let ActionButtonTitleColor   = UIColor.black
+    
+    static let OptionTextColor          = UIColor.init(red: 68.0/255.0, green: 68.0/255.0, blue: 68.0/255.0, alpha: 1.0)
+    static let SeletedOptionTextColor   = UIColor.init(red: 255.0/255.0, green: 160.0/255.0, blue: 48.0/255.0, alpha: 1.0)
+    static let ActionSeparatorColor     = UIColor.init(red: 232.0/255.0, green: 232.0/255.0, blue: 232.0/255.0, alpha: 1.0)
+    static let ActionDoneButtonColor    = UIColor.init(red: 0.0/255.0, green: 153.0/255.0, blue: 255.0/255.0, alpha: 1.0)
+}
 
 
 typealias DbSelectorActionBlock = (Int, Bool) -> Void
@@ -67,7 +69,7 @@ class DbSelectorActionSheet: UIView {
 
     }
     
-    func setupDismissView() -> Void {
+    private func setupDismissView() -> Void {
         self.btnDismiss.backgroundColor = UIColor.clear
         self.btnDismiss.frame = self.frame
         self.btnDismiss.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth, .flexibleHeight]
@@ -75,7 +77,7 @@ class DbSelectorActionSheet: UIView {
         self.addSubview(self.btnDismiss)
     }
     
-    func setupTableView() -> Void {
+    private func setupTableView() -> Void {
         // Add TableView to show options
         self.tableViewOptions.frame = self.frame
         self.tableViewOptions.backgroundColor = UIColor.white
@@ -89,7 +91,7 @@ class DbSelectorActionSheet: UIView {
         self.addSubview(self.tableViewOptions)
     }
     
-    func dissmissActionSheet() -> Void {
+    private func dissmissActionSheet() -> Void {
         UIView.animate(withDuration: 0.3, animations: {
             self.backgroundColor = UIColor(white: 0, alpha: 0)
             // Animate TableView from bottom
@@ -103,14 +105,14 @@ class DbSelectorActionSheet: UIView {
 
     // MARK: - Button Clicks
     // MARK: -
-    @objc func btnCancelActionSheetClick(sender: Any?) {
+    @objc private func btnCancelActionSheetClick(sender: Any?) {
         if let blockHandler = self.blockHandler {
             blockHandler(-1, true)
         }
         self.dissmissActionSheet()
     }
     
-    @objc func btnDismissActionSheetClick(sender: Any?) {
+    @objc private func btnDismissActionSheetClick(sender: Any?) {
         if let blockHandler = self.blockHandler {
             blockHandler(self.selectedIndex, true)
         }
@@ -120,10 +122,13 @@ class DbSelectorActionSheet: UIView {
     // MARK: - Show/Hide ActionSheet
     // MARK: -
     
+    func showWith(selectorActionSheetBlock handler: DbSelectorActionBlock?) -> Void {
+        let inController = UIApplication.shared.keyWindow?.rootViewController
+        self.showIn(inController!, selectorActionSheetBlock: handler)
+    }
+    
     func showIn(_ inController: UIViewController, selectorActionSheetBlock handler: DbSelectorActionBlock?) -> Void {
         self.blockHandler = handler
-//        var inController: UIViewController? = inController
-//        inController = UIApplication.shared.keyWindow?.rootViewController
         
         // Calculate frame for dismiss button
         let frame = inController.view.frame
@@ -131,20 +136,20 @@ class DbSelectorActionSheet: UIView {
         self.btnDismiss.frame = self.frame
         
         // Calculate Height for TableView
-        var optionsHeight = ((self.otherTitles.count > 4) ? 4 : self.otherTitles.count) * sas_CELL_HEIGHT
+        var optionsHeight = ((self.otherTitles.count > 4) ? 4 : self.otherTitles.count) * Sas.CELL_HEIGHT
         // Give extra space to indicate that table view is scrollable if more than 4 options available
         // extraHeight will help to show 4 and a half options
         var extraHeight = (self.otherTitles.count > 4) ? 20 : 0
         
         if self.otherTitles.count <= 4 {
-            optionsHeight = 4 * sas_CELL_HEIGHT
+            optionsHeight = 4 * Sas.CELL_HEIGHT
             extraHeight = 0
         }
         
         //    CGFloat totalHeight = TITLE_VIEW_HEIGHT + DISMISS_BUTTON_HEIGHT + optionsHeight + extraHeight;
-        let totalHeight = sas_TITLE_VIEW_HEIGHT + optionsHeight + extraHeight
+        let totalHeight = Sas.TITLE_VIEW_HEIGHT + optionsHeight + extraHeight
         // Defalut set table frame to out of screen
-        let tableFrame = CGRect(x: 0, y: Int(frame.size.height), width: Int(frame.size.width), height: totalHeight)
+        let tableFrame = CGRect(x: 0, y: frame.size.height.db_int, width: frame.size.width.db_int, height: totalHeight)
 
         self.tableViewOptions.frame = tableFrame
     
@@ -155,7 +160,7 @@ class DbSelectorActionSheet: UIView {
             
             // Animate TableView from bottom
             var newFrame = self.tableViewOptions.frame
-            newFrame.origin.y = CGFloat(Int(frame.size.height) - totalHeight)
+            newFrame.origin.y = frame.size.height - totalHeight.db_cgFloat
             self.tableViewOptions.frame = newFrame;
             
         }) { (finished) in
@@ -164,74 +169,54 @@ class DbSelectorActionSheet: UIView {
         self.tableViewOptions.reloadData()
     }
     
-    
-    
-    
-    
 }
 
 extension DbSelectorActionSheet: UITableViewDataSource {
     
     //MARK: UITableViewDataSource
     
-    func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
-    }
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.otherTitles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "", for: indexPath)
-        configureCell(cell: cell, forRowAt: indexPath)
-        return cell
-        
-//        UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:@"CellId"];
-//
-//        UIView *viewSeperator = [cell.contentView viewWithTag:1111];
-//        if (!viewSeperator) {
-//            viewSeperator = [[UIView alloc] initWithFrame:CGRectMake(0.0, 44.0, self.frame.size.width, 1.0)];
-//            viewSeperator.backgroundColor = [UIColor colorWithRed:221.0/255.0 green:221.0/255.0 blue:221.0/255.0 alpha:1.0];
-//            viewSeperator.tag = 1111;
-//            viewSeperator.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin | UIViewAutoresizingFlexibleTopMargin | UIViewAutoresizingFlexibleWidth;
-//            [cell.contentView addSubview:viewSeperator];
-//        }
-//
-//        UIImageView *imgView = (UIImageView *)[cell.contentView viewWithTag:1234];
-//        if (!imgView) {
-//            //        imgView = [[UIImageView alloc] initWithFrame:CGRectMake(10.0, 11.0, 20.0, 20.0)];
-//            imgView = [[UIImageView alloc] initWithFrame:CGRectMake(self.frame.size.width - 40.0, (CELL_HEIGHT-20)/2, 20.0, 20.0)];
-//            imgView.backgroundColor = [UIColor clearColor];
-//            imgView.tag = 1234;
-//            [cell.contentView addSubview:imgView];
-//        }
-//
-//        cell.textLabel.font = [UIFont fontWithName:@"OpenSans-Regular" size:14.0];
-//        cell.textLabel.backgroundColor = [UIColor clearColor];
-//        cell.textLabel.textColor = kYOptionTextColor;
-//        cell.textLabel.textAlignment = NSTextAlignmentLeft;
-//        cell.textLabel.text = [otherTitles objectAtIndex:indexPath.row];
-//        cell.selectionStyle = UITableViewCellSelectionStyleNone;
-//
-//        // Check for selected/ non-selected row
-//        if (self.selectedIndex == indexPath.row){
-//            cell.textLabel.textColor = kYSeletedOptionTextColor;
-//            cell.textLabel.font = [UIFont fontWithName:@"OpenSans-Semibold" size:16.0];
-//            [imgView setImage:kYImageChecked];
-//            [tableView selectRowAtIndexPath:indexPath animated:NO scrollPosition:UITableViewScrollPositionNone];
-//        }
-//        else
-//        [imgView setImage:kYImageUnCheck];
-//
-//        return cell;
-        
-        
-        
-    }
-    
-    func configureCell(cell: UITableViewCell, forRowAt indexPath: IndexPath) {
 
+        let cell = tableView.dequeueReusableCell(withIdentifier: "CellId") ?? UITableViewCell(style: .default, reuseIdentifier: "CellId")
+
+        var viewSeperator = cell.contentView.viewWithTag(1111)
+        if viewSeperator == nil {
+            viewSeperator = UIView(frame: CGRect(x: 0, y: Sas.CELL_HEIGHT - 1, width: self.frame.size.width.db_int, height: 1))
+            viewSeperator?.backgroundColor = UIColor.init(red: 221.0/255.0, green: 221.0/255.0, blue: 221.0/255.0, alpha: 1.0)
+            viewSeperator?.tag = 1111
+            cell.contentView.addSubview(viewSeperator!)
+        }
+        
+        var imgView = cell.contentView.viewWithTag(1234) as? UIImageView
+        if imgView == nil {
+            imgView = UIImageView.init(frame: CGRect(x: self.frame.size.width.db_double - 40.0, y: Double(Sas.CELL_HEIGHT-20)/2, width: 20.0, height: 20.0))
+            imgView?.backgroundColor = UIColor.clear
+            imgView?.tag = 1234
+            cell.contentView.addSubview(imgView!)
+        }
+        
+        cell.textLabel?.font = UIFont.systemFont(ofSize: 14.0)
+        cell.textLabel?.backgroundColor = UIColor.clear
+        cell.textLabel?.textColor = Sas.OptionTextColor
+        cell.textLabel?.textAlignment = .left
+        cell.textLabel?.text = self.otherTitles[indexPath.row]
+        cell.selectionStyle = .none;
+        
+        // Check for selected/ non-selected row
+        if self.selectedIndex == indexPath.row {
+            cell.textLabel?.textColor = Sas.SeletedOptionTextColor;
+            cell.textLabel?.font = UIFont.boldSystemFont(ofSize: 16.0)
+            imgView?.image = Sas.ImageChecked
+            tableView.selectRow(at: indexPath, animated: false, scrollPosition: .none)
+        } else {
+            imgView?.image = Sas.ImageUnCheck
+        }
+
+        return cell
     }
     
 }
@@ -245,8 +230,8 @@ extension DbSelectorActionSheet: UITableViewDelegate {
         self.selectedIndex = indexPath.row
         let cell = tableView.cellForRow(at: indexPath)
         if let imageView = cell?.contentView.viewWithTag(1234) as? UIImageView {
-            cell?.textLabel?.textColor = sas_SeletedOptionTextColor
-            imageView.image = sas_ImageChecked
+            cell?.textLabel?.textColor = Sas.SeletedOptionTextColor
+            imageView.image = Sas.ImageChecked
         }
         //if dismiss on select is active
         if dismissOnSelect {
@@ -261,33 +246,35 @@ extension DbSelectorActionSheet: UITableViewDelegate {
         // Unselect this cell
         let cell = tableView.cellForRow(at: indexPath)
         if let imageView = cell?.contentView.viewWithTag(1234) as? UIImageView {
-            cell?.textLabel?.textColor = sas_OptionTextColor
-            imageView.image = sas_ImageUnCheck
+            cell?.textLabel?.textColor = Sas.OptionTextColor
+            imageView.image = Sas.ImageUnCheck
         }
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return CGFloat(sas_CELL_HEIGHT)
+        return CGFloat(Sas.CELL_HEIGHT)
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return CGFloat(sas_TITLE_VIEW_HEIGHT)
+        return CGFloat(Sas.TITLE_VIEW_HEIGHT)
     }
     
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let view = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: Int(self.frame.size.width), height: sas_TITLE_VIEW_HEIGHT)))
-        view.backgroundColor = sas_ActionSeparatorColor
+        let view = UIView(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: CGSize(width: Int(self.frame.size.width), height: Sas.TITLE_VIEW_HEIGHT)))
+        view.backgroundColor = Sas.ActionSeparatorColor
         
-        let lblTitle = UILabel(frame: CGRect(origin: CGPoint(x: 10.0, y: 0), size: CGSize(width: Int(self.frame.size.width - 10), height: sas_TITLE_VIEW_HEIGHT)))
+        let lblTitle = UILabel(frame: CGRect(origin: CGPoint(x: 10.0, y: 0), size: CGSize(width: Int(self.frame.size.width - 10), height: Sas.TITLE_VIEW_HEIGHT)))
         
         lblTitle.backgroundColor = UIColor.clear
-        lblTitle.textColor = sas_ActionTitleColor
-        lblTitle.font = UIFont.init(name: "HelveticaNeue", size: CGFloat(sas_ActionTitleFontSize))
+        lblTitle.textColor = Sas.ActionTitleColor
+        // lblTitle.font = UIFont.init(name: "HelveticaNeue", size: CGFloat(Sas.ActionTitleFontSize))
+        lblTitle.font = UIFont.systemFont(ofSize: CGFloat(Sas.ActionTitleFontSize))
         lblTitle.textAlignment = .left
         lblTitle.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin, .flexibleTopMargin, .flexibleBottomMargin, .flexibleWidth]
-        lblTitle.text = title;
+        lblTitle.text = title
+        view.addSubview(lblTitle)
         
         return view
     }
