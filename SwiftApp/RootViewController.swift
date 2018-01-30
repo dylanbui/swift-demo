@@ -13,6 +13,9 @@ class RootViewController: DbViewController {
 
     override func viewDidLoad()
     {
+        // -- Save RootViewController --
+        self.appDelegate.rootViewController = self
+        
         super.viewDidLoad()
         self.navigationBarHiddenForThisController()
         

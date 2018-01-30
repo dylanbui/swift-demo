@@ -13,15 +13,6 @@ import SVPullToRefresh
 
 class DbViewController: UIViewController
 {
-//    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        return 0;
-//    }
-//
-//    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        return nil;
-//    }
-    
-    
     var stranferParams: [String:AnyObject]!
     var returnParamsDelegate: DbIReturnDelegate!
     
@@ -34,7 +25,7 @@ class DbViewController: UIViewController
     
     fileprivate var isNavigationBarHidden: Bool = false
     
-    var appDelegate: AppDelegate? = nil
+    var appDelegate: AppDelegate!
     var errorCode: Int = 0
     
 //
@@ -53,7 +44,7 @@ class DbViewController: UIViewController
     }
 
     func initDbControllerData() {
-        self.appDelegate = (UIApplication.shared.delegate as! AppDelegate)
+        self.appDelegate = UIApplication.shared.delegate as! AppDelegate
         // self.appDelegate = UIApplication.shared.delegate as? AppDelegate
     }
     
@@ -85,7 +76,7 @@ class DbViewController: UIViewController
             tbl.delegate = self as? UITableViewDelegate
             tbl.dataSource = self as? UITableViewDataSource
             
-            // -- Da dinh nghia roio nen khong can ep kieu as?
+            // -- Da dinh nghia trong cung file roi nen khong can ep kieu as?
             tbl.emptyDataSetSource = self as DZNEmptyDataSetSource
             tbl.emptyDataSetDelegate = self as? DZNEmptyDataSetDelegate
         }

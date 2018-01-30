@@ -16,6 +16,23 @@ class FirstViewController: BaseViewController {
         self.navigationItem.hidesBackButton = true
         self.navigationBarHiddenForThisController()
         
+        let dictionary = [
+            "A" : [1, 2],
+            "Z" : [3, 4],
+            "D" : [5, 6]
+        ]
+        
+        // let sortedKeys = Array(dictionary.keys).sorted(by: { $0.0 < $1.0 })
+        let sortedDict = dictionary.sorted(by: { $0.0 < $1.0 })
+        print("sortedDict = \(sortedDict)")
+        
+        // -- Sort arr with var --
+        var sortedKeys = Array(dictionary.keys)
+        // sortedKeys.sort()
+        sortedKeys.sort(by: >)
+        print("sortedKeys = \(sortedKeys)")
+        
+        
         let service = ServiceUrl.shared
         service.addChangeModeControl(self.view, selectHandle: { (serviceMode) in
             print("serviceMode after = \(serviceMode.name)")
