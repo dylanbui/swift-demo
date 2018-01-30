@@ -14,7 +14,7 @@
 		BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */; };
 		BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */; };
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
-		BB1E34E7201ECD55008F0679 /* CGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E6201ECD55008F0679 /* CGRectExtensions.swift */; };
+		BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */; };
 		BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */; };
 		BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67220158E7700590C94 /* DbPopupView.swift */; };
 		BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */; };
@@ -22,7 +22,7 @@
 		BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA6792015D37B00590C94 /* DbLoadableView.swift */; };
 		BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
-		BB34D82C201E35490048F2B8 /* StdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34D82B201E35490048F2B8 /* StdlibExtensions.swift */; };
+		BB34D82C201E35490048F2B8 /* DbStdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34D82B201E35490048F2B8 /* DbStdlibExtensions.swift */; };
 		BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB547319201789300055CAD9 /* SecondViewController.swift */; };
 		BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731A201789300055CAD9 /* SecondViewController.xib */; };
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
@@ -30,6 +30,8 @@
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB79169020190264007A83E6 /* DbMediaPickerController.swift */; };
 		BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */; };
+		BBA69EA820208EB20028603F /* DbUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */; };
+		BBA69EAA202098400028603F /* DbUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA69EA9202098400028603F /* DbUIKitExtensions.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
 		BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569D21F7B5B870014A7A9 /* TaskDetailViewController.swift */; };
@@ -116,7 +118,7 @@
 		BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
 		BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDictionaryExtensions.swift; sourceTree = "<group>"; };
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
-		BB1E34E6201ECD55008F0679 /* CGRectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGRectExtensions.swift; sourceTree = "<group>"; };
+		BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbCGRectExtensions.swift; sourceTree = "<group>"; };
 		BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
 		BB2FA67220158E7700590C94 /* DbPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPopupView.swift; sourceTree = "<group>"; };
 		BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpPostDetailView.swift; sourceTree = "<group>"; };
@@ -124,7 +126,7 @@
 		BB2FA6792015D37B00590C94 /* DbLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLoadableView.swift; sourceTree = "<group>"; };
 		BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		BB34D82B201E35490048F2B8 /* StdlibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StdlibExtensions.swift; sourceTree = "<group>"; };
+		BB34D82B201E35490048F2B8 /* DbStdlibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStdlibExtensions.swift; sourceTree = "<group>"; };
 		BB547319201789300055CAD9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		BB54731A201789300055CAD9 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -132,6 +134,8 @@
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BB79169020190264007A83E6 /* DbMediaPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMediaPickerController.swift; sourceTree = "<group>"; };
 		BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSelectorActionSheet.swift; sourceTree = "<group>"; };
+		BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUIViewExtensions.swift; sourceTree = "<group>"; };
+		BBA69EA9202098400028603F /* DbUIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUIKitExtensions.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BBB569D21F7B5B870014A7A9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
@@ -474,8 +478,10 @@
 				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
 				BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */,
 				BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */,
-				BB34D82B201E35490048F2B8 /* StdlibExtensions.swift */,
-				BB1E34E6201ECD55008F0679 /* CGRectExtensions.swift */,
+				BB34D82B201E35490048F2B8 /* DbStdlibExtensions.swift */,
+				BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */,
+				BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */,
+				BBA69EA9202098400028603F /* DbUIKitExtensions.swift */,
 			);
 			path = UtilsExtension;
 			sourceTree = "<group>";
@@ -759,14 +765,14 @@
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
-				BB1E34E7201ECD55008F0679 /* CGRectExtensions.swift in Sources */,
+				BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */,
 				BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
-				BB34D82C201E35490048F2B8 /* StdlibExtensions.swift in Sources */,
+				BB34D82C201E35490048F2B8 /* DbStdlibExtensions.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
@@ -786,6 +792,7 @@
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
+				BBA69EAA202098400028603F /* DbUIKitExtensions.swift in Sources */,
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
@@ -806,6 +813,7 @@
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BBDD5E932011F18D0089DD32 /* Reachability.swift in Sources */,
+				BBA69EA820208EB20028603F /* DbUIViewExtensions.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

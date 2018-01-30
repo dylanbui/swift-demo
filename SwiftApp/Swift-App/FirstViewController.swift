@@ -32,7 +32,6 @@ class FirstViewController: BaseViewController {
         sortedKeys.sort(by: >)
         print("sortedKeys = \(sortedKeys)")
         
-        
         let service = ServiceUrl.shared
         service.addChangeModeControl(self.view, selectHandle: { (serviceMode) in
             print("serviceMode after = \(serviceMode.name)")

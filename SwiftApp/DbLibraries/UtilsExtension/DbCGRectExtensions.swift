@@ -90,24 +90,24 @@ extension CGRect {
         self.size = CGSize(width: width, height: height)
     }
     
-//    @discardableResult public func addX(_ x: CGFloat) -> CGFloat {
-//        self.origin.x = rX(r: self) + x
-//        return self.origin.x
-//    }
-//
-//    @discardableResult public func addY(_ y: CGFloat) -> CGFloat {
-//        self.origin.y = rY(r: self) + y
-//        return self.origin.y
-//    }
-//
-//    @discardableResult public func addWidth(_ width: CGFloat) -> CGFloat {
-//        self.size.width = rW(r: self) + width
-//        return self.size.width
-//    }
-//
-//    @discardableResult public func addHeight(_ height: CGFloat) -> CGFloat {
-//        self.size.height = rH(r: self) + height
-//        return self.size.height
-//    }
+    @discardableResult public mutating func addX(_ x: CGFloat) -> CGFloat {
+        self.origin.x = rX(r: self) + x
+        return self.origin.x
+    }
+
+    @discardableResult public mutating func addY(_ y: CGFloat) -> CGFloat {
+        self.origin.y = rY(r: self) + y
+        return self.origin.y
+    }
+
+    @discardableResult public mutating func addWidth(_ width: CGFloat) -> CGFloat {
+        self.size.width = rW(r: self) + width
+        return self.size.width
+    }
+
+    @discardableResult public mutating func addHeight(_ height: CGFloat) -> CGFloat {
+        self.size.height = rH(r: self) + height
+        return self.size.height
+    }
     
 }

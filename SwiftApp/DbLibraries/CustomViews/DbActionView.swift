@@ -11,33 +11,35 @@ import UIKit
 @IBDesignable
 class DbActionView: UIControl, UIGestureRecognizerDelegate
 {
-    @IBInspectable
-    public var masksToBounds: Bool = false {
-        didSet {
-            self.layer.masksToBounds = self.masksToBounds
-        }
-    }
+    // -- Da duoc define trong DbUIViewExtensions.swift --
     
-    @IBInspectable
-    public var cornerRadius: CGFloat = 2.0 {
-        didSet {
-            self.layer.cornerRadius = self.cornerRadius
-        }
-    }
-
-    @IBInspectable
-    public var borderColor: UIColor = UIColor.clear {
-        didSet {
-            self.layer.borderColor = self.borderColor.cgColor
-        }
-    }
-
-    @IBInspectable
-    public var borderWidth: CGFloat = 0.0 {
-        didSet {
-            self.layer.borderWidth = self.borderWidth
-        }
-    }
+//    @IBInspectable
+//    public var masksToBounds: Bool = false {
+//        didSet {
+//            self.layer.masksToBounds = self.masksToBounds
+//        }
+//    }
+//
+//    @IBInspectable
+//    public var cornerRadius: CGFloat = 2.0 {
+//        didSet {
+//            self.layer.cornerRadius = self.cornerRadius
+//        }
+//    }
+//
+//    @IBInspectable
+//    public var borderColor: UIColor = UIColor.clear {
+//        didSet {
+//            self.layer.borderColor = self.borderColor.cgColor
+//        }
+//    }
+//
+//    @IBInspectable
+//    public var borderWidth: CGFloat = 0.0 {
+//        didSet {
+//            self.layer.borderWidth = self.borderWidth
+//        }
+//    }
 
     @IBInspectable
     public var disableAlpha: CGFloat = 0.5
