@@ -14,6 +14,7 @@ public enum HTTPMethod: String {
 }
 
 public protocol Endpoint {
+    // -- Chuyen thang nay thanh 1 ham co the chuyen URL, luu request URL --
     var path: String {get}
     var signed: Bool {get}
     var method: HTTPMethod {get}
