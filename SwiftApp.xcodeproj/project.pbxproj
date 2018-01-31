@@ -89,6 +89,9 @@
 		BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FA2017458100B21B1F /* ic_show_password@2x.png */; };
 		BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */; };
 		BBE814012017551B00B21B1F /* PhotoGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE814002017551B00B21B1F /* PhotoGalleryViewController.swift */; };
+		BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C5B20216C5E0044F661 /* DbDispatch.swift */; };
+		BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C772021C4BD0044F661 /* DbRequest.swift */; };
+		BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C792021DFD40044F661 /* DbResponse.swift */; };
 		BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */; };
 		BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */; };
 		BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */; };
@@ -198,6 +201,9 @@
 		BBE813FA2017458100B21B1F /* ic_show_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_show_password@2x.png"; sourceTree = "<group>"; };
 		BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hide_password@2x.png"; sourceTree = "<group>"; };
 		BBE814002017551B00B21B1F /* PhotoGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoGalleryViewController.swift; sourceTree = "<group>"; };
+		BBE88C5B20216C5E0044F661 /* DbDispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDispatch.swift; sourceTree = "<group>"; };
+		BBE88C772021C4BD0044F661 /* DbRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRequest.swift; sourceTree = "<group>"; };
+		BBE88C792021DFD40044F661 /* DbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
 		BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbArrayExtensions.swift; sourceTree = "<group>"; };
 		BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDateExtensions.swift; sourceTree = "<group>"; };
 		BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbWebConnection.swift; sourceTree = "<group>"; };
@@ -239,12 +245,12 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				BBE88C762021C4A80044F661 /* DbConnection */,
 				BB197D43200BBFAA005514C3 /* DbConstant.swift */,
-				BB197D45200BC051005514C3 /* DbUtils.swift */,
 				BB6F6DE42011192100D81CA3 /* DbErrorView.swift */,
-				BBDD5E902011B18C0089DD32 /* DbSession.swift */,
 				BBE813EC2016EB0600B21B1F /* BaseUIKit */,
 				BB2FA67420159BF100590C94 /* CustomViews */,
+				BBE88C5A20216BFB0044F661 /* UtilsClass */,
 				BBEC9E442012611E00FFF182 /* UtilsExtension */,
 				BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */,
 			);
@@ -432,7 +438,6 @@
 				BBFAA0FC200D243700718E95 /* DbViewController.swift */,
 				BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */,
 				BBDD5E8E20119C4F0089DD32 /* DbObject.swift */,
-				BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */,
 			);
 			path = BaseUIKit;
 			sourceTree = "<group>";
@@ -468,6 +473,26 @@
 				BBE813F62017211A00B21B1F /* DecimalTextField.swift */,
 			);
 			path = DecimalTextField;
+			sourceTree = "<group>";
+		};
+		BBE88C5A20216BFB0044F661 /* UtilsClass */ = {
+			isa = PBXGroup;
+			children = (
+				BB197D45200BC051005514C3 /* DbUtils.swift */,
+				BBDD5E902011B18C0089DD32 /* DbSession.swift */,
+				BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */,
+				BBE88C5B20216C5E0044F661 /* DbDispatch.swift */,
+			);
+			path = UtilsClass;
+			sourceTree = "<group>";
+		};
+		BBE88C762021C4A80044F661 /* DbConnection */ = {
+			isa = PBXGroup;
+			children = (
+				BBE88C772021C4BD0044F661 /* DbRequest.swift */,
+				BBE88C792021DFD40044F661 /* DbResponse.swift */,
+			);
+			path = DbConnection;
 			sourceTree = "<group>";
 		};
 		BBEC9E442012611E00FFF182 /* UtilsExtension */ = {
@@ -778,6 +803,7 @@
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */,
 				BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */,
+				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
@@ -810,6 +836,8 @@
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
 				BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
+				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
+				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BBDD5E932011F18D0089DD32 /* Reachability.swift in Sources */,
