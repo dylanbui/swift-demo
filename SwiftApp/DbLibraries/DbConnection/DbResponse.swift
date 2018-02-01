@@ -8,17 +8,32 @@
 
 import Foundation
 
-public protocol APIResponseProtocol {
-    
-    var httpResponse: HTTPURLResponse? {get}
-    var data: NSData? {get}
-    var error: Error? {get}
-    var originalRequest: NSURLRequest? {get}
-    var contentType: HTTPContentType? {get}
-    
-    func parseResponseBody(_ data: AnyObject) -> Void
-    
-}
+//public protocol DbResponseProtocol {
+//
+//    var httpResponse: HTTPURLResponse? {get}
+//    var data: NSData? {get}
+//    var error: Error? {get}
+//    var originalRequest: NSURLRequest? {get}
+//    var contentType: HTTPContentType? {get}
+//
+//    func parseResponseBody(_ data: AnyObject) -> Void
+//
+//}
+//
+//public struct APIResponse: DbResponseProtocol {
+//
+//    public let httpResponse: HTTPURLResponse?
+//    public let data: NSData?
+//    public let originalRequest: NSURLRequest?
+//    public let contentType: HTTPContentType?
+//    internal(set) public var error: Error?
+////    internal(set) public var result: ResultType?
+//
+//    public func parseResponseBody(_ data: AnyObject) -> Void {
+//
+//    }
+//
+//}
 
 
 //public struct APIResponseOf<ResultType: APIResponseDecodable>: APIResponse {

@@ -13,22 +13,28 @@ typealias DataTaskSuccessHandler = (URLResponse?, AnyObject?) -> ()
 typealias DataTaskErrorHandler = (URLResponse?, AnyObject?, Error?) -> ()
 typealias DataTaskProcessHandler = (Progress?) -> ()
 
+typealias DispatchSuccessHandler = (DbResponse) -> ()
+typealias DispatchErrorHandler = (DbResponse, Error?) -> ()
+typealias DispatchProcessHandler = (Progress?) -> ()
 
-class DbResponse: NSObject
+
+
+
+class MyResponse: DbResponse
 {
     var message: String?
     var result: Bool?
     var code: Int?
-    var data: Any?
     
     override init()
     {
         super.init()
-        
+
     }
     
-    func parse(_ responseData: Any?, error: Error?)
+    override func parse(_ responseData: AnyObject?, error: Error?)
     {
+        super.parse(responseData, error: error)
 
     }
 }
@@ -43,13 +49,13 @@ class DbUploadData: NSObject
 
 protocol IDbWebConnectionDelegate
 {
-    func onRequestCompleteWithContent(_ content: Any, andCallerId callerId: Int);
-    func onRequestErrorWithContent(_ content: Any, andCallerId callerId: Int, andError error: NSError);
+    func onRequestCompleteWithContent(_ content: AnyObject, andCallerId callerId: Int);
+    func onRequestErrorWithContent(_ content: AnyObject, andCallerId callerId: Int, andError error: NSError);
     
     func onRequestProgress(_ downloadProgress: Progress, andCallerId callerId: Int);
 }
 
-typealias DbWebConnectionBlock = (Any?, Error?) -> Void
+typealias DbWebConnectionBlock = (AnyObject?, Error?) -> Void
 
 class DbWebConnection: NSObject
 {
@@ -100,6 +106,58 @@ class DbWebConnection: NSObject
             }
         }
     }
+    
+    func dispatch(Request request: DbRequest, withResponse response: DbResponse
+        ,progressHandler progress: DispatchProcessHandler?
+        ,successHandler success: DispatchSuccessHandler?
+        ,failureHandler failure: DispatchErrorHandler?)
+    {
+        // -- Default Request Serializer --
+        self.sessionManager?.requestSerializer = AFHTTPRequestSerializer()
+        if request.contentType! == DbHttpContentType.JSON {
+            self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
+        }
+        // -- Default Response Serializer --
+        self.sessionManager?.responseSerializer = AFHTTPResponseSerializer()
+        if response.contentType! == DbHttpContentType.JSON {
+            self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
+        }
+        
+        var serializationError: NSError?
+        let rawRequest = self.sessionManager?.requestSerializer.request(withMethod: request.method.rawValue, urlString: request.requestUrl, parameters: request.query, error: &serializationError)
+        
+        if serializationError != nil {
+            print("serializationError : %@", serializationError.debugDescription)
+            return
+        }
+        // -- Add header to request --
+        for header in request.headers {
+            header.setRequestHeader(request: rawRequest!)
+        }
+        
+        var dataTask: URLSessionDataTask?
+        dataTask = self.sessionManager?.dataTask(with: rawRequest as URLRequest!, uploadProgress: { (progress) in
+            // -- Dont process --
+        }, downloadProgress: { (progressData) in
+            if let progress = progress {
+                progress(progressData)
+            }
+        }, completionHandler: { (urlResponse, anyData, error) in
+            if let error = error, let failure = failure {
+                // -- TODO: Set data for response --
+                response.error = error
+                failure(response, error)
+            } else if let success = success {
+                // -- TODO: Set data for response --
+                response.parse(anyData as AnyObject!, error: nil)
+                success(response)
+            }
+        })
+        
+        dataTask?.resume()
+
+        
+    }
 
     func request(Url strUrl: String, withMethod method: String, parameters params: [String:AnyObject]?
         ,progressHandler progress: DataTaskProcessHandler?
@@ -109,6 +167,7 @@ class DbWebConnection: NSObject
         
         self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
         self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
+        
         
         var serializationError: NSError?
         let request = self.sessionManager?.requestSerializer.request(withMethod: method, urlString: strUrl, parameters: params, error: &serializationError)
