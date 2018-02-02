@@ -162,7 +162,8 @@ public class DbResponse: DbResponseProtocol {
     }
     
     public func parse(_ responseData: AnyObject?, error: Error?) -> Void {
-        
+        self.error = error
+        self.data = responseData
     }
     
 }

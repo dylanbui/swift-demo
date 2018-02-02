@@ -138,12 +138,14 @@ class DbWebConnection: NSObject
         var dataTask: URLSessionDataTask?
         dataTask = self.sessionManager?.dataTask(with: rawRequest as URLRequest!, uploadProgress: { (progress) in
             // -- Dont process --
-        }, downloadProgress: { (progressData) in
+        }, downloadProgress: { (progressData: Progress) in
+            print("downloadProgress")
             if let progress = progress {
                 progress(progressData)
             }
         }, completionHandler: { (urlResponse, anyData, error) in
             if let error = error, let failure = failure {
+                print("error \(error)")
                 // -- TODO: Set data for response --
                 response.error = error
                 failure(response, error)
@@ -151,6 +153,7 @@ class DbWebConnection: NSObject
                 // -- TODO: Set data for response --
                 response.parse(anyData as AnyObject!, error: nil)
                 success(response)
+                print("response \(String(describing: response.data))")
             }
         })
         

@@ -9,7 +9,52 @@
 import UIKit
 import INTULocationManager
 
+public class PropzyResponse: DbResponse {
+    
+//    public var httpResponse: HTTPURLResponse?
+//    public var data: AnyObject?
+//    public var originalRequest: NSURLRequest?
+//    public var contentType: DbHttpContentType?
+//    public var error: Error?
+    //    internal(set) public var result: ResultType?
+    
+    var message: String?
+    var result: Bool?
+    var code: Int?
+    var dictData: [String: AnyObject]?
+    
+    override init() {
+        super.init()
+        self.contentType = DbHttpContentType.JSON
+    }
+    
+    public override func parse(_ responseData: AnyObject?, error: Error?) -> Void {
+        super.parse(responseData, error: error)
+        if let err = error {
+            print("Co loi xay ra \(err)")
+            return
+        }
+        
+        guard let responseData = responseData as? [String: AnyObject] else {
+            // -- responseData la nil , khong lam gi ca --
+            print("responseData == nil")
+            return
+        }
+        
+        print("responseData = \(responseData)")
+        
+        self.message = responseData["message"] as? String
+        self.result = responseData["result"] as? Bool
+        self.code = responseData["code"] as? Int
+        self.dictData = responseData["data"] as? [String: AnyObject]
+    }
+    
+}
+
 class FirstViewController: BaseViewController {
+    
+    @IBOutlet weak var textView: UITextView!
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -72,7 +117,50 @@ class FirstViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func testNetworking() -> Void {
+        
+        let conn = DbWebConnection.sharedInstance()
+        
+        let request = DbRequest.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
+        request.method = DbHttpMethod.POST
+        request.contentType = DbHttpContentType.JSON
+        
+        var arrHeaders: [DbHttpHeader] = []
+        arrHeaders.append(DbHttpHeader.Custom("Accept-Encoding", "gzip"))
+        arrHeaders.append(DbHttpHeader.Custom("Accept-Language", "vi-VN"))
+        request.headers = arrHeaders
+        
+        let params: [String: String]! = ["buildingId" : "2", "buildingName" : "194 Golden Building"]
+        request.query = params
+        
+        let response = PropzyResponse.init()
+        //response.contentType = DbHttpContentType.JSON
+        
+        conn.dispatch(Request: request, withResponse: response,
+                      progressHandler: { (process) in
+                        print("Goi thu process")
+        },
+                      successHandler: { (response) in
+                        if let res: PropzyResponse = response as? PropzyResponse {
+                            print("Goi thu successHandler")
+                            print("responseData = \(String(describing: res.dictData))")
+                            self.textView.text = String(describing: res.dictData)
+                        }
+        }) { (res, err) in
+            print("Goi thu loi ne")
+        }
+        
+        
+        
+        
+    }
+    
     @IBAction func btnButton_Click(_ sender: UIButton) {
+        
+        if sender.tag == 5 {
+            self.testNetworking()
+            return
+        }
         
         if sender.tag == 4 {
             let sas = DbSelectorActionSheet(title: "Chon server", dismissButtonTitle: "Chon print", otherButtonTitles: ["Server Dev", "Server Test", "Server Prodution"])

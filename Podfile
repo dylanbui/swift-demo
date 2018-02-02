@@ -26,8 +26,6 @@ target 'SwiftApp' do
     pod 'DKImagePickerController', '3.8.1'
     pod 'CropViewController', '2.3.6' # Swift version of TOCropViewController
 
-
-
   # Pods for SwiftApp
 
   target 'SwiftAppTests' do
