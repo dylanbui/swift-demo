@@ -39,13 +39,13 @@ class MyResponse: DbResponse
     }
 }
 
-class DbUploadData: NSObject
-{
-    var fileData: NSData?
-    var fileId: String?
-    var fileName: String?
-    var mimeType: String?
-}
+//class DbUploadData: NSObject
+//{
+//    var fileData: NSData?
+//    var fileId: String?
+//    var fileName: String?
+//    var mimeType: String?
+//}
 
 protocol IDbWebConnectionDelegate
 {
@@ -164,7 +164,7 @@ class DbWebConnection: NSObject
                 if let response = request.response {
                     response.parse(anyData as AnyObject, error: error)
                     success(response)
-                    print("response \(String(describing: response.data))")
+                    print("response \(String(describing: response.rawData))")
                 }
             }
         })
@@ -217,7 +217,7 @@ class DbWebConnection: NSObject
                 // -- TODO: Set data for response --
                 response.parse(anyData as AnyObject!, error: nil)
                 success(response)
-                print("response \(String(describing: response.data))")
+                print("response \(String(describing: response.rawData))")
             }
         })
         
