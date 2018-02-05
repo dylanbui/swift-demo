@@ -9,13 +9,13 @@
 import UIKit
 import AFNetworking
 
-typealias DataTaskSuccessHandler = (URLResponse?, AnyObject?) -> ()
-typealias DataTaskErrorHandler = (URLResponse?, AnyObject?, Error?) -> ()
+typealias DataTaskSuccessHandler = (URLResponse?, AnyObject?) -> Void
+typealias DataTaskErrorHandler = (URLResponse?, AnyObject?, Error?) -> Void
 typealias DataTaskProcessHandler = (Progress?) -> ()
 
-typealias DispatchSuccessHandler = (DbResponse) -> ()
-typealias DispatchErrorHandler = (DbResponse, Error?) -> ()
-typealias DispatchProcessHandler = (Progress?) -> ()
+typealias DispatchSuccessHandler = (DbResponse) -> Void
+typealias DispatchErrorHandler = (DbResponse, Error?) -> Void
+typealias DispatchProcessHandler = (Progress?) -> Void
 
 
 
@@ -26,7 +26,7 @@ class MyResponse: DbResponse
     var result: Bool?
     var code: Int?
     
-    override init()
+    required init()
     {
         super.init()
 
@@ -105,6 +105,56 @@ class DbWebConnection: NSObject
                 block(nil, error)
             }
         }
+    }
+    
+    func dispatch(Request request: DbRequest ,successHandler success: DispatchSuccessHandler?)
+    {
+        // -- Default Request Serializer --
+        self.sessionManager?.requestSerializer = AFHTTPRequestSerializer()
+        if request.contentType! == DbHttpContentType.JSON {
+            self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
+        }
+        // -- Default Response Serializer --
+        self.sessionManager?.responseSerializer = AFHTTPResponseSerializer()
+        if let response = request.response {
+            if response.contentType! == DbHttpContentType.JSON {
+                self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
+            }
+        } else {
+            // -- Default response --
+            request.response = DbResponse()
+            request.contentType = DbHttpContentType.JSON
+            self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
+        }
+        
+        var serializationError: NSError?
+        let rawRequest = self.sessionManager?.requestSerializer.request(withMethod: request.method.rawValue, urlString: request.requestUrl, parameters: request.query, error: &serializationError)
+        
+        if serializationError != nil {
+            print("serializationError : %@", serializationError.debugDescription)
+            return
+        }
+        // -- Add header to request --
+        for header in request.headers {
+            header.setRequestHeader(request: rawRequest!)
+        }
+        
+        var dataTask: URLSessionDataTask?
+        dataTask = self.sessionManager?.dataTask(with: rawRequest as URLRequest!, uploadProgress: { (progress) in
+            // -- Dont process --
+        }, downloadProgress: { (progressData: Progress) in
+            print("downloadProgress")
+        }, completionHandler: { (urlResponse, anyData, error) in
+            if let success = success {
+                // -- TODO: Set data for response --
+                if let response = request.response {
+                    response.parse(anyData as AnyObject, error: error)
+                    success(response)
+                    print("response \(String(describing: response.data))")
+                }
+            }
+        })
+        dataTask?.resume()
     }
     
     func dispatch(Request request: DbRequest, withResponse response: DbResponse

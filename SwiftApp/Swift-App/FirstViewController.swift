@@ -23,7 +23,7 @@ public class PropzyResponse: DbResponse {
     var code: Int?
     var dictData: [String: AnyObject]?
     
-    override init() {
+    public required init() {
         super.init()
         self.contentType = DbHttpContentType.JSON
     }
@@ -121,36 +121,55 @@ class FirstViewController: BaseViewController {
         
         let conn = DbWebConnection.sharedInstance()
         
-        let request = DbRequest.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
-        request.method = DbHttpMethod.POST
-        request.contentType = DbHttpContentType.JSON
-        
-        var arrHeaders: [DbHttpHeader] = []
-        arrHeaders.append(DbHttpHeader.Custom("Accept-Encoding", "gzip"))
-        arrHeaders.append(DbHttpHeader.Custom("Accept-Language", "vi-VN"))
-        request.headers = arrHeaders
+        //let request = DbRequest.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
+        let request = DbRequestFor<PropzyResponse>.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
+//        request.method = DbHttpMethod.POST
+//        request.contentType = DbHttpContentType.JSON
+//
+//        var arrHeaders: [DbHttpHeader] = []
+//        arrHeaders.append(DbHttpHeader.Custom("Accept-Encoding", "gzip"))
+//        arrHeaders.append(DbHttpHeader.Custom("Accept-Language", "vi-VN"))
+//        request.headers = arrHeaders
         
         let params: [String: String]! = ["buildingId" : "2", "buildingName" : "194 Golden Building"]
         request.query = params
         
-        let response = PropzyResponse.init()
+        //let response = PropzyResponse.init()
         //response.contentType = DbHttpContentType.JSON
         
-        conn.dispatch(Request: request, withResponse: response,
-                      progressHandler: { (process) in
-                        print("Goi thu process")
-        },
-                      successHandler: { (response) in
-                        if let res: PropzyResponse = response as? PropzyResponse {
-                            print("Goi thu successHandler")
-                            print("responseData = \(String(describing: res.dictData))")
-                            self.textView.text = String(describing: res.dictData)
-                        }
-        }) { (res, err) in
-            print("Goi thu loi ne")
+        // -- old code --
+//        conn.dispatch(Request: request, withResponse: response,
+//                      progressHandler: { (process) in
+//                        print("Goi thu process")
+//        },
+//                      successHandler: { (response) in
+//                        if let res: PropzyResponse = response as? PropzyResponse {
+//                            print("Goi thu successHandler")
+//                            print("responseData = \(String(describing: res.dictData))")
+//                            self.textView.text = String(describing: res.dictData)
+//                        }
+//        }) { (res, err) in
+//            print("Goi thu loi ne")
+//        }
+        
+        
+        conn.dispatch(Request: request) { (response) in
+            if let res: PropzyResponse = response as? PropzyResponse {
+                print("Goi thu successHandler")
+                print("responseData = \(String(describing: res.dictData))")
+                self.textView.text = String(describing: res.dictData)
+            }
         }
         
-        
+//        conn.dispatch(Request: request, successHandler: { (response) in
+//                        if let res: PropzyResponse = response as? PropzyResponse {
+//                            print("Goi thu successHandler")
+//                            print("responseData = \(String(describing: res.dictData))")
+//                            self.textView.text = String(describing: res.dictData)
+//                        }
+//        }) { (res, err) in
+//            print("Goi thu loi ne")
+//        }
         
         
     }

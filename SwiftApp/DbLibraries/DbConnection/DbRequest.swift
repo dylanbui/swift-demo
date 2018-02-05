@@ -88,54 +88,6 @@ public enum DbHttpHeader: Equatable {
     
 }
 
-public typealias DbRequestQuery = [String: String]
-
-public protocol DbRequestType {
-    
-    var contentType: DbHttpContentType? {get}
-    var body: NSData? {get}
-    
-    var method: DbHttpMethod {get}
-    var requestUrl: String {get}
-    var headers: [DbHttpHeader] {get}
-    var query: DbRequestQuery {get}
-    
-}
-
-public class DbRequest: DbRequestType {
-    
-    public var contentType: DbHttpContentType?
-    public var body: NSData?
-    public var method: DbHttpMethod
-    public var requestUrl: String
-    public var headers: [DbHttpHeader]
-    public var query: DbRequestQuery
-    
-    init() {
-        
-        self.method = .POST
-        self.requestUrl = ""
-        self.headers = []
-        self.query = [:]
-        
-        self.contentType = nil
-        self.body = nil
-    }
-    
-    public convenience init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
-        self.init()
-        
-        self.method = method
-        self.requestUrl = requestUrl
-        self.query = query
-        self.headers = headers
-        self.body = nil
-    }
-    
-    
-}
-
-
 public protocol DbResponseProtocol {
     
     var httpResponse: HTTPURLResponse? {get}
@@ -147,7 +99,7 @@ public protocol DbResponseProtocol {
     func parse(_ responseData: AnyObject?, error: Error?) -> Void
     
 }
-
+// -- Moi lop con deu phai ke thua tu thang DbResponse --
 public class DbResponse: DbResponseProtocol {
     
     public var httpResponse: HTTPURLResponse?
@@ -157,7 +109,7 @@ public class DbResponse: DbResponseProtocol {
     public var error: Error?
     //    internal(set) public var result: ResultType?
     
-    init() {
+    public required init() {
         
     }
     
@@ -166,6 +118,71 @@ public class DbResponse: DbResponseProtocol {
         self.data = responseData
     }
     
+}
+
+public typealias DbRequestQuery = [String: String]
+
+public protocol DbRequestType {
+    
+    var method: DbHttpMethod {get}
+    var requestUrl: String {get}
+    var contentType: DbHttpContentType? {get}
+    var headers: [DbHttpHeader] {get}
+    var query: DbRequestQuery {get}
+    
+    var response: DbResponse? {get}
+    
+}
+
+public class DbRequest: DbRequestType {
+    
+    public var method: DbHttpMethod
+    public var requestUrl: String
+    public var contentType: DbHttpContentType?
+    public var headers: [DbHttpHeader]
+    public var query: DbRequestQuery
+    
+    public var response: DbResponse?
+    
+    convenience init() {
+        self.init(method: .POST, requestUrl: "", query: [:], headers: [])
+    }
+    
+    convenience init(method: DbHttpMethod, requestUrl: String) {
+        self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
+    }
+    
+    init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
+        self.method = method
+        self.requestUrl = requestUrl
+        self.query = query
+        self.headers = headers
+    }
+}
+
+// -- ResponseType la 1 lop bat ky, ke thua tu DbResponse --
+public class DbRequestFor<ResponseType: DbResponse>: DbRequest {
+    
+    convenience init()
+    {
+        self.init(method: .POST, requestUrl: "", query: [:], headers: [])
+    }
+    
+    convenience init(method: DbHttpMethod, requestUrl: String) {
+        self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
+    }
+    
+    override init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
+        super.init(method: method, requestUrl: requestUrl, query: query, headers: headers)
+        self.response = ResponseType()
+        
+        self.contentType = DbHttpContentType.JSON
+        
+        var arrHeaders: [DbHttpHeader] = []
+        arrHeaders.append(DbHttpHeader.Custom("Accept-Encoding", "gzip"))
+        arrHeaders.append(DbHttpHeader.Custom("Accept-Language", "vi-VN"))
+        self.headers = arrHeaders
+    }
 }
 
 //public enum HTTPMethod: String {
