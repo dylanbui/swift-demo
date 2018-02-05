@@ -106,6 +106,20 @@ class DbWebConnection: NSObject
             }
         }
     }
+
+    // -- Co the khong su dung gia tri tra ve --
+    @discardableResult func dispatchSynchronous(Request request: DbRequest) -> DbResponse
+    {
+        let dispatchGroup = DispatchGroup() //dispatch_semaphore_t = dispatch_semaphore_create(0)
+
+        dispatchGroup.enter()
+        self.dispatch(Request: request) { (response) in
+            dispatchGroup.leave()
+        }
+        // -- Wait until dispatchGroup done --
+        dispatchGroup.wait()
+        return request.response!
+    }
     
     func dispatch(Request request: DbRequest ,successHandler success: DispatchSuccessHandler?)
     {
