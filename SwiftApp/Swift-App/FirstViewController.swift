@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Alamofire
 import INTULocationManager
 
 public class PropzyResponse: DbResponse {
@@ -118,6 +119,68 @@ class FirstViewController: BaseViewController {
     }
     
     func testNetworking() -> Void {
+        
+        
+        // Alamofire 4
+        Alamofire.request("http://vnexpress.net").response { response in // method defaults to `.get`
+            debugPrint(response)
+        }
+        
+        let datarequest: DataRequest = Alamofire.request("http://vnexpress.net")
+        datarequest.responseJSON { (response) in
+            
+        }
+        
+//        https://medium.com/theappspace/alamofire-4-multipart-file-upload-with-swift-3-174df1ef84c1
+        
+        // User "authentication":
+        let parameters = ["user":"Sol", "password":"secret1234"]
+        // Image to upload:
+        let imageToUploadURL = Bundle.main.url(forResource: "tree", withExtension: "png")
+        
+        // Server address (replace this with the address of your own server):
+        let url = "http://localhost:8888/upload_image.php"
+        
+        // Use Alamofire to upload the image
+             Alamofire.upload(
+                     multipartFormData: { multipartFormData in
+                             // On the PHP side you can retrive the image using $_FILES["image"]["tmp_name"]
+                             multipartFormData.append(imageToUploadURL!, withName: "image")
+                             for (key, val) in parameters {
+                                     multipartFormData.append(val.data(using: String.Encoding.utf8)!, withName: key)
+                                 }
+                     },
+                     to: url,
+                     encodingCompletion: { encodingResult in
+                         switch encodingResult {
+                         case .success(let upload, _, _):
+                             upload.responseJSON { response in
+                                 if let jsonResponse = response.result.value as? [String: Any] {
+                                     print(jsonResponse)
+                                 }
+                             }
+                         case .failure(let encodingError):
+                             print(encodingError)
+                         }
+                 }
+                 )
+        
+        // -- su dung MultipartFormData de append du lieu vao --
+//        Alamofire.upload(MultipartFormData)
+//
+//        Alamofire.upload(nil, to: "", withMethod: .post)
+//            .uploadProgress { progress in
+//                // Called on main dispatch queue by default
+//                print("Upload progress: \(progress.fractionCompleted)")
+//            }
+//            .downloadProgress { progress in
+//                // Called on main dispatch queue by default
+//                print("Download progress: \(progress.fractionCompleted)")
+//            }
+//            .responseData { response in
+//                debugPrint(response)
+//        }
+        
         
         let conn = DbWebConnection.sharedInstance()
         
