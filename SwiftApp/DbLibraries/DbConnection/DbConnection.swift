@@ -140,19 +140,18 @@ public protocol DbRequestType {
     
     var method: DbHttpMethod {get}
     var requestUrl: String {get}
-    var contentType: DbHttpContentType? {get}
+    var contentType: DbHttpContentType {get}
     var headers: [DbHttpHeader] {get}
     var query: DbRequestQuery {get}
     
     var response: DbResponse? {get}
-    
 }
 
 public class DbRequest: DbRequestType {
     
     public var method: DbHttpMethod
     public var requestUrl: String
-    public var contentType: DbHttpContentType?
+    public var contentType: DbHttpContentType
     public var headers: [DbHttpHeader]
     public var query: DbRequestQuery
     
@@ -171,6 +170,15 @@ public class DbRequest: DbRequestType {
         self.requestUrl = requestUrl
         self.query = query
         self.headers = headers
+        self.contentType = .JSON
+    }
+    
+    func exportHttpHeader() -> [String: String] {
+        var paramHeaders: [String: String] = [:]
+        for header in self.headers {
+            paramHeaders[header.key] = header.requestHeaderValue
+        }
+        return paramHeaders
     }
 }
 
@@ -232,10 +240,60 @@ public class DbRequestFor<ResponseType: DbResponse>: DbRequest {
 
 import UIKit
 import AFNetworking
+import Alamofire
 
 typealias DbDispatchHandler = (DbResponse) -> ()
 typealias DbUploadProcessHandler = (Progress) -> ()
 
+class DbHttp: NSObject {
+    
+    // MARK: - dispatch : call server bat dong bo
+    // MARK: -
+    class func dispatch(Request request: DbRequest, dispatchHandler: @escaping DbDispatchHandler) {
+        var method: HTTPMethod = .get
+        switch request.method {
+        case .GET:
+            method = .get
+        case .POST:
+            method = .post
+        case .PUT:
+            method = .put
+        case .DELETE:
+            method = .delete
+        }
+        
+        // -- Tao bg thread de run Alamofire --
+        // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
+        
+        let datarequest: DataRequest = Alamofire.request(request.requestUrl, method: method,
+                                                         parameters: request.query, encoding: URLEncoding.default,
+                                                         headers: request.exportHttpHeader())
+        
+        if (request.contentType == DbHttpContentType.JSON) {
+            datarequest.responseJSON(completionHandler: { (response) in
+                // debugPrint(response)
+                // -- Set data for response --
+                if let responseObj = request.response {
+                    responseObj.httpResponse = response.response
+                    responseObj.parse(response.result.value as AnyObject, error: response.error)
+                    dispatchHandler(responseObj)
+                    print("response \(String(describing: responseObj.rawData))")
+                }
+            })
+        } else {
+            datarequest.responseString(completionHandler: { (response) in
+                // -- Set data for response --
+                if let responseObj = request.response {
+                    responseObj.httpResponse = response.response
+                    responseObj.parse(response.result.value as AnyObject, error: response.error)
+                    dispatchHandler(responseObj)
+                    print("response \(String(describing: responseObj.rawData))")
+                }
+            })
+        }
+    }
+    
+}
 
 class DbConnection: NSObject
 {
@@ -324,7 +382,7 @@ class DbConnection: NSObject
     {
         // -- Default Request Serializer --
         self.sessionManager?.requestSerializer = AFHTTPRequestSerializer()
-        if request.contentType! == DbHttpContentType.JSON {
+        if request.contentType == DbHttpContentType.JSON {
             self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
         }
         // -- Default Response Serializer --

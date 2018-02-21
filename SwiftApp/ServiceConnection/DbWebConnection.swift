@@ -125,7 +125,7 @@ class DbWebConnection: NSObject
     {
         // -- Default Request Serializer --
         self.sessionManager?.requestSerializer = AFHTTPRequestSerializer()
-        if request.contentType! == DbHttpContentType.JSON {
+        if request.contentType == DbHttpContentType.JSON {
             self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
         }
         // -- Default Response Serializer --
@@ -178,7 +178,7 @@ class DbWebConnection: NSObject
     {
         // -- Default Request Serializer --
         self.sessionManager?.requestSerializer = AFHTTPRequestSerializer()
-        if request.contentType! == DbHttpContentType.JSON {
+        if request.contentType == DbHttpContentType.JSON {
             self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
         }
         // -- Default Response Serializer --

@@ -42,7 +42,7 @@ public class PropzyResponse: DbResponse {
             return
         }
         
-        print("responseData = \(responseData)")
+        print("PropzyResponse = \(responseData)")
         
         self.message = responseData["message"] as? String
         self.result = responseData["result"] as? Bool
@@ -122,48 +122,48 @@ class FirstViewController: BaseViewController {
         
         
         // Alamofire 4
-        Alamofire.request("http://vnexpress.net").response { response in // method defaults to `.get`
-            debugPrint(response)
-        }
-        
-        let datarequest: DataRequest = Alamofire.request("http://vnexpress.net")
-        datarequest.responseJSON { (response) in
-            
-        }
+//        Alamofire.request("http://vnexpress.net").response { response in // method defaults to `.get`
+//            debugPrint(response)
+//        }
+//
+//        let datarequest: DataRequest = Alamofire.request("http://vnexpress.net")
+//        datarequest.responseJSON { (response) in
+//
+//        }
         
 //        https://medium.com/theappspace/alamofire-4-multipart-file-upload-with-swift-3-174df1ef84c1
         
-        // User "authentication":
-        let parameters = ["user":"Sol", "password":"secret1234"]
-        // Image to upload:
-        let imageToUploadURL = Bundle.main.url(forResource: "tree", withExtension: "png")
-        
-        // Server address (replace this with the address of your own server):
-        let url = "http://localhost:8888/upload_image.php"
-        
-        // Use Alamofire to upload the image
-             Alamofire.upload(
-                     multipartFormData: { multipartFormData in
-                             // On the PHP side you can retrive the image using $_FILES["image"]["tmp_name"]
-                             multipartFormData.append(imageToUploadURL!, withName: "image")
-                             for (key, val) in parameters {
-                                     multipartFormData.append(val.data(using: String.Encoding.utf8)!, withName: key)
-                                 }
-                     },
-                     to: url,
-                     encodingCompletion: { encodingResult in
-                         switch encodingResult {
-                         case .success(let upload, _, _):
-                             upload.responseJSON { response in
-                                 if let jsonResponse = response.result.value as? [String: Any] {
-                                     print(jsonResponse)
-                                 }
-                             }
-                         case .failure(let encodingError):
-                             print(encodingError)
-                         }
-                 }
-                 )
+//        // User "authentication":
+//        let parameters = ["user":"Sol", "password":"secret1234"]
+//        // Image to upload:
+//        let imageToUploadURL = Bundle.main.url(forResource: "tree", withExtension: "png")
+//
+//        // Server address (replace this with the address of your own server):
+//        let url = "http://localhost:8888/upload_image.php"
+//
+//        // Use Alamofire to upload the image
+//        Alamofire.upload(
+//                     multipartFormData: { multipartFormData in
+//                             // On the PHP side you can retrive the image using $_FILES["image"]["tmp_name"]
+//                             multipartFormData.append(imageToUploadURL!, withName: "image")
+//                             for (key, val) in parameters {
+//                                     multipartFormData.append(val.data(using: String.Encoding.utf8)!, withName: key)
+//                                 }
+//                     },
+//                     to: url,
+//                     encodingCompletion: { encodingResult in
+//                         switch encodingResult {
+//                         case .success(let upload, _, _):
+//                             upload.responseJSON { response in
+//                                 if let jsonResponse = response.result.value as? [String: Any] {
+//                                     print(jsonResponse)
+//                                 }
+//                             }
+//                         case .failure(let encodingError):
+//                             print(encodingError)
+//                         }
+//                 }
+//        )
         
         // -- su dung MultipartFormData de append du lieu vao --
 //        Alamofire.upload(MultipartFormData)
@@ -182,6 +182,7 @@ class FirstViewController: BaseViewController {
 //        }
         
         
+        
         let conn = DbWebConnection.sharedInstance()
         
         //let request = DbRequest.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
@@ -196,6 +197,15 @@ class FirstViewController: BaseViewController {
         
         let params: [String: String]! = ["buildingId" : "2", "buildingName" : "194 Golden Building"]
         request.query = params
+        
+        DbHttp.dispatch(Request: request) { (response) in
+            if let res: PropzyResponse = response as? PropzyResponse {
+                print("Goi thu successHandler")
+                print("responseData = \(String(describing: res.dictData))")
+                self.textView.text = String(describing: res.dictData)
+            }
+        }
+
         
         //let response = PropzyResponse.init()
         //response.contentType = DbHttpContentType.JSON
@@ -216,13 +226,13 @@ class FirstViewController: BaseViewController {
 //        }
         
         
-        conn.dispatch(Request: request) { (response) in
-            if let res: PropzyResponse = response as? PropzyResponse {
-                print("Goi thu successHandler")
-                print("responseData = \(String(describing: res.dictData))")
-                self.textView.text = String(describing: res.dictData)
-            }
-        }
+//        conn.dispatch(Request: request) { (response) in
+//            if let res: PropzyResponse = response as? PropzyResponse {
+//                print("Goi thu successHandler")
+//                print("responseData = \(String(describing: res.dictData))")
+//                self.textView.text = String(describing: res.dictData)
+//            }
+//        }
         
 //        conn.dispatch(Request: request, successHandler: { (response) in
 //                        if let res: PropzyResponse = response as? PropzyResponse {

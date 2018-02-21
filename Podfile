@@ -11,7 +11,7 @@ target 'SwiftApp' do
     # Libraries system Objective C
     pod 'AFNetworking', '3.1.0'
     
-    pod 'Alamofire'
+    pod 'Alamofire', '4.6.0'
     pod 'MBProgressHUD', '1.0.0'
     pod 'SVPullToRefresh', '0.4.1'
     pod 'DZNEmptyDataSet', '1.8.1'
