@@ -131,6 +131,9 @@ class FirstViewController: BaseViewController {
 //
 //        }
         
+        //Alamofire.upload(<#T##data: Data##Data#>, to: <#T##URLConvertible#>, method: <#T##HTTPMethod#>, headers: <#T##HTTPHeaders?#>)
+        //UploadRequest
+        
 //        https://medium.com/theappspace/alamofire-4-multipart-file-upload-with-swift-3-174df1ef84c1
         
 //        // User "authentication":
