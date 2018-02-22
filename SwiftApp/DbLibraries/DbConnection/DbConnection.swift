@@ -74,7 +74,8 @@ public enum DbHttpHeader: Equatable {
         }
     }
     
-    public var requestHeaderValue: String {
+    //public var requestHeaderValue: String {
+    public var headerValue: String {
         switch self {
         case .ContentDisposition(let disposition):
             return disposition
@@ -91,11 +92,11 @@ public enum DbHttpHeader: Equatable {
     }
     
     public func setRequestHeader(request: NSMutableURLRequest) {
-        request.setValue(requestHeaderValue, forHTTPHeaderField: key)
+        request.setValue(headerValue, forHTTPHeaderField: key)
     }
     
     public static func ==(lhs: DbHttpHeader, rhs: DbHttpHeader) -> Bool {
-        return lhs.key == rhs.key && lhs.requestHeaderValue == rhs.requestHeaderValue
+        return lhs.key == rhs.key && lhs.headerValue == rhs.headerValue
     }
     
 }
@@ -171,12 +172,14 @@ public class DbRequest: DbRequestType {
         self.query = query
         self.headers = headers
         self.contentType = .JSON
+        
+        self.response = DbResponse()
     }
     
     func exportHttpHeader() -> [String: String] {
         var paramHeaders: [String: String] = [:]
         for header in self.headers {
-            paramHeaders[header.key] = header.requestHeaderValue
+            paramHeaders[header.key] = header.headerValue
         }
         return paramHeaders
     }
@@ -292,6 +295,69 @@ class DbHttp: NSObject {
             })
         }
     }
+    
+    // MARK: - dispatch : call server bat dong bo
+    // MARK: -
+    class func upload(UploadRequest request: DbUploadRequest, processHandler: @escaping DbUploadProcessHandler, dispatchHandler: @escaping DbDispatchHandler)
+    {
+        Alamofire.upload(
+            multipartFormData: { multipartFormData in
+                for uploadData in request.arrUploadData {
+                    // -- Add image data --
+
+                        multipartFormData.append(uploadData.fileData!,
+                                                 withName: uploadData.fileId!,
+                                                 fileName: uploadData.fileName!,
+                                                 mimeType: uploadData.mimeType!)
+
+                }
+//                    multipartFormData.append(uploadData.fileData!,
+//                                             withName: uploadData.fileId!,
+//                                             fileName: uploadData.fileName!,
+//                                             mimeType: uploadData.mimeType!)
+//                multipartFormData.append(imageData,
+//                                         withName: "imagefile",
+//                                         fileName: "image.jpg",
+//                                         mimeType: "image/jpeg")
+                
+                // -- Add post params --
+                for (key, value) in request.query {
+                    multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
+                }
+        },
+            to: request.requestUrl,
+            headers: request.exportHttpHeader(),
+            encodingCompletion: { encodingResult in
+                switch encodingResult {
+                case .success(let upload, _, _):
+                    upload.uploadProgress { progress in
+//                        print("here = progress.fractionCompleted" + String(Float(progress.fractionCompleted)))
+                        processHandler(progress)
+                    }
+                    upload.validate()
+                    upload.responseJSON { response in
+                        debugPrint(response)
+                        // -- Set data for response --
+                        if let responseObj = request.response {
+                            responseObj.httpResponse = response.response
+                            responseObj.parse(response.result.value as AnyObject, error: response.error)
+                            dispatchHandler(responseObj)
+                            // print("response upload = \(String(describing: responseObj.rawData))")
+                        }
+                    }
+                case .failure(let encodingError):
+                    debugPrint(encodingError)
+                    //print(encodingError)
+                    // -- Set data for response --
+                    if let responseObj = request.response {
+                        responseObj.httpResponse = nil
+                        responseObj.parse(nil, error: encodingError)
+                        dispatchHandler(responseObj)
+                    }
+                }
+        })
+    }
+    
     
 }
 

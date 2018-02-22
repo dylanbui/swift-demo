@@ -18,18 +18,15 @@ class RootViewController: DbViewController {
         
         super.viewDidLoad()
         self.navigationBarHiddenForThisController()
-        
-        
 
         // Do any additional setup after loading the view.
-        
         
         //let vcl = DemoTableViewController()
         //let vcl = TaskListViewController()
 //        let vcl = TpUsersViewController()
-        let vcl = FirstViewController()
+//        let vcl = FirstViewController()
         // let vcl = SecondViewController()
-        
+        let vcl = NetworkViewController()
         
         self.navigationController?.pushViewController(vcl, animated: false)
         

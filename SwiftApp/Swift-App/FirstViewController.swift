@@ -118,8 +118,34 @@ class FirstViewController: BaseViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func testUploadFiles() -> Void {
+        
+        let image = UIImage(named: "demo_5.png")!
+        
+        var uploadData = DbUploadData()
+        uploadData.fileId = "upload_file"
+        
+        // -- Use for PHP Server --
+        uploadData.fileName = "avatar_14.jpg"
+        uploadData.mimeType = "image/jpeg"
+        uploadData.fileData = UIImageJPEGRepresentation(image, 1.0);
+        
+        let requestUpload = DbUploadRequest(requestUrl: "", uploadData: uploadData)
+        // -- Use for JAVA Server --
+        //    uploadData.fileName = @"avatar_14.png";
+        //    uploadData.mimeType = @"image/png";
+        //    uploadData.fileData = UIImagePNGRepresentation(self.imgUpload.image);
+
+        
+    }
+    
     func testNetworking() -> Void {
         
+        let fileURL = Bundle.main.url(forResource: "video", withExtension: "mov")
+        
+        Alamofire.upload(fileURL!, to: "https://httpbin.org/post").responseJSON { response in
+            debugPrint(response)
+        }
         
         // Alamofire 4
 //        Alamofire.request("http://vnexpress.net").response { response in // method defaults to `.get`
