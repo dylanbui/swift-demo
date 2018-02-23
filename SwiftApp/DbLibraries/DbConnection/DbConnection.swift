@@ -250,9 +250,33 @@ typealias DbUploadProcessHandler = (Progress) -> ()
 
 class DbHttp: NSObject {
     
+    // MARK: - dispatchSynchronous : call server dong bo
+    // MARK: -
+    // -- Co the khong su dung gia tri tra ve --
+    @discardableResult class func dispatchSync(Request request: DbRequest) -> DbResponse?
+    {
+        //let semaphore = DispatchSemaphore(value: 0) //dispatch_semaphore_t = dispatch_semaphore_create(0)
+//        let group = DispatchGroup()
+
+//        group.enter()
+        DbHttp.dispatch(Request: request) { (response) in
+            print("Chay xong")
+            debugPrint(response)
+//            semaphore.signal()
+//            group.leave()
+        }
+        // -- Wait until dispatchSemaphore done --
+//        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
+//        dispatchSemaphore.wait()
+//        group.wait(timeout: .distantFuture)
+        // return request.response!
+        return nil
+    }
+    
     // MARK: - dispatch : call server bat dong bo
     // MARK: -
-    class func dispatch(Request request: DbRequest, dispatchHandler: @escaping DbDispatchHandler) {
+    class func dispatch(Request request: DbRequest, queue: DispatchQueue? = nil, dispatchHandler: @escaping DbDispatchHandler)
+    {
         var method: HTTPMethod = .get
         switch request.method {
         case .GET:
@@ -267,20 +291,21 @@ class DbHttp: NSObject {
         
         // -- Tao bg thread de run Alamofire --
         // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
-        
         let datarequest: DataRequest = Alamofire.request(request.requestUrl, method: method,
                                                          parameters: request.query, encoding: URLEncoding.default,
                                                          headers: request.exportHttpHeader())
         
+        //queue: DispatchQueue? = nil,
+        
         if (request.contentType == DbHttpContentType.JSON) {
-            datarequest.responseJSON(completionHandler: { (response) in
+            datarequest.responseJSON(queue: nil, completionHandler: { (response) in
                 // debugPrint(response)
                 // -- Set data for response --
                 if let responseObj = request.response {
                     responseObj.httpResponse = response.response
                     responseObj.parse(response.result.value as AnyObject, error: response.error)
                     dispatchHandler(responseObj)
-                    print("response \(String(describing: responseObj.rawData))")
+                    // print("response \(String(describing: responseObj.rawData))")
                 }
             })
         } else {
@@ -290,7 +315,7 @@ class DbHttp: NSObject {
                     responseObj.httpResponse = response.response
                     responseObj.parse(response.result.value as AnyObject, error: response.error)
                     dispatchHandler(responseObj)
-                    print("response \(String(describing: responseObj.rawData))")
+                    // print("response \(String(describing: responseObj.rawData))")
                 }
             })
         }
@@ -298,28 +323,24 @@ class DbHttp: NSObject {
     
     // MARK: - dispatch : call server bat dong bo
     // MARK: -
+    // -- Van chua upload duoc multi files --
     class func upload(UploadRequest request: DbUploadRequest, processHandler: @escaping DbUploadProcessHandler, dispatchHandler: @escaping DbDispatchHandler)
     {
         Alamofire.upload(
             multipartFormData: { multipartFormData in
                 for uploadData in request.arrUploadData {
                     // -- Add image data --
-
-                        multipartFormData.append(uploadData.fileData!,
+                    if let data = uploadData.fileData {
+                        multipartFormData.append(data,
                                                  withName: uploadData.fileId!,
                                                  fileName: uploadData.fileName!,
                                                  mimeType: uploadData.mimeType!)
-
+                    }
                 }
 //                    multipartFormData.append(uploadData.fileData!,
-//                                             withName: uploadData.fileId!,
-//                                             fileName: uploadData.fileName!,
-//                                             mimeType: uploadData.mimeType!)
-//                multipartFormData.append(imageData,
-//                                         withName: "imagefile",
-//                                         fileName: "image.jpg",
-//                                         mimeType: "image/jpeg")
-                
+//                                             withName: uploadData.fileId!, // "imagefile"
+//                                             fileName: uploadData.fileName!, // "image.jpg"
+//                                             mimeType: uploadData.mimeType!) // "image/jpeg"
                 // -- Add post params --
                 for (key, value) in request.query {
                     multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)

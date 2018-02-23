@@ -35,14 +35,14 @@ class NetworkViewController: BaseViewController {
     */
 
     
-    @IBAction func btnUploadFiles_Click(_ sender: Any) {
-        
+    @IBAction func btnUploadFiles_Click(_ sender: Any)
+    {
         let image_1 = UIImage(named: "demo_5.png")!
         var uploadData_1 = DbUploadData()
         uploadData_1.fileId = "upload_file"
         
         // -- Use for PHP Server --
-        uploadData_1.fileName = "avatar.jpg"
+        uploadData_1.fileName = "avatar_1.jpg"
         uploadData_1.mimeType = "image/jpeg"
         uploadData_1.fileData = UIImageJPEGRepresentation(image_1, 1.0);
         
@@ -51,7 +51,7 @@ class NetworkViewController: BaseViewController {
         uploadData_2.fileId = "upload_file"
         
         // -- Use for PHP Server --
-        uploadData_2.fileName = "avatar.jpg"
+        uploadData_2.fileName = "avatar_2.jpg"
         uploadData_2.mimeType = "image/jpeg"
         uploadData_2.fileData = UIImageJPEGRepresentation(image_2, 1.0);
         
@@ -74,27 +74,38 @@ class NetworkViewController: BaseViewController {
                 print("PropzyResponse = \(String(describing: res.dictData))")
             }
         }
-
-        
-//        [service upload:@"http://localhost/i-test/db-upload.php"
-//            withParameters:@{@"type": @"avatar"}
-//            andUploadData:uploadData
-//            progress:^(NSProgress *uploadProgress) {
-//
-//            }
-//            completionHandler:^(NSURLResponse *response, NSDictionary *responseDict, NSError *error) {
-//            if (error) {
-//            NSLog(@"[error description] = %@", [error description]);
-//            return;
-//            }
-//
-//            NSLog(@"[responseDict description] = %@", [responseDict description]);
-//
-//            // -- Convert data to ResponseObject --
-//            //      DbResponseObject *responseObject = [[DbResponseObject alloc] initWithDictionary_om:responseDict];
-//            //      completion(response, responseObject, error);
-//            }];
-        
         
     }
+    
+    @IBAction func btnPostData_Click(_ sender: Any)
+    {
+        //let request = DbRequest.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
+        let request = DbRequestFor<PropzyResponse>.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
+        
+        let params: [String: String]! = ["buildingId" : "12345", "buildingName" : "194 Toa nha LON Building"]
+        request.query = params
+        
+//        DbHttp.dispatch(Request: request) { (response) in
+//            if let res: PropzyResponse = response as? PropzyResponse {
+//                print("Goi thu successHandler")
+//                print("responseData = \(String(describing: res.dictData))")
+//            }
+//        }
+        
+//        print("bat dau goi : dispatchSync")
+//        if let res: PropzyResponse = DbHttp.dispatchSync(Request: request) as? PropzyResponse {
+//            print("Goi ham thanh cong")
+//            print("Goi thu successHandler")
+//            print("responseData = \(String(describing: res.dictData))")
+//        }
+//        print("DA GOI XONG : dispatchSync")
+        
+        print("bat dau goi : dispatchSync")
+        DbHttp.dispatchSync(Request: request)
+        print("DA GOI XONG : dispatchSync")
+        
+//        let response:PropzyResponse = DbHttp.dispatchSync(Request: request) as! PropzyResponse
+        
+    }
+    
 }

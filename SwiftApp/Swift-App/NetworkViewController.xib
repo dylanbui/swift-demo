@@ -28,6 +28,14 @@
                         <action selector="btnUploadFiles_Click:" destination="-1" eventType="touchUpInside" id="0pb-4x-oxY"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Pe6-EV-NGF">
+                    <rect key="frame" x="62" y="151" width="131" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Post Data"/>
+                    <connections>
+                        <action selector="btnPostData_Click:" destination="-1" eventType="touchUpInside" id="tCC-gE-m3q"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <point key="canvasLocation" x="26.5" y="52.5"/>

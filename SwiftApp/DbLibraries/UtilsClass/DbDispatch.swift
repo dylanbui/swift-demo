@@ -4,10 +4,9 @@
 //
 //  Created by Dylan Bui on 1/31/18.
 //  Copyright © 2018 Propzy Viet Nam. All rights reserved.
-//  Base on :
+//  Base on : https://github.com/JARMourato/Dispatch
 //  https://viblo.asia/p/grand-central-dispatch-in-swift-gGJ592XaKX2
-
-
+//  Review : https://github.com/duemunk/Async
 
 import Foundation
 
