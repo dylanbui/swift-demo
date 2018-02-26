@@ -6,243 +6,10 @@
 //  Copyright © 2018 Propzy Viet Nam. All rights reserved.
 //
 
-// MARK: - Define headers
-// MARK: -
-
-public typealias MIMEType = String
-
-public typealias DbRequestQuery = [String: String]
-
-public struct DbUploadData
-{
-    var fileData: Data?
-    var fileId: String?
-    var fileName: String?
-    var mimeType: String?
-}
-
-public enum DbHttpMethod: String {
-    case GET    = "GET"
-    case POST   = "POST"
-    case PUT    = "PUT"
-    case DELETE = "DELETE"
-}
-
-public enum DbHttpContentType: RawRepresentable {
-    case JSON
-    case form
-    case multipart(String)
-    
-    public typealias RawValue = MIMEType
-    
-    public init?(rawValue: DbHttpContentType.RawValue) {
-        switch rawValue {
-        case "application/json": self = .JSON
-        default: return nil
-        }
-    }
-    
-    public var rawValue: DbHttpContentType.RawValue {
-        switch self {
-        case .JSON: return "application/json"
-        case .form: return "application/x-www-form-urlencoded"
-        case .multipart(let boundary): return "multipart/form-data; boundary=\(boundary)"
-        }
-    }
-}
-
-public enum DbHttpHeader: Equatable {
-    
-    case ContentDisposition(String)
-    case Accept([DbHttpContentType])
-    case ContentType(DbHttpContentType)
-    case Authorization(String)
-    case Custom(String, String)
-    
-    public var key: String {
-        switch self {
-        case .ContentDisposition:
-            return "Content-Disposition"
-        case .Accept:
-            return "Accept"
-        case .ContentType:
-            return "Content-Type"
-        case .Authorization:
-            return "Authorization"
-        case .Custom(let key, _):
-            return key
-        }
-    }
-    
-    //public var requestHeaderValue: String {
-    public var headerValue: String {
-        switch self {
-        case .ContentDisposition(let disposition):
-            return disposition
-        case .Accept(let types):
-            let typeStrings = types.map({$0.rawValue})
-            return typeStrings.joined(separator: ", ")
-        case .ContentType(let type):
-            return type.rawValue
-        case .Authorization(let token):
-            return token //token.requestHeaderValue
-        case .Custom(_, let value):
-            return value
-        }
-    }
-    
-    public func setRequestHeader(request: NSMutableURLRequest) {
-        request.setValue(headerValue, forHTTPHeaderField: key)
-    }
-    
-    public static func ==(lhs: DbHttpHeader, rhs: DbHttpHeader) -> Bool {
-        return lhs.key == rhs.key && lhs.headerValue == rhs.headerValue
-    }
-    
-}
-
-// MARK: - Define DbResponse
-// MARK: -
-
-public protocol DbResponseProtocol {
-    
-    var httpResponse: URLResponse? {get}
-    var rawData: AnyObject? {get}
-    var error: Error? {get}
-    // var originalRequest: NSURLRequest? {get}
-    var contentType: DbHttpContentType? {get}
-    
-    func parse(_ responseData: AnyObject?, error: Error?) -> Void
-    
-}
-// -- Moi lop con deu phai ke thua tu thang DbResponse --
-public class DbResponse: DbResponseProtocol {
-    
-    public var httpResponse: URLResponse?
-    public var rawData: AnyObject?
-    // public var originalRequest: NSURLRequest?
-    public var contentType: DbHttpContentType?
-    public var error: Error?
-    
-    public required init() {
-        
-    }
-    
-    public func parse(_ responseData: AnyObject?, error: Error?) -> Void {
-        self.error = error
-        self.rawData = responseData
-    }
-}
-
-// MARK: - Define DbRequest
-// MARK: -
-
-public protocol DbRequestType {
-    
-    var method: DbHttpMethod {get}
-    var requestUrl: String {get}
-    var contentType: DbHttpContentType {get}
-    var headers: [DbHttpHeader] {get}
-    var query: DbRequestQuery {get}
-    
-    var response: DbResponse? {get}
-}
-
-public class DbRequest: DbRequestType {
-    
-    public var method: DbHttpMethod
-    public var requestUrl: String
-    public var contentType: DbHttpContentType
-    public var headers: [DbHttpHeader]
-    public var query: DbRequestQuery
-    
-    public var response: DbResponse?
-    
-    convenience init() {
-        self.init(method: .POST, requestUrl: "", query: [:], headers: [])
-    }
-    
-    convenience init(method: DbHttpMethod, requestUrl: String) {
-        self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
-    }
-    
-    init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
-        self.method = method
-        self.requestUrl = requestUrl
-        self.query = query
-        self.headers = headers
-        self.contentType = .JSON
-        
-        self.response = DbResponse()
-    }
-    
-    func exportHttpHeader() -> [String: String] {
-        var paramHeaders: [String: String] = [:]
-        for header in self.headers {
-            paramHeaders[header.key] = header.headerValue
-        }
-        return paramHeaders
-    }
-}
-
-public class DbUploadRequest: DbRequest {
-    
-    public var arrUploadData = [DbUploadData]()
-    
-    init() {
-        super.init(method: .POST, requestUrl: "", query: [:], headers: [])
-    }
-    
-    init(requestUrl: String, uploadData: DbUploadData) {
-        super.init(method: .POST, requestUrl: requestUrl, query: [:], headers: [])
-        self.arrUploadData.append(uploadData)
-    }
-}
-
-public class DbUploadRequestFor<ResponseType: DbResponse> : DbUploadRequest {
-    
-    override init() {
-        super.init()
-        self.response = ResponseType()
-    }
-    
-    override init(requestUrl: String, uploadData: DbUploadData) {
-        super.init(requestUrl: requestUrl, uploadData: uploadData)
-        self.response = ResponseType()
-    }
-}
-
-// -- ResponseType la 1 lop bat ky, ke thua tu DbResponse --
-public class DbRequestFor<ResponseType: DbResponse>: DbRequest {
-    
-    convenience init()
-    {
-        self.init(method: .POST, requestUrl: "", query: [:], headers: [])
-    }
-    
-    convenience init(method: DbHttpMethod, requestUrl: String) {
-        self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
-    }
-    
-    override init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
-        super.init(method: method, requestUrl: requestUrl, query: query, headers: headers)
-        self.response = ResponseType()
-        
-        self.contentType = DbHttpContentType.JSON
-        
-        // -- Demo headers --
-        var arrHeaders: [DbHttpHeader] = []
-        arrHeaders.append(DbHttpHeader.Custom("Accept-Encoding", "gzip"))
-        arrHeaders.append(DbHttpHeader.Custom("Accept-Language", "vi-VN"))
-        self.headers = arrHeaders
-    }
-}
-
 // MARK: - Define : Conection to server
 // MARK: -
 
 import UIKit
-import AFNetworking
 import Alamofire
 
 typealias DbDispatchHandler = (DbResponse) -> ()
@@ -250,26 +17,37 @@ typealias DbUploadProcessHandler = (Progress) -> ()
 
 class DbHttp: NSObject {
     
-    // MARK: - dispatchSynchronous : call server dong bo
-    // MARK: -
-    // -- Co the khong su dung gia tri tra ve --
-    @discardableResult class func dispatchSync(Request request: DbRequest) -> DbResponse?
+    class func post(Url url: String, dispatchHandler: @escaping DbDispatchHandler)
     {
-        //let semaphore = DispatchSemaphore(value: 0) //dispatch_semaphore_t = dispatch_semaphore_create(0)
-//        let group = DispatchGroup()
+        self.postFor(Url: url, dispatchHandler: dispatchHandler)
+    }
+    
+    // -- Defaut return JSON --
+    @discardableResult class func postFor<T: DbResponse>(Url url: String, dispatchHandler: @escaping DbDispatchHandler) -> T?
+    {
+        let request = DbRequestFor<T>()
+        request.requestUrl = url
+        request.method = .POST
+        
+        self.dispatch(Request: request, dispatchHandler: dispatchHandler)
+        
+        return nil
+    }
+    
+    class func get(Url url: String, dispatchHandler: @escaping DbDispatchHandler)
+    {
+        self.getFor(Url: url, dispatchHandler: dispatchHandler)
+    }
 
-//        group.enter()
-        DbHttp.dispatch(Request: request) { (response) in
-            print("Chay xong")
-            debugPrint(response)
-//            semaphore.signal()
-//            group.leave()
-        }
-        // -- Wait until dispatchSemaphore done --
-//        _ = semaphore.wait(timeout: DispatchTime.distantFuture)
-//        dispatchSemaphore.wait()
-//        group.wait(timeout: .distantFuture)
-        // return request.response!
+    // -- Defaut return JSON --
+    @discardableResult class func getFor<T: DbResponse>(Url url: String, dispatchHandler: @escaping DbDispatchHandler) -> T?
+    {
+        let request = DbRequestFor<T>()
+        request.requestUrl = url
+        request.method = .GET
+        
+        self.dispatch(Request: request, dispatchHandler: dispatchHandler)
+        
         return nil
     }
     
@@ -277,6 +55,15 @@ class DbHttp: NSObject {
     // MARK: -
     class func dispatch(Request request: DbRequest, queue: DispatchQueue? = nil, dispatchHandler: @escaping DbDispatchHandler)
     {
+        if NetworkReachabilityManager()!.isReachable {
+            // -- Set data for response --
+            if let responseObj = request.response {
+                responseObj.parse(nil, error: DbNetworkError.connectionError)
+                dispatchHandler(responseObj)
+            }
+            return
+        }
+        
         var method: HTTPMethod = .get
         switch request.method {
         case .GET:
@@ -288,17 +75,18 @@ class DbHttp: NSObject {
         case .DELETE:
             method = .delete
         }
-        
+
         // -- Tao bg thread de run Alamofire --
         // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
-        let datarequest: DataRequest = Alamofire.request(request.requestUrl, method: method,
+        let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method,
                                                          parameters: request.query, encoding: URLEncoding.default,
                                                          headers: request.exportHttpHeader())
         
-        //queue: DispatchQueue? = nil,
+        // -- Su dung cau truc export request co nen khong ? --
+        // let dataRequest: DataRequest = request.exportRequest() as! DataRequest
         
         if (request.contentType == DbHttpContentType.JSON) {
-            datarequest.responseJSON(queue: nil, completionHandler: { (response) in
+            dataRequest.responseJSON(queue: queue, completionHandler: { (response) in
                 // debugPrint(response)
                 // -- Set data for response --
                 if let responseObj = request.response {
@@ -309,7 +97,7 @@ class DbHttp: NSObject {
                 }
             })
         } else {
-            datarequest.responseString(completionHandler: { (response) in
+            dataRequest.responseString(queue: queue, completionHandler: { (response) in
                 // -- Set data for response --
                 if let responseObj = request.response {
                     responseObj.httpResponse = response.response
@@ -357,7 +145,7 @@ class DbHttp: NSObject {
                     }
                     upload.validate()
                     upload.responseJSON { response in
-                        debugPrint(response)
+                        // debugPrint(response)
                         // -- Set data for response --
                         if let responseObj = request.response {
                             responseObj.httpResponse = response.response
@@ -368,7 +156,6 @@ class DbHttp: NSObject {
                     }
                 case .failure(let encodingError):
                     debugPrint(encodingError)
-                    //print(encodingError)
                     // -- Set data for response --
                     if let responseObj = request.response {
                         responseObj.httpResponse = nil
@@ -380,145 +167,43 @@ class DbHttp: NSObject {
     }
     
     
-}
-
-class DbConnection: NSObject
-{
-    static let shared = DbConnection()
-    
-    var isReachable: Bool?
-    var sessionManager: AFHTTPSessionManager?
-    
-    // MARK: - Accessors - class func <=> final static
-    class func sharedInstance() -> DbConnection
-    {
-        return shared
-    }
-    
-    private override init()
-    {
-        super.init()
-        self.isReachable = AFNetworkReachabilityManager.shared().isReachable
-        self.sessionManager = AFHTTPSessionManager()
-    }
-    
-    // MARK: - dispatchSynchronous : call server dong bo
+    // MARK: - dispatchSynchronous : Call server Synchronous (Dong bo)
     // MARK: -
     // -- Co the khong su dung gia tri tra ve --
-    @discardableResult func dispatchSynchronous(Request request: DbRequest) -> DbResponse
+    @discardableResult class func dispatchSync(Request request: DbRequest) -> DbResponse
     {
-        let dispatchGroup = DispatchGroup() //dispatch_semaphore_t = dispatch_semaphore_create(0)
+        // https://github.com/Dalodd/Alamofire-Synchronous
+        let semaphore = DispatchSemaphore(value: 0) //dispatch_semaphore_t = dispatch_semaphore_create(0)
         
-        dispatchGroup.enter()
-        self.dispatch(Request: request) { (response) in
-            dispatchGroup.leave()
+        // -- Su dung Semaphore de waiting cac Thread hoan tat cung voi nhau --
+        // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
+        let queue = DispatchQueue.global(qos: .default)
+        DbHttp.dispatch(Request: request, queue: queue) { (response) in
+            print("Chay xong")
+            debugPrint(response)
+            semaphore.signal()
         }
-        // -- Wait until dispatchGroup done --
-        dispatchGroup.wait()
+        // -- Wait until dispatchSemaphore done --
+        _ = semaphore.wait(timeout: .distantFuture)
+        
+        // -- Cach su dung Group --
+        //        let group = DispatchGroup()
+        //        group.enter()
+        //        DbHttp.dispatch(Request: request, queue: DispatchQueue.global(qos: .default)) { (response) in
+        //            print("Chay xong")
+        //            debugPrint(response)
+        //            group.leave()
+        //        }
+        //        // -- Wait until dispatchSemaphore done --
+        //        _ = group.wait(timeout: .distantFuture)
+        
         return request.response!
     }
     
-    // MARK: - dispatch : call server bat dong bo
-    // MARK: -
-    func upload(UploadRequest request: DbUploadRequest, processHandler: @escaping DbUploadProcessHandler, dispatchHandler: @escaping DbDispatchHandler)
-    {
-        // -- Default Response Serializer --
-        self.sessionManager?.responseSerializer = AFHTTPResponseSerializer()
-        if let response = request.response {
-            if response.contentType! == DbHttpContentType.JSON {
-                self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
-            }
-        } else {
-            // -- Default response --
-            request.response = DbResponse()
-            request.contentType = DbHttpContentType.JSON
-            self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
-        }
-        
-        let rawRequest = AFHTTPRequestSerializer().multipartFormRequest(
-            withMethod: "POST",
-            urlString: request.requestUrl,
-            parameters: request.query, constructingBodyWith: { (formData) in
-                
-                for uploadData in request.arrUploadData {
-                    formData.appendPart(withFileData: uploadData.fileData!,
-                                        name: uploadData.fileId!,
-                                        fileName: uploadData.fileName!,
-                                        mimeType: uploadData.mimeType!)
-                }
-
-        }, error: nil)
-
-        let uploadTask = self.sessionManager?.uploadTask(withStreamedRequest: rawRequest as URLRequest, progress: { (process) in
-            processHandler(process)
-        }, completionHandler: { (urlResponse, anyData, error) in
-            // -- Set data for response --
-            if let response = request.response {
-                response.httpResponse = urlResponse
-                response.parse(anyData as AnyObject, error: error)
-                dispatchHandler(response)
-                print("response \(String(describing: response.rawData))")
-            }
-        })
-        uploadTask?.resume()
-    }
-    
-    // MARK: - dispatch : call server bat dong bo
-    // MARK: -
-    func dispatch(Request request: DbRequest, dispatchHandler: @escaping DbDispatchHandler)
-    {
-        // -- Default Request Serializer --
-        self.sessionManager?.requestSerializer = AFHTTPRequestSerializer()
-        if request.contentType == DbHttpContentType.JSON {
-            self.sessionManager?.requestSerializer = AFJSONRequestSerializer()
-        }
-        // -- Default Response Serializer --
-        self.sessionManager?.responseSerializer = AFHTTPResponseSerializer()
-        if let response = request.response {
-            if response.contentType! == DbHttpContentType.JSON {
-                self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
-            }
-        } else {
-            // -- Default response --
-            request.response = DbResponse()
-            request.contentType = DbHttpContentType.JSON
-            self.sessionManager?.responseSerializer = AFJSONResponseSerializer()
-        }
-        
-        var serializationError: NSError?
-        let rawRequest = self.sessionManager?.requestSerializer.request(withMethod: request.method.rawValue, urlString: request.requestUrl, parameters: request.query, error: &serializationError)
-        
-        if serializationError != nil {
-            print("serializationError : %@", serializationError.debugDescription)
-            return
-        }
-        // -- Add header to request --
-        for header in request.headers {
-            header.setRequestHeader(request: rawRequest!)
-        }
-        
-        var dataTask: URLSessionDataTask?
-        dataTask = self.sessionManager?.dataTask(with: rawRequest as URLRequest!, uploadProgress: { (progress) in
-            // -- Dont process --
-        }, downloadProgress: { (progressData: Progress) in
-            print("downloadProgress")
-        }, completionHandler: { (urlResponse, anyData, error) in
-            // -- Set data for response --
-            if let response = request.response {
-                response.httpResponse = urlResponse
-                response.parse(anyData as AnyObject, error: error)
-                dispatchHandler(response)
-                print("response \(String(describing: response.rawData))")
-            }
-        })
-        dataTask?.resume()
-    }
-    
-    // MARK: - requestSynchronousData
     // MARK: -
     // https://gist.github.com/mcxiaoke/3edc23720fcbf589af134c914dd8a0a3
     /// Return data from synchronous URL request
-    func requestSynchronousData(_ request: URLRequest) -> Data?
+    class func requestSynchronousData(_ request: URLRequest) -> Data?
     {
         var data: Data? = nil
         let dispatchGroup = DispatchGroup() //dispatch_semaphore_t = dispatch_semaphore_create(0)
@@ -537,7 +222,7 @@ class DbConnection: NSObject
     }
     
     /// Return data synchronous from specified endpoint
-    func requestSynchronousDataWithURLString(_ requestString: String) -> Data?
+    class func requestSynchronousDataWithURLString(_ requestString: String) -> Data?
     {
         guard let url = URL(string:requestString) else {return nil}
         let request = URLRequest(url: url)
@@ -545,7 +230,7 @@ class DbConnection: NSObject
     }
     
     /// Return JSON synchronous from URL request
-    func requestSynchronousJSON(_ request: URLRequest) -> AnyObject?
+    class func requestSynchronousJSON(_ request: URLRequest) -> AnyObject?
     {
         guard let data = self.requestSynchronousData(request) else {return nil}
         //        let jsonData = try? JSONSerialization.jsonObject(with: data, options: [])
@@ -554,7 +239,7 @@ class DbConnection: NSObject
     }
     
     /// Return JSON synchronous from specified endpoint
-    func requestSynchronousJSONWithURLString(requestString: String) -> AnyObject?
+    class func requestSynchronousJSONWithURLString(requestString: String) -> AnyObject?
     {
         guard let url = URL(string:requestString) else {return nil}
         var request = URLRequest(url:url)
@@ -562,7 +247,7 @@ class DbConnection: NSObject
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         return self.requestSynchronousJSON(request)
     }
-    
+
 }
 
 

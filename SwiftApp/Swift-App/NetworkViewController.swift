@@ -77,7 +77,7 @@ class NetworkViewController: BaseViewController {
         
     }
     
-    @IBAction func btnPostData_Click(_ sender: Any)
+    @IBAction func btnPostDataSync_Click(_ sender: Any)
     {
         //let request = DbRequest.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
         let request = DbRequestFor<PropzyResponse>.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
@@ -85,27 +85,37 @@ class NetworkViewController: BaseViewController {
         let params: [String: String]! = ["buildingId" : "12345", "buildingName" : "194 Toa nha LON Building"]
         request.query = params
         
-//        DbHttp.dispatch(Request: request) { (response) in
-//            if let res: PropzyResponse = response as? PropzyResponse {
-//                print("Goi thu successHandler")
-//                print("responseData = \(String(describing: res.dictData))")
-//            }
-//        }
-        
-//        print("bat dau goi : dispatchSync")
-//        if let res: PropzyResponse = DbHttp.dispatchSync(Request: request) as? PropzyResponse {
-//            print("Goi ham thanh cong")
-//            print("Goi thu successHandler")
-//            print("responseData = \(String(describing: res.dictData))")
-//        }
-//        print("DA GOI XONG : dispatchSync")
-        
         print("bat dau goi : dispatchSync")
-        DbHttp.dispatchSync(Request: request)
+        //DbHttp.dispatchSync(Request: request)
+        let response:PropzyResponse = DbHttp.dispatchSync(Request: request) as! PropzyResponse
+        print("response.message = \(response.message!)")
+        print("responseData = \(String(describing: response.dictData!))")
         print("DA GOI XONG : dispatchSync")
         
-//        let response:PropzyResponse = DbHttp.dispatchSync(Request: request) as! PropzyResponse
-        
     }
+    
+    
+    @IBAction func btnPostData_Click(_ sender: Any)
+    {
+        let request = DbRequestFor<PropzyResponse>.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
+        //        request.method = DbHttpMethod.POST
+        //        request.contentType = DbHttpContentType.JSON
+        //
+        //        var arrHeaders: [DbHttpHeader] = []
+        //        arrHeaders.append(DbHttpHeader.Custom("Accept-Encoding", "gzip"))
+        //        arrHeaders.append(DbHttpHeader.Custom("Accept-Language", "vi-VN"))
+        //        request.headers = arrHeaders
+        
+        let params: [String: String]! = ["buildingId" : "2", "buildingName" : "194 Golden Building"]
+        request.query = params
+        
+        DbHttp.dispatch(Request: request) { (response) in
+            if let res: PropzyResponse = response as? PropzyResponse {
+                print("Goi thu successHandler")
+                print("responseData = \(String(describing: res.dictData))")
+            }
+        }
+    }
+    
     
 }

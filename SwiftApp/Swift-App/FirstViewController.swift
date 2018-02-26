@@ -212,7 +212,7 @@ class FirstViewController: BaseViewController {
         
         
         
-        let conn = DbWebConnection.sharedInstance()
+//        let conn = DbWebConnection.sharedInstance()
         
         //let request = DbRequest.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")
         let request = DbRequestFor<PropzyResponse>.init(method: .POST, requestUrl: "http://localhost/i-test/db-post.php")

@@ -9,7 +9,7 @@ inhibit_all_warnings! # this will disable all the warnings for all pods
 target 'SwiftApp' do
 
     # Libraries system Objective C
-    pod 'AFNetworking', '3.1.0'
+    #pod 'AFNetworking', '3.1.0' # Remove, replace by Alamofire
     
     pod 'Alamofire', '4.6.0'
     pod 'MBProgressHUD', '1.0.0'

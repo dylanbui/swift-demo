@@ -14,6 +14,7 @@
 		BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */; };
 		BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */; };
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
+		BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19FAF420441A6B005F2669 /* Reachability.swift */; };
 		BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */; };
 		BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */; };
 		BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67220158E7700590C94 /* DbPopupView.swift */; };
@@ -96,7 +97,6 @@
 		BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CF191F7102D80028425E /* ToDoCell.xib */; };
 		BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E8E20119C4F0089DD32 /* DbObject.swift */; };
 		BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E902011B18C0089DD32 /* DbSession.swift */; };
-		BBDD5E932011F18D0089DD32 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E922011F18D0089DD32 /* Reachability.swift */; };
 		BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */; };
 		BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */; };
 		BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */; };
@@ -111,7 +111,6 @@
 		BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C792021DFD40044F661 /* DbResponse.swift */; };
 		BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */; };
 		BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */; };
-		BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */; };
 		BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */; };
 		BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FC200D243700718E95 /* DbViewController.swift */; };
 		E30D5F2105DB6D031E1304FB /* Pods_SwiftAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */; };
@@ -138,6 +137,7 @@
 		BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
 		BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDictionaryExtensions.swift; sourceTree = "<group>"; };
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
+		BB19FAF420441A6B005F2669 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbCGRectExtensions.swift; sourceTree = "<group>"; };
 		BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
 		BB2FA67220158E7700590C94 /* DbPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPopupView.swift; sourceTree = "<group>"; };
@@ -225,7 +225,6 @@
 		BBD3CF191F7102D80028425E /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		BBDD5E8E20119C4F0089DD32 /* DbObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbObject.swift; sourceTree = "<group>"; };
 		BBDD5E902011B18C0089DD32 /* DbSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSession.swift; sourceTree = "<group>"; };
-		BBDD5E922011F18D0089DD32 /* Reachability.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTableViewCell.swift; sourceTree = "<group>"; };
 		BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DbAssets.xcassets; sourceTree = "<group>"; };
 		BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordField.swift"; sourceTree = "<group>"; };
@@ -240,7 +239,6 @@
 		BBE88C792021DFD40044F661 /* DbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
 		BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbArrayExtensions.swift; sourceTree = "<group>"; };
 		BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDateExtensions.swift; sourceTree = "<group>"; };
-		BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbWebConnection.swift; sourceTree = "<group>"; };
 		BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAppDelegate.swift; sourceTree = "<group>"; };
 		BBFAA0FC200D243700718E95 /* DbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbViewController.swift; sourceTree = "<group>"; };
 		CEFA6F353D569F5651FF6856 /* Pods-SwiftApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -433,7 +431,6 @@
 				BBA7C7551F721DAF00328377 /* BaseViewController.swift */,
 				BBA7C7631F725D3F00328377 /* Utils.swift */,
 				BB330BA61F7815D900BEEA9A /* Constant.swift */,
-				BBF540521F736B9600AF7AC2 /* ServiceConnection */,
 				BBB569D11F7B5B870014A7A9 /* Task-App */,
 				BBB569E21F7B60270014A7A9 /* Json-App */,
 				BBDD5E962011F3F70089DD32 /* Demo-App */,
@@ -547,6 +544,7 @@
 		BBE88C762021C4A80044F661 /* DbConnection */ = {
 			isa = PBXGroup;
 			children = (
+				BB19FAF420441A6B005F2669 /* Reachability.swift */,
 				BBE88C772021C4BD0044F661 /* DbRequest.swift */,
 				BBE88C792021DFD40044F661 /* DbResponse.swift */,
 				BBA4D64A2028A44B0013F204 /* DbConnection.swift */,
@@ -568,15 +566,6 @@
 				BBA69EA9202098400028603F /* DbUIKitExtensions.swift */,
 			);
 			path = UtilsExtension;
-			sourceTree = "<group>";
-		};
-		BBF540521F736B9600AF7AC2 /* ServiceConnection */ = {
-			isa = PBXGroup;
-			children = (
-				BBF540531F736C4900AF7AC2 /* DbWebConnection.swift */,
-				BBDD5E922011F18D0089DD32 /* Reachability.swift */,
-			);
-			path = ServiceConnection;
 			sourceTree = "<group>";
 		};
 		C18E4305809E59F8E17DBC84 /* Pods */ = {
@@ -863,9 +852,9 @@
 			files = (
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
+				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */,
-				BBF540541F736C4900AF7AC2 /* DbWebConnection.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
@@ -916,7 +905,6 @@
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
-				BBDD5E932011F18D0089DD32 /* Reachability.swift in Sources */,
 				BBA69EA820208EB20028603F /* DbUIViewExtensions.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 			);

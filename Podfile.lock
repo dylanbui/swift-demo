@@ -1,19 +1,4 @@
 PODS:
-  - AFNetworking (3.1.0):
-    - AFNetworking/NSURLSession (= 3.1.0)
-    - AFNetworking/Reachability (= 3.1.0)
-    - AFNetworking/Security (= 3.1.0)
-    - AFNetworking/Serialization (= 3.1.0)
-    - AFNetworking/UIKit (= 3.1.0)
-  - AFNetworking/NSURLSession (3.1.0):
-    - AFNetworking/Reachability
-    - AFNetworking/Security
-    - AFNetworking/Serialization
-  - AFNetworking/Reachability (3.1.0)
-  - AFNetworking/Security (3.1.0)
-  - AFNetworking/Serialization (3.1.0)
-  - AFNetworking/UIKit (3.1.0):
-    - AFNetworking/NSURLSession
   - Alamofire (4.6.0)
   - APNumberPad (1.2.0)
   - CropViewController (2.3.6)
@@ -31,8 +16,7 @@ PODS:
   - SVPullToRefresh (0.4.1)
 
 DEPENDENCIES:
-  - AFNetworking (= 3.1.0)
-  - Alamofire
+  - Alamofire (= 4.6.0)
   - APNumberPad (= 1.2.0)
   - CropViewController (= 2.3.6)
   - DKImagePickerController (= 3.8.1)
@@ -45,7 +29,6 @@ DEPENDENCIES:
   - SVPullToRefresh (= 0.4.1)
 
 SPEC CHECKSUMS:
-  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   Alamofire: f41a599bd63041760b26d393ec1069d9d7b917f4
   APNumberPad: a63526db2db628824ae92e7124719e87e0f1c969
   CropViewController: e6d4bd512d15a1709e9ddf71fe7d98ffd05dda0f
@@ -58,6 +41,6 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
 
-PODFILE CHECKSUM: b8f913cbc00b14c7004d9a4a5d7aa36410c9e35c
+PODFILE CHECKSUM: 7763b45fbf6a8628ba4a47eda4b8623d3a763b58
 
 COCOAPODS: 1.2.1
