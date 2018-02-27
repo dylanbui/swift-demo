@@ -17,34 +17,38 @@ typealias DbUploadProcessHandler = (Progress) -> ()
 
 class DbHttp: NSObject {
     
-    class func post(Url url: String, dispatchHandler: @escaping DbDispatchHandler)
-    {
-        self.postFor(Url: url, dispatchHandler: dispatchHandler)
-    }
+//    class func post(Url url: String, dispatchHandler: @escaping DbDispatchHandler)
+//    {
+//        self.postFor(Url: url, dispatchHandler: dispatchHandler)
+//    }
     
     // -- Defaut return JSON --
-    @discardableResult class func postFor<T: DbResponse>(Url url: String, dispatchHandler: @escaping DbDispatchHandler) -> T?
+    @discardableResult
+    class func post<T: DbResponse>(Url url: String, query: DbRequestQuery = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
     {
         let request = DbRequestFor<T>()
         request.requestUrl = url
         request.method = .POST
+        request.query = query
         
         self.dispatch(Request: request, dispatchHandler: dispatchHandler)
         
         return nil
     }
     
-    class func get(Url url: String, dispatchHandler: @escaping DbDispatchHandler)
-    {
-        self.getFor(Url: url, dispatchHandler: dispatchHandler)
-    }
+//    class func get(Url url: String, dispatchHandler: @escaping DbDispatchHandler)
+//    {
+//        self.getFor(Url: url, dispatchHandler: dispatchHandler)
+//    }
 
     // -- Defaut return JSON --
-    @discardableResult class func getFor<T: DbResponse>(Url url: String, dispatchHandler: @escaping DbDispatchHandler) -> T?
+    @discardableResult
+    class func get<T: DbResponse>(Url url: String, query: DbRequestQuery = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
     {
         let request = DbRequestFor<T>()
         request.requestUrl = url
         request.method = .GET
+        request.query = query
         
         self.dispatch(Request: request, dispatchHandler: dispatchHandler)
         
@@ -55,7 +59,8 @@ class DbHttp: NSObject {
     // MARK: -
     class func dispatch(Request request: DbRequest, queue: DispatchQueue? = nil, dispatchHandler: @escaping DbDispatchHandler)
     {
-        if NetworkReachabilityManager()!.isReachable {
+        // -- Check connection network --
+        if NetworkReachabilityManager()!.isReachable == false {
             // -- Set data for response --
             if let responseObj = request.response {
                 responseObj.parse(nil, error: DbNetworkError.connectionError)

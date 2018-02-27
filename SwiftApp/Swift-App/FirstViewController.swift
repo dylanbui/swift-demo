@@ -10,48 +10,6 @@ import UIKit
 import Alamofire
 import INTULocationManager
 
-public class PropzyResponse: DbResponse {
-    
-//    public var httpResponse: HTTPURLResponse?
-//    public var data: AnyObject?
-//    public var originalRequest: NSURLRequest?
-//    public var contentType: DbHttpContentType?
-//    public var error: Error?
-    //    internal(set) public var result: ResultType?
-    
-    var message: String?
-    var result: Bool?
-    var code: Int?
-    var dictData: [String: AnyObject]?
-    
-    public required init() {
-        super.init()
-        self.contentType = DbHttpContentType.JSON
-    }
-    
-    public override func parse(_ responseData: AnyObject?, error: Error?) -> Void {
-        super.parse(responseData, error: error)
-        if let err = error {
-            print("Co loi xay ra \(err)")
-            return
-        }
-        
-        guard let responseData = responseData as? [String: AnyObject] else {
-            // -- responseData la nil , khong lam gi ca --
-            print("responseData == nil")
-            return
-        }
-        
-        print("PropzyResponse = \(responseData)")
-        
-        self.message = responseData["message"] as? String
-        self.result = responseData["result"] as? Bool
-        self.code = responseData["code"] as? Int
-        self.dictData = responseData["data"] as? [String: AnyObject]
-    }
-    
-}
-
 class FirstViewController: BaseViewController {
     
     @IBOutlet weak var textView: UITextView!

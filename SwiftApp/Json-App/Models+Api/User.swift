@@ -57,28 +57,50 @@ class User: Mappable
     
     static func getAll(_ complete: @escaping ([User]) -> ())
     {
-        DbWebConnection.shared.get(Url: "https://jsonplaceholder.typicode.com/users", params: nil) { (anyObject, error) in
-            if error != nil {
-                print("error.debugDescription = \(error.debugDescription)")
-                return
-            }
-//            if anyObject == nil {
-//                print("AnyObject = nil")
-//                return
-//            }
+        DbHttp.get(Url: "https://jsonplaceholder.typicode.com/users") { (response) in
             
-            guard let anyObject = anyObject else {
-                print("AnyObject = nil")
+            // if let err = response.error {
+            if response.error != nil {
+                // print("error.debugDescription = \(err.debugDescription)")
                 return
             }
             
+//            if let anyObject = response.rawData {
+            if response.rawData != nil {
+                // print("response.rawData = nil")
+                return
+            }
+
             var arr: [User] = []
-            for obj in anyObject as! [AnyObject] {
+            for obj in response.rawData as! [AnyObject] {
                 let u:User = User(JSON: obj as! [String: Any])!
                 arr.append(u)
             }
             complete(arr)
         }
+        
+//        DbWebConnection.shared.get(Url: "https://jsonplaceholder.typicode.com/users", params: nil) { (anyObject, error) in
+//            if error != nil {
+//                print("error.debugDescription = \(error.debugDescription)")
+//                return
+//            }
+////            if anyObject == nil {
+////                print("AnyObject = nil")
+////                return
+////            }
+//
+//            guard let anyObject = anyObject else {
+//                print("AnyObject = nil")
+//                return
+//            }
+//
+//            var arr: [User] = []
+//            for obj in anyObject as! [AnyObject] {
+//                let u:User = User(JSON: obj as! [String: Any])!
+//                arr.append(u)
+//            }
+//            complete(arr)
+//        }
         
     }
     

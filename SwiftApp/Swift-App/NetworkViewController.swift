@@ -117,5 +117,23 @@ class NetworkViewController: BaseViewController {
         }
     }
     
-    
+    @IBAction func btnGetGoogleData_Click(_ sender: Any)
+    {
+        DbHttp.get(Url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=10.795785,106.675309&sensor=true&key=AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg") { (response) in
+            
+            if let err = response.error {
+                print("Loi roi ban \(err)")
+                return
+            }
+            
+            guard let googleRes = response as? GoogleResponse else {
+                print("GoogleResponse = nil")
+                return
+            }
+
+            print("addressComponents = \(String(describing: googleRes.addressComponents))")
+            print("formattedAddress = \(String(describing: googleRes.formattedAddress))")
+            print("geometry = \(String(describing: googleRes.geometry))")
+        }
+    }
 }

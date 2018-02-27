@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AFNetworking
+//import AFNetworking
 
 class ViewController: UIViewController
 {
@@ -18,28 +18,28 @@ class ViewController: UIViewController
         // Do any additional setup after loading the view, typically from a nib.
         
         
-        let configuration : URLSessionConfiguration = URLSessionConfiguration.default;
-        
-        let manager : AFURLSessionManager =
-            AFURLSessionManager.init(sessionConfiguration: configuration);
-        
-        let url : URL = URL.init(fileURLWithPath: "http://headers.jsontest.com");
-        
-        let request :URLRequest = URLRequest.init(url: url);
-        
-        let _ = URLSessionDataTask.init();
-        
-        let dataTask : URLSessionDataTask = manager.dataTask(with: request) { (response, responseObj, error) in
-            
-            if (error != nil) {
-                print("Loi la cai gi : \(error.debugDescription)")
-                
-            } else {
-                print("Khong co loi : \(String(describing: response)) - \(String(describing: responseObj))")
-            }
-        }
-        
-        dataTask.resume()
+//        let configuration : URLSessionConfiguration = URLSessionConfiguration.default;
+//        
+//        let manager : AFURLSessionManager =
+//            AFURLSessionManager.init(sessionConfiguration: configuration);
+//        
+//        let url : URL = URL.init(fileURLWithPath: "http://headers.jsontest.com");
+//        
+//        let request :URLRequest = URLRequest.init(url: url);
+//        
+//        let _ = URLSessionDataTask.init();
+//        
+//        let dataTask : URLSessionDataTask = manager.dataTask(with: request) { (response, responseObj, error) in
+//            
+//            if (error != nil) {
+//                print("Loi la cai gi : \(error.debugDescription)")
+//                
+//            } else {
+//                print("Khong co loi : \(String(describing: response)) - \(String(describing: responseObj))")
+//            }
+//        }
+//        
+//        dataTask.resume()
         
 //        let manager = AFHTTPRequestOperationManager()
 //        manager.GET(

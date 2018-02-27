@@ -135,6 +135,10 @@ enum DbNetworkError: Error {
             return "Unknown error"
         }
     }
+    
+    var debugDescription: String {
+        return self.description
+    }
 }
 
 // MARK: - Define DbRequest
