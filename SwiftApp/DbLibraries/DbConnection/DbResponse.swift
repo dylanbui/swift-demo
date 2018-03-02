@@ -87,7 +87,7 @@ public class PropzyResponse: DbResponse {
 
 public class GoogleResponse: DbResponse {
     
-    var results: [String: AnyObject]?
+    var result: [String: AnyObject]?
     
     var addressComponents: [AnyObject]?
     var formattedAddress: String?
@@ -114,13 +114,26 @@ public class GoogleResponse: DbResponse {
         }
         
         print("GoogleResponse = \(responseData)")
+        //let result: [AnyObject]? = responseData["results"] as? [AnyObject]
         
-        self.results = responseData
+
+        if let results: [AnyObject] = responseData["results"] as? [AnyObject] {
+            self.result = results[0] as? [String: AnyObject]
+            self.addressComponents = self.result!["address_components"] as? [AnyObject]
+            self.formattedAddress = self.result!["formatted_address"] as? String
+            self.geometry = self.result!["geometry"] as AnyObject
+            self.placeId = self.result!["place_id"] as? String
+        }
         
-        self.addressComponents = responseData["address_components"] as? [AnyObject]
-        self.formattedAddress = responseData["formatted_address"] as? String
-        self.geometry = responseData["geometry"] as AnyObject
-        self.placeId = responseData["place_id"] as? String        
+//        self.results = responseData["results"]
+        
+//        let addressComponentsss: [AnyObject]? = responseData.db_valueForKeyPath(keyPath: "results.address_components")
+//        self.addressComponents = responseData[keyPath: "results.address_components"] as? [AnyObject]
+        
+        
+//        self.formattedAddress = self.results["formatted_address"] as? String
+//        self.geometry = self.results["geometry"] as AnyObject
+//        self.placeId = self.results["place_id"] as? String
     }
     
 }

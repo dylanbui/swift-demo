@@ -119,7 +119,7 @@ class NetworkViewController: BaseViewController {
     
     @IBAction func btnGetGoogleData_Click(_ sender: Any)
     {
-        DbHttp.get(Url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=10.795785,106.675309&sensor=true&key=AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg") { (response) in
+        let _: GoogleResponse? = DbHttp.get(Url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=10.795785,106.675309&sensor=true&key=AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg") { (response) in
             
             if let err = response.error {
                 print("Loi roi ban \(err)")

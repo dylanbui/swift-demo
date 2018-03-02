@@ -17,30 +17,10 @@ typealias DbUploadProcessHandler = (Progress) -> ()
 
 class DbHttp: NSObject {
     
-//    class func post(Url url: String, dispatchHandler: @escaping DbDispatchHandler)
-//    {
-//        self.postFor(Url: url, dispatchHandler: dispatchHandler)
-//    }
-    
-    // -- Defaut return JSON --
-    @discardableResult
-    class func post<T: DbResponse>(Url url: String, query: DbRequestQuery = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
-    {
-        let request = DbRequestFor<T>()
-        request.requestUrl = url
-        request.method = .POST
-        request.query = query
-        
-        self.dispatch(Request: request, dispatchHandler: dispatchHandler)
-        
-        return nil
-    }
-    
-//    class func get(Url url: String, dispatchHandler: @escaping DbDispatchHandler)
-//    {
-//        self.getFor(Url: url, dispatchHandler: dispatchHandler)
-//    }
-
+    // MARK: - GET
+    // MARK: -
+    // Dung cach nay de ep kieu DbResponse tra ve
+    // let _: GoogleResponse? = DbHttp.post(Url: "https://maps.googleapis.com") { (response) in}
     // -- Defaut return JSON --
     @discardableResult
     class func get<T: DbResponse>(Url url: String, query: DbRequestQuery = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
@@ -48,6 +28,24 @@ class DbHttp: NSObject {
         let request = DbRequestFor<T>()
         request.requestUrl = url
         request.method = .GET
+        request.query = query
+        
+        self.dispatch(Request: request, dispatchHandler: dispatchHandler)
+        
+        return nil
+    }
+    
+    // MARK: - POST
+    // MARK: -
+    // Dung cach nay de ep kieu DbResponse tra ve
+    // let _: GoogleResponse? = DbHttp.get(Url: "https://maps.googleapis.com") { (response) in}
+    // -- Defaut return JSON --
+    @discardableResult
+    class func post<T: DbResponse>(Url url: String, query: DbRequestQuery = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
+    {
+        let request = DbRequestFor<T>()
+        request.requestUrl = url
+        request.method = .POST
         request.query = query
         
         self.dispatch(Request: request, dispatchHandler: dispatchHandler)
