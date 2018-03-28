@@ -28,6 +28,7 @@
 		BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731A201789300055CAD9 /* SecondViewController.xib */; };
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
 		BB547320201789460055CAD9 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731E201789460055CAD9 /* FirstViewController.xib */; };
+		BB6AAD08205273A10045ECA9 /* DbUIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AAD07205273A10045ECA9 /* DbUIViewControllerExtensions.swift */; };
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB79169020190264007A83E6 /* DbMediaPickerController.swift */; };
 		BB7F3038203E857900185366 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302A203E857900185366 /* demo_1.jpg */; };
@@ -97,6 +98,7 @@
 		BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CF191F7102D80028425E /* ToDoCell.xib */; };
 		BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E8E20119C4F0089DD32 /* DbObject.swift */; };
 		BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E902011B18C0089DD32 /* DbSession.swift */; };
+		BBE4476D206B764400ED8CC2 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE4476C206B764400ED8CC2 /* UIViewController+KNSemiModal.m */; };
 		BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */; };
 		BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */; };
 		BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */; };
@@ -151,6 +153,7 @@
 		BB54731A201789300055CAD9 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BB54731E201789460055CAD9 /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		BB6AAD07205273A10045ECA9 /* DbUIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BB79169020190264007A83E6 /* DbMediaPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMediaPickerController.swift; sourceTree = "<group>"; };
 		BB7F302A203E857900185366 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
@@ -225,6 +228,8 @@
 		BBD3CF191F7102D80028425E /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		BBDD5E8E20119C4F0089DD32 /* DbObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbObject.swift; sourceTree = "<group>"; };
 		BBDD5E902011B18C0089DD32 /* DbSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSession.swift; sourceTree = "<group>"; };
+		BBE4476B206B764400ED8CC2 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
+		BBE4476C206B764400ED8CC2 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
 		BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTableViewCell.swift; sourceTree = "<group>"; };
 		BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DbAssets.xcassets; sourceTree = "<group>"; };
 		BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordField.swift"; sourceTree = "<group>"; };
@@ -277,6 +282,7 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				BBE44769206B75F900ED8CC2 /* ObjC-Libraries */,
 				BBE88C762021C4A80044F661 /* DbConnection */,
 				BB197D43200BBFAA005514C3 /* DbConstant.swift */,
 				BB6F6DE42011192100D81CA3 /* DbErrorView.swift */,
@@ -486,6 +492,23 @@
 			path = "Demo-App";
 			sourceTree = "<group>";
 		};
+		BBE44769206B75F900ED8CC2 /* ObjC-Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				BBE4476A206B764400ED8CC2 /* UIViewController+KNSemiModal */,
+			);
+			path = "ObjC-Libraries";
+			sourceTree = "<group>";
+		};
+		BBE4476A206B764400ED8CC2 /* UIViewController+KNSemiModal */ = {
+			isa = PBXGroup;
+			children = (
+				BBE4476B206B764400ED8CC2 /* UIViewController+KNSemiModal.h */,
+				BBE4476C206B764400ED8CC2 /* UIViewController+KNSemiModal.m */,
+			);
+			path = "UIViewController+KNSemiModal";
+			sourceTree = "<group>";
+		};
 		BBE813EC2016EB0600B21B1F /* BaseUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -564,6 +587,7 @@
 				BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */,
 				BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */,
 				BBA69EA9202098400028603F /* DbUIKitExtensions.swift */,
+				BB6AAD07205273A10045ECA9 /* DbUIViewControllerExtensions.swift */,
 			);
 			path = UtilsExtension;
 			sourceTree = "<group>";
@@ -876,6 +900,7 @@
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBE814012017551B00B21B1F /* PhotoGalleryViewController.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
+				BB6AAD08205273A10045ECA9 /* DbUIViewControllerExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
@@ -899,6 +924,7 @@
 				BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
+				BBE4476D206B764400ED8CC2 /* UIViewController+KNSemiModal.m in Sources */,
 				BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
@@ -1060,6 +1086,7 @@
 			baseConfigurationReference = CEFA6F353D569F5651FF6856 /* Pods-SwiftApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 99JD3QH9V9;
 				INFOPLIST_FILE = "SwiftApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -1077,6 +1104,7 @@
 			baseConfigurationReference = F4143BFB2AB8643E03288BB2 /* Pods-SwiftApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEFINES_MODULE = NO;
 				DEVELOPMENT_TEAM = 99JD3QH9V9;
 				INFOPLIST_FILE = "SwiftApp/Supporting Files/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
