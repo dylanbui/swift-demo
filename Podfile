@@ -19,6 +19,8 @@ target 'SwiftApp' do
     pod 'IQKeyboardManagerSwift', '5.0.6'
     pod 'SnapKit', '4.0.0' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
     pod 'ObjectMapper', '3.1.0'
+    
+    # pod 'LGButton', tot manh nhung chi cho ios > 9.0
 
     # Libraries needed Objective C
     pod 'APNumberPad', '1.2.0' # Use for DecimalTextField
