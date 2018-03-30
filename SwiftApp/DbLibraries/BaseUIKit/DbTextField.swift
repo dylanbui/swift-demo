@@ -15,9 +15,22 @@ open class DbTextField: UITextField {
     
     open var contentInsets: UIEdgeInsets = .zero {
         didSet {
-            // invalidateIntrinsicContentSize()
+            invalidateIntrinsicContentSize()
         }
     }
+
+    open var contentLeftImageInsets: UIEdgeInsets = .zero {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+
+    open var contentRightImageInsets: UIEdgeInsets = .zero {
+        didSet {
+            invalidateIntrinsicContentSize()
+        }
+    }
+
     
     @IBInspectable
     open var contentInsetsTop: CGFloat {
@@ -59,6 +72,27 @@ open class DbTextField: UITextField {
         }
     }
     
+    @IBInspectable
+    public var leftImage: UIImage? = nil {
+        didSet{
+            setupLeftImageView()
+        }
+    }
+
+    public var leftImagePaddingStr: String = "" {
+        didSet{
+            setupLeftImagePaddingStr()
+        }
+    }
+
+    @IBInspectable
+    public var rightImage: UIImage? = nil {
+        didSet{
+            setupRightImageView()
+        }
+    }
+
+    
     // MARK: Initializers
     
     override public init(frame: CGRect) {
@@ -89,10 +123,39 @@ open class DbTextField: UITextField {
         return UIEdgeInsetsInsetRect(bounds, contentInsets)
     }
     
+    open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
+        return UIEdgeInsetsInsetRect(bounds, contentLeftImageInsets)
+        //UIEdgeInsetsMake(<#T##top: CGFloat##CGFloat#>, <#T##left: CGFloat##CGFloat#>, <#T##bottom: CGFloat##CGFloat#>, <#T##right: CGFloat##CGFloat#>)
+    }
+    
     // MARK: Private Constants
     
     private struct PropertyKey {
         static let contentInsets = "contentInsets"
     }
+    
+    // MARK: - Internal functions
+    // MARK:
+    
+    // Setup setupLeftImageView
+    fileprivate func setupLeftImageView() {
+        leftViewMode = .always
+        leftView = UIImageView(image: leftImage)
+    }
+    
+    fileprivate func setupLeftImagePaddingStr() {
+        let arr = leftImagePaddingStr.split(separator: ";");
+        contentLeftImageInsets = UIEdgeInsetsMake(String(arr[0]).db_cgFloat()!
+            , String(arr[1]).db_cgFloat()!
+            , String(arr[2]).db_cgFloat()!
+            , String(arr[3]).db_cgFloat()!)
+    }
+    
+    // Setup setupLeftImageView
+    fileprivate func setupRightImageView() {
+        leftViewMode = .always
+        rightView = UIImageView(image: rightImage)
+    }
+
 }
 

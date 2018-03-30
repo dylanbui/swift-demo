@@ -12,10 +12,52 @@ class NetworkViewController: BaseViewController {
     
     @IBOutlet weak var btnUploadFiles: UIButton!
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+        let img_0 = self.view.viewWithTag(5555) as! UIImageView
+        img_0.imageFontAwesomeIcon("calendar-alt")
+        
+        let img_1 = self.view.viewWithTag(1111) as! UIImageView
+        img_1.imageFontAwesomeIcon("smile-o")
+        
+        let img_2 = self.view.viewWithTag(2222) as! UIImageView
+        img_2.image = UIImage.fontAwesomeIcon("trash", iconColor: UIColor.blue)
+        print("\(String(describing: img_2.image?.size))")
+        //img_2.imageFontAwesomeIcon("trash", iconColor: UIColor.yellow)
+        
+        let img_3 = self.view.viewWithTag(3333) as! UIImageView
+        img_3.imageFontAwesomeIcon("tree", iconColor: UIColor.blue)
+        
+        let img_4 = self.view.viewWithTag(4444) as! UIImageView
+        img_4.imageFontAwesomeIcon("suitcase", iconColor: UIColor.green)
+        
+        let button_1 = self.view.viewWithTag(6666) as! UIButton
+        button_1.set(image: UIImage.fontAwesomeIcon("eject"), title: "Shout", titlePosition: .left, additionalSpacing: 40.0, state: .normal)
+        
+        let txt_1 = self.view.viewWithTag(123456) as! DbTextField
+        txt_1.leftImage = UIImage.fontAwesomeIcon("trash", iconColor: UIColor.blue)
+        
+        
+        
+//        button.set(image: #imageLiteral(resourceName: "shout"), title: "Shout", titlePosition: .top, additionalSpacing: 30.0, state: .normal)
+//        thirdButton.set(image: #imageLiteral(resourceName: "shout"), title: "This is an XIB button", titlePosition: .bottom, additionalSpacing: 10.0, state: .normal)
+//
+//        let secondButton = UIButton(type: .system)
+//        secondButton.frame = CGRect(x: 0, y: 50, width: 100, height: 400)
+//        secondButton.center = CGPoint(x: view.frame.size.width/2, y: 50)
+//        let attr = [
+//            NSAttributedStringKey.font:UIFont(name:"Helvetica", size: 14)!,
+//            NSAttributedStringKey.foregroundColor: UIColor.green
+//        ]
+//        let title = NSAttributedString(string: "Settings", attributes: attr)
+//        secondButton.tintColor = UIColor.red
+//        secondButton.set(image: UIImage(named: "settings"), attributedTitle: title, at: .left, width: 0.0, state: .normal)
+//        view.addSubview(secondButton)
+        
     }
 
     override func didReceiveMemoryWarning() {
