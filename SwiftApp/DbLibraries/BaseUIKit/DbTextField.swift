@@ -19,17 +19,17 @@ open class DbTextField: UITextField {
         }
     }
 
-    open var contentLeftImageInsets: UIEdgeInsets = .zero {
-        didSet {
-            invalidateIntrinsicContentSize()
-        }
-    }
-
-    open var contentRightImageInsets: UIEdgeInsets = .zero {
-        didSet {
-            invalidateIntrinsicContentSize()
-        }
-    }
+//    open var contentLeftImageInsets: UIEdgeInsets = .zero {
+//        didSet {
+//            invalidateIntrinsicContentSize()
+//        }
+//    }
+//
+//    open var contentRightImageInsets: UIEdgeInsets = .zero {
+//        didSet {
+//            invalidateIntrinsicContentSize()
+//        }
+//    }
 
     
     @IBInspectable
@@ -79,9 +79,10 @@ open class DbTextField: UITextField {
         }
     }
 
-    public var leftImagePaddingStr: String = "" {
+    @IBInspectable
+    public var leftImagePadding: CGFloat = 5.0 {
         didSet{
-            setupLeftImagePaddingStr()
+            invalidateIntrinsicContentSize()
         }
     }
 
@@ -91,7 +92,13 @@ open class DbTextField: UITextField {
             setupRightImageView()
         }
     }
-
+    
+    @IBInspectable
+    public var rightImagePadding: CGFloat = 5.0 {
+        didSet{
+            invalidateIntrinsicContentSize()
+        }
+    }
     
     // MARK: Initializers
     
@@ -124,8 +131,16 @@ open class DbTextField: UITextField {
     }
     
     open override func leftViewRect(forBounds bounds: CGRect) -> CGRect {
-        return UIEdgeInsetsInsetRect(bounds, contentLeftImageInsets)
-        //UIEdgeInsetsMake(<#T##top: CGFloat##CGFloat#>, <#T##left: CGFloat##CGFloat#>, <#T##bottom: CGFloat##CGFloat#>, <#T##right: CGFloat##CGFloat#>)
+        // http://www.iosinsight.com/uitextviewrightviewpaddingswift/
+        // UITextField rightView Padding With Swift
+        let y = (size.height - (leftImage?.size.height)!) / 2 // Center
+        return CGRect.init(CGPoint.init(leftImagePadding, y), (leftImage?.size)!)
+    }
+    
+    open override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
+        let y = (size.height - (leftImage?.size.height)!) / 2 // Center
+        let x = bounds.size.width - (leftImage?.size.width)! - rightImagePadding
+        return CGRect.init(CGPoint.init(x, y), (leftImage?.size)!)
     }
     
     // MARK: Private Constants
@@ -143,17 +158,9 @@ open class DbTextField: UITextField {
         leftView = UIImageView(image: leftImage)
     }
     
-    fileprivate func setupLeftImagePaddingStr() {
-        let arr = leftImagePaddingStr.split(separator: ";");
-        contentLeftImageInsets = UIEdgeInsetsMake(String(arr[0]).db_cgFloat()!
-            , String(arr[1]).db_cgFloat()!
-            , String(arr[2]).db_cgFloat()!
-            , String(arr[3]).db_cgFloat()!)
-    }
-    
     // Setup setupLeftImageView
     fileprivate func setupRightImageView() {
-        leftViewMode = .always
+        rightViewMode = .always
         rightView = UIImageView(image: rightImage)
     }
 

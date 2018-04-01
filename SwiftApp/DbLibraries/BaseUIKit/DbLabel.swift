@@ -59,6 +59,34 @@ open class DbLabel: UILabel {
         }
     }
     
+    @IBInspectable
+    public var leftImage: UIImage? = nil {
+        didSet{
+            setupLeftImageUILable()
+        }
+    }
+    
+    @IBInspectable
+    public var leftImagePadding: CGFloat = 5.0 {
+        didSet{
+            setupLeftImageUILable()
+        }
+    }
+    
+    @IBInspectable
+    public var rightImage: UIImage? = nil {
+        didSet{
+            setupRightImageUILable()
+        }
+    }
+    
+    @IBInspectable
+    public var rightImagePadding: CGFloat = 5.0 {
+        didSet{
+            setupRightImageUILable()
+        }
+    }
+    
     // MARK: Initializers
     
     override public init(frame: CGRect) {
@@ -105,4 +133,50 @@ open class DbLabel: UILabel {
     private struct PropertyKey {
         static let contentInsets = "contentInsets"
     }
+    
+    private func setupLeftImageUILable()
+    {
+        guard let imageIcon = leftImage else {
+            // fatalError("Set Left UIImage before use") // Dung bien dich va bao loi
+            return
+        }
+        
+        if let view = viewWithTag(121212) {
+            view.removeFromSuperview()
+        }
+        
+        let y = (size.height - imageIcon.size.height) / 2 // Center
+        
+        let leftImgView = UIImageView.init(image: imageIcon)
+        leftImgView.frame = CGRect.init(CGPoint.init(leftImagePadding, y), imageIcon.size)
+        leftImgView.tag = 121212
+        addSubview(leftImgView)
+        
+        // layoutIfNeeded()
+        setNeedsDisplay()
+    }
+    
+    private func setupRightImageUILable()
+    {
+        guard let imageIcon = rightImage else {
+            // fatalError("Set Left UIImage before use") // Dung bien dich va bao loi
+            return
+        }
+        
+        if let view = viewWithTag(212121) {
+            view.removeFromSuperview()
+        }
+        
+        let y = (size.height - imageIcon.size.height) / 2 // Center
+        let x = bounds.size.width - imageIcon.size.width - rightImagePadding
+        
+        let rightImgView = UIImageView.init(image: imageIcon)
+        rightImgView.frame = CGRect.init(CGPoint.init(x, y), imageIcon.size)
+        rightImgView.tag = 212121
+        addSubview(rightImgView)
+        
+        // layoutIfNeeded()
+        setNeedsDisplay()
+    }
+
 }

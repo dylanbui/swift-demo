@@ -40,8 +40,12 @@ class NetworkViewController: BaseViewController {
         
         let txt_1 = self.view.viewWithTag(123456) as! DbTextField
         txt_1.leftImage = UIImage.fontAwesomeIcon("trash", iconColor: UIColor.blue)
+        txt_1.rightImage = UIImage.fontAwesomeIcon("calendar-alt", iconColor: UIColor.brown)
         
         
+        let lbl_1 = self.view.viewWithTag(7777) as! DbLabel
+        lbl_1.leftImage = UIImage.fontAwesomeIcon("trash", iconColor: UIColor.blue)
+        lbl_1.rightImage = UIImage.fontAwesomeIcon("calendar-alt", iconColor: UIColor.darkGray)
         
 //        button.set(image: #imageLiteral(resourceName: "shout"), title: "Shout", titlePosition: .top, additionalSpacing: 30.0, state: .normal)
 //        thirdButton.set(image: #imageLiteral(resourceName: "shout"), title: "This is an XIB button", titlePosition: .bottom, additionalSpacing: 10.0, state: .normal)
