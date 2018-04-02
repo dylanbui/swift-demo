@@ -27,6 +27,33 @@
     }
  }
  
+ => Action Sheet
+ 
+ // With individual UIAlertAction objects
+ let firstButtonAction = UIAlertAction(title: "First Button", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+    print("First Button pressed")
+ })
+ let secondButtonAction = UIAlertAction(title: "Second Button", style: UIAlertActionStyle.Default, handler: { (UIAlertAction) -> Void in
+    print("Second Button pressed")
+ })
+ 
+ DbAlertController.actionSheet("Title", message: "message", actions: [firstButtonAction, secondButtonAction])
+ 
+ // With all actions in single closure
+ DbAlertController.actionSheet("Title", message: "Message", buttons: ["First", "Second"]) { (alertAction, position) -> Void in
+    if position == 0 {
+        print("First button clicked")
+    } else if position == 1 {
+        print("Second button clicked")
+    }
+ }
+ 
+ => Customizable
+ 
+ let alertController = DbAlertController.alert("Title") // Returns UIAlertController
+ alertController.setValue(attributedTitle, forKey: "attributedTitle")
+ alertController.setValue(attributedMessage, forKey: "attributedMessage")
+ alertController.view.tintColor =  self.view.tintColor
  
  */
 

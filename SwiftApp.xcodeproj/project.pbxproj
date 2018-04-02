@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		5D8EEB4F713F5AE16C2A184E /* Pods_SwiftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */; };
+		BB1079472071D7B300A99D9A /* DemoUKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */; };
+		BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */; };
 		BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10D3F31F79225100B7DF4B /* DbActionView.swift */; };
 		BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D43200BBFAA005514C3 /* DbConstant.swift */; };
 		BB197D46200BC051005514C3 /* DbUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D45200BC051005514C3 /* DbUtils.swift */; };
@@ -29,7 +31,6 @@
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
 		BB547320201789460055CAD9 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731E201789460055CAD9 /* FirstViewController.xib */; };
 		BB581929206E432500E48DA4 /* DbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB581928206E432500E48DA4 /* DbButton.swift */; };
-		BB6AAD08205273A10045ECA9 /* DbUIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6AAD07205273A10045ECA9 /* DbUIViewControllerExtensions.swift */; };
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB79169020190264007A83E6 /* DbMediaPickerController.swift */; };
 		BB7F3038203E857900185366 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302A203E857900185366 /* demo_1.jpg */; };
@@ -154,6 +155,8 @@
 		64F2635626968B4B3D75864E /* Pods-SwiftAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftAppTests/Pods-SwiftAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoUKitViewController.xib; sourceTree = "<group>"; };
+		BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoUKitViewController.swift; sourceTree = "<group>"; };
 		BB10D3F31F79225100B7DF4B /* DbActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbActionView.swift; sourceTree = "<group>"; };
 		BB197D43200BBFAA005514C3 /* DbConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConstant.swift; sourceTree = "<group>"; };
 		BB197D45200BC051005514C3 /* DbUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUtils.swift; sourceTree = "<group>"; };
@@ -175,7 +178,6 @@
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BB54731E201789460055CAD9 /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		BB581928206E432500E48DA4 /* DbButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbButton.swift; sourceTree = "<group>"; };
-		BB6AAD07205273A10045ECA9 /* DbUIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BB79169020190264007A83E6 /* DbMediaPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMediaPickerController.swift; sourceTree = "<group>"; };
 		BB7F302A203E857900185366 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
@@ -321,6 +323,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB1079432071D47D00A99D9A /* ControllersApp */ = {
+			isa = PBXGroup;
+			children = (
+				BB1079442071D72C00A99D9A /* Demo-Button-Label-Textfield */,
+				BBB569D11F7B5B870014A7A9 /* Task-App */,
+				BBB569E21F7B60270014A7A9 /* Json-App */,
+				BBDD5E962011F3F70089DD32 /* Demo-App */,
+				BB5473162017885D0055CAD9 /* Swift-App */,
+			);
+			path = ControllersApp;
+			sourceTree = "<group>";
+		};
+		BB1079442071D72C00A99D9A /* Demo-Button-Label-Textfield */ = {
+			isa = PBXGroup;
+			children = (
+				BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */,
+				BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */,
+			);
+			path = "Demo-Button-Label-Textfield";
+			sourceTree = "<group>";
+		};
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -342,7 +365,6 @@
 			isa = PBXGroup;
 			children = (
 				BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */,
-				BB10D3F31F79225100B7DF4B /* DbActionView.swift */,
 				BB2FA67220158E7700590C94 /* DbPopupView.swift */,
 				BB2FA6792015D37B00590C94 /* DbLoadableView.swift */,
 				BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */,
@@ -512,10 +534,7 @@
 				BBA7C7551F721DAF00328377 /* BaseViewController.swift */,
 				BBA7C7631F725D3F00328377 /* Utils.swift */,
 				BB330BA61F7815D900BEEA9A /* Constant.swift */,
-				BBB569D11F7B5B870014A7A9 /* Task-App */,
-				BBB569E21F7B60270014A7A9 /* Json-App */,
-				BBDD5E962011F3F70089DD32 /* Demo-App */,
-				BB5473162017885D0055CAD9 /* Swift-App */,
+				BB1079432071D47D00A99D9A /* ControllersApp */,
 				BBC02E531F71747A0011FDE6 /* Resources */,
 				BBDD5E952011F3B10089DD32 /* Supporting Files */,
 				BBD3CEF61F70CFE50028425E /* Assets.xcassets */,
@@ -591,6 +610,7 @@
 				BBFAA0FC200D243700718E95 /* DbViewController.swift */,
 				BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */,
 				BBDD5E8E20119C4F0089DD32 /* DbObject.swift */,
+				BB10D3F31F79225100B7DF4B /* DbActionView.swift */,
 				BBA3D1B4206CE77D00CD2F0F /* DbLabel.swift */,
 				BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */,
 				BB581928206E432500E48DA4 /* DbButton.swift */,
@@ -666,7 +686,6 @@
 				BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */,
 				BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */,
 				BBA69EA9202098400028603F /* DbUIKitExtensions.swift */,
-				BB6AAD07205273A10045ECA9 /* DbUIViewControllerExtensions.swift */,
 			);
 			path = UtilsExtension;
 			sourceTree = "<group>";
@@ -784,6 +803,7 @@
 				BB7F303F203E857900185366 /* demo_6@2x.png in Resources */,
 				BBC02E6B1F71747A0011FDE6 /* OpenSans-Semibold.ttf in Resources */,
 				BB7F3038203E857900185366 /* demo_1.jpg in Resources */,
+				BB1079472071D7B300A99D9A /* DemoUKitViewController.xib in Resources */,
 				BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */,
 				BBC38A64206DDEE500B11C7B /* Ionicons.ttf in Resources */,
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
@@ -978,6 +998,7 @@
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
+				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
 				BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */,
 				BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */,
@@ -991,7 +1012,6 @@
 				BBE814012017551B00B21B1F /* PhotoGalleryViewController.swift in Sources */,
 				BBA3D1B1206CA36400CD2F0F /* DbOperator.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
-				BB6AAD08205273A10045ECA9 /* DbUIViewControllerExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,

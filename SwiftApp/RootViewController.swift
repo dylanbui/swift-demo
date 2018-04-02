@@ -26,8 +26,10 @@ class RootViewController: DbViewController {
 //        let vcl = TpUsersViewController()
 //        let vcl = FirstViewController()
         // let vcl = SecondViewController()
-        let vcl = NetworkViewController()
+//        let vcl = NetworkViewController()
+        let vcl = DemoUKitViewController()
         
+        vcl.navigationItem.setHidesBackButton(true, animated:false)
         self.navigationController?.pushViewController(vcl, animated: false)
         
         // weak var weakSelf = self

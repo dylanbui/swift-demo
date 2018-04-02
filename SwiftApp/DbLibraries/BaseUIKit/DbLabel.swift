@@ -9,7 +9,7 @@
 import UIKit.UILabel
 
 @IBDesignable
-open class DbLabel: UILabel {
+open class DbLabel: UILabel, UIGestureRecognizerDelegate {
     
     // MARK: Properties
     
@@ -128,6 +128,50 @@ open class DbLabel: UILabel {
         return CGSize(width: width, height: height)
     }
     
+    // MARK: Public Utility Functions
+    
+    private var doAction: (() -> Void)? = nil
+    
+    func setTouchesAction(_ doAction: (() -> Void)?) -> Void
+    {
+        let singleFingerTap = UITapGestureRecognizer(target: self, action: #selector(self.btnView_Click))
+        
+        singleFingerTap.delegate = nil;
+        self.removeGestureRecognizer(singleFingerTap)
+        
+        if self.isEnabled {
+            self.isUserInteractionEnabled = true
+            self.alpha = 1.0
+            singleFingerTap.delegate = self;
+            self.addGestureRecognizer(singleFingerTap)
+            self.doAction = doAction
+        }
+    }
+    
+    override open func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?)
+    {
+        self.setContentAlpha(0.2)
+    }
+    
+    // -- touchesEnded dont run because dont call in btnView_Click --
+//    override open func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?)
+//    {
+//        self.alpha = 1.0;
+//    }
+    
+    @objc private func btnView_Click(sender:UIButton!)
+    {
+        UIView.animate(withDuration: 0.1, animations: {
+            self.setContentAlpha(1.0)
+        }) { (finished) in
+            
+        }
+
+        if let doAction = self.doAction {
+            doAction()
+        }
+    }
+    
     // MARK: Private Constants
     
     private struct PropertyKey {
@@ -179,4 +223,20 @@ open class DbLabel: UILabel {
         setNeedsDisplay()
     }
 
+    private func setContentAlpha(_ alpha: CGFloat)
+    {
+        // -- For all content --
+        // self.alpha = alpha
+        
+        self.textColor = textColor.withAlphaComponent(alpha)
+        
+        if let leftView = viewWithTag(121212) {
+            leftView.alpha = alpha
+        }
+        
+        if let rightView = viewWithTag(212121) {
+            rightView.alpha = alpha
+        }
+    }
+    
 }
