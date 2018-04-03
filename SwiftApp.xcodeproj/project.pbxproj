@@ -120,6 +120,10 @@
 		BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CF191F7102D80028425E /* ToDoCell.xib */; };
 		BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E8E20119C4F0089DD32 /* DbObject.swift */; };
 		BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E902011B18C0089DD32 /* DbSession.swift */; };
+		BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9B9F207332D000217030 /* DbPropzyResponse.swift */; };
+		BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9BA120736CEC00217030 /* CategoriesApi.swift */; };
+		BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9BA3207372B400217030 /* CategoriesViewController.swift */; };
+		BBDD9BA6207372B400217030 /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDD9BA4207372B400217030 /* CategoriesViewController.xib */; };
 		BBE4476D206B764400ED8CC2 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE4476C206B764400ED8CC2 /* UIViewController+KNSemiModal.m */; };
 		BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */; };
 		BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */; };
@@ -272,6 +276,10 @@
 		BBD3CF191F7102D80028425E /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		BBDD5E8E20119C4F0089DD32 /* DbObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbObject.swift; sourceTree = "<group>"; };
 		BBDD5E902011B18C0089DD32 /* DbSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSession.swift; sourceTree = "<group>"; };
+		BBDD9B9F207332D000217030 /* DbPropzyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPropzyResponse.swift; sourceTree = "<group>"; };
+		BBDD9BA120736CEC00217030 /* CategoriesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesApi.swift; sourceTree = "<group>"; };
+		BBDD9BA3207372B400217030 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
+		BBDD9BA4207372B400217030 /* CategoriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesViewController.xib; sourceTree = "<group>"; };
 		BBE4476B206B764400ED8CC2 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
 		BBE4476C206B764400ED8CC2 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
 		BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTableViewCell.swift; sourceTree = "<group>"; };
@@ -326,6 +334,7 @@
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BBDD9B9E2073323000217030 /* Demo-PropzyNetwork */,
 				BB1079442071D72C00A99D9A /* Demo-Button-Label-Textfield */,
 				BBB569D11F7B5B870014A7A9 /* Task-App */,
 				BBB569E21F7B60270014A7A9 /* Json-App */,
@@ -586,6 +595,17 @@
 			path = "Demo-App";
 			sourceTree = "<group>";
 		};
+		BBDD9B9E2073323000217030 /* Demo-PropzyNetwork */ = {
+			isa = PBXGroup;
+			children = (
+				BBDD9B9F207332D000217030 /* DbPropzyResponse.swift */,
+				BBDD9BA120736CEC00217030 /* CategoriesApi.swift */,
+				BBDD9BA3207372B400217030 /* CategoriesViewController.swift */,
+				BBDD9BA4207372B400217030 /* CategoriesViewController.xib */,
+			);
+			path = "Demo-PropzyNetwork";
+			sourceTree = "<group>";
+		};
 		BBE44769206B75F900ED8CC2 /* ObjC-Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -796,6 +816,7 @@
 			files = (
 				BBC02E681F71747A0011FDE6 /* OpenSans-Light.ttf in Resources */,
 				BBE813FD2017458100B21B1F /* ic_show_password.png in Resources */,
+				BBDD9BA6207372B400217030 /* CategoriesViewController.xib in Resources */,
 				BB7F3042203E857900185366 /* main_gate.png in Resources */,
 				BBD3CF151F70F8480028425E /* DemoTableViewController.xib in Resources */,
 				BBC38A66206DDEE500B11C7B /* map-icons.ttf in Resources */,
@@ -1018,6 +1039,7 @@
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
+				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
@@ -1040,6 +1062,7 @@
 				BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
+				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
 				BBC38A55206DDE9500B11C7B /* MaterialIcon.swift in Sources */,
 				BBE4476D206B764400ED8CC2 /* UIViewController+KNSemiModal.m in Sources */,
 				BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */,
@@ -1048,6 +1071,7 @@
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
+				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
 				BBA69EA820208EB20028603F /* DbUIViewExtensions.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,

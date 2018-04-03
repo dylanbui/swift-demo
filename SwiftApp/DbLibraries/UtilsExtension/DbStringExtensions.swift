@@ -260,7 +260,7 @@ public extension String {
     ///
     /// - Parameter length: number of characters to limit lorem ipsum to (default is 445 - full lorem ipsum).
     /// - Returns: Lorem ipsum dolor sit amet... string.
-    public static func loremIpsum(ofLength length: Int = 445) -> String {
+    public static func db_loremIpsum(ofLength length: Int = 445) -> String {
         guard length > 0 else { return "" }
         
         // https://www.lipsum.com/
@@ -554,7 +554,7 @@ public extension String {
     ///
     /// - Parameter length: number of characters in string.
     /// - Returns: random string of given length.
-    public static func random(ofLength length: Int) -> String {
+    public static func db_random(ofLength length: Int) -> String {
         guard length > 0 else { return "" }
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString = ""
@@ -858,7 +858,7 @@ public extension String {
     ///
     /// - Parameter length: number of characters in string.
     public init(randomOfLength length: Int) {
-        self = String.random(ofLength: length)
+        self = String.db_random(ofLength: length)
     }
     
 }
