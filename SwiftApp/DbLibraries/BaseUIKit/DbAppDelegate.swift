@@ -49,7 +49,7 @@ class DbAppDelegate: UIResponder, UIApplicationDelegate {
     
     
     func registerForRemoteNotification() {
-        if DbMacro.isSimulator() {
+        if Db.isSimulator() {
             return
         }
         

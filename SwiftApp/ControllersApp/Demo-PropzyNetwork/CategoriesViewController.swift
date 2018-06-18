@@ -15,7 +15,19 @@ class CategoriesViewController: BaseViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
+        
+//        TestAddNotification("AddNotification")
+//        
+//        TestAddNotification("aaa")
+        // Db.something();
+        
     }
+    
+//    func TestAddNotification() {
+//
+//        print("CategoriesViewController --- ")
+//    }
+    
 
     @IBAction func btn_Click(_ sender: UIButton)
     {

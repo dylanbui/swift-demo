@@ -130,7 +130,7 @@ class ServiceUrl {
         self.compeleteSelect = selectHandle
         
         let myButton = UIButton.init(type: .roundedRect)
-        myButton.frame = CGRect(DbMacro.screenWidth() - 145, 20, 130, 30);
+        myButton.frame = CGRect(Db.screenWidth() - 145, 20, 130, 30);
         
         // let arrOption = Array(self.serverMode.serverModeData.keys)
         // let arrOption = [String] (self.serverMode.serverModeData.keys)

@@ -24,7 +24,8 @@ public extension UINavigationController {
     
     public func db_pushOrReplaceToFirstViewController(_ viewController: UIViewController, animated: Bool) {
         if viewControllers.count > 1 {
-            db_replaceCurrentViewController(viewController, animated: animated)
+            // db_replaceCurrentViewController(viewController, animated: animated)
+            db_pushArrayViewControllerToFirstViewController([viewController], animated: animated)
         } else {
             pushViewController(viewController, animated: animated)
         }
@@ -41,6 +42,74 @@ public extension UINavigationController {
         editableViewControllers.append(viewControllers[0])
         editableViewControllers.append(contentsOf: arrViewController)
         setViewControllers(editableViewControllers, animated: animated)
+    }
+    
+    // MARK: - Fade Animation
+    // MARK: -
+    
+    public func db_pushFadeViewController(_ viewController: UIViewController, duration: Double = 0.3) {
+        let transition = CATransition()
+        transition.duration = duration
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionFade
+        self.view.layer.add(transition, forKey: nil)
+        // -- Push --
+        self.pushViewController(viewController, animated: false)
+    }
+    
+    public func db_popFadeViewController(_ duration: Double = 0.3) {
+        let transition = CATransition()
+        transition.duration = duration
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionFade
+        self.view.layer.add(transition, forKey: nil)
+        // -- Pop --
+        self.popViewController(animated: false)
+    }
+    
+    public func db_popFadeToRootViewController(_ duration: Double = 0.3) {
+        let transition = CATransition()
+        transition.duration = duration
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionFade
+        self.view.layer.add(transition, forKey: nil)
+        // -- Pop --
+        self.popToRootViewController(animated: false)
+    }
+    
+    public func db_popFadeToFirstViewController(_ duration: Double = 0.3) {
+        let transition = CATransition()
+        transition.duration = duration
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionFade
+        self.view.layer.add(transition, forKey: nil)
+        // -- Pop --
+        self.db_popToFirstViewControllerWithAnimated(false)
+    }
+    
+    public func db_replaceFadeCurrentViewController(withViewController controller: UIViewController, duration seconds: Double = 0.3) {
+        self.db_replaceFadeCountViewControllers(1, withViewController: controller, duration: seconds)
+    }
+    
+    public func db_replaceFadeCountViewControllers(_ nums: Int, withViewController controller: UIViewController, duration seconds: Double) {
+        var controllers = self.viewControllers;
+        
+        var controllerIndex = controllers.count - nums
+        if controllerIndex < 0 {
+            controllerIndex = 0
+        }
+        
+        controllers.insert(controller, at: controllerIndex)
+        self.setViewControllers(controllers, animated: false)
+        
+        let transition = CATransition();
+        transition.duration = seconds;
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionFade;
+        self.view.layer.add(transition, forKey: nil)
+        
+        self.popToViewController(controller, animated: false)
+        
     }
     
     /// SwifterSwift: Pop ViewController with completion handler.
