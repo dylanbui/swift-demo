@@ -43,4 +43,10 @@ extension DbNotification {
     @objc optional func eventGroup() -> String
 }
 
-//typealias DbEventObject = AnyObject<T>
+//let numberSequence: SequenceType<Int>
+
+//typealias DbEventObject = Array<DbEventProtocol> // Dung
+typealias DbEventObject = DbEventProtocol // Dung
+
+//Since Swift 3:
+//typealias CellDelegate = UIPickerViewDataSource & UIPickerViewDelegate
