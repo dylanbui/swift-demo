@@ -103,6 +103,7 @@
 		BBC38A68206DDEE500B11C7B /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC38A60206DDEE500B11C7B /* octicons.ttf */; };
 		BBC38A69206DDEE500B11C7B /* open-iconic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC38A61206DDEE500B11C7B /* open-iconic.ttf */; };
 		BBC38A6A206DDEE500B11C7B /* themify.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC38A62206DDEE500B11C7B /* themify.ttf */; };
+		BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */; };
 		BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD002802018A39E00293AC8 /* MediaGallery.swift */; };
 		BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */; };
 		BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */; };
@@ -256,6 +257,7 @@
 		BBC38A60206DDEE500B11C7B /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = octicons.ttf; sourceTree = "<group>"; };
 		BBC38A61206DDEE500B11C7B /* open-iconic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "open-iconic.ttf"; sourceTree = "<group>"; };
 		BBC38A62206DDEE500B11C7B /* themify.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = themify.ttf; sourceTree = "<group>"; };
+		BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationDemo.swift; sourceTree = "<group>"; };
 		BBD002802018A39E00293AC8 /* MediaGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGallery.swift; sourceTree = "<group>"; };
 		BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAlertController.swift; sourceTree = "<group>"; };
@@ -685,6 +687,7 @@
 				BBA3D1B0206CA36400CD2F0F /* DbOperator.swift */,
 				BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */,
 				BBD8343B20D7D36E008259D8 /* DbNotification.swift */,
+				BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */,
 			);
 			path = UtilsClass;
 			sourceTree = "<group>";
@@ -1013,6 +1016,7 @@
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
+				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
 				BBD8343C20D7D36E008259D8 /* DbNotification.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,

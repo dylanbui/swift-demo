@@ -58,6 +58,7 @@ class DbViewController: UIViewController
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         DbUtils.postNotification(DbNotify.VclDidLoad.rawValue, object: self)
+        DbNotification.post(DbNotification.Name.MyViewControllerDidLoad.rawValue, object: self)
         
         // -- Define push notification --
         DbUtils.removeNotification(self, name: DbNotify.ReachableNetwork.rawValue)

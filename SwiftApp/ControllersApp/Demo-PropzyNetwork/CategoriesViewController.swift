@@ -10,7 +10,18 @@ import UIKit
 
 class CategoriesViewController: BaseViewController
 {
-
+    override init() {
+        super.init()
+        
+        let demo:DbNotificationDemo = DbNotificationDemo()        
+        DbEventNotification.shared.subscribeEvent(demo)
+        print("demo.eventID = \(demo.eventID)")
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

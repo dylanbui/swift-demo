@@ -9,7 +9,18 @@
 import Foundation
 
 typealias DbEventRegisterID = Int
-typealias DbNotification = NSNotification
+typealias DbNotification = Notification
+
+extension DbNotification.Name {
+    static let MyApplicationServerPushMessage = Notification.Name(rawValue: "MyApplicationServerPushMessage")
+    static let MyApplicationReachableNetwork = Notification.Name(rawValue: "MyApplicationReachableNetwork")
+    
+    static let MyViewControllerDidLoad = Notification.Name(rawValue: "MyViewControllerDidLoad")
+    static let MyViewControllerWillAppear = Notification.Name(rawValue: "MyViewControllerWillAppear")
+    static let MyViewControllerDidAppear = Notification.Name(rawValue: "MyViewControllerDidAppear")
+    static let MyViewControllerWillDisAppear = Notification.Name(rawValue: "MyViewControllerWillDisAppear")
+    static let MyViewControllerDidDisAppear = Notification.Name(rawValue: "MyViewControllerDidDisAppear")
+}
 
 extension DbNotification {
     static func remove(_ sender: AnyObject) {
@@ -61,22 +72,6 @@ protocol DbEventProtocol : AnyObject {
 // -- Define for optional --
 extension DbEventProtocol {
     
-    //var eventID: DbEventRegisterID = 0
-    
-//    var eventID: DbEventRegisterID {
-//        get {
-//            return 0
-//        }
-//        set(newValue) {
-////            let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-////            UIViewController._myComputedProperty[tmpAddress] = newValue
-//            //self.eventID = newValue
-//            eventID = newValue
-//        }
-//    }
-    
-    
-    
     func eventPriority() -> Int {
         return 1;
     }
@@ -123,11 +118,15 @@ class DbEventNotification {
             NSNotification.Name.UIApplicationDidReceiveMemoryWarning.rawValue,
             NSNotification.Name.UIApplicationWillTerminate.rawValue,
             NSNotification.Name.UIApplicationSignificantTimeChange.rawValue]
+        // -- Start AddObserver --
+        self.reAddObserver()
     }
     
     deinit {
         DbNotification.remove(self)
     }
+    
+    // MARK: - Functions
     
     func addExtendRunMode(arrMode: Array<String>) -> Void {
         self.arrSupportMode.append(contentsOf: arrMode)
@@ -135,6 +134,7 @@ class DbEventNotification {
         self.reAddObserver()
     }
     
+    @discardableResult
     func subscribeEvent(_ event: DbEventObject) -> DbEventRegisterID {
         // -- Add --
         self.arrEventRegisted.append(event);
@@ -193,7 +193,7 @@ class DbEventNotification {
     private func reAddObserver() -> Void {
         // -- Remove all Notify --
         DbNotification.remove(self)
-        
+        // -- Define all NSNotification --
         for mode: String in self.arrSupportMode {
             DbNotification.add(mode, observer: self, selector: #selector(self.processNotificationCenter), object: nil)
         }
