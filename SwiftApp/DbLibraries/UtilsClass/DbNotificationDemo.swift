@@ -13,7 +13,7 @@ class DbNotificationDemo: DbEventProtocol {
         
     var eventID: DbEventRegisterID = 0
     
-    func startEvent(_ notification: DbNotification) -> Void {
+    func startEvent(_ notification: Notification) -> Void {
         
         if notification.name == NSNotification.Name.UIApplicationDidEnterBackground {
             print("DbNotificationDemo : ==> UIApplicationDidEnterBackground")
@@ -28,8 +28,8 @@ class DbNotificationDemo: DbEventProtocol {
     }
     
     func eventRunBackgroundMode() -> [String] {
-        return [NSNotification.Name.UIApplicationDidEnterBackground.rawValue,
-                NSNotification.Name.UIApplicationDidBecomeActive.rawValue]
+        return [Notification.Name.UIApplicationDidEnterBackground.rawValue,
+                Notification.Name.UIApplicationDidBecomeActive.rawValue]
     }
     
 //    func eventPriority() -> Int {

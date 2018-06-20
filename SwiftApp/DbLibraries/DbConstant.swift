@@ -20,15 +20,15 @@ import Foundation
 //#define NOTIFY_VCL_WILL_DISAPPEAR              @"NOTIFY_VCL_WILL_DISAPPEAR"
 //#define NOTIFY_VCL_DID_DISAPPEAR               @"NOTIFY_VCL_DID_DISAPPEAR"
 
-public enum DbNotify : String {
-    case ServerPushMessage = "ServerPushMessage"
-    case ReachableNetwork = "ReachableNetwork"
-    case VclDidLoad = "VclDidLoad"
-    case VclWillAppear = "VclWillAppear"
-    case VclDidAppear = "VclDidAppear"
-    case VclWillDisAppear = "VclWillDisAppear"
-    case VclDidDisAppear = "VclDidDisAppear"
-}
+//public enum DbNotify : String {
+//    case ServerPushMessage = "ServerPushMessage"
+//    case ReachableNetwork = "ReachableNetwork"
+//    case VclDidLoad = "VclDidLoad"
+//    case VclWillAppear = "VclWillAppear"
+//    case VclDidAppear = "VclDidAppear"
+//    case VclWillDisAppear = "VclWillDisAppear"
+//    case VclDidDisAppear = "VclDidDisAppear"
+//}
 
 // -- Xu ly tra ve cua cac UIView action DbHandleViewAction(owner, id, params, error) --
 public typealias DbHandleViewAction = (AnyObject, Int, [String:AnyObject]?, Error?) -> ()

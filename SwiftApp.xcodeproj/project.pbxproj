@@ -120,7 +120,7 @@
 		BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF181F7102D80028425E /* ToDoCell.swift */; };
 		BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CF191F7102D80028425E /* ToDoCell.xib */; };
 		BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */; };
-		BBD8343C20D7D36E008259D8 /* DbNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8343B20D7D36E008259D8 /* DbNotification.swift */; };
+		BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */; };
 		BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E8E20119C4F0089DD32 /* DbObject.swift */; };
 		BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E902011B18C0089DD32 /* DbSession.swift */; };
 		BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9B9F207332D000217030 /* DbPropzyResponse.swift */; };
@@ -279,7 +279,7 @@
 		BBD3CF181F7102D80028425E /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		BBD3CF191F7102D80028425E /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
 		BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUserDefault.swift; sourceTree = "<group>"; };
-		BBD8343B20D7D36E008259D8 /* DbNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotification.swift; sourceTree = "<group>"; };
+		BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEventNotification.swift; sourceTree = "<group>"; };
 		BBDD5E8E20119C4F0089DD32 /* DbObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbObject.swift; sourceTree = "<group>"; };
 		BBDD5E902011B18C0089DD32 /* DbSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSession.swift; sourceTree = "<group>"; };
 		BBDD9B9F207332D000217030 /* DbPropzyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPropzyResponse.swift; sourceTree = "<group>"; };
@@ -686,7 +686,7 @@
 				BBE88C5B20216C5E0044F661 /* DbDispatch.swift */,
 				BBA3D1B0206CA36400CD2F0F /* DbOperator.swift */,
 				BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */,
-				BBD8343B20D7D36E008259D8 /* DbNotification.swift */,
+				BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */,
 				BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */,
 			);
 			path = UtilsClass;
@@ -1017,7 +1017,7 @@
 				BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
-				BBD8343C20D7D36E008259D8 /* DbNotification.swift in Sources */,
+				BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,

@@ -57,12 +57,14 @@ class DbViewController: UIViewController
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        DbUtils.postNotification(DbNotify.VclDidLoad.rawValue, object: self)
-        DbNotification.post(DbNotification.Name.MyViewControllerDidLoad.rawValue, object: self)
+//        DbUtils.postNotification(DbNotify.VclDidLoad.rawValue, object: self)
+        Notification.post(Notification.Name.MyViewControllerDidLoad.rawValue, object: self)
         
         // -- Define push notification --
-        DbUtils.removeNotification(self, name: DbNotify.ReachableNetwork.rawValue)
-        DbUtils.addNotification(DbNotify.ReachableNetwork.rawValue, observer: self, selector: Selector(("loadDataFromServer")), object: nil)
+        Notification.remove(self, name: Notification.Name.MyApplicationReachableNetwork.rawValue)
+        Notification.add(Notification.Name.MyApplicationReachableNetwork.rawValue, observer: self, selector: Selector(("loadDataFromServer")), object: nil)
+//        DbUtils.removeNotification(self, name: DbNotify.ReachableNetwork.rawValue)
+//        DbUtils.addNotification(DbNotify.ReachableNetwork.rawValue, observer: self, selector: Selector(("loadDataFromServer")), object: nil)
         
         // -- Show loading first in UITableView --
         self.isLoadingDataSource = true

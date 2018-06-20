@@ -8,10 +8,7 @@
 
 import Foundation
 
-typealias DbEventRegisterID = Int
-typealias DbNotification = Notification
-
-extension DbNotification.Name {
+extension Notification.Name {
     static let MyApplicationServerPushMessage = Notification.Name(rawValue: "MyApplicationServerPushMessage")
     static let MyApplicationReachableNetwork = Notification.Name(rawValue: "MyApplicationReachableNetwork")
     
@@ -22,7 +19,7 @@ extension DbNotification.Name {
     static let MyViewControllerDidDisAppear = Notification.Name(rawValue: "MyViewControllerDidDisAppear")
 }
 
-extension DbNotification {
+extension Notification {
     static func remove(_ sender: AnyObject) {
         NotificationCenter.default.removeObserver(sender)
     }
@@ -54,19 +51,19 @@ extension DbNotification {
 //    @objc optional func eventGroup() -> String
 //}
 
+typealias DbEventRegisterID = Int
+
 // -- Protocol for AnyObject --
 protocol DbEventProtocol : AnyObject {
     
     var eventID: DbEventRegisterID { get set }      //read-write
     
-    func startEvent(_ notification: DbNotification) -> Void
+    func startEvent(_ notification: Notification) -> Void
     func cancelEvent() -> Void;
     func eventRunBackgroundMode() -> [String]
     
     func eventPriority() -> Int
     func eventGroup() -> String
-
-    
 }
 
 // -- Define for optional --
@@ -77,7 +74,7 @@ extension DbEventProtocol {
     }
     
     func eventGroup() -> String {
-        return "USER"
+        return DbEventNotification.Group.UserEvent.rawValue
     }
 }
 
@@ -98,6 +95,11 @@ class DbEventIDGenerator {
 }
 
 class DbEventNotification {
+    
+    enum Group : String {
+        case SystemEvent = "SystemEvent"
+        case UserEvent = "UserEvent"
+    }
     
     // MARK: - Properties
     static let shared = DbEventNotification()
@@ -123,7 +125,7 @@ class DbEventNotification {
     }
     
     deinit {
-        DbNotification.remove(self)
+        Notification.remove(self)
     }
     
     // MARK: - Functions
@@ -192,15 +194,14 @@ class DbEventNotification {
     
     private func reAddObserver() -> Void {
         // -- Remove all Notify --
-        DbNotification.remove(self)
+        Notification.remove(self)
         // -- Define all NSNotification --
         for mode: String in self.arrSupportMode {
-            DbNotification.add(mode, observer: self, selector: #selector(self.processNotificationCenter), object: nil)
+            Notification.add(mode, observer: self, selector: #selector(self.processNotificationCenter), object: nil)
         }
     }
     
-    @objc private func processNotificationCenter(notification: DbNotification) -> Void {
-        
+    @objc private func processNotificationCenter(notification: Notification) -> Void {
         for obj: DbEventObject in self.arrEventRegisted {
             if obj.eventRunBackgroundMode().contains(notification.name.rawValue) {
                 obj.startEvent(notification)
