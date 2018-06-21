@@ -9,10 +9,9 @@
 import Foundation
 import ObjectMapper
 
-let APP_SESSION_KEY: String! = "APP_SESSION_KEY"
-let DEVICE_PUSH_TOKEN: String! = "DEVICE_PUSH_TOKEN"
-let PUSH_NOTIFY_INFO_TOKEN: String! = "PUSH_NOTIFY_INFO_TOKEN"
-
+let DB_APP_SESSION_KEY: String! = "DB_APP_SESSION_KEY"
+let DB_DEVICE_PUSH_TOKEN: String! = "DB_DEVICE_PUSH_TOKEN"
+let DB_PUSH_NOTIFY_INFO_TOKEN: String! = "DB_PUSH_NOTIFY_INFO_TOKEN"
 
 class DbSession: DbObject {
     
@@ -28,16 +27,12 @@ class DbSession: DbObject {
     
     // MARK: - Push Notify Info
     // MARK: -
-
     func getPushNotifyInfo() -> [String: AnyObject]? {
-        return DbUserDefault.getObject(key: PUSH_NOTIFY_INFO_TOKEN) as? [String: AnyObject]
-        // return self.getUserDefaultsData(forKey: PUSH_NOTIFY_INFO_TOKEN) as? [String: AnyObject]
+        return UserDefaults.getDictionary(key: DB_PUSH_NOTIFY_INFO_TOKEN)
     }
     
     func setPushNotifyInfo(_ params: [String: AnyObject]) {
-        // DbUserDefault.setDictionary(key: PUSH_NOTIFY_INFO_TOKEN, value: params)
-        DbUserDefault.setObject(key: PUSH_NOTIFY_INFO_TOKEN, value: params)
-        //self.setUserDefaultsData(object: params, forKey: PUSH_NOTIFY_INFO_TOKEN)
+        UserDefaults.setObject(key: DB_PUSH_NOTIFY_INFO_TOKEN, value: params)
     }
     
     // MARK: - Push Notification Token
@@ -46,30 +41,29 @@ class DbSession: DbObject {
         if Db.isSimulator() {
             return "notuser659ef7634ff919e6a866aab41b7bc60039339ac8cd85b90c888fb"
         }
-        return DbUserDefault.getString(key: DEVICE_PUSH_TOKEN)
-        //return self.getUserDefaultsData(forKey: DEVICE_PUSH_TOKEN) as? String
+        return UserDefaults.getString(key: DB_DEVICE_PUSH_TOKEN)
     }
 
     func setDevicePushNotificationToken(_ token: String) {
-        self.setUserDefaultsData(object: token, forKey: DEVICE_PUSH_TOKEN)
+        UserDefaults.setObject(key: DB_DEVICE_PUSH_TOKEN, value: token)
     }
 
     // MARK: - Data From Last Session
     // MARK: -
     func reloadDataFromLastSession() {
-        if let strJson = self.getUserDefaultsData(forKey: APP_SESSION_KEY) as? String {
+        if let strJson = UserDefaults.getString(key: DB_APP_SESSION_KEY) {
             _ = Mapper().map(JSONString: strJson, toObject: self)
         }
     }
     
     func saveDataFromLastSession() {
         let strJson = self.toJSONString()
-        self.setUserDefaultsData(object: strJson!, forKey: APP_SESSION_KEY)
+        UserDefaults.setObject(key: DB_APP_SESSION_KEY, value: strJson!)
     }
     
     func clearAllSessionData() {
         // -- Clear data --
-        self.removeUserDefaultsData(forKey: APP_SESSION_KEY)
+        UserDefaults.remove(key: DB_APP_SESSION_KEY)
     }
     
     override init() {

@@ -47,12 +47,12 @@ public extension UserDefaults {
         return UserDefaults.standard.data(forKey: key)
     }
     
-    static func getArray(key: String) -> [Any]? {
-        return UserDefaults.standard.array(forKey: key)
+    static func getArray(key: String) -> [AnyObject]? {
+        return UserDefaults.standard.array(forKey: key) as [AnyObject]?
     }
     
-    static func getDictionary(key: String) -> [String: Any]? {
-        return UserDefaults.standard.dictionary(forKey: key)
+    static func getDictionary(key: String) -> [String: AnyObject]? {
+        return UserDefaults.standard.dictionary(forKey: key) as [String : AnyObject]?
     }
     
     //-------------------------------------------------------------------------------------------
@@ -101,14 +101,14 @@ public extension UserDefaults {
         return getData(key: key)
     }
     
-    static func getArray(key: String, defaultValue: [Any]) -> [Any]? {
+    static func getArray(key: String, defaultValue: [AnyObject]) -> [AnyObject]? {
         if getObject(key: key) == nil {
             return defaultValue
         }
         return getArray(key: key)
     }
     
-    static func getDictionary(key: String, defaultValue: [String: Any]) -> [String: Any]? {
+    static func getDictionary(key: String, defaultValue: [String: AnyObject]) -> [String: AnyObject]? {
         if getObject(key: key) == nil {
             return defaultValue
         }

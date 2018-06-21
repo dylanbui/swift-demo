@@ -157,32 +157,6 @@ extension Db // => Device functions
     }
 }
 
-// MARK: - Notification
-// MARK: -
-
-//public enum DbNotification {
-//    static func remove(_ sender: AnyObject) {
-//        NotificationCenter.default.removeObserver(sender)
-//    }
-//    
-//    static func remove(_ sender: AnyObject, name: String) {
-//        NotificationCenter.default.removeObserver(sender, name: NSNotification.Name(rawValue: name), object: nil)
-//    }
-//    
-//    static func post(_ name: String, object: AnyObject) {
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: nil)
-//    }
-//    
-//    static func post(_ name: String, object: AnyObject, userInfo: [AnyHashable:Any]) {
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: userInfo)
-//    }
-//    
-//    static func add(_ name: String, observer: AnyObject, selector: Selector, object: Any?) {
-//        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
-//    }
-//}
-
-
 // MARK: - Macro functions
 // MARK: -
 

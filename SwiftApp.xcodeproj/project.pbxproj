@@ -86,6 +86,7 @@
 		BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */; };
 		BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E701F717DD20011FDE6 /* DemoData.plist */; };
 		BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */; };
+		BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */; };
 		BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A44206DDE9500B11C7B /* FontAwesome.swift */; };
 		BBC38A50206DDE9500B11C7B /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A45206DDE9500B11C7B /* FontLoader.swift */; };
 		BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A46206DDE9500B11C7B /* Iconic.swift */; };
@@ -241,6 +242,7 @@
 		BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPlistManager.swift; sourceTree = "<group>"; };
 		BBC02E701F717DD20011FDE6 /* DemoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DemoData.plist; sourceTree = "<group>"; };
 		BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUserDefaultsExtensions.swift; sourceTree = "<group>"; };
+		BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationExtensions.swift; sourceTree = "<group>"; };
 		BBC38A44206DDE9500B11C7B /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
 		BBC38A45206DDE9500B11C7B /* FontLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
 		BBC38A46206DDE9500B11C7B /* Iconic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iconic.swift; sourceTree = "<group>"; };
@@ -493,6 +495,8 @@
 			isa = PBXGroup;
 			children = (
 				BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */,
+				BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */,
+				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
 			);
 			path = UtilsExtension;
 			sourceTree = "<group>";
@@ -719,7 +723,6 @@
 			children = (
 				BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */,
 				BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */,
-				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
 				BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */,
 				BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */,
 				BB34D82B201E35490048F2B8 /* DbStdlibExtensions.swift */,
@@ -1062,6 +1065,7 @@
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
+				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,

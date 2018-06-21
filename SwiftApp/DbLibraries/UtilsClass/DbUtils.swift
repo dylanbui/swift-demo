@@ -51,30 +51,30 @@ class DbUtils: NSObject
     // MARK: - Notification
     // MARK: -
     
-    static func removeNotification(_ sender: AnyObject)
-    {
-        NotificationCenter.default.removeObserver(sender)
-    }
-    
-    static func removeNotification(_ sender: AnyObject, name: String)
-    {
-        NotificationCenter.default.removeObserver(sender, name: NSNotification.Name(rawValue: name), object: nil)
-    }
-    
-    static func postNotification(_ name: String, object: AnyObject)
-    {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: nil)
-    }
-    
-    static func postNotification(_ name: String, object: AnyObject, userInfo: [AnyHashable:Any])
-    {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: userInfo)
-    }
-    
-    static func addNotification(_ name: String, observer: AnyObject, selector: Selector, object: Any?)
-    {
-        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
-    }
+//    static func removeNotification(_ sender: AnyObject)
+//    {
+//        NotificationCenter.default.removeObserver(sender)
+//    }
+//
+//    static func removeNotification(_ sender: AnyObject, name: String)
+//    {
+//        NotificationCenter.default.removeObserver(sender, name: NSNotification.Name(rawValue: name), object: nil)
+//    }
+//
+//    static func postNotification(_ name: String, object: AnyObject)
+//    {
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: nil)
+//    }
+//
+//    static func postNotification(_ name: String, object: AnyObject, userInfo: [AnyHashable:Any])
+//    {
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: userInfo)
+//    }
+//
+//    static func addNotification(_ name: String, observer: AnyObject, selector: Selector, object: Any?)
+//    {
+//        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
+//    }
     
     
     // MARK: - Validate

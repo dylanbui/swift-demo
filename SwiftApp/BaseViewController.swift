@@ -48,9 +48,9 @@ class BaseViewController: DbViewController
     }
     
     deinit {
-        DbUtils.removeNotification(self)
+//        DbUtils.removeNotification(self)
+        Notification.remove(self)
     }
-   
     
 //    override func onReturn(params: [String : AnyObject], callerId: Int) {
 //        
