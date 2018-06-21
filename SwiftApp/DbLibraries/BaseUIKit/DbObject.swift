@@ -29,19 +29,19 @@ class DbObject: Mappable {
         
     }
     
-    func setUserDefaultsData(object obj: Any, forKey key: String) {
-        UserDefaults.standard.setValue(obj, forKey: key)
-        UserDefaults.standard.synchronize()
-    }
-    
-    func getUserDefaultsData(forKey key: String) -> Any? {
-
-        return UserDefaults.standard.object(forKey: key)
-    }
-    
-    func removeUserDefaultsData(forKey key: String) {
-        UserDefaults.standard.removeObject(forKey: key)
-    }
+//    func setUserDefaultsData(object obj: Any, forKey key: String) {
+//        UserDefaults.standard.setValue(obj, forKey: key)
+//        UserDefaults.standard.synchronize()
+//    }
+//    
+//    func getUserDefaultsData(forKey key: String) -> Any? {
+//
+//        return UserDefaults.standard.object(forKey: key)
+//    }
+//    
+//    func removeUserDefaultsData(forKey key: String) {
+//        UserDefaults.standard.removeObject(forKey: key)
+//    }
 
     
     // Mappable

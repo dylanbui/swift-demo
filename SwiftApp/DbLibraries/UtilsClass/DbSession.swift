@@ -30,11 +30,14 @@ class DbSession: DbObject {
     // MARK: -
 
     func getPushNotifyInfo() -> [String: AnyObject]? {
-        return self.getUserDefaultsData(forKey: PUSH_NOTIFY_INFO_TOKEN) as? [String: AnyObject]
+        return DbUserDefault.getObject(key: PUSH_NOTIFY_INFO_TOKEN) as? [String: AnyObject]
+        // return self.getUserDefaultsData(forKey: PUSH_NOTIFY_INFO_TOKEN) as? [String: AnyObject]
     }
     
     func setPushNotifyInfo(_ params: [String: AnyObject]) {
-        self.setUserDefaultsData(object: params, forKey: PUSH_NOTIFY_INFO_TOKEN)
+        // DbUserDefault.setDictionary(key: PUSH_NOTIFY_INFO_TOKEN, value: params)
+        DbUserDefault.setObject(key: PUSH_NOTIFY_INFO_TOKEN, value: params)
+        //self.setUserDefaultsData(object: params, forKey: PUSH_NOTIFY_INFO_TOKEN)
     }
     
     // MARK: - Push Notification Token
@@ -43,7 +46,8 @@ class DbSession: DbObject {
         if Db.isSimulator() {
             return "notuser659ef7634ff919e6a866aab41b7bc60039339ac8cd85b90c888fb"
         }
-        return self.getUserDefaultsData(forKey: DEVICE_PUSH_TOKEN) as? String
+        return DbUserDefault.getString(key: DEVICE_PUSH_TOKEN)
+        //return self.getUserDefaultsData(forKey: DEVICE_PUSH_TOKEN) as? String
     }
 
     func setDevicePushNotificationToken(_ token: String) {

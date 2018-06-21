@@ -85,6 +85,7 @@
 		BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */; };
 		BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */; };
 		BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E701F717DD20011FDE6 /* DemoData.plist */; };
+		BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */; };
 		BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A44206DDE9500B11C7B /* FontAwesome.swift */; };
 		BBC38A50206DDE9500B11C7B /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A45206DDE9500B11C7B /* FontLoader.swift */; };
 		BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A46206DDE9500B11C7B /* Iconic.swift */; };
@@ -239,6 +240,7 @@
 		BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPlistManager.swift; sourceTree = "<group>"; };
 		BBC02E701F717DD20011FDE6 /* DemoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DemoData.plist; sourceTree = "<group>"; };
+		BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		BBC38A44206DDE9500B11C7B /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
 		BBC38A45206DDE9500B11C7B /* FontLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
 		BBC38A46206DDE9500B11C7B /* Iconic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iconic.swift; sourceTree = "<group>"; };
@@ -370,7 +372,8 @@
 				BBE813EC2016EB0600B21B1F /* BaseUIKit */,
 				BB2FA67420159BF100590C94 /* CustomViews */,
 				BBE88C5A20216BFB0044F661 /* UtilsClass */,
-				BBEC9E442012611E00FFF182 /* UtilsExtension */,
+				BBC1114720DB4B4F002B2293 /* UtilsExtension */,
+				BBEC9E442012611E00FFF182 /* UtilsExtension-SeRemoveDungChuan */,
 				BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */,
 			);
 			path = DbLibraries;
@@ -484,6 +487,14 @@
 				BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		BBC1114720DB4B4F002B2293 /* UtilsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */,
+			);
+			path = UtilsExtension;
 			sourceTree = "<group>";
 		};
 		BBC38A43206DDE9500B11C7B /* SwiftIconFont */ = {
@@ -703,7 +714,7 @@
 			path = DbConnection;
 			sourceTree = "<group>";
 		};
-		BBEC9E442012611E00FFF182 /* UtilsExtension */ = {
+		BBEC9E442012611E00FFF182 /* UtilsExtension-SeRemoveDungChuan */ = {
 			isa = PBXGroup;
 			children = (
 				BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */,
@@ -716,7 +727,7 @@
 				BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */,
 				BBA69EA9202098400028603F /* DbUIKitExtensions.swift */,
 			);
-			path = UtilsExtension;
+			path = "UtilsExtension-SeRemoveDungChuan";
 			sourceTree = "<group>";
 		};
 		C18E4305809E59F8E17DBC84 /* Pods */ = {
@@ -1016,6 +1027,7 @@
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
+				BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */,
 				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
 				BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
