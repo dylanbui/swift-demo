@@ -17,7 +17,7 @@ class AppDelegate: DbAppDelegate {
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
         // Override point for customization after application launch.
-        IQKeyboardManager.sharedManager().enable = true
+        IQKeyboardManager.shared.enable = true
         
         // https://github.com/rebeloper/SwiftyPlistManager
         // https://rebeloper.com/read-write-plist-file-swift/
