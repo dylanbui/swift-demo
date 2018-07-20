@@ -15,7 +15,13 @@ target 'SwiftApp' do
     pod 'DZNEmptyDataSet', '1.8.1'
     pod 'IQKeyboardManagerSwift', '6.0.4'
     pod 'SnapKit', '4.0.0' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
+    
+    # Bo 3 di chung voi nhau
     pod 'ObjectMapper', '3.3.0'
+    pod 'RealmSwift', '3.7.4'
+    # https://github.com/jakenberg/ObjectMapper-Realm
+    pod 'ObjectMapper+Realm', '0.6'
+
     # Integrate SwifterSwift extensions only (Alway update new version), current version '4.3.0'
     #pod 'SwifterSwift' # khong su dung duoc, ko bit tai sao 21/06/2018
 #    pod 'SwifterSwift/SwiftStdlib'
@@ -27,6 +33,8 @@ target 'SwiftApp' do
     #pod 'AFNetworking', '3.1.0' # Remove, replace by Alamofire
     
     # pod 'LGButton', tot manh nhung chi cho ios > 9.0
+    
+    pod 'SwiftLocation', '~> 3.2.3' # Dung thang nay de quan ly location
 
     # Libraries needed Objective C
     pod 'APNumberPad', '1.2.1' # Use for DecimalTextField

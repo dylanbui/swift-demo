@@ -7,6 +7,8 @@
 //
 
 import UIKit
+
+import RealmSwift
 import IQKeyboardManagerSwift
 
 @UIApplicationMain
@@ -15,6 +17,20 @@ class AppDelegate: DbAppDelegate {
 
 
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        let config = Realm.Configuration(
+            
+            schemaVersion: 2,  //Increment this each time your schema changes
+            migrationBlock: { migration, oldSchemaVersion in
+                
+                if (oldSchemaVersion < 2) {
+                    //If you need to transfer any data
+                    //(in your case you don't right now) you will transfer here
+                    print("If you need to transfer any data")
+                }
+        })
+        
+        Realm.Configuration.defaultConfiguration = config
         
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
