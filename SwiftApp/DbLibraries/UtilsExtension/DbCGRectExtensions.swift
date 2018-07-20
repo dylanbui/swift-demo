@@ -14,18 +14,21 @@ extension CGPoint {
     
     /// Creates a point with unnamed arguments.
     public init(_ x: CGFloat, _ y: CGFloat) {
+        self.init()
         self.x = x
         self.y = y
     }
     
     /// Creates a point with unnamed arguments.
     public init(_ x: Int, _ y: Int) {
+        self.init()
         self.x = CGFloat(x)
         self.y = CGFloat(y)
     }
     
     /// Creates a point with unnamed arguments.
     public init(_ x: Double, _ y: Double) {
+        self.init()
         self.x = CGFloat(x)
         self.y = CGFloat(y)
     }
@@ -37,18 +40,21 @@ extension CGSize {
     
     /// Creates a size with unnamed arguments.
     public init(_ width: CGFloat, _ height: CGFloat) {
+        self.init()
         self.width = width
         self.height = height
     }
     
     /// Creates a size with unnamed arguments.
     public init(_ width: Int, _ height: Int) {
+        self.init()
         self.width = CGFloat(width)
         self.height = CGFloat(height)
     }
 
     /// Creates a size with unnamed arguments.
     public init(_ width: Double, _ height: Double) {
+        self.init()
         self.width = CGFloat(width)
         self.height = CGFloat(height)
     }
@@ -68,24 +74,28 @@ extension CGRect {
     
     /// Creates a rect with unnamed arguments.
     public init(_ origin: CGPoint, _ size: CGSize) {
+        self.init()
         self.origin = origin
         self.size = size
     }
     
     /// Creates a rect with unnamed arguments.
     public init(_ x: CGFloat, _ y: CGFloat, _ width: CGFloat, _ height: CGFloat) {
+        self.init()
         self.origin = CGPoint(x: x, y: y)
         self.size = CGSize(width: width, height: height)
     }
     
     /// Creates a rect with unnamed arguments.
     public init(_ x: Int, _ y: Int, _ width: Int, _ height: Int) {
+        self.init()
         self.origin = CGPoint(x: x, y: y)
         self.size = CGSize(width: width, height: height)
     }
     
     /// Creates a rect with unnamed arguments.
     public init(_ x: Double, _ y: Double, _ width: Double, _ height: Double) {
+        self.init()
         self.origin = CGPoint(x: x, y: y)
         self.size = CGSize(width: width, height: height)
     }
