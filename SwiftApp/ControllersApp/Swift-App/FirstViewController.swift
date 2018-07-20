@@ -93,7 +93,7 @@ class FirstViewController: BaseViewController {
         uploadData.mimeType = "image/jpeg"
         uploadData.fileData = UIImageJPEGRepresentation(image, 1.0);
         
-        let requestUpload = DbUploadRequest(requestUrl: "", uploadData: uploadData)
+        _ = DbUploadRequest(requestUrl: "", uploadData: uploadData)
         // -- Use for JAVA Server --
         //    uploadData.fileName = @"avatar_14.png";
         //    uploadData.mimeType = @"image/png";

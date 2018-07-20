@@ -13,11 +13,8 @@
 		BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10D3F31F79225100B7DF4B /* DbActionView.swift */; };
 		BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D43200BBFAA005514C3 /* DbConstant.swift */; };
 		BB197D46200BC051005514C3 /* DbUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D45200BC051005514C3 /* DbUtils.swift */; };
-		BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */; };
-		BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */; };
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
 		BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19FAF420441A6B005F2669 /* Reachability.swift */; };
-		BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */; };
 		BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */; };
 		BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67220158E7700590C94 /* DbPopupView.swift */; };
 		BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */; };
@@ -25,12 +22,18 @@
 		BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA6792015D37B00590C94 /* DbLoadableView.swift */; };
 		BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
-		BB34D82C201E35490048F2B8 /* DbStdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB34D82B201E35490048F2B8 /* DbStdlibExtensions.swift */; };
 		BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB547319201789300055CAD9 /* SecondViewController.swift */; };
 		BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731A201789300055CAD9 /* SecondViewController.xib */; };
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
 		BB547320201789460055CAD9 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731E201789460055CAD9 /* FirstViewController.xib */; };
 		BB581929206E432500E48DA4 /* DbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB581928206E432500E48DA4 /* DbButton.swift */; };
+		BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC020DBADCE0057F0CF /* DbUIKitExtensions.swift */; };
+		BB626EC820DBADCE0057F0CF /* DbDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC120DBADCE0057F0CF /* DbDictionaryExtensions.swift */; };
+		BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC220DBADCE0057F0CF /* DbArrayExtensions.swift */; };
+		BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC320DBADCE0057F0CF /* DbDateExtensions.swift */; };
+		BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC420DBADCE0057F0CF /* DbStdlibExtensions.swift */; };
+		BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */; };
+		BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */; };
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB79169020190264007A83E6 /* DbMediaPickerController.swift */; };
 		BB7F3038203E857900185366 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302A203E857900185366 /* demo_1.jpg */; };
@@ -54,8 +57,6 @@
 		BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */; };
 		BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */; };
 		BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4D64A2028A44B0013F204 /* DbConnection.swift */; };
-		BBA69EA820208EB20028603F /* DbUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */; };
-		BBA69EAA202098400028603F /* DbUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA69EA9202098400028603F /* DbUIKitExtensions.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
 		BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569D21F7B5B870014A7A9 /* TaskDetailViewController.swift */; };
@@ -85,6 +86,9 @@
 		BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */; };
 		BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */; };
 		BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E701F717DD20011FDE6 /* DemoData.plist */; };
+		BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */; };
+		BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */; };
+		BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114A20DB901D002B2293 /* DbCGRectExtensions.swift */; };
 		BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A44206DDE9500B11C7B /* FontAwesome.swift */; };
 		BBC38A50206DDE9500B11C7B /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A45206DDE9500B11C7B /* FontLoader.swift */; };
 		BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A46206DDE9500B11C7B /* Iconic.swift */; };
@@ -140,8 +144,6 @@
 		BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C5B20216C5E0044F661 /* DbDispatch.swift */; };
 		BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C772021C4BD0044F661 /* DbRequest.swift */; };
 		BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C792021DFD40044F661 /* DbResponse.swift */; };
-		BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */; };
-		BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */; };
 		BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */; };
 		BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FC200D243700718E95 /* DbViewController.swift */; };
 		E30D5F2105DB6D031E1304FB /* Pods_SwiftAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */; };
@@ -167,11 +169,8 @@
 		BB10D3F31F79225100B7DF4B /* DbActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbActionView.swift; sourceTree = "<group>"; };
 		BB197D43200BBFAA005514C3 /* DbConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConstant.swift; sourceTree = "<group>"; };
 		BB197D45200BC051005514C3 /* DbUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUtils.swift; sourceTree = "<group>"; };
-		BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
-		BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDictionaryExtensions.swift; sourceTree = "<group>"; };
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		BB19FAF420441A6B005F2669 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
-		BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbCGRectExtensions.swift; sourceTree = "<group>"; };
 		BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
 		BB2FA67220158E7700590C94 /* DbPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPopupView.swift; sourceTree = "<group>"; };
 		BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpPostDetailView.swift; sourceTree = "<group>"; };
@@ -179,12 +178,18 @@
 		BB2FA6792015D37B00590C94 /* DbLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLoadableView.swift; sourceTree = "<group>"; };
 		BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		BB34D82B201E35490048F2B8 /* DbStdlibExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStdlibExtensions.swift; sourceTree = "<group>"; };
 		BB547319201789300055CAD9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		BB54731A201789300055CAD9 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BB54731E201789460055CAD9 /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		BB581928206E432500E48DA4 /* DbButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbButton.swift; sourceTree = "<group>"; };
+		BB626EC020DBADCE0057F0CF /* DbUIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIKitExtensions.swift; sourceTree = "<group>"; };
+		BB626EC120DBADCE0057F0CF /* DbDictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbDictionaryExtensions.swift; sourceTree = "<group>"; };
+		BB626EC220DBADCE0057F0CF /* DbArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbArrayExtensions.swift; sourceTree = "<group>"; };
+		BB626EC320DBADCE0057F0CF /* DbDateExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbDateExtensions.swift; sourceTree = "<group>"; };
+		BB626EC420DBADCE0057F0CF /* DbStdlibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStdlibExtensions.swift; sourceTree = "<group>"; };
+		BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIViewExtensions.swift; sourceTree = "<group>"; };
+		BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BB79169020190264007A83E6 /* DbMediaPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMediaPickerController.swift; sourceTree = "<group>"; };
 		BB7F302A203E857900185366 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
@@ -208,8 +213,6 @@
 		BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTextField.swift; sourceTree = "<group>"; };
 		BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSelectorActionSheet.swift; sourceTree = "<group>"; };
 		BBA4D64A2028A44B0013F204 /* DbConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConnection.swift; sourceTree = "<group>"; };
-		BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUIViewExtensions.swift; sourceTree = "<group>"; };
-		BBA69EA9202098400028603F /* DbUIKitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUIKitExtensions.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BBB569D21F7B5B870014A7A9 /* TaskDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailViewController.swift; sourceTree = "<group>"; };
@@ -239,6 +242,9 @@
 		BBC02E601F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwiftyPlistManager.swift; sourceTree = "<group>"; };
 		BBC02E701F717DD20011FDE6 /* DemoData.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = DemoData.plist; sourceTree = "<group>"; };
+		BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUserDefaultsExtensions.swift; sourceTree = "<group>"; };
+		BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationExtensions.swift; sourceTree = "<group>"; };
+		BBC1114A20DB901D002B2293 /* DbCGRectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbCGRectExtensions.swift; sourceTree = "<group>"; };
 		BBC38A44206DDE9500B11C7B /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
 		BBC38A45206DDE9500B11C7B /* FontLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
 		BBC38A46206DDE9500B11C7B /* Iconic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iconic.swift; sourceTree = "<group>"; };
@@ -300,8 +306,6 @@
 		BBE88C5B20216C5E0044F661 /* DbDispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDispatch.swift; sourceTree = "<group>"; };
 		BBE88C772021C4BD0044F661 /* DbRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRequest.swift; sourceTree = "<group>"; };
 		BBE88C792021DFD40044F661 /* DbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
-		BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbArrayExtensions.swift; sourceTree = "<group>"; };
-		BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDateExtensions.swift; sourceTree = "<group>"; };
 		BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAppDelegate.swift; sourceTree = "<group>"; };
 		BBFAA0FC200D243700718E95 /* DbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbViewController.swift; sourceTree = "<group>"; };
 		CEFA6F353D569F5651FF6856 /* Pods-SwiftApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -370,7 +374,7 @@
 				BBE813EC2016EB0600B21B1F /* BaseUIKit */,
 				BB2FA67420159BF100590C94 /* CustomViews */,
 				BBE88C5A20216BFB0044F661 /* UtilsClass */,
-				BBEC9E442012611E00FFF182 /* UtilsExtension */,
+				BBC1114720DB4B4F002B2293 /* UtilsExtension */,
 				BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */,
 			);
 			path = DbLibraries;
@@ -486,6 +490,24 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
+		BBC1114720DB4B4F002B2293 /* UtilsExtension */ = {
+			isa = PBXGroup;
+			children = (
+				BB626EC220DBADCE0057F0CF /* DbArrayExtensions.swift */,
+				BB626EC320DBADCE0057F0CF /* DbDateExtensions.swift */,
+				BB626EC120DBADCE0057F0CF /* DbDictionaryExtensions.swift */,
+				BB626EC420DBADCE0057F0CF /* DbStdlibExtensions.swift */,
+				BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */,
+				BB626EC020DBADCE0057F0CF /* DbUIKitExtensions.swift */,
+				BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */,
+				BBC1114A20DB901D002B2293 /* DbCGRectExtensions.swift */,
+				BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */,
+				BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */,
+				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
+			);
+			path = UtilsExtension;
+			sourceTree = "<group>";
+		};
 		BBC38A43206DDE9500B11C7B /* SwiftIconFont */ = {
 			isa = PBXGroup;
 			children = (
@@ -591,9 +613,9 @@
 		BBDD5E962011F3F70089DD32 /* Demo-App */ = {
 			isa = PBXGroup;
 			children = (
+				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
 				BBD3CF121F70F8480028425E /* DemoTableViewController.swift */,
 				BBD3CF131F70F8480028425E /* DemoTableViewController.xib */,
-				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
 				BBD3CF181F7102D80028425E /* ToDoCell.swift */,
 				BBD3CF191F7102D80028425E /* ToDoCell.xib */,
 				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
@@ -703,22 +725,6 @@
 			path = DbConnection;
 			sourceTree = "<group>";
 		};
-		BBEC9E442012611E00FFF182 /* UtilsExtension */ = {
-			isa = PBXGroup;
-			children = (
-				BB197D47200BC8AE005514C3 /* DbStringExtensions.swift */,
-				BB197D49200BCC61005514C3 /* DbDictionaryExtensions.swift */,
-				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
-				BBEC9E452012644200FFF182 /* DbArrayExtensions.swift */,
-				BBEC9E472012662F00FFF182 /* DbDateExtensions.swift */,
-				BB34D82B201E35490048F2B8 /* DbStdlibExtensions.swift */,
-				BB1E34E6201ECD55008F0679 /* DbCGRectExtensions.swift */,
-				BBA69EA720208EB20028603F /* DbUIViewExtensions.swift */,
-				BBA69EA9202098400028603F /* DbUIKitExtensions.swift */,
-			);
-			path = UtilsExtension;
-			sourceTree = "<group>";
-		};
 		C18E4305809E59F8E17DBC84 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -742,7 +748,6 @@
 				BBD3CEE91F70CFE50028425E /* Frameworks */,
 				BBD3CEEA1F70CFE50028425E /* Resources */,
 				B1335D4C222609F6BB7B0F05 /* [CP] Embed Pods Frameworks */,
-				67704D1E9EF219CC4319BF8D /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -761,8 +766,6 @@
 				BBD3CEFC1F70CFE50028425E /* Sources */,
 				BBD3CEFD1F70CFE50028425E /* Frameworks */,
 				BBD3CEFE1F70CFE50028425E /* Resources */,
-				95A12BF0CEC920308F27F5A0 /* [CP] Embed Pods Frameworks */,
-				BB0F57CE6E63ABC512FF0C28 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -907,22 +910,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		67704D1E9EF219CC4319BF8D /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-resources.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		6AB49EE24354A9656F852DD6 /* [CP] Check Pods Manifest.lock */ = {
@@ -940,22 +928,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		95A12BF0CEC920308F27F5A0 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftAppTests/Pods-SwiftAppTests-frameworks.sh\"\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B1335D4C222609F6BB7B0F05 /* [CP] Embed Pods Frameworks */ = {
@@ -965,42 +938,47 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/APNumberPad/APNumberPad.framework",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
+				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/INTULocationManager/INTULocationManager.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APNumberPad.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INTULocationManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		BB0F57CE6E63ABC512FF0C28 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwiftAppTests/Pods-SwiftAppTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1013,9 +991,10 @@
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
+				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
-				BB1E34E7201ECD55008F0679 /* DbCGRectExtensions.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
+				BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */,
 				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
 				BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
@@ -1025,45 +1004,47 @@
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
-				BB34D82C201E35490048F2B8 /* DbStdlibExtensions.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
-				BB197D48200BC8AE005514C3 /* DbStringExtensions.swift in Sources */,
-				BB197D4A200BCC61005514C3 /* DbDictionaryExtensions.swift in Sources */,
 				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,
+				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
+				BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */,
 				BBC38A50206DDE9500B11C7B /* FontLoader.swift in Sources */,
 				BBE814012017551B00B21B1F /* PhotoGalleryViewController.swift in Sources */,
 				BBA3D1B1206CA36400CD2F0F /* DbOperator.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
+				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
+				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
+				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
+				BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
+				BB626EC820DBADCE0057F0CF /* DbDictionaryExtensions.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
-				BBA69EAA202098400028603F /* DbUIKitExtensions.swift in Sources */,
 				BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */,
+				BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */,
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
 				BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */,
-				BBEC9E482012662F00FFF182 /* DbDateExtensions.swift in Sources */,
-				BBEC9E462012644200FFF182 /* DbArrayExtensions.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */,
@@ -1085,7 +1066,6 @@
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
-				BBA69EA820208EB20028603F /* DbUIViewExtensions.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 				BBC38A56206DDE9500B11C7B /* Octicon.swift in Sources */,
