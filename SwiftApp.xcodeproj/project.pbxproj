@@ -107,6 +107,8 @@
 		BBC38A68206DDEE500B11C7B /* octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC38A60206DDEE500B11C7B /* octicons.ttf */; };
 		BBC38A69206DDEE500B11C7B /* open-iconic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC38A61206DDEE500B11C7B /* open-iconic.ttf */; };
 		BBC38A6A206DDEE500B11C7B /* themify.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC38A62206DDEE500B11C7B /* themify.ttf */; };
+		BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D19B21046E3D007675F9 /* DbRealmManager.swift */; };
+		BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D19D210471F4007675F9 /* DbRealmManagerExtensions.swift */; };
 		BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */; };
 		BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD002802018A39E00293AC8 /* MediaGallery.swift */; };
 		BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */; };
@@ -263,6 +265,8 @@
 		BBC38A60206DDEE500B11C7B /* octicons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = octicons.ttf; sourceTree = "<group>"; };
 		BBC38A61206DDEE500B11C7B /* open-iconic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "open-iconic.ttf"; sourceTree = "<group>"; };
 		BBC38A62206DDEE500B11C7B /* themify.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = themify.ttf; sourceTree = "<group>"; };
+		BBC3D19B21046E3D007675F9 /* DbRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmManager.swift; sourceTree = "<group>"; };
+		BBC3D19D210471F4007675F9 /* DbRealmManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmManagerExtensions.swift; sourceTree = "<group>"; };
 		BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationDemo.swift; sourceTree = "<group>"; };
 		BBD002802018A39E00293AC8 /* MediaGallery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MediaGallery.swift; sourceTree = "<group>"; };
 		BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
@@ -366,6 +370,7 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				BBC3D19A21046E29007675F9 /* DbRealmManager */,
 				BBC38A43206DDE9500B11C7B /* SwiftIconFont */,
 				BBE44769206B75F900ED8CC2 /* ObjC-Libraries */,
 				BBE88C762021C4A80044F661 /* DbConnection */,
@@ -539,6 +544,15 @@
 				BBC38A62206DDEE500B11C7B /* themify.ttf */,
 			);
 			path = IconFonts;
+			sourceTree = "<group>";
+		};
+		BBC3D19A21046E29007675F9 /* DbRealmManager */ = {
+			isa = PBXGroup;
+			children = (
+				BBC3D19B21046E3D007675F9 /* DbRealmManager.swift */,
+				BBC3D19D210471F4007675F9 /* DbRealmManagerExtensions.swift */,
+			);
+			path = DbRealmManager;
 			sourceTree = "<group>";
 		};
 		BBD3CEE31F70CFE50028425E = {
@@ -1015,6 +1029,7 @@
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
+				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */,
@@ -1027,6 +1042,7 @@
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
+				BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
