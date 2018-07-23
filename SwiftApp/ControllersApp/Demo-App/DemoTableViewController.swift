@@ -21,13 +21,17 @@ class DemoTableViewController: DbViewController
     let arrItems = ["One", "Two", "Three"]
 //    var toDoItems = [ToDoItem]()
     
-    var realm : Realm!
+//    var realm : Realm!
     
-    var toDoItemsList: Results<ToDoItem> {
-        get {
-            return realm.objects(ToDoItem.self)
-        }
-    }
+//    var toDoItemsList: Results<ToDoItem> {
+//        get {
+//            return realm.objects(ToDoItem.self)
+//        }
+//    }
+
+//    var toDoItemsList:[Object] = []
+    var toDoItemsList:[ToDoItem] = []
+
     
     func realmConfig() -> Void
     {
@@ -35,8 +39,8 @@ class DemoTableViewController: DbViewController
 //        let fileURL = directory.appendingPathComponent(K_DB_NAME)
 //        realm = try! Realm(fileURL: fileURL)
         
-        realm = try! Realm()
-        print("file url \(String(describing: realm.configuration.fileURL))")
+//        realm = try! Realm()
+//        print("file url \(String(describing: realm.configuration.fileURL))")
     }
     
     @objc func call_Method(sender:UIButton!)
@@ -54,18 +58,78 @@ class DemoTableViewController: DbViewController
 //        self.navigationItem.rightBarButtonItem = rightBarButtonItem_1
         self.navigationItem.rightBarButtonItems =  [rightBarButtonItem_1, rightBarButtonItem_2]
         
-        self.realmConfig()
+//        self.realmConfig()
+        
+//        for j in 0..<3 {
+//            let myDog = Student()
+//            myDog.firstName = "firstName \(j)"
+//            myDog.lastName = "lastName \(j)"
+//
+//            myDog.saveWithIncrementID { (newId) in
+//                print("Student = \(newId)")
+//            }
+//        }
+        
+//        let myDog_1 = Student()
+//        myDog_1.id = 11
+//        myDog_1.firstName = "firstName 11"
+//        myDog_1.lastName = "lastName 11"
+        
+//        let serializedUser = Mapper().toJSONString(myDog_1)
+//        print(String(describing: myDog_1.toJSONString(prettyPrint: true)))
+        
+//        myDog_1.save()
+//
+//
+//        let myDog_2 = Student()
+//        myDog_2.id = 12
+//        myDog_2.firstName = "firstName 12"
+//        myDog_2.lastName = "lastName 12"
+//        myDog_2.save()
+//
+//        let myDog_3 = Student()
+//        myDog_3.id = 13
+//        myDog_3.firstName = "firstName 13"
+//        myDog_3.lastName = "lastName 13"
+//        myDog_3.save()
+//
+//        DbUtils.performAfter(delay: 2.0) {
+//            let myDog_4 = Student()
+//            myDog_4.id = 13
+//            myDog_4.firstName = "firstName 13x - gia tri sau khi cap nhat - ne ne"
+//            myDog_4.lastName = "lastName 13 - gia tri sau khi cap nhat"
+//            myDog_4.save()
+//
+//            print("da cap nhat du lieu xong")
+//        }
+        
+        let student = Student()
+        student.load(objectID: "11")
+        print(String(student.id) + " -- " + student.firstName + " -- " + student.lastName)
+
+        DbRealmManager.getAllListOf(T: ToDoItem()) { (results) in
+            self.toDoItemsList = results as! [ToDoItem]
+            self.tblContent.reloadData()
+        }
+        
+//        DbRealmManager.getFetchList(T: ToDoItem.clas, condition: nil) { results in
+//            toDoItemsList = results
+//        }
+        
+        
+
+        
         
 //        for j in 0..<3 {}    
-        for i in 11...15 {
-            let myDog = Dog()
-            myDog.name = "Fido \(i)"
-            myDog.age = i
-            
-            try! realm.write {
-                realm.add(myDog)
-            }
-        }
+//        for i in 11...15 {
+//            let myDog = Dog()
+//            myDog.name = "Fido \(i)"
+//            myDog.age = i
+//
+//            try! realm.write {
+//                realm.add(myDog)
+//            }
+//        }
         
 //        let item = ToDoItem()
 //        item.title = "Todo 1"

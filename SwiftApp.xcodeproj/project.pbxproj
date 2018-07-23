@@ -146,6 +146,8 @@
 		BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C5B20216C5E0044F661 /* DbDispatch.swift */; };
 		BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C772021C4BD0044F661 /* DbRequest.swift */; };
 		BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C792021DFD40044F661 /* DbResponse.swift */; };
+		BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276D21058220007CFFB4 /* DbRealmObject.swift */; };
+		BBF527702105949B007CFFB4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276F2105949B007CFFB4 /* Student.swift */; };
 		BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */; };
 		BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FC200D243700718E95 /* DbViewController.swift */; };
 		E30D5F2105DB6D031E1304FB /* Pods_SwiftAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */; };
@@ -310,6 +312,8 @@
 		BBE88C5B20216C5E0044F661 /* DbDispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDispatch.swift; sourceTree = "<group>"; };
 		BBE88C772021C4BD0044F661 /* DbRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRequest.swift; sourceTree = "<group>"; };
 		BBE88C792021DFD40044F661 /* DbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
+		BBF5276D21058220007CFFB4 /* DbRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmObject.swift; sourceTree = "<group>"; };
+		BBF5276F2105949B007CFFB4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAppDelegate.swift; sourceTree = "<group>"; };
 		BBFAA0FC200D243700718E95 /* DbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbViewController.swift; sourceTree = "<group>"; };
 		CEFA6F353D569F5651FF6856 /* Pods-SwiftApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -551,6 +555,7 @@
 			children = (
 				BBC3D19B21046E3D007675F9 /* DbRealmManager.swift */,
 				BBC3D19D210471F4007675F9 /* DbRealmManagerExtensions.swift */,
+				BBF5276D21058220007CFFB4 /* DbRealmObject.swift */,
 			);
 			path = DbRealmManager;
 			sourceTree = "<group>";
@@ -628,6 +633,7 @@
 			isa = PBXGroup;
 			children = (
 				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
+				BBF5276F2105949B007CFFB4 /* Student.swift */,
 				BBD3CF121F70F8480028425E /* DemoTableViewController.swift */,
 				BBD3CF131F70F8480028425E /* DemoTableViewController.xib */,
 				BBD3CF181F7102D80028425E /* ToDoCell.swift */,
@@ -1025,6 +1031,7 @@
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
 				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,
+				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
@@ -1066,6 +1073,7 @@
 				BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
+				BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
 				BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */,

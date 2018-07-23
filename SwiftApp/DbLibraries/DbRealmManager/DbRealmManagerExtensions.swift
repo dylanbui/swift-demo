@@ -4,7 +4,7 @@
 //
 //  Created by Dylan Bui on 7/22/18.
 //  Copyright © 2018 Propzy Viet Nam. All rights reserved.
-//
+//  Base on : https://github.com/iMark21/MMRealmWrapper
 
 import Foundation
 import Realm
@@ -16,11 +16,24 @@ public extension DbRealmManager {
     ///
     /// - Parameter version: version number of your DB. Increment your version number when you have to update your db file.
     public class func configureDB(version: UInt64){
+        DbRealmManager.configureDB(version: version, migrationBlock: nil)
+//        let config = Realm.Configuration(schemaVersion: version, migrationBlock: { migration, oldSchemaVersion in
+//            if (oldSchemaVersion < version) {
+//                // Nothing to do!
+//                // Realm will automatically detect new properties and removed properties
+//                // And will update the schema on disk automatically
+//            }
+//        })
+//        Realm.Configuration.defaultConfiguration = config
+    }
+    
+    /// Initializate DB default
+    ///
+    /// - Parameter version: version number of your DB. Increment your version number when you have to update your db file.
+    public class func configureDB(version: UInt64, migrationBlock: MigrationBlock?){
         let config = Realm.Configuration(schemaVersion: version, migrationBlock: { migration, oldSchemaVersion in
-            if (oldSchemaVersion < version) {
-                // Nothing to do!
-                // Realm will automatically detect new properties and removed properties
-                // And will update the schema on disk automatically
+            if let migrationBlock = migrationBlock {
+                migrationBlock(migration, oldSchemaVersion)
             }
         })
         Realm.Configuration.defaultConfiguration = config
