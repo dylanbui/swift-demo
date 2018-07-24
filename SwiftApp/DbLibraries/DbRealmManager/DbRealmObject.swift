@@ -32,41 +32,13 @@ class DbRealmObject: Object, Mappable {
 //        friends               <- (map["friends"], ListTransform<User>())
     }
     
-    func update() -> Void {
-        
+    func defaultPrimaryKey() -> String {
+        return "id"
     }
     
     func save() -> Void {
         // -- Realm save --
         DbRealmManager.save(T: self)
-    }
-    
-    func load(objectID: String) -> Void
-    {
-        let primaryKey = type(of: self).primaryKey()!
-        let condition : String =  "\(primaryKey) == \(objectID)"
-        
-        let realm = try! Realm()
-        
-        let results = realm.objects(type(of: self)).filter(condition)
-        if (results.count > 0) {
-            let object: DbRealmObject = results.first! // as! DbRealmObject
-            
-            // object.toJSONString(prettyPrint: true)
-            print(String(describing: object.toJSONString(prettyPrint: true)))
-            
-            // Convert Object to JSON
-//            let serializedUser = Mapper().toJSONString(object)
-//            print(serializedUser)
-
-            
-//            print(object.toJSONString())
-            print("-------")
-//
-            self.mapping(map: Map(mappingType: .fromJSON, JSON: object.toJSON()))
-            
-        }
-//        completionHandler (object)
     }
     
     func saveWithIncrementID() -> Void
@@ -81,8 +53,9 @@ class DbRealmObject: Object, Mappable {
         // String(describing: self.classForCoder)
         DbRealmManager.fetch(model: String(describing: self.classForCoder), condition: nil) { (results) in
             
-            print("primaryKey = \(type(of: self).primaryKey()!)")
-            let primaryKey = type(of: self).primaryKey()!
+//            print("primaryKey = \(type(of: self).primaryKey()!)")
+//            let primaryKey = type(of: self).primaryKey()!
+            let primaryKey = self.defaultPrimaryKey()
             
 //            var id: Int = 1
 //            if results.count > 0 {
@@ -102,6 +75,86 @@ class DbRealmObject: Object, Mappable {
 //        let realm = try! Realm()
 //        return (realm.objects(self..self).max(ofProperty: DbRealmObject.primaryKey()) as Int? ?? 0) + 1
 //        UUID().uuidString
-        
     }
+    
+    
+    // MARK: - Su dung Realm trong Thread vua tao doi duong
+    // MARK: -
+    
+    func load(_ idVal: Any) -> Void
+    {
+        //let primaryKey = type(of: self).primaryKey()!
+//        let primaryKey = self.defaultPrimaryKey()
+//        let condition : String =  "\(primaryKey) == \(objectID)"
+//
+//        let realm = try! Realm()
+//        let results = realm.objects(type(of: self)).filter(condition)
+//        if (results.count > 0) {
+//            let object: DbRealmObject = results.first! // as! DbRealmObject
+//
+//            // object.toJSONString(prettyPrint: true)
+//            //            print(String(describing: object.toJSONString(prettyPrint: true)))
+//
+//            // Convert Object to JSON
+//            //            let serializedUser = Mapper().toJSONString(object)
+//            //            print(serializedUser)
+//            //            print(object.toJSONString())
+//            //            print("-------")
+//            //
+//            self.mapping(map: Map(mappingType: .fromJSON, JSON: object.toJSON()))
+//        }
+        
+        if let obj = self.getObjectById(idVal) {
+            self.mapping(map: Map(mappingType: .fromJSON, JSON: obj.toJSON()))
+        }
+    }
+    
+    func getAll() -> Results<DbRealmObject>
+    {
+        return self.getAll(nil)
+    }
+    
+    func getAll(_ condition: String?) -> Results<DbRealmObject>
+    {
+        // All object inside the model passed.
+        let realm = try! Realm()
+        var fetchedObjects = realm.objects(type(of: self))
+        
+        if let cond = condition {
+            // filters the result if condition exists
+            fetchedObjects = fetchedObjects.filter(cond)
+        }
+        
+        return fetchedObjects
+    }
+    
+    func getObjectById(_ idVal: Any) -> DbRealmObject?
+    {
+        var condition : String = ""
+        if idVal is String {
+            condition = "\(self.defaultPrimaryKey()) == '\(idVal)'"
+        }else{
+            condition = "\(self.defaultPrimaryKey()) == \(idVal)"
+        }
+        return self.getObjectByCondition(condition)
+    }
+    
+    func getObjectByCondition(_ cond: String) -> DbRealmObject? {
+        // All object inside the model passed.
+        let realm = try! Realm()
+        let fetchedObjects = realm.objects(type(of: self)).filter(cond)
+        return fetchedObjects.count > 0 ? fetchedObjects.first : nil
+    }
+    
+    func deleteByCondition(_ condition: String)
+    {
+        DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: { (success) in })        
+    }
+
+    func deleteByCondition(_ condition: String, completionHandler: @escaping(_ success:Bool) -> Void)
+    {
+        DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: completionHandler)
+    }
+    
+    
 }

@@ -16,6 +16,12 @@ PODS:
   - "ObjectMapper+Realm (0.6)":
     - ObjectMapper
     - RealmSwift
+  - ObjectMapperAdditions/Core (4.1.0):
+    - ObjectMapper
+  - ObjectMapperAdditions/Realm (4.1.0):
+    - ObjectMapper
+    - ObjectMapperAdditions/Core
+    - RealmSwift
   - Realm (3.7.4):
     - Realm/Headers (= 3.7.4)
   - Realm/Headers (3.7.4)
@@ -37,9 +43,11 @@ DEPENDENCIES:
   - INTULocationManager (= 4.3.0)
   - IQKeyboardManagerSwift (= 6.0.4)
   - MBProgressHUD (= 1.1.0)
-  - ObjectMapper
-  - "ObjectMapper+Realm"
-  - RealmSwift
+  - ObjectMapper (= 3.3.0)
+  - "ObjectMapper+Realm (= 0.6)"
+  - ObjectMapperAdditions/Core (~> 4.1)
+  - ObjectMapperAdditions/Realm (~> 4.1)
+  - RealmSwift (= 3.7.4)
   - SnapKit (= 4.0.0)
   - SVPullToRefresh (= 0.4.1)
   - SwiftLocation (~> 3.2.3)
@@ -57,6 +65,7 @@ SPEC REPOS:
     - MBProgressHUD
     - ObjectMapper
     - "ObjectMapper+Realm"
+    - ObjectMapperAdditions
     - Realm
     - RealmSwift
     - SnapKit
@@ -76,6 +85,7 @@ SPEC CHECKSUMS:
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   "ObjectMapper+Realm": 4cf44ed3202a73f08594e21e13eb3f8aa9b5a664
+  ObjectMapperAdditions: db4243e10ebd9abf7e5e7938e4b0a4bbfd840980
   Realm: a469bb59e33f9926102ccaea4349822c53b9117e
   RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
@@ -83,6 +93,6 @@ SPEC CHECKSUMS:
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 7370bab0983ec56b52aa296eb162619931f8926e
+PODFILE CHECKSUM: f4dd83ccd9a416d6aaa8f942130792abea2ef26f
 
 COCOAPODS: 1.5.0

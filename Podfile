@@ -21,6 +21,9 @@ target 'SwiftApp' do
     pod 'RealmSwift', '3.7.4'
     # https://github.com/jakenberg/ObjectMapper-Realm
     pod 'ObjectMapper+Realm', '0.6'
+    
+    pod 'ObjectMapperAdditions/Core', '~> 4.1' # 4.1
+    pod 'ObjectMapperAdditions/Realm', '~> 4.1' # 4.1
 
     # Integrate SwifterSwift extensions only (Alway update new version), current version '4.3.0'
     #pod 'SwifterSwift' # khong su dung duoc, ko bit tai sao 21/06/2018

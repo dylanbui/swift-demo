@@ -104,7 +104,7 @@ class DemoTableViewController: DbViewController
 //        }
         
         let student = Student()
-        student.load(objectID: "11")
+        student.load(11)
         print(String(student.id) + " -- " + student.firstName + " -- " + student.lastName)
 
         DbRealmManager.getAllListOf(T: ToDoItem()) { (results) in

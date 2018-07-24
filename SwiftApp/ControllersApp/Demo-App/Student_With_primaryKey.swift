@@ -8,8 +8,12 @@
 
 import Foundation
 
+//import DbRealmObject
+
 import ObjectMapper
 import ObjectMapperAdditions
+//import RealmSwift
+//import ObjectMapper_Realm
 
 class Student: DbRealmObject
 {
@@ -27,34 +31,25 @@ class Student: DbRealmObject
         fatalError("init(map:) has not been implemented")
     }
     
-//    override class func primaryKey() -> String? {
-//        return "id"
-//    }
-    
-    override func defaultPrimaryKey() -> String {
+    override class func primaryKey() -> String? {
         return "id"
     }
     
-    override func mapping(map: Map)
-    {
-//        id                      <- map["id"]
-//        firstName               <- map["firstName"]
-//        lastName                <- map["lastName"]
-        //friends               <- (map["friends"], ListTransform<User>())
-
+    override func mapping(map: Map) {
+        
         // .toJSON() requires Realm write transaction or it'll crash
         let isWriteRequired = realm != nil && realm?.isInWriteTransaction == false
         isWriteRequired ? realm?.beginWrite() : ()
-
+        
         // id <- map["id"]
         id <- (map["id"], IntTransform())
-
+        
         // firstName <- map["firstName"]
         firstName <- (map["firstName"], StringTransform())
-
+        
         // lastName <- map["lastName"]
         lastName <- (map["lastName"], StringTransform())
-
+        
         isWriteRequired ? try? realm?.commitWrite() : ()
         
 //        if map.mappingType == .fromJSON {
@@ -85,6 +80,9 @@ class Student: DbRealmObject
 //            id >>> map["id"]
 //        }
 //
+//        firstName               <- map["firstName"]
+//        lastName                <- map["lastName"]
+        //friends               <- (map["friends"], ListTransform<User>())
     }
 
     
