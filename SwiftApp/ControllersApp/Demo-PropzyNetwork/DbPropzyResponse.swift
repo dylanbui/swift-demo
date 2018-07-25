@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import ObjectMapper
 import Alamofire
 
 enum BackendError: Error {
@@ -55,7 +56,7 @@ public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertib
     var message: String?
     var result: Bool?
     var code: Int?
-    var data: Any?
+    var returnData: AnyObject?
     
     var validatedMessage: String?
     var additional: String?
@@ -71,7 +72,7 @@ public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertib
         guard
             let url = response.url?.absoluteString,
             let representation = representation as? [String: Any],
-            let data = representation["data"],
+            let returnData = representation["data"],
             let message = representation["message"] as? String,
             let result = representation["result"] as? Bool,
             let strCode = representation["code"] as? String
@@ -82,7 +83,7 @@ public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertib
         self.message = message
         self.result = result
         self.code = Int(strCode)
-        self.data = data
+        self.returnData = returnData as AnyObject
         
         if let validatedMessage = representation["validatedMessage"] as? String, !validatedMessage.isEmpty {
             self.validatedMessage = validatedMessage
@@ -129,6 +130,81 @@ protocol IDbWebConnectionDelegate {
 
 
 public class PropzyApi {
+    
+    class func request<T: Mappable>(_ strUrl: String, method: HTTPMethod = .get, params: [String: String]? = nil, requestId: Int = 0, completionHandler: Any?) {
+        // Phai duoc su dung trong ten bien
+        let callbackBlock = completionHandler as? DbWebConnectionHandler
+        let callbackDelegate = completionHandler as? IDbWebConnectionDelegate
+        
+        let dictHeaders = ["Accept-Encoding": "gzip", "Accept-Language": "vi-VN"]
+        
+        // -- Tao bg thread de run Alamofire --
+        // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
+        let dataRequest: DataRequest = Alamofire.request(strUrl, method: method,
+                                                         parameters: params, encoding: URLEncoding.default,
+                                                         headers: dictHeaders)
+        
+        _ = dataRequest.responseObject { (response: DataResponse<DbPropzyResponse>) in
+            // debugPrint(response)
+            
+            if let propzy = response.result.value {
+                
+                if callbackBlock != nil {
+                    callbackBlock?(propzy, nil)
+                } else {
+                    callbackDelegate?.onRequestComplete(propzy, andCallerId: requestId)
+                }
+                
+//                guard let data = response.data else {
+//                    return;
+//                }
+                
+                if let dataArr = response.value?.returnData as? [AnyObject] {
+                    
+                    
+                } else {
+                    let dataObj = response.value?.returnData as! [String: AnyObject]
+                    let a = T(map: Map(mappingType: .fromJSON, JSON: dataObj))
+                }
+                
+                
+                
+                
+                
+                
+                
+                //                if let callbackBlock = completionHandler as? DbWebConnectionHandler {
+                //                    callbackBlock(propzy, nil)
+                //                    return
+                //                }
+                //                if let callbackDelegate = completionHandler as? IDbWebConnectionDelegate {
+                //                    callbackDelegate.onRequestComplete(propzy, andCallerId: requestId)
+                //                    return
+                //                }
+            }
+            
+            if let error = response.error {
+                
+                if callbackBlock != nil {
+                    callbackBlock?(nil, error)
+                } else {
+                    callbackDelegate?.onRequestError(error, andCallerId: requestId)
+                }
+                
+                //                if let callbackBlock = completionHandler as? DbWebConnectionHandler {
+                //                    callbackBlock(nil, error)
+                //                    return
+                //                }
+                //                if let callbackDelegate = completionHandler as? IDbWebConnectionDelegate {
+                //                    callbackDelegate.onRequestError(error, andCallerId: requestId)
+                //                    return
+                //                }
+            }
+            
+        }
+        
+        
+    }
     
     class func request(_ strUrl: String, method: HTTPMethod = .get, params: [String: String]? = nil, requestId: Int = 0, completionHandler: Any?) {
         

@@ -16,6 +16,7 @@
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
 		BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19FAF420441A6B005F2669 /* Reachability.swift */; };
 		BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */; };
+		BB228A502108302A00C5C6AA /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB228A4F2108302A00C5C6AA /* Actor.swift */; };
 		BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67220158E7700590C94 /* DbPopupView.swift */; };
 		BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */; };
 		BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2FA67720159F8400590C94 /* TpPostDetailView.xib */; };
@@ -176,6 +177,7 @@
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		BB19FAF420441A6B005F2669 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
+		BB228A4F2108302A00C5C6AA /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		BB2FA67220158E7700590C94 /* DbPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPopupView.swift; sourceTree = "<group>"; };
 		BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpPostDetailView.swift; sourceTree = "<group>"; };
 		BB2FA67720159F8400590C94 /* TpPostDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TpPostDetailView.xib; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 			children = (
 				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
 				BBF5276F2105949B007CFFB4 /* Student.swift */,
+				BB228A4F2108302A00C5C6AA /* Actor.swift */,
 				BBD3CF121F70F8480028425E /* DemoTableViewController.swift */,
 				BBD3CF131F70F8480028425E /* DemoTableViewController.xib */,
 				BBD3CF181F7102D80028425E /* ToDoCell.swift */,
@@ -1039,6 +1042,7 @@
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
+				BB228A502108302A00C5C6AA /* Actor.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */,

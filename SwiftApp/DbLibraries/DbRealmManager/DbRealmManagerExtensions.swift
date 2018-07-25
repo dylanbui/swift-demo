@@ -37,6 +37,7 @@ public extension DbRealmManager {
             }
         })
         Realm.Configuration.defaultConfiguration = config
+        print("\(String(describing: Realm.Configuration.defaultConfiguration.fileURL?.absoluteString))")
     }
     
     /// Initializate shared DB

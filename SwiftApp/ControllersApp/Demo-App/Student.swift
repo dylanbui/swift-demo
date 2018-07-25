@@ -31,41 +31,42 @@ class Student: DbRealmObject
 //        return "id"
 //    }
     
-    override func defaultPrimaryKey() -> String {
-        return "id"
-    }
+//    override func defaultPrimaryKey() -> String {
+//        return "id"
+//    }
     
     override func mapping(map: Map)
     {
+//        id                      <- map["id"]
 //        id                      <- map["id"]
 //        firstName               <- map["firstName"]
 //        lastName                <- map["lastName"]
         //friends               <- (map["friends"], ListTransform<User>())
 
         // .toJSON() requires Realm write transaction or it'll crash
-        let isWriteRequired = realm != nil && realm?.isInWriteTransaction == false
-        isWriteRequired ? realm?.beginWrite() : ()
-
-        // id <- map["id"]
-        id <- (map["id"], IntTransform())
-
-        // firstName <- map["firstName"]
-        firstName <- (map["firstName"], StringTransform())
-
-        // lastName <- map["lastName"]
-        lastName <- (map["lastName"], StringTransform())
-
-        isWriteRequired ? try? realm?.commitWrite() : ()
+//        let isWriteRequired = realm != nil && realm?.isInWriteTransaction == false
+//        isWriteRequired ? realm?.beginWrite() : ()
+//
+//        // id <- map["id"]
+//        id <- (map["id"], IntTransform())
+//
+//        // firstName <- map["firstName"]
+//        firstName <- (map["firstName"], StringTransform())
+//
+//        // lastName <- map["lastName"]
+//        lastName <- (map["lastName"], StringTransform())
+//
+//        isWriteRequired ? try? realm?.commitWrite() : ()
         
-//        if map.mappingType == .fromJSON {
-//            id <- map["id"]
-//            firstName <- map["firstName"]
-//            lastName <- map["lastName"]
-//        } else {
-//            id >>> map["id"]
-//            firstName >>> map["firstName"]
-//            lastName >>> map["lastName"]
-//        }
+        if map.mappingType == .fromJSON {
+            id <- map["id"]
+            firstName <- map["firstName"]
+            lastName <- map["lastName"]
+        } else {
+            id >>> map["id"]
+            firstName >>> map["firstName"]
+            lastName >>> map["lastName"]
+        }
         
 //        if map.mappingType == .toJSON {
 //            id <- map["id"]

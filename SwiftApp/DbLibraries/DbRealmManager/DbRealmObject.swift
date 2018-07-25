@@ -19,9 +19,9 @@ class DbRealmObject: Object, Mappable {
         self.init()
     }
     
-//    override class func primaryKey() -> String? {
-//        return "username"
-//    }
+    override class func primaryKey() -> String? {
+        return "id"
+    }
     
 //    func className() -> String? {
 //        return "username"
@@ -32,9 +32,9 @@ class DbRealmObject: Object, Mappable {
 //        friends               <- (map["friends"], ListTransform<User>())
     }
     
-    func defaultPrimaryKey() -> String {
-        return "id"
-    }
+//    func defaultPrimaryKey() -> String {
+//        return "id"
+//    }
     
     func save() -> Void {
         // -- Realm save --
@@ -53,9 +53,8 @@ class DbRealmObject: Object, Mappable {
         // String(describing: self.classForCoder)
         DbRealmManager.fetch(model: String(describing: self.classForCoder), condition: nil) { (results) in
             
-//            print("primaryKey = \(type(of: self).primaryKey()!)")
-//            let primaryKey = type(of: self).primaryKey()!
-            let primaryKey = self.defaultPrimaryKey()
+            print("primaryKey = \(type(of: self).primaryKey()!)")
+            let primaryKey = type(of: self).primaryKey()!
             
 //            var id: Int = 1
 //            if results.count > 0 {
@@ -131,15 +130,17 @@ class DbRealmObject: Object, Mappable {
     func getObjectById(_ idVal: Any) -> DbRealmObject?
     {
         var condition : String = ""
+        let primaryKey = type(of: self).primaryKey()!
         if idVal is String {
-            condition = "\(self.defaultPrimaryKey()) == '\(idVal)'"
+            condition = "\(primaryKey) == '\(idVal)'"
         }else{
-            condition = "\(self.defaultPrimaryKey()) == \(idVal)"
+            condition = "\(primaryKey) == \(idVal)"
         }
         return self.getObjectByCondition(condition)
     }
     
-    func getObjectByCondition(_ cond: String) -> DbRealmObject? {
+    func getObjectByCondition(_ cond: String) -> DbRealmObject?
+    {
         // All object inside the model passed.
         let realm = try! Realm()
         let fetchedObjects = realm.objects(type(of: self)).filter(cond)

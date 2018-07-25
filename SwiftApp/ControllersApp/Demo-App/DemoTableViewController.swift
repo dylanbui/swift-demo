@@ -103,9 +103,51 @@ class DemoTableViewController: DbViewController
 //            print("da cap nhat du lieu xong")
 //        }
         
-        let student = Student()
-        student.load(11)
-        print(String(student.id) + " -- " + student.firstName + " -- " + student.lastName)
+//        let student = Student()
+//        student.load(11)
+//        print(String(student.id) + " -- " + student.firstName + " -- " + student.lastName)
+
+        let realm = try! Realm()
+        for i in 1...3 {
+            let actor = Actor()
+            actor.id = i
+            actor.firstName = "Dylan"
+            actor.lastName = "Bui Van"
+
+            try! realm.write {
+                realm.add(actor, update: true)
+                print("Added new object")
+            }
+            
+            print(String(describing: actor.toJSONString(prettyPrint: true)))
+            print(String(actor.id) + " -- " + actor.firstName + " -- " + actor.lastName)
+        }
+        
+        
+        // Persist your data easily
+//        let realm = try! Realm()
+//        try! realm.write {
+//            realm.add(actor)
+//        }
+        
+        
+//        print(String(describing: actor.toJSONString(prettyPrint: true)))
+//        print(String(actor.id) + " -- " + actor.firstName + " -- " + actor.lastName)
+        
+        // DbRealmManager.save(T: actor)
+//        DbRealmManager.saveWithCompletion(T: actor) { (success) in
+//            if success {
+//                print(String(describing: actor.toJSONString(prettyPrint: true)))
+//                print(String(actor.id) + " -- " + actor.firstName + " -- " + actor.lastName)
+//            }
+//        }
+        
+//        DbRealmManager.addOrUpdate(model: "Actor", object: actor) { (error) in
+//            print(String(describing: actor.toJSONString(prettyPrint: true)))
+//            print(String(actor.id) + " -- " + actor.firstName + " -- " + actor.lastName)
+//        }
+        
+        // object.toJSONString(prettyPrint: true)
 
         DbRealmManager.getAllListOf(T: ToDoItem()) { (results) in
             self.toDoItemsList = results as! [ToDoItem]
