@@ -21,14 +21,14 @@ class RootViewController: DbViewController {
 
         // Do any additional setup after loading the view.
         
-        let vcl = DemoTableViewController()
+//        let vcl = DemoTableViewController()
         //let vcl = TaskListViewController()
 //        let vcl = TpUsersViewController()
 //        let vcl = FirstViewController()
         // let vcl = SecondViewController()
 //        let vcl = NetworkViewController()
 //        let vcl = DemoUKitViewController()
-//        let vcl = CategoriesViewController()
+        let vcl = CategoriesViewController()
         
         vcl.navigationItem.setHidesBackButton(true, animated:false)
         self.navigationController?.pushViewController(vcl, animated: false)

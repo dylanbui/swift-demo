@@ -10,6 +10,9 @@ import UIKit
 
 class CategoriesViewController: BaseViewController
 {
+    
+    @IBOutlet weak var textView: UITextView!
+    
     override init() {
         super.init()
         
@@ -43,18 +46,45 @@ class CategoriesViewController: BaseViewController
     @IBAction func btn_Click(_ sender: UIButton)
     {
         if (sender.tag == 1) {
-            CategoriesApi.getCategories(completionHandler: { (response, error) in
+            CategoriesApi.getCategories { (arrCat, error) in
                 if error != nil {
                     print("Error = \(String(describing: error))")
                     return
                 }
-                print("getCategories: ")
-                print("\(String(describing: response?.data))")
-            })
+                
+                for cat: Category in arrCat! {
+                    print("\(String(describing: cat.description))")
+                }
+                
+//                print("getCategories: ")
+//                print("\(String(describing: arrCat))")
+//                self.textView.text = String(describing: arrCat)
+            }
         } else {
-            CategoriesApi.getCategoriesWithDelegate(delegate: self, callerId: 123)
+            CategoriesApi.getCategoriesObject { (category, error) in
+                if error != nil {
+                    print("Error = \(String(describing: error))")
+                    return
+                }
+                print("category: ")
+                print("\(String(describing: category!.description))")
+                self.textView.text = String(describing: category?.description)
+            }
         }
         
+        
+//        if (sender.tag == 1) {
+//            CategoriesApi.getCategories(completionHandler: { (response, error) in
+//                if error != nil {
+//                    print("Error = \(String(describing: error))")
+//                    return
+//                }
+//                print("getCategories: ")
+////                print("\(String(describing: response?.data))")
+//            })
+//        } else {
+//            CategoriesApi.getCategoriesWithDelegate(delegate: self, callerId: 123)
+//        }
     }
     
 }
@@ -64,7 +94,7 @@ extension CategoriesViewController: IDbWebConnectionDelegate
 {
     func onRequestComplete(_ response: DbPropzyResponse, andCallerId callerId: Int) {
         print("Data oday")
-        print("\(String(describing: response.data))")
+//        print("\(String(describing: response.data))")
     }
     
     func onRequestError(_ error: Error, andCallerId callerId: Int) {

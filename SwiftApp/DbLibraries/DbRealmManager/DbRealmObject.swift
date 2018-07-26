@@ -72,7 +72,7 @@ class DbRealmObject: Object, Mappable {
         
         //DbRealmManager.getFetchList(T: self, condition: <#T##String?#>, completionHandler: <#T##([Object]) -> Void#>)
 //        let realm = try! Realm()
-//        return (realm.objects(self..self).max(ofProperty: DbRealmObject.primaryKey()) as Int? ?? 0) + 1
+//        return (realm.objects(self).max(ofProperty: DbRealmObject.primaryKey()) as Int? ?? 0) + 1
 //        UUID().uuidString
     }
     

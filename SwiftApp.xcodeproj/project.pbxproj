@@ -23,6 +23,7 @@
 		BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA6792015D37B00590C94 /* DbLoadableView.swift */; };
 		BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
+		BB390FD12109B31C0091FB6D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB390FD02109B31C0091FB6D /* Category.swift */; };
 		BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB547319201789300055CAD9 /* SecondViewController.swift */; };
 		BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731A201789300055CAD9 /* SecondViewController.xib */; };
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
@@ -184,6 +185,7 @@
 		BB2FA6792015D37B00590C94 /* DbLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLoadableView.swift; sourceTree = "<group>"; };
 		BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB390FD02109B31C0091FB6D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BB547319201789300055CAD9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		BB54731A201789300055CAD9 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -634,6 +636,7 @@
 		BBDD5E962011F3F70089DD32 /* Demo-App */ = {
 			isa = PBXGroup;
 			children = (
+				BB390FD02109B31C0091FB6D /* Category.swift */,
 				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
 				BBF5276F2105949B007CFFB4 /* Student.swift */,
 				BB228A4F2108302A00C5C6AA /* Actor.swift */,
@@ -1096,6 +1099,7 @@
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
+				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 				BBC38A56206DDE9500B11C7B /* Octicon.swift in Sources */,

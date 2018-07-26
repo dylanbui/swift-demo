@@ -88,13 +88,13 @@ public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertib
         if let validatedMessage = representation["validatedMessage"] as? String, !validatedMessage.isEmpty {
             self.validatedMessage = validatedMessage
         } else {
-            print("validatedMessage has wrong value")
+            // print("validatedMessage has wrong value"). Demo
         }
 
         if let additional = representation["additional"] as? String, !additional.isEmpty {
             self.additional = additional
         } else {
-            print("additional has wrong value")
+            // print("additional has wrong value"). Demo
         }
         
 //        guard let validatedMessage = representation["validatedMessage"] as? String, !validatedMessage.isEmpty else {
@@ -121,20 +121,100 @@ public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertib
 
  */
 
-typealias DbWebConnectionHandler = (DbPropzyResponse?, Error?) -> ()
+typealias DbWebConnectionHandler = (DbPropzyResponse?, Error?) -> Void
 
 protocol IDbWebConnectionDelegate {
     func onRequestComplete(_ response: DbPropzyResponse, andCallerId callerId: Int) -> Void
     func onRequestError(_ error: Error, andCallerId callerId: Int) -> Void
 }
 
+typealias PzWebConnectionHandler = (DbPropzyResponse?, Error?) -> Void
+
+protocol IPzWebConnectionDelegate {
+    func onRequestComplete(_ response: DbPropzyResponse, andCallerId callerId: Int) -> Void
+    func onRequestError(_ error: Error, andCallerId callerId: Int) -> Void
+}
+
+// ---------------------------------------------------------------
+
+typealias PzListHandler<T: Mappable> = (_ obj :[T]?, Error?) -> ()
+typealias PzObjectHandler<T: Mappable> = (_ obj :T?, Error?) -> ()
+
+protocol IPzApiConnectionDelegate {
+    associatedtype elementType
+    
+    func onRequestComplete(WithList response: [elementType], andCallerId callerId: Int) -> Void
+    func onRequestComplete(WithObject response: elementType, andCallerId callerId: Int) -> Void
+    func onRequestError(_ error: Error, andCallerId callerId: Int) -> Void
+}
+
 
 public class PropzyApi {
     
-    class func request<T: Mappable>(_ strUrl: String, method: HTTPMethod = .get, params: [String: String]? = nil, requestId: Int = 0, completionHandler: Any?) {
-        // Phai duoc su dung trong ten bien
-        let callbackBlock = completionHandler as? DbWebConnectionHandler
-        let callbackDelegate = completionHandler as? IDbWebConnectionDelegate
+    class func parseToArray<T: Mappable>(_ obj: T.Type, pzResponse: DbPropzyResponse) -> [T]?
+    {
+        var arr: [T] = []
+        if let dataArr = pzResponse.returnData as? [AnyObject] {
+            for item in dataArr {
+                if let jsonResult = item as? Dictionary<String, Any> {
+                    // do whatever with jsonResult
+                    arr.append(T(JSON: jsonResult)!)
+                }
+            }
+            return arr
+        } else if let jsonResult = pzResponse.returnData as? Dictionary<String, Any> {
+            arr.append(T(JSON: jsonResult)!)
+        }
+        return nil
+    }
+    
+//    class func parseToObject<T: Mappable>(_ obj: T, pzResponse: DbPropzyResponse) -> T?
+//    {
+//        if let jsonResult = pzResponse.returnData as? Dictionary<String, Any> {
+//            return T(JSON: jsonResult)
+//        }
+//        return nil
+//    }
+    
+    class func requestFor<T: Mappable>(Object obj: T.Type, strUrl: String, method: HTTPMethod = .get, params: [String: String]? = nil, completionHandler: Any?) {
+        
+        let dictHeaders = ["Accept-Encoding": "gzip", "Accept-Language": "vi-VN"]
+        
+        // -- Tao bg thread de run Alamofire --
+        // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
+        let dataRequest: DataRequest = Alamofire.request(strUrl, method: method,
+                                                         parameters: params, encoding: URLEncoding.default,
+                                                         headers: dictHeaders)
+        
+        _ = dataRequest.responseObject { (response: DataResponse<DbPropzyResponse>) in
+            
+            //        let callbackListBlock = completionHandler as? PzListHandler<T>
+            //        let callbackObjectDelegate = completionHandler as? PzObjectHandler<T>
+            
+            if let callbackListBlock = completionHandler as? PzListHandler<T> {
+                
+            } else if let callbackObjectDelegate = completionHandler as? PzObjectHandler<T> {
+                
+            } else {
+                fatalError("May la thang nao")
+                return
+            }
+
+            
+            // debugPrint(response)
+//            if let propzy = response.result.value {
+//                completionHandler?(propzy, nil)
+//                return
+//            }
+//
+//            if let error = response.error {
+//                completionHandler?(nil, error)
+//            }
+        }
+    }
+    
+    
+    class func requestFor(_ strUrl: String, method: HTTPMethod = .get, params: [String: String]? = nil, completionHandler: PzWebConnectionHandler?) {
         
         let dictHeaders = ["Accept-Encoding": "gzip", "Accept-Language": "vi-VN"]
         
@@ -146,65 +226,88 @@ public class PropzyApi {
         
         _ = dataRequest.responseObject { (response: DataResponse<DbPropzyResponse>) in
             // debugPrint(response)
-            
             if let propzy = response.result.value {
-                
-                if callbackBlock != nil {
-                    callbackBlock?(propzy, nil)
-                } else {
-                    callbackDelegate?.onRequestComplete(propzy, andCallerId: requestId)
-                }
-                
-//                guard let data = response.data else {
-//                    return;
-//                }
-                
-                if let dataArr = response.value?.returnData as? [AnyObject] {
-                    
-                    
-                } else {
-                    let dataObj = response.value?.returnData as! [String: AnyObject]
-                    let a = T(map: Map(mappingType: .fromJSON, JSON: dataObj))
-                }
-                
-                
-                
-                
-                
-                
-                
-                //                if let callbackBlock = completionHandler as? DbWebConnectionHandler {
-                //                    callbackBlock(propzy, nil)
-                //                    return
-                //                }
-                //                if let callbackDelegate = completionHandler as? IDbWebConnectionDelegate {
-                //                    callbackDelegate.onRequestComplete(propzy, andCallerId: requestId)
-                //                    return
-                //                }
+                completionHandler?(propzy, nil)
+                return
             }
             
             if let error = response.error {
-                
-                if callbackBlock != nil {
-                    callbackBlock?(nil, error)
-                } else {
-                    callbackDelegate?.onRequestError(error, andCallerId: requestId)
-                }
-                
-                //                if let callbackBlock = completionHandler as? DbWebConnectionHandler {
-                //                    callbackBlock(nil, error)
-                //                    return
-                //                }
-                //                if let callbackDelegate = completionHandler as? IDbWebConnectionDelegate {
-                //                    callbackDelegate.onRequestError(error, andCallerId: requestId)
-                //                    return
-                //                }
+                completionHandler?(nil, error)
             }
-            
         }
-        
-        
     }
+    
+    
+//    class func requestFor<T: Mappable>(_ obj: T, strUrl: String, method: HTTPMethod = .get, params: [String: String]? = nil, requestId: Int = 0, completionHandler: Any?) {
+//        // Phai duoc su dung trong ten bien
+//        let callbackBlock = completionHandler as? DbWebConnectionHandler
+//        let callbackDelegate = completionHandler as? IDbWebConnectionDelegate
+//
+//        let callbackListBlock = completionHandler as? PzListHandler<T>
+//        let callbackObjectDelegate = completionHandler as? PzObjectHandler<T>
+//
+//        let dictHeaders = ["Accept-Encoding": "gzip", "Accept-Language": "vi-VN"]
+//
+//        // -- Tao bg thread de run Alamofire --
+//        // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
+//        let dataRequest: DataRequest = Alamofire.request(strUrl, method: method,
+//                                                         parameters: params, encoding: URLEncoding.default,
+//                                                         headers: dictHeaders)
+//
+//        _ = dataRequest.responseObject { (response: DataResponse<DbPropzyResponse>) in
+//            // debugPrint(response)
+//
+//            if let propzy = response.result.value {
+//
+//                if callbackBlock != nil {
+//                    callbackBlock?(propzy, nil)
+//                } else {
+//                    callbackDelegate?.onRequestComplete(propzy, andCallerId: requestId)
+//                }
+//
+////                guard let data = response.data else {
+////                    return;
+////                }
+//
+//                if let dataArr = response.value?.returnData as? [AnyObject] {
+//
+//
+//                } else if let dataObj = response.value?.returnData as? [String: AnyObject] {
+//                    let a = T(map: Map(mappingType: .fromJSON, JSON: dataObj))
+//                }
+//
+////                if let callbackBlock = completionHandler as? DbWebConnectionHandler {
+////                    callbackBlock(propzy, nil)
+////                    return
+////                }
+////                if let callbackDelegate = completionHandler as? IDbWebConnectionDelegate {
+////                    callbackDelegate.onRequestComplete(propzy, andCallerId: requestId)
+////                    return
+////                }
+//            }
+//
+//            if let error = response.error {
+//
+//                if callbackBlock != nil {
+//                    callbackBlock?(nil, error)
+//                } else {
+//                    callbackDelegate?.onRequestError(error, andCallerId: requestId)
+//                }
+//
+//                //                if let callbackBlock = completionHandler as? DbWebConnectionHandler {
+//                //                    callbackBlock(nil, error)
+//                //                    return
+//                //                }
+//                //                if let callbackDelegate = completionHandler as? IDbWebConnectionDelegate {
+//                //                    callbackDelegate.onRequestError(error, andCallerId: requestId)
+//                //                    return
+//                //                }
+//            }
+//
+//        }
+//
+//
+//    }
     
     class func request(_ strUrl: String, method: HTTPMethod = .get, params: [String: String]? = nil, requestId: Int = 0, completionHandler: Any?) {
         
