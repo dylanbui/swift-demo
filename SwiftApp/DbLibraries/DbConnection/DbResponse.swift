@@ -57,6 +57,8 @@ public class PropzyResponse: DbResponse {
     var code: Int?
     var dictData: [String: AnyObject]?
     
+    var returnData: AnyObject?
+    
     public required init() {
         super.init()
         self.contentType = DbHttpContentType.JSON
@@ -81,6 +83,8 @@ public class PropzyResponse: DbResponse {
         self.result = responseData["result"] as? Bool
         self.code = responseData["code"] as? Int
         self.dictData = responseData["data"] as? [String: AnyObject]
+        // -- Cai nay moi dung --
+        self.returnData = responseData["data"] as AnyObject
     }
     
 }

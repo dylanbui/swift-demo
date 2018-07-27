@@ -36,7 +36,10 @@ target 'SwiftApp' do
     #pod 'AFNetworking', '3.1.0' # Remove, replace by Alamofire
     
     # pod 'LGButton', tot manh nhung chi cho ios > 9.0
-    
+
+    # SwiftMessages => hien thi message tren bar, can dung thang nay cho he thong luon
+    # pod 'SwiftMessages'
+
     pod 'SwiftLocation', '~> 3.2.3' # Dung thang nay de quan ly location
 
     # Libraries needed Objective C

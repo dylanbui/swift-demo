@@ -18,6 +18,21 @@ enum BackendError: Error {
     case objectSerialization(reason: String)
 }
 
+struct PzError: Error
+{
+    let code: Int
+    let message: String
+    
+    init(_ code:Int, message: String) {
+        self.code = code
+        self.message = message
+    }
+    
+    public var localizedDescription: String {
+        return message
+    }
+}
+
 protocol ResponseObjectSerializable {
     init?(response: HTTPURLResponse, representation: Any)
 }
@@ -50,8 +65,8 @@ extension DataRequest {
     }
 }
 
-public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertible {
-    
+public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertible
+{
     var strUrl: String?
     var message: String?
     var result: Bool?
@@ -61,6 +76,8 @@ public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertib
     var validatedMessage: String?
     var additional: String?
     
+    // -- Custom error --
+    var error: PzError?
     
     private var representation: [String: Any]?
     
@@ -95,6 +112,12 @@ public class DbPropzyResponse: ResponseObjectSerializable, CustomStringConvertib
             self.additional = additional
         } else {
             // print("additional has wrong value"). Demo
+        }
+        
+        // -- Custom error --
+        if (self.result == false) {
+            // self.error = NSError(domain: self.message ?? "", code: self.code ?? 0, userInfo: nil)
+            self.error = PzError.init(self.code ?? 0, message: self.message ?? "Khong xac dinh")
         }
         
 //        guard let validatedMessage = representation["validatedMessage"] as? String, !validatedMessage.isEmpty else {
@@ -148,6 +171,9 @@ protocol IPzApiConnectionDelegate {
     func onRequestError(_ error: Error, andCallerId callerId: Int) -> Void
 }
 
+// Da xu ly duoc nua duong
+// Cam thay roi ram them nen chuyen lai phien ban goc, nhung cai nay hay co nhieu phan ky thuat tot phai rang tip tuc nghien cuu
+
 
 public class PropzyApi {
     
@@ -191,15 +217,14 @@ public class PropzyApi {
             //        let callbackListBlock = completionHandler as? PzListHandler<T>
             //        let callbackObjectDelegate = completionHandler as? PzObjectHandler<T>
             
-            if let callbackListBlock = completionHandler as? PzListHandler<T> {
-                
-            } else if let callbackObjectDelegate = completionHandler as? PzObjectHandler<T> {
-                
-            } else {
-                fatalError("May la thang nao")
-                return
-            }
-
+//            if let callbackListBlock = completionHandler as? PzListHandler<T> {
+//
+//            } else if let callbackObjectDelegate = completionHandler as? PzObjectHandler<T> {
+//
+//            } else {
+//                fatalError("May la thang nao")
+//                return
+//            }
             
             // debugPrint(response)
 //            if let propzy = response.result.value {
@@ -226,14 +251,27 @@ public class PropzyApi {
         
         _ = dataRequest.responseObject { (response: DataResponse<DbPropzyResponse>) in
             // debugPrint(response)
+            
+            if let error = response.error as? AFError {
+                let userInfor: [String: Any] = [NSLocalizedDescriptionKey: error.errorDescription ?? ""]
+                let err = NSError(domain: "PropzyApi", code: error.responseCode ?? 0, userInfo: userInfor)
+                completionHandler?(nil, err)
+            }
+
+            
+            
             if let propzy = response.result.value {
+                
+                if propzy.result == false {
+                    let err = NSError(domain: propzy.message ?? "", code: propzy.code ?? 0, userInfo: nil)
+                    completionHandler?(nil, err)
+                    return
+                }
+                
                 completionHandler?(propzy, nil)
                 return
             }
             
-            if let error = response.error {
-                completionHandler?(nil, error)
-            }
         }
     }
     
