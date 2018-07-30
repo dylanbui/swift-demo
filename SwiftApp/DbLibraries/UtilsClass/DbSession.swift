@@ -37,15 +37,19 @@ class DbSession: DbObject {
     
     // MARK: - Push Notification Token
     // MARK: -
-    func getDevicePushNotificationToken() -> String? {
+    func getDevicePushNotificationToken() -> String {
         if Db.isSimulator() {
             return "notuser659ef7634ff919e6a866aab41b7bc60039339ac8cd85b90c888fb"
         }
-        return UserDefaults.getString(key: DB_DEVICE_PUSH_TOKEN)
+        return UserDefaults.getString(key: DB_DEVICE_PUSH_TOKEN) ?? "not_found"
     }
 
     func setDevicePushNotificationToken(_ token: String) {
         UserDefaults.setObject(key: DB_DEVICE_PUSH_TOKEN, value: token)
+    }
+    
+    func loadDataFrom(_ data: [String : Any]) {
+        _ = Mapper().map(JSON: data, toObject: self)
     }
 
     // MARK: - Data From Last Session

@@ -28,7 +28,8 @@ class RootViewController: DbViewController {
         // let vcl = SecondViewController()
 //        let vcl = NetworkViewController()
 //        let vcl = DemoUKitViewController()
-        let vcl = CategoriesViewController()
+//        let vcl = CategoriesViewController()
+        let vcl = PzLoginViewController()
         
         vcl.navigationItem.setHidesBackButton(true, animated:false)
         self.navigationController?.pushViewController(vcl, animated: false)

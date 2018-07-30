@@ -242,6 +242,8 @@ public class DbRequestFor<ResponseType: DbResponse>: DbRequest {
         var arrHeaders: [DbHttpHeader] = []
         arrHeaders.append(DbHttpHeader.Custom("Accept-Encoding", "gzip"))
         arrHeaders.append(DbHttpHeader.Custom("Accept-Language", "vi-VN"))
+        arrHeaders.append(DbHttpHeader.Custom("Content-Type", "application/json")) // JSON Request
+
         self.headers = arrHeaders
     }
 }

@@ -31,6 +31,9 @@ PODS:
   - SVPullToRefresh (0.4.1)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
+  - SwiftMessages (4.1.4):
+    - SwiftMessages/App (= 4.1.4)
+  - SwiftMessages/App (4.1.4)
   - SwiftyJSON (4.0.0)
 
 DEPENDENCIES:
@@ -51,6 +54,7 @@ DEPENDENCIES:
   - SnapKit (= 4.0.0)
   - SVPullToRefresh (= 0.4.1)
   - SwiftLocation (~> 3.2.3)
+  - SwiftMessages
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -71,6 +75,7 @@ SPEC REPOS:
     - SnapKit
     - SVPullToRefresh
     - SwiftLocation
+    - SwiftMessages
     - SwiftyJSON
 
 SPEC CHECKSUMS:
@@ -91,8 +96,9 @@ SPEC CHECKSUMS:
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
+  SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: f4dd83ccd9a416d6aaa8f942130792abea2ef26f
+PODFILE CHECKSUM: 1261aa9aba98766833e457d572dbde291ee0a964
 
 COCOAPODS: 1.5.0

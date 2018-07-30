@@ -38,30 +38,30 @@ protocol ICallbackParentDelegate {
     func onCallback(from obj: AnyObject, callerId: Int, params: [String: AnyObject]?, error: Error?);
 }
 
-//let ENV_DEV_APP = 1 // Develop model
-let ENV_TEST_APP = 2 // Test model
+let ENV_DEV_APP = 1 // Develop model
+//let ENV_TEST_APP = 2 // Test model
 //let ENV_RES_APP = 3 // Production model
 
-#if ENV_DEV_APP // Develop model
-    
-    let API_BASE_URL                = "http://124.158.14.28:8080/pama/api" // Develop Server
-    let UPLOAD_PHOTO_BASE_URL       = "http://124.158.14.28:8080/pama/api" // Develop Server
-    
-#endif
-    
-#if ENV_TEST_APP // Test model
-    
-    let API_BASE_URL                = "http://124.158.14.28:8080/pama/api" // Develop Server
-    let UPLOAD_PHOTO_BASE_URL       = "http://124.158.14.28:8080/pama/api" // Develop Server
-    
-#endif
-
-#if ENV_RES_APP // Test model
-    
-    let API_BASE_URL                = "http://124.158.14.28:8080/pama/api" // Develop Server
-    let UPLOAD_PHOTO_BASE_URL       = "http://124.158.14.28:8080/pama/api" // Develop Server
-    
-#endif
+//#if ENV_DEV_APP // Develop model
+//
+//    let API_BASE_URL                = "http://124.158.14.28:8080/pama/api" // Develop Server
+//    let UPLOAD_PHOTO_BASE_URL       = "http://124.158.14.28:8080/pama/api" // Develop Server
+//
+//#endif
+//
+//#if ENV_TEST_APP // Test model
+//
+//    let API_BASE_URL                = "http://124.158.14.28:8080/pama/api" // Develop Server
+//    let UPLOAD_PHOTO_BASE_URL       = "http://124.158.14.28:8080/pama/api" // Develop Server
+//
+//#endif
+//
+//#if ENV_RES_APP // Test model
+//
+//    let API_BASE_URL                = "http://124.158.14.28:8080/pama/api" // Develop Server
+//    let UPLOAD_PHOTO_BASE_URL       = "http://124.158.14.28:8080/pama/api" // Develop Server
+//
+//#endif
 
 extension UIFont {
 

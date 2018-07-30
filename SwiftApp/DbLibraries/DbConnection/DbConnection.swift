@@ -81,16 +81,29 @@ class DbHttp: NSObject {
 
         // -- Tao bg thread de run Alamofire --
         // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
+        // -- encoding = JSONEncoding.default => JSON Request --
+        // -- encoding = URLEncoding.default => Data Request --
         let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method,
-                                                         parameters: request.query, encoding: URLEncoding.default,
+                                                         parameters: request.query,
+                                                         encoding: (request.contentType == .JSON ? JSONEncoding.default : URLEncoding.default),
                                                          headers: request.exportHttpHeader())
+        
+        // dataRequest.request?.allHTTPHeaderFields
+        
+//        let headers: HTTPHeaders = [
+//            "Content-Type": "application/json"
+//        ]
+//        let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method, parameters:request.query,encoding: JSONEncoding.default, headers:headers)
+        
+//        let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method, parameters:request.query,encoding: URLEncoding.default, headers:headers)
+
         
         // -- Su dung cau truc export request co nen khong ? --
         // let dataRequest: DataRequest = request.exportRequest() as! DataRequest
         
         if (request.contentType == DbHttpContentType.JSON) {
             dataRequest.responseJSON(queue: queue, completionHandler: { (response) in
-                // debugPrint(response)
+                debugPrint(response)
                 // -- Set data for response --
                 if let responseObj = request.response {
                     responseObj.httpResponse = response.response
@@ -172,7 +185,7 @@ class DbHttp: NSObject {
     
     // MARK: - dispatchSynchronous : Call server Synchronous (Dong bo)
     // MARK: -
-    // -- Co the khong su dung gia tri tra ve --
+    // -- @discardableResult => Co the khong su dung gia tri tra ve --
     @discardableResult class func dispatchSync(Request request: DbRequest) -> DbResponse
     {
         // https://github.com/Dalodd/Alamofire-Synchronous

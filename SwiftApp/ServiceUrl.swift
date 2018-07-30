@@ -13,8 +13,8 @@ fileprivate let DEV_CONFIG_DATA: [String: String] = [
     "GOOGLE_SERVICE_API_KEY":        "AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg",
     "GOOGLE_PLACES_API_KEY":         "AIzaSyD4thxU1wx7wEJT0G7twiBvlFae2XEUK6M",
     
-    "API_BASE_URL_KEY":              "http://124.158.14.30:8080/diy/api", // Develop Server
-    "UPLOAD_PHOTO_BASE_URL_KEY":     "http://124.158.14.30:8080/file/api", // Develop Server
+    "API_BASE_URL_KEY":              "http://45.117.162.49:8080/diy/api", // Develop Server
+    "UPLOAD_PHOTO_BASE_URL_KEY":     "http://45.117.162.49:8080/file/api", // Develop Server
     
     "PRODUCT_URL_KEY":               "http://develop.agents.propzy.vn/",
     "SHARE_PRODUCT_URL_KEY":         "http://develop.propzy.vn/",
@@ -27,8 +27,8 @@ fileprivate let TEST_CONFIG_DATA: [String: String] = [
     "GOOGLE_SERVICE_API_KEY":        "AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg",
     "GOOGLE_PLACES_API_KEY":         "AIzaSyD4thxU1wx7wEJT0G7twiBvlFae2XEUK6M",
     
-    "API_BASE_URL_KEY":              "http://124.158.14.32:8080/diy/api", // Test Server
-    "UPLOAD_PHOTO_BASE_URL_KEY":     "http://124.158.14.32:8080/file/api", // Test Server
+    "API_BASE_URL_KEY":              "http://45.117.162.50:8080/diy/api", // Test Server
+    "UPLOAD_PHOTO_BASE_URL_KEY":     "http://45.117.162.50:8080/file/api", // Test Server
     
     "PRODUCT_URL_KEY":               "http://agents.propzy.vn/",
     "SHARE_PRODUCT_URL_KEY":         "http://propzy.vn/",
@@ -41,8 +41,8 @@ fileprivate let PRODUCTION_CONFIG_DATA: [String: String] = [
     "GOOGLE_SERVICE_API_KEY":        "AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg",
     "GOOGLE_PLACES_API_KEY":         "AIzaSyD4thxU1wx7wEJT0G7twiBvlFae2XEUK6M",
     
-    "API_BASE_URL_KEY":              "http://124.158.14.22:9090/diy/api", // Production Server
-    "UPLOAD_PHOTO_BASE_URL_KEY":     "http://124.158.14.22:9090/file/api", // Production Server
+    "API_BASE_URL_KEY":              "http://app.propzy.vn:9090/diy/api", // Production Server
+    "UPLOAD_PHOTO_BASE_URL_KEY":     "http://app.propzy.vn:9090/file/api", // Production Server
     
     "PRODUCT_URL_KEY":               "http://agents.propzy.vn/",
     "SHARE_PRODUCT_URL_KEY":         "http://propzy.vn/",
@@ -111,9 +111,7 @@ class ServiceUrl {
     
     private var compeleteSelect: SelectServerModeHandle?
     
-    private init() {
-
-    }
+    private init() { }
     
     func getServiceUrl(_ key: ServerKey) -> String {
         if let api = self.serverMode.configData[key.rawValue] {
@@ -131,8 +129,6 @@ class ServiceUrl {
         
         let myButton = UIButton.init(type: .roundedRect)
         myButton.frame = CGRect(Db.screenWidth() - 145, 20, 130, 30);
-        
-
         
         // let arrOption = Array(self.serverMode.serverModeData.keys)
         // let arrOption = [String] (self.serverMode.serverModeData.keys)

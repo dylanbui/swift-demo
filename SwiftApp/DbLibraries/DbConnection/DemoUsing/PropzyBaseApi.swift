@@ -19,20 +19,20 @@ typealias PropzyObjectHandler<T: Mappable> = (_ obj :T?, PropzyResponse) -> ()
 //}
 
 
-struct PropzyError: Error
-{
-    let code: Int
-    let message: String
-    
-    init(_ code:Int, message: String) {
-        self.code = code
-        self.message = message
-    }
-    
-    public var localizedDescription: String {
-        return message
-    }
-}
+//struct PropzyError: Error
+//{
+//    let code: Int
+//    let message: String
+//
+//    init(_ code:Int, message: String) {
+//        self.code = code
+//        self.message = message
+//    }
+//
+//    public var localizedDescription: String {
+//        return message
+//    }
+//}
 
 public class PropzyBaseApi
 {
@@ -126,6 +126,14 @@ public class PropzyBaseApi
         }
         
         DbHttp.dispatch(Request: request) { (response) in
+            
+            // -- Try debug --
+//            debugPrint(request)
+//            debugPrint(response)
+//            print("Request = \(String(describing: request))")
+//            print("Response = \(String(describing: response))")
+            // -- --------- --
+            
             if let res: PropzyResponse = response as? PropzyResponse {
                 // -- Xu ly thong bao ket noi mang, hay cac thong bao loi thong dung --
                 if let errNetwork = res.error as? DbNetworkError {
@@ -133,6 +141,18 @@ public class PropzyBaseApi
                     print("DbNetworkError = \(String(describing: errNetwork))")
                     return
                 }
+                if let errPropzy = res.error as? PropzyError {
+                    // -- Loi lien quan den he thong Propzy --
+                    print("PropzyError = \(String(describing: errPropzy))")
+                    return
+                }
+                // -- Loi chung chung --
+                if let err = res.error {
+                    // -- Loi lien quan den mang --
+                    print("Common Error = \(String(describing: err))")
+                    return
+                }
+                // -- Complete Handle --
                 completionHandler(res)
             }
         }

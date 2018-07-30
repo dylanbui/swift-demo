@@ -43,6 +43,23 @@ public class DbResponse: DbResponseProtocol {
 // MARK: - Demo extend class DbResponse
 // MARK: -
 
+struct PropzyError: Error
+{
+    let code: Int
+    let message: String
+    
+    init(_ code:Int, message: String) {
+        self.code = code
+        self.message = message
+    }
+    
+    public var localizedDescription: String {
+        return "Code : \(self.code) -- Message : \(self.message)"
+        // return message
+    }
+}
+
+
 public class PropzyResponse: DbResponse {
     
     //    public var httpResponse: HTTPURLResponse?
@@ -77,11 +94,29 @@ public class PropzyResponse: DbResponse {
             return
         }
         
-        print("PropzyResponse = \(responseData)")
+        // print("PropzyResponse = \(responseData)")
         
-        self.message = responseData["message"] as? String
         self.result = responseData["result"] as? Bool
+        self.message = responseData["message"] as? String
         self.code = responseData["code"] as? Int
+
+//        SUCCESS("200", "Thao tác thành công"),
+//        DATA_NOT_FOUND("404", "Không tìm thấy dữ liệu"),
+//        PARAMETER_INVALID("405", "Tham số không hợp lệ"),
+//        SYSTEM_ERROR("500", "Lỗi hệ thống"),
+//        FORBIDDEN("403", "Bị cấm sử dụng"),
+//        UNAUTHORIZED("401", "Không được phép"),
+//        CONFLIT("409", "Thông tin đã tồn tại trong hệ thống");
+        // -- Chi xu ly nhung loi he thong liet ke o tren --
+        if self.result == false {
+            // -- Propzy Error System --
+            let code = self.code ?? 0
+            if [404, 405, 500, 403, 401, 409].db_contains([code]) {
+                self.error = PropzyError.init(code, message: self.message ?? "System Not Found")
+                return
+            }
+        }
+        
         self.dictData = responseData["data"] as? [String: AnyObject]
         // -- Cai nay moi dung --
         self.returnData = responseData["data"] as AnyObject

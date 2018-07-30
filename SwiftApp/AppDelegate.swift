@@ -41,6 +41,10 @@ class AppDelegate: DbAppDelegate {
         //self.performSelector(inBackground: #selector(initGolbalParams), with: nil)
         self.initGolbalParams()
         
+        UserSession.shared.appEvnMode = .DEV_CONFIG
+        // ServiceUrl.shared.serverMode = ServerMode.DEV_CONFIG
+        ServiceUrl.shared.serverMode = .DEV_CONFIG
+        
         return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     

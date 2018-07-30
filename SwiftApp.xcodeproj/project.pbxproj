@@ -24,6 +24,14 @@
 		BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
 		BB390FD12109B31C0091FB6D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB390FD02109B31C0091FB6D /* Category.swift */; };
+		BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E235C210EBA8F00524B0D /* CategoryApi.swift */; };
+		BB4E2361210EBCAD00524B0D /* PzLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */; };
+		BB4E2362210EBCAD00524B0D /* PzLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */; };
+		BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E2363210EBCD800524B0D /* PzRegisterViewController.swift */; };
+		BB4E2366210EBCD800524B0D /* PzRegisterViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4E2364210EBCD800524B0D /* PzRegisterViewController.xib */; };
+		BB4E2369210EBD1F00524B0D /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E2368210EBD1F00524B0D /* UserSession.swift */; };
+		BB4E236B210EC03300524B0D /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E236A210EC03300524B0D /* UserApi.swift */; };
+		BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E236C210ECB1F00524B0D /* DbDeviceExtension.swift */; };
 		BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB547319201789300055CAD9 /* SecondViewController.swift */; };
 		BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731A201789300055CAD9 /* SecondViewController.xib */; };
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
@@ -188,6 +196,14 @@
 		BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
 		BB390FD02109B31C0091FB6D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		BB4E235C210EBA8F00524B0D /* CategoryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryApi.swift; sourceTree = "<group>"; };
+		BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzLoginViewController.swift; sourceTree = "<group>"; };
+		BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzLoginViewController.xib; sourceTree = "<group>"; };
+		BB4E2363210EBCD800524B0D /* PzRegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzRegisterViewController.swift; sourceTree = "<group>"; };
+		BB4E2364210EBCD800524B0D /* PzRegisterViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzRegisterViewController.xib; sourceTree = "<group>"; };
+		BB4E2368210EBD1F00524B0D /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
+		BB4E236A210EC03300524B0D /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
+		BB4E236C210ECB1F00524B0D /* DbDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDeviceExtension.swift; sourceTree = "<group>"; };
 		BB547319201789300055CAD9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		BB54731A201789300055CAD9 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -360,6 +376,7 @@
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB4E235E210EBC6400524B0D /* Propzy-SAM */,
 				BBDD9B9E2073323000217030 /* Demo-PropzyNetwork */,
 				BB1079442071D72C00A99D9A /* Demo-Button-Label-Textfield */,
 				BBB569D11F7B5B870014A7A9 /* Task-App */,
@@ -409,6 +426,26 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		BB4E235E210EBC6400524B0D /* Propzy-SAM */ = {
+			isa = PBXGroup;
+			children = (
+				BB4E2367210EBCE700524B0D /* Common */,
+				BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */,
+				BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */,
+				BB4E2363210EBCD800524B0D /* PzRegisterViewController.swift */,
+				BB4E2364210EBCD800524B0D /* PzRegisterViewController.xib */,
+			);
+			path = "Propzy-SAM";
+			sourceTree = "<group>";
+		};
+		BB4E2367210EBCE700524B0D /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BB4E2368210EBD1F00524B0D /* UserSession.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
 		BB5473162017885D0055CAD9 /* Swift-App */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +463,8 @@
 			isa = PBXGroup;
 			children = (
 				BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */,
+				BB4E235C210EBA8F00524B0D /* CategoryApi.swift */,
+				BB4E236A210EC03300524B0D /* UserApi.swift */,
 			);
 			path = DemoUsing;
 			sourceTree = "<group>";
@@ -530,6 +569,7 @@
 				BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */,
 				BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */,
 				BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */,
+				BB4E236C210ECB1F00524B0D /* DbDeviceExtension.swift */,
 			);
 			path = UtilsExtension;
 			sourceTree = "<group>";
@@ -875,6 +915,7 @@
 				BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */,
 				BB7F303F203E857900185366 /* demo_6@2x.png in Resources */,
 				BBC02E6B1F71747A0011FDE6 /* OpenSans-Semibold.ttf in Resources */,
+				BB4E2366210EBCD800524B0D /* PzRegisterViewController.xib in Resources */,
 				BB7F3038203E857900185366 /* demo_1.jpg in Resources */,
 				BB1079472071D7B300A99D9A /* DemoUKitViewController.xib in Resources */,
 				BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */,
@@ -919,6 +960,7 @@
 				BB7F303D203E857900185366 /* demo_5_line.png in Resources */,
 				BB7F3041203E857900185366 /* demo_6_line@2x.png in Resources */,
 				BB7F3045203E857900185366 /* main_gate_img@2x.png in Resources */,
+				BB4E2362210EBCAD00524B0D /* PzLoginViewController.xib in Resources */,
 				BBC38A6A206DDEE500B11C7B /* themify.ttf in Resources */,
 				BBC38A68206DDEE500B11C7B /* octicons.ttf in Resources */,
 				BB7F3039203E857900185366 /* demo_2.jpg in Resources */,
@@ -995,6 +1037,7 @@
 				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -1016,6 +1059,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1045,6 +1089,7 @@
 				BBC38A52206DDE9500B11C7B /* IonIcons.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
+				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
@@ -1068,6 +1113,7 @@
 				BBE814012017551B00B21B1F /* PhotoGalleryViewController.swift in Sources */,
 				BBA3D1B1206CA36400CD2F0F /* DbOperator.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
+				BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */,
 				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
@@ -1080,6 +1126,7 @@
 				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
 				BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
+				BB4E2369210EBD1F00524B0D /* UserSession.swift in Sources */,
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BB626EC820DBADCE0057F0CF /* DbDictionaryExtensions.swift in Sources */,
@@ -1093,6 +1140,7 @@
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
 				BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
+				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
@@ -1110,6 +1158,7 @@
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
+				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
@@ -1119,6 +1168,7 @@
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 				BBC38A56206DDE9500B11C7B /* Octicon.swift in Sources */,
 				BB5E1426210AFDA10059A8C4 /* PropzyBaseApi.swift in Sources */,
+				BB4E2361210EBCAD00524B0D /* PzLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

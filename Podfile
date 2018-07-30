@@ -38,9 +38,8 @@ target 'SwiftApp' do
     # pod 'LGButton', tot manh nhung chi cho ios > 9.0
 
     # SwiftMessages => hien thi message tren bar, can dung thang nay cho he thong luon
-    # pod 'SwiftMessages'
-
-    pod 'SwiftLocation', '~> 3.2.3' # Dung thang nay de quan ly location
+    pod 'SwiftMessages', '4.1.4'
+    pod 'SwiftLocation', '3.2.3' # Dung thang nay de quan ly location
 
     # Libraries needed Objective C
     pod 'APNumberPad', '1.2.1' # Use for DecimalTextField
