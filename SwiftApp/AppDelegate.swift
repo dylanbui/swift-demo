@@ -29,7 +29,7 @@ class AppDelegate: DbAppDelegate {
 //        })
 //        Realm.Configuration.defaultConfiguration = config
         
-        DbRealmManager.configureDB(version: 6)
+        DbRealmManager.configureDB(version: 7)
         
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true

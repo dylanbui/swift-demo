@@ -19,9 +19,10 @@ class DbRealmObject: Object, Mappable {
         self.init()
     }
     
-    override class func primaryKey() -> String? {
-        return "id"
-    }
+    // -- Khong duoc khai bao san o day --
+//    override class func primaryKey() -> String? {
+//        return "id"
+//    }
     
 //    func className() -> String? {
 //        return "username"

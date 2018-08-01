@@ -44,19 +44,19 @@ class PzLoginViewController: DbViewController {
 //                print("responseData = \(String(describing: res.dictData))")
 //            }
 //        }
+                
+        // -- Run good --
+//        let phone = "0901019992"
+//        let pass = "123"
+//        UserApi.doLogin(["email" : phone, "password" : pass, "type" : "normal", "deviceToken" : UserSession.shared.getDevicePushNotificationToken()]) { (response) in
+//        }
         
-        
-        
-        let phone = "0901019992"
-        let pass = "123"
-
-        UserApi.doLogin(["email" : phone, "password" : pass, "type" : "normal", "deviceToken" : UserSession.shared.getDevicePushNotificationToken()]) { (response) in
-
-
-
+        // -- Run good --
+        CategoryApi.getCategory { (arrCat, pzResponse) in
+            for cat: Category in arrCat ?? [] {
+                print("Cat description \(cat.description)")
+            }
         }
-        
-        
     }
     
     @IBAction func btnRegister_Click(_ sender: Any)

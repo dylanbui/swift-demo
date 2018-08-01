@@ -87,6 +87,11 @@ public class PropzyBaseApi
         
         request(strUrl: strUrl, method: method) { (response) in
             if let res: PropzyResponse = response as? PropzyResponse {
+                if let err = res.error {
+                    print("requestForObject Error = \(String(describing: err))")
+                    completionHandler?(nil, res)
+                    return
+                }
                 completionHandler?(parseToArray(T.self, pzResponse: res)?.first, res)
             }
         }
@@ -112,6 +117,11 @@ public class PropzyBaseApi
         
         request(strUrl: strUrl, method: method) { (response) in
             if let res: PropzyResponse = response as? PropzyResponse {
+                if let err = res.error {
+                    print("requestForList Error = \(String(describing: err))")
+                    completionHandler?(nil, res)
+                    return
+                }
                 completionHandler?(parseToArray(T.self, pzResponse: res), res)
             }
         }
@@ -133,28 +143,40 @@ public class PropzyBaseApi
 //            print("Request = \(String(describing: request))")
 //            print("Response = \(String(describing: response))")
             // -- --------- --
-            
+            // -- Chi xu ly loi mang, hien thong bao popup --
             if let res: PropzyResponse = response as? PropzyResponse {
                 // -- Xu ly thong bao ket noi mang, hay cac thong bao loi thong dung --
                 if let errNetwork = res.error as? DbNetworkError {
                     // -- Loi lien quan den mang --
                     print("DbNetworkError = \(String(describing: errNetwork))")
-                    return
-                }
-                if let errPropzy = res.error as? PropzyError {
-                    // -- Loi lien quan den he thong Propzy --
-                    print("PropzyError = \(String(describing: errPropzy))")
-                    return
-                }
-                // -- Loi chung chung --
-                if let err = res.error {
-                    // -- Loi lien quan den mang --
-                    print("Common Error = \(String(describing: err))")
-                    return
+                    // -- Show warning network --
+                    Pz.showErrorNetwork()
                 }
                 // -- Complete Handle --
                 completionHandler(res)
             }
+            
+//            if let res: PropzyResponse = response as? PropzyResponse {
+//                // -- Xu ly thong bao ket noi mang, hay cac thong bao loi thong dung --
+//                if let errNetwork = res.error as? DbNetworkError {
+//                    // -- Loi lien quan den mang --
+//                    print("DbNetworkError = \(String(describing: errNetwork))")
+//                    return
+//                }
+//                if let errPropzy = res.error as? PropzyError {
+//                    // -- Loi lien quan den he thong Propzy --
+//                    print("PropzyError = \(String(describing: errPropzy))")
+//                    return
+//                }
+//                // -- Loi chung chung --
+//                if let err = res.error {
+//                    // -- Loi lien quan den mang --
+//                    print("Common Error = \(String(describing: err))")
+//                    return
+//                }
+//                // -- Complete Handle --
+//                completionHandler(res)
+//            }
         }
     }
     
@@ -173,7 +195,6 @@ public class PropzyBaseApi
             arr.append(T(JSON: jsonResult)!)
         }
         return nil
-
     }
 
 //    class func parseToObject<T: Mappable>(_ obj: T, pzResponse: DbPropzyResponse) -> T?

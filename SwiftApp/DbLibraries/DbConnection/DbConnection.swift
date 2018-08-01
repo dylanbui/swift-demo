@@ -83,13 +83,18 @@ class DbHttp: NSObject {
         // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
         // -- encoding = JSONEncoding.default => JSON Request --
         // -- encoding = URLEncoding.default => Data Request --
+        var paramsEndcode: ParameterEncoding = (request.contentType == .JSON ? JSONEncoding.default : URLEncoding.default)
+        // -- For GET method --
+        if method == .get {
+            paramsEndcode = URLEncoding.default
+        }
+        
         let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method,
                                                          parameters: request.query,
-                                                         encoding: (request.contentType == .JSON ? JSONEncoding.default : URLEncoding.default),
+                                                         encoding: paramsEndcode,
                                                          headers: request.exportHttpHeader())
         
         // dataRequest.request?.allHTTPHeaderFields
-        
 //        let headers: HTTPHeaders = [
 //            "Content-Type": "application/json"
 //        ]

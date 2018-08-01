@@ -12,6 +12,29 @@ class CategoryApi: PropzyBaseApi {
     
     class func getCategory(completionHandler: @escaping PropzyListHandler<Category>) -> Void
     {
+        let url = ServiceUrl.createPath("/categories")
+        //request(strUrl: url, params: postParams, completionHandler: completionHandler)
+        // -- Xu ly cache with Realm --
+        
+        requestForList(strUrl: url) { (arr: [Category]?, pzResponse: PropzyResponse) in
+            if let arrCat = arr {
+                // -- Co du lieu tra ve tu Service --
+                // -- Save to Realm data, if existed primary key will be override  --
+                DbRealmManager.saveArrayObjects(T: arrCat, completion: { (success) in
+                    print("Da ghi category thanh cong")
+                })
+                completionHandler(arrCat, pzResponse)
+            } else {
+                // -- Khong co du lieu tra ve tu Service => get from Realm db --
+                DbRealmManager.getAllListOf(T: Category(), completionHandler: { (arrCategory) in
+                    completionHandler(arrCategory as? [Category], pzResponse)
+                })
+            }
+        }
+        
+        
+//        requestForList(strUrl: url, completionHandler: completionHandler)
+        
         //request("http://45.117.162.49:8080/diy/api/categories", params: nil, requestId: 123, completionHandler: completionHandler)
 //        requestFor("http://45.117.162.49:8080/diy/api/categories", params: nil, completionHandler: { (response: DbPropzyResponse?, error: Error?) in
 //

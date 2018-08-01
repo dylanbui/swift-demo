@@ -12,7 +12,8 @@ class UserApi: PropzyBaseApi {
     
     class func doLogin(_ parameters: Dictionary<String, String>, completionHandler: @escaping DbDispatchHandler) -> Void
     {        
-        let url = ServiceUrl.shared.getServiceUrl(ServerKey.API_BASE_URL_KEY) + "/user/signIn"
+//        let url = ServiceUrl.shared.getServiceUrl(ServerKey.API_BASE_URL_KEY) + "/user/signIn"
+        let url = ServiceUrl.createPath("/user/signIn")
         var postParams = ["osName" : "iOs",
                       "deviceName" : UIDevice.current.deviceType.displayName,
                       "versionName" : UIDevice.current.systemVersion]

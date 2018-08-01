@@ -113,6 +113,10 @@ class ServiceUrl {
     
     private init() { }
     
+    class func createPath(_ path: String) -> String {
+        return ServiceUrl.shared.getServiceUrl(ServerKey.API_BASE_URL_KEY) + path
+    }
+    
     func getServiceUrl(_ key: ServerKey) -> String {
         if let api = self.serverMode.configData[key.rawValue] {
             return api

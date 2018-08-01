@@ -36,6 +36,7 @@
 		BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731A201789300055CAD9 /* SecondViewController.xib */; };
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
 		BB547320201789460055CAD9 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731E201789460055CAD9 /* FirstViewController.xib */; };
+		BB5692402111A8220007757F /* Pz.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56923F2111A8220007757F /* Pz.swift */; };
 		BB581929206E432500E48DA4 /* DbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB581928206E432500E48DA4 /* DbButton.swift */; };
 		BB5E1426210AFDA10059A8C4 /* PropzyBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */; };
 		BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E1427210B200A0059A8C4 /* AppEvn.swift */; };
@@ -208,6 +209,7 @@
 		BB54731A201789300055CAD9 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BB54731E201789460055CAD9 /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
+		BB56923F2111A8220007757F /* Pz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pz.swift; sourceTree = "<group>"; };
 		BB581928206E432500E48DA4 /* DbButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbButton.swift; sourceTree = "<group>"; };
 		BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropzyBaseApi.swift; sourceTree = "<group>"; };
 		BB5E1427210B200A0059A8C4 /* AppEvn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEvn.swift; sourceTree = "<group>"; };
@@ -429,6 +431,7 @@
 		BB4E235E210EBC6400524B0D /* Propzy-SAM */ = {
 			isa = PBXGroup;
 			children = (
+				BB5E1424210AFD7F0059A8C4 /* DemoUsing */,
 				BB4E2367210EBCE700524B0D /* Common */,
 				BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */,
 				BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */,
@@ -442,6 +445,7 @@
 			isa = PBXGroup;
 			children = (
 				BB4E2368210EBD1F00524B0D /* UserSession.swift */,
+				BB56923F2111A8220007757F /* Pz.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -465,6 +469,7 @@
 				BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */,
 				BB4E235C210EBA8F00524B0D /* CategoryApi.swift */,
 				BB4E236A210EC03300524B0D /* UserApi.swift */,
+				BB390FD02109B31C0091FB6D /* Category.swift */,
 			);
 			path = DemoUsing;
 			sourceTree = "<group>";
@@ -689,7 +694,6 @@
 		BBDD5E962011F3F70089DD32 /* Demo-App */ = {
 			isa = PBXGroup;
 			children = (
-				BB390FD02109B31C0091FB6D /* Category.swift */,
 				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
 				BBF5276F2105949B007CFFB4 /* Student.swift */,
 				BB228A4F2108302A00C5C6AA /* Actor.swift */,
@@ -796,7 +800,6 @@
 		BBE88C762021C4A80044F661 /* DbConnection */ = {
 			isa = PBXGroup;
 			children = (
-				BB5E1424210AFD7F0059A8C4 /* DemoUsing */,
 				BB19FAF420441A6B005F2669 /* Reachability.swift */,
 				BBE88C772021C4BD0044F661 /* DbRequest.swift */,
 				BBE88C792021DFD40044F661 /* DbResponse.swift */,
@@ -1151,6 +1154,7 @@
 				BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
+				BB5692402111A8220007757F /* Pz.swift in Sources */,
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
 				BBC38A55206DDE9500B11C7B /* MaterialIcon.swift in Sources */,
 				BBE4476D206B764400ED8CC2 /* UIViewController+KNSemiModal.m in Sources */,
