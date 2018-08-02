@@ -10,6 +10,8 @@ import Foundation
 import ObjectMapper
 import Alamofire
 
+import RealmSwift
+
 typealias PropzyListHandler<T: Mappable> = (_ obj :[T]?, PropzyResponse) -> ()
 typealias PropzyObjectHandler<T: Mappable> = (_ obj :T?, PropzyResponse) -> ()
 
@@ -95,8 +97,49 @@ public class PropzyBaseApi
                 completionHandler?(parseToArray(T.self, pzResponse: res)?.first, res)
             }
         }
-
     }
+
+    // -- Con chua xu ly duoc cache 1 object --
+//    class func requestObjectWithCache<T: DbRealmObject>(strUrl: String, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyObjectHandler<T>?)
+//    {
+//        requestForObject(strUrl: strUrl, method: method, params: params) { (obj: T?, response: PropzyResponse) in
+//            if let object = obj {
+//                // -- Co du lieu tra ve tu Service --
+//                // -- Save to Realm data, if existed primary key will be override  --
+//                DbRealmManager.saveWithCompletion(T: object, completion: { (sucess) in
+//                    print("Da ghi Realm thanh cong")
+//                })
+//                completionHandler?(object, response)
+//            } else {
+//                // -- Khong co du lieu tra ve tu Service => get from Realm db --
+////                DbRealmManager.getFetchObject(T: <#T##Object#>, objectID: <#T##String#>, completionHandler: <#T##(Object?) -> Void#>)
+////                DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
+////                    completionHandler?(arrCache as? [T] , response)
+////                })
+//            }
+//        }
+//    }
+    
+    class func requestListWithCache<T: DbRealmObject>(strUrl: String, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyListHandler<T>?)
+    {
+        requestForList(strUrl: strUrl, method: method, params: params) { ( arr: [T]?, response: PropzyResponse) in
+            if let arrObject = arr {
+                // -- Co du lieu tra ve tu Service --
+                // -- Save to Realm data, if existed primary key will be override  --
+                DbRealmManager.saveArrayObjects(T: arrObject, completion: { (success) in
+                    print("Da ghi Realm thanh cong")
+                })
+                completionHandler?(arrObject, response)
+            } else {
+
+                // -- Khong co du lieu tra ve tu Service => get from Realm db --
+                DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
+                    completionHandler?(arrCache as? [T] , response)
+                })
+            }
+        }
+    }
+
     
     class func requestForList<T: Mappable>(strUrl: String, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyListHandler<T>?)
     {

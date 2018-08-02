@@ -92,14 +92,18 @@ public extension DbRealmManager {
     ///   - T: Array of Realm Objects
     ///   - completion: Returns success or not for this task.
     public class func saveArrayObjects(T: [Object], completion: @escaping (_ success : Bool) -> Void) {
-        let numberObjects : Int = T.count
-        var savedObjects : Int = 0
         DbRealmManager.addOrUpdate(model: String(describing: T.self), object: T, completionHandler: { (error) in
-            savedObjects = savedObjects+1
-            if (savedObjects == numberObjects) {
-                completion (true)
-            }
+            completion(error == nil ? true : false)
         })
+        // -- 02/08/2018 : Old code from git:  --
+//        let numberObjects : Int = T.count
+//        var savedObjects : Int = 0
+//        DbRealmManager.addOrUpdate(model: String(describing: T.self), object: T, completionHandler: { (error) in
+//            savedObjects = savedObjects+1
+//            if (savedObjects == numberObjects) {
+//                completion (true)
+//            }
+//        })
     }
     
     

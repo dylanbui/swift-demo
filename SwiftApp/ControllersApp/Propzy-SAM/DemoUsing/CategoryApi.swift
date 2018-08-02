@@ -14,24 +14,31 @@ class CategoryApi: PropzyBaseApi {
     {
         let url = ServiceUrl.createPath("/categories")
         //request(strUrl: url, params: postParams, completionHandler: completionHandler)
-        // -- Xu ly cache with Realm --
-        
-        requestForList(strUrl: url) { (arr: [Category]?, pzResponse: PropzyResponse) in
-            if let arrCat = arr {
-                // -- Co du lieu tra ve tu Service --
-                // -- Save to Realm data, if existed primary key will be override  --
-                DbRealmManager.saveArrayObjects(T: arrCat, completion: { (success) in
-                    print("Da ghi category thanh cong")
-                })
-                completionHandler(arrCat, pzResponse)
-            } else {
-                // -- Khong co du lieu tra ve tu Service => get from Realm db --
-                DbRealmManager.getAllListOf(T: Category(), completionHandler: { (arrCategory) in
-                    completionHandler(arrCategory as? [Category], pzResponse)
-                })
-            }
+        //requestListWithCache(strUrl: url, completionHandler: completionHandler)
+
+        // -- Chay tot --
+        requestListWithCache(strUrl: url) { (arr: [Category]?, pzResponse: PropzyResponse) in
+            print("da lay xong")
+            completionHandler(arr, pzResponse)
         }
+        return;
         
+        // -- Xu ly cache with Realm --
+//        requestForList(strUrl: url) { (arr: [Category]?, pzResponse: PropzyResponse) in
+//            if let arrCat = arr {
+//                // -- Co du lieu tra ve tu Service --
+//                // -- Save to Realm data, if existed primary key will be override  --
+//                DbRealmManager.saveArrayObjects(T: arrCat, completion: { (success) in
+//                    print("Da ghi category thanh cong")
+//                })
+//                completionHandler(arrCat, pzResponse)
+//            } else {
+//                // -- Khong co du lieu tra ve tu Service => get from Realm db --
+//                DbRealmManager.getAllListOf(T: Category(), completionHandler: { (arrCategory) in
+//                    completionHandler(arrCategory as? [Category], pzResponse)
+//                })
+//            }
+//        }
         
 //        requestForList(strUrl: url, completionHandler: completionHandler)
         
