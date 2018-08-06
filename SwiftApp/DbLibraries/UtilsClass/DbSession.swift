@@ -22,6 +22,8 @@ class DbSession: DbObject {
     var phone: String?
     var photo: String?
     
+    var accessToken: String?
+    
     var latitude: Double! = 0
     var longitude: Double! = 0
     

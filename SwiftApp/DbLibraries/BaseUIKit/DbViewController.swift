@@ -133,7 +133,8 @@ extension DbViewController: DZNEmptyDataSetSource {
         if self.verticalOffsetForEmptyDataSet != 0 {
             return CGFloat(self.verticalOffsetForEmptyDataSet)
         }
-        return CGFloat((self.tblContent.tableHeaderView?.frame.size.height)!/2.0)
+//        return CGFloat((self.tblContent.tableHeaderView?.frame.size.height)!/2.0)
+        return CGFloat(Db.screenHeight()/2)
     }
     
     func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {

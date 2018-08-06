@@ -65,6 +65,13 @@
 		BB7F3045203E857900185366 /* main_gate_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3037203E857900185366 /* main_gate_img@2x.png */; };
 		BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887DBC203EA05700DFC060 /* NetworkViewController.swift */; };
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
+		BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4362117FB8500618AEF /* PzListing.swift */; };
+		BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4382117FBA000618AEF /* PzListingItem.swift */; };
+		BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A43A2117FC6000618AEF /* PzListingApi.swift */; };
+		BBA2A43E211826F000618AEF /* PzListingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A43C211826F000618AEF /* PzListingViewController.swift */; };
+		BBA2A43F211826F000618AEF /* PzListingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA2A43D211826F000618AEF /* PzListingViewController.xib */; };
+		BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4402118270C00618AEF /* PzListingDetailViewController.swift */; };
+		BBA2A4432118270C00618AEF /* PzListingDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA2A4412118270C00618AEF /* PzListingDetailViewController.xib */; };
 		BBA3D1B1206CA36400CD2F0F /* DbOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B0206CA36400CD2F0F /* DbOperator.swift */; };
 		BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B4206CE77D00CD2F0F /* DbLabel.swift */; };
 		BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */; };
@@ -238,6 +245,13 @@
 		BB7F3037203E857900185366 /* main_gate_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_gate_img@2x.png"; sourceTree = "<group>"; };
 		BB887DBC203EA05700DFC060 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
+		BBA2A4362117FB8500618AEF /* PzListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListing.swift; sourceTree = "<group>"; };
+		BBA2A4382117FBA000618AEF /* PzListingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingItem.swift; sourceTree = "<group>"; };
+		BBA2A43A2117FC6000618AEF /* PzListingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingApi.swift; sourceTree = "<group>"; };
+		BBA2A43C211826F000618AEF /* PzListingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingViewController.swift; sourceTree = "<group>"; };
+		BBA2A43D211826F000618AEF /* PzListingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzListingViewController.xib; sourceTree = "<group>"; };
+		BBA2A4402118270C00618AEF /* PzListingDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingDetailViewController.swift; sourceTree = "<group>"; };
+		BBA2A4412118270C00618AEF /* PzListingDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzListingDetailViewController.xib; sourceTree = "<group>"; };
 		BBA3D1B0206CA36400CD2F0F /* DbOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbOperator.swift; sourceTree = "<group>"; };
 		BBA3D1B4206CE77D00CD2F0F /* DbLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLabel.swift; sourceTree = "<group>"; };
 		BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTextField.swift; sourceTree = "<group>"; };
@@ -437,6 +451,10 @@
 				BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */,
 				BB4E2363210EBCD800524B0D /* PzRegisterViewController.swift */,
 				BB4E2364210EBCD800524B0D /* PzRegisterViewController.xib */,
+				BBA2A43C211826F000618AEF /* PzListingViewController.swift */,
+				BBA2A43D211826F000618AEF /* PzListingViewController.xib */,
+				BBA2A4402118270C00618AEF /* PzListingDetailViewController.swift */,
+				BBA2A4412118270C00618AEF /* PzListingDetailViewController.xib */,
 			);
 			path = "Propzy-SAM";
 			sourceTree = "<group>";
@@ -470,6 +488,9 @@
 				BB4E235C210EBA8F00524B0D /* CategoryApi.swift */,
 				BB4E236A210EC03300524B0D /* UserApi.swift */,
 				BB390FD02109B31C0091FB6D /* Category.swift */,
+				BBA2A4362117FB8500618AEF /* PzListing.swift */,
+				BBA2A4382117FBA000618AEF /* PzListingItem.swift */,
+				BBA2A43A2117FC6000618AEF /* PzListingApi.swift */,
 			);
 			path = DemoUsing;
 			sourceTree = "<group>";
@@ -909,6 +930,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBA2A4432118270C00618AEF /* PzListingDetailViewController.xib in Resources */,
 				BBC02E681F71747A0011FDE6 /* OpenSans-Light.ttf in Resources */,
 				BBE813FD2017458100B21B1F /* ic_show_password.png in Resources */,
 				BBDD9BA6207372B400217030 /* CategoriesViewController.xib in Resources */,
@@ -924,6 +946,7 @@
 				BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */,
 				BBC38A64206DDEE500B11C7B /* Ionicons.ttf in Resources */,
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
+				BBA2A43F211826F000618AEF /* PzListingViewController.xib in Resources */,
 				BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */,
 				BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */,
 				BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */,
@@ -1146,15 +1169,18 @@
 				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */,
+				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
 				BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */,
+				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
 				BB5692402111A8220007757F /* Pz.swift in Sources */,
+				BBA2A43E211826F000618AEF /* PzListingViewController.swift in Sources */,
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
 				BBC38A55206DDE9500B11C7B /* MaterialIcon.swift in Sources */,
 				BBE4476D206B764400ED8CC2 /* UIViewController+KNSemiModal.m in Sources */,
@@ -1164,6 +1190,8 @@
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
+				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
+				BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,

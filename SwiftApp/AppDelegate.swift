@@ -29,7 +29,7 @@ class AppDelegate: DbAppDelegate {
 //        })
 //        Realm.Configuration.defaultConfiguration = config
         
-        DbRealmManager.configureDB(version: 7)
+        DbRealmManager.configureDB(version: 1)
         
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
@@ -42,6 +42,8 @@ class AppDelegate: DbAppDelegate {
         self.initGolbalParams()
         
         UserSession.shared.appEvnMode = .DEV_CONFIG
+        UserSession.shared.accessToken = "e7d128dfd328ce2c3899136bedf76ed3540f3865e829ef3af49afe7660b8ac8c"
+        
         // ServiceUrl.shared.serverMode = ServerMode.DEV_CONFIG
         ServiceUrl.shared.serverMode = .DEV_CONFIG
         

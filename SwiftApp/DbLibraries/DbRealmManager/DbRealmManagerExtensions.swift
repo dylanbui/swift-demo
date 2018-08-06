@@ -170,7 +170,9 @@ public extension DbRealmManager {
             var condition : String = ""
             if objects.count > 0{
                 let object : Object = objects.first!
-                let primaryKeyValue : Any = object.value(forKey: "id") as Any
+                // -- DucBui --
+                // let primaryKeyValue : Any = object.value(forKey: "id") as Any
+                let primaryKeyValue : Any = object.value(forKey: objectPrimaryKey) as Any
                 if primaryKeyValue is String {
                     condition = "\(objectPrimaryKey) == \(objectPrimaryKeyValue)"
                 }else{

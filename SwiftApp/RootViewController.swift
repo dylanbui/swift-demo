@@ -29,32 +29,33 @@ class RootViewController: DbViewController {
 //        let vcl = NetworkViewController()
 //        let vcl = DemoUKitViewController()
 //        let vcl = CategoriesViewController()
-        let vcl = PzLoginViewController()
+//        let vcl = PzLoginViewController()
+        let vcl = PzListingViewController()
         
         vcl.navigationItem.setHidesBackButton(true, animated:false)
         self.navigationController?.pushViewController(vcl, animated: false)
         
-        // weak var weakSelf = self
-        Utils.dispatchToBgQueue {
-            print("Bg : Say helooo delay")
-            self.delayWithSeconds(5, completion: {
-                for index in 1...100 {
-                    if index % 10 == 0 {
-                        print("index = \(index)")
-                    }
-                }
-            })
-        }
-        
-        Utils.dispatchToMainQueue { 
-            print("Main : Say helooo")
-            for index in 1...100 {
-                if index % 10 == 0 {
-                    print("Main = index = \(index)")
-                }
-            }
-
-        }
+        // ---- weak var weakSelf = self
+//        Utils.dispatchToBgQueue {
+//            print("Bg : Say helooo delay")
+//            self.delayWithSeconds(5, completion: {
+//                for index in 1...100 {
+//                    if index % 10 == 0 {
+//                        print("index = \(index)")
+//                    }
+//                }
+//            })
+//        }
+//
+//        Utils.dispatchToMainQueue {
+//            print("Main : Say helooo")
+//            for index in 1...100 {
+//                if index % 10 == 0 {
+//                    print("Main = index = \(index)")
+//                }
+//            }
+//
+//        }
         
         
         

@@ -100,25 +100,28 @@ public class PropzyBaseApi
     }
 
     // -- Con chua xu ly duoc cache 1 object --
-//    class func requestObjectWithCache<T: DbRealmObject>(strUrl: String, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyObjectHandler<T>?)
-//    {
-//        requestForObject(strUrl: strUrl, method: method, params: params) { (obj: T?, response: PropzyResponse) in
-//            if let object = obj {
-//                // -- Co du lieu tra ve tu Service --
-//                // -- Save to Realm data, if existed primary key will be override  --
-//                DbRealmManager.saveWithCompletion(T: object, completion: { (sucess) in
-//                    print("Da ghi Realm thanh cong")
+    class func requestObjectWithCache<T: DbRealmObject>(strUrl: String, objectPrimaryKeyValue: Any?, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyObjectHandler<T>?)
+    {
+        requestForObject(strUrl: strUrl, method: method, params: params) { (obj: T?, response: PropzyResponse) in
+            if let object = obj {
+                // -- Co du lieu tra ve tu Service --
+                // -- Save to Realm data, if existed primary key will be override  --
+                DbRealmManager.saveWithCompletion(T: object, completion: { (sucess) in
+                    print("Da ghi Realm Object thanh cong")
+                })
+                completionHandler?(object, response)
+            } else {
+                // -- Khong co du lieu tra ve tu Service => get from Realm db --
+                DbRealmManager.getFetchObjectWithCustomPrimareyKey(T: T(), objectPrimaryKey: T.primaryKey() ?? "id", objectPrimaryKeyValue: objectPrimaryKeyValue as? String ?? "none", completionHandler: { (itemCache) in
+                    completionHandler?(itemCache as? T, response)
+                })
+//                DbRealmManager.getFetchObject(T: <#T##Object#>, objectID: <#T##String#>, completionHandler: <#T##(Object?) -> Void#>)
+//                DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
+//                    completionHandler?(arrCache as? [T] , response)
 //                })
-//                completionHandler?(object, response)
-//            } else {
-//                // -- Khong co du lieu tra ve tu Service => get from Realm db --
-////                DbRealmManager.getFetchObject(T: <#T##Object#>, objectID: <#T##String#>, completionHandler: <#T##(Object?) -> Void#>)
-////                DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
-////                    completionHandler?(arrCache as? [T] , response)
-////                })
-//            }
-//        }
-//    }
+            }
+        }
+    }
     
     class func requestListWithCache<T: DbRealmObject>(strUrl: String, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyListHandler<T>?)
     {
@@ -127,14 +130,14 @@ public class PropzyBaseApi
                 // -- Co du lieu tra ve tu Service --
                 // -- Save to Realm data, if existed primary key will be override  --
                 DbRealmManager.saveArrayObjects(T: arrObject, completion: { (success) in
-                    print("Da ghi Realm thanh cong")
+                    print("Da ghi Realm List thanh cong")
                 })
                 completionHandler?(arrObject, response)
             } else {
 
                 // -- Khong co du lieu tra ve tu Service => get from Realm db --
                 DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
-                    completionHandler?(arrCache as? [T] , response)
+                    completionHandler?(arrCache as? [T], response)
                 })
             }
         }
@@ -231,13 +234,15 @@ public class PropzyBaseApi
                 if let jsonResult = item as? Dictionary<String, Any> {
                     // do whatever with jsonResult
                     arr.append(T(JSON: jsonResult)!)
+//                    arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
                 }
             }
-            return arr
+            // return arr
         } else if let jsonResult = pzResponse.returnData as? Dictionary<String, Any> {
             arr.append(T(JSON: jsonResult)!)
+//            arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
         }
-        return nil
+        return arr
     }
 
 //    class func parseToObject<T: Mappable>(_ obj: T, pzResponse: DbPropzyResponse) -> T?
