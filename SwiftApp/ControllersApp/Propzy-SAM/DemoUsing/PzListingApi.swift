@@ -29,7 +29,7 @@ class PzListingApi: PropzyBaseApi {
         let url = ServiceUrl.createPath("/listing/\(listingId)?access_token=\(UserSession.shared.accessToken!)")
         //request(strUrl: url, params: postParams, completionHandler: completionHandler)
         //requestListWithCache(strUrl: url, completionHandler: completionHandler)
-        
+
         // -- Chay tot --
         requestObjectWithCache(strUrl: url, objectPrimaryKeyValue: listingId) { (itemCache: PzListingItem?, pzResponse: PropzyResponse) in
             print("da lay xong")

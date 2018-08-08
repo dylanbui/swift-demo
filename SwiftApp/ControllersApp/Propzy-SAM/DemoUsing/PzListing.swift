@@ -34,6 +34,7 @@ class PzListing: DbRealmObject
     required convenience init?(map: Map) {
         //fatalError("init(map:) has not been implemented")
         self.init()
+        self.mapping(map: map)
     }
     
     override func mapping(map: Map)

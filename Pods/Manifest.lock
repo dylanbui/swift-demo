@@ -12,6 +12,18 @@ PODS:
   - INTULocationManager (4.3.0)
   - IQKeyboardManagerSwift (6.0.4)
   - MBProgressHUD (1.1.0)
+  - MMDrawerController (0.6.0):
+    - MMDrawerController/Core (= 0.6.0)
+    - MMDrawerController/MMDrawerBarButtonItem (= 0.6.0)
+    - MMDrawerController/MMDrawerVisualStates (= 0.6.0)
+    - MMDrawerController/Subclass (= 0.6.0)
+  - MMDrawerController/Core (0.6.0)
+  - MMDrawerController/MMDrawerBarButtonItem (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/MMDrawerVisualStates (0.6.0):
+    - MMDrawerController/Core
+  - MMDrawerController/Subclass (0.6.0):
+    - MMDrawerController/Core
   - ObjectMapper (3.3.0)
   - "ObjectMapper+Realm (0.6)":
     - ObjectMapper
@@ -46,6 +58,7 @@ DEPENDENCIES:
   - INTULocationManager (= 4.3.0)
   - IQKeyboardManagerSwift (= 6.0.4)
   - MBProgressHUD (= 1.1.0)
+  - MMDrawerController (= 0.6.0)
   - ObjectMapper (= 3.3.0)
   - "ObjectMapper+Realm (= 0.6)"
   - ObjectMapperAdditions/Core (~> 4.1)
@@ -53,8 +66,9 @@ DEPENDENCIES:
   - RealmSwift (= 3.7.4)
   - SnapKit (= 4.0.0)
   - SVPullToRefresh (= 0.4.1)
-  - SwiftLocation (~> 3.2.3)
-  - SwiftMessages
+  - SwiftLocation (= 3.2.3)
+  - SwiftMessages (= 4.1.4)
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
@@ -67,6 +81,7 @@ SPEC REPOS:
     - INTULocationManager
     - IQKeyboardManagerSwift
     - MBProgressHUD
+    - MMDrawerController
     - ObjectMapper
     - "ObjectMapper+Realm"
     - ObjectMapperAdditions
@@ -88,6 +103,7 @@ SPEC CHECKSUMS:
   INTULocationManager: 0ca5c76eacc029ba15938fc699520bc333ed6435
   IQKeyboardManagerSwift: 36dbe324b4f9793f5f41ba5227f3e7c76dfefd50
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
+  MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   "ObjectMapper+Realm": 4cf44ed3202a73f08594e21e13eb3f8aa9b5a664
   ObjectMapperAdditions: db4243e10ebd9abf7e5e7938e4b0a4bbfd840980
@@ -99,6 +115,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 1261aa9aba98766833e457d572dbde291ee0a964
+PODFILE CHECKSUM: a2c8592c4ad427a4190d4058e373d038912d2720
 
 COCOAPODS: 1.5.0

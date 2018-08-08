@@ -233,14 +233,14 @@ public class PropzyBaseApi
             for item in dataArr {
                 if let jsonResult = item as? Dictionary<String, Any> {
                     // do whatever with jsonResult
-                    arr.append(T(JSON: jsonResult)!)
-//                    arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
+//                    arr.append(T(JSON: jsonResult)!)
+                    arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
                 }
             }
             // return arr
         } else if let jsonResult = pzResponse.returnData as? Dictionary<String, Any> {
-            arr.append(T(JSON: jsonResult)!)
-//            arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
+//            arr.append(T(JSON: jsonResult)!)
+            arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
         }
         return arr
     }

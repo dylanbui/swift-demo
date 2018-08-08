@@ -494,6 +494,39 @@ public extension Array {
         self = db_sorted(by: path, ascending: ascending)
     }
     
+    /// SwifterSwift: JSON String from array.
+    ///
+    ///        dict.jsonString() -> "{"testKey":"testValue","testArrayKey":[1,2,3,4,5]}"
+    ///
+    ///        dict.jsonString(prettify: true)
+    ///        /*
+    ///        returns the following string:
+    ///
+    ///        "{
+    ///        "testKey" : "testValue",
+    ///        "testArrayKey" : [
+    ///            1,
+    ///            2,
+    ///            3,
+    ///            4,
+    ///            5
+    ///        ]
+    ///        }"
+    ///
+    ///        */
+    ///
+    /// - Parameter prettify: set true to prettify string (default is false).
+    /// - Returns: optional JSON String (if applicable).
+    public func db_jsonString(prettify: Bool = false) -> String? {
+        guard JSONSerialization.isValidJSONObject(self) else {
+            return nil
+        }
+        let options = (prettify == true) ? JSONSerialization.WritingOptions.prettyPrinted : JSONSerialization.WritingOptions()
+        guard let jsonData = try? JSONSerialization.data(withJSONObject: self, options: options) else { return nil }
+        return String(data: jsonData, encoding: .utf8)
+    }
+
+    
 }
 
 // MARK: - Methods (Equatable)

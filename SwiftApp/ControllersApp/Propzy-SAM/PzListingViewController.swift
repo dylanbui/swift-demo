@@ -32,6 +32,7 @@ class PzListingViewController: DbViewController
         PzListingApi.getListingDetail(withId: 1614) { (item, pzResponse) in
             if let itemListing = item {
                 print("itemListing description \(itemListing.description)")
+                print("arrPhotos description \(itemListing.arrPhotos.description)")
             }
         }
         

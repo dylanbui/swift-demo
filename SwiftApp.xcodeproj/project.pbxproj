@@ -23,6 +23,11 @@
 		BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA6792015D37B00590C94 /* DbLoadableView.swift */; };
 		BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
+		BB35CE70211A8B0100B88BEB /* DbMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE6F211A8B0100B88BEB /* DbMappable.swift */; };
+		BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE77211AECEF00B88BEB /* PzLeftMenuViewController.swift */; };
+		BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35CE78211AECEF00B88BEB /* PzLeftMenuViewController.xib */; };
+		BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */; };
+		BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */; };
 		BB390FD12109B31C0091FB6D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB390FD02109B31C0091FB6D /* Category.swift */; };
 		BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E235C210EBA8F00524B0D /* CategoryApi.swift */; };
 		BB4E2361210EBCAD00524B0D /* PzLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */; };
@@ -63,6 +68,7 @@
 		BB7F3043203E857900185366 /* main_gate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3035203E857900185366 /* main_gate@2x.png */; };
 		BB7F3044203E857900185366 /* main_gate_img.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3036203E857900185366 /* main_gate_img.png */; };
 		BB7F3045203E857900185366 /* main_gate_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3037203E857900185366 /* main_gate_img@2x.png */; };
+		BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8823422119847400A1BB76 /* JsonStringTransform.swift */; };
 		BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887DBC203EA05700DFC060 /* NetworkViewController.swift */; };
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
 		BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4362117FB8500618AEF /* PzListing.swift */; };
@@ -203,6 +209,11 @@
 		BB2FA6792015D37B00590C94 /* DbLoadableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLoadableView.swift; sourceTree = "<group>"; };
 		BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		BB35CE6F211A8B0100B88BEB /* DbMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMappable.swift; sourceTree = "<group>"; };
+		BB35CE77211AECEF00B88BEB /* PzLeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzLeftMenuViewController.swift; sourceTree = "<group>"; };
+		BB35CE78211AECEF00B88BEB /* PzLeftMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzLeftMenuViewController.xib; sourceTree = "<group>"; };
+		BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzMainViewController.swift; sourceTree = "<group>"; };
+		BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzMainViewController.xib; sourceTree = "<group>"; };
 		BB390FD02109B31C0091FB6D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BB4E235C210EBA8F00524B0D /* CategoryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryApi.swift; sourceTree = "<group>"; };
 		BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzLoginViewController.swift; sourceTree = "<group>"; };
@@ -243,6 +254,7 @@
 		BB7F3035203E857900185366 /* main_gate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_gate@2x.png"; sourceTree = "<group>"; };
 		BB7F3036203E857900185366 /* main_gate_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_gate_img.png; sourceTree = "<group>"; };
 		BB7F3037203E857900185366 /* main_gate_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_gate_img@2x.png"; sourceTree = "<group>"; };
+		BB8823422119847400A1BB76 /* JsonStringTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonStringTransform.swift; sourceTree = "<group>"; };
 		BB887DBC203EA05700DFC060 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
 		BBA2A4362117FB8500618AEF /* PzListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListing.swift; sourceTree = "<group>"; };
@@ -442,6 +454,17 @@
 			path = CustomViews;
 			sourceTree = "<group>";
 		};
+		BB35CE83211AF2ED00B88BEB /* Main Controller */ = {
+			isa = PBXGroup;
+			children = (
+				BB35CE77211AECEF00B88BEB /* PzLeftMenuViewController.swift */,
+				BB35CE78211AECEF00B88BEB /* PzLeftMenuViewController.xib */,
+				BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */,
+				BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */,
+			);
+			path = "Main Controller";
+			sourceTree = "<group>";
+		};
 		BB4E235E210EBC6400524B0D /* Propzy-SAM */ = {
 			isa = PBXGroup;
 			children = (
@@ -455,6 +478,7 @@
 				BBA2A43D211826F000618AEF /* PzListingViewController.xib */,
 				BBA2A4402118270C00618AEF /* PzListingDetailViewController.swift */,
 				BBA2A4412118270C00618AEF /* PzListingDetailViewController.xib */,
+				BB35CE83211AF2ED00B88BEB /* Main Controller */,
 			);
 			path = "Propzy-SAM";
 			sourceTree = "<group>";
@@ -491,6 +515,8 @@
 				BBA2A4362117FB8500618AEF /* PzListing.swift */,
 				BBA2A4382117FBA000618AEF /* PzListingItem.swift */,
 				BBA2A43A2117FC6000618AEF /* PzListingApi.swift */,
+				BB8823422119847400A1BB76 /* JsonStringTransform.swift */,
+				BB35CE6F211A8B0100B88BEB /* DbMappable.swift */,
 			);
 			path = DemoUsing;
 			sourceTree = "<group>";
@@ -957,6 +983,7 @@
 				BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */,
 				BBC38A69206DDEE500B11C7B /* open-iconic.ttf in Resources */,
 				BBB569DF1F7B5B880014A7A9 /* TaskUpdateViewController.xib in Resources */,
+				BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */,
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
@@ -964,6 +991,7 @@
 				BB7F3043203E857900185366 /* main_gate@2x.png in Resources */,
 				BBD3CEFA1F70CFE50028425E /* LaunchScreen.storyboard in Resources */,
 				BB7F303B203E857900185366 /* demo_4.jpg in Resources */,
+				BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */,
 				BBB569E61F7B606C0014A7A9 /* TpUsersViewController.xib in Resources */,
 				BB7F303C203E857900185366 /* demo_5.png in Resources */,
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
@@ -1055,6 +1083,7 @@
 				"${BUILT_PRODUCTS_DIR}/INTULocationManager/INTULocationManager.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapperAdditions/ObjectMapperAdditions.framework",
@@ -1077,6 +1106,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INTULocationManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapperAdditions.framework",
@@ -1117,6 +1147,7 @@
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
+				BB35CE70211A8B0100B88BEB /* DbMappable.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
@@ -1129,6 +1160,7 @@
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
+				BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
 				BB228A502108302A00C5C6AA /* Actor.swift in Sources */,
@@ -1177,6 +1209,7 @@
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
 				BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */,
 				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
+				BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
 				BB5692402111A8220007757F /* Pz.swift in Sources */,
@@ -1188,6 +1221,7 @@
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
+				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,

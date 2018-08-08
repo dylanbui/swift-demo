@@ -24,6 +24,9 @@ target 'SwiftApp' do
     
     pod 'ObjectMapperAdditions/Core', '~> 4.1' # 4.1
     pod 'ObjectMapperAdditions/Realm', '~> 4.1' # 4.1
+    
+    # Objective-C
+    pod 'MMDrawerController', '0.6.0'
 
     # Integrate SwifterSwift extensions only (Alway update new version), current version '4.3.0'
     #pod 'SwifterSwift' # khong su dung duoc, ko bit tai sao 21/06/2018
@@ -40,6 +43,7 @@ target 'SwiftApp' do
     # SwiftMessages => hien thi message tren bar, can dung thang nay cho he thong luon
     pod 'SwiftMessages', '4.1.4'
     pod 'SwiftLocation', '3.2.3' # Dung thang nay de quan ly location
+    pod 'SwiftyJSON'
 
     # Libraries needed Objective C
     pod 'APNumberPad', '1.2.1' # Use for DecimalTextField
