@@ -9,23 +9,21 @@
 import UIKit
 
 
-class RootViewController: DbViewController {
-    
+//class RootViewController: DbViewController {
+class RootViewController: UIViewController
+{
     var vclDrawer: MMDrawerController?
     var vclLeftMenu: PzLeftMenuViewController?
     var vclMain: PzMainViewController?
-    
 
     override func viewDidLoad()
     {
-        // -- Save RootViewController --
-        self.appDelegate.rootViewController = self
-        
         super.viewDidLoad()
-        self.navigationBarHiddenForThisController()
+//        self.navigationBarHiddenForThisController()
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         // -- Save RootViewController --
-        self.appDelegate.rootViewController = self
+//        self.appDelegate.rootViewController = self
 
         // Do any additional setup after loading the view.
         
@@ -40,8 +38,10 @@ class RootViewController: DbViewController {
         let vcl = PzLoginViewController()
 //        let vcl = PzListingViewController()
         
+        // -- An nut back --
         vcl.navigationItem.setHidesBackButton(true, animated:false)
-        self.navigationController?.pushViewController(vcl, animated: false)
+        // self.navigationController?.pushViewController(vcl, animated: false)
+        self.navigationController?.db_pushOrReplaceToFirstViewController(vcl, animated: false)
         
         // ---- weak var weakSelf = self
 //        Utils.dispatchToBgQueue {
@@ -69,6 +69,11 @@ class RootViewController: DbViewController {
         Notification.add("DA_LOGIN_THANH_CONG", observer: self, selector: #selector(showMainViewController(_:)), object: nil)
         
     }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+    }
 
     func delayWithSeconds(_ seconds: Double, completion: @escaping () -> ()) {
         DispatchQueue.main.asyncAfter(deadline: .now() + seconds) {
@@ -86,18 +91,21 @@ class RootViewController: DbViewController {
     {
         self.vclMain = PzMainViewController()
         let navMain = UINavigationController(rootViewController: self.vclMain!)
-        navMain.navigationBar.tintColor = UIColor.black
+//        navMain.navigationBar.tintColor = UIColor.black
         
         self.vclLeftMenu = PzLeftMenuViewController()
+//        let navLeftMenu = UINavigationController(rootViewController: self.vclLeftMenu!)
+//        navLeftMenu.setNavigationBarHidden(true, animated: false)
         
         self.vclDrawer = MMDrawerController(center: navMain, leftDrawerViewController: self.vclLeftMenu)
-        self.vclDrawer?.navigationController?.setNavigationBarHidden(true, animated: false)
+        // self.vclDrawer?.navigationController?.setNavigationBarHidden(true, animated: false)
         
         self.vclDrawer?.showsShadow = true
         self.vclDrawer?.restorationIdentifier = "MMDrawer"
         
         self.vclDrawer?.maximumLeftDrawerWidth = CGFloat(Db.screenWidth() - 60)
-        // self.vclDrawer?.openDrawerGestureModeMask = .all
+        //self.vclDrawer?.openDrawerGestureModeMask = MMOpenDrawerGestureModeNone //.all
+        // self.vclDrawer?.openDrawerGestureModeMask = .none
         self.vclDrawer?.closeDrawerGestureModeMask = .all
     }
     

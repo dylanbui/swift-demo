@@ -9,6 +9,7 @@
 import UIKit
 
 class PzMainViewController: DbViewController
+//class PzMainViewController: UIViewController
 {
     @IBOutlet weak var btnLeftMenu: UIButton!
     

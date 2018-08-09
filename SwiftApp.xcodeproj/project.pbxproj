@@ -71,6 +71,7 @@
 		BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8823422119847400A1BB76 /* JsonStringTransform.swift */; };
 		BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887DBC203EA05700DFC060 /* NetworkViewController.swift */; };
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
+		BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */; };
 		BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4362117FB8500618AEF /* PzListing.swift */; };
 		BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4382117FBA000618AEF /* PzListingItem.swift */; };
 		BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A43A2117FC6000618AEF /* PzListingApi.swift */; };
@@ -257,6 +258,7 @@
 		BB8823422119847400A1BB76 /* JsonStringTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonStringTransform.swift; sourceTree = "<group>"; };
 		BB887DBC203EA05700DFC060 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
+		BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMMDrawerController.swift; sourceTree = "<group>"; };
 		BBA2A4362117FB8500618AEF /* PzListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListing.swift; sourceTree = "<group>"; };
 		BBA2A4382117FBA000618AEF /* PzListingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingItem.swift; sourceTree = "<group>"; };
 		BBA2A43A2117FC6000618AEF /* PzListingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingApi.swift; sourceTree = "<group>"; };
@@ -461,6 +463,7 @@
 				BB35CE78211AECEF00B88BEB /* PzLeftMenuViewController.xib */,
 				BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */,
 				BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */,
+				BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */,
 			);
 			path = "Main Controller";
 			sourceTree = "<group>";
@@ -1227,6 +1230,7 @@
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
 				BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
+				BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,

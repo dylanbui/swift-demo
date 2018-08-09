@@ -14,9 +14,19 @@ class PzLeftMenuViewController: DbViewController
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         // Do any additional setup after loading the view.
+//        self.navigationBarHiddenForThisController()
+        self.isNavigationBarHidden = true
+        
+        print("PzLeftMenuViewController : viewDidLoad")
     }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        print("PzLeftMenuViewController : viewWillAppear")
+    }
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

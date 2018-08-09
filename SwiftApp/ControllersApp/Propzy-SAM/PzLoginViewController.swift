@@ -8,7 +8,9 @@
 
 import UIKit
 
-class PzLoginViewController: DbViewController {
+//class PzLoginViewController: DbViewController {
+class PzLoginViewController: UIViewController
+{
 
     @IBOutlet weak var txtPassword: UITextField!
     @IBOutlet weak var txtPhone: UITextField!
@@ -16,7 +18,8 @@ class PzLoginViewController: DbViewController {
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
+        // -- mac dinh an bar --
+        //self.navigationBarHiddenForThisController()
         // Do any additional setup after loading the view.
     }
 

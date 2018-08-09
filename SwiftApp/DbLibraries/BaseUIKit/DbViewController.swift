@@ -11,6 +11,32 @@ import UIKit
 import DZNEmptyDataSet
 import SVPullToRefresh
 
+protocol ManageNavigationBar where Self : UIViewController {
+    // protocol stuff here
+    var isNavigationBarHidden: Bool { get set }
+    func navigationBarHiddenForThisController() -> Void
+}
+
+extension ManageNavigationBar where Self : UIViewController {
+//    var isNavigationBarHidden: Bool = false
+    
+    
+//    override func viewWillAppear(_ animated: Bool)
+//    {
+//        super.viewWillAppear(animated)
+//        self.navigationController?.setNavigationBarHidden(self.isNavigationBarHidden, animated: true)
+//        //[self.navigationController setNavigationBarHidden:self.isNavigationBarHidden animated:YES];
+//    }
+    
+    mutating func navigationBarHiddenForThisController() -> Void {
+        self.isNavigationBarHidden = true;
+        self.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    
+}
+
+
 class DbViewController: UIViewController
 {
     var stranferParams: [String:AnyObject]!
@@ -23,7 +49,7 @@ class DbViewController: UIViewController
     var titleForEmptyDataSet: String? = nil
     var defaultImageForEmptyDataSet: UIImage? = nil
     
-    fileprivate var isNavigationBarHidden: Bool = false
+    var isNavigationBarHidden: Bool = false
     
     var appDelegate: AppDelegate!
     var errorCode: Int = 0
@@ -37,6 +63,9 @@ class DbViewController: UIViewController
         self.initDbControllerData()
     }
     
+    deinit {
+        Notification.remove(self)
+    }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -86,11 +115,10 @@ class DbViewController: UIViewController
         
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        
+    override func viewWillAppear(_ animated: Bool)
+    {
         super.viewWillAppear(animated)
         self.navigationController?.setNavigationBarHidden(self.isNavigationBarHidden, animated: true)
-        //[self.navigationController setNavigationBarHidden:self.isNavigationBarHidden animated:YES];
     }
     
     override func didReceiveMemoryWarning()
