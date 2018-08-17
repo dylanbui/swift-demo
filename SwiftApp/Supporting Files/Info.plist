@@ -8,7 +8,7 @@
 		<true/>
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
-	<string>en</string>
+	<string>vi</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -51,19 +51,19 @@
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
-    <key>UIAppFonts</key>
-    <array>
-        <string>FontAwesome.ttf</string>
-        <string>OpenSans-Bold</string>
-        <string>OpenSans-BoldItalic</string>
-        <string>OpenSans-ExtraBold</string>
-        <string>OpenSans-ExtraBoldItalic</string>
-        <string>OpenSans-Italic</string>
-        <string>OpenSans-Light</string>
-        <string>OpenSans-LightItalic</string>
-        <string>OpenSans-Regular</string>
-        <string>OpenSans-Semibold</string>
-        <string>OpenSans-SemiboldItalic</string>
-    </array>
+	<key>UIAppFonts</key>
+	<array>
+		<string>FontAwesome.ttf</string>
+		<string>OpenSans-Bold</string>
+		<string>OpenSans-BoldItalic</string>
+		<string>OpenSans-ExtraBold</string>
+		<string>OpenSans-ExtraBoldItalic</string>
+		<string>OpenSans-Italic</string>
+		<string>OpenSans-Light</string>
+		<string>OpenSans-LightItalic</string>
+		<string>OpenSans-Regular</string>
+		<string>OpenSans-Semibold</string>
+		<string>OpenSans-SemiboldItalic</string>
+	</array>
 </dict>
 </plist>

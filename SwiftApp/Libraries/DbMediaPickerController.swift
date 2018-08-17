@@ -13,7 +13,7 @@ import CropViewController
 typealias DbAsset = DKAsset
 
 public enum DbMediaPickerControllerType : Int {
-    case all, avatar
+    case all, avatar, avatarCircle
 }
 
 
@@ -22,8 +22,9 @@ class DbMediaPickerController: DKImagePickerController, CropViewControllerDelega
     var pickerType: DbMediaPickerControllerType! = .all
 
     private var cropViewController: CropViewController?
-    var didCropToCircularImage: ((UIImage, CGRect, Int) -> Void)?
-    var didCropToImage: ((UIImage, CGRect, Int) -> Void)?
+    var didCropAvatarToCircularImage: ((UIImage, CGRect, Int) -> Void)?
+    var didCropAvatarToImage: ((UIImage, CGRect, Int) -> Void)?
+    var didCancelledCropImage: (() -> Void)?
     
     private func initParams() -> Void {
         self.showsCancelButton = true
@@ -36,6 +37,34 @@ class DbMediaPickerController: DKImagePickerController, CropViewControllerDelega
         self.sourceType = .both
         self.singleSelect = false
     }
+    
+    func present(withController vc: UIViewController) {
+        vc.present(self, animated: true)
+    }
+    
+    func present(withController vc: UIViewController, imageAvatar image:UIImage) {
+//        vc.present(self, animated: true)
+        
+        self.cropViewController = CropViewController(croppingStyle: (self.pickerType == .avatar ? .default : .circular), image: image)
+        self.cropViewController?.resetAspectRatioEnabled = false
+        self.cropViewController?.rotateClockwiseButtonHidden = true
+        self.cropViewController?.rotateButtonsHidden = true
+        self.cropViewController?.aspectRatioPickerButtonHidden = true
+        self.cropViewController?.delegate = self;
+        
+        vc.present(self, animated: false) {
+            self.pushViewController(self.cropViewController!, animated: true)
+        }
+        
+//        DbUtils.performAfter(delay: 0.5) {
+//            vc.present(self, animated: true)
+//        }
+        
+//        self.db_pushViewController(self.cropViewController!) {
+//            vc.present(self, animated: true)
+//        }
+    }
+
     
 //    override func viewDidLoad() {
 //
@@ -54,7 +83,7 @@ class DbMediaPickerController: DKImagePickerController, CropViewControllerDelega
         
         self.initParams()
         
-        if self.pickerType == .avatar {
+        if self.pickerType != .all {
             self.singleSelect = true;
             self.autoCloseOnSingleSelect = false;
             self.assetType = .allPhotos
@@ -85,7 +114,8 @@ class DbMediaPickerController: DKImagePickerController, CropViewControllerDelega
     
     func processChoosePhoto(_ asset: DbAsset) -> Void {
         asset.fetchOriginalImage(false) { (image, info) in
-            self.cropViewController = CropViewController(image: image!)
+            //self.cropViewController = CropViewController(image: image!)
+            self.cropViewController = CropViewController(croppingStyle: (self.pickerType == .avatar ? .default : .circular), image: image!)
             self.cropViewController?.resetAspectRatioEnabled = false
             self.cropViewController?.rotateClockwiseButtonHidden = true
             self.cropViewController?.rotateButtonsHidden = true
@@ -99,19 +129,19 @@ class DbMediaPickerController: DKImagePickerController, CropViewControllerDelega
     func cropViewController(_ cropViewController: CropViewController, didCropToImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         // 'image' is the newly cropped version of the original image
         self.presentingViewController?.dismiss(animated: true, completion: {
-            self.didCropToImage?(image, cropRect, angle)
+            self.didCropAvatarToImage?(image, cropRect, angle)
         })
     }
     
     func cropViewController(_ cropViewController: CropViewController, didCropToCircularImage image: UIImage, withRect cropRect: CGRect, angle: Int) {
         self.presentingViewController?.dismiss(animated: true, completion: {
-            self.didCropToCircularImage?(image, cropRect, angle)
+            self.didCropAvatarToCircularImage?(image, cropRect, angle)
         })
     }
     
     func cropViewController(_ cropViewController: CropViewController, didFinishCancelled cancelled: Bool) {
-        //self.presentingViewController?.navigationController?.popViewController(animated: true)
         cropViewController.navigationController?.popViewController(animated: true)
+        self.didCancelledCropImage?()
     }
     
     

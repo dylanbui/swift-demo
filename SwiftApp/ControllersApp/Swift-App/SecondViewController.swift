@@ -41,7 +41,7 @@ class SecondViewController: BaseViewController {
             print(assets)
         }
         
-        pickerController.didCropToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
             self.imgvAvatar.image = image
             print("\(cropRect)")
         }

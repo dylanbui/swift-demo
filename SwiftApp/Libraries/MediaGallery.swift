@@ -27,8 +27,6 @@ class MediaGallery : NSObject, CropViewControllerDelegate {
     var assetType: DKImagePickerControllerAssetType = .allPhotos
     var sourceType: DKImagePickerControllerSourceType = .both
     
-    var singleSelect: Bool! = false
-    var maxSelected: Int! = 5
     
     var didSelectAvatarAssets: ((DbAsset) -> Void)?
     var didSelectAssets: (([DbAsset]) -> Void)?
@@ -46,6 +44,7 @@ class MediaGallery : NSObject, CropViewControllerDelegate {
     
     
     static let sharedInstance = MediaGallery()
+    
     private let pickerController = DKImagePickerController()
     
     private var cropViewController: CropViewController?
@@ -63,13 +62,11 @@ class MediaGallery : NSObject, CropViewControllerDelegate {
         self.pickerController.showsCancelButton = true
         self.pickerController.showsEmptyAlbums = true
         self.pickerController.allowMultipleTypes = false
-        self.pickerController.singleSelect = false;
+        self.pickerController.singleSelect = true
+        self.pickerController.autoCloseOnSingleSelect = false
         self.pickerController.assetType = .allPhotos
         self.pickerController.sourceType = .both;
-        // -- Init variable --
-        self.maxSelected = 5;
-        self.sourceType = .both;
-        self.singleSelect = false;
+
     }
     
     func show() -> Void {
@@ -95,14 +92,34 @@ class MediaGallery : NSObject, CropViewControllerDelegate {
         
         self.pickerController.didSelectAssets = { (assets: [DbAsset]) in
             
+            
             if assets.count <= 0 {
                 return
             }
             
-            guard let didSelectAssets = self.didSelectAssets else {
-                return
+            assets[0].fetchOriginalImage(false) { (image, info) in
+                
+                guard let image = image else {
+                    return
+                }
+                
+                print("Lay duoc hinh, tao man hinh cat")
+                self.cropViewController = CropViewController(image: image)
+                self.cropViewController?.resetAspectRatioEnabled = false
+                self.cropViewController?.rotateClockwiseButtonHidden = true
+                self.cropViewController?.rotateButtonsHidden = true
+                self.cropViewController?.aspectRatioPickerButtonHidden = true
+                self.cropViewController?.delegate = self;
+                
+                //self.pickerController.pushViewController(self.cropViewController!, animated: true)
+                
+                self.ownerViewController?.navigationController?.pushViewController(self.cropViewController!, animated: true)
             }
-            didSelectAssets(assets)
+//            guard let didSelectAssets = self.didSelectAssets else {
+//                return
+//            }
+//            didSelectAssets(assets)
+            
             self.ownerViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         }
         
@@ -114,10 +131,6 @@ class MediaGallery : NSObject, CropViewControllerDelegate {
             didCancel()
             self.ownerViewController?.presentingViewController?.dismiss(animated: true, completion: nil)
         }
-        
-        self.pickerController.maxSelectableCount = (self.maxSelected <= 0) ? 5 : self.maxSelected
-        self.pickerController.sourceType = self.sourceType
-        self.pickerController.singleSelect = self.singleSelect
         
         // -- Remove old select --
         self.pickerController.deselectAllAssets()

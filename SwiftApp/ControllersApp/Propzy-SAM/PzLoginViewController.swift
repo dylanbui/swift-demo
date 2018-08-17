@@ -31,6 +31,37 @@ class PzLoginViewController: UIViewController
     
     @IBAction func btnLogin_Click(_ sender: Any)
     {
+        let pickerController = DbMediaPickerController()
+        pickerController.pickerType = .avatarCircle
+//        pickerController.pickerType = .all
+        
+        pickerController.didSelectAssets = { (assets: [DbAsset]) in
+            print("didSelectAssets")
+            print(assets)
+        }
+        
+        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+//            self.imgvAvatar.image = image
+            print("\(cropRect)")
+        }
+        
+        pickerController.didCropAvatarToCircularImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+            //            self.imgvAvatar.image = image
+            print("\(cropRect)")
+        }
+
+        
+        pickerController.didCancel = { () -> Void in
+            print("didCancel")
+        }
+        
+//        self.present(pickerController, animated: true)
+        
+        pickerController.present(withController: self)
+        
+        
+//        MediaGallery.sharedInstance.showAvatar(with: self)
+        
 //        let request = DbRequestFor<PropzyResponse>.init(method: .POST, requestUrl: "http://45.117.162.49:8080/diy/api/user/signIn")
 //
 //        let params: [String: String]! = ["osName": "iOs",
@@ -49,14 +80,14 @@ class PzLoginViewController: UIViewController
 //        }
                 
         // -- Run good --
-        let phone = "0901019992"
-        let pass = "123"
-        UserApi.doLogin(["email" : phone, "password" : pass, "type" : "normal", "deviceToken" : UserSession.shared.getDevicePushNotificationToken()]) { (response) in
-            
-            print("DA_LOGIN_THANH_CONG")
-            Notification.post("DA_LOGIN_THANH_CONG", object: self)
-            
-        }
+//        let phone = "0901019992"
+//        let pass = "123"
+//        UserApi.doLogin(["email" : phone, "password" : pass, "type" : "normal", "deviceToken" : UserSession.shared.getDevicePushNotificationToken()]) { (response) in
+//
+//            print("DA_LOGIN_THANH_CONG")
+//            Notification.post("DA_LOGIN_THANH_CONG", object: self)
+//
+//        }
         
         // -- Run good --
 //        CategoryApi.getCategory { (arrCat, pzResponse) in
@@ -68,6 +99,31 @@ class PzLoginViewController: UIViewController
     
     @IBAction func btnRegister_Click(_ sender: Any)
     {
+        let pickerController = DbMediaPickerController()
+        pickerController.pickerType = .avatarCircle
+        
+        pickerController.didSelectAssets = { (assets: [DbAsset]) in
+            print("didSelectAssets")
+            print(assets)
+        }
+        
+        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+            //            self.imgvAvatar.image = image
+            print("\(cropRect)")
+        }
+        
+        pickerController.didCropAvatarToCircularImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+            //            self.imgvAvatar.image = image
+            print("\(cropRect)")
+        }
+        
+        
+        pickerController.didCancel = { () -> Void in
+            print("didCancel")
+        }
+
+        pickerController.present(withController: self, imageAvatar: UIImage.init(named: "main_gate")!)
+        
         
     }
 
