@@ -102,27 +102,30 @@ class DbHttp: NSObject {
         
 //        let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method, parameters:request.query,encoding: URLEncoding.default, headers:headers)
 
-        
         // -- Su dung cau truc export request co nen khong ? --
         // let dataRequest: DataRequest = request.exportRequest() as! DataRequest
         
         if (request.contentType == DbHttpContentType.JSON) {
-            dataRequest.responseJSON(queue: queue, completionHandler: { (response) in
-                debugPrint(response)
+            dataRequest.responseJSON(queue: queue, completionHandler: { (dataResponse: DataResponse) in
+                // debugPrint(dataResponse)
                 // -- Set data for response --
                 if let responseObj = request.response {
-                    responseObj.httpResponse = response.response
-                    responseObj.parse(response.result.value as AnyObject, error: response.error)
+                    responseObj.urlResponse = dataResponse.response
+                    responseObj.urlRequest = dataResponse.request
+                    responseObj.rawData = dataResponse.data
+                    responseObj.parse(dataResponse.result.value as Any, error: dataResponse.error)
                     dispatchHandler(responseObj)
                     // print("response \(String(describing: responseObj.rawData))")
                 }
             })
         } else {
-            dataRequest.responseString(queue: queue, completionHandler: { (response) in
+            dataRequest.responseString(queue: queue, completionHandler: { (dataResponse: DataResponse) in
                 // -- Set data for response --
                 if let responseObj = request.response {
-                    responseObj.httpResponse = response.response
-                    responseObj.parse(response.result.value as AnyObject, error: response.error)
+                    responseObj.urlResponse = dataResponse.response
+                    responseObj.urlRequest = dataResponse.request
+                    responseObj.rawData = dataResponse.data
+                    responseObj.parse(dataResponse.result.value as Any, error: dataResponse.error)
                     dispatchHandler(responseObj)
                     // print("response \(String(describing: responseObj.rawData))")
                 }
@@ -165,12 +168,14 @@ class DbHttp: NSObject {
                         processHandler(progress)
                     }
                     upload.validate()
-                    upload.responseJSON { response in
+                    upload.responseJSON { dataResponse in
                         // debugPrint(response)
                         // -- Set data for response --
                         if let responseObj = request.response {
-                            responseObj.httpResponse = response.response
-                            responseObj.parse(response.result.value as AnyObject, error: response.error)
+                            responseObj.urlResponse = dataResponse.response
+                            responseObj.urlRequest = dataResponse.request
+                            responseObj.rawData = dataResponse.data
+                            responseObj.parse(dataResponse.result.value as AnyObject, error: dataResponse.error)
                             dispatchHandler(responseObj)
                             // print("response upload = \(String(describing: responseObj.rawData))")
                         }
@@ -179,7 +184,9 @@ class DbHttp: NSObject {
                     debugPrint(encodingError)
                     // -- Set data for response --
                     if let responseObj = request.response {
-                        responseObj.httpResponse = nil
+                        responseObj.urlResponse = nil
+                        responseObj.urlRequest = nil
+                        responseObj.rawData = nil
                         responseObj.parse(nil, error: encodingError)
                         dispatchHandler(responseObj)
                     }

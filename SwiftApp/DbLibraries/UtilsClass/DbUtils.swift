@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftMessages
 
 class DbUtils: NSObject
 {
@@ -16,9 +17,9 @@ class DbUtils: NSObject
         print("Say hiiii")
     }
     
-    static func getTopViewController() -> UIViewController? {
-        return UIApplication.shared.keyWindow?.rootViewController
-    }
+//    static func getTopViewController() -> UIViewController? {
+//        return UIApplication.shared.keyWindow?.rootViewController
+//    }
     
     // DbUtils.dispatchToMainQueue {}
     static func dispatchToMainQueue(_ dispatch_block: @escaping () -> Void)
@@ -48,34 +49,21 @@ class DbUtils: NSObject
         }
     }
     
-    // MARK: - Notification
+    // MARK: - Popup Notification
     // MARK: -
     
-//    static func removeNotification(_ sender: AnyObject)
-//    {
-//        NotificationCenter.default.removeObserver(sender)
-//    }
-//
-//    static func removeNotification(_ sender: AnyObject, name: String)
-//    {
-//        NotificationCenter.default.removeObserver(sender, name: NSNotification.Name(rawValue: name), object: nil)
-//    }
-//
-//    static func postNotification(_ name: String, object: AnyObject)
-//    {
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: nil)
-//    }
-//
-//    static func postNotification(_ name: String, object: AnyObject, userInfo: [AnyHashable:Any])
-//    {
-//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: userInfo)
-//    }
-//
-//    static func addNotification(_ name: String, observer: AnyObject, selector: Selector, object: Any?)
-//    {
-//        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
-//    }
-    
+    static func showErrorNetwork() -> Void {
+        let warning = MessageView.viewFromNib(layout: .cardView)
+        warning.configureTheme(.warning)
+        warning.configureDropShadow()
+        
+        let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
+        warning.configureContent(title: "Warning", body: "Network don't connected.", iconText: iconText)
+        warning.button?.isHidden = true
+        var warningConfig = SwiftMessages.defaultConfig
+        warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+        SwiftMessages.show(config: warningConfig, view: warning)
+    }
     
     // MARK: - Validate
     // MARK: -
@@ -104,13 +92,13 @@ class DbUtils: NSObject
     
     static func getCurrentDate(_ format: String) -> String
     {
-        return Utils.stringFromDate(Date(), format: format)
+        return DbUtils.stringFromDate(Date(), format: format)
     }
     
     static func stringFromTimeInterval(_ timeInterval: Double, format: String) -> String
     {
         let date = Date(timeIntervalSince1970: (timeInterval/1000.0))
-        return Utils.stringFromDate(date, format: format)
+        return DbUtils.stringFromDate(date, format: format)
     }
     
     static func stringFromDate(_ date: Date, format: String) -> String
@@ -131,7 +119,7 @@ class DbUtils: NSObject
     
     static func totalSecondFromNowTo(_ endDate: String, format: String) -> Double
     {
-        let date = Utils.convertStringToDate(endDate, format: format)
+        let date = DbUtils.convertStringToDate(endDate, format: format)
         return date.timeIntervalSinceNow
     }
     
@@ -159,7 +147,7 @@ class DbUtils: NSObject
     
     static func colorWith(HexString: String) -> UIColor
     {
-        return Utils.colorWith(HexString: HexString, alpha: 1.0)
+        return DbUtils.colorWith(HexString: HexString, alpha: 1.0)
     }
     
     static func colorWith(HexString: String, alpha: Float) -> UIColor
@@ -177,7 +165,7 @@ class DbUtils: NSObject
         var rgbValue:UInt32 = 0
         Scanner(string: cString).scanHexInt32(&rgbValue)
         
-        return Utils.colorWith(HexValue: rgbValue, alpha: alpha)
+        return DbUtils.colorWith(HexValue: rgbValue, alpha: alpha)
     }
     
     static func colorWith(HexValue: UInt32, alpha: Float) -> UIColor

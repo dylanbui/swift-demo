@@ -11,7 +11,7 @@
 
 public typealias MIMEType = String
 
-public typealias DbRequestQuery = [String: String]
+public typealias DbRequestQuery = [String: Any]
 
 public struct DbUploadData
 {
@@ -190,6 +190,21 @@ public class DbRequest: DbRequestType {
             paramHeaders[header.key] = header.headerValue
         }
         return paramHeaders
+    }
+}
+
+extension DbRequest: CustomStringConvertible, CustomDebugStringConvertible {
+    
+    public var description:String {
+        return "[Request \(self.method.rawValue)]:  \(self.requestUrl)"
+    }
+    
+    public var debugDescription:String {
+        var output: [String] = []
+        output.append("[Request \(self.method.rawValue)]:  \(self.requestUrl)")
+        // output.append("[Request Query]: \(self.query.description)")
+        output.append("[JSON Query]: \(self.query.db_jsonString(prettify: true) ?? "")")
+        return output.joined(separator: "\n")
     }
 }
 

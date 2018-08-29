@@ -863,7 +863,7 @@ public extension String {
     
 }
 
-// MARK: - NSAttributedString extensions
+// MARK: - String with NSAttributedString extensions
 public extension String {
     
     #if !os(tvOS) && !os(watchOS)
@@ -961,6 +961,47 @@ public extension String {
     /// - Returns: a new string made by appending to the receiver an extension separator followed by ext (if applicable).
     public func db_appendingPathExtension(_ str: String) -> String? {
         return (self as NSString).appendingPathExtension(str)
+    }
+    
+}
+
+// MARK: - DucBui: Methods
+public extension String {
+    
+    public var db_isPhoneNumber: Bool {
+        let phoneRegex = "^((\\+)|(0))[0-9]{6,14}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+        return phoneTest.evaluate(with: self)
+    }
+    
+    public func db_slice(by str:String) -> [String] {
+        return self.components(separatedBy: str)
+    }
+    
+    public func db_replace(string originalString: String, with newString:String) -> String {
+        return self.replacingOccurrences(of: originalString, with: newString)
+    }
+    
+    public func db_replace(strings set: [String], with newString: String) -> String {
+        var stringObject = self
+        for string in set {
+            stringObject = self.replacingOccurrences(of: string, with: newString)
+        }
+        return stringObject
+    }
+    
+    /// Parse hashtags in string
+    // Ex: "I made this wonderful pic last #christmas... #instagram #nofilter #snow #fun".hashtags() => ["christmas", "instagram", "nofilter", "snow", "fun"]
+    public func hashtags() -> [String]
+    {
+        if let regex = try? NSRegularExpression(pattern: "#[a-z0-9]+", options: .caseInsensitive)
+        {
+            let string = self as NSString
+            return regex.matches(in: self, options: [], range: NSRange(location: 0, length: string.length)).map {
+                string.substring(with: $0.range).replacingOccurrences(of: "#", with: "").lowercased()
+            }
+        }
+        return []
     }
     
 }
