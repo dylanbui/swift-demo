@@ -33,9 +33,9 @@ class RootViewController: UIViewController
 //        let vcl = FirstViewController()
         // let vcl = SecondViewController()
 //        let vcl = NetworkViewController()
-//        let vcl = DemoUKitViewController()
+        let vcl = DemoUKitViewController()
 //        let vcl = CategoriesViewController()
-        let vcl = PzLoginViewController()
+//        let vcl = PzLoginViewController()
 //        let vcl = PzListingViewController()
         
         // -- An nut back --

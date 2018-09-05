@@ -43,7 +43,7 @@ target 'SwiftApp' do
     # SwiftMessages => hien thi message tren bar, can dung thang nay cho he thong luon
     pod 'SwiftMessages', '4.1.4'
     pod 'SwiftLocation', '3.2.3' # Dung thang nay de quan ly location
-    pod 'SwiftyJSON'
+    pod 'SwiftyJSON', '4.0.0'
 
     # Libraries needed Objective C
     pod 'APNumberPad', '1.2.1' # Use for DecimalTextField

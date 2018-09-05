@@ -17,7 +17,8 @@ public protocol DbResponseProtocol {
     // var originalRequest: NSURLRequest? {get}
     var contentType: DbHttpContentType? {get}
     
-    func parse(_ responseData: AnyObject?, error: Error?) -> Void
+    // -- Ham nay co the thay doi self --
+    mutating func parse(_ responseData: AnyObject?, error: Error?) -> Void
     
 }
 // -- Moi lop con deu phai ke thua tu thang DbResponse --
@@ -38,6 +39,95 @@ public class DbResponse: DbResponseProtocol {
         self.rawData = responseData
     }
 }
+
+public struct DefaultResponse: DbResponseProtocol
+{
+    public var httpResponse: URLResponse?
+    public var rawData: AnyObject?
+    public var contentType: DbHttpContentType?
+    public var error: Error?
+    
+//    init() {
+//
+//    }
+    
+    public mutating func parse(_ responseData: AnyObject?, error: Error?) -> Void {
+        self.error = error
+        self.rawData = responseData
+    }
+}
+
+
+
+
+public struct PzResponse: DbResponseProtocol {
+    
+    //    public var httpResponse: HTTPURLResponse?
+    //    public var data: AnyObject?
+    //    public var originalRequest: NSURLRequest?
+    //    public var contentType: DbHttpContentType?
+    //    public var error: Error?
+    //    internal(set) public var result: ResultType?
+    
+    public var httpResponse: URLResponse?
+    public var rawData: AnyObject?
+    public var contentType: DbHttpContentType?
+    public var error: Error?
+    
+    
+    var message: String?
+    var result: Bool?
+    var code: Int?
+    var dictData: [String: AnyObject]?
+    var returnData: AnyObject?
+    
+    init() {
+        self.contentType = DbHttpContentType.JSON
+    }
+    
+    public mutating func parse(_ responseData: AnyObject?, error: Error?) -> Void
+    {
+        if let err = error {
+            print("Co loi xay ra \(err)")
+            return
+        }
+        
+        guard let responseData = responseData as? [String: AnyObject] else {
+            // -- responseData la nil , khong lam gi ca --
+            print("PropzyResponse responseData == nil")
+            return
+        }
+        
+        // print("PropzyResponse = \(responseData)")
+        
+        self.result = responseData["result"] as? Bool
+        self.message = responseData["message"] as? String
+        self.code = responseData["code"] as? Int
+        
+        //        SUCCESS("200", "Thao tác thành công"),
+        //        DATA_NOT_FOUND("404", "Không tìm thấy dữ liệu"),
+        //        PARAMETER_INVALID("405", "Tham số không hợp lệ"),
+        //        SYSTEM_ERROR("500", "Lỗi hệ thống"),
+        //        FORBIDDEN("403", "Bị cấm sử dụng"),
+        //        UNAUTHORIZED("401", "Không được phép"),
+        //        CONFLIT("409", "Thông tin đã tồn tại trong hệ thống");
+        // -- Chi xu ly nhung loi he thong liet ke o tren --
+        if self.result == false {
+            // -- Propzy Error System --
+            let code = self.code ?? 0
+            if [404, 405, 500, 403, 401, 409].db_contains([code]) {
+                self.error = PropzyError.init(code, message: self.message ?? "System Not Found")
+                return
+            }
+        }
+        
+        self.dictData = responseData["data"] as? [String: AnyObject]
+        // -- Cai nay moi dung --
+        self.returnData = responseData["data"] as AnyObject
+    }
+    
+}
+
 
 
 // MARK: - Demo extend class DbResponse

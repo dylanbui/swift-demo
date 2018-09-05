@@ -102,9 +102,32 @@ public extension UIImage
     }
     
 }
+// Initialization code
+//imgIcon.imageFontMaterialIcon("keyboard.arrow.right", iconColor: UIColor(95, 95, 95))
 
+@IBDesignable
 public extension UIImageView
 {
+    @IBInspectable var iconText: String {
+        get {
+            return ""
+        }
+        set {
+            self.imageFontMaterialIcon(newValue, iconColor: UIColor.black)
+        }
+        
+    }
+//    @IBInspectable var iconColor: UIColor? {
+//        get {
+//            return UIColor(cgColor: self.layer.borderColor!)
+//        }
+//        set {
+//            self.layer.borderColor = newValue?.cgColor
+//        }
+//    }
+    
+    
+    
     public func imageFontIcon(from font: IconFonts, code: String, iconColor: UIColor) {
         contentMode = .center
         image = UIImage.icon(from: font, code: code, iconColor: iconColor, imageSize: size, ofSize: size.width)
@@ -113,28 +136,28 @@ public extension UIImageView
     public func imageFontAwesomeIcon(_ code: String, iconColor: UIColor = UIColor.black) {
         imageFontIcon(from: IconFonts.FontAwesome, code: code, iconColor: iconColor)
     }
-
-    public func imageFontOcticon(from font: IconFonts, code: String, iconColor: UIColor) {
+    
+    public func imageFontOcticon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.Octicon, code: code, iconColor: iconColor)
     }
-
-    public func imageFontIonIcon(from font: IconFonts, code: String, iconColor: UIColor) {
+    
+    public func imageFontIonIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.Ionicon, code: code, iconColor: iconColor)
     }
-
-    public func imageFontIconicIcon(from font: IconFonts, code: String, iconColor: UIColor) {
+    
+    public func imageFontIconicIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.Iconic, code: code, iconColor: iconColor)
     }
-
-    public func imageFontThemifyIcon(from font: IconFonts, code: String, iconColor: UIColor) {
+    
+    public func imageFontThemifyIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.Themify, code: code, iconColor: iconColor)
     }
     
-    public func imageFontMapIcon(from font: IconFonts, code: String, iconColor: UIColor) {
+    public func imageFontMapIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.MapIcon, code: code, iconColor: iconColor)
     }
     
-    public func imageFontMaterialIcon(from font: IconFonts, code: String, iconColor: UIColor) {
+    public func imageFontMaterialIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.MaterialIcon, code: code, iconColor: iconColor)
     }
 }

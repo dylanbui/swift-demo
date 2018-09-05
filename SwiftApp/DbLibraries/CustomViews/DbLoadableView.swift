@@ -1,20 +1,16 @@
 //
-//  DbLoadableView.swift
+//  DbViewFromXib.swift
 //  SwiftApp
 //
-//  Created by Dylan Bui on 1/22/18.
-//  Copyright © 2018 Propzy Viet Nam. All rights reserved.
-//  Copy on : https://github.com/MLSDev/LoadableViews/blob/master/Source/LoadableView.swift
+//  Created by Dylan Bui on 8/10/18.
+//  Copyright © 2017 Propzy Viet Nam. All rights reserved.
+//  Base on v3.0.0 : https://github.com/MLSDev/LoadableViews
 
 import Foundation
 import UIKit
 
 /// Protocol to define family of loadable views
 public protocol DbNibLoadableProtocol : NSObjectProtocol {
-    
-//    typealias DbHandleViewAction_AAA = (AnyObject, Int, [String:AnyObject]?, Error?) -> ()
-//    
-//    var handleViewAction: DbHandleViewAction_AAA { set }
     
     /// View that serves as a container for loadable view. Loadable views are added to container view in `setupNib(_:)` method.
     var nibContainerView: UIView { get }
@@ -40,7 +36,6 @@ extension UIView {
 }
 
 extension DbNibLoadableProtocol {
-    
     /// Method that loads view from single view xib with `nibName`.
     ///
     /// - returns: loaded from xib view
@@ -52,54 +47,12 @@ extension DbNibLoadableProtocol {
     }
     
     public func setupView(_ view: UIView, inContainer container: UIView) {
-        container.translatesAutoresizingMaskIntoConstraints = false
         container.backgroundColor = .clear
         container.addSubview(view)
-        
         view.translatesAutoresizingMaskIntoConstraints = false
         let bindings = ["view": view]
         container.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[view]|", options:[], metrics:nil, views: bindings))
         container.addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[view]|", options:[], metrics:nil, views: bindings))
-    }
-}
-
-/// UIView subclass, that can be loaded into different xib or storyboard by simply referencing it's class.
-// -- DucBui (22/01/2018) : Use for popup control --
-open class DbLoadablePopupView: UIView, DbNibLoadableProtocol {
-    
-    private var contentView: UIView!
-    
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        setupNib()
-    }
-    
-    public required init?(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
-        setupNib()
-    }
-    
-    open func setupNib() {
-        // -- Khong dung thang nay --
-        // -- Khi su dung thang nay, khong resize subview duoc --
-        // setupView(loadNib(), inContainer: nibContainerView)
-        
-        backgroundColor = UIColor.clear
-        contentView = loadNib()
-        // use bounds not frame or it'll be offset
-        contentView.frame = bounds
-        // Adding custom subview on top of our view
-        addSubview(contentView)
-        
-        contentView.translatesAutoresizingMaskIntoConstraints = false
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[childView]|",
-                                                      options: [],
-                                                      metrics: nil,
-                                                      views: ["childView": contentView]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[childView]|",
-                                                      options: [],
-                                                      metrics: nil,
-                                                      views: ["childView": contentView]))
     }
 }
 
@@ -215,3 +168,42 @@ open class DbLoadableControl: UIControl, DbNibLoadableProtocol {
 }
 
 
+/// UIView subclass, that can be loaded into different xib or storyboard by simply referencing it's class.
+// -- DucBui (22/01/2018) : Use for popup control --
+open class DbLoadablePopupView: UIView, DbNibLoadableProtocol {
+    
+    private var contentView: UIView!
+    
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupNib()
+    }
+    
+    public required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupNib()
+    }
+    
+    open func setupNib() {
+        // -- Khong dung thang nay --
+        // -- Khi su dung thang nay, khong resize subview duoc --
+        // setupView(loadNib(), inContainer: nibContainerView)
+        
+        backgroundColor = UIColor.clear
+        contentView = loadNib()
+        // use bounds not frame or it'll be offset
+        contentView.frame = bounds
+        // Adding custom subview on top of our view
+        addSubview(contentView)
+        
+        contentView.translatesAutoresizingMaskIntoConstraints = false
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[childView]|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: ["childView": contentView]))
+        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|[childView]|",
+                                                      options: [],
+                                                      metrics: nil,
+                                                      views: ["childView": contentView]))
+    }
+}

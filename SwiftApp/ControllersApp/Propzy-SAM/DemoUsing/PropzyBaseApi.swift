@@ -253,3 +253,55 @@ public class PropzyBaseApi
 //        return nil
 //    }
 }
+
+/// Used to store all data associated with an non-serialized response of a data or upload request.
+public struct MyDataResponse {
+    /// The URL request sent to the server.
+    public let request: URLRequest?
+    
+    /// The server's response to the URL request.
+    public let response: HTTPURLResponse?
+    
+    /// The data returned by the server.
+    public let data: Data?
+    
+    /// The error encountered while executing or validating the request.
+    public let error: Error?
+    
+    /// The timeline of the complete lifecycle of the request.
+    public let timeline: Timeline
+    
+    var _metrics: AnyObject?
+    
+    public let params: [String: Any]?
+    
+    /// Creates a `DefaultDataResponse` instance from the specified parameters.
+    ///
+    /// - Parameters:
+    ///   - request:  The URL request sent to the server.
+    ///   - response: The server's response to the URL request.
+    ///   - data:     The data returned by the server.
+    ///   - error:    The error encountered while executing or validating the request.
+    ///   - timeline: The timeline of the complete lifecycle of the request. `Timeline()` by default.
+    ///   - metrics:  The task metrics containing the request / response statistics. `nil` by default.
+    public init(
+        request: URLRequest?,
+        response: HTTPURLResponse?,
+        data: Data?,
+        error: Error?,
+        timeline: Timeline = Timeline(),
+        metrics: AnyObject? = nil)
+    {
+        self.request = request
+        self.response = response
+        self.data = data
+        self.error = error
+        self.timeline = timeline
+        
+        self._metrics = metrics
+        
+        self.params = ["":""]
+    }
+}
+
+

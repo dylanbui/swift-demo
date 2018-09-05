@@ -68,10 +68,10 @@ DEPENDENCIES:
   - SVPullToRefresh (= 0.4.1)
   - SwiftLocation (= 3.2.3)
   - SwiftMessages (= 4.1.4)
-  - SwiftyJSON
+  - SwiftyJSON (= 4.0.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - APNumberPad
     - CropViewController
@@ -115,6 +115,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: a2c8592c4ad427a4190d4058e373d038912d2720
+PODFILE CHECKSUM: adc32fc178399b56ab864220019a404d6772d491
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.6.0.beta.1

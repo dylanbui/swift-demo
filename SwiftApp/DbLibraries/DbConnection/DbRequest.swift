@@ -248,3 +248,104 @@ public class DbRequestFor<ResponseType: DbResponse>: DbRequest {
     }
 }
 
+// --------------
+
+extension DbRequestType {
+    public func exportHttpHeader() -> [String: String]
+    {
+        var paramHeaders: [String: String] = [:]
+        for header in self.headers {
+            paramHeaders[header.key] = header.headerValue
+        }
+        return paramHeaders
+    }
+
+}
+
+public struct DefaultRequest: DbRequestType
+{
+    public var method: DbHttpMethod
+    public var requestUrl: String
+    public var contentType: DbHttpContentType
+    public var headers: [DbHttpHeader]
+    public var query: DbRequestQuery
+    
+    public var response: DbResponse?
+    
+    init() {
+        self.init(method: .POST, requestUrl: "", query: [:], headers: [])
+    }
+    
+    init(method: DbHttpMethod, requestUrl: String) {
+        self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
+    }
+    
+    init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
+        self.method = method
+        self.requestUrl = requestUrl
+        self.query = query
+        self.headers = headers
+        self.contentType = .JSON
+        
+        self.response = DbResponse()
+    }
+    
+    func exportHttpHeader() -> [String: String]
+    {
+        var paramHeaders: [String: String] = [:]
+        for header in self.headers {
+            paramHeaders[header.key] = header.headerValue
+        }
+        return paramHeaders
+    }
+}
+
+
+public struct DefaultUploadRequest: DbRequestType
+{
+    public var method: DbHttpMethod
+    public var requestUrl: String
+    public var contentType: DbHttpContentType
+    public var headers: [DbHttpHeader]
+    public var query: DbRequestQuery
+    
+    public var response: DbResponse?
+ 
+    // -- only for upload --
+    public var arrUploadData = [DbUploadData]()
+    
+    init() {
+        self.init(method: .POST, requestUrl: "", query: [:], headers: [])
+    }
+    
+    init(method: DbHttpMethod, requestUrl: String) {
+        self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
+    }
+    
+    init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
+        self.method = method
+        self.requestUrl = requestUrl
+        self.query = query
+        self.headers = headers
+        self.contentType = .JSON
+        
+        self.response = DbResponse()
+    }
+    
+//    func exportHttpHeader() -> [String: String]
+//    {
+//        var paramHeaders: [String: String] = [:]
+//        for header in self.headers {
+//            paramHeaders[header.key] = header.headerValue
+//        }
+//        return paramHeaders
+//    }
+    
+    
+    
+    
+}
+
+
+
+
