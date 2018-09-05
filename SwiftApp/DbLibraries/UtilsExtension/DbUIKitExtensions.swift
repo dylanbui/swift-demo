@@ -156,6 +156,22 @@ public extension UITextField {
 // MARK: - Methods
 public extension UILabel {
     
+    /// Use same textFadeTransition
+    public var textFade: String? {
+        get {
+            return self.text
+        }
+        set(newVal) {
+            let animation = CATransition()
+            animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+            animation.type = kCATransitionFade
+            animation.duration = 0.5
+            layer.add(animation, forKey: kCATransitionFade)
+            // -- Change text --
+            self.text = newVal
+        }
+    }
+    
     /// SwifterSwift: Initialize a UILabel with text
     public convenience init(text: String?) {
         self.init()
@@ -172,6 +188,16 @@ public extension UILabel {
         label.attributedText = attributedText
         label.sizeToFit()
         return label.frame.height
+    }
+    
+    func textFadeTransition(_ text: String,_ duration: CFTimeInterval = 0.5) {
+        let animation = CATransition()
+        animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        animation.type = kCATransitionFade
+        animation.duration = duration
+        layer.add(animation, forKey: kCATransitionFade)
+        // -- Change text --
+        self.text = text
     }
     
 }
