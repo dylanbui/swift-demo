@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "4C68D09FB376AA89A2D978D66621B3CF"
-               BuildableName = "RealmSwift.framework"
-               BlueprintName = "RealmSwift"
+               BlueprintIdentifier = "5E05DDD19BF0A57754C7E20260D65419"
+               BuildableName = "RevealingSplashView.framework"
+               BlueprintName = "RevealingSplashView"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "4C68D09FB376AA89A2D978D66621B3CF"
-            BuildableName = "RealmSwift.framework"
-            BlueprintName = "RealmSwift"
+            BlueprintIdentifier = "5E05DDD19BF0A57754C7E20260D65419"
+            BuildableName = "RevealingSplashView.framework"
+            BlueprintName = "RevealingSplashView"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

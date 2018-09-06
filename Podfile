@@ -53,6 +53,8 @@ target 'SwiftApp' do
     # Libraries needed Swift 4
     pod 'DKImagePickerController', '3.8.1'
     pod 'CropViewController', '2.3.6' # Swift version of TOCropViewController
+    
+    pod 'RevealingSplashView'
 
   # Pods for SwiftApp
 
