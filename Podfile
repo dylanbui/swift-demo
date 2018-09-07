@@ -54,7 +54,7 @@ target 'SwiftApp' do
     pod 'DKImagePickerController', '3.8.1'
     pod 'CropViewController', '2.3.6' # Swift version of TOCropViewController
     
-    pod 'RevealingSplashView'
+    pod 'RevealingSplashView', '0.5.0'
 
   # Pods for SwiftApp
 
