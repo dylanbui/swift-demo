@@ -66,7 +66,7 @@ class NetworkViewController: BaseViewController {
             print("responseData = \(String(describing: response.rawData))")
             // debugPrint(response)
             if let res: PropzyResponse = response as? PropzyResponse {
-                print("PropzyResponse = \(String(describing: res.dictData))")
+                print("PropzyResponse = \(String(describing: res.data))")
             }
         }
         
@@ -84,7 +84,7 @@ class NetworkViewController: BaseViewController {
         //DbHttp.dispatchSync(Request: request)
         let response:PropzyResponse = DbHttp.dispatchSync(Request: request) as! PropzyResponse
         print("response.message = \(response.message!)")
-        print("responseData = \(String(describing: response.dictData!))")
+        print("responseData = \(String(describing: response.data!))")
         print("DA GOI XONG : dispatchSync")
         
     }
@@ -107,7 +107,7 @@ class NetworkViewController: BaseViewController {
         DbHttp.dispatch(Request: request) { (response) in
             if let res: PropzyResponse = response as? PropzyResponse {
                 print("Goi thu successHandler")
-                print("responseData = \(String(describing: res.dictData))")
+                print("responseData = \(String(describing: res.data))")
             }
         }
     }

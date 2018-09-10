@@ -58,7 +58,7 @@ public class PropzyBaseApi
             print("responseData = \(String(describing: response.rawData))")
             // debugPrint(response)
             if let res: PropzyResponse = response as? PropzyResponse {
-                print("PropzyResponse = \(String(describing: res.dictData))")
+                print("PropzyResponse = \(String(describing: res.data))")
             }
         }
     }
@@ -229,7 +229,7 @@ public class PropzyBaseApi
     class func parseToArray<T: Mappable>(_ obj: T.Type, pzResponse: PropzyResponse) -> [T]?
     {
         var arr: [T] = []
-        if let dataArr = pzResponse.returnData as? [AnyObject] {
+        if let dataArr = pzResponse.data as? [AnyObject] {
             for item in dataArr {
                 if let jsonResult = item as? Dictionary<String, Any> {
                     // do whatever with jsonResult
@@ -238,7 +238,7 @@ public class PropzyBaseApi
                 }
             }
             // return arr
-        } else if let jsonResult = pzResponse.returnData as? Dictionary<String, Any> {
+        } else if let jsonResult = pzResponse.data as? Dictionary<String, Any> {
 //            arr.append(T(JSON: jsonResult)!)
             arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
         }

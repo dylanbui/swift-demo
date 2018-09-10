@@ -155,6 +155,10 @@ extension Db // => Device functions
     static func IS_IPHONE_X() -> Bool {
         return (isIphone() && SCREEN_MAX_LENGTH() > 736)
     }
+    
+    static func rootViewController() -> UIViewController {
+        return (UIApplication.shared.keyWindow?.rootViewController)!
+    }
 }
 
 // MARK: - Macro functions

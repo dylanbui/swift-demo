@@ -81,8 +81,9 @@ class DbRealmObject: Object, Mappable {
     // MARK: - Su dung Realm trong Thread vua tao doi duong
     // MARK: -
     
-    func load(_ idVal: Any) -> Void
-    {
+    // -- Khong su dung thang nay, nen tra ve doi duong luon --
+//    func load(_ idVal: Any) -> Void
+//    {
         //let primaryKey = type(of: self).primaryKey()!
 //        let primaryKey = self.defaultPrimaryKey()
 //        let condition : String =  "\(primaryKey) == \(objectID)"
@@ -103,32 +104,48 @@ class DbRealmObject: Object, Mappable {
 //            //
 //            self.mapping(map: Map(mappingType: .fromJSON, JSON: object.toJSON()))
 //        }
-        
-        if let obj = self.getObjectById(idVal) {
-            self.mapping(map: Map(mappingType: .fromJSON, JSON: obj.toJSON()))
-        }
-    }
     
-    func getAll() -> Results<DbRealmObject>
-    {
-        return self.getAll(nil)
-    }
+    // Chay tot
+//        if let obj = self.getObjectById(idVal) {
+//            self.mapping(map: Map(mappingType: .fromJSON, JSON: obj.toJSON()))
+//        }
+//    }
     
-    func getAll(_ condition: String?) -> Results<DbRealmObject>
+//    func getAll() -> Results<DbRealmObject>
+//    {
+//        return self.getAll(nil)
+//    }
+
+    func getAll<T: DbRealmObject>(fromClass cls: T.Type, condition: String? = nil, orderField: String? = nil) -> Results<T>
     {
         // All object inside the model passed.
         let realm = try! Realm()
-        var fetchedObjects = realm.objects(type(of: self))
-        
+        var fetchedObjects = realm.objects(cls)
         if let cond = condition {
             // filters the result if condition exists
             fetchedObjects = fetchedObjects.filter(cond)
         }
-        
+        if let order = orderField {
+            // sorted the result if orderField exists
+            fetchedObjects = fetchedObjects.sorted(byKeyPath: order)
+        }
         return fetchedObjects
     }
     
-    func getObjectById(_ idVal: Any) -> DbRealmObject?
+//    func getAll(_ condition: String?) -> Results<DbRealmObject>
+//    {
+//        // All object inside the model passed.
+//        let realm = try! Realm()
+//        var fetchedObjects = realm.objects(type(of: self))
+//        if let cond = condition {
+//            // filters the result if condition exists
+//            fetchedObjects = fetchedObjects.filter(cond)
+//        }
+//
+//        return fetchedObjects
+//    }
+    
+    func getObjectById(_ idVal: Any) -> Self?
     {
         var condition : String = ""
         let primaryKey = type(of: self).primaryKey()!
@@ -140,7 +157,7 @@ class DbRealmObject: Object, Mappable {
         return self.getObjectByCondition(condition)
     }
     
-    func getObjectByCondition(_ cond: String) -> DbRealmObject?
+    func getObjectByCondition(_ cond: String) -> Self?
     {
         // All object inside the model passed.
         let realm = try! Realm()

@@ -43,6 +43,10 @@
 		BB547320201789460055CAD9 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731E201789460055CAD9 /* FirstViewController.xib */; };
 		BB5692402111A8220007757F /* Pz.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56923F2111A8220007757F /* Pz.swift */; };
 		BB581929206E432500E48DA4 /* DbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB581928206E432500E48DA4 /* DbButton.swift */; };
+		BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5CE0392146115900C92DA0 /* PropzyResponse.swift */; };
+		BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5CE03B2146117400C92DA0 /* CountryUnit.swift */; };
+		BB5CE03E2146117500C92DA0 /* CountryUnitApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5CE03C2146117500C92DA0 /* CountryUnitApi.swift */; };
+		BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5CE03F214615D600C92DA0 /* DbScreenLoading.swift */; };
 		BB5E1426210AFDA10059A8C4 /* PropzyBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */; };
 		BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E1427210B200A0059A8C4 /* AppEvn.swift */; };
 		BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC020DBADCE0057F0CF /* DbUIKitExtensions.swift */; };
@@ -230,6 +234,10 @@
 		BB54731E201789460055CAD9 /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		BB56923F2111A8220007757F /* Pz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pz.swift; sourceTree = "<group>"; };
 		BB581928206E432500E48DA4 /* DbButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbButton.swift; sourceTree = "<group>"; };
+		BB5CE0392146115900C92DA0 /* PropzyResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PropzyResponse.swift; sourceTree = "<group>"; };
+		BB5CE03B2146117400C92DA0 /* CountryUnit.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryUnit.swift; sourceTree = "<group>"; };
+		BB5CE03C2146117500C92DA0 /* CountryUnitApi.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountryUnitApi.swift; sourceTree = "<group>"; };
+		BB5CE03F214615D600C92DA0 /* DbScreenLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbScreenLoading.swift; sourceTree = "<group>"; };
 		BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropzyBaseApi.swift; sourceTree = "<group>"; };
 		BB5E1427210B200A0059A8C4 /* AppEvn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEvn.swift; sourceTree = "<group>"; };
 		BB626EC020DBADCE0057F0CF /* DbUIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIKitExtensions.swift; sourceTree = "<group>"; };
@@ -489,6 +497,7 @@
 		BB4E2367210EBCE700524B0D /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				BB5CE0392146115900C92DA0 /* PropzyResponse.swift */,
 				BB4E2368210EBD1F00524B0D /* UserSession.swift */,
 				BB56923F2111A8220007757F /* Pz.swift */,
 			);
@@ -511,6 +520,8 @@
 		BB5E1424210AFD7F0059A8C4 /* DemoUsing */ = {
 			isa = PBXGroup;
 			children = (
+				BB5CE03B2146117400C92DA0 /* CountryUnit.swift */,
+				BB5CE03C2146117500C92DA0 /* CountryUnitApi.swift */,
 				BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */,
 				BB4E235C210EBA8F00524B0D /* CategoryApi.swift */,
 				BB4E236A210EC03300524B0D /* UserApi.swift */,
@@ -835,6 +846,7 @@
 		BBE88C5A20216BFB0044F661 /* UtilsClass */ = {
 			isa = PBXGroup;
 			children = (
+				BB5CE03F214615D600C92DA0 /* DbScreenLoading.swift */,
 				BB197D45200BC051005514C3 /* DbUtils.swift */,
 				BBDD5E902011B18C0089DD32 /* DbSession.swift */,
 				BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */,
@@ -1139,6 +1151,7 @@
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
+				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */,
@@ -1154,6 +1167,7 @@
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BB35CE70211A8B0100B88BEB /* DbMappable.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
+				BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */,
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
@@ -1203,6 +1217,7 @@
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
 				BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
+				BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */,
 				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */,
@@ -1214,6 +1229,7 @@
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
 				BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */,
 				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
+				BB5CE03E2146117500C92DA0 /* CountryUnitApi.swift in Sources */,
 				BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,

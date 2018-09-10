@@ -193,8 +193,8 @@ class FirstViewController: BaseViewController {
         DbHttp.dispatch(Request: request) { (response) in
             if let res: PropzyResponse = response as? PropzyResponse {
                 print("Goi thu successHandler")
-                print("responseData = \(String(describing: res.dictData))")
-                self.textView.text = String(describing: res.dictData)
+                print("responseData = \(String(describing: res.data))")
+                self.textView.text = String(describing: res.data)
             }
         }
 

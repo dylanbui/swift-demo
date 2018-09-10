@@ -108,8 +108,8 @@ class PzListingItem: DbRealmObject
             propertyTypeId              <- map["propertyTypeId"]
             address                     <- map["address"]
             houseNumberRoad             <- map["houseNumberRoad"]
+            // Array
             arrPhotos                   <- map["photos"]
-
             // -- Convert array -> json --
             jsonPhotos = arrPhotos.toJSONString() ?? "[]"
             

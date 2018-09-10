@@ -70,7 +70,7 @@ class MediaGallery : NSObject, CropViewControllerDelegate {
     }
     
     func show() -> Void {
-        self.show(with: DbUtils.getTopViewController())
+        self.show(with: Db.rootViewController())
     }
     
     func show(with viewController: UIViewController?) -> Void {

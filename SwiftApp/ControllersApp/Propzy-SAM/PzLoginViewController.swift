@@ -136,5 +136,42 @@ class PzLoginViewController: UIViewController
         // Pass the selected object to the new view controller.
     }
     */
+    
+    @IBAction func btnRealm_Click(_ sender: AnyObject)
+    {
+//        DbScreenLoading.show()
+//        CountryUnitApi.synchronizeUnitDataWithServer {
+//            DbScreenLoading.hide()
+//        }
+        
+        // Cach 1
+//        let obj: CityUnit = CityUnit().getObjectById(1) as! CityUnit
+//        print("obj.cityName = \(obj.cityName)")
+        // Cach 2
+//        guard let obj: CityUnit = CityUnit().getObjectById(1) as? CityUnit else {
+//            print("Khong tim thay du lieu")
+//            return
+//        }
+
+        guard let obj: CityUnit = CityUnit().getObjectByCondition("cityId = 1") else {
+            print("Khong tim thay du lieu")
+            return
+        }
+        print("obj.cityName = \(obj.description)")
+        
+
+        print("-----------------------------")
+        let arrObj = DistrictUnit().getAll(fromClass: DistrictUnit.self)
+        for district: DistrictUnit in arrObj {
+            print("districtName = \(district.districtName)")
+        }
+        
+        
+        
+        
+    }
+    
+    
+    
 
 }
