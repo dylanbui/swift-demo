@@ -57,6 +57,8 @@
 		BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */; };
 		BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */; };
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
+		BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */; };
+		BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */; };
 		BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB79169020190264007A83E6 /* DbMediaPickerController.swift */; };
 		BB7F3038203E857900185366 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302A203E857900185366 /* demo_1.jpg */; };
 		BB7F3039203E857900185366 /* demo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302B203E857900185366 /* demo_2.jpg */; };
@@ -248,6 +250,8 @@
 		BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIViewExtensions.swift; sourceTree = "<group>"; };
 		BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
+		BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLayoutViewCell.swift; sourceTree = "<group>"; };
+		BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskLayoutViewCell.xib; sourceTree = "<group>"; };
 		BB79169020190264007A83E6 /* DbMediaPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMediaPickerController.swift; sourceTree = "<group>"; };
 		BB7F302A203E857900185366 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
 		BB7F302B203E857900185366 /* demo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_2.jpg; sourceTree = "<group>"; };
@@ -567,6 +571,8 @@
 				BBB569D71F7B5B870014A7A9 /* TaskUpdateViewController.xib */,
 				BBB569D81F7B5B870014A7A9 /* TaskViewCell.swift */,
 				BBB569D91F7B5B870014A7A9 /* TaskViewCell.xib */,
+				BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */,
+				BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */,
 			);
 			path = "Task-App";
 			sourceTree = "<group>";
@@ -1002,6 +1008,7 @@
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
+				BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */,
 				BBB569DB1F7B5B880014A7A9 /* TaskDetailViewController.xib in Resources */,
 				BB7F3043203E857900185366 /* main_gate@2x.png in Resources */,
 				BBD3CEFA1F70CFE50028425E /* LaunchScreen.storyboard in Resources */,
@@ -1206,6 +1213,7 @@
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
+				BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */,
 				BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */,
