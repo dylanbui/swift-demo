@@ -53,11 +53,17 @@ target 'SwiftApp' do
     pod 'FSCalendar'#, '2.7.9'
 
     # Libraries needed Swift 4
-    pod 'DKImagePickerController' #, '3.8.1' them nhieu thu vien '4.0.2'
+    #pod 'DKImagePickerController' #, '3.8.1' them nhieu thu vien '4.0.2'
+    # su dung lai thang cu coi sao
+    pod 'DKImagePickerController', '3.8.1'
     
     pod 'CropViewController', '2.3.6' # Swift version of TOCropViewController
     
     pod 'RevealingSplashView', '0.5.0'
+    
+    pod 'StackScrollView'#, '1.2.0'
+    pod 'EasyPeasy' #, '1.2.0'
+    
 
   # Pods for SwiftApp
 

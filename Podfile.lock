@@ -1,57 +1,15 @@
 PODS:
   - Alamofire (4.7.2)
   - APNumberPad (1.2.1)
-  - CLImageEditor (0.2.0):
-    - CLImageEditor/Core (= 0.2.0)
-  - CLImageEditor/Core (0.2.0)
   - CropViewController (2.3.6)
-  - DKCamera (1.6.2)
-  - DKImagePickerController (4.0.2):
-    - DKImagePickerController/Camera (= 4.0.2)
-    - DKImagePickerController/Core (= 4.0.2)
-    - DKImagePickerController/ImageDataManager (= 4.0.2)
-    - DKImagePickerController/InlineCamera (= 4.0.2)
-    - DKImagePickerController/PhotoEditor (= 4.0.2)
-    - DKImagePickerController/PhotoGallery (= 4.0.2)
-    - DKImagePickerController/Resource (= 4.0.2)
-  - DKImagePickerController/Camera (4.0.2):
-    - DKCamera
-    - DKImagePickerController/Core
-  - DKImagePickerController/Core (4.0.2):
-    - DKImagePickerController/ImageDataManager
-    - DKImagePickerController/Resource
-  - DKImagePickerController/ImageDataManager (4.0.2)
-  - DKImagePickerController/InlineCamera (4.0.2):
-    - DKCamera
-    - DKImagePickerController/Core
-  - DKImagePickerController/PhotoEditor (4.0.2):
-    - CLImageEditor (= 0.2.0)
-    - DKImagePickerController/Core
-  - DKImagePickerController/PhotoGallery (4.0.2):
-    - DKImagePickerController/Core
-    - DKPhotoGallery
-  - DKImagePickerController/Resource (4.0.2)
-  - DKPhotoGallery (0.0.9):
-    - DKPhotoGallery/Core (= 0.0.9)
-    - DKPhotoGallery/Model (= 0.0.9)
-    - DKPhotoGallery/Preview (= 0.0.9)
-    - DKPhotoGallery/Resource (= 0.0.9)
-    - SDWebImage/GIF
-  - DKPhotoGallery/Core (0.0.9):
-    - DKPhotoGallery/Model
-    - DKPhotoGallery/Preview
-    - SDWebImage/GIF
-  - DKPhotoGallery/Model (0.0.9):
-    - SDWebImage/GIF
-  - DKPhotoGallery/Preview (0.0.9):
-    - DKPhotoGallery/Model
-    - DKPhotoGallery/Resource
-    - SDWebImage/GIF
-  - DKPhotoGallery/Resource (0.0.9):
-    - SDWebImage/GIF
+  - DKImagePickerController (3.8.1):
+    - DKImagePickerController/Camera (= 3.8.1)
+    - DKImagePickerController/ImageManager (= 3.8.1)
+  - DKImagePickerController/Camera (3.8.1)
+  - DKImagePickerController/ImageManager (3.8.1)
   - DZNEmptyDataSet (1.8.1)
-  - FLAnimatedImage (1.0.12)
-  - FSCalendar (2.7.9)
+  - EasyPeasy (1.7.0)
+  - FSCalendar (2.8.0)
   - INTULocationManager (4.3.0)
   - IQKeyboardManagerSwift (6.0.4)
   - MBProgressHUD (1.1.0)
@@ -71,9 +29,9 @@ PODS:
   - "ObjectMapper+Realm (0.6)":
     - ObjectMapper
     - RealmSwift
-  - ObjectMapperAdditions/Core (4.1.0):
+  - ObjectMapperAdditions/Core (4.2.1):
     - ObjectMapper
-  - ObjectMapperAdditions/Realm (4.1.0):
+  - ObjectMapperAdditions/Realm (4.2.1):
     - ObjectMapper
     - ObjectMapperAdditions/Core
     - RealmSwift
@@ -83,11 +41,8 @@ PODS:
   - RealmSwift (3.7.4):
     - Realm (= 3.7.4)
   - RevealingSplashView (0.5.0)
-  - SDWebImage/Core (4.4.2)
-  - SDWebImage/GIF (4.4.2):
-    - FLAnimatedImage (~> 1.0)
-    - SDWebImage/Core
   - SnapKit (4.0.0)
+  - StackScrollView (1.2.0)
   - SVPullToRefresh (0.4.1)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
@@ -100,8 +55,9 @@ DEPENDENCIES:
   - Alamofire (= 4.7.2)
   - APNumberPad (= 1.2.1)
   - CropViewController (= 2.3.6)
-  - DKImagePickerController
+  - DKImagePickerController (= 3.8.1)
   - DZNEmptyDataSet
+  - EasyPeasy
   - FSCalendar
   - INTULocationManager (= 4.3.0)
   - IQKeyboardManagerSwift (= 6.0.4)
@@ -114,22 +70,20 @@ DEPENDENCIES:
   - RealmSwift (= 3.7.4)
   - RevealingSplashView (= 0.5.0)
   - SnapKit (= 4.0.0)
+  - StackScrollView
   - SVPullToRefresh (= 0.4.1)
   - SwiftLocation (= 3.2.3)
   - SwiftMessages (= 4.1.4)
   - SwiftyJSON (= 4.0.0)
 
 SPEC REPOS:
-  https://github.com/CocoaPods/Specs.git:
+  https://github.com/cocoapods/specs.git:
     - Alamofire
     - APNumberPad
-    - CLImageEditor
     - CropViewController
-    - DKCamera
     - DKImagePickerController
-    - DKPhotoGallery
     - DZNEmptyDataSet
-    - FLAnimatedImage
+    - EasyPeasy
     - FSCalendar
     - INTULocationManager
     - IQKeyboardManagerSwift
@@ -141,8 +95,8 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - RevealingSplashView
-    - SDWebImage
     - SnapKit
+    - StackScrollView
     - SVPullToRefresh
     - SwiftLocation
     - SwiftMessages
@@ -151,31 +105,28 @@ SPEC REPOS:
 SPEC CHECKSUMS:
   Alamofire: e4fa87002c137ba2d8d634d2c51fabcda0d5c223
   APNumberPad: e97677fd2315ad106bd4ea4a56fbb259f093e301
-  CLImageEditor: ec5ae50b3a54c9818c0bdb243b20665a1c6718e3
   CropViewController: e6d4bd512d15a1709e9ddf71fe7d98ffd05dda0f
-  DKCamera: c25552afb4bc3ef4c7966b16a44352d36475fe5d
-  DKImagePickerController: 7011c269ebabacdd640e4269ff3c05597e568899
-  DKPhotoGallery: d6604a611cd47a6d62d6e4df46e53ab9de493492
+  DKImagePickerController: 51ad6ee2ba05414bb741db54a72cd7f4fb178e34
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
-  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
-  FSCalendar: a04b09f16f811bc92e82f3cf852a15225233b9d5
+  EasyPeasy: 2f2785ed78c6f9e9045221f2ff317730e7321bff
+  FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   INTULocationManager: 0ca5c76eacc029ba15938fc699520bc333ed6435
   IQKeyboardManagerSwift: 36dbe324b4f9793f5f41ba5227f3e7c76dfefd50
   MBProgressHUD: e7baa36a220447d8aeb12769bf0585582f3866d9
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   "ObjectMapper+Realm": 4cf44ed3202a73f08594e21e13eb3f8aa9b5a664
-  ObjectMapperAdditions: db4243e10ebd9abf7e5e7938e4b0a4bbfd840980
+  ObjectMapperAdditions: e11586bce98cf1090a36c24d4628ae5720a95d85
   Realm: a469bb59e33f9926102ccaea4349822c53b9117e
   RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
   RevealingSplashView: 0794eecad3a8983ac11a1fe474e9a9b51b926780
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
   SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  StackScrollView: e021690b87b4a043aa2bb847ece4a7179015c65d
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: f9d6cacbc17ac6ddf3d519fc72266d271fd5aa7a
+PODFILE CHECKSUM: 495a7f9eaef4db20bae62ec4ebb9a1c95edd9b84
 
-COCOAPODS: 1.5.0
+COCOAPODS: 1.5.3

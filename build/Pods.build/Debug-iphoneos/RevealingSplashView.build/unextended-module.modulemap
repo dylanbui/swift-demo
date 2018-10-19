@@ -1,0 +1,10 @@
+framework module RevealingSplashView {
+  umbrella header "RevealingSplashView-umbrella.h"
+
+  export *
+  module * { export * }
+}
+
+module RevealingSplashView.__Swift {
+    exclude header "RevealingSplashView-Swift.h"
+}

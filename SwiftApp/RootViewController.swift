@@ -35,8 +35,9 @@ class RootViewController: UIViewController
 //        let vcl = NetworkViewController()
 //        let vcl = DemoUKitViewController()
 //        let vcl = CategoriesViewController()
-        let vcl = PzLoginViewController()
+//        let vcl = PzLoginViewController()
 //        let vcl = PzListingViewController()
+        let vcl = StackScrollViewController()
         
         // -- An nut back --
         vcl.navigationItem.setHidesBackButton(true, animated:false)

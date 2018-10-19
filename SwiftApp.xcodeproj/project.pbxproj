@@ -29,6 +29,21 @@
 		BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */; };
 		BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */; };
 		BB390FD12109B31C0091FB6D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB390FD02109B31C0091FB6D /* Category.swift */; };
+		BB4D6A6821798D66004E8BE1 /* ButtonStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5A21798D66004E8BE1 /* ButtonStackCell.swift */; };
+		BB4D6A6921798D66004E8BE1 /* StackCellBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5B21798D66004E8BE1 /* StackCellBase.swift */; };
+		BB4D6A6A21798D66004E8BE1 /* TapStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5C21798D66004E8BE1 /* TapStackCell.swift */; };
+		BB4D6A6B21798D66004E8BE1 /* SwitchStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5D21798D66004E8BE1 /* SwitchStackCell.swift */; };
+		BB4D6A6C21798D66004E8BE1 /* StackScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5E21798D66004E8BE1 /* StackScrollViewController.swift */; };
+		BB4D6A6D21798D66004E8BE1 /* HeaderStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5F21798D66004E8BE1 /* HeaderStackCell.swift */; };
+		BB4D6A6E21798D66004E8BE1 /* TextFieldStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A6021798D66004E8BE1 /* TextFieldStackCell.swift */; };
+		BB4D6A6F21798D66004E8BE1 /* LabelStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A6121798D66004E8BE1 /* LabelStackCell.swift */; };
+		BB4D6A7021798D66004E8BE1 /* NibStackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D6A6221798D66004E8BE1 /* NibStackCell.xib */; };
+		BB4D6A7121798D66004E8BE1 /* SeparatorStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A6321798D66004E8BE1 /* SeparatorStackCell.swift */; };
+		BB4D6A7221798D66004E8BE1 /* DatePickerStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A6421798D66004E8BE1 /* DatePickerStackCell.swift */; };
+		BB4D6A7321798D66004E8BE1 /* NibStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A6521798D66004E8BE1 /* NibStackCell.swift */; };
+		BB4D6A7421798D66004E8BE1 /* MarginStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A6621798D66004E8BE1 /* MarginStackCell.swift */; };
+		BB4D6A7521798D66004E8BE1 /* TextViewStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A6721798D66004E8BE1 /* TextViewStackCell.swift */; };
+		BB4D6A772179949A004E8BE1 /* StackScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4D6A762179949A004E8BE1 /* StackScrollViewController.xib */; };
 		BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E235C210EBA8F00524B0D /* CategoryApi.swift */; };
 		BB4E2361210EBCAD00524B0D /* PzLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */; };
 		BB4E2362210EBCAD00524B0D /* PzLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */; };
@@ -222,6 +237,21 @@
 		BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzMainViewController.swift; sourceTree = "<group>"; };
 		BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzMainViewController.xib; sourceTree = "<group>"; };
 		BB390FD02109B31C0091FB6D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		BB4D6A5A21798D66004E8BE1 /* ButtonStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A5B21798D66004E8BE1 /* StackCellBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCellBase.swift; sourceTree = "<group>"; };
+		BB4D6A5C21798D66004E8BE1 /* TapStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A5D21798D66004E8BE1 /* SwitchStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A5E21798D66004E8BE1 /* StackScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackScrollViewController.swift; sourceTree = "<group>"; };
+		BB4D6A5F21798D66004E8BE1 /* HeaderStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A6021798D66004E8BE1 /* TextFieldStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A6121798D66004E8BE1 /* LabelStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A6221798D66004E8BE1 /* NibStackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibStackCell.xib; sourceTree = "<group>"; };
+		BB4D6A6321798D66004E8BE1 /* SeparatorStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A6421798D66004E8BE1 /* DatePickerStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A6521798D66004E8BE1 /* NibStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A6621798D66004E8BE1 /* MarginStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A6721798D66004E8BE1 /* TextViewStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewStackCell.swift; sourceTree = "<group>"; };
+		BB4D6A762179949A004E8BE1 /* StackScrollViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StackScrollViewController.xib; sourceTree = "<group>"; };
 		BB4E235C210EBA8F00524B0D /* CategoryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryApi.swift; sourceTree = "<group>"; };
 		BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzLoginViewController.swift; sourceTree = "<group>"; };
 		BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzLoginViewController.xib; sourceTree = "<group>"; };
@@ -418,6 +448,7 @@
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB4D6A5921798D66004E8BE1 /* Demo-StackScrollView */,
 				BB4E235E210EBC6400524B0D /* Propzy-SAM */,
 				BBDD9B9E2073323000217030 /* Demo-PropzyNetwork */,
 				BB1079442071D72C00A99D9A /* Demo-Button-Label-Textfield */,
@@ -478,6 +509,28 @@
 				BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */,
 			);
 			path = "Main Controller";
+			sourceTree = "<group>";
+		};
+		BB4D6A5921798D66004E8BE1 /* Demo-StackScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				BB4D6A5E21798D66004E8BE1 /* StackScrollViewController.swift */,
+				BB4D6A762179949A004E8BE1 /* StackScrollViewController.xib */,
+				BB4D6A5A21798D66004E8BE1 /* ButtonStackCell.swift */,
+				BB4D6A5B21798D66004E8BE1 /* StackCellBase.swift */,
+				BB4D6A5C21798D66004E8BE1 /* TapStackCell.swift */,
+				BB4D6A5D21798D66004E8BE1 /* SwitchStackCell.swift */,
+				BB4D6A5F21798D66004E8BE1 /* HeaderStackCell.swift */,
+				BB4D6A6021798D66004E8BE1 /* TextFieldStackCell.swift */,
+				BB4D6A6121798D66004E8BE1 /* LabelStackCell.swift */,
+				BB4D6A6321798D66004E8BE1 /* SeparatorStackCell.swift */,
+				BB4D6A6421798D66004E8BE1 /* DatePickerStackCell.swift */,
+				BB4D6A6621798D66004E8BE1 /* MarginStackCell.swift */,
+				BB4D6A6721798D66004E8BE1 /* TextViewStackCell.swift */,
+				BB4D6A6521798D66004E8BE1 /* NibStackCell.swift */,
+				BB4D6A6221798D66004E8BE1 /* NibStackCell.xib */,
+			);
+			path = "Demo-StackScrollView";
 			sourceTree = "<group>";
 		};
 		BB4E235E210EBC6400524B0D /* Propzy-SAM */ = {
@@ -982,6 +1035,7 @@
 				BBE813FD2017458100B21B1F /* ic_show_password.png in Resources */,
 				BBDD9BA6207372B400217030 /* CategoriesViewController.xib in Resources */,
 				BB7F3042203E857900185366 /* main_gate.png in Resources */,
+				BB4D6A772179949A004E8BE1 /* StackScrollViewController.xib in Resources */,
 				BBD3CF151F70F8480028425E /* DemoTableViewController.xib in Resources */,
 				BBC38A66206DDEE500B11C7B /* map-icons.ttf in Resources */,
 				BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */,
@@ -993,6 +1047,7 @@
 				BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */,
 				BBC38A64206DDEE500B11C7B /* Ionicons.ttf in Resources */,
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
+				BB4D6A7021798D66004E8BE1 /* NibStackCell.xib in Resources */,
 				BBA2A43F211826F000618AEF /* PzListingViewController.xib in Resources */,
 				BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */,
 				BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */,
@@ -1098,13 +1153,10 @@
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/APNumberPad/APNumberPad.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
-				"${BUILT_PRODUCTS_DIR}/CLImageEditor/CLImageEditor.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
-				"${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework",
 				"${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework",
-				"${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
-				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
+				"${BUILT_PRODUCTS_DIR}/EasyPeasy/EasyPeasy.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/INTULocationManager/INTULocationManager.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
@@ -1116,9 +1168,9 @@
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/StackScrollView/StackScrollView.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
@@ -1127,13 +1179,10 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APNumberPad.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CLImageEditor.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKCamera.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKImagePickerController.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKPhotoGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyPeasy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INTULocationManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
@@ -1145,9 +1194,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/StackScrollView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
@@ -1168,11 +1217,14 @@
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
+				BB4D6A7421798D66004E8BE1 /* MarginStackCell.swift in Sources */,
 				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
+				BB4D6A6921798D66004E8BE1 /* StackCellBase.swift in Sources */,
 				BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */,
 				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
+				BB4D6A6A21798D66004E8BE1 /* TapStackCell.swift in Sources */,
 				BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
@@ -1191,12 +1243,17 @@
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
+				BB4D6A6D21798D66004E8BE1 /* HeaderStackCell.swift in Sources */,
 				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,
 				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
+				BB4D6A6B21798D66004E8BE1 /* SwitchStackCell.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
+				BB4D6A6C21798D66004E8BE1 /* StackScrollViewController.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
+				BB4D6A6F21798D66004E8BE1 /* LabelStackCell.swift in Sources */,
 				BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */,
+				BB4D6A7521798D66004E8BE1 /* TextViewStackCell.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
 				BB228A502108302A00C5C6AA /* Actor.swift in Sources */,
@@ -1208,14 +1265,17 @@
 				BBA3D1B1206CA36400CD2F0F /* DbOperator.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
 				BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */,
+				BB4D6A7121798D66004E8BE1 /* SeparatorStackCell.swift in Sources */,
 				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
 				BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */,
+				BB4D6A6821798D66004E8BE1 /* ButtonStackCell.swift in Sources */,
 				BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
+				BB4D6A7221798D66004E8BE1 /* DatePickerStackCell.swift in Sources */,
 				BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
@@ -1231,6 +1291,7 @@
 				BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */,
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
+				BB4D6A7321798D66004E8BE1 /* NibStackCell.swift in Sources */,
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
 				BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */,
@@ -1260,6 +1321,7 @@
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
+				BB4D6A6E21798D66004E8BE1 /* TextFieldStackCell.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
