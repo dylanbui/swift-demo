@@ -12,7 +12,9 @@ target 'SwiftApp' do
     pod 'Alamofire', '4.7.2'
     pod 'MBProgressHUD', '1.1.0'
     pod 'SVPullToRefresh', '0.4.1'
-    pod 'DZNEmptyDataSet', '1.8.1'
+    pod 'DZNEmptyDataSet' #, '1.8.1'
+    
+    
     pod 'IQKeyboardManagerSwift', '6.0.4'
     pod 'SnapKit', '4.0.0' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
     
@@ -51,7 +53,8 @@ target 'SwiftApp' do
     pod 'FSCalendar'#, '2.7.9'
 
     # Libraries needed Swift 4
-    pod 'DKImagePickerController', '3.8.1'
+    pod 'DKImagePickerController' #, '3.8.1' them nhieu thu vien '4.0.2'
+    
     pod 'CropViewController', '2.3.6' # Swift version of TOCropViewController
     
     pod 'RevealingSplashView', '0.5.0'

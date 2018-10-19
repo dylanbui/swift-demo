@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0940"
+   LastUpgradeVersion = "0930"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6A327C5273DFBDAD9A3D954AB1C07557"
+               BlueprintIdentifier = "2990770985796EEC3C38E8AB9E52CB0D"
                BuildableName = "TOCropViewControllerBundle.bundle"
                BlueprintName = "CropViewController-TOCropViewControllerBundle"
                ReferencedContainer = "container:Pods.xcodeproj">
@@ -45,7 +45,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "6A327C5273DFBDAD9A3D954AB1C07557"
+            BlueprintIdentifier = "2990770985796EEC3C38E8AB9E52CB0D"
             BuildableName = "TOCropViewControllerBundle.bundle"
             BlueprintName = "CropViewController-TOCropViewControllerBundle"
             ReferencedContainer = "container:Pods.xcodeproj">
