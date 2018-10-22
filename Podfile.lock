@@ -41,7 +41,7 @@ PODS:
   - RealmSwift (3.7.4):
     - Realm (= 3.7.4)
   - RevealingSplashView (0.5.0)
-  - SnapKit (4.0.0)
+  - SnapKit (4.0.1)
   - StackScrollView (1.2.0)
   - SVPullToRefresh (0.4.1)
   - SwiftLocation (3.2.3):
@@ -69,7 +69,7 @@ DEPENDENCIES:
   - ObjectMapperAdditions/Realm (~> 4.1)
   - RealmSwift (= 3.7.4)
   - RevealingSplashView (= 0.5.0)
-  - SnapKit (= 4.0.0)
+  - SnapKit
   - StackScrollView
   - SVPullToRefresh (= 0.4.1)
   - SwiftLocation (= 3.2.3)
@@ -120,13 +120,13 @@ SPEC CHECKSUMS:
   Realm: a469bb59e33f9926102ccaea4349822c53b9117e
   RealmSwift: a45861b21c180f5cf0f122144b9759fa8dde3e9e
   RevealingSplashView: 0794eecad3a8983ac11a1fe474e9a9b51b926780
-  SnapKit: a42d492c16e80209130a3379f73596c3454b7694
+  SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
   StackScrollView: e021690b87b4a043aa2bb847ece4a7179015c65d
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 495a7f9eaef4db20bae62ec4ebb9a1c95edd9b84
+PODFILE CHECKSUM: 4798222408b1636075107bc43fe3267850c7073e
 
 COCOAPODS: 1.5.3

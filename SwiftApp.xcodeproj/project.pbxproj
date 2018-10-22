@@ -75,6 +75,7 @@
 		BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */; };
 		BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */; };
 		BB79169120190264007A83E6 /* DbMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB79169020190264007A83E6 /* DbMediaPickerController.swift */; };
+		BB7E56AA217DF12300740C6F /* StackScrollBakViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E56A9217DF12300740C6F /* StackScrollBakViewController.swift */; };
 		BB7F3038203E857900185366 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302A203E857900185366 /* demo_1.jpg */; };
 		BB7F3039203E857900185366 /* demo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302B203E857900185366 /* demo_2.jpg */; };
 		BB7F303A203E857900185366 /* demo_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302C203E857900185366 /* demo_3.jpg */; };
@@ -283,6 +284,7 @@
 		BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLayoutViewCell.swift; sourceTree = "<group>"; };
 		BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskLayoutViewCell.xib; sourceTree = "<group>"; };
 		BB79169020190264007A83E6 /* DbMediaPickerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMediaPickerController.swift; sourceTree = "<group>"; };
+		BB7E56A9217DF12300740C6F /* StackScrollBakViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackScrollBakViewController.swift; sourceTree = "<group>"; };
 		BB7F302A203E857900185366 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
 		BB7F302B203E857900185366 /* demo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_2.jpg; sourceTree = "<group>"; };
 		BB7F302C203E857900185366 /* demo_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_3.jpg; sourceTree = "<group>"; };
@@ -514,6 +516,7 @@
 		BB4D6A5921798D66004E8BE1 /* Demo-StackScrollView */ = {
 			isa = PBXGroup;
 			children = (
+				BB7E56A9217DF12300740C6F /* StackScrollBakViewController.swift */,
 				BB4D6A5E21798D66004E8BE1 /* StackScrollViewController.swift */,
 				BB4D6A762179949A004E8BE1 /* StackScrollViewController.xib */,
 				BB4D6A5A21798D66004E8BE1 /* ButtonStackCell.swift */,
@@ -1323,6 +1326,7 @@
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BB4D6A6E21798D66004E8BE1 /* TextFieldStackCell.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
+				BB7E56AA217DF12300740C6F /* StackScrollBakViewController.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,

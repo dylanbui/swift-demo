@@ -25,6 +25,8 @@ final class SwitchStackCell: StackCellBase {
     addSubview(titleLabel)
     addSubview(switchView)
     
+    titleLabel.backgroundColor = UIColor.yellow
+    
     titleLabel.snp.makeConstraints { (make) in
         make.top.greaterThanOrEqualTo(12)
         make.bottom.lessThanOrEqualTo(12)
@@ -44,13 +46,14 @@ final class SwitchStackCell: StackCellBase {
         
 //        make.trailing.equalTo(titleLabel).offset(12)
 //        make.left.equalTo(titleLabel.snp.right).inset(12)
-        make.leading.equalTo(titleLabel.snp.right).inset(12)
+//        make.leading.equalTo(titleLabel.snp.right).inset(12)
         
         
         make.top.greaterThanOrEqualTo(0)
+        make.bottom.lessThanOrEqualTo(0)
         make.right.equalTo(16)
         make.centerY.equalTo(self)
-        make.bottom.lessThanOrEqualTo(0)
+        
     }
     
 //    switchView <- [
@@ -68,8 +71,8 @@ final class SwitchStackCell: StackCellBase {
     titleLabel.text = title
   }
   
-  @objc private func switchValueChanged() {
-    
+  @objc private func switchValueChanged()
+  {
     valueChanged(switchView.isOn)
   }
 }

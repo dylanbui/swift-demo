@@ -11,18 +11,19 @@ import StackScrollView
 import EasyPeasy
 
 
-final class MarginStackCell: StackCellBase {
+final class MarginStackCell: StackCellBase
+{
+    let heightSize: CGFloat
   
-  let heightSize: CGFloat
+    init(height: CGFloat, backgroundColor: UIColor)
+    {
+        self.heightSize = height
+        super.init()
+        self.backgroundColor = backgroundColor
+    }
   
-  init(height: CGFloat, backgroundColor: UIColor) {
-    self.heightSize = height
-    super.init()
-    self.backgroundColor = backgroundColor
-  }
-  
-  override var intrinsicContentSize: CGSize {
-    
-    return CGSize(width: UIViewNoIntrinsicMetric, height: height)
-  }
+    override var intrinsicContentSize: CGSize
+    {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: height)
+    }
 }

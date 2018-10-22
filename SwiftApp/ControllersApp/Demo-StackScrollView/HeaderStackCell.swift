@@ -7,29 +7,39 @@
 //
 
 import Foundation
-
-import EasyPeasy
-
 import StackScrollView
+import SnapKit
 
-final class HeaderStackCell: StackCellBase {
+final class HeaderStackCell: StackCellBase
+{
+    let label = UILabel()
   
-  let label = UILabel()
-  
-  init(title: String, backgroundColor: UIColor) {
+    init(title: String, backgroundColor: UIColor)
+    {
+        super.init()
     
-    super.init()
-    self.backgroundColor = backgroundColor
-    label.font = UIFont.preferredFont(forTextStyle: .caption1)
-    addSubview(label)
+        self.backgroundColor = backgroundColor
+        label.font = UIFont.preferredFont(forTextStyle: .caption1)
+        
+        addSubview(label)
+        
+        label.snp.makeConstraints { (make) in
+            // even longer
+//            make.top.equalTo(4)
+//            make.left.equalTo(8)
+//            make.bottom.equalTo(-4)
+//            make.right.equalTo(-16)
+            // even shorter
+            make.edges.equalTo(self).inset(UIEdgeInsetsMake(4, 8, 4, 16))
+        }
     
-    label <- [
-      Top(4),
-      Left(8),
-      Right(16),
-      Bottom(4),
-    ]
+//    label <- [
+//      Top(4),
+//      Left(8),
+//      Right(16),
+//      Bottom(4),
+//    ]
     
-    label.text = title
-  }
+        label.text = title
+    }
 }

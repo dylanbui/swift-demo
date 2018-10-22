@@ -16,8 +16,8 @@ target 'SwiftApp' do
     
     
     pod 'IQKeyboardManagerSwift', '6.0.4'
-    pod 'SnapKit', '4.0.0' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
-    
+    pod 'SnapKit', '4.0.1' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
+
     # Bo 3 di chung voi nhau
     pod 'ObjectMapper', '3.3.0'
     pod 'RealmSwift', '3.7.4'

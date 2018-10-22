@@ -9,7 +9,8 @@
 import UIKit
 
 import StackScrollView
-import EasyPeasy
+import SnapKit
+
 
 class StackScrollViewController: UIViewController {
   
@@ -35,18 +36,20 @@ class StackScrollViewController: UIViewController {
     views.append(fullSeparator())
     
     views.append({
-      let v = TextFieldStackCell()
-      v.set(placeholder: "TextFieldStackCell")
-      return v
-    }())
+        let v = TextFieldStackCell()
+        v.backgroundColor = UIColor.blue
+        v.set(placeholder: "TextFieldStackCell")
+        return v
+        }())
     
     views.append(semiSeparator())
     
     views.append({
-      let v = TextFieldStackCell()
-      v.set(placeholder: "Detail")
-      return v
-      }())
+        let v = TextFieldStackCell()
+        v.backgroundColor = UIColor.darkGray
+        v.set(placeholder: "Detail")
+        return v
+        }())
     
     views.append(fullSeparator())
     
@@ -57,90 +60,39 @@ class StackScrollViewController: UIViewController {
     views.append(fullSeparator())
     
     views.append({
-      let v = DatePickerStackCell()
-      v.set(title: "Date")
-      return v
-    }())
+        let v = DatePickerStackCell()
+        v.set(title: "Date")
+        return v
+        }())
     
     views.append(fullSeparator())
-
+    
     views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
     
     views.append(HeaderStackCell(title: "TextViewStackCell", backgroundColor: marginColor))
-    
-    views.append(fullSeparator())
 
-    views.append(TextViewStackCell())
 
-    views.append(fullSeparator())
-    
-    views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
-    
-    views.append(HeaderStackCell(title: "SwitchStackCell", backgroundColor: marginColor))
-    
-    (0..<3).forEach { i in
-      
-      let s = fullSeparator()
-      views.append(s)
-      views.append(SwitchStackCell(title: "Switch neee \(i)"))
-    }
-    
-    views.append(fullSeparator())
-    
-    views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
-    
-    views.append(HeaderStackCell(title: "ButtonStackCell", backgroundColor: marginColor))
-    
-    (0..<3).forEach { _ in
-      
-      let s = fullSeparator()
-      
-      views.append(s)
-      
-      views.append({
-        let v = ButtonStackCell(buttonTitle: "Remove")
-        v.tapped = { [unowned v] in
-          v.remove()
-          s.remove()
-        }
-        return v
-        }())
-      
-    }
-    
-    views.append(fullSeparator())
-    
-    views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
 
-    views.append(HeaderStackCell(title: "MarginStackCell", backgroundColor: marginColor))
-    
-    views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
-    
-    views.append(HeaderStackCell(title: "SeparatorStackCell", backgroundColor: marginColor))
-    
-    views.append(fullSeparator())
-    
-    views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
-    
-    do {
-      // Load from XIB
-      
-      let cell = NibLoader<NibStackCell>().load()
-      
-      views.append(fullSeparator())
-      views.append(cell)
-      views.append(fullSeparator())
-      
-    }
-
-    views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
 
     stackScrollView.append(views: views)
 
-    stackScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    stackScrollView.frame = view.bounds
-    view.addSubview(stackScrollView)
   }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        // stackScrollView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        stackScrollView.frame = view.bounds
+        view.addSubview(stackScrollView)
+        
+        stackScrollView.snp.makeConstraints { (make) in
+            make.top.equalTo(self.view).offset(16)
+            make.left.equalTo(self.view).offset(16)
+            make.bottom.equalTo(self.view).offset(16)
+            make.right.equalTo(self.view).offset(-16)
+        }
+
+
+    }
   
   private func fullSeparator() -> SeparatorStackCell {
     return SeparatorStackCell(leftMargin: 0, rightMargin: 0, backgroundColor: .clear, separatorColor: UIColor(white: 0.90, alpha: 1))

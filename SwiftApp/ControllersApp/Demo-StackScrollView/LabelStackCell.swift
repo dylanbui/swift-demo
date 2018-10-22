@@ -7,27 +7,31 @@
 //
 
 import Foundation
-
-import EasyPeasy
-
 import StackScrollView
+import SnapKit
 
-final class LabelStackCell: StackCellBase {
+final class LabelStackCell: StackCellBase
+{
+    private let label = UILabel()
   
-  private let label = UILabel()
-  
-  init(title: String) {
-    super.init()
+    init(title: String)
+    {
+        super.init()
+        
+        addSubview(label)
+        self.backgroundColor = UIColor.darkGray
     
-    addSubview(label)
+        label.snp.makeConstraints { (make) in
+            // -- Longer --
+//            make.top.greaterThanOrEqualTo(8)
+//            make.left.equalTo(8)
+//            make.bottom.lessThanOrEqualTo(-8)
+//            make.right.equalTo(-8)
+            // -- Shorter --
+            make.edges.equalTo(self).inset(UIEdgeInsetsMake(8 ,8 ,8 ,8))
+        }
     
-    label.snp.makeConstraints { (make) in
-        make.top.greaterThanOrEqualTo(8)
-        make.left.equalTo(8)
-        make.right.equalTo(8)
-        make.top.lessThanOrEqualTo(8)
-        make.centerY.equalTo(self)
-    }
+        label.backgroundColor = UIColor.cyan
         
 //    label <- [
 //      Top(>=8),
@@ -37,16 +41,17 @@ final class LabelStackCell: StackCellBase {
 //      CenterY(),
 //    ]
     
-    self.snp.makeConstraints { (make) in
-        make.height.greaterThanOrEqualTo(40) // .=40
-    }
+        self.snp.makeConstraints { (make) in
+            make.height.greaterThanOrEqualTo(40) // .=40
+        }
     
 //    self <- [
 //      Height(>=40),
 //    ]
     
-    label.font = UIFont.preferredFont(forTextStyle: .body)
-    label.text = title
-    label.numberOfLines = 0
-  }
+        label.font = UIFont.preferredFont(forTextStyle: .body)
+        label.text = title
+        label.numberOfLines = 0
+    }
+
 }
