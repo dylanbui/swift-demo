@@ -95,6 +95,8 @@
 		BB7F3043203E857900185366 /* main_gate@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3035203E857900185366 /* main_gate@2x.png */; };
 		BB7F3044203E857900185366 /* main_gate_img.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3036203E857900185366 /* main_gate_img.png */; };
 		BB7F3045203E857900185366 /* main_gate_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3037203E857900185366 /* main_gate_img@2x.png */; };
+		BB8706BC2180DF6600FEC7A1 /* NibToggerShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8706BB2180DF6600FEC7A1 /* NibToggerShow.swift */; };
+		BB8706BE2180DF7200FEC7A1 /* NibToggerShow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8706BD2180DF7200FEC7A1 /* NibToggerShow.xib */; };
 		BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8823422119847400A1BB76 /* JsonStringTransform.swift */; };
 		BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887DBC203EA05700DFC060 /* NetworkViewController.swift */; };
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
@@ -309,6 +311,8 @@
 		BB7F3035203E857900185366 /* main_gate@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_gate@2x.png"; sourceTree = "<group>"; };
 		BB7F3036203E857900185366 /* main_gate_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_gate_img.png; sourceTree = "<group>"; };
 		BB7F3037203E857900185366 /* main_gate_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_gate_img@2x.png"; sourceTree = "<group>"; };
+		BB8706BB2180DF6600FEC7A1 /* NibToggerShow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibToggerShow.swift; sourceTree = "<group>"; };
+		BB8706BD2180DF7200FEC7A1 /* NibToggerShow.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibToggerShow.xib; sourceTree = "<group>"; };
 		BB8823422119847400A1BB76 /* JsonStringTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonStringTransform.swift; sourceTree = "<group>"; };
 		BB887DBC203EA05700DFC060 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
@@ -551,10 +555,7 @@
 				BB4D6A6421798D66004E8BE1 /* DatePickerStackCell.swift */,
 				BB4D6A6621798D66004E8BE1 /* MarginStackCell.swift */,
 				BB4D6A6721798D66004E8BE1 /* TextViewStackCell.swift */,
-				BB4D6A6521798D66004E8BE1 /* NibStackCell.swift */,
-				BB4D6A6221798D66004E8BE1 /* NibStackCell.xib */,
-				BB3FDBE6217EDD14002D570F /* NibItemStackCell.swift */,
-				BB3FDBEA217EDDBA002D570F /* NibItemStackCell.xib */,
+				BB8706BA2180DF1D00FEC7A1 /* Nib Views */,
 			);
 			path = "Demo-StackScrollView";
 			sourceTree = "<group>";
@@ -637,6 +638,19 @@
 				BB7F3037203E857900185366 /* main_gate_img@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		BB8706BA2180DF1D00FEC7A1 /* Nib Views */ = {
+			isa = PBXGroup;
+			children = (
+				BB4D6A6521798D66004E8BE1 /* NibStackCell.swift */,
+				BB4D6A6221798D66004E8BE1 /* NibStackCell.xib */,
+				BB3FDBE6217EDD14002D570F /* NibItemStackCell.swift */,
+				BB3FDBEA217EDDBA002D570F /* NibItemStackCell.xib */,
+				BB8706BB2180DF6600FEC7A1 /* NibToggerShow.swift */,
+				BB8706BD2180DF7200FEC7A1 /* NibToggerShow.xib */,
+			);
+			path = "Nib Views";
 			sourceTree = "<group>";
 		};
 		BBB569D11F7B5B870014A7A9 /* Task-App */ = {
@@ -1111,6 +1125,7 @@
 				BBD3CEF51F70CFE50028425E /* Main.storyboard in Resources */,
 				BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */,
 				BBC02E671F71747A0011FDE6 /* OpenSans-Italic.ttf in Resources */,
+				BB8706BE2180DF7200FEC7A1 /* NibToggerShow.xib in Resources */,
 				BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */,
 				BBC02E661F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				BBC38A53206DDE9500B11C7B /* LICENSE in Resources */,
@@ -1302,6 +1317,7 @@
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
 				BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */,
 				BB4D6A6821798D66004E8BE1 /* ButtonStackCell.swift in Sources */,
+				BB8706BC2180DF6600FEC7A1 /* NibToggerShow.swift in Sources */,
 				BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BB4D6A7221798D66004E8BE1 /* DatePickerStackCell.swift in Sources */,

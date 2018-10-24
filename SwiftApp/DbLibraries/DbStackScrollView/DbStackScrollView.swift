@@ -52,6 +52,7 @@ open class DbStackScrollView: UICollectionView, UICollectionViewDataSource, UICo
     
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        self.collectionViewLayout = DbStackScrollView.defaultLayout()
         setup()
     }
     

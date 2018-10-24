@@ -9,7 +9,7 @@
 import UIKit
 
 @IBDesignable
-class NibItemStackCell: DbLoadableView
+class NibItemStackCell: DbLoadableView, DbStackCellType
 {
 
     @IBOutlet weak var slider: UISlider!

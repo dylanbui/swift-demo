@@ -33,7 +33,11 @@ class StackScrollViewController: UIViewController {
     
     views.append(HeaderStackCell(title: "TextFieldStackCell", backgroundColor: marginColor))
     
-    views.append(fullSeparator())
+//    views.append(fullSeparator())
+    
+//    views.append(NibToggerShow())
+    
+//    views.append(fullSeparator())
     
     views.append({
         let v = TextFieldStackCell()
@@ -71,7 +75,7 @@ class StackScrollViewController: UIViewController {
     
     views.append(HeaderStackCell(title: "TextViewStackCell", backgroundColor: marginColor))
 
-    (0..<3).forEach { _ in
+    (0..<6).forEach { _ in
         let s = fullSeparator()
         views.append(s)
         views.append({
