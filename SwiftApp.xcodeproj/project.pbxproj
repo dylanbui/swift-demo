@@ -29,6 +29,11 @@
 		BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */; };
 		BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */; };
 		BB390FD12109B31C0091FB6D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB390FD02109B31C0091FB6D /* Category.swift */; };
+		BB3FDBE8217EDD14002D570F /* NibItemStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBE6217EDD14002D570F /* NibItemStackCell.swift */; };
+		BB3FDBEB217EDDBA002D570F /* NibItemStackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB3FDBEA217EDDBA002D570F /* NibItemStackCell.xib */; };
+		BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */; };
+		BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */; };
+		BB3FDBF2217EFD07002D570F /* DbStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBF0217EFD07002D570F /* DbStackCell.swift */; };
 		BB4D6A6821798D66004E8BE1 /* ButtonStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5A21798D66004E8BE1 /* ButtonStackCell.swift */; };
 		BB4D6A6921798D66004E8BE1 /* StackCellBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5B21798D66004E8BE1 /* StackCellBase.swift */; };
 		BB4D6A6A21798D66004E8BE1 /* TapStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4D6A5C21798D66004E8BE1 /* TapStackCell.swift */; };
@@ -238,6 +243,11 @@
 		BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzMainViewController.swift; sourceTree = "<group>"; };
 		BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzMainViewController.xib; sourceTree = "<group>"; };
 		BB390FD02109B31C0091FB6D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		BB3FDBE6217EDD14002D570F /* NibItemStackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibItemStackCell.swift; sourceTree = "<group>"; };
+		BB3FDBEA217EDDBA002D570F /* NibItemStackCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibItemStackCell.xib; sourceTree = "<group>"; };
+		BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStackScrollView.swift; sourceTree = "<group>"; };
+		BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStackCellType.swift; sourceTree = "<group>"; };
+		BB3FDBF0217EFD07002D570F /* DbStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStackCell.swift; sourceTree = "<group>"; };
 		BB4D6A5A21798D66004E8BE1 /* ButtonStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStackCell.swift; sourceTree = "<group>"; };
 		BB4D6A5B21798D66004E8BE1 /* StackCellBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCellBase.swift; sourceTree = "<group>"; };
 		BB4D6A5C21798D66004E8BE1 /* TapStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapStackCell.swift; sourceTree = "<group>"; };
@@ -475,6 +485,7 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				BB3FDBEE217EFCB9002D570F /* DbStackScrollView */,
 				BBC3D19A21046E29007675F9 /* DbRealmManager */,
 				BBC38A43206DDE9500B11C7B /* SwiftIconFont */,
 				BBE44769206B75F900ED8CC2 /* ObjC-Libraries */,
@@ -513,6 +524,16 @@
 			path = "Main Controller";
 			sourceTree = "<group>";
 		};
+		BB3FDBEE217EFCB9002D570F /* DbStackScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				BB3FDBF0217EFD07002D570F /* DbStackCell.swift */,
+				BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */,
+				BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */,
+			);
+			path = DbStackScrollView;
+			sourceTree = "<group>";
+		};
 		BB4D6A5921798D66004E8BE1 /* Demo-StackScrollView */ = {
 			isa = PBXGroup;
 			children = (
@@ -532,6 +553,8 @@
 				BB4D6A6721798D66004E8BE1 /* TextViewStackCell.swift */,
 				BB4D6A6521798D66004E8BE1 /* NibStackCell.swift */,
 				BB4D6A6221798D66004E8BE1 /* NibStackCell.xib */,
+				BB3FDBE6217EDD14002D570F /* NibItemStackCell.swift */,
+				BB3FDBEA217EDDBA002D570F /* NibItemStackCell.xib */,
 			);
 			path = "Demo-StackScrollView";
 			sourceTree = "<group>";
@@ -1062,6 +1085,7 @@
 				BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */,
 				BBC38A69206DDEE500B11C7B /* open-iconic.ttf in Resources */,
 				BBB569DF1F7B5B880014A7A9 /* TaskUpdateViewController.xib in Resources */,
+				BB3FDBEB217EDDBA002D570F /* NibItemStackCell.xib in Resources */,
 				BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */,
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
@@ -1221,6 +1245,8 @@
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
 				BB4D6A7421798D66004E8BE1 /* MarginStackCell.swift in Sources */,
+				BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */,
+				BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */,
 				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
@@ -1301,6 +1327,7 @@
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */,
 				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,
+				BB3FDBE8217EDD14002D570F /* NibItemStackCell.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BBD002812018A39E00293AC8 /* MediaGallery.swift in Sources */,
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
@@ -1327,6 +1354,7 @@
 				BB4D6A6E21798D66004E8BE1 /* TextFieldStackCell.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
 				BB7E56AA217DF12300740C6F /* StackScrollBakViewController.swift in Sources */,
+				BB3FDBF2217EFD07002D570F /* DbStackCell.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,

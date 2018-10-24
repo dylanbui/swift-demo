@@ -39,52 +39,96 @@ final class DatePickerStackCell: TapStackCell {
     addSubview(borderView)
     addSubview(pickerContainerView)
     
-    pickerView.easy.layout([
-      Top().with(.medium),
-      Right(),
-      Left(),
-      Bottom().with(.medium),
-      CenterY(),
-    ])
+    pickerView.snp.makeConstraints { (make) in
+        make.top.equalToSuperview().priority(.medium)
+        make.right.equalToSuperview()
+        make.left.equalToSuperview()
+        make.bottom.equalToSuperview().priority(.medium)
+        make.centerY.equalToSuperview()
+    }
+    
+//    pickerView.easy.layout([
+//      Top().with(.medium),
+//      Right(),
+//      Left(),
+//      Bottom().with(.medium),
+//      CenterY(),
+//    ])
     
     bodyContainerView.addSubview(titleLabel)
     bodyContainerView.addSubview(valueLabel)
     
-    titleLabel.easy.layout([
-      Top(>=12),
-      Bottom(<=12),
-      Left(16),
-      CenterY(),
-    ])
+    titleLabel.snp.makeConstraints { (make) in
+        make.top.greaterThanOrEqualTo(12)
+        make.bottom.lessThanOrEqualTo(12)
+        make.left.equalTo(16)
+        make.centerY.equalToSuperview()
+    }
     
-    valueLabel.easy.layout([
-      Top(>=12),
-      Bottom(<=12),
-      Left(>=24).to(titleLabel, .right),
-      CenterY(),
-      Right(16),
-    ])
+//    titleLabel.easy.layout([
+//      Top(>=12),
+//      Bottom(<=12),
+//      Left(16),
+//      CenterY(),
+//    ])
     
-    bodyContainerView.easy.layout([
-      Top(),
-      Right(),
-      Left(),
-      Bottom().to(borderView, .top),
-    ])
+    valueLabel.snp.makeConstraints { (make) in
+        make.top.greaterThanOrEqualTo(12)
+        make.bottom.lessThanOrEqualTo(12)
+        make.left.greaterThanOrEqualTo(titleLabel.snp.right).offset(-24)
+        make.centerY.equalToSuperview()
+        make.right.equalTo(16)
+    }
     
-    borderView.easy.layout([
-      Left(16),
-      Right(16),
-      Height(1 / UIScreen.main.scale),
-      Bottom().to(pickerContainerView, .top),
-    ])
+//    valueLabel.easy.layout([
+//      Top(>=12),
+//      Bottom(<=12),
+//      Left(>=24).to(titleLabel, .right),
+//      CenterY(),
+//      Right(16),
+//    ])
     
-    pickerContainerView.easy.layout([
-      Right(),
-      Left(),
-      Bottom(),
-      Height(0),
-    ])
+    bodyContainerView.snp.makeConstraints { (make) in
+        make.top.equalToSuperview()
+        make.right.equalToSuperview()
+        make.left.equalToSuperview()
+        make.bottom.equalTo(pickerView.snp.top)
+    }
+    
+//    bodyContainerView.easy.layout([
+//      Top(),
+//      Right(),
+//      Left(),
+//      Bottom().to(borderView, .top),
+//    ])
+    
+    borderView.snp.makeConstraints { (make) in
+        make.right.equalTo(16)
+        make.left.equalTo(16)
+        make.height.equalTo(1 / UIScreen.main.scale)
+        make.bottom.equalTo(pickerContainerView.snp.top)
+    }
+    
+//    borderView.easy.layout([
+//      Left(16),
+//      Right(16),
+//      Height(1 / UIScreen.main.scale),
+//      Bottom().to(pickerContainerView, .top),
+//    ])
+    
+    pickerContainerView.snp.makeConstraints { (make) in
+        make.right.equalToSuperview()
+        make.left.equalToSuperview()
+        make.bottom.equalToSuperview()
+        make.height.equalTo(0)
+    }
+    
+//    pickerContainerView.easy.layout([
+//      Right(),
+//      Left(),
+//      Bottom(),
+//      Height(0),
+//    ])
     
     bodyContainerView.isUserInteractionEnabled = false
     
@@ -122,9 +166,14 @@ final class DatePickerStackCell: TapStackCell {
       ],
       animations: {
         
-        self.pickerContainerView.easy.layout([
-          Height(0),
-        ])
+        self.pickerContainerView.snp.updateConstraints({ (update) in
+            update.height.equalTo(0)
+        })
+        
+//        self.pickerContainerView.easy.layout([
+//          Height(0),
+//        ])
+        
         self.borderView.alpha = 0
         self.pickerView.alpha = 0
         
@@ -156,11 +205,16 @@ final class DatePickerStackCell: TapStackCell {
       ],
       animations: {
         
-        NSLayoutConstraint.deactivate(
-          self.pickerContainerView.easy.layout([
-            Height(),
-          ])
-        )
+        self.pickerContainerView.snp.updateConstraints({ (update) in
+            update.height.equalToSuperview()
+        })
+
+//        NSLayoutConstraint.deactivate(
+//          self.pickerContainerView.easy.layout([
+//            Height(),
+//          ])
+//        )
+        
         self.borderView.alpha = 1
         self.pickerView.alpha = 1
         

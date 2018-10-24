@@ -69,7 +69,7 @@ DEPENDENCIES:
   - ObjectMapperAdditions/Realm (~> 4.1)
   - RealmSwift (= 3.7.4)
   - RevealingSplashView (= 0.5.0)
-  - SnapKit
+  - SnapKit (= 4.0.1)
   - StackScrollView
   - SVPullToRefresh (= 0.4.1)
   - SwiftLocation (= 3.2.3)
@@ -127,6 +127,6 @@ SPEC CHECKSUMS:
   SwiftMessages: 2c33fdee8b8f38dfc7e1036684456b505891da8c
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 4798222408b1636075107bc43fe3267850c7073e
+PODFILE CHECKSUM: 537e4fe7416d43f5e93f513359d5eab3ecd327de
 
 COCOAPODS: 1.5.3

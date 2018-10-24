@@ -14,7 +14,7 @@ import SnapKit
 
 class StackScrollViewController: UIViewController {
   
-  private let stackScrollView = StackScrollView()
+  private let stackScrollView = DbStackScrollView()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -59,20 +59,48 @@ class StackScrollViewController: UIViewController {
     
     views.append(fullSeparator())
     
-    views.append({
-        let v = DatePickerStackCell()
-        v.set(title: "Date")
-        return v
-        }())
-    
-    views.append(fullSeparator())
+//    views.append({
+//        let v = DatePickerStackCell()
+//        v.set(title: "Date")
+//        return v
+//        }())
+//    
+//    views.append(fullSeparator())
     
     views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
     
     views.append(HeaderStackCell(title: "TextViewStackCell", backgroundColor: marginColor))
 
+    (0..<3).forEach { _ in
+        let s = fullSeparator()
+        views.append(s)
+        views.append({
+            let v = ButtonStackCell(buttonTitle: "Remove")
+            v.tapped = { [unowned v] in
+                v.remove()
+                s.remove()
+            }
+            return v
+            }()
+        )
+    }
+    
+    do {
+        // Load from XIB
+        let cell = NibItemStackCell()
+        views.append(fullSeparator())
+        views.append(cell)
+        views.append(fullSeparator())
+        
+        let lbl = UILabel.init(frame: CGRect(0, 0 , 100, 50))
+        lbl.text = "Khong"
+        lbl.backgroundColor = UIColor.yellow
+        cell.addSubview(lbl)        
+    }
+    
+    views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
 
-
+    
 
     stackScrollView.append(views: views)
 

@@ -11,7 +11,7 @@ import UIKit
 import StackScrollView
 
 
-class StackCellBase: UIControl, StackCellType {
+class StackCellBase: UIControl, DbStackCellType {
   
   init() {
     super.init(frame: .zero)
