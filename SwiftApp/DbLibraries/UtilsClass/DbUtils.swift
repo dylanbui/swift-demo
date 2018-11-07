@@ -49,19 +49,52 @@ class DbUtils: NSObject
         }
     }
     
+    class func callPhoneNumber(phonenumber: String, completionHandler completion: @escaping ((_ success: Bool) -> Void)) {
+        if phonenumber.db_isPhoneNumber == false {
+            completion(false)
+            return
+        }
+        var url: URL? = nil
+        let phoneUrl: URL = URL(string: "telprompt://" + phonenumber)!
+        let phoneFallbackUrl: URL = URL(string: "tel://" + phonenumber)!
+        
+        let application = UIApplication.shared
+        
+        if application.canOpenURL(phoneUrl) {
+            url = phoneUrl
+        } else if application.canOpenURL(phoneFallbackUrl) {
+            url = phoneFallbackUrl
+        } else {
+            completion(false)
+            return
+        }
+        
+        if #available(iOS 10.0, *) {
+            application.open(url!, options: [:]) { (isSuccess) in
+                completion(isSuccess)
+            }
+        } else {
+            // Fallback on earlier versions
+            completion(application.openURL(url!))
+        }
+    }
+
+    
     // MARK: - Popup Notification
     // MARK: -
     
     static func showErrorNetwork() -> Void {
         let warning = MessageView.viewFromNib(layout: .cardView)
-        warning.configureTheme(.warning)
+        //warning.configureTheme(.warning)
+        warning.configureTheme(backgroundColor: UIColor.orange, foregroundColor: .white)
         warning.configureDropShadow()
         
-        let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
-        warning.configureContent(title: "Warning", body: "Network don't connected.", iconText: iconText)
+        //let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
+        //warning.configureContent(title: "Warning", body: "Network don't connected.", iconText: iconText)
+        warning.configureContent(title: "Thông báo", body: "Vui lòng kiểm tra lại kết nối mạng.", iconImage: UIImage(named: "ic_warning_white")!)
         warning.button?.isHidden = true
-        var warningConfig = SwiftMessages.defaultConfig
-        warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+        var warningConfig = SwiftMessages.Config()// .defaultConfig
+        warningConfig.presentationContext = .window(windowLevel: .statusBar)
         SwiftMessages.show(config: warningConfig, view: warning)
     }
     
@@ -122,6 +155,14 @@ class DbUtils: NSObject
         let date = DbUtils.convertStringToDate(endDate, format: format)
         return date.timeIntervalSinceNow
     }
+    static func getDaysBetween(fromDate: Date = Date(), toDate: Date = Date()) -> Int {
+        let calendar = Calendar.current
+        let date1 = calendar.startOfDay(for: fromDate)
+        let date2 = calendar.startOfDay(for: toDate)
+        
+        let components = calendar.dateComponents([.day], from: date1, to: date2)
+        return components.day ?? 0
+    }
     
     static func formatTimeFromSeconds(_ numberOfSeconds: Double) -> String
     {
@@ -176,6 +217,61 @@ class DbUtils: NSObject
             blue: CGFloat(HexValue & 0x0000FF) / 255.0,
             alpha: CGFloat(alpha)
         )
+    }
+
+    // MARK: - NSLayoutConstraint
+    // MARK: -
+    
+    static func getNSLayoutConstraint(_ layoutAttribute: NSLayoutAttribute, ofView view: UIView) -> NSLayoutConstraint?
+    {
+        var returnConstraint: NSLayoutConstraint? = nil
+        for constraint: NSLayoutConstraint in view.constraints {
+            if constraint.firstAttribute == layoutAttribute {
+                returnConstraint = constraint
+                break
+            }
+        }
+        return returnConstraint
+    }
+    
+    static func safeAreaBottomPadding() -> CGFloat! {
+        var bottomPadding: CGFloat! = 0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            bottomPadding = window?.safeAreaInsets.bottom
+            return bottomPadding
+        }
+        return 0
+    }
+    
+    static func safeAreaTopPadding() -> CGFloat! {
+        var topPadding: CGFloat! = 0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            topPadding = window?.safeAreaInsets.top
+            return topPadding
+        }
+        return 0
+    }
+    
+    static func safeAreaLeftPadding() -> CGFloat! {
+        var leftPadding: CGFloat! = 0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            leftPadding = window?.safeAreaInsets.left
+            return leftPadding
+        }
+        return 0
+    }
+    
+    static func safeAreaRightPadding() -> CGFloat! {
+        var rightPadding: CGFloat! = 0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            rightPadding = window?.safeAreaInsets.right
+            return rightPadding
+        }
+        return 0
     }
     
 }

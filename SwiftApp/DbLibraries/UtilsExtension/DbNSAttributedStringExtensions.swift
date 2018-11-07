@@ -197,6 +197,22 @@ public extension NSMutableAttributedString {
     
 }
 
+extension NSMutableAttributedString {
+    // If no text is send, then the style will be applied to full text
+    func setColorForText(_ textToFind: String?, with color: UIColor) {
+        
+        let range: NSRange?
+        if let text = textToFind{
+            range = self.mutableString.range(of: text, options: .caseInsensitive)
+        }else{
+            range = NSMakeRange(0, self.length)
+        }
+        if range!.location != NSNotFound {
+            addAttribute(.foregroundColor, value: color, range: range!)
+        }
+    }
+}
+
 
 
 

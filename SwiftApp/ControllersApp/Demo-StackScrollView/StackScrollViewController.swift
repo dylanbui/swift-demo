@@ -7,8 +7,7 @@
 //
 
 import UIKit
-
-import StackScrollView
+//import StackScrollView
 import SnapKit
 
 

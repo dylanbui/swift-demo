@@ -27,7 +27,7 @@ protocol DbEventProtocol : AnyObject {
     
     func startEvent(_ notification: Notification) -> Void
     func cancelEvent() -> Void;
-    func eventRunBackgroundMode() -> [String]
+    func eventRunBackgroundMode() -> [Notification.Name]
     
     func eventPriority() -> Int
     func eventGroup() -> String
@@ -72,21 +72,22 @@ class DbEventNotification {
     static let shared = DbEventNotification()
     
     private var arrEventRegisted: [DbEventObject] = []
-    private var arrSupportMode: [String] = []
+    private var arrSupportMode: [NSNotification.Name] = []
     
     // Private Initialization
     private init() {
         self.arrEventRegisted = [];
         // -- Default system mode --
         self.arrSupportMode = [
-            NSNotification.Name.UIApplicationDidEnterBackground.rawValue,
-            NSNotification.Name.UIApplicationWillEnterForeground.rawValue,
-            NSNotification.Name.UIApplicationDidFinishLaunching.rawValue,
-            NSNotification.Name.UIApplicationDidBecomeActive.rawValue,
-            NSNotification.Name.UIApplicationWillResignActive.rawValue,
-            NSNotification.Name.UIApplicationDidReceiveMemoryWarning.rawValue,
-            NSNotification.Name.UIApplicationWillTerminate.rawValue,
-            NSNotification.Name.UIApplicationSignificantTimeChange.rawValue]
+            .UIApplicationDidFinishLaunching,
+            .UIApplicationDidEnterBackground,
+            .UIApplicationWillEnterForeground,
+            .UIApplicationDidFinishLaunching,
+            .UIApplicationDidBecomeActive,
+            .UIApplicationWillResignActive,
+            .UIApplicationDidReceiveMemoryWarning,
+            .UIApplicationWillTerminate,
+            .UIApplicationSignificantTimeChange]
         // -- Start AddObserver --
         self.reAddObserver()
     }
@@ -97,7 +98,7 @@ class DbEventNotification {
     
     // MARK: - Functions
     
-    func addExtendRunMode(arrMode: Array<String>) -> Void {
+    func addExtendRunMode(arrMode: Array<NSNotification.Name>) -> Void {
         self.arrSupportMode.append(contentsOf: arrMode)
         // -- Start AddObserver --
         self.reAddObserver()
@@ -163,16 +164,16 @@ class DbEventNotification {
         // -- Remove all Notify --
         Notification.remove(self)
         // -- Define all NSNotification --
-        for mode: String in self.arrSupportMode {
+        for mode: Notification.Name in self.arrSupportMode {
             Notification.add(mode, observer: self, selector: #selector(self.processNotificationCenter), object: nil)
         }
     }
     
     @objc private func processNotificationCenter(notification: Notification) -> Void {
         for obj: DbEventObject in self.arrEventRegisted {
-            if obj.eventRunBackgroundMode().contains(notification.name.rawValue) {
+            if obj.eventRunBackgroundMode().contains(notification.name) {
                 obj.startEvent(notification)
-                //print("\(notification.name.rawValue) -------- \(NSStringFromClass(obj))")
+                // print("\(notification.name.rawValue)")// -------- \(NSStringFromClass(obj))")
             }
         }
     }

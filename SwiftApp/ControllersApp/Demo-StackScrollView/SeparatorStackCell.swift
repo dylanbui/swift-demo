@@ -7,10 +7,10 @@
 //
 
 import UIKit
-import StackScrollView
+//import StackScrollView
 
 
-final class SeparatorStackCell: StackCellBase {
+final class SeparatorStackCell: DbStackCellBase {
   
   private let borderView = UIView()
   

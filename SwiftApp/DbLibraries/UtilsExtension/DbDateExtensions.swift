@@ -871,6 +871,24 @@ public extension Date {
         return startReferenceDate.addingTimeInterval(TimeInterval(randomValue))
     }
     
+    // -- Return array [Date] from self --
+    public func db_datesRange(to: Date) -> [Date]
+    {
+        // in case of the "from" date is more than "to" date,
+        // it should returns an empty array:
+        if self > to { return [Date]() }
+        
+        var tempDate = self
+        var array = [tempDate]
+        
+        while tempDate < to {
+            tempDate = Calendar.current.date(byAdding: .day, value: 1, to: tempDate)!
+            array.append(tempDate)
+        }
+        
+        return array
+    }
+    
 }
 
 // MARK: - Initializers

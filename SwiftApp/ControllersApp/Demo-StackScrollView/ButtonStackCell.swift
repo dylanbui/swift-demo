@@ -9,7 +9,7 @@
 import UIKit
 //import EasyPeasy
 
-final class ButtonStackCell: StackCellBase
+final class ButtonStackCell: DbStackCellBase
 {
     var tapped: () -> Void = {}
     private let button = UIButton(type: .system)

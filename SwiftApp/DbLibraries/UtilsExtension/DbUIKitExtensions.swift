@@ -63,6 +63,14 @@ public extension UITextField {
         return text?.isEmpty == true
     }
     
+    public var isPhoneNumber: Bool {
+        return text?.db_isPhoneNumber == true
+    }
+    
+    public var isEmail: Bool {
+        return text?.db_isEmail == true
+    }
+    
     /// SwifterSwift: Return text with no spaces or new lines in beginning and end.
     public var trimmedText: String? {
         return text?.trimmingCharacters(in: .whitespacesAndNewlines)

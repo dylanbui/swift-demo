@@ -17,10 +17,9 @@ protocol ManageNavigationBar where Self : UIViewController {
     func navigationBarHiddenForThisController() -> Void
 }
 
+// -- Khong su dung, dang nghien cuu --
 extension ManageNavigationBar where Self : UIViewController {
 //    var isNavigationBarHidden: Bool = false
-    
-    
 //    override func viewWillAppear(_ animated: Bool)
 //    {
 //        super.viewWillAppear(animated)
@@ -32,21 +31,18 @@ extension ManageNavigationBar where Self : UIViewController {
         self.isNavigationBarHidden = true;
         self.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-    
 }
-
 
 class DbViewController: UIViewController
 {
-    var stranferParams: [String:AnyObject]!
+    var transferParams: [String: Any] = [:]
     var returnParamsDelegate: DbIReturnDelegate!
     
     @IBOutlet weak var tblContent: UITableView!
     
-    var isLoadingDataSource: Bool = true
+    var isLoadingDataSource: Bool = false
     var verticalOffsetForEmptyDataSet: Float = 0
-    var titleForEmptyDataSet: String? = nil
+    var defaultTitleForEmptyDataSet: String? = nil
     var defaultImageForEmptyDataSet: UIImage? = nil
     
     var isNavigationBarHidden: Bool = false
@@ -73,34 +69,31 @@ class DbViewController: UIViewController
     }
 
     func initDbControllerData() {
-        self.appDelegate = UIApplication.shared.delegate as! AppDelegate
+        self.appDelegate = UIApplication.shared.delegate as? AppDelegate
         // self.appDelegate = UIApplication.shared.delegate as? AppDelegate
     }
     
-    func initLoadDataForController(_ params: [String: AnyObject]? = nil) {
-//        [String:AnyObject]!
-        self.stranferParams = params
+    func initLoadDataForController(_ params: [String: Any]? = nil) {
+        if params != nil {
+            self.transferParams = params!
+        }
     }
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-//        DbUtils.postNotification(DbNotify.VclDidLoad.rawValue, object: self)
-        Notification.post(Notification.Name.MyViewControllerDidLoad.rawValue, object: self)
+        Notification.post(Notification.Name.MyViewControllerDidLoad, object: self)
         
         // -- Define push notification --
-        Notification.remove(self, name: Notification.Name.MyApplicationReachableNetwork.rawValue)
-        Notification.add(Notification.Name.MyApplicationReachableNetwork.rawValue, observer: self, selector: Selector(("loadDataFromServer")), object: nil)
-//        DbUtils.removeNotification(self, name: DbNotify.ReachableNetwork.rawValue)
-//        DbUtils.addNotification(DbNotify.ReachableNetwork.rawValue, observer: self, selector: Selector(("loadDataFromServer")), object: nil)
+        Notification.remove(self, name: Notification.Name.MyApplicationReachableNetwork)
+        Notification.add(Notification.Name.MyApplicationReachableNetwork, observer: self, selector: Selector(("loadDataFromServer")), object: nil)
         
         // -- Show loading first in UITableView --
-        self.isLoadingDataSource = true
-        
-        self.titleForEmptyDataSet = nil
-        self.defaultImageForEmptyDataSet = nil
-        self.verticalOffsetForEmptyDataSet = 0
+//        self.isLoadingDataSource = true
+//        self.defaultTitleForEmptyDataSet = nil
+//        self.defaultImageForEmptyDataSet = nil
+//        self.verticalOffsetForEmptyDataSet = 0
         
         if let tbl = self.tblContent {
             tbl.rowHeight = UITableViewAutomaticDimension
@@ -118,7 +111,12 @@ class DbViewController: UIViewController
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        Notification.post(Notification.Name.MyViewControllerWillAppear, object: self)
         self.navigationController?.setNavigationBarHidden(self.isNavigationBarHidden, animated: true)
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return .lightContent
     }
     
     override func didReceiveMemoryWarning()
@@ -157,51 +155,54 @@ class DbViewController: UIViewController
 
 extension DbViewController: DZNEmptyDataSetSource {
 
-    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat {
+    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat
+    {
         if self.verticalOffsetForEmptyDataSet != 0 {
             return CGFloat(self.verticalOffsetForEmptyDataSet)
         }
+        
+        if self.defaultImageForEmptyDataSet != nil {
+           return  (CGFloat(Db.screenHeight()) - self.defaultImageForEmptyDataSet!.size.height)/2 - 64
+        }
+        
+        return 100.0
 //        return CGFloat((self.tblContent.tableHeaderView?.frame.size.height)!/2.0)
-        return CGFloat(Db.screenHeight()/2)
+//         return CGFloat(Db.screenHeight()/3)
     }
     
-    func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView! {
+    func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView!
+    {
         // -- Network connection --
         if (errorCode == 1005) {
             let vwError = DbErrorView()
             vwError.errorNetworkConnection()
             return vwError
-//            DbErrorView *vwError = [[DbErrorView alloc] init];
-//            [vwError errorNetworkConnection];
-//            return vwError;
         }
         
         // -- Empty data --
         if (!self.isLoadingDataSource) {
             let vwError = DbErrorView()
             vwError.errorEmptyData()
-            if self.titleForEmptyDataSet != nil {
-                vwError.lblTitle.text = self.titleForEmptyDataSet;
+            if self.defaultTitleForEmptyDataSet != nil {
+                vwError.lblTitle.text = self.defaultTitleForEmptyDataSet
             }
             if self.defaultImageForEmptyDataSet != nil {
-                vwError.imgError.image = self.defaultImageForEmptyDataSet;
+                vwError.imgError.image = self.defaultImageForEmptyDataSet
             }
+            // vwError.backgroundColor = UIColor.yellow // Debug
             return vwError
-//            DbErrorView *vwError = [[DbErrorView alloc] init];
-//            [vwError errorEmptyData];
-//            if (self.titleForEmptyDataSet != nil) {
-//                vwError.lblTitle.text = self.titleForEmptyDataSet;
-//            }
-//            if (self.defaultImageForEmptyDataSet != nil) {
-//                vwError.imgError.image = self.defaultImageForEmptyDataSet;
-//            }
-//            return vwError;
         }
         
         // -- Default is loading --
+        let loadingView = UIView(frame: CGRect(0, 0, Db.screenWidth(), 50))
         let activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
+        activityView.frame = CGRect(0, 0, 50, 50)
+        activityView.center = view.center
+        activityView.centerY = activityView.height/2
         activityView.startAnimating()
-        return activityView        
+        activityView.hidesWhenStopped = true
+        loadingView.addSubview(activityView)
+        return loadingView
     }
     
 }

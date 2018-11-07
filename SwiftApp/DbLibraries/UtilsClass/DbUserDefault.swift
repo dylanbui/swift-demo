@@ -8,7 +8,7 @@
 //
 
 import Foundation
-
+// Khong con su dung , su dung extension cua UserDefault
 public enum DbUserDefault {
     
     //-------------------------------------------------------------------------------------------

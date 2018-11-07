@@ -140,9 +140,10 @@ open class DbOperation: Operation {
     }
     
     public final func finish() {
+        // Da thay doi
+        privateCompletionBlock?(self)
         _executing = false
         _finished = true
-        privateCompletionBlock?(self)
     }
     
 }
@@ -202,7 +203,10 @@ open class DbOperationQueue: OperationQueue {
             guard let sself = self else {
                 return
             }
+            // print("Before: sself.ccount = \(sself.ccount)")
             sself.ccount -= 1
+            // print("After: sself.ccount = \(sself.ccount)")
+            // print("-------------")
             if sself.ccount == 0 {
                 sself.whenEmpty?()
             }
@@ -213,6 +217,49 @@ open class DbOperationQueue: OperationQueue {
         addOperation(DbOperation(block: execution))
     }
     
+    /// Add an Array of chained Operations.
+    ///
+    /// Example:
+    ///
+    ///     [A, B, C] = A -> B -> C -> completionHandler.
+    ///
+    /// - Parameters:
+    ///   - operations: Operations Array.
+    ///   - completionHandler: Completion block to be exectuted when all Operations
+    ///                        are finished.
+    public func addChainedOperations(_ operations: [Operation], completionHandler: (() -> Void)? = nil) {
+        for (index, operation) in operations.enumerated() {
+            if index > 0 {
+                operation.addDependency(operations[index - 1])
+            }
+            
+            addOperation(operation)
+        }
+        
+        guard let completionHandler = completionHandler else {
+            return
+        }
+        
+        let completionOperation = BlockOperation(block: completionHandler)
+        if !operations.isEmpty {
+            completionOperation.addDependency(operations[operations.count - 1])
+        }
+        addOperation(completionOperation)
+    }
+    
+    /// Add an Array of chained Operations.
+    ///
+    /// Example:
+    ///
+    ///     [A, B, C] = A -> B -> C -> completionHandler.
+    ///
+    /// - Parameters:
+    ///   - operations: Operations list.
+    ///   - completionHandler: Completion block to be exectuted when all Operations
+    ///                        are finished.
+    public func addChainedOperations(_ operations: Operation..., completionHandler: (() -> Void)? = nil) {
+        addChainedOperations(operations, completionHandler: completionHandler)
+    }
     
     /// Not supported.
     ///

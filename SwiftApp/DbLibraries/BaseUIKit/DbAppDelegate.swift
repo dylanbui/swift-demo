@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AudioToolbox
 import UserNotifications
 
 //@UIApplicationMain
@@ -15,7 +16,8 @@ class DbAppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Properties
     // MARK: -
     var window: UIWindow?
-    var rootViewController: DbViewController?
+//    var rootViewController: DbViewController?
+    var rootViewController: UIViewController?
     
     // MARK: - Functions
     // MARK: -
@@ -55,10 +57,12 @@ class DbAppDelegate: UIResponder, UIApplicationDelegate {
         
         if #available(iOS 10.0, *) {
             let center  = UNUserNotificationCenter.current()
-            center.delegate = (self as! UNUserNotificationCenterDelegate)
+            center.delegate = (self as UNUserNotificationCenterDelegate)
             center.requestAuthorization(options: [.sound, .alert, .badge]) { (granted, error) in
                 if error == nil{
-                    UIApplication.shared.registerForRemoteNotifications()
+                    DispatchQueue.main.async {
+                        UIApplication.shared.registerForRemoteNotifications()
+                    }
                 }
             }
         }
@@ -73,6 +77,8 @@ class DbAppDelegate: UIResponder, UIApplicationDelegate {
         // Convert token to string
         let deviceTokenString = deviceToken.reduce("", {$0 + String(format: "%02X", $1)})
         print("APNs device token: \(deviceTokenString)")
+        // -- Save deviceTokenString to UserDefaults --
+        UserDefaults.setObject(key: DB_DEVICE_PUSH_TOKEN, value: deviceTokenString)
     }
     
     // Called when APNs failed to register the device for push notifications
@@ -134,21 +140,77 @@ class DbAppDelegate: UIResponder, UIApplicationDelegate {
 //    NSLog(@"Error = %@",error);
 //    }
     
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    // -- Remote Notification Delegate // <= iOS 9.x --
+    func application(_ application: UIApplication,
+                     didReceiveRemoteNotification userInfo: [AnyHashable : Any],
+                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void)
+    {
+        var dictUserInfo = userInfo
+        dictUserInfo["applicationState"] = UIApplication.shared.applicationState // UIApplicationState
+        dictUserInfo["clickState"] = true
+
+        if UIApplication.shared.applicationState == .active {
+            // Play sound
+            AudioServicesPlaySystemSound(1007)
+            // -- Kiem tra coi co can hien thong bao ko --
+            dictUserInfo["clickState"] = false
+            Notification.post(Notification.Name.MyApplicationServerPushMessage, object: self, userInfo: userInfo)
+            return
+        }
+        
+        DbUtils.performAfter(delay: 0.5) {
+            Notification.post(Notification.Name.MyApplicationServerPushMessage, object: self, userInfo: userInfo)
+        }
+        
+        completionHandler(.noData)
+    }
 }
 
+// -- Remote Notification Delegate // >= iOS 10.x --
 
+// [START ios_10_message_handling]
+@available(iOS 10, *)
+extension DbAppDelegate : UNUserNotificationCenterDelegate
+{
+    // Receive displayed notifications for iOS 10 devices.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                willPresent notification: UNNotification,
+                                withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
+        var userInfo = notification.request.content.userInfo
+        
+        // With swizzling disabled you must let Messaging know about the message, for Analytics
+        // Messaging.messaging().appDidReceiveMessage(userInfo)
+        
+        print(userInfo)
+        
+        // Play sound
+        AudioServicesPlaySystemSound(1007)
+        
+        userInfo["applicationState"] = UIApplication.shared.applicationState // UIApplicationState
+        userInfo["clickState"] = false
+        
+        Notification.post(Notification.Name.MyApplicationServerPushMessage, object: self, userInfo: userInfo)
+        
+        // Change this to your preferred presentation option
+        completionHandler([.sound, .alert, .badge])
+    }
+    
+    // Called to let your app know which action was selected by the user for a given notification.
+    func userNotificationCenter(_ center: UNUserNotificationCenter,
+                                didReceive response: UNNotificationResponse,
+                                withCompletionHandler completionHandler: @escaping () -> Void) {
+        var userInfo = response.notification.request.content.userInfo
+        print(userInfo)
+        
+        completionHandler()
+        
+        userInfo["applicationState"] = UIApplication.shared.applicationState // UIApplicationState
+        userInfo["clickState"] = true
+        
+        DbUtils.performAfter(delay: 0.25) {
+            Notification.post(Notification.Name.MyApplicationServerPushMessage, object: self, userInfo: userInfo)
+        }
+    }
+}
+// [END ios_10_message_handling]
 

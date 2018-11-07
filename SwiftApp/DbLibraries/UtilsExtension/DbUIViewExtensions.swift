@@ -310,7 +310,7 @@ public extension UIView {
         layer.shadowOffset = offset
         layer.shadowRadius = radius
         layer.shadowOpacity = opacity
-        layer.masksToBounds = true
+        layer.masksToBounds = false
     }
     
     /// SwifterSwift: Add array of subviews to view.
@@ -451,7 +451,6 @@ public extension UIView {
         layer.add(animation, forKey: "shake")
         CATransaction.commit()
     }
-    
 }
 
 /* Ex :
@@ -502,6 +501,36 @@ public extension UIView {
             print("no action")
         }
     }
+    
+    enum UIShadowLocation: String {
+        case none
+        case bottom
+        case top
+        case left
+        case right
+    }
+    
+    func db_addShadow(withLocation location: UIShadowLocation, color: UIColor = UIColor(red: 0.07, green: 0.47, blue: 0.57, alpha: 1.0), length: CGFloat = 10.0, radius: CGFloat = 3.0, opacity: Float = 0.5)
+    {
+        switch location {
+        case .bottom:
+            db_addShadow(ofColor: color, radius: radius, offset: CGSize(width: 0, height: length), opacity: opacity)
+            break
+        case .top:
+            db_addShadow(ofColor: color, radius: radius, offset: CGSize(width: 0, height: -length), opacity: opacity)
+            break
+        case .left:
+            db_addShadow(ofColor: color, radius: radius, offset: CGSize(width: length, height: 0), opacity: opacity)
+            break
+        case .right:
+            db_addShadow(ofColor: color, radius: radius, offset: CGSize(width: -length, height: 0), opacity: opacity)
+            break
+        case .none:
+            db_addShadow(ofColor: color, radius: radius, offset: .zero, opacity: opacity)
+            break
+        }
+    }
+
     
 }
 

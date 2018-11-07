@@ -900,7 +900,7 @@ public extension String {
     /// - Parameter color: text color.
     /// - Returns: a NSAttributedString versions of string colored with given color.
     public func db_colored(with color: NSColor) -> NSAttributedString {
-    return NSMutableAttributedString(string: self, attributes: [.foregroundColor: color])
+        return NSMutableAttributedString(string: self, attributes: [.foregroundColor: color])
     }
     #else
     /// SwifterSwift: Add color to string.
@@ -969,9 +969,16 @@ public extension String {
 public extension String {
     
     public var db_isPhoneNumber: Bool {
-        let phoneRegex = "^((\\+)|(0))[0-9]{6,14}$"
-        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-        return phoneTest.evaluate(with: self)
+        
+        let PHONE_REGEX = "^((\\+)|(0))[0-9]{6,14}$"
+        let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
+        let result = phoneTest.evaluate(with: self)
+        return result
+
+        // -- Bi loi khong biet vi sao --
+//        let phoneRegex = "^((\\+)|(0))[0-9]{10,11}$"
+//        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
+//        return phoneTest.evaluate(with: self)
     }
     
     public func db_slice(by str:String) -> [String] {
@@ -992,7 +999,7 @@ public extension String {
     
     /// Parse hashtags in string
     // Ex: "I made this wonderful pic last #christmas... #instagram #nofilter #snow #fun".hashtags() => ["christmas", "instagram", "nofilter", "snow", "fun"]
-    public func hashtags() -> [String]
+    public func db_hashtags() -> [String]
     {
         if let regex = try? NSRegularExpression(pattern: "#[a-z0-9]+", options: .caseInsensitive)
         {
@@ -1002,6 +1009,49 @@ public extension String {
             }
         }
         return []
+    }
+    
+    //-- right is the first encountered string after left
+    public func db_between(_ left: String, _ right: String) -> String? {
+        guard
+            let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
+            , leftRange.upperBound <= rightRange.lowerBound
+            else { return nil }
+        
+        let sub = self[leftRange.upperBound...]
+        let closestToLeftRange = sub.range(of: right)!
+        return String(sub[..<closestToLeftRange.lowerBound])
+    }
+    
+    var length: Int {
+        get {
+            return self.count
+        }
+    }
+    
+    public func db_substring(to : Int) -> String {
+        let toIndex = self.index(self.startIndex, offsetBy: to)
+        return String(self[...toIndex])
+    }
+    
+    public func db_substring(from : Int) -> String {
+        let fromIndex = self.index(self.startIndex, offsetBy: from)
+        return String(self[fromIndex...])
+    }
+    
+    public func db_substring(_ r: Range<Int>) -> String {
+        let fromIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
+        let toIndex = self.index(self.startIndex, offsetBy: r.upperBound)
+        let indexRange = Range<String.Index>(uncheckedBounds: (lower: fromIndex, upper: toIndex))
+        return String(self[indexRange])
+    }
+    
+    public func db_character(_ at: Int) -> Character {
+        return self[self.index(self.startIndex, offsetBy: at)]
+    }
+    
+    public func db_lastIndexOfCharacter(_ c: Character) -> Int? {
+        return range(of: String(c), options: .backwards)?.lowerBound.encodedOffset
     }
     
 }

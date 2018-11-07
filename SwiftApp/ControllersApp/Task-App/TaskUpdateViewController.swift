@@ -20,10 +20,10 @@ class TaskUpdateViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         
-        
-        self.txtName.text = self.stranferParams["name"] as? String
-        self.txtDatetime.text = self.stranferParams["datetime"] as? String
-        self.txtvDesc.text = self.stranferParams["title"] as? String
+
+        self.txtName.text = self.transferParams["name"] as? String
+        self.txtDatetime.text = self.transferParams["datetime"] as? String
+        self.txtvDesc.text = self.transferParams["title"] as? String
     }
 
 

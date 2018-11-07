@@ -8,6 +8,74 @@
 
 import UIKit
 
+// MARK: - Actions
+public extension UIApplication
+{
+    fileprivate static let _sharedApplication = UIApplication.shared
+    
+    public class func db_open(url: Foundation.URL) {
+        if _sharedApplication.canOpenURL(url) {
+            _sharedApplication.openURL(url)
+        } else {
+            print("Can not execute the given action.")
+        }
+    }
+    
+    public class func db_open(urlPath: String) {
+        if let url = URL(string: urlPath) {
+            UIApplication.db_open(url: url)
+        }
+    }
+    
+    public class func db_makePhone(to phoneNumber: String) {
+        db_open(urlPath: "telprompt:\(phoneNumber)")
+    }
+    
+    public class func db_sendMessage(to phoneNumber: String) {
+        db_open(urlPath: "sms:\(phoneNumber)")
+    }
+    
+    public class func db_email(to email: String) {
+        db_open(urlPath: "mailto:\(email)")
+    }
+    
+    public class func db_clearIconBadge() {
+        let badgeNumber = _sharedApplication.applicationIconBadgeNumber
+        _sharedApplication.applicationIconBadgeNumber = 1
+        _sharedApplication.applicationIconBadgeNumber = 0
+        _sharedApplication.cancelAllLocalNotifications()
+        _sharedApplication.applicationIconBadgeNumber = badgeNumber
+    }
+    
+    public class func db_sendAction(_ action: Selector, fromSender sender: AnyObject?, forEvent event: UIEvent? = nil) -> Bool {
+        // Get the target in the responder chain
+        var target = sender
+        
+        while let _target = target , !_target.canPerformAction(action, withSender: sender) {
+            target = _target.next
+        }
+        
+        if let _target  = target {
+            return UIApplication.shared.sendAction(action, to: _target, from: sender, for: event)
+        }
+        
+        return false
+    }
+    
+    /// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.
+    public class func db_makeStatusBarDark() {
+        UIApplication.shared.statusBarStyle = .default
+    }
+    
+    /// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.
+    public class func db_makeStatusBarLight() {
+        UIApplication.shared.statusBarStyle = .lightContent
+    }
+}
+
+// MARK: - UIWindow
+// MARK: -
+
 public extension UIWindow {
     
     /// SwifterSwift: Switch current root view controller with a new view controller.
@@ -43,6 +111,62 @@ public extension UIWindow {
     
 }
 
+public extension UIViewController {
+    
+    public func db_backOrDismiss() {
+        if presentingViewController != nil ||
+            navigationController?.presentingViewController?.presentedViewController === navigationController ||
+            tabBarController?.presentingViewController is UITabBarController {
+            // -- La modal nhung lai co navigation --
+            if let nav = navigationController {
+                if nav.viewControllers.count > 1 {
+                    navigationController?.popViewController(animated: true)
+                    return
+                }
+            }
+            dismiss(animated: true) { }
+        } else {
+            navigationController?.popViewController(animated: true)
+        }
+    }
+    
+    
+    public func db_backToPrevious(animated: Bool = true) {
+        if let presentingViewController = presentingViewController {
+            presentingViewController.dismiss(animated: animated, completion: nil)
+        } else {
+            _ = navigationController?.popViewController(animated: animated)
+        }
+    }
+    
+    public func db_backToRoot(animated: Bool = true) {
+        if let presentingViewController = presentingViewController {
+            presentingViewController.dismiss(animated: animated, completion: nil)
+        } else {
+            _ = navigationController?.popToRootViewController(animated: animated)
+        }
+    }
+    
+    public func db_dismiss(completion: (() -> Void)? = nil) {
+        presentingViewController?.dismiss(animated: true, completion: completion)
+    }
+    
+    public func db_dismissToTop(animated: Bool = true, completion: (() -> Void)? = nil) {
+        var presentedViewController = self
+        while let presentingViewController = presentedViewController.presentingViewController {
+            presentedViewController = presentingViewController
+        }
+        presentedViewController.dismiss(animated: animated, completion: completion)
+    }
+    
+    public func db_addChild(_ viewController: UIViewController) {
+        viewController.willMove(toParentViewController: self)
+        addChildViewController(viewController)
+        viewController.view.frame = view.frame
+        view.addSubview(viewController.view)
+        viewController.didMove(toParentViewController: self)
+    }
+}
 
     
 // MARK: - Methods

@@ -12,7 +12,7 @@ import UIKit
 class DbTableViewCell: UITableViewCell {
     
     var indexPath: IndexPath?
-    var dictCellData: [String: AnyObject]?
+    var dictCellData: [String: Any]?
     var handleControlAction: DbHandleViewAction?
     
 //    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
@@ -27,7 +27,7 @@ class DbTableViewCell: UITableViewCell {
         super.awakeFromNib()
     }
     
-    func reloadCellData(_ cellData: [String: AnyObject]?) {
+    func reloadCellData(_ cellData: [String: Any]?) {
         self.dictCellData = cellData
     }
     

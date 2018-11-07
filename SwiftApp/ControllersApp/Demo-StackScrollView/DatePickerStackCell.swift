@@ -9,10 +9,9 @@
 import UIKit
 
 import EasyPeasy
+//import StackScrollView
 
-import StackScrollView
-
-final class DatePickerStackCell: TapStackCell {
+final class DatePickerStackCell: DbTapStackCell {
   
   let pickerView = UIDatePicker()
   let titleLabel = UILabel()

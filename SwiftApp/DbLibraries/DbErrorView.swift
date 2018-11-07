@@ -74,7 +74,7 @@ class DbErrorView: UIView {
             make.right.equalTo(self).offset(-15)
             make.height.greaterThanOrEqualTo(21)
         }
-        
+        self.imgError.contentMode = .scaleAspectFit
         
     }
 

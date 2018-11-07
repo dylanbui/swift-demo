@@ -40,12 +40,16 @@ class DbPopupView: DbLoadablePopupView {
         
         self.vwBg = UIView.init(frame: frame)
         
-        let visualEffectView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: .dark))
-        visualEffectView.frame = self.vwBg!.bounds
-        visualEffectView.alpha = 1.0
+        // blur background
+//        let visualEffectView = UIVisualEffectView.init(effect: UIBlurEffect.init(style: .dark))
+//        visualEffectView.frame = self.vwBg!.bounds
+//        visualEffectView.alpha = 1.0
+//
+//        self.vwBg?.addSubview(visualEffectView)
         
-        self.vwBg?.addSubview(visualEffectView)
-        self.vwBg?.alpha = 1.0
+        // alpha background
+        self.vwBg?.backgroundColor = UIColor.black
+        self.vwBg?.alpha = 0.5
         
         let view = self.vwContent.superview!
         view.addSubview(self.vwBg!)
@@ -84,7 +88,7 @@ class DbPopupView: DbLoadablePopupView {
         self.alpha = 0.0
         toView.addSubview(self)
         
-        UIView.animate(withDuration: 0.35, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.alpha = 1.0
             self.frame = CGRect(x: 0, y: 0, width: toView.frame.size.width, height: toView.frame.size.height)
         }) { (finished) in
@@ -99,7 +103,7 @@ class DbPopupView: DbLoadablePopupView {
     }
 
     func dismissPopupWithCompletion(_ completion: ((Bool) -> Void)?) {
-        UIView.animate(withDuration: 0.35, animations: {
+        UIView.animate(withDuration: 0.1, animations: {
             self.alpha = 0.0
         }) { (finished) in
             self.removeFromSuperview()

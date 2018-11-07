@@ -11,37 +11,63 @@ import ObjectMapper
 import RealmSwift
 import ObjectMapper_Realm
 
-class DbRealmObject: Object, Mappable {
+/*
+ Realm luon co 1 khoa chinh khai bao trong ham
+ 
+ override class func primaryKey() -> String?
+ {
+    return "wardId"
+ }
+ */
+
+class DbRealmObject: Object, Mappable
+{
 //    dynamic var username: NSString?
 //    var friends: List<User>?
     
-    required convenience init?(map: Map) {
+    required convenience init?(map: Map)
+    {
         self.init()
     }
     
-    // -- Khong duoc khai bao san o day --
-//    override class func primaryKey() -> String? {
-//        return "id"
-//    }
-    
-//    func className() -> String? {
-//        return "username"
-//    }
-    
-    func mapping(map: Map) {
+    func mapping(map: Map)
+    {
 //        username              <- map["username"]
 //        friends               <- (map["friends"], ListTransform<User>())
     }
     
-//    func defaultPrimaryKey() -> String {
-//        return "id"
-//    }
-    
-    func save() -> Void {
+    // -- Update when exist row --
+    func save() -> Void
+    {
         // -- Realm save --
         DbRealmManager.save(T: self)
     }
     
+    // Khong su dung
+//    func incID(_ primaryKey: String) -> Int
+//    {
+//        // let primaryKey = type(of: self).primaryKey()!
+//        // All object inside the model passed.
+//        let realm = try! Realm()
+//        return (realm.objects(type(of: self)).max(ofProperty: primaryKey) as Int? ?? 0) + 1
+//    }
+//
+//    func saveWithIncId(_ completion: @escaping (_ success : Bool, _ incId: Int) -> Void)
+//    {
+//        let primaryKey = type(of: self).primaryKey()!
+////        let primaryKey = "incId"
+//
+//        let id = self.incID(primaryKey)
+//        // -- Set id for primary key --
+//        self.setValue(id, forKey: primaryKey)
+//        // -- Realm save --
+//        // DbRealmManager.save(T: self)
+//        DbRealmManager.saveWithCompletion(T: self, completion: { (done) in
+//            completion(done, id)
+//        })
+//
+//    }
+
     func saveWithIncrementID() -> Void
     {
         self.saveWithIncrementID { (newId) in }
@@ -53,8 +79,7 @@ class DbRealmObject: Object, Mappable {
         // Get the default Realm
         // String(describing: self.classForCoder)
         DbRealmManager.fetch(model: String(describing: self.classForCoder), condition: nil) { (results) in
-            
-            print("primaryKey = \(type(of: self).primaryKey()!)")
+            // print("primaryKey = \(type(of: self).primaryKey()!)")
             let primaryKey = type(of: self).primaryKey()!
             
 //            var id: Int = 1
@@ -66,56 +91,20 @@ class DbRealmObject: Object, Mappable {
             // -- Set id for primary key --
             self.setValue(id, forKey: primaryKey)
             // -- Realm save --
-            DbRealmManager.save(T: self)
-            // -- Callback --
-            completionHandler(id)
+            // DbRealmManager.save(T: self)
+            DbRealmManager.saveWithCompletion(T: self, completion: { (done) in
+                // -- Callback --
+                completionHandler(id)
+            })
         }
-        
-        //DbRealmManager.getFetchList(T: self, condition: <#T##String?#>, completionHandler: <#T##([Object]) -> Void#>)
-//        let realm = try! Realm()
-//        return (realm.objects(self).max(ofProperty: DbRealmObject.primaryKey()) as Int? ?? 0) + 1
-//        UUID().uuidString
     }
     
-    
-    // MARK: - Su dung Realm trong Thread vua tao doi duong
-    // MARK: -
-    
-    // -- Khong su dung thang nay, nen tra ve doi duong luon --
-//    func load(_ idVal: Any) -> Void
-//    {
-        //let primaryKey = type(of: self).primaryKey()!
-//        let primaryKey = self.defaultPrimaryKey()
-//        let condition : String =  "\(primaryKey) == \(objectID)"
-//
-//        let realm = try! Realm()
-//        let results = realm.objects(type(of: self)).filter(condition)
-//        if (results.count > 0) {
-//            let object: DbRealmObject = results.first! // as! DbRealmObject
-//
-//            // object.toJSONString(prettyPrint: true)
-//            //            print(String(describing: object.toJSONString(prettyPrint: true)))
-//
-//            // Convert Object to JSON
-//            //            let serializedUser = Mapper().toJSONString(object)
-//            //            print(serializedUser)
-//            //            print(object.toJSONString())
-//            //            print("-------")
-//            //
-//            self.mapping(map: Map(mappingType: .fromJSON, JSON: object.toJSON()))
-//        }
-    
-    // Chay tot
-//        if let obj = self.getObjectById(idVal) {
-//            self.mapping(map: Map(mappingType: .fromJSON, JSON: obj.toJSON()))
-//        }
-//    }
-    
-//    func getAll() -> Results<DbRealmObject>
-//    {
-//        return self.getAll(nil)
-//    }
-
+    /*
+     let arrObj = DistrictUnit().getAll(fromClass: DistrictUnit.self)
+     for district: DistrictUnit in arrObj {
+        print("districtName = \(district.districtName)")
+     }
+     */
     func getAll<T: DbRealmObject>(fromClass cls: T.Type, condition: String? = nil, orderField: String? = nil) -> Results<T>
     {
         // All object inside the model passed.
@@ -132,19 +121,17 @@ class DbRealmObject: Object, Mappable {
         return fetchedObjects
     }
     
-//    func getAll(_ condition: String?) -> Results<DbRealmObject>
-//    {
-//        // All object inside the model passed.
-//        let realm = try! Realm()
-//        var fetchedObjects = realm.objects(type(of: self))
-//        if let cond = condition {
-//            // filters the result if condition exists
-//            fetchedObjects = fetchedObjects.filter(cond)
-//        }
-//
-//        return fetchedObjects
-//    }
-    
+    /*
+     // Cach 1
+     let obj: CityUnit = CityUnit().getObjectById(1) as! CityUnit
+     print("obj.cityName = \(obj.cityName)")
+     // Cach 2
+     guard let obj: CityUnit = CityUnit().getObjectByCondition("cityId = 1") else {
+        print("Khong tim thay du lieu")
+        return
+     }
+     print("obj.cityName = \(obj.description)")
+     */
     func getObjectById(_ idVal: Any) -> Self?
     {
         var condition : String = ""
@@ -167,9 +154,9 @@ class DbRealmObject: Object, Mappable {
     
     func deleteByCondition(_ condition: String)
     {
-        DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: { (success) in })        
+        DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: { (success) in })
     }
-
+    
     func deleteByCondition(_ condition: String, completionHandler: @escaping(_ success:Bool) -> Void)
     {
         DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: completionHandler)

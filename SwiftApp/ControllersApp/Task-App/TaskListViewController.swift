@@ -46,8 +46,8 @@ class TaskListViewController: BaseViewController, UITableViewDataSource, UITable
     @objc func addItem(sender: UIBarButtonItem)
     {
         let vcl = TaskUpdateViewController()
-        let item = self.arrTasks[0] as? [String:AnyObject]
-        vcl.stranferParams = item
+        let item = self.arrTasks[0] as? [String: Any]
+        vcl.transferParams = item!
         vcl.returnParamsDelegate = self
         self.navigationController?.pushViewController(vcl, animated: true)
     }
@@ -79,10 +79,10 @@ class TaskListViewController: BaseViewController, UITableViewDataSource, UITable
     {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        let item = self.arrTasks[indexPath.row] as? [String:AnyObject]
+        let item = self.arrTasks[indexPath.row] as? [String: Any]
         
         let vcl = TaskDetailViewController()
-        vcl.stranferParams = item
+        vcl.transferParams = item!
         self.navigationController?.pushViewController(vcl, animated: true)
     }
 
@@ -90,7 +90,7 @@ class TaskListViewController: BaseViewController, UITableViewDataSource, UITable
 }
 
 extension TaskListViewController: DbIReturnDelegate {
-    func onReturn(params: [String : AnyObject], callerId: Int)
+    func onReturn(params: [String : Any]?, callerId: Int)
     {
         print("\(callerId)")
         print("\(params.debugDescription)")

@@ -9,10 +9,9 @@
 import Foundation
 
 import EasyPeasy
+//import StackScrollView
 
-import StackScrollView
-
-final class TextViewStackCell: StackCellBase, UITextViewDelegate {
+final class TextViewStackCell: DbStackCellBase, UITextViewDelegate {
 
   private let textView = UITextView()
   

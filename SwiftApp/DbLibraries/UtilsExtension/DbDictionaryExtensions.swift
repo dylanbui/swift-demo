@@ -259,7 +259,7 @@ print(dict)
 
 public extension Dictionary {
     
-    subscript(keyPath keyPath: String) -> Any? {
+    subscript(db_keyPath keyPath: String) -> Any? {
         get {
             guard let keyPath = Dictionary.keyPathKeys(forKeyPath: keyPath)
                 else { return nil }

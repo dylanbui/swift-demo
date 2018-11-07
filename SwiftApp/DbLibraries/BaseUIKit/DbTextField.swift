@@ -8,10 +8,14 @@
 
 import UIKit.UITextField
 
+typealias DbTextFieldTouchInside = (DbTextField) -> Void
+
 @IBDesignable
 open class DbTextField: UITextField {
     
     // MARK: Properties
+    // .zero
+    // UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     
     open var contentInsets: UIEdgeInsets = .zero {
         didSet {
@@ -103,6 +107,8 @@ open class DbTextField: UITextField {
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         contentInsets = aDecoder.decodeUIEdgeInsets(forKey: PropertyKey.contentInsets)
+        // Default contentInsets content
+        contentInsets = UIEdgeInsets(top: 0, left: 10, bottom: 0, right: 10)
     }
     
     override open func textRect(forBounds bounds: CGRect) -> CGRect {
@@ -125,9 +131,61 @@ open class DbTextField: UITextField {
     }
     
     open override func rightViewRect(forBounds bounds: CGRect) -> CGRect {
-        let y = (size.height - (leftImage?.size.height)!) / 2 // Always Center
-        let x = bounds.size.width - (leftImage?.size.width)! - rightImagePadding
-        return CGRect.init(CGPoint.init(x, y), (leftImage?.size)!)
+        let y = (size.height - (rightImage?.size.height)!) / 2 // Always Center
+        let x = bounds.size.width - (rightImage?.size.width)! - rightImagePadding
+        return CGRect.init(CGPoint.init(x, y), (rightImage?.size)!)
+    }
+    
+    func addLeftImage(_ image: UIImage, withLeftPadding padding: CGFloat = 5.0) -> Void {
+        self.leftImage = image
+        self.leftImagePadding = padding
+    }
+
+    func addRightImage(_ image: UIImage, withRightPadding padding: CGFloat = 5.0) -> Void {
+        self.rightImage = image
+        self.rightImagePadding = padding
+    }
+    
+    func drawBorder(withColor color: UIColor, borderWidth width: CGFloat, cornerRadius corner: CGFloat) -> Void
+    {
+        self.layer.masksToBounds = true
+        self.layer.borderColor = color.cgColor
+        self.layer.borderWidth = width
+        self.layer.cornerRadius = corner
+    }
+    
+    func touchInside(_ touchInsideHandle: @escaping DbTextFieldTouchInside) -> Void
+    {
+        if self.btnTemp != nil {
+            self.btnTemp?.removeFromSuperview()
+            self.btnTemp = nil
+        }
+        
+        self.touchHandler = touchInsideHandle
+        
+        self.btnTemp = UIButton(type: .custom)
+        self.btnTemp?.layer.masksToBounds = self.layer.masksToBounds
+        self.btnTemp?.layer.cornerRadius = self.layer.cornerRadius
+        
+        self.btnTemp?.frame = CGRect(0, 0, self.frame.size.width, self.frame.size.height)
+        self.btnTemp?.backgroundColor = UIColor.clear
+        self.btnTemp?.titleLabel?.text = ""
+        
+        self.btnTemp?.setBackgroundImage(UIImage.init(color: UIColor(hexString: "#f5f5f5", alpha: 0.5), size: (self.btnTemp?.frame.size)!), for: .highlighted)
+        
+        // add targets and actions
+        self.btnTemp?.addTarget(self, action: #selector(self.buttonClicked(_:)), for: .touchUpInside)
+        
+        // -- Calculator button view match superview frame --
+        let frameMatchParent = self.superview?.convert(self.frame, to: self.superview)
+        self.btnTemp?.frame = frameMatchParent!
+        // -- Add to super view --
+        self.superview?.addSubview(self.btnTemp!)
+    }
+    
+    @IBAction func buttonClicked(_ sender: AnyObject)
+    {
+        self.touchHandler?(self)
     }
     
     // MARK: Private Constants
@@ -135,6 +193,10 @@ open class DbTextField: UITextField {
     private struct PropertyKey {
         static let contentInsets = "contentInsets"
     }
+    
+    private var btnTemp: UIButton?
+    private var touchHandler: DbTextFieldTouchInside?
+    
     
     // MARK: - Internal functions
     // MARK:

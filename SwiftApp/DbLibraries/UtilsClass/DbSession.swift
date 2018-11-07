@@ -21,6 +21,8 @@ class DbSession: DbObject {
     var name: String?
     var phone: String?
     var photo: String?
+    var createdDate: Date?
+    var birthDay: String?
     
     var accessToken: String?
     
@@ -91,9 +93,36 @@ class DbSession: DbObject {
         name            <- map["name"]
         phone           <- map["phone"]
         photo           <- map["photo"]
+        createdDate     <- (map["createdDate"], DateTransform())
+        birthDay        <- map["birthDay"]
         latitude        <- map["latitude"]
         longitude       <- map["longitude"]
+        accessToken     <- map["accessToken"]
     }
     
     
 }
+
+extension DbSession: CustomStringConvertible, CustomDebugStringConvertible {
+    
+    public var description:String {
+        return "==>accessToken           = " + (accessToken ?? "")
+    }
+    
+    public var debugDescription:String {
+        var output: [String] = []
+
+        output.append("userId       = " + (userId ?? ""))
+        output.append("address      = " + (address ?? ""))
+        output.append("email        = " + (email ?? ""))
+        output.append("name         = " + (name ?? ""))
+        output.append("phone        = " + (phone ?? ""))
+        output.append("photo        = " + (photo ?? ""))
+        output.append("createdDate  = " + (createdDate?.db_string() ?? ""))
+        output.append("birthDay     = " + (birthDay ?? ""))
+        output.append("accessToken  = " + (accessToken ?? ""))
+        
+        return output.joined(separator: "\n")
+    }
+}
+

@@ -7,11 +7,11 @@
 //
 
 import UIKit
-import StackScrollView
-import EasyPeasy
+//import StackScrollView
+//import EasyPeasy
 
 
-final class MarginStackCell: StackCellBase
+final class MarginStackCell: DbStackCellBase
 {
     let heightSize: CGFloat
   

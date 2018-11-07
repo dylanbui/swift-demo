@@ -36,8 +36,8 @@ class RootViewController: UIViewController
 //        let vcl = DemoUKitViewController()
 //        let vcl = CategoriesViewController()
 //        let vcl = PzLoginViewController()
-//        let vcl = PzListingViewController()
-        let vcl = StackScrollViewController()
+        let vcl = PzListingViewController()
+//        let vcl = StackScrollViewController()
         
         // -- An nut back --
         vcl.navigationItem.setHidesBackButton(true, animated:false)
@@ -67,7 +67,7 @@ class RootViewController: UIViewController
 //        }
         
         
-        Notification.add("DA_LOGIN_THANH_CONG", observer: self, selector: #selector(showMainViewController(_:)), object: nil)
+//        Notification.add("DA_LOGIN_THANH_CONG", observer: self, selector: #selector(showMainViewController(_:)), object: nil)
         
     }
     

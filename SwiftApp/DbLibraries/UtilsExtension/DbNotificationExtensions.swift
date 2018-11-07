@@ -24,19 +24,24 @@ extension Notification {
         NotificationCenter.default.removeObserver(sender)
     }
     
-    static func remove(_ sender: AnyObject, name: String) {
-        NotificationCenter.default.removeObserver(sender, name: NSNotification.Name(rawValue: name), object: nil)
+//    name aName: NSNotification.Name
+    
+    static func remove(_ sender: AnyObject, name aName: Notification.Name) {
+        NotificationCenter.default.removeObserver(sender, name: aName, object: nil)
     }
     
-    static func post(_ name: String, object: AnyObject) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: nil)
+    static func post(_ name: Notification.Name, object: AnyObject) {
+        NotificationCenter.default.post(name: name, object: object, userInfo: nil)
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: nil)
     }
     
-    static func post(_ name: String, object: AnyObject, userInfo: [AnyHashable:Any]) {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: userInfo)
+    static func post(_ name: Notification.Name, object: AnyObject, userInfo: [AnyHashable:Any]) {
+        NotificationCenter.default.post(name: name, object: object, userInfo: userInfo)
+//        NotificationCenter.default.post(name: NSNotification.Name(rawValue: name), object: object, userInfo: userInfo)
     }
     
-    static func add(_ name: String, observer: AnyObject, selector: Selector, object: Any?) {
-        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
+    static func add(_ name: Notification.Name, observer: AnyObject, selector: Selector, object: Any?) {
+        NotificationCenter.default.addObserver(observer, selector: selector, name: name, object: object)
+//        NotificationCenter.default.addObserver(observer, selector: selector, name: NSNotification.Name(rawValue: name), object: object)
     }
 }

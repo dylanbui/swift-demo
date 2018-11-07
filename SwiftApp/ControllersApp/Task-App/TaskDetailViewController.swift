@@ -23,10 +23,9 @@ class TaskDetailViewController: BaseViewController {
 
         // Do any additional setup after loading the view.
         
-        
-        self.lblName.text = self.stranferParams["name"] as? String
-        self.lblDate.text = self.stranferParams["datetime"] as? String
-        self.lblDesc.text = self.stranferParams["title"] as? String
+        self.lblName.text = self.transferParams["name"] as? String
+        self.lblDate.text = self.transferParams["datetime"] as? String
+        self.lblDesc.text = self.transferParams["title"] as? String
         
         self.btnTest.isEnabled = false
         

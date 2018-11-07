@@ -78,7 +78,7 @@ class DbHttp: NSObject {
         case .DELETE:
             method = .delete
         }
-
+        
         // -- Tao bg thread de run Alamofire --
         // let queue = DispatchQueue(label: "com.test.api", qos: .background, attributes: .concurrent)
         // -- encoding = JSONEncoding.default => JSON Request --
@@ -95,19 +95,17 @@ class DbHttp: NSObject {
                                                          headers: request.exportHttpHeader())
         
         // dataRequest.request?.allHTTPHeaderFields
-//        let headers: HTTPHeaders = [
-//            "Content-Type": "application/json"
-//        ]
-//        let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method, parameters:request.query,encoding: JSONEncoding.default, headers:headers)
+        // let headers: HTTPHeaders = ["Content-Type": "application/json"]
+        // let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method, parameters:request.query,encoding: JSONEncoding.default, headers:headers)
         
-//        let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method, parameters:request.query,encoding: URLEncoding.default, headers:headers)
-
+        // let dataRequest: DataRequest = Alamofire.request(request.requestUrl, method: method, parameters:request.query,encoding: URLEncoding.default, headers:headers)
+        
         // -- Su dung cau truc export request co nen khong ? --
         // let dataRequest: DataRequest = request.exportRequest() as! DataRequest
         
         if (request.contentType == DbHttpContentType.JSON) {
             dataRequest.responseJSON(queue: queue, completionHandler: { (dataResponse: DataResponse) in
-                // debugPrint(dataResponse)
+                debugPrint(dataResponse)
                 // -- Set data for response --
                 if let responseObj = request.response {
                     responseObj.urlResponse = dataResponse.response
@@ -149,10 +147,10 @@ class DbHttp: NSObject {
                                                  mimeType: uploadData.mimeType!)
                     }
                 }
-//                    multipartFormData.append(uploadData.fileData!,
-//                                             withName: uploadData.fileId!, // "imagefile"
-//                                             fileName: uploadData.fileName!, // "image.jpg"
-//                                             mimeType: uploadData.mimeType!) // "image/jpeg"
+                //multipartFormData.append(uploadData.fileData!,
+                //withName: uploadData.fileId!, // "imagefile"
+                //fileName: uploadData.fileName!, // "image.jpg"
+                //mimeType: uploadData.mimeType!) // "image/jpeg"
                 // -- Add post params --
                 for (key, value) in request.query {
                     multipartFormData.append("\(value)".data(using: String.Encoding.utf8)!, withName: key as String)
@@ -164,7 +162,7 @@ class DbHttp: NSObject {
                 switch encodingResult {
                 case .success(let upload, _, _):
                     upload.uploadProgress { progress in
-//                        print("here = progress.fractionCompleted" + String(Float(progress.fractionCompleted)))
+                        //print("here = progress.fractionCompleted" + String(Float(progress.fractionCompleted)))
                         processHandler(progress)
                     }
                     upload.validate()
@@ -275,7 +273,7 @@ class DbHttp: NSObject {
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         return self.requestSynchronousJSON(request)
     }
-
+    
 }
 
 

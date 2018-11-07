@@ -8,11 +8,10 @@
 
 import Foundation
 
-import EasyPeasy
+//import EasyPeasy
+//import StackScrollView
 
-import StackScrollView
-
-final class TextFieldStackCell: StackCellBase {
+final class TextFieldStackCell: DbStackCellBase {
   
   private let textField = UITextField()
   

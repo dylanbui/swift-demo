@@ -31,10 +31,10 @@ import Foundation
 //}
 
 // -- Xu ly tra ve cua cac UIView action DbHandleViewAction(owner, id, params, error) --
-public typealias DbHandleViewAction = (AnyObject, Int, [String:AnyObject]?, Error?) -> ()
+public typealias DbHandleViewAction = (AnyObject, Int, [String: Any]?, Error?) -> ()
 
 public protocol DbIReturnDelegate {
-    func onReturn(params: [String:AnyObject], callerId: Int);
+    func onReturn(params: [String: Any]?, callerId: Int)
 }
 
 //public enum db {

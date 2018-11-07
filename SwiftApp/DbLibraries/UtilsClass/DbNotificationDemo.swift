@@ -15,9 +15,9 @@ class DbNotificationDemo: DbEventProtocol {
     
     func startEvent(_ notification: Notification) -> Void {
         
-        if notification.name == NSNotification.Name.UIApplicationDidEnterBackground {
+        if notification.name == .UIApplicationDidEnterBackground {
             print("DbNotificationDemo : ==> UIApplicationDidEnterBackground")
-        } else if notification.name == NSNotification.Name.UIApplicationDidBecomeActive {
+        } else if notification.name == .UIApplicationDidBecomeActive {
             print("DbNotificationDemo : ==> UIApplicationDidBecomeActive")
         }
         
@@ -27,9 +27,9 @@ class DbNotificationDemo: DbEventProtocol {
         print("DbNotificationDemo : ==> cancelEvent")
     }
     
-    func eventRunBackgroundMode() -> [String] {
-        return [Notification.Name.UIApplicationDidEnterBackground.rawValue,
-                Notification.Name.UIApplicationDidBecomeActive.rawValue]
+    func eventRunBackgroundMode() -> [Notification.Name] {
+        return [.UIApplicationDidEnterBackground,
+                .UIApplicationDidBecomeActive]
     }
     
 //    func eventPriority() -> Int {
