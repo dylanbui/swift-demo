@@ -23,8 +23,8 @@ extension Pz // => Device functions
         let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
         warning.configureContent(title: "Warning", body: "Network don't connected.", iconText: iconText)
         warning.button?.isHidden = true
-        var warningConfig = SwiftMessages.defaultConfig
-        warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+        let warningConfig = SwiftMessages.defaultConfig
+        // warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
         SwiftMessages.show(config: warningConfig, view: warning)
     }
 }

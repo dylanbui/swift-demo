@@ -64,12 +64,12 @@ public extension UIApplication
     
     /// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.
     public class func db_makeStatusBarDark() {
-        UIApplication.shared.statusBarStyle = .default
+        // UIApplication.shared.statusBarStyle = .default
     }
     
     /// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.
     public class func db_makeStatusBarLight() {
-        UIApplication.shared.statusBarStyle = .lightContent
+        // UIApplication.shared.statusBarStyle = .lightContent
     }
 }
 

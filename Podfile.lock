@@ -70,9 +70,9 @@ DEPENDENCIES:
   - RevealingSplashView (= 0.6.0)
   - SnapKit (= 4.0.1)
   - SVPullToRefresh (= 0.4.1)
-  - SwiftLocation (= 3.2.3)
-  - SwiftMessages (= 6.0.0)
-  - SwiftyJSON (= 4.0.0)
+  - SwiftLocation
+  - SwiftMessages
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -123,6 +123,6 @@ SPEC CHECKSUMS:
   SwiftMessages: da7c981256a65b3e58022d9027a36584cf4eccf5
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: a4c4e08a84247dfdaaa60472f3ae3616a7a3ebad
+PODFILE CHECKSUM: 47c8855be28fdc2c48a555e13f5ebceb5f619a36
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.0.beta.2

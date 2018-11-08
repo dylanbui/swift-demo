@@ -93,8 +93,8 @@ class DbUtils: NSObject
         //warning.configureContent(title: "Warning", body: "Network don't connected.", iconText: iconText)
         warning.configureContent(title: "Thông báo", body: "Vui lòng kiểm tra lại kết nối mạng.", iconImage: UIImage(named: "ic_warning_white")!)
         warning.button?.isHidden = true
-        var warningConfig = SwiftMessages.Config()// .defaultConfig
-        warningConfig.presentationContext = .window(windowLevel: .statusBar)
+        let warningConfig = SwiftMessages.Config()// .defaultConfig
+        // warningConfig.presentationContext = .window(windowLevel: .statusBar)
         SwiftMessages.show(config: warningConfig, view: warning)
     }
     
