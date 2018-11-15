@@ -45,11 +45,11 @@ class FirstViewController: BaseViewController {
             print("service.serverMode = \(service.serverMode.name)")
         })
 
-        let vc = SecondViewController()
-        vc.presentSemiViewControllerDefaultPickerOption(vc)
-        vc.dismissSemiModalView {
-            
-        };
+//        let vc = SecondViewController()
+//        vc.presentSemiViewControllerDefaultPickerOption(vc)
+//        vc.dismissSemiModalView {
+//
+//        };
         
 //        let location = LocationManager.sharedInstance()
 //

@@ -16,7 +16,6 @@
 #import <SVPullToRefresh/SVPullToRefresh.h>
 #import <APNumberPad/APNumberPad.h>
 #import <FSCalendar/FSCalendar.h>
-#import "UIViewController+KNSemiModal.h" // add my ObjC Library : /SwiftApp/DbLibraries/ObjC-Libraries
 
 
 #endif /* ObjeCBridgingHeader_h */

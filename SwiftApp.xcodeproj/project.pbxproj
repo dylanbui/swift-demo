@@ -176,7 +176,11 @@
 		BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9BA120736CEC00217030 /* CategoriesApi.swift */; };
 		BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9BA3207372B400217030 /* CategoriesViewController.swift */; };
 		BBDD9BA6207372B400217030 /* CategoriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDD9BA4207372B400217030 /* CategoriesViewController.xib */; };
-		BBE4476D206B764400ED8CC2 /* UIViewController+KNSemiModal.m in Sources */ = {isa = PBXBuildFile; fileRef = BBE4476C206B764400ED8CC2 /* UIViewController+KNSemiModal.m */; };
+		BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDD5D4219D526D00AC4940 /* DbKeyboardHandler.swift */; };
+		BBDDD5D8219D5DB400AC4940 /* KeyboarbHandleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDD5D6219D5DB400AC4940 /* KeyboarbHandleViewController.swift */; };
+		BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */; };
+		BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */; };
+		BBDDD5DE219D653200AC4940 /* KBBottomBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */; };
 		BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */; };
 		BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */; };
 		BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */; };
@@ -383,8 +387,11 @@
 		BBDD9BA120736CEC00217030 /* CategoriesApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesApi.swift; sourceTree = "<group>"; };
 		BBDD9BA3207372B400217030 /* CategoriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoriesViewController.swift; sourceTree = "<group>"; };
 		BBDD9BA4207372B400217030 /* CategoriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoriesViewController.xib; sourceTree = "<group>"; };
-		BBE4476B206B764400ED8CC2 /* UIViewController+KNSemiModal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+KNSemiModal.h"; sourceTree = "<group>"; };
-		BBE4476C206B764400ED8CC2 /* UIViewController+KNSemiModal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+KNSemiModal.m"; sourceTree = "<group>"; };
+		BBDDD5D4219D526D00AC4940 /* DbKeyboardHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbKeyboardHandler.swift; sourceTree = "<group>"; };
+		BBDDD5D6219D5DB400AC4940 /* KeyboarbHandleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboarbHandleViewController.swift; sourceTree = "<group>"; };
+		BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboarbHandleViewController.xib; sourceTree = "<group>"; };
+		BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBottomBarView.swift; sourceTree = "<group>"; };
+		BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBBottomBarView.xib; sourceTree = "<group>"; };
 		BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTableViewCell.swift; sourceTree = "<group>"; };
 		BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DbAssets.xcassets; sourceTree = "<group>"; };
 		BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordField.swift"; sourceTree = "<group>"; };
@@ -444,6 +451,7 @@
 				BBDD5E962011F3F70089DD32 /* Demo-App */,
 				BB5473162017885D0055CAD9 /* Swift-App */,
 				BB5E1427210B200A0059A8C4 /* AppEvn.swift */,
+				BBDDD5DA219D5DBE00AC4940 /* Demo-KeyboarbHandle */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -473,6 +481,7 @@
 				BBE88C5A20216BFB0044F661 /* UtilsClass */,
 				BBC1114720DB4B4F002B2293 /* UtilsExtension */,
 				BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */,
+				BBDDD5D4219D526D00AC4940 /* DbKeyboardHandler.swift */,
 			);
 			path = DbLibraries;
 			sourceTree = "<group>";
@@ -827,21 +836,22 @@
 			path = "Demo-PropzyNetwork";
 			sourceTree = "<group>";
 		};
+		BBDDD5DA219D5DBE00AC4940 /* Demo-KeyboarbHandle */ = {
+			isa = PBXGroup;
+			children = (
+				BBDDD5D6219D5DB400AC4940 /* KeyboarbHandleViewController.swift */,
+				BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */,
+				BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */,
+				BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */,
+			);
+			path = "Demo-KeyboarbHandle";
+			sourceTree = "<group>";
+		};
 		BBE44769206B75F900ED8CC2 /* ObjC-Libraries */ = {
 			isa = PBXGroup;
 			children = (
-				BBE4476A206B764400ED8CC2 /* UIViewController+KNSemiModal */,
 			);
 			path = "ObjC-Libraries";
-			sourceTree = "<group>";
-		};
-		BBE4476A206B764400ED8CC2 /* UIViewController+KNSemiModal */ = {
-			isa = PBXGroup;
-			children = (
-				BBE4476B206B764400ED8CC2 /* UIViewController+KNSemiModal.h */,
-				BBE4476C206B764400ED8CC2 /* UIViewController+KNSemiModal.m */,
-			);
-			path = "UIViewController+KNSemiModal";
 			sourceTree = "<group>";
 		};
 		BBE813EC2016EB0600B21B1F /* BaseUIKit */ = {
@@ -1042,9 +1052,11 @@
 				BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */,
 				BBC38A67206DDEE500B11C7B /* MaterialIcons-Regular.ttf in Resources */,
 				BBB569EF1F7BC8880014A7A9 /* TpPostsViewController.xib in Resources */,
+				BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */,
 				BBC38A63206DDEE500B11C7B /* FontAwesome.ttf in Resources */,
 				BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */,
+				BBDDD5DE219D653200AC4940 /* KBBottomBarView.xib in Resources */,
 				BBC38A69206DDEE500B11C7B /* open-iconic.ttf in Resources */,
 				BBB569DF1F7B5B880014A7A9 /* TaskUpdateViewController.xib in Resources */,
 				BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */,
@@ -1290,6 +1302,7 @@
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
+				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
 				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
 				BB5CE03E2146117500C92DA0 /* CountryUnitApi.swift in Sources */,
@@ -1301,7 +1314,6 @@
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
 				BB2FE6712192CFCB007470DD /* DbMediaPickerController.swift in Sources */,
 				BBC38A55206DDE9500B11C7B /* MaterialIcon.swift in Sources */,
-				BBE4476D206B764400ED8CC2 /* UIViewController+KNSemiModal.m in Sources */,
 				BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
@@ -1313,11 +1325,13 @@
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
 				BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */,
+				BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,
+				BBDDD5D8219D5DB400AC4940 /* KeyboarbHandleViewController.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 				BBC38A56206DDE9500B11C7B /* Octicon.swift in Sources */,
