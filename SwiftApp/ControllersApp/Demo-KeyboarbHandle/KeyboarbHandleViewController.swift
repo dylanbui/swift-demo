@@ -68,8 +68,10 @@ class KeyboarbHandleViewController: UIViewController
 
     @IBOutlet weak var txtTest: UITextField!
     
+    @IBOutlet weak var viewBottom: UIView!
     let keyboardHandler = DbKeyboardHandler()
-    let viewBar = KBBottomBarView()
+    
+    // let viewBar = KBBottomBarView()
     
     override func viewDidLoad()
     {
@@ -78,13 +80,13 @@ class KeyboarbHandleViewController: UIViewController
         // Do any additional setup after loading the view.
         
 //        viewBar.frame = CGRect(0, self.view.height - 100, self.view.width, 100)
-        print("viewBar.frame = \(String(describing: viewBar.frame))")
-        self.view.addSubview(viewBar)
+//        print("viewBar.frame = \(String(describing: viewBar.frame))")
+//        self.view.addSubview(viewBar)
         //viewBar.frame = CGRect(0, Db.screenHeight() - 100 - Int(DbUtils.safeAreaBottomPadding()), Db.screenWidth(), 100)
         // viewBar.autoresizingMask = [.flexibleHeight, .flexibleWidth]
         
-        viewBar.frame = CGRect(0, 0, Db.screenWidth(), 100)
-        viewBar.db_anchorViewToBottomViewWithKeyboard()
+//        viewBar.frame = CGRect(0, 0, Db.screenWidth(), 100)
+//        viewBar.db_anchorViewToBottomViewWithKeyboard()
         
 //        keyboardHandler.listen { (keyboardInfo) in
 //            print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.keyboardFrame))")
@@ -112,7 +114,7 @@ class KeyboarbHandleViewController: UIViewController
 //
 //        }
         
-        
+        self.viewBottom.db_anchorViewToBottomViewWithKeyboard()
         
         
     }
