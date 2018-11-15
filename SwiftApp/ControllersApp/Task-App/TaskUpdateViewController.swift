@@ -29,10 +29,10 @@ class TaskUpdateViewController: BaseViewController {
 
     @IBAction func btnSave_Click(_ sender: UIButton)
     {
-        let params = ["name": self.txtName.text as AnyObject,
-                      "datetime": self.txtDatetime.text as AnyObject,
-                      "title": self.txtvDesc.text as AnyObject] as [String:AnyObject]
-        self.returnParamsDelegate.onReturn(params: params, callerId: 1)
+        let params: DictionaryType = ["name": self.txtName.text ?? "",
+                                      "datetime": self.txtDatetime.text ?? "",
+                                      "title": self.txtvDesc.text ?? ""]
+        self.returnParamsDelegate.onReturn(Owner: self, callerId: 1, params: params, error: nil)
         self.btnCance_Click(nil)
     }
     

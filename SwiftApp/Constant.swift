@@ -32,11 +32,11 @@ let FORMAT_TIME_FULL                        = "HH:mm:ss"
 /***************** Simple Callback Delegate ******************/
 
 // -- Xu ly tra ve cua cac UIView action --
-typealias HandleControlAction = (AnyObject, Int, [String: AnyObject]?, Error?)
-
-protocol ICallbackParentDelegate {
-    func onCallback(from obj: AnyObject, callerId: Int, params: [String: AnyObject]?, error: Error?);
-}
+//typealias HandleControlAction = (AnyObject, Int, [String: AnyObject]?, Error?)
+//
+//protocol ICallbackParentDelegate {
+//    func onCallback(from obj: AnyObject, callerId: Int, params: [String: AnyObject]?, error: Error?);
+//}
 
 let ENV_DEV_APP = 1 // Develop model
 //let ENV_TEST_APP = 2 // Test model

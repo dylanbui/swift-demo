@@ -235,7 +235,7 @@ extension DemoTableViewController: UITableViewDataSource
     {
         var cell: ToDoCell! = tableView.dequeueReusableCell(withIdentifier: "toDoCell") as? ToDoCell
         if(cell == nil) {
-            cell = Bundle.main.loadNibNamed("ToDoCell", owner: self, options: nil)? [0] as! ToDoCell
+            cell = Bundle.main.loadNibNamed("ToDoCell", owner: self, options: nil)? [0] as? ToDoCell
         }
         
         // let item = toDoItems[indexPath.row]

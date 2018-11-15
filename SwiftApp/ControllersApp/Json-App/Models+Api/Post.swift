@@ -32,25 +32,25 @@ class Post: Mappable
     
     static func getAll(_ complete: @escaping ([Post]) -> ())
     {
-        DbHttp.get(Url: "https://jsonplaceholder.typicode.com/posts") { (response) in
-            
-            if response.error != nil {
-                // print("error.debugDescription = \(err.debugDescription)")
-                return
-            }
-            
-            guard let anyObject = response.rawData else {
-                print("AnyObject = nil")
-                return
-            }
-
-            var arr: [Post] = []
-            for obj in anyObject as! [AnyObject] {
-                let u:Post = Post(JSON: obj as! [String: Any])!
-                arr.append(u)
-            }
-            complete(arr)
-        }
+//        DbHttp.get(Url: "https://jsonplaceholder.typicode.com/posts") { (response) in
+//            
+//            if response.error != nil {
+//                // print("error.debugDescription = \(err.debugDescription)")
+//                return
+//            }
+//            
+//            guard let anyObject = response.rawData else {
+//                print("AnyObject = nil")
+//                return
+//            }
+//
+//            var arr: [Post] = []
+//            for obj in anyObject as! [Any] {
+//                let u:Post = Post(JSON: obj as! [String: Any])!
+//                arr.append(u)
+//            }
+//            complete(arr)
+//        }
         
 //        DbWebConnection.shared.get(Url: "https://jsonplaceholder.typicode.com/posts", params: nil) { (anyObject, error) in
 //            if error != nil {
@@ -85,7 +85,7 @@ class Post: Mappable
                 return
             }
             
-            guard let anyObject = response.rawData else {
+            guard let anyObject = response.responseResult else {
                 print("AnyObject = nil")
                 return
             }
@@ -134,7 +134,7 @@ class Post: Mappable
                 return
             }
 
-            let post:Post = Post(JSON: response.rawData as! [String: Any])!
+            let post:Post = Post(JSON: response.responseResult as! [String: Any])!
             complete(post)
         }
         

@@ -59,24 +59,24 @@ class User: Mappable
     {
         DbHttp.get(Url: "https://jsonplaceholder.typicode.com/users") { (response) in
             
-            // if let err = response.error {
-            if response.error != nil {
-                // print("error.debugDescription = \(err.debugDescription)")
-                return
-            }
-            
-//            if let anyObject = response.rawData {
-            if response.rawData != nil {
-                // print("response.rawData = nil")
-                return
-            }
-
-            var arr: [User] = []
-            for obj in response.rawData as! [AnyObject] {
-                let u:User = User(JSON: obj as! [String: Any])!
-                arr.append(u)
-            }
-            complete(arr)
+//            // if let err = response.error {
+//            if response.error != nil {
+//                // print("error.debugDescription = \(err.debugDescription)")
+//                return
+//            }
+//            
+////            if let anyObject = response.rawData {
+//            if response.rawData != nil {
+//                // print("response.rawData = nil")
+//                return
+//            }
+//
+//            var arr: [User] = []
+//            for obj in response.rawData as! [AnyObject] {
+//                let u:User = User(JSON: obj as! [String: Any])!
+//                arr.append(u)
+//            }
+//            complete(arr)
         }
         
 //        DbWebConnection.shared.get(Url: "https://jsonplaceholder.typicode.com/users", params: nil) { (anyObject, error) in

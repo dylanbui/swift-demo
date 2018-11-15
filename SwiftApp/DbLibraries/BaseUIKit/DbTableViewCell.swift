@@ -13,7 +13,7 @@ class DbTableViewCell: UITableViewCell {
     
     var indexPath: IndexPath?
     var dictCellData: [String: Any]?
-    var handleControlAction: DbHandleViewAction?
+    var handleControlAction: DbHandleAction?
     
 //    override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
 //        super.init(style: style, reuseIdentifier: reuseIdentifier)

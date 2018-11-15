@@ -66,7 +66,7 @@ class TaskListViewController: BaseViewController, UITableViewDataSource, UITable
     {
         var cell: TaskViewCell! = tableView.dequeueReusableCell(withIdentifier: "taskViewCell") as? TaskViewCell
         if(cell == nil) {
-            cell = Bundle.main.loadNibNamed("TaskViewCell", owner: self, options: nil)? [0] as! TaskViewCell
+            cell = Bundle.main.loadNibNamed("TaskViewCell", owner: self, options: nil)? [0] as? TaskViewCell
         }
         
         let item = self.arrTasks[indexPath.row] as? [String:AnyObject]

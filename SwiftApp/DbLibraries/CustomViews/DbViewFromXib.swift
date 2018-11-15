@@ -16,7 +16,7 @@ import UIKit
 class DbViewFromXib: UIView
 {
 
-    var handleViewAction: DbHandleViewAction?
+    var handleViewAction: DbHandleAction?
 
     private var contentView: UIView!
     

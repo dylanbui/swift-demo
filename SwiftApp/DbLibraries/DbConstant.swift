@@ -31,12 +31,21 @@ import Foundation
 //}
 
 // -- Xu ly tra ve cua cac UIView action DbHandleViewAction(owner, id, params, error) --
-public typealias DbHandleViewAction = (AnyObject, Int, [String: Any]?, Error?) -> ()
+public typealias DictionaryType = [String: Any]
+
+// -- Xu ly tra ve cua cac UIView action DbHandleAction(owner, id, params, error) --
+public typealias DbHandleAction = (Any, Int, DictionaryType?, Error?) -> Void
 
 public protocol DbIReturnDelegate {
-    func onReturn(params: [String: Any]?, callerId: Int)
+    func onReturn(Owner object: Any?, callerId: Int?, params: DictionaryType?, error: Error?) -> Void
 }
 
+// -- Create DbIReturnDelegate is a optional --
+extension DbIReturnDelegate {
+    func onReturn(Owner object: Any?, callerId: Int?, params: DictionaryType?, error: Error?) -> Void {
+        
+    }
+}
 //public enum db {
 //    static func aaaa(name: String) {
 //        print(name)
