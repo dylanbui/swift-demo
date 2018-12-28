@@ -9,6 +9,14 @@
 import Foundation
 import UIKit
 
+fileprivate extension UIView {
+    
+    var firstViewController: UIViewController? {
+        let firstViewController = sequence(first: self, next: { $0.next }).first(where: { $0 is UIViewController })
+        return firstViewController as? UIViewController
+    }
+    
+}
 
 public class DbDropDownView: UITableView
 {
@@ -52,6 +60,8 @@ public class DbDropDownView: UITableView
     
     ////////////////////////////////////////////////////////////////////////
     // Private implementation
+    fileprivate var containerView: UIView! // Top View Add Self
+    
     fileprivate var dismissableView: UIView!
     fileprivate var fontConversionRate: CGFloat = 0.7
     fileprivate static let cellIdentifier = "DbDropDownViewItem"
@@ -70,7 +80,7 @@ public class DbDropDownView: UITableView
     fileprivate var privateTableWillDisappear: () -> () = { }
     fileprivate var privateTableDoingDisappear: () -> () = { }
     fileprivate var privateTableDidDisappear: () -> () = { }
-
+    
     // Init
     public override init(frame: CGRect, style: UITableViewStyle)
     {
@@ -90,6 +100,12 @@ public class DbDropDownView: UITableView
         setup()
     }
     
+    deinit {
+        //        self.removeFromSuperview()
+        //        // -- Remove temple anchor view --
+        //        rootView?.viewWithTag(5001)?.removeFromSuperview()
+    }
+    
     // Create the filter table and shadow view
     fileprivate func setup()
     {
@@ -99,7 +115,7 @@ public class DbDropDownView: UITableView
         // -- Touch background --
         self.dismissableView = UIView(frame: UIScreen.main.bounds)
         // 1. create a gesture recognizer (tap gesture)
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchBackground(sender:)))
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchToBackground(sender:)))
         // 2. add the gesture recognizer to a view
         self.dismissableView.addGestureRecognizer(tapGesture)
     }
@@ -127,7 +143,7 @@ public class DbDropDownView: UITableView
         self.reloadData()
     }
     
-    @objc fileprivate func touchBackground(sender: UITapGestureRecognizer)
+    @objc fileprivate func touchToBackground(sender: UITapGestureRecognizer)
     {
         hideDropDown()
     }
@@ -158,7 +174,7 @@ public class DbDropDownView: UITableView
     {
         privateTableWillAppear = completion
     }
-
+    
     public func tableDoingAppear(completion: @escaping () -> ())
     {
         privateTableDoingAppear = completion
@@ -173,17 +189,39 @@ public class DbDropDownView: UITableView
     {
         privateTableWillDisappear = completion
     }
-
+    
     public func tableDoingDisappear(completion: @escaping () -> ())
     {
         privateTableDoingDisappear = completion
     }
-
+    
     public func tableDidDisappear(completion: @escaping () -> ())
     {
         privateTableDidDisappear = completion
     }
     
+    public func showDropDown(WithView view: UIView, yOffset offset: CGFloat = 5.0, cornerRadius radius: CGFloat = 0)
+    {
+        //guard let parent = self.anchorView else {
+        guard let subAnchorView = self.anchorView else {
+            fatalError("AnchorView not found")
+        }
+        // -- Set theme --
+        self.theme = .panelTheme()
+        self.theme.bgColor = view.backgroundColor ?? UIColor.clear
+        
+        self.tableYOffset = offset
+        self.tableCornerRadius = radius
+        
+        // self.dataSourceItems.removeAll()
+        var frame = subAnchorView.frame
+        frame.size.height = view.frame.size.height
+        view.frame = frame
+        self.tableListHeight = view.frame.size.height // view.frame.height
+        self.tableHeaderView = view
+        self.isScrollEnabled = false
+        self.showDropDown(reloadData: true)
+    }
     
     public func showDropDown(reloadData:Bool = true)
     {
@@ -192,14 +230,30 @@ public class DbDropDownView: UITableView
         
         privateTableWillAppear()
         
-        guard let parent = self.anchorView else {
+        //guard let parent = self.anchorView else {
+        guard let subAnchorView = self.anchorView else {
             fatalError("AnchorView not found")
         }
         
+        if let viewController = subAnchorView.firstViewController {
+            self.containerView = viewController.view
+        } else {
+            print("==> ParentViewController not found. Use RootViewController")
+            self.containerView = UIApplication.shared.keyWindow?.rootViewController?.view!
+        }
+        
+        let frameMatchParent: CGRect! = subAnchorView.superview?.convert(subAnchorView.frame, to: containerView)
+        // print("frameMatchParent = \(String(describing: frameMatchParent))")
+        
+        let parent = UIView(frame: frameMatchParent)
+        parent.tag = 5001
+        parent.backgroundColor = UIColor.clear // Test color
+        containerView.addSubview(parent)
+        
         self.frame = CGRect(x: parent.frame.minX,
-                                 y: parent.frame.minY,
-                                 width: parent.frame.width,
-                                 height: parent.frame.height)
+                            y: parent.frame.minY,
+                            width: parent.frame.width,
+                            height: parent.frame.height)
         self.alpha = 0
         
         parent.superview?.insertSubview(self, belowSubview: parent)
@@ -222,13 +276,13 @@ public class DbDropDownView: UITableView
                             // -- Default .TopToBottom --
                             var valY = parent.frame.maxY + self.tableYOffset
                             if self.displayDirection == .BottomToTop {
-                               valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
+                                valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
                             }
                             
                             self.frame = CGRect(x: parent.frame.minX,
-                                                          y: valY,
-                                                          width: parent.frame.width,
-                                                          height: self.tableListHeight)
+                                                y: valY,
+                                                width: parent.frame.width,
+                                                height: self.tableListHeight)
                             self.alpha = 1
                             self.dismissableView.alpha = 1
                             // -- Reload DataTable --
@@ -260,9 +314,9 @@ public class DbDropDownView: UITableView
                             }
                             
                             self.frame = CGRect(x: parent.frame.minX,
-                                                          y: valY, ///parent.frame.maxY+self.tableYOffset,
-                                                          width: parent.frame.width,
-                                                          height: self.tableListHeight)
+                                                y: valY, ///parent.frame.maxY+self.tableYOffset,
+                                width: parent.frame.width,
+                                height: self.tableListHeight)
                             self.alpha = 1
                             self.dismissableView.alpha = 1
                             // -- Reload DataTable --
@@ -289,9 +343,9 @@ public class DbDropDownView: UITableView
                             }
                             
                             self.frame = CGRect(x: parent.frame.minX,
-                                                          y: valY,
-                                                          width: parent.frame.width,
-                                                          height: self.tableListHeight)
+                                                y: valY,
+                                                width: parent.frame.width,
+                                                height: self.tableListHeight)
                             self.alpha = 1
                             self.dismissableView.alpha = 1
                             // -- Reload DataTable --
@@ -304,7 +358,7 @@ public class DbDropDownView: UITableView
             }, completion: { (finished) in
                 self.privateTableDidAppear()
             })
-        
+            
         }
         
     }
@@ -329,9 +383,9 @@ public class DbDropDownView: UITableView
                             }
                             
                             self.frame = CGRect(x: self.frame.minX,
-                                                          y: valY,
-                                                          width: self.frame.width,
-                                                          height: 0)
+                                                y: valY,
+                                                width: self.frame.width,
+                                                height: 0)
                             self.alpha = 0
                             self.dismissableView.alpha = 0
                             
@@ -341,6 +395,9 @@ public class DbDropDownView: UITableView
                 self.dismissableView.removeFromSuperview()
                 self.removeFromSuperview()
                 self.privateTableDidDisappear()
+                
+                // -- Remove temple anchor view --
+                self.containerView.viewWithTag(5001)?.removeFromSuperview()
             })
             
         case .Bouncing:
@@ -363,7 +420,11 @@ public class DbDropDownView: UITableView
                 self.dismissableView.removeFromSuperview()
                 // -- Phai tra ve size ban dau truoc khi removeFromSuperview --
                 self.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
+                self.removeFromSuperview()
                 self.privateTableDidDisappear()
+                
+                // -- Remove temple anchor view --
+                self.containerView.viewWithTag(5001)?.removeFromSuperview()
             })
             
         }
@@ -396,14 +457,14 @@ extension DbDropDownView: UITableViewDelegate, UITableViewDataSource
         cell.detailTextLabel?.textColor = theme.subtitleFontColor
         
         cell.selectionStyle = .none
-
+        
         return cell
     }
     
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
         var cell: UITableViewCell?
-
+        
         if let identifier = self.reuseIdentifier {
             cell = tableView.dequeueReusableCell(withIdentifier: identifier)
         } else {
@@ -433,7 +494,7 @@ extension DbDropDownView: UITableViewDelegate, UITableViewDataSource
                 cell?.tintColor = theme.checkmarkColor
             }
         }
-
+        
         // -- Run configuration cell --
         self.cellConfiguration(dataSourceItems, indexPath, cell!)
         

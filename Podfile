@@ -14,7 +14,6 @@ target 'SwiftApp' do
     pod 'SVPullToRefresh', '0.4.1'
     pod 'DZNEmptyDataSet', '1.8.1'
     
-    
     pod 'IQKeyboardManagerSwift', '6.2.0'
     pod 'SnapKit', '4.0.1' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
 
@@ -51,6 +50,7 @@ target 'SwiftApp' do
     pod 'APNumberPad', '1.2.2' # Use for DecimalTextField
     pod 'INTULocationManager', '4.3.2'
     pod 'FSCalendar', '2.8.0'
+    pod 'ActionSheetPicker-3.0' #, '2.3.0'
 
     # Libraries needed Swift 4
     #pod 'DKImagePickerController' #, '3.8.1' them nhieu thu vien '4.0.2'

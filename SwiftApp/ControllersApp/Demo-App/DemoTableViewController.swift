@@ -19,10 +19,9 @@ class DemoTableViewController: DbViewController
 //    @IBOutlet weak var tblContent: UITableView!
     
     let arrItems = ["One", "Two", "Three"]
-//    var toDoItems = [ToDoItem]()
+    var toDoItems: [ToDoItem] = []
     
 //    var realm : Realm!
-    
 //    var toDoItemsList: Results<ToDoItem> {
 //        get {
 //            return realm.objects(ToDoItem.self)
@@ -107,21 +106,21 @@ class DemoTableViewController: DbViewController
 //        student.load(11)
 //        print(String(student.id) + " -- " + student.firstName + " -- " + student.lastName)
 
-        let realm = try! Realm()
-        for i in 1...3 {
-            let actor = Actor()
-            actor.id = i
-            actor.firstName = "Dylan"
-            actor.lastName = "Bui Van"
-
-            try! realm.write {
-                realm.add(actor, update: true)
-                print("Added new object")
-            }
-            
-            print(String(describing: actor.toJSONString(prettyPrint: true)))
-            print(String(actor.id) + " -- " + actor.firstName + " -- " + actor.lastName)
-        }
+//        let realm = try! Realm()
+//        for i in 1...3 {
+//            let actor = Actor()
+//            actor.id = i
+//            actor.firstName = "Dylan"
+//            actor.lastName = "Bui Van"
+//
+//            try! realm.write {
+//                realm.add(actor, update: true)
+//                print("Added new object")
+//            }
+//
+//            print(String(describing: actor.toJSONString(prettyPrint: true)))
+//            print(String(actor.id) + " -- " + actor.firstName + " -- " + actor.lastName)
+//        }
         
         
         // Persist your data easily
@@ -148,19 +147,48 @@ class DemoTableViewController: DbViewController
 //        }
         
         // object.toJSONString(prettyPrint: true)
+        
+        self.toDoItems.append(ToDoItem(id: 1, text: "feed the cat"))
+        self.toDoItems.append(ToDoItem(id: 2, text: "buy eggs"))
+        self.toDoItems.append(ToDoItem(id: 3, text: "watch WWDC videos"))
+        self.toDoItems.append(ToDoItem(id: 4, text: "rule the Web"))
+        self.toDoItems.append(ToDoItem(id: 5, text: "buy a new iPhone"))
+        self.toDoItems.append(ToDoItem(id: 6, text: "darn holes in socks"))
+        self.toDoItems.append(ToDoItem(id: 7, text: "write this tutorial"))
+        self.toDoItems.append(ToDoItem(id: 8, text: "master Swift"))
+        self.toDoItems.append(ToDoItem(id: 9, text: "learn to draw"))
+        self.toDoItems.append(ToDoItem(id: 10, text: "get more exercise"))
+        self.toDoItems.append(ToDoItem(id: 11, text: "catch up with Mom"))
+        self.toDoItems.append(ToDoItem(id: 12, text: "get a hair cut"))
+        
 
+        // -- Define group task --
+        DbGroup()
+        let dispatchGroup = DispatchGroup()
+        
+        dispatchGroup.enter()
+        DbRealmManager.saveArrayObjects(T: self.toDoItems) { (success) in
+            
+            if success {
+                print("Save success")
+            } else {
+                print("Errpr: Save success")
+            }
+            dispatchGroup.leave()
+        }
+        dispatchGroup.wait()
+        
         DbRealmManager.getAllListOf(T: ToDoItem()) { (results) in
+            print("results.count = \(String(describing: results.count))")
+            print("\(String(describing: results))")
             self.toDoItemsList = results as! [ToDoItem]
             self.tblContent.reloadData()
         }
+
         
 //        DbRealmManager.getFetchList(T: ToDoItem.clas, condition: nil) { results in
 //            toDoItemsList = results
 //        }
-        
-        
-
-        
         
 //        for j in 0..<3 {}    
 //        for i in 11...15 {

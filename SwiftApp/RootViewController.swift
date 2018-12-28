@@ -20,14 +20,14 @@ class RootViewController: UIViewController
     {
         super.viewDidLoad()
 //        self.navigationBarHiddenForThisController()
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         // -- Save RootViewController --
 //        self.appDelegate.rootViewController = self
 
         // Do any additional setup after loading the view.
         
-//        let vcl = DemoTableViewController()
+        let vcl = DemoTableViewController()
         //let vcl = TaskListViewController()
 //        let vcl = TpUsersViewController()
 //        let vcl = FirstViewController()
@@ -38,10 +38,11 @@ class RootViewController: UIViewController
 //        let vcl = PzLoginViewController()
 //        let vcl = PzListingViewController()
 //        let vcl = StackScrollViewController()
-        let vcl = KeyboarbHandleViewController()
+//        let vcl = KeyboarbHandleViewController()
+//        let vcl = KBScrollViewViewController()
         
         // -- An nut back --
-        vcl.navigationItem.setHidesBackButton(true, animated:false)
+//        vcl.navigationItem.setHidesBackButton(true, animated:false)
         // self.navigationController?.pushViewController(vcl, animated: false)
         self.navigationController?.db_pushOrReplaceToFirstViewController(vcl, animated: false)
         
