@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "DC9F5AFA9873D0DF86D3F8C4B0128EF6"
-               BuildableName = "SwiftMessages.bundle"
-               BlueprintName = "SwiftMessages-SwiftMessages"
+               BlueprintIdentifier = "05B9852E4B188EF4EC93B1E3F0712B2E"
+               BuildableName = "ActionSheetPicker_3_0.framework"
+               BlueprintName = "ActionSheetPicker-3.0"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "DC9F5AFA9873D0DF86D3F8C4B0128EF6"
-            BuildableName = "SwiftMessages.bundle"
-            BlueprintName = "SwiftMessages-SwiftMessages"
+            BlueprintIdentifier = "05B9852E4B188EF4EC93B1E3F0712B2E"
+            BuildableName = "ActionSheetPicker_3_0.framework"
+            BlueprintName = "ActionSheetPicker-3.0"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
