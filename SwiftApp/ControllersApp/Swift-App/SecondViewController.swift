@@ -22,7 +22,7 @@ class SecondViewController: BaseViewController {
         
         self.txtPassword.addPasswordField()
         
-        txtNumberPad.reloadDataWithType(.Decimal)
+//        txtNumberPad.reloadDataWithType(.Decimal)
         txtNumberPad.setDecimalValue(1221253.14)
     }
 

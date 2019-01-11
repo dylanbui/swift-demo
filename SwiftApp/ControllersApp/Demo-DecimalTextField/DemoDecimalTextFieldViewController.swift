@@ -19,8 +19,8 @@ class DemoDecimalTextFieldViewController: UIViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        self.txtInt.reloadDataWithType(.Integer)
-        self.txtDecimal.reloadDataWithType(.Decimal)
+//        self.txtInt.reloadDataWithType(.Integer)
+//        self.txtDecimal.reloadDataWithType(.Decimal)
     }
 
     override func viewWillAppear(_ animated: Bool)

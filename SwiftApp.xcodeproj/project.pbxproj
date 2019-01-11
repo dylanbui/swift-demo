@@ -85,6 +85,7 @@
 		BB7E580421E84AD5005C3FA6 /* xmartlabs-logo-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7E580221E84AD5005C3FA6 /* xmartlabs-logo-1.png */; };
 		BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E580521E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift */; };
 		BB7E580821E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7E580621E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib */; };
+		BB7E580B21E8AC8B005C3FA6 /* CustomDecimalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E580A21E8AC8B005C3FA6 /* CustomDecimalRow.swift */; };
 		BB7F3038203E857900185366 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302A203E857900185366 /* demo_1.jpg */; };
 		BB7F3039203E857900185366 /* demo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302B203E857900185366 /* demo_2.jpg */; };
 		BB7F303A203E857900185366 /* demo_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302C203E857900185366 /* demo_3.jpg */; };
@@ -304,6 +305,7 @@
 		BB7E580221E84AD5005C3FA6 /* xmartlabs-logo-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmartlabs-logo-1.png"; sourceTree = "<group>"; };
 		BB7E580521E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDecimalTextFieldViewController.swift; sourceTree = "<group>"; };
 		BB7E580621E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoDecimalTextFieldViewController.xib; sourceTree = "<group>"; };
+		BB7E580A21E8AC8B005C3FA6 /* CustomDecimalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecimalRow.swift; sourceTree = "<group>"; };
 		BB7F302A203E857900185366 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
 		BB7F302B203E857900185366 /* demo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_2.jpg; sourceTree = "<group>"; };
 		BB7F302C203E857900185366 /* demo_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_3.jpg; sourceTree = "<group>"; };
@@ -985,6 +987,7 @@
 			isa = PBXGroup;
 			children = (
 				BBE813F62017211A00B21B1F /* DecimalTextField.swift */,
+				BB7E580A21E8AC8B005C3FA6 /* CustomDecimalRow.swift */,
 			);
 			path = DecimalTextField;
 			sourceTree = "<group>";
@@ -1325,6 +1328,7 @@
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB407AD02181821A00C8E57F /* DbUITableViewExtensions.swift in Sources */,
 				BB407AD12181821A00C8E57F /* DbUIViewController.swift in Sources */,
+				BB7E580B21E8AC8B005C3FA6 /* CustomDecimalRow.swift in Sources */,
 				BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */,
 				BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,

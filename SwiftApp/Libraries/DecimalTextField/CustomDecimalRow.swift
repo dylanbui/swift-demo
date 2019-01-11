@@ -1,20 +1,21 @@
 //
-//  DecimalTextField.swift
+//  CustomDecimalRow.swift
 //  SwiftApp
 //
-//  Created by Dylan Bui on 1/23/18.
-//  Copyright © 2018 Propzy Viet Nam. All rights reserved.
+//  Created by Dylan Bui on 1/11/19.
+//  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //
 
-import Foundation
+import Eureka
 
-enum DecimalTextFieldType : Int
-{
-    case Decimal = 0
-    case Integer = 1
-}
+/// A row where the user can enter a decimal number.
+//public final class CustomDecimalRow: _DecimalRow, RowType {
+//    required public init(tag: String?) {
+//        super.init(tag: tag)
+//    }
+//}
 
-class DecimalTextField: UITextField
+class CustomDecimalCell: _FieldCell<Double>, CellType
 {
     var decimalSeparator: String! = "." // Default
     var groupingSeparator: String! = "," // Default
@@ -23,101 +24,73 @@ class DecimalTextField: UITextField
     var decimalSize: Int! = 2 // Default
     
     private var numberFormatter: NumberFormatter!
+
     
-    convenience init(withTextFieldType type: DecimalTextFieldType)
-    {
-        self.init(frame: CGRect.zero)
-        self.initParams()
-        self.reloadDataWithFormatter()
+    required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    override init(frame: CGRect)
-    {
-        super.init(frame: frame)
-        self.initParams()
-        self.reloadDataWithFormatter()
-    }
-    
-    required init?(coder aDecoder: NSCoder)
-    {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        self.initParams()
-        self.reloadDataWithFormatter()
     }
     
-    private func initParams() -> Void
-    {
-        self.groupingSeparator = "."
-        self.decimalSeparator = ","
-        self.integerSize = 15
-        self.decimalSize = 2
+    open override func setup() {
+        super.setup()
+        textField.autocorrectionType = .no
+        textField.keyboardType = .decimalPad
         
-        self.addTarget(self, action: #selector(self.textFieldDidChange), for: .editingChanged)
-    }
-    
-    func reloadDataWithFormatter(_ formatter: NumberFormatter? = nil) -> Void
-    {
-        self.text = ""
+        // textField.addTarget(self, action: #selector(self.textFieldDidChanged), for: .editingChanged)
         
-        self.numberFormatter = NumberFormatter()
-        // self.numberFormatter?.groupingSize = 3 // Default
-        if formatter == nil {
-            self.numberFormatter.numberStyle = .decimal
-            self.numberFormatter.locale = Locale.current
-        } else {
-            self.numberFormatter.numberStyle = formatter!.numberStyle
-            self.numberFormatter.locale = formatter!.locale
+        guard let fieldRow = row as? FieldRowConformance, let formatter = fieldRow.formatter as? NumberFormatter else {
+            return
         }
+
+        numberFormatter = formatter
         
         self.groupingSeparator = self.numberFormatter.groupingSeparator
         self.decimalSeparator = self.numberFormatter.decimalSeparator
-        // -- Set keypad --
-        self.keyboardType = .numberPad
-        if self.numberFormatter.numberStyle == .decimal {
-            self.keyboardType = .decimalPad
+        
+        self.integerSize = self.numberFormatter.maximumIntegerDigits
+        self.decimalSize = self.numberFormatter.maximumFractionDigits
+        
+        // -- Format value --
+        if let val = row.value {
+            self.setDecimalValue(val)
         }
-    }
-    
-    func setTextFieldType(_ type: DecimalTextFieldType)
-    {
-        let formatter = NumberFormatter()
-        formatter.locale = Locale.current
-        formatter.numberStyle = (type == .Decimal ? .decimal : .none)
-        self.reloadDataWithFormatter(formatter)
     }
     
     func setDecimalValue(_ value: Double) -> Void
     {
         var textFieldText = String(value)
         textFieldText = textFieldText.replacingOccurrences(of: ".", with: self.decimalSeparator)
-        self.text = self.reformatDecimalValue(textFieldText)
+        textField.text = self.reformatDecimalValue(textFieldText)
     }
     
-    func getDecimalValue() -> Double
+    func getDecimalValue() -> Double?
     {
-        guard let str = self.text, !str.isEmpty else {
-            return 0.0
+        guard let str = textField.text else {
+            return nil
         }
-        
+
         var returnStr = str.replacingOccurrences(of: self.groupingSeparator, with: "")
         returnStr = returnStr.replacingOccurrences(of: self.decimalSeparator, with: ".")
         return Double(returnStr)!
     }
-
-    @objc func textFieldDidChange(_ theTextField: UITextField) -> Void
+    
+    override func textFieldDidChange(_ textField: UITextField)
     {
-        guard let str = theTextField.text, !str.isEmpty else {
+        guard let textValue = textField.text else {
+            row.value = nil
             return
         }
+//        guard let fieldRow = row as? FieldRowConformance, let formatter = fieldRow.formatter else {
+//            row.value = textValue.isEmpty ? nil : (Double.init(string: textValue) ?? row.value)
+//            return
+//        }
         
-        // -- Only enter 1 self.decimalSeparator --
-        let countDecimalSeparator = str.components(separatedBy: self.decimalSeparator).count - 1
-        if countDecimalSeparator > 1 {
-            theTextField.text = str.string_substring(to: str.count - 2)
-            return
-        }
+        textField.text = self.reformatDecimalValue(textValue)
         
-        theTextField.text = self.reformatDecimalValue(str)
+        row.value = self.getDecimalValue()
     }
     
     private func reformatDecimalValue(_ decimalString: String) -> String
@@ -145,6 +118,25 @@ class DecimalTextField: UITextField
         return textFieldText
     }
     
+//    @objc func textFieldDidChanged(_ theTextField: UITextField) -> Void
+//    {
+//
+//    }
+}
+
+final class CustomDecimalRow: FieldRow<CustomDecimalCell>, RowType
+{
+    public required init(tag: String?) {
+        super.init(tag: tag)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale.current
+        numberFormatter.numberStyle = .decimal
+        //numberFormatter.minimumFractionDigits = 2
+        numberFormatter.maximumIntegerDigits = 15
+        numberFormatter.maximumFractionDigits = 2
+        
+        formatter = numberFormatter
+    }
 }
 
 fileprivate extension String
