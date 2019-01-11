@@ -78,6 +78,13 @@
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */; };
 		BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */; };
+		BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E57F821E842CE005C3FA6 /* DemoEurekaViewController.swift */; };
+		BB7E57FB21E842CE005C3FA6 /* DemoEurekaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7E57F921E842CE005C3FA6 /* DemoEurekaViewController.xib */; };
+		BB7E580021E84A91005C3FA6 /* EurekaHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7E57FF21E84A91005C3FA6 /* EurekaHeader.xib */; };
+		BB7E580321E84AD5005C3FA6 /* floatLabelRow.gif in Resources */ = {isa = PBXBuildFile; fileRef = BB7E580121E84AD5005C3FA6 /* floatLabelRow.gif */; };
+		BB7E580421E84AD5005C3FA6 /* xmartlabs-logo-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7E580221E84AD5005C3FA6 /* xmartlabs-logo-1.png */; };
+		BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E580521E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift */; };
+		BB7E580821E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7E580621E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib */; };
 		BB7F3038203E857900185366 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302A203E857900185366 /* demo_1.jpg */; };
 		BB7F3039203E857900185366 /* demo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302B203E857900185366 /* demo_2.jpg */; };
 		BB7F303A203E857900185366 /* demo_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302C203E857900185366 /* demo_3.jpg */; };
@@ -140,6 +147,7 @@
 		BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */; };
 		BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */; };
 		BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC1114A20DB901D002B2293 /* DbCGRectExtensions.swift */; };
+		BBC1569A21DE0AA500484B26 /* TaoLaunch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBC1569921DE0AA500484B26 /* TaoLaunch.storyboard */; };
 		BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A44206DDE9500B11C7B /* FontAwesome.swift */; };
 		BBC38A50206DDE9500B11C7B /* FontLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A45206DDE9500B11C7B /* FontLoader.swift */; };
 		BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC38A46206DDE9500B11C7B /* Iconic.swift */; };
@@ -165,9 +173,7 @@
 		BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */; };
 		BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */; };
 		BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEF11F70CFE50028425E /* ViewController.swift */; };
-		BBD3CEF51F70CFE50028425E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CEF31F70CFE50028425E /* Main.storyboard */; };
 		BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CEF61F70CFE50028425E /* Assets.xcassets */; };
-		BBD3CEFA1F70CFE50028425E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CEF81F70CFE50028425E /* LaunchScreen.storyboard */; };
 		BBD3CF051F70CFE50028425E /* SwiftAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF041F70CFE50028425E /* SwiftAppTests.swift */; };
 		BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF101F70F80D0028425E /* RootViewController.swift */; };
 		BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF121F70F8480028425E /* DemoTableViewController.swift */; };
@@ -291,6 +297,13 @@
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLayoutViewCell.swift; sourceTree = "<group>"; };
 		BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskLayoutViewCell.xib; sourceTree = "<group>"; };
+		BB7E57F821E842CE005C3FA6 /* DemoEurekaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEurekaViewController.swift; sourceTree = "<group>"; };
+		BB7E57F921E842CE005C3FA6 /* DemoEurekaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoEurekaViewController.xib; sourceTree = "<group>"; };
+		BB7E57FF21E84A91005C3FA6 /* EurekaHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaHeader.xib; sourceTree = "<group>"; };
+		BB7E580121E84AD5005C3FA6 /* floatLabelRow.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = floatLabelRow.gif; sourceTree = "<group>"; };
+		BB7E580221E84AD5005C3FA6 /* xmartlabs-logo-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmartlabs-logo-1.png"; sourceTree = "<group>"; };
+		BB7E580521E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDecimalTextFieldViewController.swift; sourceTree = "<group>"; };
+		BB7E580621E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoDecimalTextFieldViewController.xib; sourceTree = "<group>"; };
 		BB7F302A203E857900185366 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
 		BB7F302B203E857900185366 /* demo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_2.jpg; sourceTree = "<group>"; };
 		BB7F302C203E857900185366 /* demo_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_3.jpg; sourceTree = "<group>"; };
@@ -353,6 +366,7 @@
 		BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUserDefaultsExtensions.swift; sourceTree = "<group>"; };
 		BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationExtensions.swift; sourceTree = "<group>"; };
 		BBC1114A20DB901D002B2293 /* DbCGRectExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbCGRectExtensions.swift; sourceTree = "<group>"; };
+		BBC1569921DE0AA500484B26 /* TaoLaunch.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = TaoLaunch.storyboard; sourceTree = "<group>"; };
 		BBC38A44206DDE9500B11C7B /* FontAwesome.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontAwesome.swift; sourceTree = "<group>"; };
 		BBC38A45206DDE9500B11C7B /* FontLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FontLoader.swift; sourceTree = "<group>"; };
 		BBC38A46206DDE9500B11C7B /* Iconic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Iconic.swift; sourceTree = "<group>"; };
@@ -379,7 +393,6 @@
 		BBD3CEEC1F70CFE50028425E /* SwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		BBD3CEF11F70CFE50028425E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		BBD3CEF41F70CFE50028425E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		BBD3CEF61F70CFE50028425E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BBD3CEF91F70CFE50028425E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BBD3CEFB1F70CFE50028425E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -466,6 +479,8 @@
 				BB5473162017885D0055CAD9 /* Swift-App */,
 				BB5E1427210B200A0059A8C4 /* AppEvn.swift */,
 				BBDDD5DA219D5DBE00AC4940 /* Demo-KeyboarbHandle */,
+				BB7E57FC21E842D6005C3FA6 /* Demo-Eureka */,
+				BB7E580921E857B5005C3FA6 /* Demo-DecimalTextField */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -627,6 +642,35 @@
 				BB35CE6F211A8B0100B88BEB /* DbMappable.swift */,
 			);
 			path = DemoUsing;
+			sourceTree = "<group>";
+		};
+		BB7E57FC21E842D6005C3FA6 /* Demo-Eureka */ = {
+			isa = PBXGroup;
+			children = (
+				BB7E57FE21E84A91005C3FA6 /* SupportView */,
+				BB7E57F821E842CE005C3FA6 /* DemoEurekaViewController.swift */,
+				BB7E57F921E842CE005C3FA6 /* DemoEurekaViewController.xib */,
+			);
+			path = "Demo-Eureka";
+			sourceTree = "<group>";
+		};
+		BB7E57FE21E84A91005C3FA6 /* SupportView */ = {
+			isa = PBXGroup;
+			children = (
+				BB7E580121E84AD5005C3FA6 /* floatLabelRow.gif */,
+				BB7E580221E84AD5005C3FA6 /* xmartlabs-logo-1.png */,
+				BB7E57FF21E84A91005C3FA6 /* EurekaHeader.xib */,
+			);
+			path = SupportView;
+			sourceTree = "<group>";
+		};
+		BB7E580921E857B5005C3FA6 /* Demo-DecimalTextField */ = {
+			isa = PBXGroup;
+			children = (
+				BB7E580521E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift */,
+				BB7E580621E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib */,
+			);
+			path = "Demo-DecimalTextField";
 			sourceTree = "<group>";
 		};
 		BB7F3029203E857900185366 /* Images */ = {
@@ -835,8 +879,8 @@
 		BBDD5E942011F38B0089DD32 /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
-				BBD3CEF31F70CFE50028425E /* Main.storyboard */,
 				BBD3CEF81F70CFE50028425E /* LaunchScreen.storyboard */,
+				BBC1569921DE0AA500484B26 /* TaoLaunch.storyboard */,
 			);
 			path = Storyboard;
 			sourceTree = "<group>";
@@ -1080,8 +1124,10 @@
 				BBE813FD2017458100B21B1F /* ic_show_password.png in Resources */,
 				BBDD9BA6207372B400217030 /* CategoriesViewController.xib in Resources */,
 				BB7F3042203E857900185366 /* main_gate.png in Resources */,
+				BB7E580421E84AD5005C3FA6 /* xmartlabs-logo-1.png in Resources */,
 				BBD3CF151F70F8480028425E /* DemoTableViewController.xib in Resources */,
 				BBC38A66206DDEE500B11C7B /* map-icons.ttf in Resources */,
+				BB7E57FB21E842CE005C3FA6 /* DemoEurekaViewController.xib in Resources */,
 				BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */,
 				BB7F303F203E857900185366 /* demo_6@2x.png in Resources */,
 				BBC02E6B1F71747A0011FDE6 /* OpenSans-Semibold.ttf in Resources */,
@@ -1099,6 +1145,7 @@
 				BBB569EF1F7BC8880014A7A9 /* TpPostsViewController.xib in Resources */,
 				BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */,
 				BBC38A63206DDEE500B11C7B /* FontAwesome.ttf in Resources */,
+				BBC1569A21DE0AA500484B26 /* TaoLaunch.storyboard in Resources */,
 				BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */,
 				BB26008A21D60FD100D5F41D /* demo.txt in Resources */,
@@ -1106,13 +1153,15 @@
 				BBC38A69206DDEE500B11C7B /* open-iconic.ttf in Resources */,
 				BBB569DF1F7B5B880014A7A9 /* TaskUpdateViewController.xib in Resources */,
 				BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */,
+				BB7E580821E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib in Resources */,
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
 				BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */,
+				BB7E580321E84AD5005C3FA6 /* floatLabelRow.gif in Resources */,
 				BBB569DB1F7B5B880014A7A9 /* TaskDetailViewController.xib in Resources */,
 				BB7F3043203E857900185366 /* main_gate@2x.png in Resources */,
-				BBD3CEFA1F70CFE50028425E /* LaunchScreen.storyboard in Resources */,
+				BB7E580021E84A91005C3FA6 /* EurekaHeader.xib in Resources */,
 				BB5756B7219E7C48000BDACD /* KBScrollViewViewController.xib in Resources */,
 				BB7F303B203E857900185366 /* demo_4.jpg in Resources */,
 				BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */,
@@ -1128,7 +1177,6 @@
 				BB7F303E203E857900185366 /* demo_6.png in Resources */,
 				BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */,
 				BBC02E6A1F71747A0011FDE6 /* OpenSans-Regular.ttf in Resources */,
-				BBD3CEF51F70CFE50028425E /* Main.storyboard in Resources */,
 				BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */,
 				BBC02E671F71747A0011FDE6 /* OpenSans-Italic.ttf in Resources */,
 				BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */,
@@ -1171,7 +1219,9 @@
 				"${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyPeasy/EasyPeasy.framework",
+				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatLabelRow/FloatLabelRow.framework",
 				"${BUILT_PRODUCTS_DIR}/INTULocationManager/INTULocationManager.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
@@ -1184,9 +1234,12 @@
 				"${BUILT_PRODUCTS_DIR}/RevealingSplashView/RevealingSplashView.framework",
 				"${BUILT_PRODUCTS_DIR}/SVPullToRefresh/SVPullToRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
+				"${BUILT_PRODUCTS_DIR}/SuggestionRow/SuggestionRow.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftLocation/SwiftLocation.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftMessages/SwiftMessages.framework",
 				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+				"${BUILT_PRODUCTS_DIR}/TableRow/TableRow.framework",
+				"${BUILT_PRODUCTS_DIR}/ViewRow/ViewRow.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
@@ -1199,7 +1252,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyPeasy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatLabelRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INTULocationManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
@@ -1212,9 +1267,12 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RevealingSplashView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVPullToRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SuggestionRow.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftLocation.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftMessages.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TableRow.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ViewRow.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1284,12 +1342,14 @@
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
 				BBC38A52206DDE9500B11C7B /* IonIcons.swift in Sources */,
+				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BB35CE70211A8B0100B88BEB /* DbMappable.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
+				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
 				BB5756B6219E7C48000BDACD /* KBScrollViewViewController.swift in Sources */,
 				BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */,
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
@@ -1413,14 +1473,6 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
-		BBD3CEF31F70CFE50028425E /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				BBD3CEF41F70CFE50028425E /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		BBD3CEF81F70CFE50028425E /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (

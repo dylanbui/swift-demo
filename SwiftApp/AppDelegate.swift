@@ -14,6 +14,8 @@ import IQKeyboardManagerSwift
 @UIApplicationMain
 class AppDelegate: DbAppDelegate {
 
+    // var window: UIWindow?
+    
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
 //        let config = Realm.Configuration(
@@ -47,7 +49,16 @@ class AppDelegate: DbAppDelegate {
         // ServiceUrl.shared.serverMode = ServerMode.DEV_CONFIG
         ServiceUrl.shared.serverMode = .DEV_CONFIG
         
-        return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+        // -- Call parent --
+        _ = super.application(application, didFinishLaunchingWithOptions: launchOptions)
+        
+        self.window = UIWindow(frame: UIScreen.main.bounds)
+        let nav: UINavigationController = UINavigationController(rootViewController: RootViewController())
+        self.window?.rootViewController = nav
+        self.window?.makeKeyAndVisible()
+        
+        return true
+        // return super.application(application, didFinishLaunchingWithOptions: launchOptions)
     }
     
     func initGolbalParams() -> Void

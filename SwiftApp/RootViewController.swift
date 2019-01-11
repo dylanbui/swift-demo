@@ -27,7 +27,7 @@ class RootViewController: UIViewController
 
         // Do any additional setup after loading the view.
         
-        let vcl = DemoTableViewController()
+//        let vcl = DemoTableViewController()
         //let vcl = TaskListViewController()
 //        let vcl = TpUsersViewController()
 //        let vcl = FirstViewController()
@@ -40,9 +40,11 @@ class RootViewController: UIViewController
 //        let vcl = StackScrollViewController()
 //        let vcl = KeyboarbHandleViewController()
 //        let vcl = KBScrollViewViewController()
+        let vcl = DemoDecimalTextFieldViewController()
+        // let vcl = DemoEurekaViewController()
         
         // -- An nut back --
-//        vcl.navigationItem.setHidesBackButton(true, animated:false)
+        vcl.navigationItem.setHidesBackButton(true, animated:false)
         // self.navigationController?.pushViewController(vcl, animated: false)
         self.navigationController?.db_pushOrReplaceToFirstViewController(vcl, animated: false)
         
@@ -70,7 +72,8 @@ class RootViewController: UIViewController
         
         
 //        Notification.add("DA_LOGIN_THANH_CONG", observer: self, selector: #selector(showMainViewController(_:)), object: nil)
-        
+        self.navigationItem.title = "Day la root view"
+        self.view.backgroundColor = UIColor.yellow
     }
     
     override func viewWillAppear(_ animated: Bool)

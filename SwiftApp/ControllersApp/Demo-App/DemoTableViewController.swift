@@ -69,28 +69,37 @@ class DemoTableViewController: DbViewController
 //            }
 //        }
         
-//        let myDog_1 = Student()
-//        myDog_1.id = 11
-//        myDog_1.firstName = "firstName 11"
-//        myDog_1.lastName = "lastName 11"
+        let myDog_1 = Student()
+        myDog_1.id = 11
+        myDog_1.firstName = "firstName 11"
+        myDog_1.lastName = "lastName 11"
         
 //        let serializedUser = Mapper().toJSONString(myDog_1)
 //        print(String(describing: myDog_1.toJSONString(prettyPrint: true)))
         
-//        myDog_1.save()
-//
-//
-//        let myDog_2 = Student()
-//        myDog_2.id = 12
-//        myDog_2.firstName = "firstName 12"
-//        myDog_2.lastName = "lastName 12"
-//        myDog_2.save()
-//
-//        let myDog_3 = Student()
-//        myDog_3.id = 13
-//        myDog_3.firstName = "firstName 13"
-//        myDog_3.lastName = "lastName 13"
-//        myDog_3.save()
+        myDog_1.save()
+
+
+        let myDog_2 = Student()
+        myDog_2.id = 12
+        myDog_2.firstName = "firstName 12"
+        myDog_2.lastName = "lastName 12"
+        myDog_2.save()
+
+        let myDog_3 = Student()
+        myDog_3.id = 13
+        myDog_3.firstName = "firstName 13"
+        myDog_3.lastName = "lastName 13"
+        myDog_3.save()
+        
+        let resultsStudent: [Student] = Student().sysnGetAll() as! [Student]
+        
+        print(resultsStudent.count)
+        for student: Student in resultsStudent {
+            print("\(student.firstName) - \(student.lastName)")
+        }
+        
+        
 //
 //        DbUtils.performAfter(delay: 2.0) {
 //            let myDog_4 = Student()
@@ -163,10 +172,9 @@ class DemoTableViewController: DbViewController
         
 
         // -- Define group task --
-        DbGroup()
-        let dispatchGroup = DispatchGroup()
-        
-        dispatchGroup.enter()
+//        let dispatchGroup = DispatchGroup()
+//
+//        dispatchGroup.enter()
         DbRealmManager.saveArrayObjects(T: self.toDoItems) { (success) in
             
             if success {
@@ -174,9 +182,12 @@ class DemoTableViewController: DbViewController
             } else {
                 print("Errpr: Save success")
             }
-            dispatchGroup.leave()
+//            dispatchGroup.leave()
         }
-        dispatchGroup.wait()
+//        dispatchGroup.wait()
+        
+        //Student().sysnGetAll()
+        
         
         DbRealmManager.getAllListOf(T: ToDoItem()) { (results) in
             print("results.count = \(String(describing: results.count))")
