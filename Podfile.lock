@@ -10,6 +10,9 @@ PODS:
   - DKImagePickerController/ImageManager (3.8.1)
   - DZNEmptyDataSet (1.8.1)
   - EasyPeasy (1.7.0)
+  - Eureka (4.3.1)
+  - FloatLabelRow (1.0.0):
+    - Eureka (>= 3.0)
   - FSCalendar (2.8.0)
   - INTULocationManager (4.3.2)
   - IQKeyboardManagerSwift (6.2.0)
@@ -43,6 +46,8 @@ PODS:
     - Realm (= 3.11.0)
   - RevealingSplashView (0.6.0)
   - SnapKit (4.0.1)
+  - SuggestionRow (2.2.0):
+    - Eureka (~> 4.0)
   - SVPullToRefresh (0.4.1)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
@@ -50,6 +55,10 @@ PODS:
     - SwiftMessages/App (= 6.0.0)
   - SwiftMessages/App (6.0.0)
   - SwiftyJSON (4.0.0)
+  - TableRow (0.3.1):
+    - Eureka (~> 4.3)
+  - ViewRow (0.3.0):
+    - Eureka (>= 4.0.0)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -59,6 +68,8 @@ DEPENDENCIES:
   - DKImagePickerController (= 3.8.1)
   - DZNEmptyDataSet (= 1.8.1)
   - EasyPeasy (= 1.7.0)
+  - Eureka
+  - FloatLabelRow (from `https://github.com/larsacus/FloatLabelRow`, branch `ExposeColorProperties`)
   - FSCalendar (= 2.8.0)
   - INTULocationManager (= 4.3.2)
   - IQKeyboardManagerSwift (= 6.2.0)
@@ -71,10 +82,13 @@ DEPENDENCIES:
   - RealmSwift (= 3.11.0)
   - RevealingSplashView (= 0.6.0)
   - SnapKit (= 4.0.1)
+  - SuggestionRow
   - SVPullToRefresh (= 0.4.1)
   - SwiftLocation (= 3.2.3)
   - SwiftMessages (= 6.0.0)
   - SwiftyJSON (= 4.0.0)
+  - TableRow
+  - ViewRow (from `https://github.com/EurekaCommunity/ViewRow`)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -85,6 +99,7 @@ SPEC REPOS:
     - DKImagePickerController
     - DZNEmptyDataSet
     - EasyPeasy
+    - Eureka
     - FSCalendar
     - INTULocationManager
     - IQKeyboardManagerSwift
@@ -97,10 +112,27 @@ SPEC REPOS:
     - RealmSwift
     - RevealingSplashView
     - SnapKit
+    - SuggestionRow
     - SVPullToRefresh
     - SwiftLocation
     - SwiftMessages
     - SwiftyJSON
+    - TableRow
+
+EXTERNAL SOURCES:
+  FloatLabelRow:
+    :branch: ExposeColorProperties
+    :git: https://github.com/larsacus/FloatLabelRow
+  ViewRow:
+    :git: https://github.com/EurekaCommunity/ViewRow
+
+CHECKOUT OPTIONS:
+  FloatLabelRow:
+    :commit: 14d37b60100b9d74b2b71c2e2cdc5d03e228fef3
+    :git: https://github.com/larsacus/FloatLabelRow
+  ViewRow:
+    :commit: 3a1d4a9d157f275ad3db12f6909974523ad564ee
+    :git: https://github.com/EurekaCommunity/ViewRow
 
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
@@ -110,6 +142,8 @@ SPEC CHECKSUMS:
   DKImagePickerController: 51ad6ee2ba05414bb741db54a72cd7f4fb178e34
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   EasyPeasy: 2f2785ed78c6f9e9045221f2ff317730e7321bff
+  Eureka: 28ea296f06710f6745266b71f17862048941a32d
+  FloatLabelRow: 3c512fc96bf24acc534100b2dfa0c670ff71ed45
   FSCalendar: 3a5ed3636e2ba1b83ebebfcf0c2603105a6f5efe
   INTULocationManager: e5dc524611b0cd582f473bc56cc8c389adb2f338
   IQKeyboardManagerSwift: b07ccf9d8cafe993dcd6cb794eb4ba34611a0c4e
@@ -122,11 +156,14 @@ SPEC CHECKSUMS:
   RealmSwift: 5f0481cd658bb751c509314b964a35eaa264d2cf
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
+  SuggestionRow: 694a6ed2fae513b4234bda76126eaffb287a732e
   SVPullToRefresh: ba2e718695a43253d8bea6852d2960097dc15d8c
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftMessages: da7c981256a65b3e58022d9027a36584cf4eccf5
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
+  TableRow: b5f19082db9e884e0ebab868035d57e7b19193c8
+  ViewRow: e278428ff53da5eab18b191d3e19a16f3e299fc1
 
-PODFILE CHECKSUM: 307d458b3cda0271b36e7f0009d62cc1c0a6ddd6
+PODFILE CHECKSUM: 9633d8e74425954553fc52f2603ec1b9f38dd1f0
 
-COCOAPODS: 1.6.0.beta.2
+COCOAPODS: 1.5.3

@@ -105,8 +105,46 @@ class DbRealmObject: Object, Mappable
         print("districtName = \(district.districtName)")
      }
      */
+    
+    func sysnGetAll(condition: String? = nil, order: String? = nil) -> [DbRealmObject]?
+    {
+        let results = DbRealmManager.fetchSysn(model: String(describing: self.classForCoder), condition: condition, order: order)
+        let arrayMutable : NSMutableArray = []
+        for T in results {
+            arrayMutable.add(T)
+        }
+        return (arrayMutable.copy() as! [DbRealmObject])
+    }
+    
+//    func sysnGetAll<T: DbRealmObject>(condition: String? = nil, order: String? = nil) -> Results<T>
+//    {
+        //DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: { (success) in })
+//        let Results = DbRealmManager.fetchSysn(model: String(describing: self.classForCoder), condition: condition, order: order)
+//
+//        let arrayMutable : NSMutableArray = []
+//        for T in Results {
+//            arrayMutable.add(T)
+//        }
+//        return (arrayMutable.copy() as! [DbRealmObject])
+        
+        // All object inside the model passed.
+//        let realm = try! Realm()
+//        var fetchedObjects = realm.objects(cls)
+//        if let cond = condition {
+//            // filters the result if condition exists
+//            fetchedObjects = fetchedObjects.filter(cond)
+//        }
+//        if let order = orderField {
+//            // sorted the result if orderField exists
+//            fetchedObjects = fetchedObjects.sorted(byKeyPath: order)
+//        }
+//        return fetchedObjects
+//    }
+    
     func getAll<T: DbRealmObject>(fromClass cls: T.Type, condition: String? = nil, orderField: String? = nil) -> Results<T>
     {
+        //var fetchedObjects = realm.objects(swiftClassFromString(className: model!) as! Object.Type)
+        
         // All object inside the model passed.
         let realm = try! Realm()
         var fetchedObjects = realm.objects(cls)
@@ -148,6 +186,7 @@ class DbRealmObject: Object, Mappable
     {
         // All object inside the model passed.
         let realm = try! Realm()
+      //var fetchedObjects = realm.objects(swiftClassFromString(className: model!) as! Object.Type)
         let fetchedObjects = realm.objects(type(of: self)).filter(cond)
         return fetchedObjects.count > 0 ? fetchedObjects.first : nil
     }

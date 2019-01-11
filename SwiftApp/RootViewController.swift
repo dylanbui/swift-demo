@@ -20,7 +20,7 @@ class RootViewController: UIViewController
     {
         super.viewDidLoad()
 //        self.navigationBarHiddenForThisController()
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
         
         // -- Save RootViewController --
 //        self.appDelegate.rootViewController = self
@@ -38,7 +38,10 @@ class RootViewController: UIViewController
 //        let vcl = PzLoginViewController()
 //        let vcl = PzListingViewController()
 //        let vcl = StackScrollViewController()
-        let vcl = KeyboarbHandleViewController()
+//        let vcl = KeyboarbHandleViewController()
+//        let vcl = KBScrollViewViewController()
+        let vcl = DemoDecimalTextFieldViewController()
+        // let vcl = DemoEurekaViewController()
         
         // -- An nut back --
         vcl.navigationItem.setHidesBackButton(true, animated:false)
@@ -69,7 +72,8 @@ class RootViewController: UIViewController
         
         
 //        Notification.add("DA_LOGIN_THANH_CONG", observer: self, selector: #selector(showMainViewController(_:)), object: nil)
-        
+        self.navigationItem.title = "Day la root view"
+        self.view.backgroundColor = UIColor.yellow
     }
     
     override func viewWillAppear(_ animated: Bool)

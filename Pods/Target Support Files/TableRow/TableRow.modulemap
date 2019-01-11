@@ -1,0 +1,6 @@
+framework module TableRow {
+  umbrella header "TableRow-umbrella.h"
+
+  export *
+  module * { export * }
+}

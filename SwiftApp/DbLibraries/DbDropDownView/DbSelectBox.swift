@@ -36,6 +36,12 @@ class DbSelectBox: UIControl
         }
     }
     
+    public var anchorView: UIView? {
+        didSet {
+            self.dropDownView.anchorView = self.anchorView
+        }
+    }
+    
     // Text
     public var font: String? {
         didSet {

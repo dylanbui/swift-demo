@@ -14,7 +14,6 @@ target 'SwiftApp' do
     pod 'SVPullToRefresh', '0.4.1'
     pod 'DZNEmptyDataSet', '1.8.1'
     
-    
     pod 'IQKeyboardManagerSwift', '6.2.0'
     pod 'SnapKit', '4.0.1' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
     pod 'ActionSheetPicker-3.0'
@@ -52,6 +51,7 @@ target 'SwiftApp' do
     pod 'APNumberPad', '1.2.2' # Use for DecimalTextField
     pod 'INTULocationManager', '4.3.2'
     pod 'FSCalendar', '2.8.0'
+    pod 'ActionSheetPicker-3.0' #, '2.3.0'
 
     # Libraries needed Swift 4
     #pod 'DKImagePickerController' #, '3.8.1' them nhieu thu vien '4.0.2'
@@ -64,6 +64,15 @@ target 'SwiftApp' do
     
     #pod 'StackScrollView', '1.2.0'
     pod 'EasyPeasy', '1.7.0'
+    
+    # => updated 10/01/2019, Eureka chay khong on dinh trong cac phien ban < ios 11
+    pod 'Eureka', '4.3.1'
+    # Eureka extensions : https://github.com/EurekaCommunity
+    # FloatLabelRow => bi trung file DecimalFormatter voi Eureka, phai delete no trong pod
+    pod 'FloatLabelRow', :git => 'https://github.com/larsacus/FloatLabelRow', :branch => 'ExposeColorProperties' # Version : 1.0.0
+    pod 'ViewRow', :git => 'https://github.com/EurekaCommunity/ViewRow' # Version : 0.3.0
+    pod 'TableRow', '0.3.1'
+    pod 'SuggestionRow', '2.2.0'
     
 
   # Pods for SwiftApp

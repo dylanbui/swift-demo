@@ -75,6 +75,20 @@ public struct DbDropDownViewTheme
                                separatorColor: UIColor.clear, font: UIFont.systemFont(ofSize: 10), fontColor: UIColor.white)
     }
     
+    public static func panelTheme() -> DbDropDownViewTheme
+    {
+        var theme = DbDropDownViewTheme(cellHeight: 40,
+                                        bgColor: UIColor.clear,
+                                        borderColor: UIColor.clear,
+                                        separatorColor: UIColor.clear, font: UIFont.systemFont(ofSize: 13), fontColor: UIColor.blue)
+        
+        theme.subtitleFont = UIFont.italicSystemFont(ofSize: 10)
+        theme.subtitleFontColor = UIColor.brown
+        theme.checkmarkColor = UIColor.red // User checkmark
+        theme.dismissableViewColor = UIColor.clear
+        return theme
+    }
+    
     public static func testTheme() -> DbDropDownViewTheme
     {
         var theme = DbDropDownViewTheme(cellHeight: 40,

@@ -24,7 +24,8 @@ private let dbSemiModalModalViewTag = 100032
 
 public enum DbSemiModalOption: String {
     case traverseParentHierarchy
-    case animationDuration
+    case animationDurationIn
+    case animationDurationOut
     case parentAlpha
     case shadowOpacity
     case contentYOffset
@@ -39,6 +40,7 @@ public enum DbSemiModalTransitionStyle: String {
     case slideDown
     case slideCenter
     case fadeInOutCenter
+    case limitTopToCenter
 }
 
 fileprivate class DbClosureWrapper: NSObject, NSCopying {
@@ -69,7 +71,8 @@ extension UIViewController {
     var db_defaultOptions: [DbSemiModalOption: Any] {
         return [
             .traverseParentHierarchy : true,
-            .animationDuration       : 0.3, // No effect if transitionStyle is : slideUp, slideDown, slideCenter. Only for overlay
+            .animationDurationIn     : 0.3, // No effect if transitionStyle is : slideUp, slideDown, slideCenter. Only for overlay
+            .animationDurationOut    : 0.3,
             .parentAlpha             : 0.5, // Effect alpha for overlay
             .shadowOpacity           : 0.0, // Shadow for view content
             .contentYOffset          : 0.0, // Y Offect
@@ -129,26 +132,36 @@ extension UIViewController {
 
 extension UIViewController
 {
-    public func db_presentBaseSemiView(_ view: UIView, transitionStyle: DbSemiModalTransitionStyle = .fadeInOutCenter)
+    public func db_presentModalSemiView(_ view: UIView, height: CGFloat? = nil)
+    {
+        let options: [DbSemiModalOption: Any] = [
+            DbSemiModalOption.transitionStyle: DbSemiModalTransitionStyle.limitTopToCenter,
+            DbSemiModalOption.animationDurationIn: 0.5,
+            DbSemiModalOption.animationDurationOut: 0.2,
+            // .contentYOffset : -50,
+        ]
+        
+        // -- Set height for view --
+        if let h = height {
+            view.height = h
+        }
+        
+        self.db_presentSemiView(view, options: options)
+    }
+    
+    public func db_presentBaseSemiView(_ view: UIView, height: CGFloat? = nil, transitionStyle: DbSemiModalTransitionStyle = .fadeInOutCenter)
     {
         let options: [DbSemiModalOption: Any] = [.transitionStyle: transitionStyle]
+        
+        // -- Set height for view --
+        if let h = height {
+            view.height = h
+        }
+        
         db_presentSemiView(view, options: options)
     }
     
-    public func db_presentSemiSheetView(_ view: UIView, height: CGFloat,
-                                        completion: (() -> Void)? = nil,
-                                        dismiss: (() -> Void)? = nil)
-    {
-        view.height = height
-        
-        db_presentSemiSheetView(view, completion: {
-            completion?()
-        }, dismiss: {
-            dismiss?()
-        })
-    }
-    
-    public func db_presentSemiSheetView(_ view: UIView,
+    public func db_presentSemiSheetView(_ view: UIView, height: CGFloat? = nil,
                                         completion: (() -> Void)? = nil,
                                         dismiss: (() -> Void)? = nil)
     {
@@ -157,6 +170,11 @@ extension UIViewController
             .contentYOffset : 10,
             .leftRightPadding : 5,
             ]
+        
+        // -- Set height for view --
+        if let h = height {
+            view.height = h
+        }
         
         db_presentSemiView(view, options: options, completionBlock: {
             completion?()
@@ -176,7 +194,8 @@ extension UIViewController
         vc.beginAppearanceTransition(true, animated: true)
         
         objc_setAssociatedObject(targetParentVC, &dbSemiModalViewController, vc, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
-        //        objc_setAssociatedObject(targetParentVC, &dbSemiModalDismissBlock, DbClosureWrapper(closure: dismissBlock), .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        objc_setAssociatedObject(targetParentVC, &dbSemiModalDismissBlock, DbClosureWrapper(closure: dismissBlock), .OBJC_ASSOCIATION_COPY_NONATOMIC)
+        
         //        db_presentSemiView(vc.view, options: options) {
         //            vc.didMove(toParentViewController: targetParentVC)
         //            vc.endAppearanceTransition()
@@ -184,7 +203,7 @@ extension UIViewController
         //            completionBlock?()
         //        }
         
-        db_presentSemiView(view, options: options, completionBlock: {
+        db_presentSemiView(vc.view, options: options, completionBlock: {
             vc.didMove(toParentViewController: targetParentVC)
             vc.endAppearanceTransition()
             
@@ -204,7 +223,7 @@ extension UIViewController
         let targetView = parentTargetView()
         let targetParentVC = parentTargetViewController()
         let transitionStyle = db_optionForKey(.transitionStyle) as! DbSemiModalTransitionStyle
-        var duration = db_optionForKey(.animationDuration) as! TimeInterval
+        var duration = db_optionForKey(.animationDurationIn) as! TimeInterval
         
         if targetView.subviews.contains(view) {
             return
@@ -224,18 +243,21 @@ extension UIViewController
         // -- Older --
         //        var semiViewFrame = CGRect(x: 0, y: targetView.height - semiViewHeight - contentYOffset,
         //                                   width: targetView.width, height: semiViewHeight)
-        var semiViewFrame = CGRect.zero
         
-        if transitionStyle == .slideUp {
+        // -- Frame after animation --
+        var semiViewFrame = CGRect.zero
+        if transitionStyle == .slideUp { // Bottom to Top
             semiViewFrame = CGRect(x: leftRightPadding,
-                                   y: targetView.height - semiViewHeight - contentYOffset,
+                                   y: (targetView.frame.size.height - semiViewHeight - contentYOffset - self.safeAreaBottomPadding()),
                                    width: targetView.width - (leftRightPadding*2),
                                    height: semiViewHeight)
         } else if transitionStyle == .slideDown {
-            semiViewFrame = CGRect(x: leftRightPadding, y: contentYOffset,
+            semiViewFrame = CGRect(x: leftRightPadding, y: (contentYOffset + self.safeAreaTopPadding()),
                                    width: targetView.width - (leftRightPadding*2),
                                    height: semiViewHeight)
-        } else if transitionStyle == .slideCenter || transitionStyle == .fadeInOutCenter{
+        } else if transitionStyle == .slideCenter
+            || transitionStyle == .fadeInOutCenter
+            || transitionStyle == .limitTopToCenter {
             // center
             semiViewFrame = CGRect(x: leftRightPadding,
                                    y: (targetView.height - semiViewHeight)/2 + contentYOffset,
@@ -244,8 +266,8 @@ extension UIViewController
         }
         
         // -- Debug --
-        print("view.frame = \(String(describing: view.frame))")
-        print("semiViewFrame = \(String(describing: semiViewFrame))")
+        //        print("view.frame = \(String(describing: view.frame))")
+        //        print("semiViewFrame = \(String(describing: semiViewFrame))")
         
         let overlay = overlayView()
         targetView.addSubview(overlay)
@@ -255,12 +277,15 @@ extension UIViewController
             screenshot.alpha = CGFloat(self.db_optionForKey(.parentAlpha) as! Double)
         })
         
+        // -- Frame before animation = frame after animtion sheet offsetBy --
         if transitionStyle == .slideUp {
             view.frame = semiViewFrame.offsetBy(dx: 0, dy: +semiViewHeight)
         } else if transitionStyle == .slideDown {
             view.frame = semiViewFrame.offsetBy(dx: 0, dy: -semiViewHeight)
         } else if transitionStyle == .slideCenter {
             view.frame = semiViewFrame.offsetBy(dx: 0, dy: (targetView.height-semiViewHeight)/2 + (semiViewHeight/2))
+        } else if transitionStyle == .limitTopToCenter {
+            view.frame = semiViewFrame.offsetBy(dx: 0, dy: -20)
         } else {
             view.frame = semiViewFrame
         }
@@ -282,7 +307,10 @@ extension UIViewController
         if transitionStyle == .slideUp
             || transitionStyle == .slideDown
             || transitionStyle == .slideCenter {
-            duration = 0.9 // Default for slide
+            if duration < 0.9 {
+                // Limit duration time for slide
+                duration = 0.9 // Default for slide
+            }
         }
         
         UIView.animate(withDuration: duration,
@@ -294,7 +322,8 @@ extension UIViewController
                         
                         if transitionStyle == .slideUp
                             || transitionStyle == .slideDown
-                            || transitionStyle == .slideCenter {
+                            || transitionStyle == .slideCenter
+                            || transitionStyle == .limitTopToCenter {
                             view.frame = semiViewFrame
                         }
                         view.alpha = 1
@@ -323,7 +352,7 @@ extension UIViewController
             , let modal = targetView.viewWithTag(dbSemiModalModalViewTag)
             , let overlay = targetView.viewWithTag(dbSemiModalOverlayTag)
             , let transitionStyle = db_optionForKey(.transitionStyle) as? DbSemiModalTransitionStyle
-            , let duration = db_optionForKey(.animationDuration) as? TimeInterval else { return }
+            , let duration = db_optionForKey(.animationDurationOut) as? TimeInterval else { return }
         
         let vc = objc_getAssociatedObject(targetVC, &dbSemiModalViewController) as? UIViewController
         let dismissBlock = (objc_getAssociatedObject(targetVC, &dbSemiModalDismissBlock) as? DbClosureWrapper)?.closure
@@ -449,6 +478,26 @@ extension UIViewController
             overlay.addGestureRecognizer(tapGesture)
         }
         return overlay
+    }
+    
+    fileprivate func safeAreaBottomPadding() -> CGFloat {
+        var bottomPadding: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            bottomPadding = window?.safeAreaInsets.bottom ?? 0
+            return bottomPadding
+        }
+        return 0
+    }
+    
+    fileprivate func safeAreaTopPadding() -> CGFloat {
+        var topPadding: CGFloat = 0
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            topPadding = window?.safeAreaInsets.top ?? 20
+            return topPadding
+        }
+        return 20
     }
     
 }

@@ -55,6 +55,8 @@ class ViewController: UIViewController
 //        }
 //        )
         
+        self.navigationItem.title = "cai gi dayyyy"
+        self.view.backgroundColor = UIColor.red
         
     }
 

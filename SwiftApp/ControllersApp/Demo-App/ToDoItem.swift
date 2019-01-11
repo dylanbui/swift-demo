@@ -12,19 +12,37 @@ import RealmSwift
 
 class ToDoItem: Object
 {
+    @objc dynamic var id: Int = -1
+    
     @objc dynamic var title: String = ""
     @objc dynamic var detail: String = ""
     @objc dynamic var createDate = Date()
-    
-//    var text: String = ""
     @objc dynamic var complete: Bool = false
+    
+    override class func primaryKey() -> String?
+    {
+        return "id"
+    }
+    
+    convenience init(id: Int, text: String)
+    {
+        self.init()
+        self.id = id
+        self.title = text
+        self.detail = "Detail : ==> " + text
+        self.complete = false
+    }
     
 //    init(text: String) {
 //        super.init()
-////        self.text = text
+//        self.title = text
 //        self.complete = false
 //    }
 //
+//    required init() {
+//        fatalError("init() has not been implemented")
+//    }
+    //
 //    init(frame: CGRect) {
 //        super.init()
 //    }
