@@ -8,13 +8,6 @@
 
 import Eureka
 
-/// A row where the user can enter a decimal number.
-//public final class CustomDecimalRow: _DecimalRow, RowType {
-//    required public init(tag: String?) {
-//        super.init(tag: tag)
-//    }
-//}
-
 class CustomDecimalCell: _FieldCell<Double>, CellType
 {
     var decimalSeparator: String! = "." // Default
@@ -26,26 +19,32 @@ class CustomDecimalCell: _FieldCell<Double>, CellType
     private var numberFormatter: NumberFormatter!
 
     
-    required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
+    {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    required public init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder)
+    {
         super.init(coder: aDecoder)
     }
     
-    open override func setup() {
+    open override func setup()
+    {
         super.setup()
-        textField.autocorrectionType = .no
-        textField.keyboardType = .decimalPad
-        
-        // textField.addTarget(self, action: #selector(self.textFieldDidChanged), for: .editingChanged)
         
         guard let fieldRow = row as? FieldRowConformance, let formatter = fieldRow.formatter as? NumberFormatter else {
             return
         }
 
         numberFormatter = formatter
+        
+        // -- Config keyboard format --
+        textField.autocorrectionType = .no
+        textField.keyboardType = .decimalPad
+        if numberFormatter.maximumFractionDigits == 0 {
+            textField.keyboardType = .numberPad
+        }
         
         self.groupingSeparator = self.numberFormatter.groupingSeparator
         self.decimalSeparator = self.numberFormatter.decimalSeparator
@@ -59,22 +58,14 @@ class CustomDecimalCell: _FieldCell<Double>, CellType
         }
     }
     
-    func setDecimalValue(_ value: Double) -> Void
+    override func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool
     {
-        var textFieldText = String(value)
-        textFieldText = textFieldText.replacingOccurrences(of: ".", with: self.decimalSeparator)
-        textField.text = self.reformatDecimalValue(textFieldText)
-    }
-    
-    func getDecimalValue() -> Double?
-    {
-        guard let str = textField.text else {
-            return nil
+        // -- Format value --
+        if let val = row.value {
+            self.setDecimalValue(val)
         }
-
-        var returnStr = str.replacingOccurrences(of: self.groupingSeparator, with: "")
-        returnStr = returnStr.replacingOccurrences(of: self.decimalSeparator, with: ".")
-        return Double(returnStr)!
+        
+        return true
     }
     
     override func textFieldDidChange(_ textField: UITextField)
@@ -83,14 +74,28 @@ class CustomDecimalCell: _FieldCell<Double>, CellType
             row.value = nil
             return
         }
-//        guard let fieldRow = row as? FieldRowConformance, let formatter = fieldRow.formatter else {
-//            row.value = textValue.isEmpty ? nil : (Double.init(string: textValue) ?? row.value)
-//            return
-//        }
         
         textField.text = self.reformatDecimalValue(textValue)
         
         row.value = self.getDecimalValue()
+    }
+    
+    private func setDecimalValue(_ value: Double) -> Void
+    {
+        var textFieldText = String(value)
+        textFieldText = textFieldText.replacingOccurrences(of: ".", with: self.decimalSeparator)
+        textField.text = self.reformatDecimalValue(textFieldText)
+    }
+    
+    private func getDecimalValue() -> Double?
+    {
+        guard let str = textField.text, !str.isEmpty else {
+            return nil
+        }
+        
+        var returnStr = str.replacingOccurrences(of: self.groupingSeparator, with: "")
+        returnStr = returnStr.replacingOccurrences(of: self.decimalSeparator, with: ".")
+        return Double(returnStr)!
     }
     
     private func reformatDecimalValue(_ decimalString: String) -> String
@@ -105,8 +110,8 @@ class CustomDecimalCell: _FieldCell<Double>, CellType
         
         textFieldText = self.numberFormatter?.string(for: Double(textFieldText)) ?? ""
         
-        if arrSplit.count > 1 {
-            //if self.textFieldType == .Decimal && arrSplit.count > 1 {
+        // -- maximumFractionDigits > 0 --
+        if arrSplit.count > 1 && numberFormatter.maximumFractionDigits > 0 {
             var decimalPart = arrSplit[1]
             // -- Limit Decimal Size --
             if decimalPart.count > self.decimalSize {
@@ -117,11 +122,6 @@ class CustomDecimalCell: _FieldCell<Double>, CellType
         
         return textFieldText
     }
-    
-//    @objc func textFieldDidChanged(_ theTextField: UITextField) -> Void
-//    {
-//
-//    }
 }
 
 final class CustomDecimalRow: FieldRow<CustomDecimalCell>, RowType
@@ -131,9 +131,22 @@ final class CustomDecimalRow: FieldRow<CustomDecimalCell>, RowType
         let numberFormatter = NumberFormatter()
         numberFormatter.locale = Locale.current
         numberFormatter.numberStyle = .decimal
-        //numberFormatter.minimumFractionDigits = 2
         numberFormatter.maximumIntegerDigits = 15
         numberFormatter.maximumFractionDigits = 2
+        
+        formatter = numberFormatter
+    }
+}
+
+final class CustomIntegerRow: FieldRow<CustomDecimalCell>, RowType
+{
+    public required init(tag: String?) {
+        super.init(tag: tag)
+        let numberFormatter = NumberFormatter()
+        numberFormatter.locale = Locale.current
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumIntegerDigits = 15
+        numberFormatter.maximumFractionDigits = 0
         
         formatter = numberFormatter
     }

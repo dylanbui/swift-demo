@@ -195,6 +195,12 @@
 		BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */; };
 		BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */; };
 		BBDDD5DE219D653200AC4940 /* KBBottomBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */; };
+		BBE6FA6621EC63CE0030AA64 /* CustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6521EC63CE0030AA64 /* CustomPickerRow.swift */; };
+		BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6821EC9A700030AA64 /* UIGestureRecognizer+Closures.swift */; };
+		BBE6FA6E21EC9A700030AA64 /* DbClosureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6921EC9A700030AA64 /* DbClosureHandler.swift */; };
+		BBE6FA6F21EC9A700030AA64 /* UIView+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6A21EC9A700030AA64 /* UIView+Closures.swift */; };
+		BBE6FA7021EC9A700030AA64 /* UIBarButtonItem+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6B21EC9A700030AA64 /* UIBarButtonItem+Closures.swift */; };
+		BBE6FA7121EC9A700030AA64 /* UIControl+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6C21EC9A700030AA64 /* UIControl+Closures.swift */; };
 		BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */; };
 		BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */; };
 		BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */; };
@@ -421,6 +427,12 @@
 		BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboarbHandleViewController.xib; sourceTree = "<group>"; };
 		BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBottomBarView.swift; sourceTree = "<group>"; };
 		BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBBottomBarView.xib; sourceTree = "<group>"; };
+		BBE6FA6521EC63CE0030AA64 /* CustomPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerRow.swift; sourceTree = "<group>"; };
+		BBE6FA6821EC9A700030AA64 /* UIGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
+		BBE6FA6921EC9A700030AA64 /* DbClosureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbClosureHandler.swift; sourceTree = "<group>"; };
+		BBE6FA6A21EC9A700030AA64 /* UIView+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Closures.swift"; sourceTree = "<group>"; };
+		BBE6FA6B21EC9A700030AA64 /* UIBarButtonItem+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Closures.swift"; sourceTree = "<group>"; };
+		BBE6FA6C21EC9A700030AA64 /* UIControl+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Closures.swift"; sourceTree = "<group>"; };
 		BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTableViewCell.swift; sourceTree = "<group>"; };
 		BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DbAssets.xcassets; sourceTree = "<group>"; };
 		BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordField.swift"; sourceTree = "<group>"; };
@@ -499,6 +511,7 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
+				BBE6FA6721EC9A700030AA64 /* DbClosureUIControl.swift */,
 				BB26008121D60FD000D5F41D /* DbActionSheetPicker */,
 				BB26008321D60FD000D5F41D /* DbDropDownView */,
 				BB2FE66D2192C43F007470DD /* DbSemiModalViewController */,
@@ -945,6 +958,19 @@
 			path = "ObjC-Libraries";
 			sourceTree = "<group>";
 		};
+		BBE6FA6721EC9A700030AA64 /* DbClosureUIControl.swift */ = {
+			isa = PBXGroup;
+			children = (
+				BBE6FA6821EC9A700030AA64 /* UIGestureRecognizer+Closures.swift */,
+				BBE6FA6921EC9A700030AA64 /* DbClosureHandler.swift */,
+				BBE6FA6A21EC9A700030AA64 /* UIView+Closures.swift */,
+				BBE6FA6B21EC9A700030AA64 /* UIBarButtonItem+Closures.swift */,
+				BBE6FA6C21EC9A700030AA64 /* UIControl+Closures.swift */,
+			);
+			name = DbClosureUIControl.swift;
+			path = ../../../PropzySam/PropzySam/DbLibraries/DbClosureUIControl.swift;
+			sourceTree = "<group>";
+		};
 		BBE813EC2016EB0600B21B1F /* BaseUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -988,6 +1014,7 @@
 			children = (
 				BBE813F62017211A00B21B1F /* DecimalTextField.swift */,
 				BB7E580A21E8AC8B005C3FA6 /* CustomDecimalRow.swift */,
+				BBE6FA6521EC63CE0030AA64 /* CustomPickerRow.swift */,
 			);
 			path = DecimalTextField;
 			sourceTree = "<group>";
@@ -1346,6 +1373,7 @@
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
 				BBC38A52206DDE9500B11C7B /* IonIcons.swift in Sources */,
+				BBE6FA7121EC9A700030AA64 /* UIControl+Closures.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
@@ -1363,6 +1391,7 @@
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
+				BBE6FA6621EC63CE0030AA64 /* CustomPickerRow.swift in Sources */,
 				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,
 				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
@@ -1375,6 +1404,7 @@
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
 				BB228A502108302A00C5C6AA /* Actor.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
+				BBE6FA6E21EC9A700030AA64 /* DbClosureHandler.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */,
 				BBC38A50206DDE9500B11C7B /* FontLoader.swift in Sources */,
@@ -1383,6 +1413,7 @@
 				BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */,
 				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
+				BBE6FA7021EC9A700030AA64 /* UIBarButtonItem+Closures.swift in Sources */,
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
@@ -1395,6 +1426,7 @@
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
 				BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */,
+				BBE6FA6F21EC9A700030AA64 /* UIView+Closures.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
 				BB4E2369210EBD1F00524B0D /* UserSession.swift in Sources */,
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
@@ -1417,6 +1449,7 @@
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
+				BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */,
 				BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,

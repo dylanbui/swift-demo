@@ -40,8 +40,8 @@ class RootViewController: UIViewController
 //        let vcl = StackScrollViewController()
 //        let vcl = KeyboarbHandleViewController()
 //        let vcl = KBScrollViewViewController()
-        let vcl = DemoDecimalTextFieldViewController()
-        // let vcl = DemoEurekaViewController()
+        // let vcl = DemoDecimalTextFieldViewController()
+        let vcl = DemoEurekaViewController()
         
         // -- An nut back --
         vcl.navigationItem.setHidesBackButton(true, animated:false)

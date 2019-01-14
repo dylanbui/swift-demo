@@ -39,6 +39,14 @@ class DemoEurekaViewController: FormViewController
                     let yourViewController =  FormatterExample()
                     return yourViewController
                 }), onDismiss:nil)
+            }
+            <<< ButtonRow("Custom Formatters examples") { (row: ButtonRow) -> Void in
+                row.title = row.tag
+                row.presentationMode = .show(controllerProvider: .callback(builder: {
+                    // instantiate viewController
+                    let yourViewController =  DecimalFormatterExample()
+                    return yourViewController
+                }), onDismiss:nil)
         }
     }
 
@@ -152,7 +160,24 @@ class FormatterExample : FormViewController {
                 formatter.locale = .current
                 formatter.numberStyle = .currency
                 $0.formatter = formatter
+            }
+            
+            <<< CustomDecimalRow() {
+                $0.title = "Weight: Kg to lb"
+                $0.value = 1000.25
+            }
+
+            <<< CustomIntegerRow() {
+                $0.title = "CustomIntegerRow"
+                $0.value = 1000.0
+            }
+
+            <<< CustomIntegerRow() {
+                $0.title = "CustomIntegerRow"
+                $0.value = 2000
         }
+
+        
     }
     
     class CurrencyFormatter : NumberFormatter, FormatterProtocol {
@@ -170,3 +195,86 @@ class FormatterExample : FormViewController {
     }
     
 }
+
+
+//MARK: Class FormatterExample - Native and Custom formatters
+class DecimalFormatterExample : FormViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        form +++
+            Section(header: "Number formatters", footer: "Native formatters")
+            
+            <<< CustomDecimalRow() {
+                $0.title = "Weight: Kg to lb"
+                $0.value = 1000.25
+            }
+            
+            <<< CustomIntegerRow() {
+                $0.title = "CustomIntegerRow"
+                $0.value = 1000.0
+            }
+            
+            <<< CustomIntegerRow() {
+                $0.title = "CustomIntegerRow"
+                $0.value = 2000
+            }
+            
+            +++ Section(header: "Custom formatter", footer: "Custom formatter: CurrencyFormatter")
+            
+            <<< LabelRow() {
+                $0.title = "LabelRow"
+                $0.value = "Val = 1000.0"
+            }
+            <<< LabelRow() {
+                $0.title = "LabelRow"
+                $0.value = "Val = 1000.0"
+            }
+            <<< LabelRow() {
+                $0.title = "LabelRow"
+                $0.value = "Val = 1000.0"
+            }
+
+            
+            
+            <<< TextRow("address") {
+                $0.title = "Số nhà"
+                $0.placeholder = "Nhập số nhà, đường"
+                // $0.value = "Val = 1000.0"
+            }
+            
+            <<< LabelRow() {
+                $0.title = "LabelRow"
+                $0.value = "Val = 1234567890"
+            }
+        
+            <<< CustomPickerRow("myROWPHUONG") {
+                $0.title = "Chon phuong"
+                $0.placeholder = "Selector"
+                let selected = CustomPickerItem(id: 3, title: "gia tri 3", desc: "content 3")
+                $0.value = selected.title
+                $0.cell.itemSelected = selected
+                $0.cell.arrSources = [
+                    CustomPickerItem(id: 1, title: "gia tri 1", desc: "content 1"),
+                    CustomPickerItem(id: 2, title: "gia tri 2", desc: "content 2"),
+                    CustomPickerItem(id: 3, title: "gia tri 3", desc: "content 3")]
+                }
+                
+                .cellSetup({ (cell, row) in
+                    
+                })
+                
+                .onChange({ (row) in
+                    // -- Su dung duoc --
+                    // row.select(animated: true, scrollPosition: .middle)
+                    print("\(String(describing: row.value))")
+                    //print("row.value! = \(row.value!)")
+                })
+
+
+    }
+    
+    
+}
+
