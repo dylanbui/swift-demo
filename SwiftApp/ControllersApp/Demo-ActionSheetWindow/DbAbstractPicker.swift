@@ -10,18 +10,18 @@ import UIKit
 
 
 public protocol DbPickerFieldDelegate:class{
-    func pickerField(didOKClick pickerField:PickerField)
-    func pickerField(didCancelClick pickerField:PickerField)
-    func pickerField(didShowPicker pickerField:PickerField)
-    func pickerField(didHidePicker pickerField:PickerField)
+    func pickerField(didOKClick pickerField:Any)
+    func pickerField(didCancelClick pickerField:Any)
+    func pickerField(didShowPicker pickerField:Any)
+    func pickerField(didHidePicker pickerField:Any)
     //func pickerField(didTap pickerField:PickerField)
 }
 
 public extension DbPickerFieldDelegate{
-    func pickerField(didOKClick pickerField:PickerField){}
-    func pickerField(didCancelClick pickerField:PickerField){}
-    func pickerField(didShowPicker pickerField:PickerField){}
-    func pickerField(didHidePicker pickerField:PickerField){}
+    func pickerField(didOKClick pickerField:Any){}
+    func pickerField(didCancelClick pickerField:Any){}
+    func pickerField(didShowPicker pickerField:Any){}
+    func pickerField(didHidePicker pickerField:Any){}
     // func pickerField(didTap pickerField:PickerField){}
 }
 
@@ -39,10 +39,12 @@ public class DbAbstractPicker: NSObject
     private(set) public var datePicker:UIDatePicker?
     private(set) public var tableView:UITableView?
     private(set) public var collectionView:UICollectionView?
+    
     private(set) public var containerView:UIView?
     private(set) public var contentView:UIView?
     private(set) public var okButton:UIButton?
     private(set)  public var cancelButton:UIButton?
+    
     private(set)  public var isShown=false
     
     private(set)  public var titleLabel:UILabel?{
@@ -68,8 +70,9 @@ public class DbAbstractPicker: NSObject
 //
 //        }()
     
+    public weak var anchorControl: UIView?
     
-    public  weak var pickerFieldDelegate: DbPickerFieldDelegate?
+    public weak var pickerFieldDelegate: DbPickerFieldDelegate?
     public var type: DbPickerFieldType = .none{
         didSet{
             
@@ -126,8 +129,15 @@ public class DbAbstractPicker: NSObject
     private var bottomSectionHeightConstraint:NSLayoutConstraint?
     private var seperatorHeightConstraint:NSLayoutConstraint?
     
-    init() {
+    override init() {
+        super.init()
         commonInit()
+    }
+    
+    convenience init(WithAnchor anchor: UIView)
+    {
+        self.init()
+        self.anchorControl = anchor
     }
     
 //    override public init(frame: CGRect) {
@@ -278,13 +288,13 @@ public class DbAbstractPicker: NSObject
     @objc fileprivate func didOKTap()
     {
         dismiss()
-        // self.pickerFieldDelegate?.pickerField(didOKClick: self)
+         self.pickerFieldDelegate?.pickerField(didOKClick: self)
     }
     
     @objc fileprivate func didCancelTap()
     {
         dismiss()
-        // self.pickerFieldDelegate?.pickerField(didCancelClick: self)
+         self.pickerFieldDelegate?.pickerField(didCancelClick: self)
     }
     
     private func getViewController() -> UIViewController?
@@ -293,7 +303,13 @@ public class DbAbstractPicker: NSObject
             return vc
         }
         
-        var responder: UIResponder? = self
+        // -- Neu khong co anchor thi lay rootViewController --
+        if self.anchorControl == nil {
+            self.viewController = UIApplication.shared.keyWindow?.rootViewController
+            return self.viewController
+        }
+        
+        var responder: UIResponder? = self.anchorControl
         while !(responder is UIViewController) {
             responder = responder?.next
             if nil == responder {
@@ -363,18 +379,18 @@ public class DbAbstractPicker: NSObject
         
         isShown=true
         
-//        if let popoverController = alert.popoverPresentationController {
-//            popoverController.sourceView = self
-//            popoverController.sourceRect = self.bounds
-//        }
+        if let popoverController = alert.popoverPresentationController, let anchor = self.anchorControl {
+            popoverController.sourceView = anchor
+            popoverController.sourceRect = anchor.bounds
+        }
         
         getViewController()?.present(alert, animated: true, completion: { [weak self] in
             
-            guard let unSelf = self  , unSelf.cancelWhenTouchUpOutside else {
+            guard let unSelf = self, unSelf.cancelWhenTouchUpOutside else {
                 return
             }
             
-//            unSelf.pickerFieldDelegate?.pickerField(didShowPicker: unSelf)
+            unSelf.pickerFieldDelegate?.pickerField(didShowPicker: unSelf)
             
             if let ousideView=unSelf.alert!.view.superview?.subviews.first {
                 ousideView.isUserInteractionEnabled = true
@@ -395,7 +411,7 @@ public class DbAbstractPicker: NSObject
             guard let unSelf = self  else{
                 return
             }
-            //unSelf.pickerFieldDelegate?.pickerField(didHidePicker: unSelf)
+            unSelf.pickerFieldDelegate?.pickerField(didHidePicker: unSelf)
         }
     }
 }
