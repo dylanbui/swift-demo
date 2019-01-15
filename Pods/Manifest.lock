@@ -68,7 +68,7 @@ DEPENDENCIES:
   - DKImagePickerController (= 3.8.1)
   - DZNEmptyDataSet (= 1.8.1)
   - EasyPeasy (= 1.7.0)
-  - Eureka
+  - Eureka (= 4.3.1)
   - FloatLabelRow (from `https://github.com/larsacus/FloatLabelRow`, branch `ExposeColorProperties`)
   - FSCalendar (= 2.8.0)
   - INTULocationManager (= 4.3.2)
@@ -82,12 +82,12 @@ DEPENDENCIES:
   - RealmSwift (= 3.11.0)
   - RevealingSplashView (= 0.6.0)
   - SnapKit (= 4.0.1)
-  - SuggestionRow
+  - SuggestionRow (= 2.2.0)
   - SVPullToRefresh (= 0.4.1)
   - SwiftLocation (= 3.2.3)
   - SwiftMessages (= 6.0.0)
   - SwiftyJSON (= 4.0.0)
-  - TableRow
+  - TableRow (= 0.3.1)
   - ViewRow (from `https://github.com/EurekaCommunity/ViewRow`)
 
 SPEC REPOS:
@@ -164,6 +164,6 @@ SPEC CHECKSUMS:
   TableRow: b5f19082db9e884e0ebab868035d57e7b19193c8
   ViewRow: e278428ff53da5eab18b191d3e19a16f3e299fc1
 
-PODFILE CHECKSUM: 9633d8e74425954553fc52f2603ec1b9f38dd1f0
+PODFILE CHECKSUM: 23849c0c4a308d54f3dbce4c0eb7b7ecab5a1358
 
 COCOAPODS: 1.5.3

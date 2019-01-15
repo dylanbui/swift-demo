@@ -14,12 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-<<<<<<< HEAD
-               BlueprintIdentifier = "ACCA499502561097C4ECA9D857A37642"
-=======
                BlueprintIdentifier = "513F1C9129BFA9F775FCE2EF558B647B"
                BuildableName = "SwiftLocation.framework"
->>>>>>> d27e71e2a603b49d5fa8728dea52e26c21be8ab7
                BlueprintName = "SwiftLocation"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>

@@ -85,7 +85,6 @@
 		BB7E580421E84AD5005C3FA6 /* xmartlabs-logo-1.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7E580221E84AD5005C3FA6 /* xmartlabs-logo-1.png */; };
 		BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E580521E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift */; };
 		BB7E580821E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7E580621E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib */; };
-		BB7E580B21E8AC8B005C3FA6 /* CustomDecimalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E580A21E8AC8B005C3FA6 /* CustomDecimalRow.swift */; };
 		BB7F3038203E857900185366 /* demo_1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302A203E857900185366 /* demo_1.jpg */; };
 		BB7F3039203E857900185366 /* demo_2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302B203E857900185366 /* demo_2.jpg */; };
 		BB7F303A203E857900185366 /* demo_3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB7F302C203E857900185366 /* demo_3.jpg */; };
@@ -104,6 +103,9 @@
 		BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887DBC203EA05700DFC060 /* NetworkViewController.swift */; };
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
 		BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */; };
+		BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0B521ED9AEF004BC430 /* CustomDecimalRow.swift */; };
+		BB9BC0B821ED9AF0004BC430 /* CustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0B621ED9AEF004BC430 /* CustomPickerRow.swift */; };
+		BB9BC0BB21ED9B19004BC430 /* WindowActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0BA21ED9B18004BC430 /* WindowActionSheet.swift */; };
 		BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4362117FB8500618AEF /* PzListing.swift */; };
 		BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4382117FBA000618AEF /* PzListingItem.swift */; };
 		BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A43A2117FC6000618AEF /* PzListingApi.swift */; };
@@ -195,7 +197,6 @@
 		BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */; };
 		BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */; };
 		BBDDD5DE219D653200AC4940 /* KBBottomBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */; };
-		BBE6FA6621EC63CE0030AA64 /* CustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6521EC63CE0030AA64 /* CustomPickerRow.swift */; };
 		BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6821EC9A700030AA64 /* UIGestureRecognizer+Closures.swift */; };
 		BBE6FA6E21EC9A700030AA64 /* DbClosureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6921EC9A700030AA64 /* DbClosureHandler.swift */; };
 		BBE6FA6F21EC9A700030AA64 /* UIView+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6A21EC9A700030AA64 /* UIView+Closures.swift */; };
@@ -311,7 +312,6 @@
 		BB7E580221E84AD5005C3FA6 /* xmartlabs-logo-1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "xmartlabs-logo-1.png"; sourceTree = "<group>"; };
 		BB7E580521E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDecimalTextFieldViewController.swift; sourceTree = "<group>"; };
 		BB7E580621E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoDecimalTextFieldViewController.xib; sourceTree = "<group>"; };
-		BB7E580A21E8AC8B005C3FA6 /* CustomDecimalRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomDecimalRow.swift; sourceTree = "<group>"; };
 		BB7F302A203E857900185366 /* demo_1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_1.jpg; sourceTree = "<group>"; };
 		BB7F302B203E857900185366 /* demo_2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_2.jpg; sourceTree = "<group>"; };
 		BB7F302C203E857900185366 /* demo_3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = demo_3.jpg; sourceTree = "<group>"; };
@@ -330,6 +330,9 @@
 		BB887DBC203EA05700DFC060 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
 		BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMMDrawerController.swift; sourceTree = "<group>"; };
+		BB9BC0B521ED9AEF004BC430 /* CustomDecimalRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDecimalRow.swift; sourceTree = "<group>"; };
+		BB9BC0B621ED9AEF004BC430 /* CustomPickerRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerRow.swift; sourceTree = "<group>"; };
+		BB9BC0BA21ED9B18004BC430 /* WindowActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowActionSheet.swift; sourceTree = "<group>"; };
 		BBA2A4362117FB8500618AEF /* PzListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListing.swift; sourceTree = "<group>"; };
 		BBA2A4382117FBA000618AEF /* PzListingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingItem.swift; sourceTree = "<group>"; };
 		BBA2A43A2117FC6000618AEF /* PzListingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingApi.swift; sourceTree = "<group>"; };
@@ -427,7 +430,6 @@
 		BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboarbHandleViewController.xib; sourceTree = "<group>"; };
 		BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBottomBarView.swift; sourceTree = "<group>"; };
 		BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBBottomBarView.xib; sourceTree = "<group>"; };
-		BBE6FA6521EC63CE0030AA64 /* CustomPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomPickerRow.swift; sourceTree = "<group>"; };
 		BBE6FA6821EC9A700030AA64 /* UIGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
 		BBE6FA6921EC9A700030AA64 /* DbClosureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbClosureHandler.swift; sourceTree = "<group>"; };
 		BBE6FA6A21EC9A700030AA64 /* UIView+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Closures.swift"; sourceTree = "<group>"; };
@@ -484,6 +486,7 @@
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB9BC0B921ED9B18004BC430 /* Demo-ActionSheetWindow */,
 				BB4E235E210EBC6400524B0D /* Propzy-SAM */,
 				BBDD9B9E2073323000217030 /* Demo-PropzyNetwork */,
 				BB1079442071D72C00A99D9A /* Demo-Button-Label-Textfield */,
@@ -662,6 +665,7 @@
 		BB7E57FC21E842D6005C3FA6 /* Demo-Eureka */ = {
 			isa = PBXGroup;
 			children = (
+				BB9BC0B421ED9AEF004BC430 /* Custom-Control-Propzy */,
 				BB7E57FE21E84A91005C3FA6 /* SupportView */,
 				BB7E57F821E842CE005C3FA6 /* DemoEurekaViewController.swift */,
 				BB7E57F921E842CE005C3FA6 /* DemoEurekaViewController.xib */,
@@ -707,6 +711,23 @@
 				BB7F3037203E857900185366 /* main_gate_img@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		BB9BC0B421ED9AEF004BC430 /* Custom-Control-Propzy */ = {
+			isa = PBXGroup;
+			children = (
+				BB9BC0B521ED9AEF004BC430 /* CustomDecimalRow.swift */,
+				BB9BC0B621ED9AEF004BC430 /* CustomPickerRow.swift */,
+			);
+			path = "Custom-Control-Propzy";
+			sourceTree = "<group>";
+		};
+		BB9BC0B921ED9B18004BC430 /* Demo-ActionSheetWindow */ = {
+			isa = PBXGroup;
+			children = (
+				BB9BC0BA21ED9B18004BC430 /* WindowActionSheet.swift */,
+			);
+			path = "Demo-ActionSheetWindow";
 			sourceTree = "<group>";
 		};
 		BBB569D11F7B5B870014A7A9 /* Task-App */ = {
@@ -1013,8 +1034,6 @@
 			isa = PBXGroup;
 			children = (
 				BBE813F62017211A00B21B1F /* DecimalTextField.swift */,
-				BB7E580A21E8AC8B005C3FA6 /* CustomDecimalRow.swift */,
-				BBE6FA6521EC63CE0030AA64 /* CustomPickerRow.swift */,
 			);
 			path = DecimalTextField;
 			sourceTree = "<group>";
@@ -1355,7 +1374,6 @@
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB407AD02181821A00C8E57F /* DbUITableViewExtensions.swift in Sources */,
 				BB407AD12181821A00C8E57F /* DbUIViewController.swift in Sources */,
-				BB7E580B21E8AC8B005C3FA6 /* CustomDecimalRow.swift in Sources */,
 				BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */,
 				BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
@@ -1386,12 +1404,12 @@
 				BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */,
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
+				BB9BC0BB21ED9B19004BC430 /* WindowActionSheet.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
-				BBE6FA6621EC63CE0030AA64 /* CustomPickerRow.swift in Sources */,
 				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,
 				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
@@ -1435,6 +1453,7 @@
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
 				BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */,
+				BB9BC0B821ED9AF0004BC430 /* CustomPickerRow.swift in Sources */,
 				BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */,
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
@@ -1447,6 +1466,7 @@
 				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
+				BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */,
