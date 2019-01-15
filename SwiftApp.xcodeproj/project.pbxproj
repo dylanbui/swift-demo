@@ -106,6 +106,11 @@
 		BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0B521ED9AEF004BC430 /* CustomDecimalRow.swift */; };
 		BB9BC0B821ED9AF0004BC430 /* CustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0B621ED9AEF004BC430 /* CustomPickerRow.swift */; };
 		BB9BC0BB21ED9B19004BC430 /* WindowActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0BA21ED9B18004BC430 /* WindowActionSheet.swift */; };
+		BB9BC0BD21EDD877004BC430 /* AbstractDbActionSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0BC21EDD877004BC430 /* AbstractDbActionSheetPicker.swift */; };
+		BB9BC0C221EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */; };
+		BB9BC0C321EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9BC0C121EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib */; };
+		BB9BC0C621EDFA0E004BC430 /* DbAbstractPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0C421EDFA0E004BC430 /* DbAbstractPicker.swift */; };
+		BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0C521EDFA0E004BC430 /* PickerField.swift */; };
 		BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4362117FB8500618AEF /* PzListing.swift */; };
 		BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4382117FBA000618AEF /* PzListingItem.swift */; };
 		BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A43A2117FC6000618AEF /* PzListingApi.swift */; };
@@ -333,6 +338,11 @@
 		BB9BC0B521ED9AEF004BC430 /* CustomDecimalRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDecimalRow.swift; sourceTree = "<group>"; };
 		BB9BC0B621ED9AEF004BC430 /* CustomPickerRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerRow.swift; sourceTree = "<group>"; };
 		BB9BC0BA21ED9B18004BC430 /* WindowActionSheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WindowActionSheet.swift; sourceTree = "<group>"; };
+		BB9BC0BC21EDD877004BC430 /* AbstractDbActionSheetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractDbActionSheetPicker.swift; sourceTree = "<group>"; };
+		BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoActionSheetWindowViewController.swift; sourceTree = "<group>"; };
+		BB9BC0C121EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoActionSheetWindowViewController.xib; sourceTree = "<group>"; };
+		BB9BC0C421EDFA0E004BC430 /* DbAbstractPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbAbstractPicker.swift; sourceTree = "<group>"; };
+		BB9BC0C521EDFA0E004BC430 /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 		BBA2A4362117FB8500618AEF /* PzListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListing.swift; sourceTree = "<group>"; };
 		BBA2A4382117FBA000618AEF /* PzListingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingItem.swift; sourceTree = "<group>"; };
 		BBA2A43A2117FC6000618AEF /* PzListingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingApi.swift; sourceTree = "<group>"; };
@@ -725,7 +735,12 @@
 		BB9BC0B921ED9B18004BC430 /* Demo-ActionSheetWindow */ = {
 			isa = PBXGroup;
 			children = (
+				BB9BC0C421EDFA0E004BC430 /* DbAbstractPicker.swift */,
+				BB9BC0C521EDFA0E004BC430 /* PickerField.swift */,
 				BB9BC0BA21ED9B18004BC430 /* WindowActionSheet.swift */,
+				BB9BC0BC21EDD877004BC430 /* AbstractDbActionSheetPicker.swift */,
+				BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */,
+				BB9BC0C121EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib */,
 			);
 			path = "Demo-ActionSheetWindow";
 			sourceTree = "<group>";
@@ -1235,6 +1250,7 @@
 				BB7F303D203E857900185366 /* demo_5_line.png in Resources */,
 				BB7F3041203E857900185366 /* demo_6_line@2x.png in Resources */,
 				BB7F3045203E857900185366 /* main_gate_img@2x.png in Resources */,
+				BB9BC0C321EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib in Resources */,
 				BB4E2362210EBCAD00524B0D /* PzLoginViewController.xib in Resources */,
 				BBC38A6A206DDEE500B11C7B /* themify.ttf in Resources */,
 				BBC38A68206DDEE500B11C7B /* octicons.ttf in Resources */,
@@ -1398,6 +1414,7 @@
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BB35CE70211A8B0100B88BEB /* DbMappable.swift in Sources */,
+				BB9BC0C621EDFA0E004BC430 /* DbAbstractPicker.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
 				BB5756B6219E7C48000BDACD /* KBScrollViewViewController.swift in Sources */,
@@ -1434,6 +1451,7 @@
 				BBE6FA7021EC9A700030AA64 /* UIBarButtonItem+Closures.swift in Sources */,
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
+				BB9BC0BD21EDD877004BC430 /* AbstractDbActionSheetPicker.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
 				BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */,
 				BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */,
@@ -1490,8 +1508,10 @@
 				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BB407ACE2181821A00C8E57F /* DbCommonExtensions.swift in Sources */,
+				BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
 				BB3FDBF2217EFD07002D570F /* DbStackCell.swift in Sources */,
+				BB9BC0C221EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,

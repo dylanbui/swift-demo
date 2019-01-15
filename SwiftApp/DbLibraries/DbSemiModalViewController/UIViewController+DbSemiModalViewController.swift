@@ -4,7 +4,7 @@
 //
 //  Created by Dylan Bui on 11/7/18.
 //  Copyright © 2018 Dylan Bui. All rights reserved.
-//
+//  Base : https://github.com/muyexi/SemiModalViewController
 
 import Foundation
 import UIKit

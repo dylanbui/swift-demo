@@ -8,7 +8,7 @@
 
 import UIKit
 
-//private var DbKeyboardHandlerParams: Void?
+// -- Da hoan thanh, chay tot : 15/01/2019 --
 
 extension UIView {
     
@@ -34,16 +34,9 @@ extension UIView {
     {
         self.y = CGFloat(Db.screenHeight()) - self.height - DbUtils.safeAreaBottomPadding()
         
-        // -- Co the define bien o day --
-//        var keyboardHandler = objc_getAssociatedObject(self, &DbKeyboardHandlerParams) as? DbKeyboardHandler
-//        if keyboardHandler == nil {
-//            keyboardHandler = DbKeyboardHandler()
-//            objc_setAssociatedObject(self, &DbKeyboardHandlerParams, keyboardHandler, .OBJC_ASSOCIATION_RETAIN)
-//        }
-        
         keyboardHandler.listen { (keyboardInfo) in
-            print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.keyboardFrame))")
-            print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.status))")
+            // print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.keyboardFrame))")
+            // print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.status))")
             
             // -- Move view control --
             //var inputViewFrame: CGRect = self.viewButtonControl.frame
@@ -114,7 +107,18 @@ class KeyboarbHandleViewController: UIViewController
 //
 //        }
         
-        self.viewBottom.db_anchorViewToBottomViewWithKeyboard()
+        // Phai de dong nay trong dispatchToMainQueue
+        // hay viewWillAppear, de lay duoc chinh xac view size
+        DbUtils.dispatchToMainQueue {
+            self.viewBottom.db_anchorViewToBottomViewWithKeyboard()
+        }
+        
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
         
         
     }

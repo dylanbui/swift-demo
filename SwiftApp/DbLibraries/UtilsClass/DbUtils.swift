@@ -233,6 +233,14 @@ class DbUtils: NSObject
         }
         return returnConstraint
     }
+
+    static func safeArea() -> UIEdgeInsets {
+        if #available(iOS 11.0, *) {
+            let window = UIApplication.shared.keyWindow
+            return window?.safeAreaInsets ?? UIEdgeInsetsMake(0, 0, 0, 0)
+        }
+        return UIEdgeInsetsMake(0, 0, 0, 0)
+    }
     
     static func safeAreaBottomPadding() -> CGFloat! {
         var bottomPadding: CGFloat! = 0
