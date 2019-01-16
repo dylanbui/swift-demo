@@ -19,49 +19,47 @@ import ActionSheetPicker_3_0
  let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
  
  DbActionSheetPicker.showPicker(withTitle: "Nguồn khách hàng", collections: arrSortItem, withInitialSelection: nil,
-                    done: { (owner, selected, row) in
-                        print("Da chon cai gi")
-                }, cancel: { (owner) in }, origin: sender)
+ done: { (owner, selected, row) in
+ print("Da chon cai gi")
+ }, cancel: { (owner) in }, origin: sender)
  
  */
 
 protocol DbPickerProtocol {
     
-    func DbPickerItemId() -> Int
-    func DbPickerItemDesc() -> String
+    var dbPickerItemId: Int { get }
+    var dbPickerItemTitle: String { get }
+    var dbPickerItemDesc: String { get }
     
 }
 
 class DbPickerItem: DbPickerProtocol, CustomStringConvertible
 {
-    var itemId: Int = 0
-    var itemDesc: String = ""
+    var dbPickerItemId: Int
+    var dbPickerItemTitle: String
+    var dbPickerItemDesc: String
     
     // Extension CustomStringConvertible
     var description: String {
-        return "ItemId: \(itemId) - Desc: \(itemDesc)"
+        return "ItemId: \(dbPickerItemId) - Desc: \(dbPickerItemDesc)"
     }
     
-    init() { }
+    init() {
+        self.dbPickerItemId = 0
+        self.dbPickerItemTitle = ""
+        self.dbPickerItemDesc = ""
+    }
     
     convenience init(iId: Int, desc: String) {
         self.init()
-        self.itemId = iId
-        self.itemDesc = desc
-    }
-
-    func DbPickerItemId() -> Int
-    {
-        return itemId
+        self.dbPickerItemId = iId
+        self.dbPickerItemTitle = desc
+        self.dbPickerItemDesc = desc
     }
     
-    func DbPickerItemDesc() -> String
-    {
-        return itemDesc
-    }
 }
 
-typealias DbPickerDoneBlock = (_ picker: ActionSheetCustomPicker, _ selectedIndex: Int, _ selectedValue: Any) -> Void
+typealias DbPickerDoneBlock = (_ picker: ActionSheetCustomPicker, _ selectedIndex: Int, _ selectedValue: DbPickerProtocol) -> Void
 typealias DbPickerCancelBlock = (_ picker: ActionSheetCustomPicker) -> Void
 typealias DbPickerDidSelectRowBlock = (_ picker: ActionSheetCustomPicker, _ didSelectRow: Int) -> Void
 
@@ -94,7 +92,7 @@ class DbActionSheetPicker: NSObject
         var objectIndex = 0
         if self.selectedItem != nil {
             if let index = self.arrItem?.index(where: { (city) -> Bool in
-                return city.DbPickerItemId() == self.selectedItem!.DbPickerItemId()
+                return city.dbPickerItemId == self.selectedItem!.dbPickerItemId
             }) {
                 objectIndex = index
             }
@@ -159,13 +157,13 @@ extension DbActionSheetPicker: ActionSheetCustomPickerDelegate
     
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat
     {
-        return 260.0
+        return 300.0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
         let item = self.arrItem![row]
-        return item.DbPickerItemDesc()
+        return item.dbPickerItemDesc
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)

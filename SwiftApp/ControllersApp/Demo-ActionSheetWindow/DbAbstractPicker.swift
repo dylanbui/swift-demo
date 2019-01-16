@@ -10,18 +10,18 @@ import UIKit
 
 
 public protocol DbPickerFieldDelegate:class{
-    func pickerField(didOKClick pickerField:Any)
-    func pickerField(didCancelClick pickerField:Any)
-    func pickerField(didShowPicker pickerField:Any)
-    func pickerField(didHidePicker pickerField:Any)
+    func pickerField(didOKClick pickerField: DbAbstractPicker)
+    func pickerField(didCancelClick pickerField: DbAbstractPicker)
+    func pickerField(didShowPicker pickerField: DbAbstractPicker)
+    func pickerField(didHidePicker pickerField: DbAbstractPicker)
     //func pickerField(didTap pickerField:PickerField)
 }
 
 public extension DbPickerFieldDelegate{
-    func pickerField(didOKClick pickerField:Any){}
-    func pickerField(didCancelClick pickerField:Any){}
-    func pickerField(didShowPicker pickerField:Any){}
-    func pickerField(didHidePicker pickerField:Any){}
+    func pickerField(didOKClick pickerField: DbAbstractPicker){}
+    func pickerField(didCancelClick pickerField: DbAbstractPicker){}
+    func pickerField(didShowPicker pickerField: DbAbstractPicker){}
+    func pickerField(didHidePicker pickerField: DbAbstractPicker){}
     // func pickerField(didTap pickerField:PickerField){}
 }
 
@@ -43,7 +43,7 @@ public class DbAbstractPicker: NSObject
     private(set) public var containerView:UIView?
     private(set) public var contentView:UIView?
     private(set) public var okButton:UIButton?
-    private(set)  public var cancelButton:UIButton?
+    private(set) public var cancelButton:UIButton?
     
     private(set)  public var isShown=false
     
@@ -71,6 +71,9 @@ public class DbAbstractPicker: NSObject
 //        }()
     
     public weak var anchorControl: UIView?
+    
+    public var okTitle: String = "OK"
+    public var cancelTitle: String = "Cancel"
     
     public weak var pickerFieldDelegate: DbPickerFieldDelegate?
     public var type: DbPickerFieldType = .none{
@@ -198,19 +201,20 @@ public class DbAbstractPicker: NSObject
         addConstraint(bottomView, toView: containerView, top: nil, leading: 0, bottom: 0, trailing: 0)
         bottomSectionHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: DEFAULT_BOTTOM_SECTION_HEIGHT)
         bottomSectionHeightConstraint?.isActive=true
+        // -- Add OK button --
         okButton=UIButton(type: .system)
         bottomView.addSubview(okButton!)
         okButton?.addTarget(self, action: #selector(didOKTap), for: .touchUpInside)
-        okButton?.setTitle("OK", for: .normal)
+        okButton?.setTitle(self.okTitle, for: .normal)
         addConstraint(okButton!, toView: bottomView, top: 0, leading: 0, bottom: 0, trailing: nil)
         okButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
+        // -- Add Cancel button --
         cancelButton=UIButton(type: .system)
         bottomView.addSubview(cancelButton!)
         cancelButton?.addTarget(self, action: #selector(didCancelTap), for: .touchUpInside)
-        cancelButton?.setTitle("Cancel", for: .normal)
+        cancelButton?.setTitle(self.cancelTitle, for: .normal)
         addConstraint(cancelButton!, toView: bottomView, top: 0, leading: nil, bottom: 0, trailing: 0)
         cancelButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
-        
         
         //seperator
         let seperater=UIView()
@@ -288,13 +292,13 @@ public class DbAbstractPicker: NSObject
     @objc fileprivate func didOKTap()
     {
         dismiss()
-         self.pickerFieldDelegate?.pickerField(didOKClick: self)
+        self.pickerFieldDelegate?.pickerField(didOKClick: self)
     }
     
     @objc fileprivate func didCancelTap()
     {
         dismiss()
-         self.pickerFieldDelegate?.pickerField(didCancelClick: self)
+        self.pickerFieldDelegate?.pickerField(didCancelClick: self)
     }
     
     private func getViewController() -> UIViewController?

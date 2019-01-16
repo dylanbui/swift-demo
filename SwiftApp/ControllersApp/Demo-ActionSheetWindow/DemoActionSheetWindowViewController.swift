@@ -108,6 +108,56 @@ class DemoActionSheetWindowViewController: UIViewController
         setupCollectionViewField()
     }
 
+    @IBAction func pickerClick(_ sender: UIButton)
+    {
+        let picker = PickerField()
+        
+        picker.type = .pickerView
+        picker.pickerView?.dataSource=self
+        picker.pickerView?.delegate=self
+        picker.titleLabel?.text="select a state 1111"
+        picker.pickerFieldDelegate = self
+        
+        picker.show()
+        
+//        let picker = DbAbstractPicker()
+//
+//        picker.type = .pickerView
+//        picker.pickerView?.dataSource=self
+//        picker.pickerView?.delegate=self
+//        picker.titleLabel?.text="select a state 1111"
+//
+//        picker.show()
+        
+        // self.pickerViewField.show()
+        
+//        let item_1 = DbPickerItem(iId: 1, desc: "Giá từ thấp đến cao")
+//        let item_2 = DbPickerItem(iId: 2, desc: "Giá từ cao xuống thấp")
+//        let item_3 = DbPickerItem(iId: 3, desc: "Diện tích từ nhỏ đến lớn")
+//        let item_4 = DbPickerItem(iId: 4, desc: "Diện tích từ lớn đến nhỏ")
+//        let item_5 = DbPickerItem(iId: 5, desc: "Ngày tạo mới nhất")
+//        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
+//
+//        let picker = DbSheetPicker.initWithTitle(title: "Chon quoc gia",
+//                                                 rows: arrSortItem,
+//                                                 initialSelections: nil,
+//                                                 okTitle: "Dong y",
+//                                                 cancelTitle: "Bo qua")
+//        picker.anchorControl = sender
+//        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbPickerProtocol) in
+//            print("Gia tri vua chon : \(selectedValue.dbPickerItemTitle)")
+//        }
+//
+//        picker.cancelBlock = { (_ picker: DbSheetPicker) in
+//            print("Bo qua chon")
+//        }
+//
+//        picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
+//            print("VUA MOI CHON DONG : \(didSelectRow)")
+//        }
+//        picker.show()
+
+    }
 }
 
 // Mark:- PickerFieldDelegate
@@ -155,7 +205,7 @@ extension DemoActionSheetWindowViewController: UIPickerViewDelegate,UIPickerView
         pickerViewField.titleLabel?.text="select a state"
         pickerViewField.pickerFieldDelegate=self
         // pickerViewField.rightImageView.image=#imageLiteral(resourceName: "arrow")
-        pickerViewField.rightImageView.tintColor = .lightGray
+        //pickerViewField.rightImageView.tintColor = .lightGray
     }
     
     
@@ -173,7 +223,7 @@ extension DemoActionSheetWindowViewController
         datePickerField.datePicker?.datePickerMode = .date
         datePickerField.datePicker?.maximumDate = Date()
         // datePickerField.rightImageView.image=#imageLiteral(resourceName: "arrow")
-        datePickerField.rightImageView.tintColor = .lightGray
+        //datePickerField.rightImageView.tintColor = .lightGray
     }
     
 }
@@ -242,7 +292,7 @@ extension DemoActionSheetWindowViewController: UITableViewDelegate,UITableViewDa
         tabelViewField.fieldHeight=400
         tabelViewField.cancelWhenTouchUpOutside=true
         // tabelViewField.rightImageView.image=#imageLiteral(resourceName: "arrow")
-        tabelViewField.rightImageView.tintColor = .lightGray
+        //tabelViewField.rightImageView.tintColor = .lightGray
     }
     
     
@@ -295,6 +345,6 @@ extension DemoActionSheetWindowViewController: UICollectionViewDelegate,UICollec
         collectionViewField.fieldHeight=300
         collectionViewField.cancelWhenTouchUpOutside=true
         // collectionViewField.rightImageView.image=#imageLiteral(resourceName: "arrow")
-        collectionViewField.rightImageView.tintColor = .lightGray
+        //collectionViewField.rightImageView.tintColor = .lightGray
     }
 }
