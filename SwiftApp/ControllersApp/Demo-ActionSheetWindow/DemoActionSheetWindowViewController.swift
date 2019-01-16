@@ -110,15 +110,18 @@ class DemoActionSheetWindowViewController: UIViewController
 
     @IBAction func pickerClick(_ sender: UIButton)
     {
-        let picker = PickerField()
+        let sheet = Sheet()
+        sheet.show()
         
-        picker.type = .pickerView
-        picker.pickerView?.dataSource=self
-        picker.pickerView?.delegate=self
-        picker.titleLabel?.text="select a state 1111"
-        picker.pickerFieldDelegate = self
-        
-        picker.show()
+//        let picker = PickerField()
+//
+//        picker.type = .pickerView
+//        picker.pickerView?.dataSource=self
+//        picker.pickerView?.delegate=self
+//        picker.titleLabel?.text="select a state 1111"
+//        picker.pickerFieldDelegate = self
+//
+//        picker.show()
         
 //        let picker = DbAbstractPicker()
 //
