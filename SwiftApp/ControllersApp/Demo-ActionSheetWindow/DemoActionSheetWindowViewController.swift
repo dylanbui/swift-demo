@@ -110,31 +110,40 @@ class DemoActionSheetWindowViewController: UIViewController
 
     @IBAction func pickerClick(_ sender: UIButton)
     {
-        let item_1 = DbPickerItem(iId: 1, desc: "Giá từ thấp đến cao")
-        let item_2 = DbPickerItem(iId: 2, desc: "Giá từ cao xuống thấp")
-        let item_3 = DbPickerItem(iId: 3, desc: "Diện tích từ nhỏ đến lớn")
-        let item_4 = DbPickerItem(iId: 4, desc: "Diện tích từ lớn đến nhỏ")
-        let item_5 = DbPickerItem(iId: 5, desc: "Ngày tạo mới nhất")
+        let item_1 = DbPickerItem(iId: 1, title: "Giá từ thấp đến cao")
+        let item_2 = DbPickerItem(iId: 2, title: "Giá từ cao xuống thấp")
+        let item_3 = DbPickerItem(iId: 3, title: "Diện tích từ nhỏ đến lớn")
+        let item_4 = DbPickerItem(iId: 4, title: "Diện tích từ lớn đến nhỏ")
+        let item_5 = DbPickerItem(iId: 5, title: "Ngày tạo mới nhất")
         let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
 
-        
-        let sheet = DbSheetPicker.initWithTitle(title: "Chọn quốc gia",
+        let sheet = DbSheetTableView.initWithTitle(title: "Chọn từ bảng",
                                           rows: arrSortItem,
-                                          initialSelections: DbPickerItem(iId: 4, desc: "Diện tích từ lớn đến nhỏ"),
-                                          okTitle: "Đồng ý",
+                                          okTitle: "Chọn",
                                           cancelTitle: "Bỏ qua")
-        sheet.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbPickerProtocol) in
-            print("Gia tri vua chon : \(selectedValue.dbPickerItemTitle)")
-        }
-        
-        sheet.cancelBlock = { (_ picker: DbSheetPicker) in
-            print("Bo qua chon")
-        }
-        
-        sheet.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
+        sheet.didSelectRowBlock = { (_ picker: DbSheetTableView, _ didSelectRow: DbPickerProtocol, indexPath: IndexPath) in
             print("VUA MOI CHON DONG : \(didSelectRow)")
         }
         sheet.show()
+
+        // -- Example 1 --
+//        let sheet = DbSheetPicker.initWithTitle(title: "Chọn quốc gia",
+//                                          rows: arrSortItem,
+//                                          initialSelections: DbPickerItem(iId: 4, title: "Diện tích từ lớn đến nhỏ"),
+//                                          okTitle: "Đồng ý",
+//                                          cancelTitle: "Bỏ qua")
+//        sheet.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbPickerProtocol) in
+//            print("Gia tri vua chon : \(selectedValue.dbPickerItemTitle)")
+//        }
+//
+//        sheet.cancelBlock = { (_ picker: DbSheetPicker) in
+//            print("Bo qua chon")
+//        }
+//
+//        sheet.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
+//            print("VUA MOI CHON DONG : \(didSelectRow)")
+//        }
+//        sheet.show()
         
         return
         

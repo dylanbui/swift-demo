@@ -39,6 +39,8 @@ class DbPickerItem: DbPickerProtocol, CustomStringConvertible
     var dbPickerItemTitle: String
     var dbPickerItemDesc: String
     
+    var rawValue: Any?
+    
     // Extension CustomStringConvertible
     var description: String {
         return "ItemId: \(dbPickerItemId) - Desc: \(dbPickerItemDesc)"
@@ -50,11 +52,11 @@ class DbPickerItem: DbPickerProtocol, CustomStringConvertible
         self.dbPickerItemDesc = ""
     }
     
-    convenience init(iId: Int, desc: String) {
+    convenience init(iId: Int, title: String) {
         self.init()
         self.dbPickerItemId = iId
-        self.dbPickerItemTitle = desc
-        self.dbPickerItemDesc = desc
+        self.dbPickerItemTitle = title
+        self.dbPickerItemDesc = title
     }
     
 }
