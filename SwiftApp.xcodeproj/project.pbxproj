@@ -11,7 +11,7 @@
 		BB1079472071D7B300A99D9A /* DemoUKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */; };
 		BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */; };
 		BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10D3F31F79225100B7DF4B /* DbActionView.swift */; };
-		BB11D80821EF7DED00134CAD /* Sheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11D80721EF7DEC00134CAD /* Sheet.swift */; };
+		BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */; };
 		BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D43200BBFAA005514C3 /* DbConstant.swift */; };
 		BB197D46200BC051005514C3 /* DbUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D45200BC051005514C3 /* DbUtils.swift */; };
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
@@ -190,9 +190,9 @@
 		BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF161F70FBDC0028425E /* ToDoItem.swift */; };
 		BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF181F7102D80028425E /* ToDoCell.swift */; };
 		BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CF191F7102D80028425E /* ToDoCell.xib */; };
-		BBD4840B21EED45600ED2555 /* DbSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD4840A21EED45600ED2555 /* DbSheetPicker.swift */; };
 		BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */; };
 		BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */; };
+		BBDD202721F0940400788D3E /* DbAbstractSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD202621F0940400788D3E /* DbAbstractSheet.swift */; };
 		BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E8E20119C4F0089DD32 /* DbObject.swift */; };
 		BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD5E902011B18C0089DD32 /* DbSession.swift */; };
 		BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD9B9F207332D000217030 /* DbPropzyResponse.swift */; };
@@ -245,7 +245,7 @@
 		BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoUKitViewController.xib; sourceTree = "<group>"; };
 		BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoUKitViewController.swift; sourceTree = "<group>"; };
 		BB10D3F31F79225100B7DF4B /* DbActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbActionView.swift; sourceTree = "<group>"; };
-		BB11D80721EF7DEC00134CAD /* Sheet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sheet.swift; sourceTree = "<group>"; };
+		BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSheetPicker.swift; sourceTree = "<group>"; };
 		BB197D43200BBFAA005514C3 /* DbConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConstant.swift; sourceTree = "<group>"; };
 		BB197D45200BC051005514C3 /* DbUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUtils.swift; sourceTree = "<group>"; };
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
@@ -430,9 +430,9 @@
 		BBD3CF161F70FBDC0028425E /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		BBD3CF181F7102D80028425E /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		BBD3CF191F7102D80028425E /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
-		BBD4840A21EED45600ED2555 /* DbSheetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetPicker.swift; sourceTree = "<group>"; };
 		BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUserDefault.swift; sourceTree = "<group>"; };
 		BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEventNotification.swift; sourceTree = "<group>"; };
+		BBDD202621F0940400788D3E /* DbAbstractSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAbstractSheet.swift; sourceTree = "<group>"; };
 		BBDD5E8E20119C4F0089DD32 /* DbObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbObject.swift; sourceTree = "<group>"; };
 		BBDD5E902011B18C0089DD32 /* DbSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSession.swift; sourceTree = "<group>"; };
 		BBDD9B9F207332D000217030 /* DbPropzyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPropzyResponse.swift; sourceTree = "<group>"; };
@@ -739,9 +739,8 @@
 		BB9BC0B921ED9B18004BC430 /* Demo-ActionSheetWindow */ = {
 			isa = PBXGroup;
 			children = (
-				BB11D80721EF7DEC00134CAD /* Sheet.swift */,
+				BBDD202521F093D200788D3E /* DbActionSheet */,
 				BB9BC0C421EDFA0E004BC430 /* DbAbstractPicker.swift */,
-				BBD4840A21EED45600ED2555 /* DbSheetPicker.swift */,
 				BB9BC0C521EDFA0E004BC430 /* PickerField.swift */,
 				BB9BC0BA21ED9B18004BC430 /* WindowActionSheet.swift */,
 				BB9BC0BC21EDD877004BC430 /* AbstractDbActionSheetPicker.swift */,
@@ -931,6 +930,15 @@
 				BBD3CF061F70CFE50028425E /* Info.plist */,
 			);
 			path = SwiftAppTests;
+			sourceTree = "<group>";
+		};
+		BBDD202521F093D200788D3E /* DbActionSheet */ = {
+			isa = PBXGroup;
+			children = (
+				BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */,
+				BBDD202621F0940400788D3E /* DbAbstractSheet.swift */,
+			);
+			path = DbActionSheet;
 			sourceTree = "<group>";
 		};
 		BBDD5E942011F38B0089DD32 /* Storyboard */ = {
@@ -1454,7 +1462,6 @@
 				BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */,
 				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
-				BBD4840B21EED45600ED2555 /* DbSheetPicker.swift in Sources */,
 				BBE6FA7021EC9A700030AA64 /* UIBarButtonItem+Closures.swift in Sources */,
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
@@ -1476,6 +1483,7 @@
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BB626EC820DBADCE0057F0CF /* DbDictionaryExtensions.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
+				BBDD202721F0940400788D3E /* DbAbstractSheet.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
 				BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */,
 				BB9BC0B821ED9AF0004BC430 /* CustomPickerRow.swift in Sources */,
@@ -1520,7 +1528,7 @@
 				BB3FDBF2217EFD07002D570F /* DbStackCell.swift in Sources */,
 				BB9BC0C221EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
-				BB11D80821EF7DED00134CAD /* Sheet.swift in Sources */,
+				BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
 				BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */,

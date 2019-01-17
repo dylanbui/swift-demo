@@ -1,31 +1,29 @@
 //
-//  PickerField.swift
-//  mtpPickerField
+//  DbAbstractSheet.swift
+//  SwiftApp
 //
-//  Created by Mostafa Taghipour on 12/12/17.
-//  Copyright © 2017 RainyDay. All rights reserved.
+//  Created by Dylan Bui on 1/17/19.
+//  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //
 
 import UIKit
 
-public protocol AbstractSheetDelegate:class{
-    func pickerField(didOKClick pickerField: Any)
-    func pickerField(didCancelClick pickerField: Any)
-    func pickerField(didShowPicker pickerField: Any)
-    func pickerField(didHidePicker pickerField: Any)
+public protocol DbAbstractSheetDelegate:class{
+    func pickerField(didOKClick pickerField: DbAbstractSheet)
+    func pickerField(didCancelClick pickerField: DbAbstractSheet)
+    func pickerField(didShowPicker pickerField: DbAbstractSheet)
+    func pickerField(didHidePicker pickerField: DbAbstractSheet)
 }
 
-public extension AbstractSheetDelegate{
-    func pickerField(didOKClick pickerField: Any){}
-    func pickerField(didCancelClick pickerField: Any){}
-    func pickerField(didShowPicker pickerField: Any){}
-    func pickerField(didHidePicker pickerField: Any){}
+public extension DbAbstractSheetDelegate{
+    func pickerField(didOKClick pickerField: DbAbstractSheet){}
+    func pickerField(didCancelClick pickerField: DbAbstractSheet){}
+    func pickerField(didShowPicker pickerField: DbAbstractSheet){}
+    func pickerField(didHidePicker pickerField: DbAbstractSheet){}
 }
 
-public class AbstractSheet
+public class DbAbstractSheet: NSObject
 {
-    private(set) public var pickerView:UIPickerView?
-    
     private(set) public var containerView:UIView?
     private(set) public var contentView:UIView?
     private(set) public var okButton:UIButton?
@@ -35,20 +33,16 @@ public class AbstractSheet
     
     private(set)  public var titleLabel:UILabel?{
         didSet{
-//            guard let label = titleLabel else{
-//                return
-//            }
-//
-//            label.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
+            guard let label = titleLabel else{
+                return
+            }
+            
+            label.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
         }
     }
     
     public weak var anchorControl: UIView?
-    
-    public var okTitle: String = "OK"
-    public var cancelTitle: String = "Cancel"
-    
-    public weak var pickerFieldDelegate: AbstractSheetDelegate?
+    public weak var pickerFieldDelegate: DbAbstractSheetDelegate?
     
     public var fieldHeight:CGFloat=250{
         didSet{
@@ -78,22 +72,25 @@ public class AbstractSheet
     private var bottomSectionHeightConstraint:NSLayoutConstraint?
     private var seperatorHeightConstraint:NSLayoutConstraint?
     
-    init() {
-        fatalError("Khong duoc su dung thang nay")
+    override init() {
+        super.init()
+        commonInit()
     }
     
-    init(WithAnchor anchor: UIView)
+    convenience init(WithAnchor anchor: UIView)
     {
+        self.init()
         self.anchorControl = anchor
-        
-        self.commonInit()
     }
     
     private func commonInit()
     {
         setupView()
-        
-        // setupPickerView()
+    }
+    
+    public func setupContentView()
+    {
+        fatalError("Only call from subclass")
     }
     
     private func setupView()
@@ -140,35 +137,26 @@ public class AbstractSheet
         // -- Add OK button --
         okButton=UIButton(type: .system)
         bottomView.addSubview(okButton!)
-        //okButton?.addTarget(self, action: #selector(didOKTap), for: .touchUpInside)
-        //okButton?.addTarget(self, action: #selector(self.didOKTap), for: .touchUpInside)
-        
+        // -- DucBui 17/01/2019 : Khong hieu ly do vi sao, ko the addTarget --
+        // Neu addTarget thi build duoc, nhung chay bi loi toan bo phan ben duoi
+        // Neu khong dung addTarget thi cai addTarget for cancelButton chay binh thuong
+        // Phai dung addGestureRecognizer thay the
+        // okButton!.addTarget(self, action: #selector(didOKTap), for: .touchUpInside)
         okButton?.addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: { (gesture) in
             self.didOKTap()
         }))
-        
-//        public func onTap(_ handler: @escaping (UITapGestureRecognizer) -> Void) {
-//            addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: handler))
-//        }
-
-        
-        
-//        self.didOKTap(sender: <#T##UIButton#>)
-        
-//        okButton?.onTap({ (gesture) in
-//            print("Deo hieu luon")
-//            self.didOKTap()
-//        })
-        
-        
-        okButton?.setTitle(self.okTitle, for: .normal)
+        okButton?.setTitle("OK", for: .normal)
         addConstraint(okButton!, toView: bottomView, top: 0, leading: 0, bottom: 0, trailing: nil)
         okButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
+        
         // -- Add Cancel button --
         cancelButton=UIButton(type: .system)
         bottomView.addSubview(cancelButton!)
-        cancelButton?.addTarget(self, action: #selector(didCancelTap), for: .touchUpInside)
-        cancelButton?.setTitle(self.cancelTitle, for: .normal)
+        // cancelButton?.addTarget(self, action: #selector(didCancelTap), for: .touchUpInside)
+        cancelButton?.addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: { (gesture) in
+            self.didCancelTap()
+        }))
+        cancelButton?.setTitle("Cancel", for: .normal)
         addConstraint(cancelButton!, toView: bottomView, top: 0, leading: nil, bottom: 0, trailing: 0)
         cancelButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
         
@@ -181,27 +169,14 @@ public class AbstractSheet
         seperatorHeightConstraint?.isActive=true
         seperater.backgroundColor = UIColor.groupTableViewBackground
         
-        
         //contentView
         contentView=UIView()
         containerView.addSubview(contentView!)
-        addConstraint(contentView!, toView: containerView, top: nil, leading: 8, bottom: nil, trailing: -8)
-        contentView?.bottomAnchor.constraint(equalTo: seperater.topAnchor,constant: -8).isActive=true
-        contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 8).isActive=true
-        
+        addConstraint(contentView!, toView: containerView, top: nil, leading: 4, bottom: nil, trailing: -4)
+        contentView?.bottomAnchor.constraint(equalTo: seperater.topAnchor,constant: -4).isActive=true
+        contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 4).isActive=true
     }
-    
-    private func setupPickerView()
-    {
-        guard pickerView==nil else{
-            return
-        }
         
-        pickerView=UIPickerView()
-        contentView?.addSubview(pickerView!)
-        addConstraint(pickerView!, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
-    }
-    
     @objc fileprivate func didOKTap()
     {
         dismiss()
@@ -238,7 +213,7 @@ public class AbstractSheet
         return self.viewController
     }
     
-    private func addConstraint(_ view:UIView,toView:UIView,top:CGFloat?,leading:CGFloat?,bottom:CGFloat?,trailing:CGFloat?)
+    internal func addConstraint(_ view:UIView,toView:UIView,top:CGFloat?,leading:CGFloat?,bottom:CGFloat?,trailing:CGFloat?)
     {
         view.translatesAutoresizingMaskIntoConstraints=false
         if let top=top{
@@ -255,7 +230,23 @@ public class AbstractSheet
         }
     }
     
+    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        if keyPath == "text" {
+            
+            if let newVal=change?[.newKey] as? String,!newVal.isEmpty{
+                self.titleHeightConstraint?.constant=DEFAULT_TITLE_LABLE_HEIGHT
+                self.titleTopConstraint?.constant=8
+            }
+            else{
+                self.titleHeightConstraint?.constant=0
+                self.titleTopConstraint?.constant=0
+            }
+        }
+    }
     
+    deinit {
+        titleLabel?.removeObserver(self, forKeyPath: "text")
+    }
     
     //MARK:- public methods
     public func show(){
@@ -263,7 +254,10 @@ public class AbstractSheet
             return
         }
         
-        isShown=true
+        // -- Setup content view --
+        setupContentView()
+        
+        isShown = true
         
         if let popoverController = alert.popoverPresentationController, let anchor = self.anchorControl {
             popoverController.sourceView = anchor
