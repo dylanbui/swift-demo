@@ -14,7 +14,6 @@ public protocol DbPickerFieldDelegate:class{
     func pickerField(didCancelClick pickerField: DbAbstractPicker)
     func pickerField(didShowPicker pickerField: DbAbstractPicker)
     func pickerField(didHidePicker pickerField: DbAbstractPicker)
-    //func pickerField(didTap pickerField:PickerField)
 }
 
 public extension DbPickerFieldDelegate{
@@ -22,7 +21,6 @@ public extension DbPickerFieldDelegate{
     func pickerField(didCancelClick pickerField: DbAbstractPicker){}
     func pickerField(didShowPicker pickerField: DbAbstractPicker){}
     func pickerField(didHidePicker pickerField: DbAbstractPicker){}
-    // func pickerField(didTap pickerField:PickerField){}
 }
 
 public enum DbPickerFieldType {
@@ -32,6 +30,7 @@ public enum DbPickerFieldType {
     case tableView
     case collectionView
 }
+
 public class DbAbstractPicker: NSObject
 {
     
@@ -56,19 +55,6 @@ public class DbAbstractPicker: NSObject
             label.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
         }
     }
-    
-//    public lazy var rightImageView : UIImageView = { [unowned self]  in
-//
-//        let view = UIView(frame: CGRect(x: 0, y: 0, width: 35, height: 30))
-//
-//        let imageView = UIImageView(frame: CGRect(x: 5, y: 2.5, width: 25, height: 25))
-//        view.addSubview(imageView)
-//        self.rightView=view
-//
-//        imageView.addObserver(self, forKeyPath: "image", options: [.new], context: nil)
-//        return imageView
-//
-//        }()
     
     public weak var anchorControl: UIView?
     
@@ -143,20 +129,8 @@ public class DbAbstractPicker: NSObject
         self.anchorControl = anchor
     }
     
-//    override public init(frame: CGRect) {
-//        super.init(frame: frame)
-//        commonInit()
-//    }
-//
-//    required public init?(coder aDecoder: NSCoder) {
-//        super.init(coder: aDecoder)
-//        commonInit()
-//    }
-    
     private func commonInit()
     {
-//        self.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(didTap)))
-//        self.delegate=self
         setupView()
     }
     
@@ -204,14 +178,25 @@ public class DbAbstractPicker: NSObject
         // -- Add OK button --
         okButton=UIButton(type: .system)
         bottomView.addSubview(okButton!)
-        okButton?.addTarget(self, action: #selector(didOKTap), for: .touchUpInside)
+        // -- DucBui 17/01/2019 : Khong hieu ly do vi sao, ko the addTarget --
+        // Neu addTarget thi build duoc, nhung chay bi loi toan bo phan ben duoi
+        // Neu khong dung addTarget thi cai addTarget for cancelButton chay binh thuong
+        // Phai dung addGestureRecognizer thay the
+        // okButton!.addTarget(self, action: #selector(didOKTap), for: .touchUpInside)
+        okButton?.addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: { (gesture) in
+            self.didOKTap()
+        }))
         okButton?.setTitle(self.okTitle, for: .normal)
         addConstraint(okButton!, toView: bottomView, top: 0, leading: 0, bottom: 0, trailing: nil)
         okButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
+        
         // -- Add Cancel button --
         cancelButton=UIButton(type: .system)
         bottomView.addSubview(cancelButton!)
-        cancelButton?.addTarget(self, action: #selector(didCancelTap), for: .touchUpInside)
+        // cancelButton?.addTarget(self, action: #selector(didCancelTap), for: .touchUpInside)
+        cancelButton?.addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: { (gesture) in
+            self.didCancelTap()
+        }))
         cancelButton?.setTitle(self.cancelTitle, for: .normal)
         addConstraint(cancelButton!, toView: bottomView, top: 0, leading: nil, bottom: 0, trailing: 0)
         cancelButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
@@ -225,14 +210,12 @@ public class DbAbstractPicker: NSObject
         seperatorHeightConstraint?.isActive=true
         seperater.backgroundColor = UIColor.groupTableViewBackground
         
-        
         //contentView
         contentView=UIView()
         containerView.addSubview(contentView!)
-        addConstraint(contentView!, toView: containerView, top: nil, leading: 8, bottom: nil, trailing: -8)
-        contentView?.bottomAnchor.constraint(equalTo: seperater.topAnchor,constant: -8).isActive=true
-        contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 8).isActive=true
-        
+        addConstraint(contentView!, toView: containerView, top: nil, leading: 4, bottom: nil, trailing: -4)
+        contentView?.bottomAnchor.constraint(equalTo: seperater.topAnchor,constant: -4).isActive=true
+        contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 4).isActive=true
     }
     
     private func setupPickerView()
@@ -280,14 +263,6 @@ public class DbAbstractPicker: NSObject
         contentView?.addSubview(collectionView!)
         addConstraint(collectionView!, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
     }
-    
-//    @objc fileprivate func didTap(){
-//        self.pickerFieldDelegate?.pickerField(didTap: self)
-//
-//        if type != .none{
-//            show()
-//        }
-//    }
     
     @objc fileprivate func didOKTap()
     {
@@ -342,11 +317,6 @@ public class DbAbstractPicker: NSObject
         }
     }
     
-//    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-//        didTap()
-//        return false
-//    }
-    
     override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
         if keyPath == "text" {
             
@@ -359,20 +329,10 @@ public class DbAbstractPicker: NSObject
                 self.titleTopConstraint?.constant=0
             }
         }
-//        else if keyPath == "image" {
-//
-//            if let _=change?[.newKey] as? UIImage{
-//                rightViewMode = .always
-//            }
-//            else{
-//                rightViewMode = .never
-//            }
-//        }
     }
     
     deinit {
         titleLabel?.removeObserver(self, forKeyPath: "text")
-        // rightImageView.removeObserver(self, forKeyPath: "image")
     }
     
     //MARK:- public methods

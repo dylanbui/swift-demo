@@ -66,19 +66,19 @@ class DbSheetPicker: DbAbstractPicker
     {
         super.init()
         
-        let item_1 = DbPickerItem(iId: 1, desc: "Giá từ thấp đến cao")
-        let item_2 = DbPickerItem(iId: 2, desc: "Giá từ cao xuống thấp")
-        let item_3 = DbPickerItem(iId: 3, desc: "Diện tích từ nhỏ đến lớn")
-        let item_4 = DbPickerItem(iId: 4, desc: "Diện tích từ lớn đến nhỏ")
-        let item_5 = DbPickerItem(iId: 5, desc: "Ngày tạo mới nhất")
-        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
-        self.arrItem = arrSortItem
+//        let item_1 = DbPickerItem(iId: 1, desc: "Giá từ thấp đến cao")
+//        let item_2 = DbPickerItem(iId: 2, desc: "Giá từ cao xuống thấp")
+//        let item_3 = DbPickerItem(iId: 3, desc: "Diện tích từ nhỏ đến lớn")
+//        let item_4 = DbPickerItem(iId: 4, desc: "Diện tích từ lớn đến nhỏ")
+//        let item_5 = DbPickerItem(iId: 5, desc: "Ngày tạo mới nhất")
+//        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
+//        self.arrItem = arrSortItem
         
         self.type = .pickerView
         self.pickerView?.dataSource = self
         self.pickerView?.delegate = self
         self.pickerFieldDelegate = self
-        // self.cancelWhenTouchUpOutside = true
+        self.cancelWhenTouchUpOutside = true
         
         self.pickerView?.showsSelectionIndicator = true
         self.pickerView?.isUserInteractionEnabled = true

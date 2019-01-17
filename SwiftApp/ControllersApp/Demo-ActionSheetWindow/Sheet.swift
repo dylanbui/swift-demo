@@ -8,101 +8,22 @@
 
 import UIKit
 
-
 public protocol AbstractSheetDelegate:class{
-    func pickerField(didOKClick pickerField: AbstractSheet)
-    func pickerField(didCancelClick pickerField: AbstractSheet)
-    func pickerField(didShowPicker pickerField: AbstractSheet)
-    func pickerField(didHidePicker pickerField: AbstractSheet)
+    func pickerField(didOKClick pickerField: Any)
+    func pickerField(didCancelClick pickerField: Any)
+    func pickerField(didShowPicker pickerField: Any)
+    func pickerField(didHidePicker pickerField: Any)
 }
 
 public extension AbstractSheetDelegate{
-    func pickerField(didOKClick pickerField: AbstractSheet){}
-    func pickerField(didCancelClick pickerField: AbstractSheet){}
-    func pickerField(didShowPicker pickerField: AbstractSheet){}
-    func pickerField(didHidePicker pickerField: AbstractSheet){}
+    func pickerField(didOKClick pickerField: Any){}
+    func pickerField(didCancelClick pickerField: Any){}
+    func pickerField(didShowPicker pickerField: Any){}
+    func pickerField(didHidePicker pickerField: Any){}
 }
 
-
-
-class Sheet: NSObject
+public class AbstractSheet
 {
-    var arrItem: [DbPickerProtocol]?
-    var selectedItem: DbPickerProtocol?
-    
-    private(set) public var sheet: AbstractSheet!
-    
-    override init()
-    {
-        super.init()
-        
-        let item_1 = DbPickerItem(iId: 1, desc: "Giá từ thấp đến cao")
-        let item_2 = DbPickerItem(iId: 2, desc: "Giá từ cao xuống thấp")
-        let item_3 = DbPickerItem(iId: 3, desc: "Diện tích từ nhỏ đến lớn")
-        let item_4 = DbPickerItem(iId: 4, desc: "Diện tích từ lớn đến nhỏ")
-        let item_5 = DbPickerItem(iId: 5, desc: "Ngày tạo mới nhất")
-        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
-        self.arrItem = arrSortItem
-        
-        self.sheet = AbstractSheet()
-        
-        self.sheet.pickerView?.dataSource = self
-        self.sheet.pickerView?.delegate = self
-        self.sheet.pickerFieldDelegate = self
-        // self.cancelWhenTouchUpOutside = true
-        
-        self.sheet.pickerView?.showsSelectionIndicator = true
-        self.sheet.pickerView?.isUserInteractionEnabled = true
-        
-    }
-    
-    func show() {
-        self.sheet.show()
-    }
-    
-}
-
-//Mark:- PickerFieldDelegate
-extension Sheet: AbstractSheetDelegate
-{
-    func pickerField(didHidePicker pickerField: AbstractSheet)
-    {
-        print("didHidePicker")
-    }
-    
-    func pickerField(didCancelClick pickerField: AbstractSheet)
-    {
-        print("didCancelClick")
-    }
-    
-    func pickerField(didOKClick pickerField: AbstractSheet)
-    {
-        print("didOKClick")
-    }
-}
-
-//Mark:- PickerView
-extension Sheet: UIPickerViewDelegate,UIPickerViewDataSource
-{
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 5
-    }
-    
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "OKKKKKKK"
-    }
-    
-}
-
-
-public class AbstractSheet: NSObject
-{
-    
     private(set) public var pickerView:UIPickerView?
     
     private(set) public var containerView:UIView?
@@ -114,11 +35,11 @@ public class AbstractSheet: NSObject
     
     private(set)  public var titleLabel:UILabel?{
         didSet{
-            guard let label = titleLabel else{
-                return
-            }
-            
-            label.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
+//            guard let label = titleLabel else{
+//                return
+//            }
+//
+//            label.addObserver(self, forKeyPath: "text", options: [.new], context: nil)
         }
     }
     
@@ -129,18 +50,18 @@ public class AbstractSheet: NSObject
     
     public weak var pickerFieldDelegate: AbstractSheetDelegate?
     
-    public var fieldHeight:CGFloat = 250 {
+    public var fieldHeight:CGFloat=250{
         didSet{
             heightConstraint?.constant=fieldHeight
         }
     }
-    public var hideButtons:Bool = false {
+    public var hideButtons:Bool=false{
         didSet{
             bottomSectionHeightConstraint?.constant = hideButtons ? 0 : DEFAULT_BOTTOM_SECTION_HEIGHT
             seperatorHeightConstraint?.constant = hideButtons ? 0 : 1
         }
     }
-    public var cancelWhenTouchUpOutside:Bool = false {
+    public var cancelWhenTouchUpOutside:Bool=false{
         didSet{
             
         }
@@ -157,22 +78,22 @@ public class AbstractSheet: NSObject
     private var bottomSectionHeightConstraint:NSLayoutConstraint?
     private var seperatorHeightConstraint:NSLayoutConstraint?
     
-    override init() {
-        super.init()
-        commonInit()
+    init() {
+        fatalError("Khong duoc su dung thang nay")
     }
     
-    convenience init(WithAnchor anchor: UIView)
+    init(WithAnchor anchor: UIView)
     {
-        self.init()
         self.anchorControl = anchor
+        
+        self.commonInit()
     }
     
     private func commonInit()
     {
         setupView()
         
-        setupPickerView()
+        // setupPickerView()
     }
     
     private func setupView()
@@ -219,7 +140,27 @@ public class AbstractSheet: NSObject
         // -- Add OK button --
         okButton=UIButton(type: .system)
         bottomView.addSubview(okButton!)
-        okButton?.addTarget(self, action: #selector(didOKTap), for: .touchUpInside)
+        //okButton?.addTarget(self, action: #selector(didOKTap), for: .touchUpInside)
+        //okButton?.addTarget(self, action: #selector(self.didOKTap), for: .touchUpInside)
+        
+        okButton?.addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: { (gesture) in
+            self.didOKTap()
+        }))
+        
+//        public func onTap(_ handler: @escaping (UITapGestureRecognizer) -> Void) {
+//            addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: handler))
+//        }
+
+        
+        
+//        self.didOKTap(sender: <#T##UIButton#>)
+        
+//        okButton?.onTap({ (gesture) in
+//            print("Deo hieu luon")
+//            self.didOKTap()
+//        })
+        
+        
         okButton?.setTitle(self.okTitle, for: .normal)
         addConstraint(okButton!, toView: bottomView, top: 0, leading: 0, bottom: 0, trailing: nil)
         okButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
@@ -247,6 +188,7 @@ public class AbstractSheet: NSObject
         addConstraint(contentView!, toView: containerView, top: nil, leading: 8, bottom: nil, trailing: -8)
         contentView?.bottomAnchor.constraint(equalTo: seperater.topAnchor,constant: -8).isActive=true
         contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 8).isActive=true
+        
     }
     
     private func setupPickerView()
@@ -256,7 +198,6 @@ public class AbstractSheet: NSObject
         }
         
         pickerView=UIPickerView()
-        pickerView?.backgroundColor = UIColor.red
         contentView?.addSubview(pickerView!)
         addConstraint(pickerView!, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
     }
@@ -314,25 +255,7 @@ public class AbstractSheet: NSObject
         }
     }
     
-    override public func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?)
-    {
-        if keyPath == "text" {
-            
-            if let newVal=change?[.newKey] as? String,!newVal.isEmpty{
-                self.titleHeightConstraint?.constant=DEFAULT_TITLE_LABLE_HEIGHT
-                self.titleTopConstraint?.constant=8
-            }
-            else{
-                self.titleHeightConstraint?.constant=0
-                self.titleTopConstraint?.constant=0
-            }
-        }
-    }
     
-    deinit {
-        titleLabel?.removeObserver(self, forKeyPath: "text")
-        // rightImageView.removeObserver(self, forKeyPath: "image")
-    }
     
     //MARK:- public methods
     public func show(){
