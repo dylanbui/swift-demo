@@ -8,11 +8,11 @@
 
 /* Demo about use DbAbstractSheet with UITableView
  
- let item_1 = DbPickerItem(iId: 1, title: "Giá từ thấp đến cao")
- let item_2 = DbPickerItem(iId: 2, title: "Giá từ cao xuống thấp")
- let item_3 = DbPickerItem(iId: 3, title: "Diện tích từ nhỏ đến lớn")
- let item_4 = DbPickerItem(iId: 4, title: "Diện tích từ lớn đến nhỏ")
- let item_5 = DbPickerItem(iId: 5, title: "Ngày tạo mới nhất")
+ let item_1 = DbItem(id: 1, title: "Giá từ thấp đến cao")
+ let item_2 = DbItem(id: 2, title: "Giá từ cao xuống thấp")
+ let item_3 = DbItem(id: 3, title: "Diện tích từ nhỏ đến lớn")
+ let item_4 = DbItem(id: 4, title: "Diện tích từ lớn đến nhỏ")
+ let item_5 = DbItem(id: 5, title: "Ngày tạo mới nhất")
  let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
  
  let sheet = DbSheetTableView.initWithTitle(title: "Chọn từ bảng",
@@ -30,13 +30,13 @@
 
 import Foundation
 
-typealias DbSheetTableViewDidSelectRowBlock = (_ picker: DbSheetTableView, _ didSelectRow: DbPickerProtocol, _ indexPath: IndexPath) -> Void
+typealias DbSheetTableViewDidSelectRowBlock = (_ picker: DbSheetTableView, _ didSelectRow: DbItemProtocol, _ indexPath: IndexPath) -> Void
 
 class DbSheetTableView: DbAbstractSheet
 {
     private var tableView: UITableView!
     
-    var arrSource: [DbPickerProtocol]?
+    var arrSource: [DbItemProtocol]?
     var didSelectRowBlock: DbSheetTableViewDidSelectRowBlock?
     
     override init()
@@ -66,7 +66,7 @@ class DbSheetTableView: DbAbstractSheet
     }
     
     static func initWithTitle(title: String,
-                              rows: [DbPickerProtocol],
+                              rows: [DbItemProtocol],
                               okTitle: String, cancelTitle: String) -> DbSheetTableView
     {
         let picker = DbSheetTableView()
@@ -124,9 +124,9 @@ extension DbSheetTableView: UITableViewDelegate, UITableViewDataSource
             cell = UITableViewCell(style: .subtitle, reuseIdentifier: staticVariable.tableIdentifier)
         }
         
-        if let item: DbPickerProtocol = self.arrSource?[indexPath.row] {
-            cell?.textLabel?.text = item.dbPickerItemTitle
-            cell?.detailTextLabel?.text = item.dbPickerItemDesc
+        if let item: DbItemProtocol = self.arrSource?[indexPath.row] {
+            cell?.textLabel?.text = item.dbItemTitle
+            cell?.detailTextLabel?.text = item.dbItemDesc
             // -- Image config --
     //        let image=UIImage(named: country.code)
     //        cell.imageView?.image = image
@@ -140,7 +140,7 @@ extension DbSheetTableView: UITableViewDelegate, UITableViewDataSource
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
     {
-        if let item: DbPickerProtocol = self.arrSource?[indexPath.row] {
+        if let item: DbItemProtocol = self.arrSource?[indexPath.row] {
             self.didSelectRowBlock?(self, item, indexPath)
         }
         self.dismiss()

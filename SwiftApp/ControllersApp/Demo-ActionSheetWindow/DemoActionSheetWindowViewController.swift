@@ -110,26 +110,57 @@ class DemoActionSheetWindowViewController: UIViewController
 
     @IBAction func pickerClick(_ sender: UIButton)
     {
-        let item_1 = DbPickerItem(iId: 1, title: "Giá từ thấp đến cao")
-        let item_2 = DbPickerItem(iId: 2, title: "Giá từ cao xuống thấp")
-        let item_3 = DbPickerItem(iId: 3, title: "Diện tích từ nhỏ đến lớn")
-        let item_4 = DbPickerItem(iId: 4, title: "Diện tích từ lớn đến nhỏ")
-        let item_5 = DbPickerItem(iId: 5, title: "Ngày tạo mới nhất")
-        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
-
-        let sheet = DbSheetTableView.initWithTitle(title: "Chọn từ bảng",
-                                          rows: arrSortItem,
-                                          okTitle: "Chọn",
-                                          cancelTitle: "Bỏ qua")
-        sheet.didSelectRowBlock = { (_ picker: DbSheetTableView, _ didSelectRow: DbPickerProtocol, indexPath: IndexPath) in
+        let arrSortItem = [
+            DbItem(id: 1, title: "red", desc: "red", raw: Color(title: "red", color: UIColor.red)),
+            DbItem(id: 2, title: "black", desc: "black", raw: Color(title: "black", color: UIColor.black)),
+            DbItem(id: 3, title: "blue", desc: "blue", raw: Color(title: "blue", color: UIColor.blue)),
+            DbItem(id: 4, title: "brown", desc: "brown", raw: Color(title: "brown", color: UIColor.brown)),
+            DbItem(id: 5, title: "cyan", desc: "cyan", raw: Color(title: "cyan", color: UIColor.cyan)),
+            DbItem(id: 6, title: "darkGray", desc: "darkGray", raw: Color(title: "darkGray", color: UIColor.darkGray)),
+            DbItem(id: 7, title: "green", desc: "green", raw: Color(title: "green", color: UIColor.green)),
+            DbItem(id: 8, title: "magenta", desc: "magenta", raw: Color(title: "magenta", color: UIColor.magenta)),
+            DbItem(id: 9, title: "yellow", desc: "yellow", raw: Color(title: "yellow", color: UIColor.yellow)),
+            DbItem(id: 10, title: "orange", desc: "orange", raw: Color(title: "orange", color: UIColor.orange)),
+            DbItem(id: 11, title: "purple", desc: "purple", raw: Color(title: "purple", color: UIColor.purple)),
+            DbItem(id: 12, title: "green", desc: "green", raw: Color(title: "green", color: UIColor.green))
+        ]
+        
+        let sheet = DbSheetCollectionView.initWithTitle(title: "Chọn từ bảng",
+                                                        rows: arrSortItem)
+        sheet.didSelectCellBlock = { (_ picker: DbSheetCollectionView, _ didSelectRow: DbItemProtocol, indexPath: IndexPath) in
             print("VUA MOI CHON DONG : \(didSelectRow)")
         }
         sheet.show()
+        
+//        let sheetDate = DbSheetDatePicker.initWithTitle(title: "Chọn ngày tháng",
+//                                                        datePickerMode: .dateAndTime,
+//                                                        okTitle: "Chọn", cancelTitle: "Bỏ qua")
+//        { (sheetDatePicker, selectedDate) in
+//            print("selectedDate = \(String(describing: selectedDate))")
+//
+//        }
+//        sheetDate.show()
+        
+//        let item_1 = DbItem(id: 1, title: "Giá từ thấp đến cao")
+//        let item_2 = DbItem(id: 2, title: "Giá từ cao xuống thấp")
+//        let item_3 = DbItem(id: 3, title: "Diện tích từ nhỏ đến lớn")
+//        let item_4 = DbItem(id: 4, title: "Diện tích từ lớn đến nhỏ")
+//        let item_5 = DbItem(id: 5, title: "Ngày tạo mới nhất")
+//        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
+//
+//        let sheet = DbSheetTableView.initWithTitle(title: "Chọn từ bảng",
+//                                          rows: arrSortItem,
+//                                          okTitle: "Chọn",
+//                                          cancelTitle: "Bỏ qua")
+//        sheet.didSelectRowBlock = { (_ picker: DbSheetTableView, _ didSelectRow: DbPickerProtocol, indexPath: IndexPath) in
+//            print("VUA MOI CHON DONG : \(didSelectRow)")
+//        }
+//        sheet.show()
 
         // -- Example 1 --
 //        let sheet = DbSheetPicker.initWithTitle(title: "Chọn quốc gia",
 //                                          rows: arrSortItem,
-//                                          initialSelections: DbPickerItem(iId: 4, title: "Diện tích từ lớn đến nhỏ"),
+//                                          initialSelections: DbItem(iId: 4, title: "Diện tích từ lớn đến nhỏ"),
 //                                          okTitle: "Đồng ý",
 //                                          cancelTitle: "Bỏ qua")
 //        sheet.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbPickerProtocol) in
@@ -175,8 +206,8 @@ class DemoActionSheetWindowViewController: UIViewController
                                                  okTitle: "Dong y",
                                                  cancelTitle: "Bo qua")
         picker.anchorControl = sender
-        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbPickerProtocol) in
-            print("Gia tri vua chon : \(selectedValue.dbPickerItemTitle)")
+        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
+            print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
         }
 
         picker.cancelBlock = { (_ picker: DbSheetPicker) in
@@ -370,6 +401,7 @@ extension DemoActionSheetWindowViewController: UICollectionViewDelegate,UICollec
         collectionViewField.collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         collectionViewField.collectionView?.dataSource=self
         collectionViewField.collectionView?.delegate=self
+        
         collectionViewField.titleLabel?.text="select a color"
         collectionViewField.placeholder="your favorite color ..."
         collectionViewField.hideButtons=true

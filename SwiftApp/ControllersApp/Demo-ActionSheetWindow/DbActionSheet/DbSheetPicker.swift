@@ -8,7 +8,7 @@
 
 import UIKit
 
-typealias DbSheetPickerDoneBlock = (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbPickerProtocol) -> Void
+typealias DbSheetPickerDoneBlock = (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) -> Void
 typealias DbSheetPickerCancelBlock = (_ picker: DbSheetPicker) -> Void
 typealias DbSheetPickerDidSelectRowBlock = (_ picker: DbSheetPicker, _ didSelectRow: Int) -> Void
 
@@ -16,8 +16,8 @@ class DbSheetPicker: DbAbstractSheet
 {
     private var pickerView: UIPickerView?
     
-    var arrSource: [DbPickerProtocol]?
-    var selectedItem: DbPickerProtocol?
+    var arrSource: [DbItemProtocol]?
+    var selectedItem: DbItemProtocol?
     
     var doneBlock: DbSheetPickerDoneBlock?
     var cancelBlock: DbSheetPickerCancelBlock?
@@ -41,7 +41,7 @@ class DbSheetPicker: DbAbstractSheet
         if let selectedItem = self.selectedItem {
             var objectIndex = 0
             if let index = self.arrSource?.index(where: { (city) -> Bool in
-                return city.dbPickerItemId == selectedItem.dbPickerItemId
+                return city.dbItemId == selectedItem.dbItemId
             }) {
                 objectIndex = index
             }
@@ -53,8 +53,8 @@ class DbSheetPicker: DbAbstractSheet
     }
     
     static func initWithTitle(title: String,
-                              rows: [DbPickerProtocol],
-                              initialSelections: DbPickerProtocol?,
+                              rows: [DbItemProtocol],
+                              initialSelections: DbItemProtocol?,
                               okTitle: String, cancelTitle: String) -> DbSheetPicker
     {
         let picker = DbSheetPicker()
@@ -110,7 +110,7 @@ extension DbSheetPicker: UIPickerViewDelegate,UIPickerViewDataSource
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String?
     {
         let item = self.arrSource![row]
-        return item.dbPickerItemTitle
+        return item.dbItemTitle
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)

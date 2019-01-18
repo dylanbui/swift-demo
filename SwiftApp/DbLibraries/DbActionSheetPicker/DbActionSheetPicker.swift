@@ -26,37 +26,56 @@ import ActionSheetPicker_3_0
  */
 
 protocol DbPickerProtocol {
-    
     var dbPickerItemId: Int { get }
     var dbPickerItemTitle: String { get }
-    var dbPickerItemDesc: String { get }
     
+    var dbPickerItemDesc: String? { get }
+    var dbRawValue: Any? { get }
+}
+
+extension DbPickerProtocol {
+    var dbPickerItemDesc: Any? {
+        get {
+            return nil
+        }
+    }
+    var dbRawValue: Any? {
+        get {
+            return nil
+        }
+    }
 }
 
 class DbPickerItem: DbPickerProtocol, CustomStringConvertible
 {
     var dbPickerItemId: Int
     var dbPickerItemTitle: String
-    var dbPickerItemDesc: String
-    
-    var rawValue: Any?
+    var dbPickerItemDesc: String?
+    var dbRawValue: Any?
     
     // Extension CustomStringConvertible
     var description: String {
-        return "ItemId: \(dbPickerItemId) - Desc: \(dbPickerItemDesc)"
+        return "ItemId: \(dbPickerItemId) - Desc: \(dbPickerItemDesc ?? "nil")"
     }
     
     init() {
         self.dbPickerItemId = 0
         self.dbPickerItemTitle = ""
-        self.dbPickerItemDesc = ""
     }
     
-    convenience init(iId: Int, title: String) {
+//    convenience init(id: Int, title: String) {
+//        self.init()
+//        self.dbPickerItemId = id
+//        self.dbPickerItemTitle = title
+//        self.dbPickerItemDesc = title
+//    }
+    
+    convenience init(id: Int, title: String, desc: String? = nil, raw: Any? = nil) {
         self.init()
-        self.dbPickerItemId = iId
+        self.dbPickerItemId = id
         self.dbPickerItemTitle = title
-        self.dbPickerItemDesc = title
+        self.dbPickerItemDesc = desc
+        self.dbRawValue = raw
     }
     
 }

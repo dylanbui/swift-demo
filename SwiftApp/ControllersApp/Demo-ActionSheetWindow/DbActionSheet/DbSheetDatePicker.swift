@@ -8,27 +8,30 @@
 
 import Foundation
 
-typealias DbSheetDatePickerDoneBlock = (_ picker: DbSheetDatePicker, _ selectedIndex: Int, _ selectedValue: DbPickerProtocol) -> Void
-typealias DbSheetDatePickerCancelBlock = (_ picker: DbSheetDatePicker) -> Void
-typealias DbSheetDatePickerDidSelectRowBlock = (_ picker: DbSheetDatePicker, _ didSelectRow: Int) -> Void
+// selectedDate is NSDate or NSNumber for "UIDatePickerModeCountDownTimer"
+typealias DbActionDateDoneBlock = (_ picker: DbSheetDatePicker, _ selectedDate: Date) -> Void
+typealias DbActionDateCancelBlock = (_ picker: DbSheetDatePicker) -> Void
+typealias DbActionDateChangeValueBlock = (_ picker: DbSheetDatePicker, _ selectedDate: Date) -> Void
+typealias DbActionCountDownDurationDoneBlock = (_ picker: DbSheetDatePicker, _ countDownDuration: TimeInterval) -> Void
 
 class DbSheetDatePicker: DbAbstractSheet
 {
     private var datePicker: UIDatePicker!
     
-    var arrSource: [DbPickerProtocol]?
-    var selectedItem: DbPickerProtocol?
+    var doneBlock: DbActionDateDoneBlock?
+    var cancelBlock: DbActionDateCancelBlock?
+    var changeValueBlock: DbActionDateChangeValueBlock?
+    var countDownDurationBlock: DbActionCountDownDurationDoneBlock?
     
-    var doneBlock: DbSheetDatePickerDoneBlock?
-    var cancelBlock: DbSheetDatePickerCancelBlock?
-    var didSelectRowBlock: DbSheetDatePickerDidSelectRowBlock?
+    var selectedDate: Date?
     
     var datePickerMode: UIDatePickerMode = .date
+    
     // specify min/max date range. default is nil. When min > max, the values are ignored. Ignored in countdown timer mode
     var minimumDate: Date?
-    var maximumDate: Date? = nil // default is nil
+    var maximumDate: Date? // default is nil
     // display minutes wheel with interval. interval must be evenly divided into 60. default is 1. min is 1, max is 30
-    var minuteInterval: Int? = nil
+    var minuteInterval: Int?
     // default is [NSLocale currentLocale]. setting nil returns to default
     var locale: Locale?
     // default is [NSCalendar currentCalendar]. setting nil returns to default
@@ -36,7 +39,7 @@ class DbSheetDatePicker: DbAbstractSheet
     // default is nil. use current time zone or time zone from calendar
     var timeZone: TimeZone?
     // for UIDatePickerModeCountDownTimer, ignored otherwise. default is 0.0. limit is 23:59 (86,399 seconds). value being set is div 60 (drops remaining seconds).
-    var countDownDuration: TimeInterval?
+    var countDownDuration: TimeInterval = 0.0
     
     override init()
     {
@@ -50,45 +53,74 @@ class DbSheetDatePicker: DbAbstractSheet
         self.datePicker = UIDatePicker()
         
         self.datePicker.datePickerMode = self.datePickerMode
-        self.datePicker.maximumDate = Date()
+        self.datePicker.maximumDate = self.maximumDate
+        self.datePicker.minimumDate = self.minimumDate
+        self.datePicker.minuteInterval = self.minuteInterval ?? 1
+
+        self.datePicker.locale = self.locale
+        self.datePicker.calendar = self.calendar
+        self.datePicker.timeZone = self.timeZone
+        
+        // if datepicker is set with a date in countDownMode then
+        // 1h is added to the initial countdown
+        if self.datePickerMode == .countDownTimer {
+            self.datePicker.countDownDuration = self.countDownDuration
+            // Due to a bug in UIDatePicker, countDownDuration needs to be set asynchronously
+            // more info: http://stackoverflow.com/a/20204317/1161723
+            DispatchQueue.main.async {
+                self.datePicker.countDownDuration = self.countDownDuration
+            }
+        } else {
+            self.datePicker.setDate(self.selectedDate ?? Date(), animated: false)
+        }
+        
+        self.datePicker.addTarget(self, action: #selector(eventForDatePicker), for: .valueChanged)
         
         contentView?.addSubview(datePicker)
         addConstraint(datePicker!, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
     }
     
+    @objc fileprivate func eventForDatePicker(sender: Any)
+    {
+        self.selectedDate = self.datePicker.date
+        self.countDownDuration = self.datePicker.countDownDuration
+
+        print("Just change :=> \(String(describing: self.selectedDate?.description))")
+        self.changeValueBlock?(self, self.selectedDate!)
+    }
+    
     static func initWithTitle(title: String,
-                              rows: [DbPickerProtocol],
-                              initialSelections: DbPickerProtocol?,
-                              okTitle: String, cancelTitle: String) -> DbSheetDatePicker
+                              datePickerMode: UIDatePickerMode = .date,
+                              selectedDate: Date = Date(),
+                              okTitle: String, cancelTitle: String,
+                              doneBlock: @escaping DbActionDateDoneBlock) -> DbSheetDatePicker
     {
         let picker = DbSheetDatePicker()
-        picker.arrSource = rows
-        picker.selectedItem = initialSelections
         picker.titleLabel?.text = title
+        picker.datePickerMode = datePickerMode
+        picker.selectedDate = selectedDate
         picker.okButton?.setTitle(okTitle, for: .normal)
         picker.cancelButton?.setTitle(cancelTitle, for: .normal)
+        picker.doneBlock = doneBlock
         return picker
     }
+    
 }
 
 //Mark:- PickerFieldDelegate
 extension DbSheetDatePicker: DbAbstractSheetDelegate
 {
-    func pickerField(didHidePicker pickerField: DbAbstractSheet)
-    {
-        // print("didHidePicker")
-    }
-    
     func pickerField(didCancelClick pickerField: DbAbstractSheet)
     {
-        // print("pickerField")
         self.cancelBlock?(self)
     }
     
     func pickerField(didOKClick pickerField: DbAbstractSheet)
     {
-//        if let row = self.pickerView?.selectedRow(inComponent: 0) {
-//            self.doneBlock?(self, row, self.arrSource![row])
-//        }
+        if self.datePickerMode == .countDownTimer {
+            self.countDownDurationBlock?(self, self.countDownDuration)
+        } else {
+            self.doneBlock?(self, self.selectedDate ?? Date())
+        }
     }
 }

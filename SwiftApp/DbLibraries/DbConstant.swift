@@ -30,7 +30,6 @@ import Foundation
 //    case VclDidDisAppear = "VclDidDisAppear"
 //}
 
-// -- Xu ly tra ve cua cac UIView action DbHandleViewAction(owner, id, params, error) --
 public typealias DictionaryType = [String: Any]
 
 // -- Xu ly tra ve cua cac UIView action DbHandleAction(owner, id, params, error) --
@@ -46,6 +45,60 @@ extension DbIReturnDelegate {
         
     }
 }
+
+// -- Default item for UIControl --
+
+protocol DbItemProtocol {
+    var dbItemId: Int { get }
+    var dbItemTitle: String { get }
+    
+    var dbItemDesc: String? { get }
+    var dbRawValue: Any? { get }
+}
+
+extension DbItemProtocol {
+    var dbItemDesc: Any? {
+        get {
+            return nil
+        }
+    }
+    var dbRawValue: Any? {
+        get {
+            return nil
+        }
+    }
+}
+
+class DbItem: DbItemProtocol, CustomStringConvertible
+{
+    var dbItemId: Int
+    var dbItemTitle: String
+    var dbItemDesc: String?
+    var dbRawValue: Any?
+    
+    // Extension CustomStringConvertible
+    var description: String {
+        return "ItemId: \(dbItemId) - Desc: \(dbItemTitle)"
+    }
+    
+    init()
+    {
+        self.dbItemId = 0
+        self.dbItemTitle = ""
+    }
+    
+    convenience init(id: Int, title: String, desc: String? = nil, raw: Any? = nil)
+    {
+        self.init()
+        self.dbItemId = id
+        self.dbItemTitle = title
+        self.dbItemDesc = desc
+        self.dbRawValue = raw
+    }
+    
+}
+
+
 //public enum db {
 //    static func aaaa(name: String) {
 //        print(name)
@@ -144,7 +197,7 @@ extension Db // => Device functions
     static func SCREEN_MAX_LENGTH() -> Int {
         return max(screenWidth(), screenHeight())
     }
-
+    
     static func SCREEN_MIN_LENGTH() -> Int {
         return max(screenWidth(), screenHeight())
     }
@@ -162,7 +215,15 @@ extension Db // => Device functions
     }
     
     static func IS_IPHONE_X() -> Bool {
-        return (isIphone() && SCREEN_MAX_LENGTH() > 736)
+        return (isIphone() && SCREEN_MAX_LENGTH() == 812)
+    }
+    
+    static func IS_IPHONE_XS() -> Bool {
+        return (isIphone() && SCREEN_MAX_LENGTH() == 812)
+    }
+    
+    static func IS_IPHONE_XS_MAX_XR() -> Bool {
+        return (isIphone() && SCREEN_MAX_LENGTH() == 896)
     }
     
     static func rootViewController() -> UIViewController {
@@ -200,5 +261,7 @@ struct Employee {
 func TestAddNotification(_ name: String) {
     print("TestAddNotification \(name)")
 }
+
+
 
 

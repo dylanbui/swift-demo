@@ -47,6 +47,11 @@
 		BB407AD12181821A00C8E57F /* DbUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407ACC2181821900C8E57F /* DbUIViewController.swift */; };
 		BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407AD22181835100C8E57F /* DbHtmlView.swift */; };
 		BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407AD32181835100C8E57F /* DbSpinner.swift */; };
+		BB48E20421F190CC002B2DEC /* DbSheetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */; };
+		BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */; };
+		BB48E20821F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */; };
+		BB48E20B21F1C359002B2DEC /* readme.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB48E20A21F1C359002B2DEC /* readme.txt */; };
+		BB48E20D21F1E531002B2DEC /* DbSheetCalendar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48E20C21F1E531002B2DEC /* DbSheetCalendar.swift */; };
 		BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E235C210EBA8F00524B0D /* CategoryApi.swift */; };
 		BB4E2361210EBCAD00524B0D /* PzLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */; };
 		BB4E2362210EBCAD00524B0D /* PzLoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */; };
@@ -283,6 +288,11 @@
 		BB407ACC2181821900C8E57F /* DbUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIViewController.swift; sourceTree = "<group>"; };
 		BB407AD22181835100C8E57F /* DbHtmlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbHtmlView.swift; sourceTree = "<group>"; };
 		BB407AD32181835100C8E57F /* DbSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSpinner.swift; sourceTree = "<group>"; };
+		BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetCollectionView.swift; sourceTree = "<group>"; };
+		BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoDbSheetPickerViewController.swift; sourceTree = "<group>"; };
+		BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoDbSheetPickerViewController.xib; sourceTree = "<group>"; };
+		BB48E20A21F1C359002B2DEC /* readme.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = readme.txt; sourceTree = "<group>"; };
+		BB48E20C21F1E531002B2DEC /* DbSheetCalendar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetCalendar.swift; sourceTree = "<group>"; };
 		BB4E235C210EBA8F00524B0D /* CategoryApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryApi.swift; sourceTree = "<group>"; };
 		BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzLoginViewController.swift; sourceTree = "<group>"; };
 		BB4E2360210EBCAD00524B0D /* PzLoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzLoginViewController.xib; sourceTree = "<group>"; };
@@ -621,6 +631,17 @@
 			path = DbStackScrollView;
 			sourceTree = "<group>";
 		};
+		BB48E20921F1C178002B2DEC /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				BB48E20A21F1C359002B2DEC /* readme.txt */,
+				BB9BC0C521EDFA0E004BC430 /* PickerField.swift */,
+				BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */,
+				BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 		BB4E235E210EBC6400524B0D /* Propzy-SAM */ = {
 			isa = PBXGroup;
 			children = (
@@ -745,7 +766,6 @@
 			children = (
 				BBDD202521F093D200788D3E /* DbActionSheet */,
 				BB9BC0C421EDFA0E004BC430 /* DbAbstractPicker.swift */,
-				BB9BC0C521EDFA0E004BC430 /* PickerField.swift */,
 				BB9BC0BA21ED9B18004BC430 /* WindowActionSheet.swift */,
 				BB9BC0BC21EDD877004BC430 /* AbstractDbActionSheetPicker.swift */,
 				BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */,
@@ -939,10 +959,13 @@
 		BBDD202521F093D200788D3E /* DbActionSheet */ = {
 			isa = PBXGroup;
 			children = (
+				BB48E20921F1C178002B2DEC /* Example */,
 				BBDD202621F0940400788D3E /* DbAbstractSheet.swift */,
 				BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */,
 				BBF0312121F102460009C753 /* DbSheetDatePicker.swift */,
 				BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */,
+				BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */,
+				BB48E20C21F1E531002B2DEC /* DbSheetCalendar.swift */,
 			);
 			path = DbActionSheet;
 			sourceTree = "<group>";
@@ -1203,6 +1226,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BB48E20821F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib in Resources */,
 				BBA2A4432118270C00618AEF /* PzListingDetailViewController.xib in Resources */,
 				BBC02E681F71747A0011FDE6 /* OpenSans-Light.ttf in Resources */,
 				BBE813FD2017458100B21B1F /* ic_show_password.png in Resources */,
@@ -1218,6 +1242,7 @@
 				BB4E2366210EBCD800524B0D /* PzRegisterViewController.xib in Resources */,
 				BB7F3038203E857900185366 /* demo_1.jpg in Resources */,
 				BB1079472071D7B300A99D9A /* DemoUKitViewController.xib in Resources */,
+				BB48E20B21F1C359002B2DEC /* readme.txt in Resources */,
 				BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */,
 				BBC38A64206DDEE500B11C7B /* Ionicons.ttf in Resources */,
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
@@ -1429,6 +1454,7 @@
 				BBC38A52206DDE9500B11C7B /* IonIcons.swift in Sources */,
 				BBE6FA7121EC9A700030AA64 /* UIControl+Closures.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
+				BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
@@ -1439,6 +1465,7 @@
 				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
 				BB5756B6219E7C48000BDACD /* KBScrollViewViewController.swift in Sources */,
 				BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */,
+				BB48E20D21F1E531002B2DEC /* DbSheetCalendar.swift in Sources */,
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BB9BC0BB21ED9B19004BC430 /* WindowActionSheet.swift in Sources */,
@@ -1451,6 +1478,7 @@
 				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
+				BB48E20421F190CC002B2DEC /* DbSheetCollectionView.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */,
 				BB2FE66F2192C440007470DD /* UIViewController+DbSemiModalViewController.swift in Sources */,
