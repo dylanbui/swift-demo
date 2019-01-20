@@ -26,6 +26,7 @@ public class DbAbstractSheet: NSObject
 {
     private(set) public var containerView:UIView?
     private(set) public var contentView:UIView?
+    private(set) public var bottomView:UIView?
     private(set) public var okButton:UIButton?
     private(set) public var cancelButton:UIButton?
     
@@ -52,7 +53,6 @@ public class DbAbstractSheet: NSObject
     public var hideButtons:Bool=false{
         didSet{
             bottomSectionHeightConstraint?.constant = hideButtons ? 0 : DEFAULT_BOTTOM_SECTION_HEIGHT
-            seperatorHeightConstraint?.constant = hideButtons ? 0 : 1
         }
     }
     public var cancelWhenTouchUpOutside:Bool=false{
@@ -70,7 +70,6 @@ public class DbAbstractSheet: NSObject
     private var titleHeightConstraint:NSLayoutConstraint?
     private var titleTopConstraint:NSLayoutConstraint?
     private var bottomSectionHeightConstraint:NSLayoutConstraint?
-    private var seperatorHeightConstraint:NSLayoutConstraint?
     
     override init() {
         super.init()
@@ -127,15 +126,20 @@ public class DbAbstractSheet: NSObject
         titleLabel?.font=UIFont.systemFont(ofSize: 13)
         titleLabel?.textColor = .lightGray
         
-        //buttons
-        let bottomView=UIView()
-        containerView.addSubview(bottomView)
+        // BottomView buttons
+        self.bottomView = UIView()
+        containerView.addSubview(self.bottomView!)
+        guard let bottomView = self.bottomView else{
+            return
+        }
+        
         bottomView.clipsToBounds=true
         addConstraint(bottomView, toView: containerView, top: nil, leading: 0, bottom: 0, trailing: 0)
         bottomSectionHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: DEFAULT_BOTTOM_SECTION_HEIGHT)
         bottomSectionHeightConstraint?.isActive=true
         // -- Add OK button --
         okButton=UIButton(type: .system)
+//        okButton?.backgroundColor = UIColor.red
         bottomView.addSubview(okButton!)
         // -- DucBui 17/01/2019 : Khong hieu ly do vi sao, ko the addTarget --
         // Neu addTarget thi build duoc, nhung chay bi loi toan bo phan ben duoi
@@ -160,20 +164,19 @@ public class DbAbstractSheet: NSObject
         addConstraint(cancelButton!, toView: bottomView, top: 0, leading: nil, bottom: 0, trailing: 0)
         cancelButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
         
-        //seperator
+        // Seperator line
         let seperater=UIView()
-        containerView.addSubview(seperater)
-        addConstraint(seperater, toView: containerView, top: nil, leading: 0, bottom: nil, trailing: 0)
-        seperater.bottomAnchor.constraint(equalTo: bottomView.topAnchor).isActive=true
-        seperatorHeightConstraint = seperater.heightAnchor.constraint(equalToConstant: 1)
-        seperatorHeightConstraint?.isActive=true
+        bottomView.addSubview(seperater)
+        addConstraint(seperater, toView: bottomView, top: 0, leading: 0, bottom: nil, trailing: 0)
+        seperater.topAnchor.constraint(equalTo: bottomView.topAnchor).isActive=true
+        seperater.heightAnchor.constraint(equalToConstant: 1).isActive=true
         seperater.backgroundColor = UIColor.groupTableViewBackground
         
         //contentView
-        contentView=UIView()
+        contentView = UIView()
         containerView.addSubview(contentView!)
         addConstraint(contentView!, toView: containerView, top: nil, leading: 4, bottom: nil, trailing: -4)
-        contentView?.bottomAnchor.constraint(equalTo: seperater.topAnchor,constant: -4).isActive=true
+        contentView?.bottomAnchor.constraint(equalTo: bottomView.topAnchor,constant: -4).isActive=true
         contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 4).isActive=true
     }
         
