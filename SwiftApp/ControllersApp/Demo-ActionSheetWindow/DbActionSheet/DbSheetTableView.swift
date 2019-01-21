@@ -34,7 +34,7 @@ typealias DbSheetTableViewDidSelectRowBlock = (_ picker: DbSheetTableView, _ did
 
 class DbSheetTableView: DbAbstractSheet
 {
-    private var tableView: UITableView!
+    internal var tableView: UITableView!
     
     var arrSource: [DbItemProtocol]?
     var didSelectRowBlock: DbSheetTableViewDidSelectRowBlock?
@@ -47,7 +47,7 @@ class DbSheetTableView: DbAbstractSheet
         self.cancelWhenTouchUpOutside = true
     }
     
-    override func setupContentView()
+    override func setupContentView() -> UIView
     {
         // -- Default config --
         self.hideButtons = true
@@ -59,10 +59,7 @@ class DbSheetTableView: DbAbstractSheet
         self.tableView.delegate = self
         self.tableView.backgroundColor = .clear
         
-        // -- Add to contentView --
-        self.contentView?.addSubview(self.tableView)
-        // -- Add constraint for tableView --
-        addConstraint(self.tableView, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
+        return self.tableView        
     }
     
     static func initWithTitle(title: String,
@@ -81,22 +78,22 @@ class DbSheetTableView: DbAbstractSheet
 //Mark:- PickerFieldDelegate
 extension DbSheetTableView: DbAbstractSheetDelegate
 {
-    func pickerField(didShowPicker pickerField: DbAbstractSheet)
+    func sheetPicker(didShowPicker sheetPicker: DbAbstractSheet)
     {
         // print("didShowPicker")
     }
 
-    func pickerField(didHidePicker pickerField: DbAbstractSheet)
+    func sheetPicker(didHidePicker sheetPicker: DbAbstractSheet)
     {
         // print("didHidePicker")
     }
     
-    func pickerField(didCancelClick pickerField: DbAbstractSheet)
+    func sheetPicker(didCancelClick sheetPicker: DbAbstractSheet)
     {
         // print("didCancelClick")
     }
     
-    func pickerField(didOKClick pickerField: DbAbstractSheet)
+    func sheetPicker(didOKClick sheetPicker: DbAbstractSheet)
     {
 //        if let row = self.pickerView?.selectedRow(inComponent: 0) {
 //            self.doneBlock?(self, row, self.arrSource![row])

@@ -16,7 +16,7 @@ typealias DbActionCountDownDurationDoneBlock = (_ picker: DbSheetDatePicker, _ c
 
 class DbSheetDatePicker: DbAbstractSheet
 {
-    private var datePicker: UIDatePicker!
+    internal var datePicker: UIDatePicker!
     
     var doneBlock: DbActionDateDoneBlock?
     var cancelBlock: DbActionDateCancelBlock?
@@ -48,7 +48,7 @@ class DbSheetDatePicker: DbAbstractSheet
         self.pickerFieldDelegate = self
     }
     
-    override func setupContentView()
+    override func setupContentView() -> UIView
     {
         self.datePicker = UIDatePicker()
         
@@ -76,8 +76,7 @@ class DbSheetDatePicker: DbAbstractSheet
         
         self.datePicker.addTarget(self, action: #selector(eventForDatePicker), for: .valueChanged)
         
-        contentView?.addSubview(datePicker)
-        addConstraint(datePicker!, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
+        return self.datePicker
     }
     
     @objc fileprivate func eventForDatePicker(sender: Any)
@@ -85,7 +84,9 @@ class DbSheetDatePicker: DbAbstractSheet
         self.selectedDate = self.datePicker.date
         self.countDownDuration = self.datePicker.countDownDuration
 
-        print("Just change :=> \(String(describing: self.selectedDate?.description))")
+        //print("Just change :=> \(String(describing: self.selectedDate?.description))")
+        //self.titleLabel?.text = self.selectedDate?.db_string(withFormat: VN_FORMAT_DATE_FULL)
+        
         self.changeValueBlock?(self, self.selectedDate!)
     }
     
@@ -110,12 +111,12 @@ class DbSheetDatePicker: DbAbstractSheet
 //Mark:- PickerFieldDelegate
 extension DbSheetDatePicker: DbAbstractSheetDelegate
 {
-    func pickerField(didCancelClick pickerField: DbAbstractSheet)
+    func sheetPicker(didCancelClick sheetPicker: DbAbstractSheet)
     {
         self.cancelBlock?(self)
     }
     
-    func pickerField(didOKClick pickerField: DbAbstractSheet)
+    func sheetPicker(didOKClick sheetPicker: DbAbstractSheet)
     {
         if self.datePickerMode == .countDownTimer {
             self.countDownDurationBlock?(self, self.countDownDuration)

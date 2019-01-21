@@ -13,7 +13,7 @@ typealias DbSheetCollectionViewDidSelectCellBlock = (_ picker: DbSheetCollection
 
 class DbSheetCollectionView: DbAbstractSheet
 {
-    private var collectionView: UICollectionView!
+    internal var collectionView: UICollectionView!
     
     var arrSource: [DbItemProtocol]?
     var didSelectCellBlock: DbSheetCollectionViewDidSelectCellBlock?
@@ -25,7 +25,7 @@ class DbSheetCollectionView: DbAbstractSheet
         self.pickerFieldDelegate = self
     }
     
-    override func setupContentView()
+    override func setupContentView() -> UIView
     {
         // -- Default config --
         self.hideButtons = true
@@ -44,10 +44,7 @@ class DbSheetCollectionView: DbAbstractSheet
         self.collectionView.setCollectionViewLayout(layout, animated: true)
         self.collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
         
-        // -- Add to contentView --
-        self.contentView?.addSubview(self.collectionView)
-        // -- Add constraint for tableView --
-        addConstraint(self.collectionView, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
+        return self.collectionView
     }
     
     static func initWithTitle(title: String,
@@ -63,22 +60,22 @@ class DbSheetCollectionView: DbAbstractSheet
 // Mark:- PickerFieldDelegate
 extension DbSheetCollectionView: DbAbstractSheetDelegate
 {
-    func pickerField(didShowPicker pickerField: DbAbstractSheet)
+    func sheetPicker(didShowPicker sheetPicker: DbAbstractSheet)
     {
         // print("didShowPicker")
     }
     
-    func pickerField(didHidePicker pickerField: DbAbstractSheet)
+    func sheetPicker(didHidePicker sheetPicker: DbAbstractSheet)
     {
         // print("didHidePicker")
     }
     
-    func pickerField(didCancelClick pickerField: DbAbstractSheet)
+    func sheetPicker(didCancelClick sheetPicker: DbAbstractSheet)
     {
         // print("didCancelClick")
     }
     
-    func pickerField(didOKClick pickerField: DbAbstractSheet)
+    func sheetPicker(didOKClick sheetPicker: DbAbstractSheet)
     {
         //        if let row = self.pickerView?.selectedRow(inComponent: 0) {
         //            self.doneBlock?(self, row, self.arrSource![row])

@@ -102,6 +102,22 @@ class DemoDbSheetPickerViewController: UIViewController
         }
         sheet.show()
     }
+    
+    @IBAction func fscalendarPicker_Click(_ sender: UIButton)
+    {
+        let sheet = DbSheetCalendar()
+        // sheet.selectionType = .selectionTypeSingle
+        // sheet.selectionType = .selectionTypeMulti
+        sheet.selectionType = .selectionTypeRange
+//        sheet.handleSingleChoosed = { selectedDate in
+//            print("\(String(describing: selectedDate))")
+//        }
+        sheet.handleMultiChoosed = { arrSelectedDate in
+            print("\(String(describing: arrSelectedDate))")
+        }
+        sheet.show()
+    }
+
 
 }
 

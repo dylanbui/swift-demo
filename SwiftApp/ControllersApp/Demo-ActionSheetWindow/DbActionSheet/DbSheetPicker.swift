@@ -14,7 +14,7 @@ typealias DbSheetPickerDidSelectRowBlock = (_ picker: DbSheetPicker, _ didSelect
 
 class DbSheetPicker: DbAbstractSheet
 {
-    private var pickerView: UIPickerView?
+    internal var pickerView: UIPickerView!
     
     var arrSource: [DbItemProtocol]?
     var selectedItem: DbItemProtocol?
@@ -31,11 +31,11 @@ class DbSheetPicker: DbAbstractSheet
         self.cancelWhenTouchUpOutside = true
     }
     
-    override func setupContentView()
+    override func setupContentView() -> UIView
     {
         self.pickerView = UIPickerView()
-        self.pickerView?.dataSource = self
-        self.pickerView?.delegate = self
+        self.pickerView.dataSource = self
+        self.pickerView.delegate = self
  
         // -- Setup selection item --
         if let selectedItem = self.selectedItem {
@@ -45,11 +45,10 @@ class DbSheetPicker: DbAbstractSheet
             }) {
                 objectIndex = index
             }
-            self.pickerView?.selectRow(objectIndex, inComponent: 0, animated: false)
+            self.pickerView.selectRow(objectIndex, inComponent: 0, animated: false)
         }
-
-        contentView?.addSubview(self.pickerView!)
-        addConstraint(self.pickerView!, toView: self.contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
+        
+        return self.pickerView
     }
     
     static func initWithTitle(title: String,
@@ -70,22 +69,26 @@ class DbSheetPicker: DbAbstractSheet
 //Mark:- PickerFieldDelegate
 extension DbSheetPicker: DbAbstractSheetDelegate
 {
-    func pickerField(didHidePicker pickerField: DbAbstractSheet)
+    func sheetPicker(didHidePicker sheetPicker: DbAbstractSheet)
     {
         // print("didHidePicker")
     }
     
-    func pickerField(didCancelClick pickerField: DbAbstractSheet)
+    func sheetPicker(didShowPicker sheetPicker: DbAbstractSheet)
     {
-        // print("pickerField")
-        self.cancelBlock?(self)
+        // print("didShowPicker")
     }
     
-    func pickerField(didOKClick pickerField: DbAbstractSheet)
+    func sheetPicker(didOKClick sheetPicker: DbAbstractSheet)
     {
         if let row = self.pickerView?.selectedRow(inComponent: 0) {
             self.doneBlock?(self, row, self.arrSource![row])
         }
+    }
+    
+    func sheetPicker(didCancelClick sheetPicker: DbAbstractSheet)
+    {
+        self.cancelBlock?(self)
     }
 }
 

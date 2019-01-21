@@ -9,28 +9,29 @@
 import UIKit
 
 public protocol DbAbstractSheetDelegate:class{
-    func pickerField(didOKClick pickerField: DbAbstractSheet)
-    func pickerField(didCancelClick pickerField: DbAbstractSheet)
-    func pickerField(didShowPicker pickerField: DbAbstractSheet)
-    func pickerField(didHidePicker pickerField: DbAbstractSheet)
+    func sheetPicker(didOKClick sheetPicker: DbAbstractSheet)
+    func sheetPicker(didCancelClick sheetPicker: DbAbstractSheet)
+    func sheetPicker(didShowPicker sheetPicker: DbAbstractSheet)
+    func sheetPicker(didHidePicker sheetPicker: DbAbstractSheet)
 }
 
 public extension DbAbstractSheetDelegate{
-    func pickerField(didOKClick pickerField: DbAbstractSheet){}
-    func pickerField(didCancelClick pickerField: DbAbstractSheet){}
-    func pickerField(didShowPicker pickerField: DbAbstractSheet){}
-    func pickerField(didHidePicker pickerField: DbAbstractSheet){}
+    func sheetPicker(didOKClick sheetPicker: DbAbstractSheet){}
+    func sheetPicker(didCancelClick sheetPicker: DbAbstractSheet){}
+    func sheetPicker(didShowPicker sheetPicker: DbAbstractSheet){}
+    func sheetPicker(didHidePicker sheetPicker: DbAbstractSheet){}
 }
 
 public class DbAbstractSheet: NSObject
 {
-    private(set) public var containerView:UIView?
-    private(set) public var contentView:UIView?
-    private(set) public var bottomView:UIView?
+    private(set) internal var containerView:UIView?
+    private(set) internal var contentView:UIView?
+    private(set) internal var bottomView:UIView?
+    
     private(set) public var okButton:UIButton?
     private(set) public var cancelButton:UIButton?
     
-    private(set)  public var isShown=false
+    private(set)  public var isShown = false
     
     private(set)  public var titleLabel:UILabel?{
         didSet{
@@ -45,17 +46,17 @@ public class DbAbstractSheet: NSObject
     public weak var anchorControl: UIView?
     public weak var pickerFieldDelegate: DbAbstractSheetDelegate?
     
-    public var fieldHeight:CGFloat=250{
+    public var fieldHeight: CGFloat=250 {
         didSet{
-            heightConstraint?.constant=fieldHeight
+            heightConstraint?.constant = fieldHeight
         }
     }
-    public var hideButtons:Bool=false{
+    public var hideButtons: Bool = false {
         didSet{
             bottomSectionHeightConstraint?.constant = hideButtons ? 0 : DEFAULT_BOTTOM_SECTION_HEIGHT
         }
     }
-    public var cancelWhenTouchUpOutside:Bool=false{
+    public var cancelWhenTouchUpOutside: Bool = false {
         didSet{
             
         }
@@ -71,7 +72,8 @@ public class DbAbstractSheet: NSObject
     private var titleTopConstraint:NSLayoutConstraint?
     private var bottomSectionHeightConstraint:NSLayoutConstraint?
     
-    override init() {
+    override init()
+    {
         super.init()
         commonInit()
     }
@@ -87,9 +89,9 @@ public class DbAbstractSheet: NSObject
         setupView()
     }
     
-    public func setupContentView()
+    public func setupContentView() -> UIView
     {
-        fatalError("Only call from subclass")
+        fatalError("This is an abstract class, you must use a subclass of DbAbstractSheet (like DbSheetPicker)")
     }
     
     private func setupView()
@@ -102,12 +104,17 @@ public class DbAbstractSheet: NSObject
         alert = UIAlertController(title: nil, message: "", preferredStyle: UIAlertController.Style.actionSheet)
         alert?.isModalInPopover = true
         
-        heightConstraint = NSLayoutConstraint(item: alert!.view, attribute: NSLayoutConstraint.Attribute.height, relatedBy: NSLayoutConstraint.Relation.equal, toItem: nil, attribute: NSLayoutConstraint.Attribute.notAnAttribute, multiplier: 1, constant: self.fieldHeight)
+        heightConstraint = NSLayoutConstraint(item: alert!.view,
+                                              attribute: NSLayoutConstraint.Attribute.height,
+                                              relatedBy: NSLayoutConstraint.Relation.equal,
+                                              toItem: nil,
+                                              attribute: NSLayoutConstraint.Attribute.notAnAttribute,
+                                              multiplier: 1, constant: self.fieldHeight)
         
         alert?.view.addConstraint(heightConstraint!)
         
         //containerView
-        containerView=UIView()
+        containerView = UIView()
         alert?.view.addSubview(containerView!)
         addConstraint(containerView!, toView: alert!.view, top: 0, leading: 0, bottom: 0, trailing: 0)
         guard let containerView = containerView else{
@@ -138,8 +145,7 @@ public class DbAbstractSheet: NSObject
         bottomSectionHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: DEFAULT_BOTTOM_SECTION_HEIGHT)
         bottomSectionHeightConstraint?.isActive=true
         // -- Add OK button --
-        okButton=UIButton(type: .system)
-//        okButton?.backgroundColor = UIColor.red
+        okButton = UIButton(type: .system)
         bottomView.addSubview(okButton!)
         // -- DucBui 17/01/2019 : Khong hieu ly do vi sao, ko the addTarget --
         // Neu addTarget thi build duoc, nhung chay bi loi toan bo phan ben duoi
@@ -154,7 +160,7 @@ public class DbAbstractSheet: NSObject
         okButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
         
         // -- Add Cancel button --
-        cancelButton=UIButton(type: .system)
+        cancelButton = UIButton(type: .system)
         bottomView.addSubview(cancelButton!)
         // cancelButton?.addTarget(self, action: #selector(didCancelTap), for: .touchUpInside)
         cancelButton?.addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: { (gesture) in
@@ -165,14 +171,14 @@ public class DbAbstractSheet: NSObject
         cancelButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
         
         // Seperator line
-        let seperater=UIView()
+        let seperater = UIView()
         bottomView.addSubview(seperater)
         addConstraint(seperater, toView: bottomView, top: 0, leading: 0, bottom: nil, trailing: 0)
         seperater.topAnchor.constraint(equalTo: bottomView.topAnchor).isActive=true
         seperater.heightAnchor.constraint(equalToConstant: 1).isActive=true
         seperater.backgroundColor = UIColor.groupTableViewBackground
         
-        //contentView
+        // ContentView
         contentView = UIView()
         containerView.addSubview(contentView!)
         addConstraint(contentView!, toView: containerView, top: nil, leading: 4, bottom: nil, trailing: -4)
@@ -183,13 +189,13 @@ public class DbAbstractSheet: NSObject
     @objc fileprivate func didOKTap()
     {
         dismiss()
-        self.pickerFieldDelegate?.pickerField(didOKClick: self)
+        self.pickerFieldDelegate?.sheetPicker(didOKClick: self)
     }
     
     @objc fileprivate func didCancelTap()
     {
         dismiss()
-        self.pickerFieldDelegate?.pickerField(didCancelClick: self)
+        self.pickerFieldDelegate?.sheetPicker(didCancelClick: self)
     }
     
     private func getViewController() -> UIViewController?
@@ -252,13 +258,16 @@ public class DbAbstractSheet: NSObject
     }
     
     //MARK:- public methods
-    public func show(){
+    public func show()
+    {
         guard let alert=self.alert, !isShown else{
             return
         }
         
         // -- Setup content view --
-        setupContentView()
+        let cotent = setupContentView()
+        self.contentView?.addSubview(cotent)
+        self.addConstraint(cotent, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
         
         isShown = true
         
@@ -273,7 +282,7 @@ public class DbAbstractSheet: NSObject
                 return
             }
             
-            unSelf.pickerFieldDelegate?.pickerField(didShowPicker: unSelf)
+            unSelf.pickerFieldDelegate?.sheetPicker(didShowPicker: unSelf)
             
             if let ousideView=unSelf.alert!.view.superview?.subviews.first {
                 ousideView.isUserInteractionEnabled = true
@@ -294,7 +303,7 @@ public class DbAbstractSheet: NSObject
             guard let unSelf = self  else{
                 return
             }
-            unSelf.pickerFieldDelegate?.pickerField(didHidePicker: unSelf)
+            unSelf.pickerFieldDelegate?.sheetPicker(didHidePicker: unSelf)
         }
     }
 }
