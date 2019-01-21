@@ -48,7 +48,7 @@ class DbSheetDatePicker: DbAbstractSheet
         self.pickerFieldDelegate = self
     }
     
-    override func setupContentView() -> UIView
+    override func setupContentView() -> UIView?
     {
         self.datePicker = UIDatePicker()
         

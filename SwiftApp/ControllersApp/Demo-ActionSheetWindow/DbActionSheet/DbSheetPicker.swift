@@ -31,7 +31,7 @@ class DbSheetPicker: DbAbstractSheet
         self.cancelWhenTouchUpOutside = true
     }
     
-    override func setupContentView() -> UIView
+    override func setupContentView() -> UIView?
     {
         self.pickerView = UIPickerView()
         self.pickerView.dataSource = self

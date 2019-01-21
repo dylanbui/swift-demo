@@ -25,7 +25,7 @@ class DbSheetCollectionView: DbAbstractSheet
         self.pickerFieldDelegate = self
     }
     
-    override func setupContentView() -> UIView
+    override func setupContentView() -> UIView?
     {
         // -- Default config --
         self.hideButtons = true

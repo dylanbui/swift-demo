@@ -27,6 +27,8 @@ public class DbAbstractSheet: NSObject
     private(set) internal var containerView:UIView?
     private(set) internal var contentView:UIView?
     private(set) internal var bottomView:UIView?
+    // -- Update content insets in subclass --
+    internal var contentInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     
     private(set) public var okButton:UIButton?
     private(set) public var cancelButton:UIButton?
@@ -89,7 +91,7 @@ public class DbAbstractSheet: NSObject
         setupView()
     }
     
-    public func setupContentView() -> UIView
+    public func setupContentView() -> UIView?
     {
         fatalError("This is an abstract class, you must use a subclass of DbAbstractSheet (like DbSheetPicker)")
     }
@@ -181,9 +183,10 @@ public class DbAbstractSheet: NSObject
         // ContentView
         contentView = UIView()
         containerView.addSubview(contentView!)
-        addConstraint(contentView!, toView: containerView, top: nil, leading: 4, bottom: nil, trailing: -4)
-        contentView?.bottomAnchor.constraint(equalTo: bottomView.topAnchor,constant: -4).isActive=true
-        contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 4).isActive=true
+        // addConstraint(contentView!, toView: containerView, top: nil, leading: 4, bottom: nil, trailing: -4)
+        addConstraint(contentView!, toView: containerView, top: nil, leading: 0, bottom: nil, trailing: 0)
+        contentView?.bottomAnchor.constraint(equalTo: bottomView.topAnchor,constant: 0).isActive=true
+        contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 0).isActive=true
     }
         
     @objc fileprivate func didOKTap()
@@ -265,9 +268,14 @@ public class DbAbstractSheet: NSObject
         }
         
         // -- Setup content view --
-        let cotent = setupContentView()
-        self.contentView?.addSubview(cotent)
-        self.addConstraint(cotent, toView: contentView!, top: 0, leading: 0, bottom: 0, trailing: 0)
+        if let content = setupContentView() {
+            self.contentView?.addSubview(content)
+            self.addConstraint(content, toView: contentView!,
+                               top: self.contentInsets.top,
+                               leading: self.contentInsets.left,
+                               bottom: -self.contentInsets.bottom,
+                               trailing: -self.contentInsets.right)
+        }
         
         isShown = true
         

@@ -60,6 +60,9 @@ class DbSheetCalendar: DbAbstractSheet
     {
         super.init()
         
+        // -- Full content --
+        self.contentInsets = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
+        
         self.fsCalendar = FSCalendar.init(frame: CGRect.zero)
         self.fsCalendar.delegate = self
 //        self.fsCalendar.dataSource = self
@@ -85,9 +88,6 @@ class DbSheetCalendar: DbAbstractSheet
         // self.fsCalendar.register(FormatCalendarCell.self, forCellReuseIdentifier: "cell")
         self.fsCalendar.clipsToBounds = true // Remove top/bottom line
         
-        self.fsCalendar.layer.cornerRadius = 10.0
-        self.fsCalendar.layer.masksToBounds = true
-        
         // -- Default Single Type --
         self.selectionType = .selectionTypeSingle
         
@@ -95,13 +95,12 @@ class DbSheetCalendar: DbAbstractSheet
         self.pickerFieldDelegate = self
     }
     
-    override func setupContentView() -> UIView
+    override func setupContentView() -> UIView?
     {
         self.fieldHeight = 350.0
 
         return self.fsCalendar
     }
-    
     
 }
 
@@ -110,7 +109,7 @@ extension DbSheetCalendar: DbAbstractSheetDelegate
 {
     func sheetPicker(didCancelClick sheetPicker: DbAbstractSheet)
     {
-        print("didCancelClick")
+        // print("didCancelClick")
         self.handleCancel?()
     }
     
