@@ -44,7 +44,6 @@ class DemoDbSheetPickerViewController: UIViewController
             print("VUA MOI CHON DONG : \(didSelectRow)")
         }
         picker.show()
-
     }
     
     @IBAction func datePicker_Click(_ sender: UIButton)
@@ -118,7 +117,44 @@ class DemoDbSheetPickerViewController: UIViewController
         sheet.show()
     }
 
-
+    @IBAction func customButtonPicker_Click(_ sender: UIButton)
+    {
+        let item_1 = DbItem(id: 1, title: "Giá từ thấp đến cao")
+        let item_2 = DbItem(id: 2, title: "Giá từ cao xuống thấp")
+        let item_3 = DbItem(id: 3, title: "Diện tích từ nhỏ đến lớn")
+        let item_4 = DbItem(id: 4, title: "Diện tích từ lớn đến nhỏ")
+        let item_5 = DbItem(id: 5, title: "Ngày tạo mới nhất")
+        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
+        
+//        let picker = DbSheetPicker.initWithTitle(title: "Sắp xếp dữ liệu",
+//                                                 rows: arrSortItem,
+//                                                 initialSelections: nil,
+//                                                 okTitle: "Đồng ý",
+//                                                 cancelTitle: "Bỏ qua")
+        
+        let picker = DbCustomButtonSheetPicker()
+        picker.arrSource = arrSortItem
+        picker.selectedItem = nil
+        picker.titleLabel?.text = "Sắp xếp dữ liệu"
+        picker.okButton?.setTitle("Đồng ý", for: .normal)
+        picker.cancelButton?.setTitle("Bỏ qua", for: .normal)
+        picker.anchorControl = sender
+        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
+            print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
+        }
+        
+        picker.cancelBlock = { (_ picker: DbSheetPicker) in
+            print("Bo qua chon")
+        }
+        
+        picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
+            print("VUA MOI CHON DONG : \(didSelectRow)")
+        }
+        picker.show()
+        
+    }
+    
+    
 }
 
 

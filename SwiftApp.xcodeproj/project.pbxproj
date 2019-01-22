@@ -60,6 +60,7 @@
 		BB4E2369210EBD1F00524B0D /* UserSession.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E2368210EBD1F00524B0D /* UserSession.swift */; };
 		BB4E236B210EC03300524B0D /* UserApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E236A210EC03300524B0D /* UserApi.swift */; };
 		BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4E236C210ECB1F00524B0D /* DbDeviceExtension.swift */; };
+		BB4EE5E721F6FD9300D1BAFE /* DbCustomButtonSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB4EE5E621F6FD9300D1BAFE /* DbCustomButtonSheetPicker.swift */; };
 		BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB547319201789300055CAD9 /* SecondViewController.swift */; };
 		BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731A201789300055CAD9 /* SecondViewController.xib */; };
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
@@ -301,6 +302,7 @@
 		BB4E2368210EBD1F00524B0D /* UserSession.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSession.swift; sourceTree = "<group>"; };
 		BB4E236A210EC03300524B0D /* UserApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserApi.swift; sourceTree = "<group>"; };
 		BB4E236C210ECB1F00524B0D /* DbDeviceExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDeviceExtension.swift; sourceTree = "<group>"; };
+		BB4EE5E621F6FD9300D1BAFE /* DbCustomButtonSheetPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbCustomButtonSheetPicker.swift; sourceTree = "<group>"; };
 		BB547319201789300055CAD9 /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
 		BB54731A201789300055CAD9 /* SecondViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SecondViewController.xib; sourceTree = "<group>"; };
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
@@ -638,6 +640,7 @@
 				BB9BC0C521EDFA0E004BC430 /* PickerField.swift */,
 				BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */,
 				BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */,
+				BB4EE5E621F6FD9300D1BAFE /* DbCustomButtonSheetPicker.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -1554,6 +1557,7 @@
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
 				BB2FE6712192CFCB007470DD /* DbMediaPickerController.swift in Sources */,
 				BBC38A55206DDE9500B11C7B /* MaterialIcon.swift in Sources */,
+				BB4EE5E721F6FD9300D1BAFE /* DbCustomButtonSheetPicker.swift in Sources */,
 				BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
