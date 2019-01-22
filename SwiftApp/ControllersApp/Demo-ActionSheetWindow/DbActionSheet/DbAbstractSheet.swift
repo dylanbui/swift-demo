@@ -183,10 +183,86 @@ public class DbAbstractSheet: NSObject
         // ContentView
         contentView = UIView()
         containerView.addSubview(contentView!)
+        
+        
+        let viewBar = UIView()
+        // viewBar.backgroundColor = UIColor.red
+        containerView.addSubview(viewBar)
+        
         // addConstraint(contentView!, toView: containerView, top: nil, leading: 4, bottom: nil, trailing: -4)
         addConstraint(contentView!, toView: containerView, top: nil, leading: 0, bottom: nil, trailing: 0)
-        contentView?.bottomAnchor.constraint(equalTo: bottomView.topAnchor,constant: 0).isActive=true
         contentView?.topAnchor.constraint(equalTo: titleLabel!.bottomAnchor,constant: 0).isActive=true
+        //contentView?.topAnchor.constraint(equalTo: viewBar.bottomAnchor,constant: 0).isActive = true
+        contentView?.bottomAnchor.constraint(equalTo: viewBar.topAnchor,constant: 0).isActive = true
+        
+        // -- Viewbar Constraint --
+        addConstraint(viewBar, toView: containerView, top: nil, leading: 0, bottom: nil, trailing: 0)
+        viewBar.topAnchor.constraint(equalTo: contentView!.bottomAnchor,constant: 0).isActive = true
+        viewBar.bottomAnchor.constraint(equalTo: bottomView.topAnchor,constant: 0).isActive = true
+        
+//        viewBar.leftAnchor.constraint(equalTo: containerView.leftAnchor,constant: 0).isActive = true
+//        viewBar.rightAnchor.constraint(equalTo: containerView.rightAnchor,constant: 0).isActive = true
+        // viewBar.heightAnchor.constraint(equalToConstant: 2).isActive=true
+        
+        
+        let stack = UIStackView(axis: .vertical, spacing: 0)
+//        let stack = UIStackView(axis: .horizontal, spacing: 0)
+        stack.distribution = .fillEqually
+        viewBar.addSubview(stack)
+        addConstraint(stack, toView: viewBar, top: nil, leading: 0, bottom: nil, trailing: 0)
+        stack.topAnchor.constraint(equalTo: viewBar.topAnchor).isActive=true
+        stack.bottomAnchor.constraint(equalTo: viewBar.bottomAnchor).isActive=true
+//        stack.leftAnchor.constraint(equalTo: viewBar.leftAnchor).isActive=true
+//        stack.rightAnchor.constraint(equalTo: viewBar.rightAnchor).isActive=true
+        //stack.heightAnchor.constraint(equalToConstant: 100).isActive=true
+//        stack.anchorStackView(toView: viewBar,
+//                              anchorX: stack.centerXAnchor,
+//                              equalAnchorX: viewBar.centerXAnchor,
+//                              anchorY: stack.centerYAnchor,
+//                              equalAnchorY: viewBar.centerYAnchor)
+        
+//        let button = UIButton(type: .system)
+//        button.setTitle("My Button", for: .normal)
+//        button.heightAnchor.constraint(equalToConstant: 50).isActive=true
+        
+        
+        let viewButton_1 = self.createButtonItem("My Button 1")
+        let viewButton_2 = self.createButtonItem("My Button 2")
+        viewButton_2.backgroundColor = UIColor.blue
+        let viewButton_3 = self.createButtonItem("My Button 3")
+        stack.addArrangedSubview(viewButton_1)
+        stack.addArrangedSubview(viewButton_2)
+        stack.addArrangedSubview(viewButton_3)
+
+
+        
+        self.fieldHeight = self.fieldHeight + (50*3)
+    }
+    
+    private func createButtonItem(_ title: String) -> UIView
+    {
+        // BottomView buttons
+        let buttonView = UIView()
+//        addConstraint(bottomView, toView: containerView, top: nil, leading: 0, bottom: 0, trailing: 0)
+        buttonView.heightAnchor.constraint(equalToConstant: DEFAULT_BOTTOM_SECTION_HEIGHT - 10).isActive=true
+        // -- Add OK button --
+        let button = UIButton(type: .system)
+        buttonView.addSubview(button)
+        button.setTitle(title, for: .normal)
+        //addConstraint(okButton!, toView: buttonView, top: 0, leading: 0, bottom: 0, trailing: nil)
+        addConstraint(button, toView: buttonView, top: nil, leading: 0, bottom: nil, trailing: 0)
+        button.topAnchor.constraint(equalTo: buttonView.topAnchor).isActive = true
+        button.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor).isActive = true
+
+        // Seperator line
+        let seperater = UIView()
+        buttonView.addSubview(seperater)
+        addConstraint(seperater, toView: buttonView, top: 0, leading: 0, bottom: nil, trailing: 0)
+        seperater.topAnchor.constraint(equalTo: buttonView.topAnchor).isActive=true
+        seperater.heightAnchor.constraint(equalToConstant: 1).isActive=true
+        seperater.backgroundColor = UIColor.groupTableViewBackground
+    
+        return buttonView
     }
         
     @objc fileprivate func didOKTap()
@@ -313,5 +389,41 @@ public class DbAbstractSheet: NSObject
             }
             unSelf.pickerFieldDelegate?.sheetPicker(didHidePicker: unSelf)
         }
+    }
+}
+
+extension UIStackView {
+    
+    convenience init(axis:UILayoutConstraintAxis, spacing:CGFloat) {
+        self.init()
+        self.axis = axis
+        self.spacing = spacing
+        self.translatesAutoresizingMaskIntoConstraints = false
+    }
+    
+    func anchorStackView(toView view:UIView,
+                         anchorX:NSLayoutXAxisAnchor,
+                         equalAnchorX:NSLayoutXAxisAnchor,
+                         anchorY:NSLayoutYAxisAnchor,
+                         equalAnchorY:NSLayoutYAxisAnchor) {
+        view.addSubview(self)
+        anchorX.constraint(equalTo: equalAnchorX).isActive = true
+        anchorY.constraint(equalTo: equalAnchorY).isActive = true
+    }
+}
+
+extension UIButton {
+    convenience init(title:String, titleColor:UIColor,
+                     target:UIViewController?,
+                     selector:Selector,
+                     buttonHeight:CGFloat,
+                     buttonWidth:CGFloat, backgroundColor:UIColor) {
+        self.init()
+        self.setTitle(title, for: .normal)
+        self.setTitleColor(titleColor, for: .normal)
+        //self.addTarget(target, action: selector, for: .touchDown)
+        self.backgroundColor = backgroundColor
+        self.heightAnchor.constraint(greaterThanOrEqualToConstant: buttonHeight).isActive = true
+        self.widthAnchor.constraint(greaterThanOrEqualToConstant: buttonWidth).isActive = true
     }
 }
