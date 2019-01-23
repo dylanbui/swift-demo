@@ -126,18 +126,11 @@ class DemoDbSheetPickerViewController: UIViewController
         let item_5 = DbItem(id: 5, title: "Ngày tạo mới nhất")
         let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
         
-//        let picker = DbSheetPicker.initWithTitle(title: "Sắp xếp dữ liệu",
-//                                                 rows: arrSortItem,
-//                                                 initialSelections: nil,
-//                                                 okTitle: "Đồng ý",
-//                                                 cancelTitle: "Bỏ qua")
-        
-        let picker = DbCustomButtonSheetPicker()
-        picker.arrSource = arrSortItem
-        picker.selectedItem = nil
-        picker.titleLabel?.text = "Sắp xếp dữ liệu"
-        picker.okButton?.setTitle("Đồng ý", for: .normal)
-        picker.cancelButton?.setTitle("Bỏ qua", for: .normal)
+        let picker = DbSheetPicker.initWithTitle(title: "Sắp xếp dữ liệu",
+                                                 rows: arrSortItem,
+                                                 initialSelections: nil,
+                                                 okTitle: "Đồng ý",
+                                                 cancelTitle: "Bỏ qua")
         picker.anchorControl = sender
         picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
             print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
@@ -150,8 +143,26 @@ class DemoDbSheetPickerViewController: UIViewController
         picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
             print("VUA MOI CHON DONG : \(didSelectRow)")
         }
-        picker.show()
         
+        let button_1 = UIButton(type: .system)
+        button_1.titleLabel?.textColor = UIColor.red
+        button_1.tintColor = UIColor.red
+        button_1.setTitle("Destructor", for: .normal)
+        _ = button_1.on(.touchUpInside) { (button) in
+            picker.dismiss()
+            print("Chon loai 1")
+        }
+
+        let button_2 = UIButton(type: .system)
+        button_2.setTitle("Select All", for: .normal)
+        _ = button_2.on(.touchUpInside) { (button) in
+            picker.dismiss()
+            print("Select All")
+        }
+
+        picker.customButtons = [button_1, button_2]        
+        picker.show()
+
     }
     
     
