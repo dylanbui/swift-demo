@@ -22,6 +22,11 @@ public extension DbAbstractSheetDelegate{
     func sheetPicker(didHidePicker sheetPicker: DbAbstractSheet){}
 }
 
+public enum DbSheetActionButtonType {
+    case none, single, both
+}
+
+
 public class DbAbstractSheet: NSObject
 {
     private(set) internal var containerView:UIView?
@@ -30,6 +35,8 @@ public class DbAbstractSheet: NSObject
     // -- Update content insets in subclass --
     internal var contentInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     
+    public var actionButtonsAxis: NSLayoutConstraint.Axis = .horizontal
+    public var actionButtonType: DbSheetActionButtonType = .both
     private(set) public var okButton:UIButton?
     private(set) public var cancelButton:UIButton?
     
@@ -53,11 +60,11 @@ public class DbAbstractSheet: NSObject
             heightConstraint?.constant = fieldHeight
         }
     }
-    public var hideButtons: Bool = false {
-        didSet{
-            bottomSectionHeightConstraint?.constant = hideButtons ? 0 : DEFAULT_BOTTOM_SECTION_HEIGHT
-        }
-    }
+//    public var hideButtons: Bool = false {
+//        didSet{
+//            bottomSectionHeightConstraint?.constant = hideButtons ? 0 : DEFAULT_BOTTOM_SECTION_HEIGHT
+//        }
+//    }
     public var cancelWhenTouchUpOutside: Bool = false {
         didSet{
             
@@ -145,11 +152,10 @@ public class DbAbstractSheet: NSObject
         
         bottomView.clipsToBounds=true
         addConstraint(bottomView, toView: containerView, top: nil, leading: 0, bottom: 0, trailing: 0)
-        bottomSectionHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: DEFAULT_BOTTOM_SECTION_HEIGHT)
+        bottomSectionHeightConstraint = bottomView.heightAnchor.constraint(equalToConstant: 0)
         bottomSectionHeightConstraint?.isActive=true
-        // -- Add OK button --
+        // -- Create OK button --
         okButton = UIButton(type: .system)
-        bottomView.addSubview(okButton!)
         // -- DucBui 17/01/2019 : Khong hieu ly do vi sao, ko the addTarget --
         // Neu addTarget thi build duoc, nhung chay bi loi toan bo phan ben duoi
         // Neu khong dung addTarget thi cai addTarget for cancelButton chay binh thuong
@@ -159,19 +165,13 @@ public class DbAbstractSheet: NSObject
             self.didOKTap()
         }))
         okButton?.setTitle("OK", for: .normal)
-        addConstraint(okButton!, toView: bottomView, top: 0, leading: 0, bottom: 0, trailing: nil)
-        okButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
         
-        // -- Add Cancel button --
+        // -- Create Cancel button --
         cancelButton = UIButton(type: .system)
-        bottomView.addSubview(cancelButton!)
-        // cancelButton?.addTarget(self, action: #selector(didCancelTap), for: .touchUpInside)
         cancelButton?.addGestureRecognizer(UITapGestureRecognizer(taps: 1, handler: { (gesture) in
             self.didCancelTap()
         }))
         cancelButton?.setTitle("Cancel", for: .normal)
-        addConstraint(cancelButton!, toView: bottomView, top: 0, leading: nil, bottom: 0, trailing: 0)
-        cancelButton?.widthAnchor.constraint(equalTo: bottomView.widthAnchor, multiplier: 0.5).isActive=true
         
         // Seperator line
         let seperater = UIView()
@@ -261,7 +261,66 @@ public class DbAbstractSheet: NSObject
         titleLabel?.removeObserver(self, forKeyPath: "text")
     }
     
-    //MARK:- public methods
+    private func createButtonView(_ button: UIButton) -> UIView
+    {
+        // BottomView buttons
+        let buttonView = UIView()
+        
+        // -- Add button --
+        buttonView.addSubview(button)
+        addConstraint(button, toView: buttonView, top: nil, leading: 0, bottom: nil, trailing: 0)
+        button.topAnchor.constraint(equalTo: buttonView.topAnchor).isActive = true
+        button.bottomAnchor.constraint(equalTo: buttonView.bottomAnchor).isActive = true
+        
+        // Seperator line
+        let seperater = UIView()
+        buttonView.addSubview(seperater)
+        addConstraint(seperater, toView: buttonView, top: 0, leading: 0, bottom: nil, trailing: 0)
+        seperater.topAnchor.constraint(equalTo: buttonView.topAnchor).isActive=true
+        seperater.heightAnchor.constraint(equalToConstant: 1).isActive=true
+        seperater.backgroundColor = UIColor.groupTableViewBackground
+        
+        return buttonView
+    }
+    
+    private func makeButtonBar()
+    {
+        if self.actionButtonType == .none {
+            self.bottomSectionHeightConstraint?.constant = 0
+            return
+        }
+        
+        let stackView = UIStackView()
+        stackView.axis = self.actionButtonsAxis //.horizontal // .horizontal
+        stackView.distribution = .fillEqually
+        stackView.spacing = 0
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        self.bottomView?.addSubview(stackView)
+        
+        addConstraint(stackView, toView: self.bottomView!, top: nil, leading: 0, bottom: nil, trailing: 0)
+        stackView.topAnchor.constraint(equalTo: self.bottomView!.topAnchor,constant: 0).isActive = true
+        stackView.bottomAnchor.constraint(equalTo: self.bottomView!.bottomAnchor,constant: 0).isActive = true
+        
+        self.bottomSectionHeightConstraint?.constant = DEFAULT_BOTTOM_SECTION_HEIGHT
+        if self.actionButtonType == .single {
+            
+            let viewOk = self.createButtonView(self.okButton!)
+            stackView.addArrangedSubview(viewOk)
+        } else if self.actionButtonType == .both {
+            
+            if self.actionButtonsAxis == .vertical {
+                self.bottomSectionHeightConstraint?.constant = DEFAULT_BOTTOM_SECTION_HEIGHT * 2
+                self.fieldHeight += DEFAULT_BOTTOM_SECTION_HEIGHT
+            }
+            
+            let viewOk = self.createButtonView(self.okButton!)
+            let viewCancel = self.createButtonView(self.cancelButton!)
+            stackView.addArrangedSubview(viewOk)
+            stackView.addArrangedSubview(viewCancel)
+        }
+    }
+    
+    // MARK:- public methods
     public func show()
     {
         guard let alert=self.alert, !isShown else{
@@ -276,6 +335,11 @@ public class DbAbstractSheet: NSObject
                                leading: self.contentInsets.left,
                                bottom: -self.contentInsets.bottom,
                                trailing: -self.contentInsets.right)
+        }
+        
+        // -- Setup button bar --
+        if self.actionButtonType != .none {
+            self.makeButtonBar()
         }
         
         isShown = true
