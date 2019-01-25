@@ -91,7 +91,7 @@ class DemoDbSheetPickerViewController: UIViewController
     
     @IBAction func monthYearPicker_Click(_ sender: UIButton)
     {
-        let sheetDate = DbSheetMonthYearPicker.initWithTitle(title: "Chọn ngày tháng",
+        let sheetDate = DbSheetMonthYearPicker.initWithTitle(title: "Chọn tháng năm",
                                                              datePickerMode: .MonthAndYear,
                                                              okTitle: "Chọn", cancelTitle: "Bỏ qua")
         { (sheetDatePicker, selectedDate) in

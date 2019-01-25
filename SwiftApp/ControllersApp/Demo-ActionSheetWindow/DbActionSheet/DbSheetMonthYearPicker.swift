@@ -8,18 +8,8 @@
 
 import UIKit
 
-//typealias DbSheetPickerDoneBlock = (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) -> Void
-//typealias DbSheetPickerCancelBlock = (_ picker: DbSheetPicker) -> Void
-//typealias DbSheetPickerDidSelectRowBlock = (_ picker: DbSheetPicker, _ didSelectRow: Int) -> Void
-
 typealias DbMonthYearDoneBlock = (_ picker: DbSheetMonthYearPicker, _ selectedDate: Date) -> Void
 typealias DbMonthYearCancelBlock = (_ picker: DbSheetMonthYearPicker) -> Void
-//typealias DbMonthYearDateChangeValueBlock = (_ picker: DbSheetMonthYearPicker, _ selectedDate: Date) -> Void
-
-//typedef enum {
-//    NTMonthYearPickerModeMonthAndYear,  // Display month and year
-//    NTMonthYearPickerModeYear           // Display just the year
-//} NTMonthYearPickerMode;
 
 enum DbSheetMonthYearPickerMode {
     case MonthAndYear    // Display month and year
@@ -34,25 +24,35 @@ class DbSheetMonthYearPicker: DbAbstractSheet
     
     var selectedDate: Date = Date()
     
-    var month = Calendar.current.component(.month, from: Date()) {
+    // Important: willSet and didSet observers are not called when a property is first initialized. They are only called when the property’s value is set outside of an initialization context.
+    
+    var minimumDate: Date? {
         didSet {
-            self.pickerView.selectRow(month-1, inComponent: 0, animated: false)
+            if let minimumDate = self.minimumDate {
+                self.minDate = (month: minimumDate.db_month, year: minimumDate.db_year)
+            } else {
+                self.minDate = (month: 1, year: Date().db_year)
+            }
+        }
+    }
+    var maximumDate: Date? {
+        didSet {
+            if let maximumDate = self.maximumDate {
+                self.maxDate = (month: maximumDate.db_month, year: maximumDate.db_year)
+            } else {
+                self.maxDate = (month: 1, year: Date().db_year + 10)
+            }
         }
     }
     
-    var year = Calendar.current.component(.year, from: Date()) {
-        didSet {
-            self.pickerView.selectRow(years.index(of: year)!, inComponent: 1, animated: true)
-        }
-    }
+    private var minDate = (month: 1, year: Date().db_year)
+    private var maxDate = (month: 1, year: Date().db_year + 10)
     
     var doneBlock: DbMonthYearDoneBlock?
     var cancelBlock: DbMonthYearCancelBlock?
-//    var didSelectRowBlock: DbMonthYearDateChangeValueBlock?
     
     private var months: [String]!
     private var years: [Int]!
-
     
     override init()
     {
@@ -64,19 +64,16 @@ class DbSheetMonthYearPicker: DbAbstractSheet
         
         self.pickerFieldDelegate = self
         self.cancelWhenTouchUpOutside = true
-        
-        self.commonSetup()
     }
     
     private func commonSetup()
     {
         // population years
         var years: [Int] = []
-        if years.count == 0 {
-            var year = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!.component(.year, from: NSDate() as Date)
-            for _ in 1...15 {
-                years.append(year)
-                year += 1
+        // Validate data
+        if self.maxDate.year > self.minDate.year {
+            for i: Int in self.minDate.year...self.maxDate.year {
+                years.append(i)
             }
         }
         self.years = years
@@ -89,21 +86,38 @@ class DbSheetMonthYearPicker: DbAbstractSheet
             month += 1
         }
         self.months = months
+    }
+    
+    private func reloadSelectionData(_ date: Date, animated: Bool = false)
+    {
+        // -- Setup selection item --
+        if self.datePickerMode == .Year {
+            self.pickerView.selectRow(self.years.index(of: date.db_year)!, inComponent: 0, animated: animated)
+        } else {
+            self.pickerView.selectRow(date.db_month-1, inComponent: 0, animated: true)
+            self.pickerView.selectRow(self.years.index(of: date.db_year)!, inComponent: 1, animated: animated)
+        }
+    }
+    
+    private func compareMonthYear(_ fromDate: Date, _ toDate: Date) -> ComparisonResult
+    {
+        var comps = Calendar.current.dateComponents([.year, .month], from: fromDate)
+        let date_1 = Calendar.current.date(from: comps)
         
-//        let currentMonth = NSCalendar(identifier: NSCalendar.Identifier.gregorian)!.component(.month, from: NSDate() as Date)
-//        self.pickerView.selectRow(currentMonth - 1, inComponent: 0, animated: false)
+        comps = Calendar.current.dateComponents([.year, .month], from: toDate)
+        let date_2 = Calendar.current.date(from: comps)
+        
+        return date_1!.compare(date_2!)
     }
     
     @discardableResult
     override func setupContentView() -> UIView?
     {
-        // -- Setup selection item --
-        if self.datePickerMode == .Year {
-            self.pickerView.selectRow(years.index(of: self.selectedDate.db_year)!, inComponent: 0, animated: true)
-        } else {
-            self.pickerView.selectRow(self.selectedDate.db_month-1, inComponent: 0, animated: false)
-            self.pickerView.selectRow(years.index(of: self.selectedDate.db_year)!, inComponent: 1, animated: true)
-        }
+        // -- Setup --
+        self.commonSetup()
+        
+        // -- Selection --
+        self.reloadSelectionData(self.selectedDate)
         
         return self.pickerView
     }
@@ -117,6 +131,11 @@ class DbSheetMonthYearPicker: DbAbstractSheet
         let picker = DbSheetMonthYearPicker()
         picker.datePickerMode = datePickerMode
         picker.selectedDate = selectedDate
+        
+        // -- Default choose range --
+        picker.minimumDate = Date().db_adding( .year, value: -5)
+        picker.maximumDate = Date().db_adding( .year, value: 5)
+        
         picker.titleLabel?.text = title
         picker.okButton?.setTitle(okTitle, for: .normal)
         picker.cancelButton?.setTitle(cancelTitle, for: .normal)
@@ -125,7 +144,7 @@ class DbSheetMonthYearPicker: DbAbstractSheet
     }
 }
 
-//Mark:- PickerFieldDelegate
+// Mark:- PickerFieldDelegate
 extension DbSheetMonthYearPicker: DbAbstractSheetDelegate
 {
     func sheetPicker(didHidePicker sheetPicker: DbAbstractSheet)
@@ -140,23 +159,6 @@ extension DbSheetMonthYearPicker: DbAbstractSheetDelegate
     
     func sheetPicker(didOKClick sheetPicker: DbAbstractSheet)
     {
-//        let month = self.pickerView.selectedRow(inComponent: 0) + 1
-//        let year = self.years[self.pickerView.selectedRow(inComponent: 1)]
-//
-//        let chooseDate = Date.init(year: year, month: month, day: 1)
-        
-        var month = 1
-        var year = 2019 // Only Default
-        
-        if self.datePickerMode == .Year {
-            year = self.years[self.pickerView.selectedRow(inComponent: 0)]
-        } else {
-            month = self.pickerView.selectedRow(inComponent: 0) + 1
-            year = self.years[self.pickerView.selectedRow(inComponent: 1)]
-        }
-        
-        self.selectedDate = Date.init(year: year, month: month, day: 1)!
-        
         self.doneBlock?(self, self.selectedDate)
     }
     
@@ -214,20 +216,27 @@ extension DbSheetMonthYearPicker: UIPickerViewDelegate,UIPickerViewDataSource
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int)
     {
         // -- Day la xu ly khi vua chon --
-//        var month = 1
-//        var year = 2019 // Only Default
-//
-//        if self.datePickerMode == .Year {
-//            year = self.years[self.pickerView.selectedRow(inComponent: 0)]
-//        } else {
-//            month = self.pickerView.selectedRow(inComponent: 0) + 1
-//            year = self.years[self.pickerView.selectedRow(inComponent: 1)]
-//        }
-//
-//        self.selectedDate = Date.init(year: year, month: month, day: 1)!
+        var month = 1
+        var year = 2019 // Only Default
+
+        if self.datePickerMode == .Year {
+            year = self.years[self.pickerView.selectedRow(inComponent: 0)]
+        } else {
+            month = self.pickerView.selectedRow(inComponent: 0) + 1
+            year = self.years[self.pickerView.selectedRow(inComponent: 1)]
+        }
+
+        let selectedDate = Date.init(year: year, month: month, day: 1)!
         
-//        self.month = month
-//        self.year = year
+        if self.datePickerMode == .MonthAndYear {
+            if self.compareMonthYear(selectedDate, self.minimumDate!) == .orderedAscending { // Giam dan
+                // -- Selection --
+                self.reloadSelectionData(self.selectedDate, animated: true)
+                return
+            }
+        }
+        
+        self.selectedDate = selectedDate
     }
 }
 
