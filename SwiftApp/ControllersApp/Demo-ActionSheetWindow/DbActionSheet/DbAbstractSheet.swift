@@ -35,8 +35,8 @@ public class DbAbstractSheet: NSObject
     // -- Update content insets in subclass --
     internal var contentInsets: UIEdgeInsets = UIEdgeInsets(top: 4, left: 4, bottom: 4, right: 4)
     
-    public var actionButtonsAxis: NSLayoutConstraint.Axis = .horizontal
-    public var actionButtonType: DbSheetActionButtonType = .both
+    public var defaultButtonsAxis: NSLayoutConstraint.Axis = .horizontal
+    public var defaultButtonType: DbSheetActionButtonType = .both
     private(set) public var okButton:UIButton?
     private(set) public var cancelButton:UIButton?
     
@@ -285,13 +285,13 @@ public class DbAbstractSheet: NSObject
     
     private func makeButtonBar()
     {
-        if self.actionButtonType == .none {
+        if self.defaultButtonType == .none {
             self.bottomSectionHeightConstraint?.constant = 0
             return
         }
         
         let stackView = UIStackView()
-        stackView.axis = self.actionButtonsAxis //.horizontal // .horizontal
+        stackView.axis = self.defaultButtonsAxis //.horizontal // .horizontal
         stackView.distribution = .fillEqually
         stackView.spacing = 0
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -302,13 +302,13 @@ public class DbAbstractSheet: NSObject
         stackView.bottomAnchor.constraint(equalTo: self.bottomView!.bottomAnchor,constant: 0).isActive = true
         
         self.bottomSectionHeightConstraint?.constant = DEFAULT_BOTTOM_SECTION_HEIGHT
-        if self.actionButtonType == .single {
+        if self.defaultButtonType == .single {
             
             let viewOk = self.createButtonView(self.okButton!)
             stackView.addArrangedSubview(viewOk)
-        } else if self.actionButtonType == .both {
+        } else if self.defaultButtonType == .both {
             
-            if self.actionButtonsAxis == .vertical {
+            if self.defaultButtonsAxis == .vertical {
                 self.bottomSectionHeightConstraint?.constant = DEFAULT_BOTTOM_SECTION_HEIGHT * 2
                 self.fieldHeight += DEFAULT_BOTTOM_SECTION_HEIGHT
             }
@@ -338,7 +338,7 @@ public class DbAbstractSheet: NSObject
         }
         
         // -- Setup button bar --
-        if self.actionButtonType != .none {
+        if self.defaultButtonType != .none {
             self.makeButtonBar()
         }
         

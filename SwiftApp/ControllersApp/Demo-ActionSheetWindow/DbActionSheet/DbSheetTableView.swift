@@ -50,7 +50,7 @@ class DbSheetTableView: DbAbstractSheet
     override func setupContentView() -> UIView?
     {
         // -- Default config --
-        self.actionButtonType = .none
+        self.defaultButtonType = .none
         
         self.fieldHeight = 400
         self.cancelWhenTouchUpOutside = true

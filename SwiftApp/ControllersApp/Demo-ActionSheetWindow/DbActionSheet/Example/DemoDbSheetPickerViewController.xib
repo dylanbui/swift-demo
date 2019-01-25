@@ -23,13 +23,21 @@
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kho-7P-7fo">
                     <rect key="frame" x="58" y="107" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                    <state key="normal" title="Custom Picker"/>
+                    <state key="normal" title="Custom Picker Horizontal"/>
                     <connections>
-                        <action selector="customPicker_Click:" destination="-1" eventType="touchUpInside" id="iSI-pv-4yG"/>
+                        <action selector="customPickerHorizontal_Click:" destination="-1" eventType="touchUpInside" id="kya-5y-gw2"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vfE-UH-Too">
+                    <rect key="frame" x="58" y="151" width="259" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Custom Picker Vertical"/>
+                    <connections>
+                        <action selector="customPickerVertical_Click:" destination="-1" eventType="touchUpInside" id="ngz-RT-LqX"/>
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Y9b-bi-IJO">
-                    <rect key="frame" x="58" y="157" width="259" height="30"/>
+                    <rect key="frame" x="58" y="200" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Date Picker"/>
                     <connections>
@@ -37,7 +45,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bCl-BN-t5x">
-                    <rect key="frame" x="58" y="206" width="259" height="30"/>
+                    <rect key="frame" x="58" y="249" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="TableView Picker"/>
                     <connections>
@@ -45,7 +53,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mMf-jD-J8K">
-                    <rect key="frame" x="58" y="254" width="259" height="30"/>
+                    <rect key="frame" x="58" y="297" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="CollectionView Picker"/>
                     <connections>
@@ -53,7 +61,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VOH-hF-2n8">
-                    <rect key="frame" x="58" y="304" width="259" height="30"/>
+                    <rect key="frame" x="58" y="347" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="FsCalendar"/>
                     <connections>
@@ -61,7 +69,7 @@
                     </connections>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWa-Fc-msa">
-                    <rect key="frame" x="58" y="350" width="259" height="30"/>
+                    <rect key="frame" x="58" y="393" width="259" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <state key="normal" title="Custom Button Picker"/>
                     <connections>
