@@ -44,8 +44,8 @@ class DbSheetPicker: DbAbstractSheet
         // -- Setup selection item --
         if let selectedItem = self.selectedItem {
             var objectIndex = 0
-            if let index = self.arrSource?.index(where: { (city) -> Bool in
-                return city.dbItemId == selectedItem.dbItemId
+            if let index = self.arrSource?.index(where: { (dbItem) -> Bool in
+                return dbItem.dbItemId == selectedItem.dbItemId
             }) {
                 objectIndex = index
             }

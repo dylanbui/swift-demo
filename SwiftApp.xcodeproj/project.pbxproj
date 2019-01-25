@@ -225,6 +225,7 @@
 		BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C792021DFD40044F661 /* DbResponse.swift */; };
 		BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */; };
 		BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0312121F102460009C753 /* DbSheetDatePicker.swift */; };
+		BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */; };
 		BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276D21058220007CFFB4 /* DbRealmObject.swift */; };
 		BBF527702105949B007CFFB4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276F2105949B007CFFB4 /* Student.swift */; };
 		BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */; };
@@ -470,6 +471,7 @@
 		BBE88C792021DFD40044F661 /* DbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
 		BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetTableView.swift; sourceTree = "<group>"; };
 		BBF0312121F102460009C753 /* DbSheetDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetDatePicker.swift; sourceTree = "<group>"; };
+		BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearPicker.swift; sourceTree = "<group>"; };
 		BBF5276D21058220007CFFB4 /* DbRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmObject.swift; sourceTree = "<group>"; };
 		BBF5276F2105949B007CFFB4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAppDelegate.swift; sourceTree = "<group>"; };
@@ -957,6 +959,7 @@
 				BBDD202621F0940400788D3E /* DbAbstractSheet.swift */,
 				BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */,
 				BBF0312121F102460009C753 /* DbSheetDatePicker.swift */,
+				BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */,
 				BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */,
 				BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */,
 				BB48E20C21F1E531002B2DEC /* DbSheetCalendar.swift */,
@@ -1453,6 +1456,7 @@
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
+				BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */,
 				BB35CE70211A8B0100B88BEB /* DbMappable.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
