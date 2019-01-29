@@ -42,7 +42,8 @@ class RootViewController: UIViewController
 //        let vcl = KBScrollViewViewController()
         // let vcl = DemoDecimalTextFieldViewController()
 //        let vcl = DemoEurekaViewController()
-        let vcl = DemoDbSheetPickerViewController()
+//        let vcl = DemoDbSheetPickerViewController()
+        let vcl = DemoDbLocationManagerViewController()
         
         // -- An nut back --
         vcl.navigationItem.setHidesBackButton(true, animated:false)
