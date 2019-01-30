@@ -8,6 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		5D8EEB4F713F5AE16C2A184E /* Pods_SwiftApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */; };
+		BB06BC0E2201953E00227059 /* MasterCandySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB06BC0C2201953E00227059 /* MasterCandySearchViewController.swift */; };
+		BB06BC0F2201953E00227059 /* MasterCandySearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB06BC0D2201953E00227059 /* MasterCandySearchViewController.xib */; };
+		BB06BC12220195F300227059 /* DetailCandySearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB06BC10220195F300227059 /* DetailCandySearchViewController.swift */; };
+		BB06BC13220195F300227059 /* DetailCandySearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB06BC11220195F300227059 /* DetailCandySearchViewController.xib */; };
+		BB06BC152201965400227059 /* CandySearchFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB06BC142201965400227059 /* CandySearchFooter.swift */; };
 		BB1079472071D7B300A99D9A /* DemoUKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */; };
 		BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */; };
 		BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10D3F31F79225100B7DF4B /* DbActionView.swift */; };
@@ -254,6 +259,11 @@
 		64F2635626968B4B3D75864E /* Pods-SwiftAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftAppTests/Pods-SwiftAppTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8016CA41A80ABCF8B62233C7 /* Pods_SwiftApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwiftApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB06BC0C2201953E00227059 /* MasterCandySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterCandySearchViewController.swift; sourceTree = "<group>"; };
+		BB06BC0D2201953E00227059 /* MasterCandySearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MasterCandySearchViewController.xib; sourceTree = "<group>"; };
+		BB06BC10220195F300227059 /* DetailCandySearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailCandySearchViewController.swift; sourceTree = "<group>"; };
+		BB06BC11220195F300227059 /* DetailCandySearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailCandySearchViewController.xib; sourceTree = "<group>"; };
+		BB06BC142201965400227059 /* CandySearchFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CandySearchFooter.swift; sourceTree = "<group>"; };
 		BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoUKitViewController.xib; sourceTree = "<group>"; };
 		BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoUKitViewController.swift; sourceTree = "<group>"; };
 		BB10D3F31F79225100B7DF4B /* DbActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbActionView.swift; sourceTree = "<group>"; };
@@ -523,9 +533,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BB06BC0B220194F300227059 /* Demo-UISearchController */ = {
+			isa = PBXGroup;
+			children = (
+				BB06BC0C2201953E00227059 /* MasterCandySearchViewController.swift */,
+				BB06BC0D2201953E00227059 /* MasterCandySearchViewController.xib */,
+				BB06BC10220195F300227059 /* DetailCandySearchViewController.swift */,
+				BB06BC11220195F300227059 /* DetailCandySearchViewController.xib */,
+				BB06BC142201965400227059 /* CandySearchFooter.swift */,
+			);
+			path = "Demo-UISearchController";
+			sourceTree = "<group>";
+		};
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB06BC0B220194F300227059 /* Demo-UISearchController */,
 				BBB1A53021FFF8BE0047293E /* Demo-DbLocationManager */,
 				BB9BC0B921ED9B18004BC430 /* Demo-ActionSheetWindow */,
 				BB4E235E210EBC6400524B0D /* Propzy-SAM */,
@@ -1326,6 +1349,7 @@
 				BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */,
 				BBC02E6A1F71747A0011FDE6 /* OpenSans-Regular.ttf in Resources */,
 				BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */,
+				BB06BC13220195F300227059 /* DetailCandySearchViewController.xib in Resources */,
 				BBC02E671F71747A0011FDE6 /* OpenSans-Italic.ttf in Resources */,
 				BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */,
 				BBC02E661F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
@@ -1339,6 +1363,7 @@
 				BBC38A6A206DDEE500B11C7B /* themify.ttf in Resources */,
 				BBC38A68206DDEE500B11C7B /* octicons.ttf in Resources */,
 				BB7F3039203E857900185366 /* demo_2.jpg in Resources */,
+				BB06BC0F2201953E00227059 /* MasterCandySearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1511,6 +1536,7 @@
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
+				BB06BC152201965400227059 /* CandySearchFooter.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
 				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,
@@ -1526,6 +1552,7 @@
 				BBB1A53722004AF40047293E /* DemoDbLocationManagerViewController.swift in Sources */,
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
 				BB228A502108302A00C5C6AA /* Actor.swift in Sources */,
+				BB06BC12220195F300227059 /* DetailCandySearchViewController.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
 				BBE6FA6E21EC9A700030AA64 /* DbClosureHandler.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
@@ -1609,6 +1636,7 @@
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
 				BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */,
+				BB06BC0E2201953E00227059 /* MasterCandySearchViewController.swift in Sources */,
 				BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */,

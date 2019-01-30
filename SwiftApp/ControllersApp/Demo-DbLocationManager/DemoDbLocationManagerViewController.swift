@@ -102,18 +102,21 @@ class DemoDbLocationManagerViewController: UIViewController
 
     @IBAction func getContiniousLocation(_ sender: Any)
     {
+        print("getContiniousLocation ----")
         let manager: DbLocationManager = DbLocationManager.sharedInstance
         manager.getContiniousLocation(withDelegate: self)
     }
     
     @IBAction func getSignificantLocationChange(_ sender: Any)
     {
+        print("getSignificantLocationChange ----")
         let manager: DbLocationManager = DbLocationManager.sharedInstance
         manager.getSignificantLocationChange(withDelegate: self)
     }
     
     @IBAction func stopGettingLocation(_ sender: Any)
     {
+        print("stopGettingLocation ----")
         let manager: DbLocationManager = DbLocationManager.sharedInstance
         manager.stopGettingLocation()
     }

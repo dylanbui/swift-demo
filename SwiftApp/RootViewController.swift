@@ -42,8 +42,13 @@ class RootViewController: UIViewController
 //        let vcl = KBScrollViewViewController()
         // let vcl = DemoDecimalTextFieldViewController()
 //        let vcl = DemoEurekaViewController()
-//        let vcl = DemoDbSheetPickerViewController()
-        let vcl = DemoDbLocationManagerViewController()
+//        let vcl = DemoDbSheetPickerViewController() // => Done
+//        let vcl = DemoDbLocationManagerViewController() // Done
+        let vcl = MasterCandySearchViewController()
+
+        // localization project
+//        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a
+//        https://medium.com/lean-localization/ios-localization-tutorial-938231f9f881
         
         // -- An nut back --
         vcl.navigationItem.setHidesBackButton(true, animated:false)

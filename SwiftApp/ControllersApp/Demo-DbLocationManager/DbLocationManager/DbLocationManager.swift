@@ -4,7 +4,8 @@
 //
 //  Created by Dylan Bui on 1/29/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
-//
+//  Base on : https://github.com/benzamin/BBLocationManager
+//  DucBui 30/01/2019 : Convert from ObjectiveC to Swift
 
 import Foundation
 import CoreLocation
@@ -13,12 +14,27 @@ private let DB_TIMESTAMP_DDMMYYYYHHMMSS = "dd-MM-YYYY HH:mm:ss"
 
 class DbLocationManager : NSObject
 {
+    /**
+     *  The delegate, using this the location events are fired.
+     */
     var delegate: DbLocationManagerDelegate?
-    
+    /**
+     *  The last known Geocode address determinded, will be nil if there is no geocode was requested.
+     */
     var lastKnownGeocodeAddress: DbLocationInfo?
+    /**
+     *  The last known location received. Will be nil until a location has been received. Returns an Dictionary using keys DB_LATITUDE, DB_LONGITUDE, DB_ALTITUDE
+     */
     var lastKnownGeoLocation: DbLocationInfo?
-    
-    var desiredAcuracy: Double = 0.0 {
+    /**
+     *   The desired location accuracy in meters. Default is 100 meters.
+     *<p>
+     *The location service will try its best to achieve
+     your desired accuracy. However, it is not guaranteed. To optimize
+     power performance, be sure to specify an appropriate accuracy for your usage scenario (eg, use a large accuracy value when only a coarse location is needed). Set it to 0 to achieve the best possible accuracy.
+     *</p>
+     */
+    var desiredAcuracy: Double = 100.0 {
         didSet {
             if self.desiredAcuracy < 50.0 {
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -33,13 +49,16 @@ class DbLocationManager : NSObject
             }
         }
     }
-    
+    /**
+     *  Specifies the minimum update distance in meters. Client will not be notified of movements of less
+     than the stated value, unless the accuracy has improved. Pass in 0 to be
+     notified of all movements. By default, 100 meters is used.
+     */
     var distanceFilter: CLLocationDistance = 0.0 {
         didSet {
             self.locationManager.distanceFilter = self.distanceFilter
         }
     }
-    
     
     private var didStartMonitoringRegion = false
     private var radiousParam: CLLocationDistance = 0
@@ -52,7 +71,6 @@ class DbLocationManager : NSObject
     private var geocodeCompletionBlock: GeoCodeUpdateBlock?
     private var activeLocationTaskType: DbLocationTaskType = .none
 
-    
     class var sharedInstance : DbLocationManager
     {
         struct Static {
@@ -84,7 +102,14 @@ class DbLocationManager : NSObject
         self.radiousParam = 0
         self.identifierParam = ""
     }
-    
+    /**
+     *   Returns location permission status
+     *   <p>
+     *   Returns wheather location is permitted or not by the user
+     *   </p>
+     *
+     *   @return true or false based on permission given or not
+     */
     static func locationPermission() -> Bool
     {
         var isPermitted = true
@@ -109,8 +134,14 @@ class DbLocationManager : NSObject
         
         return isPermitted
     }
-    
-    func getPermissionForStartUpdatingLocation() -> Bool
+    /**
+     *   Prompts user for location permission
+     *   <p>
+     *   If user havn't seen any permission requests yet, calling this method will ask user for location permission
+     *   For knowing permission status, call the @locationPermission method
+     *   </p>
+     */
+    public func getPermissionForStartUpdatingLocation() -> Bool
     {
         let status: CLAuthorizationStatus = CLLocationManager.authorizationStatus()
         
@@ -167,7 +198,9 @@ class DbLocationManager : NSObject
         
         return status == .denied
     }
-    
+    /**
+     *  Similar to lastKnownLocation, The last location received. Will be nil until a location has been received. Returns an Dictionary using keys DB_LATITUDE, DB_LONGITUDE, DB_ALTITUDE
+     */
     func getLocationInfo() -> DbLocationInfo?
     {
         guard let location = self.locationManager.location else {
@@ -182,7 +215,13 @@ class DbLocationManager : NSObject
         ]
         return locationDict
     }
-    
+    /**
+     *   Gives an Array of dictionary formatted DbFenceInfo which are currently active
+     *   <p>
+     *   Gives an Array of dictionary formatted DbFenceInfo which are currently active
+     *   </p>
+     *   @return an Array of dictionary formatted DbFenceInfo
+     */
     func getCurrentFences() -> [DbFenceInfo]?
     {
         let existingArray = Array(self.locationManager.monitoredRegions)
@@ -198,7 +237,12 @@ class DbLocationManager : NSObject
         
         return existingFenceInfoArray
     }
-    
+    /**
+     *   Delete all the fences which are currently active.
+     *   <p>
+     *   Those fences we created and are currently active, delete all of'em.
+     *   </p>
+     */
     func deleteCurrentFences()
     {
         let existingArray = Array(locationManager.monitoredRegions)
@@ -215,7 +259,9 @@ class DbLocationManager : NSObject
             }
         }
     }
-    
+    /**
+     *   Simple request location. Only run when get location sucessfully
+     */
     func requestLocation(_ completionHandler: @escaping (_ currentLocation: CLLocation) -> Void)
     {
         getCurrentLocation(withCompletion: { success, locationDictionary, error in
@@ -226,7 +272,13 @@ class DbLocationManager : NSObject
             }
         })
     }
-    
+    /**
+     *   Returns current location through the DbLocationManagerDelegate, can be adjusted using the desiredAcuracy and distanceFilter properties.
+     *   <p>
+     *   Gives location of device using delegate DbLocationManagerDidUpdateLocation:
+     *   </p>
+     *   @param delegate where the location will be delivered, which implements DbLocationManagerDelegate
+     */
     func getCurrentLocation(withDelegate delegate: DbLocationManagerDelegate)
     {
         self.delegate = delegate
@@ -234,50 +286,91 @@ class DbLocationManager : NSObject
         //dont get confused between [self startUpdatingLocation] and [self.locationManager startUpdatingLocation]...I got confused once, and paid the price :(
         self.startUpdatingLocation()
     }
-    
+    /**
+     *   Returns current location, can be adjusted using the desiredAcuracy and distanceFilter properties.
+     *   <p>
+     *   Gives location of device using the completion block
+     *   </p>
+     *   @param completion : A block which will be called when the location is updated
+     */
     func getCurrentLocationSkipAuthAlert(withCompletion completion: @escaping LocationUpdateBlock)
     {
         self.locationCompletionBlock = completion
         self.activeLocationTaskType = .getCurrentLocation
         self.startUpdatingLocationSkipAuthAlert(true)
     }
-    
+    /**
+     *   Returns current location, can be adjusted using the desiredAcuracy and distanceFilter properties.
+     *   <p>
+     *   Gives location of device using the completion block
+     *   </p>
+     *   @param completion : A block which will be called when the location is updated
+     */
     func getCurrentLocation(withCompletion completion: @escaping LocationUpdateBlock)
     {
         self.locationCompletionBlock = completion
         self.activeLocationTaskType = .getCurrentLocation
         self.startUpdatingLocation()
     }
-    
+    /**
+     *   Returns current location's geocode address
+     *   <p>
+     *   Gives the currents location's geocode addres using DbLocationManagerDelegate, uses Apple's own geocode API to get teh current address
+     *   </p>
+     *   @return DbLocationManagerDidUpdateGeocodeAdress is called when the location and geocode is updated
+     */
     func getCurrentGeocodeAddress(withDelegate delegate: DbLocationManagerDelegate)
     {
         self.delegate = delegate
         self.activeLocationTaskType = .getGeoCodeAddress
         self.startUpdatingLocation()
     }
-    
+    /**
+     *   Returns current location's geocode address
+     *   <p>
+     *   Gives the currents location's geocode addres using given block, uses Apple's own geocode API to get teh current address
+     *   </p>
+     *   @return Callback block is called when the location and geocode is updated
+     */
     func getCurrentGeoCodeAddress(withCompletion completion: @escaping GeoCodeUpdateBlock)
     {
         self.geocodeCompletionBlock = completion
         self.activeLocationTaskType = .getGeoCodeAddress
         self.startUpdatingLocation()
     }
-    
-    func getContiniousLocation(withDelegate delegate: DbLocationManagerDelegate)
+    /**
+     *   Returns current location continiously through DbLocationManagerDidUpdateLocation method, can be adjusted using the desiredAcuracy and distanceFilter properties.
+     *   <p>
+     *   Gives the current location continiously until the -stopGettingLocation is called
+     *   </p>
+     *   @return Callback block is called when the location and geocode is updated
+     */
+    public func getContiniousLocation(withDelegate delegate: DbLocationManagerDelegate)
     {
         self.delegate = delegate
         self.activeLocationTaskType = .getContiniousLocation
         self.startUpdatingLocation()
     }
-    
-    func getSignificantLocationChange(withDelegate delegate: DbLocationManagerDelegate)
+    /**
+     *   Start monitoring significant location changes.  The behavior of this service is not affected by the desiredAccuracy
+     or distanceFilter properties. Returns location if user's is moved significantly, through DbLocationManagerDidUpdateLocation delegate call. Gives the significant location change continiously until the -stopGettingLocation is called
+     *  <p>
+     *  Apps can expect a notification as soon as the device moves 500 meters or more from its previous notification. It should not expect notifications more frequently than once every 5 minutes. If the device is able to retrieve data from the network, the location manager is much more likely to deliver notifications in a timely manner. (from Apple Doc)
+     *  </p>
+     */
+    public func getSignificantLocationChange(withDelegate delegate: DbLocationManagerDelegate)
     {
         self.delegate = delegate
         self.activeLocationTaskType = .getSignificantChangeLocation
         self.startUpdatingLocation()
     }
-    
-    func stopGettingLocation()
+    /**
+     *   Stops updating location for Continious or Significant changes
+     *   <p>
+     *   Use this method to stop accessing and getting the location data continiously. If you've called -getContiniousLocationWithDelegate: or -getSingificantLocationChangeWithDelegate: method before, call -stopGettingLocation method to stop that.
+     *   </p>
+     */
+    public func stopGettingLocation()
     {
         if activeLocationTaskType == .getContiniousLocation {
             self.locationManager.stopUpdatingLocation()
@@ -286,19 +379,51 @@ class DbLocationManager : NSObject
         }
         self.activeLocationTaskType = .none
     }
-    
-    func addGeofenceAtCurrentLocation()
+    /**
+     *   Adds a geofence at the current location
+     *   <p>
+     *   First updates current location of the device, and then add it as a Geofence. Optionally also tries to determine the Geocode/Address. Default radios of the fence is set to 100 meters
+     *   </p>
+     *   <p>
+     *   Checks if there is already a fence exists in this coordinate, if so, fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeRepeated event.
+     *   </p>
+     *   @warning When using this method for adding multiple fence at once, reverse geocoding method may fail for too many request in small amount of time.
+     *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
+     */
+    public func addGeofenceAtCurrentLocation()
     {
         self.addGeofenceAtCurrentLocation(withRadious: DB_DEFAULT_FENCE_RADIOUS)
     }
-    
-    func addGeofenceAtCurrentLocation(withRadious radious: CLLocationDistance)
+    /**
+     *   Adds a geofence at the current location with a radious
+     *   <p>
+     *   First updates current location of the device, and then add it as a Geofence. Optionally also tries to determine the Geocode/Address. Also sets the radious of the fence with given value
+     *   </p>
+     *   <p>
+     *   Checks if there is already a fence exists in this coordinate, if so, fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeRepeated event.
+     *   </p>
+     *   @warning When using this method for adding multiple fence at once, reverse geocoding method may fail for too many request in small amount of time.
+     *   @param radious: The radious for the fence
+     *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
+     */
+    public func addGeofenceAtCurrentLocation(withRadious radious: CLLocationDistance)
     {
         self.desiredAcuracy = radious
         self.addGeofenceAtCurrentLocation(withRadious: radious, withIdentifier: nil)
     }
-    
-    func addGeofenceAtCurrentLocation(withRadious radious: CLLocationDistance, withIdentifier identifier: String?)
+    /**
+     *   Adds a geofence at given latitude/longitude, radious and indentifer.
+     *   <p>
+     *   Checks if there is already a fence exists in this coordinate, if so, fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeRepeated event.
+     *   </p>
+     *   @warning When using this method for adding multiple fence at once, always deliver Identifier value, otherwise the reverse geocoding method may fail for too many request in small amount of time.
+     *   @param latitude: The latitude where to add the fence
+     *   @param longitude: The longitude where to add the fence
+     *   @param radious: The radious for the fence
+     *   @param identifier: The name of the fence. If the indentifier is nil, this method will try to use geocode to determine the address of this coordinate and use it as identifer. WARNING: When using this method for adding multiple fence at once, always deliver Identifier value
+     *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
+     */
+    public func addGeofenceAtCurrentLocation(withRadious radious: CLLocationDistance, withIdentifier identifier: String?)
     {
         //store the radious and identifier
         self.radiousParam = radious
@@ -311,19 +436,50 @@ class DbLocationManager : NSObject
         activeLocationTaskType = .addFenceToCurrentLocation
         self.startUpdatingLocation()
     }
-    
+    /**
+     *   Adds a geofence at given latitude/longitude, radious and indentifer.
+     *   <p>
+     *   Checks if there is already a fence exists in this coordinate, if so, fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeRepeated event.
+     *   </p>
+     *   @warning When using this method for adding multiple fence at once, always deliver Identifier value, otherwise the reverse geocoding method may fail for too many request in small amount of time.
+     *   @param latitude: The latitude where to add the fence
+     *   @param longitude: The longitude where to add the fence
+     *   @param radious: The radious for the fence
+     *   @param identifier: The name of the fence. If the indentifier is nil, this method will try to use geocode to determine the address of this coordinate and use it as identifer. WARNING: When using this method for adding multiple fence at once, always deliver Identifier value
+     *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
+     */
     func addGeofenceAtlatitude(_ latitude: Double, andLongitude longitude: Double, withRadious radious: Double, withIdentifier identifier: String?)
     {
         self.addGeofence(atCoordinates: CLLocationCoordinate2DMake(latitude, longitude),
                          withRadious: CLLocationDistance(radious), withIdentifier: identifier)
     }
-    
+    /**
+     *   Adds a geofence at given coordinate, radious and indentifer.
+     *   <p>
+     *   Checks if there is already a fence exists in this coordinate, if so, fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeRepeated event.
+     *   </p>
+     *   @warning When using this method for adding multiple fence at once, always deliver Identifier value, otherwise the reverse geocoding method may fail for too many request in small amount of time.
+     *   @param coordinate: The coordinate as CLLocationCoordinate2D where to add the fence
+     *   @param radious: The radious for the fence
+     *   @param identifier: The name of the fence. If the indentifier is nil, this method will try to use geocode to determine the address of this coordinate and use it as identifer. WARNING: When using this method for adding multiple fence at once, always deliver Identifier value
+     *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
+     */
     func addGeofence(atCoordinates coordinate: CLLocationCoordinate2D, withRadious radious: CLLocationDistance, withIdentifier identifier: String?)
     {
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         self.addGeofence(at: location, withRadious: radious, withIdentifier: identifier)
     }
-    
+    /**
+     *   Adds a geofence at given location, radious and indentifer.
+     *   <p>
+     *   Checks if there is already a fence exists in this location, if so, fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeRepeated event.
+     *   </p>
+     *   @warning When using this method for adding multiple fence at once, always deliver Identifier value, otherwise the reverse geocoding method may fail for too many request in small amount of time.
+     *   @param location: The location where to add the fence
+     *   @param radious: The radious for the fence
+     *   @param identifier: The name of the fence. If the indentifier is nil, this method will try to use geocode to determine the address of this coordinate and use it as identifer. WARNING: When using this method for adding multiple fence at once, always deliver Identifier value
+     *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
+     */
     func addGeofence(at location: CLLocation, withRadious radious: CLLocationDistance, withIdentifier identifier: String?)
     {
         //------------------first check if we already have these coordinates inside existing regions----------
@@ -421,7 +577,15 @@ class DbLocationManager : NSObject
             self.geocodeCompletionBlock?(error != nil ? false : true, self.lastKnownGeocodeAddress!, error)
         })
     }
-    
+    /**
+     *   Adds a geofence at a location, radious and indentifer using the FenceInfo object
+     *   <p>
+     *   Checks if there is already a fence exists in this location, if so, fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeRepeated event.
+     *   </p>
+     *   @warning When using this method for adding multiple fence at once, always deliver Identifier value, otherwise the reverse geocoding method may fail for too many request in small amount of time.
+     *   @param fenceInfo: The location where to add the fence
+     *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
+     */
     func addGeoFence(using fenceInfo: DbFenceInfo)
     {
         let coordinate: CLLocationCoordinate2D = self.locationCoordinate2d(from: fenceInfo)
@@ -429,7 +593,13 @@ class DbLocationManager : NSObject
                          withRadious: fenceInfo.fenceCoordinate[DB_RADIOUS] as? Double ?? 0.0,
                          withIdentifier: fenceInfo.fenceIDentifier)
     }
-    
+    /**
+     *   Deletes a geofence with a identifier
+     *   <p>
+     *   It searches for the  identifiers of the added fences, and deletes the desired one.
+     *   </p>
+     *   @param identifier: The identifier of the geofence need to be deleted
+     */
     func deleteGeoFence(withIdentifier identifier: String)
     {
         let existingArray = Array(locationManager.monitoredRegions)
@@ -443,7 +613,13 @@ class DbLocationManager : NSObject
             }
         }
     }
-    
+    /**
+     *   Deletes a geofence at a location, using the FenceInfo object
+     *   <p>
+     *   It searches for the  identifiers of the added fences based on fenceInfo, and deletes the desired one.
+     *   </p>
+     *   @param fenceInfo: The location where to add the fence
+     */
     func deleteGeoFence(_ fenceInfo: DbFenceInfo)
     {
         self.deleteGeoFence(withIdentifier: "BB: \(fenceInfo.fenceIDentifier)")
