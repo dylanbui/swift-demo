@@ -22,36 +22,17 @@ let DB_FENCE_EVENT_TIMESTAMP_KEY = "DBeventTimeStamp"
 let DB_FENCE_IDENTIFIER_KEY = "DBfenceIDentifier"
 let DB_FENCE_COORDINATE_KEY = "DBfenceCoordinate"
 
-public enum DbFenceEventType : Int {
-    case added
-    case removed
-    case failed
-    case repeated
-    case enterFence
-    case exitFence
-    case none
-    
-    func strValue() -> String {
-        switch self {
-        case .added:
-            return "DbFenceEventAdded"
-        case .removed:
-            return "DbFenceEventRemoved"
-        case .failed:
-            return "DbFenceEventFailed"
-        case .repeated:
-            return "DbFenceEventRepeated"
-        case .enterFence:
-            return "DbFenceEventEnterFence"
-        case .exitFence:
-            return "DbFenceEventExitFence"
-        case .none:
-            return "DbFenceEventNone"
-        }
-    }
+public enum DbFenceEventType : String {
+    case added      = "DbFenceEventAdded"
+    case removed    = "DbFenceEventRemoved"
+    case failed     = "DbFenceEventFailed"
+    case repeated   = "DbFenceEventRepeated"
+    case enterFence = "DbFenceEventEnterFence"
+    case exitFence  = "DbFenceEventExitFence"
+    case none       = "DbFenceEventNone"
 }
 
-public enum LocationTaskType : Int {
+public enum DbLocationTaskType : Int {
     case getCurrentLocation
     case getContiniousLocation
     case getSignificantChangeLocation
@@ -103,7 +84,12 @@ public protocol DbLocationManagerDelegate {
      *   Gives an Location Dictionary using keys "latitude", "longitude" and "altitude". You can use these macros: DB_LATITUDE, DB_LONGITUDE and DB_ALTITUDE.
      *   Sample output dictionary @{ @"latitude" : 23.6850, "longitude" : 90.3563, "altitude" : 10.4604}
      */
-    func dbLocationManagerDidUpdateLocation(_ latLongAltitudeDictionary: DbLocationInfo?)
+    func dbLocationManagerDidUpdateLocation(_ latLongAltitudeDictionary: DbLocationInfo)
+
+    /**
+     *   Fail get location
+     */
+    func dbLocationManagerDidFailLocation(_ withError: CLError)
     
     /**
      *   Gives an DbFenceInfo Object of the Fence which just added
@@ -129,6 +115,7 @@ public protocol DbLocationManagerDelegate {
 
 // -- Optional --
 extension DbLocationManagerDelegate {
+    func dbLocationManagerDidFailLocation(_ withError: CLError) {}
     func dbLocationManagerDidAddFence(_ fenceInfo: DbFenceInfo?) {}
     func dbLocationManagerDidFailedFence(_ fenceInfo: DbFenceInfo?) {}
     func dbLocationManagerDidEnterFence(_ fenceInfo: DbFenceInfo?) {}

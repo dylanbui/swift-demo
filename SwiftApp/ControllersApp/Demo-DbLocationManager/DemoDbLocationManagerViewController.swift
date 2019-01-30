@@ -199,11 +199,11 @@ extension DemoDbLocationManagerViewController: DbLocationManagerDelegate
         self.showInMaps(withDictionary: fenceInfo!.fenceCoordinate, title: "Exit GeoFence")
     }
     
-    func dbLocationManagerDidUpdateLocation(_ latLongAltitudeDictionary: DbLocationInfo?)
+    func dbLocationManagerDidUpdateLocation(_ latLongAltitudeDictionary: DbLocationInfo)
     {
-        print("Current Location: \(latLongAltitudeDictionary?.description ?? "")")
-        self.logtext("Current Location: \(latLongAltitudeDictionary?.description ?? "") at time: \(Date().description)")
-        self.showInMaps(withDictionary: latLongAltitudeDictionary!, title: "Current Location")
+        print("Current Location: \(latLongAltitudeDictionary.description)")
+        self.logtext("Current Location: \(latLongAltitudeDictionary.description) at time: \(Date().description)")
+        self.showInMaps(withDictionary: latLongAltitudeDictionary, title: "Current Location")
     }
     
     func dbLocationManagerDidUpdateGeocodeAdress(_ addressDictionary: DbLocationInfo?)

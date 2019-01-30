@@ -50,7 +50,7 @@ class DbLocationManager : NSObject
     private var geofences: [CLRegion] = []
     private var locationCompletionBlock: LocationUpdateBlock?
     private var geocodeCompletionBlock: GeoCodeUpdateBlock?
-    private var activeLocationTaskType: LocationTaskType = .none
+    private var activeLocationTaskType: DbLocationTaskType = .none
 
     
     class var sharedInstance : DbLocationManager
@@ -512,7 +512,7 @@ class DbLocationManager : NSObject
         let region = fenceRegion as! CLCircularRegion
         let info = DbFenceInfo()
         info.eventTimeStamp = self.currentTimeStamp(withFormat: DB_TIMESTAMP_DDMMYYYYHHMMSS)
-        info.eventType = type.strValue()
+        info.eventType = type.rawValue
         info.fenceIDentifier = region.identifier
         info.fenceCoordinate = [
             DB_LATITUDE: region.center.latitude,
@@ -647,18 +647,31 @@ extension DbLocationManager: CLLocationManagerDelegate
             return
         }
         
-        if error.code == CLError.Code.denied {
-            let locationDict: DbLocationInfo = [
-                DB_LOCATION: NSNull(),
-                DB_LATITUDE: 0.0,
-                DB_LONGITUDE: 0.0,
-                DB_ALTITUDE: 0.0
-            ]
-            // -- Call delegate --
-            self.delegate?.dbLocationManagerDidUpdateLocation(locationDict)
-            // -- Call closure --
-            self.locationCompletionBlock?(false, locationDict, error)
-        }
+        let locationDict: DbLocationInfo = [
+            DB_LOCATION: NSNull(),
+            DB_LATITUDE: 0.0,
+            DB_LONGITUDE: 0.0,
+            DB_ALTITUDE: 0.0
+        ]
+
+        // -- DucBui 30/01/2019 sua lai cho nay, luon thong bao loi --
+        // -- Call delegate --
+        self.delegate?.dbLocationManagerDidFailLocation(error)
+        // -- Call closure --
+        self.locationCompletionBlock?(false, locationDict, error)
+        // -- Chi goi khi bi Denied --
+//        if error.code == CLError.Code.denied {
+//            let locationDict: DbLocationInfo = [
+//                DB_LOCATION: NSNull(),
+//                DB_LATITUDE: 0.0,
+//                DB_LONGITUDE: 0.0,
+//                DB_ALTITUDE: 0.0
+//            ]
+//            // -- Call delegate --
+//            self.delegate?.dbLocationManagerDidUpdateLocation(locationDict)
+//            // -- Call closure --
+//            self.locationCompletionBlock?(false, locationDict, error)
+//        }
     }
     
     // -- Chi can thay doi AuthorizationStatus thi se chay ham nay (bao gom ca Cancel) --
