@@ -69,7 +69,7 @@ extension DbItemProtocol {
     }
 }
 
-class DbItem: DbItemProtocol, CustomStringConvertible
+public class DbItem: DbItemProtocol, Equatable, CustomStringConvertible
 {
     var dbItemId: Int
     var dbItemTitle: String
@@ -77,7 +77,7 @@ class DbItem: DbItemProtocol, CustomStringConvertible
     var dbRawValue: Any?
     
     // Extension CustomStringConvertible
-    var description: String {
+    public var description: String {
         return "ItemId: \(dbItemId) - Desc: \(dbItemTitle)"
     }
     
@@ -95,8 +95,12 @@ class DbItem: DbItemProtocol, CustomStringConvertible
         self.dbItemDesc = desc
         self.dbRawValue = raw
     }
-    
 }
+
+public func ==(lhs: DbItem, rhs: DbItem) -> Bool {
+    return lhs.dbItemId == rhs.dbItemId
+}
+
 
 
 //public enum db {

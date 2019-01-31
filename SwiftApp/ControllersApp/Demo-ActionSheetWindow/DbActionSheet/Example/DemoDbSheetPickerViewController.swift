@@ -19,62 +19,92 @@ class DemoDbSheetPickerViewController: UIViewController
 
     @IBAction func customPickerHorizontal_Click(_ sender: UIButton)
     {
-        let item_1 = DbItem(id: 1, title: "Giá từ thấp đến cao")
-        let item_2 = DbItem(id: 2, title: "Giá từ cao xuống thấp")
-        let item_3 = DbItem(id: 3, title: "Diện tích từ nhỏ đến lớn")
-        let item_4 = DbItem(id: 4, title: "Diện tích từ lớn đến nhỏ")
-        let item_5 = DbItem(id: 5, title: "Ngày tạo mới nhất")
-        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
-
-        let picker = DbSheetPicker.initWithTitle(title: "Sắp xếp dữ liệu",
-                                                 rows: arrSortItem,
-                                                 initialSelections: nil,
-                                                 okTitle: "Đồng ý",
-                                                 cancelTitle: "Bỏ qua")
-        picker.anchorControl = sender
-        picker.customButtonsAxis = .horizontal
-        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
-            print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
+        // let alert = DbTopAlertController(title: "Your title", message: "Your message", preferredStyle: .alert)
+        let alert = DbTopAlertController(title: "Your title 1", message: "Your message 1", preferredStyle: .actionSheet)
+        let cancelButton = UIAlertAction(title: "OK", style: .cancel) { (alertAction) in
+            alert.dismiss(animated: true, completion: {
+                print("DbTopAlertController - DISMISS")
+            })
         }
-
-        picker.cancelBlock = { (_ picker: DbSheetPicker) in
-            print("Bo qua chon")
+        alert.addAction(cancelButton)
+        
+        alert.show(animated: true) {
+            print("DbTopAlertController - SHOW")
         }
-
-        picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
-            print("VUA MOI CHON DONG : \(didSelectRow)")
-        }
-        picker.show()
+        
+        
+        //UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
+        
+        
+//        let item_1 = DbItem(id: 1, title: "Giá từ thấp đến cao")
+//        let item_2 = DbItem(id: 2, title: "Giá từ cao xuống thấp")
+//        let item_3 = DbItem(id: 3, title: "Diện tích từ nhỏ đến lớn")
+//        let item_4 = DbItem(id: 4, title: "Diện tích từ lớn đến nhỏ")
+//        let item_5 = DbItem(id: 5, title: "Ngày tạo mới nhất")
+//        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
+//
+//        let picker = DbSheetPicker.initWithTitle(title: "Sắp xếp dữ liệu",
+//                                                 rows: arrSortItem,
+//                                                 initialSelections: nil,
+//                                                 okTitle: "Đồng ý",
+//                                                 cancelTitle: "Bỏ qua")
+//        picker.anchorControl = sender
+//        picker.customButtonsAxis = .horizontal
+//        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
+//            print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
+//        }
+//
+//        picker.cancelBlock = { (_ picker: DbSheetPicker) in
+//            print("Bo qua chon")
+//        }
+//
+//        picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
+//            print("VUA MOI CHON DONG : \(didSelectRow)")
+//        }
+//        picker.show()
     }
     
     @IBAction func customPickerVertical_Click(_ sender: UIButton)
     {
-        let item_1 = DbItem(id: 1, title: "Giá từ thấp đến cao")
-        let item_2 = DbItem(id: 2, title: "Giá từ cao xuống thấp")
-        let item_3 = DbItem(id: 3, title: "Diện tích từ nhỏ đến lớn")
-        let item_4 = DbItem(id: 4, title: "Diện tích từ lớn đến nhỏ")
-        let item_5 = DbItem(id: 5, title: "Ngày tạo mới nhất")
-        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
+        let alert = DbTopAlertController(title: "Your title 2", message: "Your message2 ", preferredStyle: .alert)
         
-        let picker = DbSheetPicker.initWithTitle(title: "Sắp xếp dữ liệu",
-                                                 rows: arrSortItem,
-                                                 initialSelections: nil,
-                                                 okTitle: "Đồng ý",
-                                                 cancelTitle: "Bỏ qua")
-        picker.anchorControl = sender
-        picker.defaultButtonsAxis = .vertical
-        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
-            print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
+        let cancelButton = UIAlertAction(title: "OK", style: .cancel) { (alertAction) in
+            alert.dismiss(animated: true, completion: {
+                print("DbTopAlertController - DISMISS - 2")
+            })
+        }
+        alert.addAction(cancelButton)
+        
+        alert.show(animated: true) {
+            print("DbTopAlertController - SHOW - 2")
         }
         
-        picker.cancelBlock = { (_ picker: DbSheetPicker) in
-            print("Bo qua chon")
-        }
-        
-        picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
-            print("VUA MOI CHON DONG : \(didSelectRow)")
-        }
-        picker.show()
+//        let item_1 = DbItem(id: 1, title: "Giá từ thấp đến cao")
+//        let item_2 = DbItem(id: 2, title: "Giá từ cao xuống thấp")
+//        let item_3 = DbItem(id: 3, title: "Diện tích từ nhỏ đến lớn")
+//        let item_4 = DbItem(id: 4, title: "Diện tích từ lớn đến nhỏ")
+//        let item_5 = DbItem(id: 5, title: "Ngày tạo mới nhất")
+//        let arrSortItem = [item_1, item_2, item_3, item_4, item_5]
+//
+//        let picker = DbSheetPicker.initWithTitle(title: "Sắp xếp dữ liệu",
+//                                                 rows: arrSortItem,
+//                                                 initialSelections: nil,
+//                                                 okTitle: "Đồng ý",
+//                                                 cancelTitle: "Bỏ qua")
+//        picker.anchorControl = sender
+//        picker.defaultButtonsAxis = .vertical
+//        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
+//            print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
+//        }
+//
+//        picker.cancelBlock = { (_ picker: DbSheetPicker) in
+//            print("Bo qua chon")
+//        }
+//
+//        picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
+//            print("VUA MOI CHON DONG : \(didSelectRow)")
+//        }
+//        picker.show()
     }
     
     @IBAction func datePicker_Click(_ sender: UIButton)

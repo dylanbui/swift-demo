@@ -236,6 +236,8 @@
 		BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C792021DFD40044F661 /* DbResponse.swift */; };
 		BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */; };
 		BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0312121F102460009C753 /* DbSheetDatePicker.swift */; };
+		BBF2368C2202E6DA0067952B /* PzCustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */; };
+		BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368D2202FA620067952B /* DbTopAlertController.swift */; };
 		BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */; };
 		BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276D21058220007CFFB4 /* DbRealmObject.swift */; };
 		BBF527702105949B007CFFB4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276F2105949B007CFFB4 /* Student.swift */; };
@@ -493,6 +495,8 @@
 		BBE88C792021DFD40044F661 /* DbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
 		BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetTableView.swift; sourceTree = "<group>"; };
 		BBF0312121F102460009C753 /* DbSheetDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetDatePicker.swift; sourceTree = "<group>"; };
+		BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzCustomPickerRow.swift; sourceTree = "<group>"; };
+		BBF2368D2202FA620067952B /* DbTopAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTopAlertController.swift; sourceTree = "<group>"; };
 		BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearPicker.swift; sourceTree = "<group>"; };
 		BBF5276D21058220007CFFB4 /* DbRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmObject.swift; sourceTree = "<group>"; };
 		BBF5276F2105949B007CFFB4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
@@ -794,6 +798,7 @@
 			children = (
 				BB9BC0B521ED9AEF004BC430 /* CustomDecimalRow.swift */,
 				BB9BC0B621ED9AEF004BC430 /* CustomPickerRow.swift */,
+				BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */,
 			);
 			path = "Custom-Control-Propzy";
 			sourceTree = "<group>";
@@ -1021,6 +1026,7 @@
 				BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */,
 				BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */,
 				BB48E20C21F1E531002B2DEC /* DbSheetCalendar.swift */,
+				BBF2368D2202FA620067952B /* DbTopAlertController.swift */,
 			);
 			path = DbActionSheet;
 			sourceTree = "<group>";
@@ -1520,6 +1526,7 @@
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
 				BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
+				BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */,
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
@@ -1621,6 +1628,7 @@
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
 				BB2FE6712192CFCB007470DD /* DbMediaPickerController.swift in Sources */,
 				BBC38A55206DDE9500B11C7B /* MaterialIcon.swift in Sources */,
+				BBF2368C2202E6DA0067952B /* PzCustomPickerRow.swift in Sources */,
 				BB4EE5E721F6FD9300D1BAFE /* DbCustomButtonSheetPicker.swift in Sources */,
 				BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,

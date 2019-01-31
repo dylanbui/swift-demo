@@ -271,6 +271,30 @@ class DecimalFormatterExample : FormViewController {
                     print("\(String(describing: row.value))")
                     //print("row.value! = \(row.value!)")
                 })
+        
+            <<< PzCustomPickerRow("PickerRowWard") {
+                $0.title = "Chọn phường"
+                $0.placeholder = "phường"
+//                let selected = DbItem(id: 3, title: "Phường 3", desc: "Phường 3")
+//                $0.value = selected.dbItemTitle
+//                $0.cell.itemSelected = selected
+                $0.cell.arrSources = [
+                    DbItem(id: 1, title: "Phường 1", desc: "Phường 1"),
+                    DbItem(id: 2, title: "Phường 2", desc: "Phường 2"),
+                    DbItem(id: 3, title: "Phường 3", desc: "Phường 3")]
+                }
+                
+                .cellSetup({ (cell, row) in
+                    
+                })
+                
+                .onChange({ (row) in
+                    // -- Su dung duoc : Scroll to control position--
+                    // row.select(animated: true, scrollPosition: .middle)
+                    print("row.value = \(String(describing: row.value))")
+                    let item = row.cell.itemSelected
+                    print("item.debugDescription = \(item.debugDescription)")
+                })
 
 
     }
