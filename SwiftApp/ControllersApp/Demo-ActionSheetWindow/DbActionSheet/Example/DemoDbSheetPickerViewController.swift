@@ -19,6 +19,13 @@ class DemoDbSheetPickerViewController: UIViewController
 
     @IBAction func customPickerHorizontal_Click(_ sender: UIButton)
     {
+        // DbTopAlertController.alert("Hien ra di chaaaa")
+//        DbTopAlertController.alert("Hien ra ne", message: "Hine cai gi day", acceptMessage: "Chon di") {
+//            print("No moi chon roi")
+//        }
+        
+        
+        
         // let alert = DbTopAlertController(title: "Your title", message: "Your message", preferredStyle: .alert)
         let alert = DbTopAlertController(title: "Your title 1", message: "Your message 1", preferredStyle: .actionSheet)
         let cancelButton = UIAlertAction(title: "OK", style: .cancel) { (alertAction) in
@@ -27,11 +34,10 @@ class DemoDbSheetPickerViewController: UIViewController
             })
         }
         alert.addAction(cancelButton)
-        
+
         alert.show(animated: true) {
             print("DbTopAlertController - SHOW")
         }
-        
         
         //UIApplication.topViewController()?.present(alert, animated: true, completion: nil)
         
