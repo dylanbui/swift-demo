@@ -4,10 +4,9 @@
 //
 //  Created by Dylan Bui on 1/31/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
-//
+//  Su dung duoc nhung touchOut bi loi khong animation duoc
 
 import Foundation
-
 import UIKit
 
 public class DbTopAlertController: UIAlertController {
@@ -28,19 +27,6 @@ public class DbTopAlertController: UIAlertController {
      - parameter completion: The closure to execute after the presentation finishes.
      */
     
-    @objc public func touchOut()
-    {
-        //self.dismiss(animated: true)
-        
-        super.dismiss(animated: true, completion: nil)
-        
-        // -- Hide window --
-        if self.alertWindow.isKeyWindow {
-            self.alertWindow.resignFirstResponder()
-        }
-        self.alertWindow.isHidden = true
-    }
-    
     public func show(animated flag: Bool, completion: (() -> Void)? = nil)
     {
         if let rootViewController = alertWindow.rootViewController {
@@ -58,8 +44,6 @@ public class DbTopAlertController: UIAlertController {
                     ousideView.addGestureRecognizer( UITapGestureRecognizer(target: self, action: #selector(self.touchOut)))
                 }
             }
-            
-            
         }
     }
     
@@ -77,6 +61,10 @@ public class DbTopAlertController: UIAlertController {
         completion?()
     }
     
+    @objc public func touchOut()
+    {
+        self.dismiss(animated: true)
+    }
     
     //==========================================================================================================
     // MARK: - Class Functions
@@ -101,8 +89,6 @@ public class DbTopAlertController: UIAlertController {
             acceptBlock()
         })
         alert.addAction(acceptButton)
-        
-        //instance.topMostController()?.present(alert, animated: true, completion: nil)
         alert.show(animated: true)
         return alert
     }
@@ -110,7 +96,6 @@ public class DbTopAlertController: UIAlertController {
     @discardableResult
     open class func alert(_ title: String, message: String, buttons:[String], tapBlock:((UIAlertAction,Int) -> Void)?) -> DbTopAlertController{
         let alert = DbTopAlertController(title: title, message: message, preferredStyle: .alert, buttons: buttons, tapBlock: tapBlock)
-        //instance.topMostController()?.present(alert, animated: true, completion: nil)
         alert.show(animated: true)
         return alert
     }
@@ -119,7 +104,6 @@ public class DbTopAlertController: UIAlertController {
     @discardableResult
     open class func alert(_ title: String, message: String, buttons:[UIAlertAction], tapBlock:((UIAlertAction,Int) -> Void)?) -> DbTopAlertController{
         let alert = DbTopAlertController(title: title, message: message, preferredStyle: .alert, buttons: buttons, tapBlock: tapBlock)
-        //instance.topMostController()?.present(alert, animated: true, completion: nil)
         alert.show(animated: true)
         return alert
     }
@@ -133,7 +117,6 @@ public class DbTopAlertController: UIAlertController {
         }
         alert.popoverPresentationController?.sourceView = sourceView
         alert.popoverPresentationController?.sourceRect = sourceView.bounds
-        // instance.topMostController()?.present(alert, animated: true, completion: nil)
         alert.show(animated: true)
         return alert
     }
@@ -143,7 +126,6 @@ public class DbTopAlertController: UIAlertController {
         let alert = DbTopAlertController(title: title, message: message, preferredStyle: .actionSheet, buttons: buttons, tapBlock: tapBlock)
         alert.popoverPresentationController?.sourceView = sourceView
         alert.popoverPresentationController?.sourceRect = sourceView.bounds
-        // instance.topMostController()?.present(alert, animated: true, completion: nil)
         alert.show(animated: true)
         return alert
     }
@@ -189,7 +171,6 @@ private class DbTopClearViewController: UIViewController
 {
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIApplication.shared.statusBarStyle
-        // return .lightContent
     }
     
     override var prefersStatusBarHidden: Bool {
