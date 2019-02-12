@@ -17,6 +17,11 @@
 		BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */; };
 		BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10D3F31F79225100B7DF4B /* DbActionView.swift */; };
 		BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */; };
+		BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */; };
+		BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */; };
+		BB1303CA2212CCF8009FBFDE /* DbEmptyDataSetCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303C92212CCF8009FBFDE /* DbEmptyDataSetCommon.swift */; };
+		BB1303CC2212CD96009FBFDE /* DbEmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303CB2212CD96009FBFDE /* DbEmptyDataView.swift */; };
+		BB1303CE2212CDE4009FBFDE /* DbEmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303CD2212CDE4009FBFDE /* DbEmptyDataSet.swift */; };
 		BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D43200BBFAA005514C3 /* DbConstant.swift */; };
 		BB197D46200BC051005514C3 /* DbUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D45200BC051005514C3 /* DbUtils.swift */; };
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
@@ -270,6 +275,11 @@
 		BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoUKitViewController.swift; sourceTree = "<group>"; };
 		BB10D3F31F79225100B7DF4B /* DbActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbActionView.swift; sourceTree = "<group>"; };
 		BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSheetPicker.swift; sourceTree = "<group>"; };
+		BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEmptyDataSetViewController.swift; sourceTree = "<group>"; };
+		BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoEmptyDataSetViewController.xib; sourceTree = "<group>"; };
+		BB1303C92212CCF8009FBFDE /* DbEmptyDataSetCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyDataSetCommon.swift; sourceTree = "<group>"; };
+		BB1303CB2212CD96009FBFDE /* DbEmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyDataView.swift; sourceTree = "<group>"; };
+		BB1303CD2212CDE4009FBFDE /* DbEmptyDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyDataSet.swift; sourceTree = "<group>"; };
 		BB197D43200BBFAA005514C3 /* DbConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConstant.swift; sourceTree = "<group>"; };
 		BB197D45200BC051005514C3 /* DbUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUtils.swift; sourceTree = "<group>"; };
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
@@ -566,6 +576,7 @@
 				BBDDD5DA219D5DBE00AC4940 /* Demo-KeyboarbHandle */,
 				BB7E57FC21E842D6005C3FA6 /* Demo-Eureka */,
 				BB7E580921E857B5005C3FA6 /* Demo-DecimalTextField */,
+				BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -577,6 +588,18 @@
 				BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */,
 			);
 			path = "Demo-Button-Label-Textfield";
+			sourceTree = "<group>";
+		};
+		BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */ = {
+			isa = PBXGroup;
+			children = (
+				BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */,
+				BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */,
+				BB1303C92212CCF8009FBFDE /* DbEmptyDataSetCommon.swift */,
+				BB1303CB2212CD96009FBFDE /* DbEmptyDataView.swift */,
+				BB1303CD2212CDE4009FBFDE /* DbEmptyDataSet.swift */,
+			);
+			path = "Demo-EmptyDataSet";
 			sourceTree = "<group>";
 		};
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
@@ -1339,6 +1362,7 @@
 				BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */,
 				BB7E580821E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib in Resources */,
 				BBB1A53B22005BEA0047293E /* DbLocationManager.bundle in Resources */,
+				BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */,
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
@@ -1599,6 +1623,7 @@
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BB626EC820DBADCE0057F0CF /* DbDictionaryExtensions.swift in Sources */,
+				BB1303CE2212CDE4009FBFDE /* DbEmptyDataSet.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBDD202721F0940400788D3E /* DbAbstractSheet.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
@@ -1618,6 +1643,7 @@
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
 				BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */,
+				BB1303CC2212CD96009FBFDE /* DbEmptyDataView.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */,
@@ -1626,6 +1652,7 @@
 				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,
 				BB26008D21D60FD100D5F41D /* DbSelectBox.swift in Sources */,
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
+				BB1303CA2212CCF8009FBFDE /* DbEmptyDataSetCommon.swift in Sources */,
 				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
 				BB5CE03E2146117500C92DA0 /* CountryUnitApi.swift in Sources */,
 				BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */,
@@ -1658,6 +1685,7 @@
 				BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
+				BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,
 				BBDDD5D8219D5DB400AC4940 /* KeyboarbHandleViewController.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,

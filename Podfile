@@ -73,6 +73,7 @@ target 'SwiftApp' do
     pod 'TableRow', '0.3.1'
     pod 'SuggestionRow', '2.2.0'
     
+    
 
   # Pods for SwiftApp
 
