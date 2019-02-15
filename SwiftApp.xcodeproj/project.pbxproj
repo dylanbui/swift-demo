@@ -19,9 +19,6 @@
 		BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */; };
 		BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */; };
 		BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */; };
-		BB1303CA2212CCF8009FBFDE /* DbEmptyDataSetCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303C92212CCF8009FBFDE /* DbEmptyDataSetCommon.swift */; };
-		BB1303CC2212CD96009FBFDE /* DbEmptyDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303CB2212CD96009FBFDE /* DbEmptyDataView.swift */; };
-		BB1303CE2212CDE4009FBFDE /* DbEmptyDataSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303CD2212CDE4009FBFDE /* DbEmptyDataSet.swift */; };
 		BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D43200BBFAA005514C3 /* DbConstant.swift */; };
 		BB197D46200BC051005514C3 /* DbUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D45200BC051005514C3 /* DbUtils.swift */; };
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
@@ -33,6 +30,12 @@
 		BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008621D60FD000D5F41D /* DbDropDownViewCommon.swift */; };
 		BB26008C21D60FD100D5F41D /* DbDropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008721D60FD000D5F41D /* DbDropDownView.swift */; };
 		BB26008D21D60FD100D5F41D /* DbSelectBox.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008821D60FD000D5F41D /* DbSelectBox.swift */; };
+		BB28109B2216D3F6003823FE /* DemoDbPullToRefreshViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2810992216D3F6003823FE /* DemoDbPullToRefreshViewController.swift */; };
+		BB28109C2216D3F6003823FE /* DemoDbPullToRefreshViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB28109A2216D3F6003823FE /* DemoDbPullToRefreshViewController.xib */; };
+		BB28109F2216D42F003823FE /* DbPullLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB28109E2216D42F003823FE /* DbPullLoader.swift */; };
+		BB2810A22216DDA6003823FE /* NSLayoutConstraintExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2810A12216DDA6003823FE /* NSLayoutConstraintExtensions.swift */; };
+		BB2810A42216DDEC003823FE /* DbPullLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2810A32216DDEC003823FE /* DbPullLoadView.swift */; };
+		BB2810A62216E211003823FE /* UIScrollViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2810A52216E211003823FE /* UIScrollViewExtensions.swift */; };
 		BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67220158E7700590C94 /* DbPopupView.swift */; };
 		BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */; };
 		BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2FA67720159F8400590C94 /* TpPostDetailView.xib */; };
@@ -243,6 +246,8 @@
 		BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C792021DFD40044F661 /* DbResponse.swift */; };
 		BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */; };
 		BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0312121F102460009C753 /* DbSheetDatePicker.swift */; };
+		BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */; };
+		BBF0A5FB2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */; };
 		BBF2368C2202E6DA0067952B /* PzCustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */; };
 		BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368D2202FA620067952B /* DbTopAlertController.swift */; };
 		BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */; };
@@ -279,9 +284,6 @@
 		BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSheetPicker.swift; sourceTree = "<group>"; };
 		BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEmptyDataSetViewController.swift; sourceTree = "<group>"; };
 		BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoEmptyDataSetViewController.xib; sourceTree = "<group>"; };
-		BB1303C92212CCF8009FBFDE /* DbEmptyDataSetCommon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyDataSetCommon.swift; sourceTree = "<group>"; };
-		BB1303CB2212CD96009FBFDE /* DbEmptyDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyDataView.swift; sourceTree = "<group>"; };
-		BB1303CD2212CDE4009FBFDE /* DbEmptyDataSet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyDataSet.swift; sourceTree = "<group>"; };
 		BB197D43200BBFAA005514C3 /* DbConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConstant.swift; sourceTree = "<group>"; };
 		BB197D45200BC051005514C3 /* DbUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUtils.swift; sourceTree = "<group>"; };
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
@@ -293,6 +295,12 @@
 		BB26008621D60FD000D5F41D /* DbDropDownViewCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbDropDownViewCommon.swift; sourceTree = "<group>"; };
 		BB26008721D60FD000D5F41D /* DbDropDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbDropDownView.swift; sourceTree = "<group>"; };
 		BB26008821D60FD000D5F41D /* DbSelectBox.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSelectBox.swift; sourceTree = "<group>"; };
+		BB2810992216D3F6003823FE /* DemoDbPullToRefreshViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDbPullToRefreshViewController.swift; sourceTree = "<group>"; };
+		BB28109A2216D3F6003823FE /* DemoDbPullToRefreshViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoDbPullToRefreshViewController.xib; sourceTree = "<group>"; };
+		BB28109E2216D42F003823FE /* DbPullLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPullLoader.swift; sourceTree = "<group>"; };
+		BB2810A12216DDA6003823FE /* NSLayoutConstraintExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NSLayoutConstraintExtensions.swift; sourceTree = "<group>"; };
+		BB2810A32216DDEC003823FE /* DbPullLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPullLoadView.swift; sourceTree = "<group>"; };
+		BB2810A52216E211003823FE /* UIScrollViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtensions.swift; sourceTree = "<group>"; };
 		BB2FA67220158E7700590C94 /* DbPopupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPopupView.swift; sourceTree = "<group>"; };
 		BB2FA67520159EEC00590C94 /* TpPostDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpPostDetailView.swift; sourceTree = "<group>"; };
 		BB2FA67720159F8400590C94 /* TpPostDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TpPostDetailView.xib; sourceTree = "<group>"; };
@@ -509,6 +517,8 @@
 		BBE88C792021DFD40044F661 /* DbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
 		BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetTableView.swift; sourceTree = "<group>"; };
 		BBF0312121F102460009C753 /* DbSheetDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetDatePicker.swift; sourceTree = "<group>"; };
+		BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMaterialSpinner.swift; sourceTree = "<group>"; };
+		BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyCustomStatusView.swift; sourceTree = "<group>"; };
 		BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzCustomPickerRow.swift; sourceTree = "<group>"; };
 		BBF2368D2202FA620067952B /* DbTopAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTopAlertController.swift; sourceTree = "<group>"; };
 		BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearPicker.swift; sourceTree = "<group>"; };
@@ -581,6 +591,7 @@
 				BB7E57FC21E842D6005C3FA6 /* Demo-Eureka */,
 				BB7E580921E857B5005C3FA6 /* Demo-DecimalTextField */,
 				BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */,
+				BB28109D2216D3FB003823FE /* Demo-PullToRefresh */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -597,12 +608,10 @@
 		BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */ = {
 			isa = PBXGroup;
 			children = (
+				BBF0A5FC2215468500BFEAE2 /* CustomEmptyStatus */,
 				BB51AC552213F65C00897CCC /* DbEmptyStatus */,
 				BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */,
 				BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */,
-				BB1303C92212CCF8009FBFDE /* DbEmptyDataSetCommon.swift */,
-				BB1303CB2212CD96009FBFDE /* DbEmptyDataView.swift */,
-				BB1303CD2212CDE4009FBFDE /* DbEmptyDataSet.swift */,
 			);
 			path = "Demo-EmptyDataSet";
 			sourceTree = "<group>";
@@ -656,6 +665,27 @@
 				BB26008721D60FD000D5F41D /* DbDropDownView.swift */,
 			);
 			path = BaseView;
+			sourceTree = "<group>";
+		};
+		BB28109D2216D3FB003823FE /* Demo-PullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				BB2810A02216D437003823FE /* DbPullToRefresh */,
+				BB2810992216D3F6003823FE /* DemoDbPullToRefreshViewController.swift */,
+				BB28109A2216D3F6003823FE /* DemoDbPullToRefreshViewController.xib */,
+			);
+			path = "Demo-PullToRefresh";
+			sourceTree = "<group>";
+		};
+		BB2810A02216D437003823FE /* DbPullToRefresh */ = {
+			isa = PBXGroup;
+			children = (
+				BB2810A12216DDA6003823FE /* NSLayoutConstraintExtensions.swift */,
+				BB28109E2216D42F003823FE /* DbPullLoader.swift */,
+				BB2810A32216DDEC003823FE /* DbPullLoadView.swift */,
+				BB2810A52216E211003823FE /* UIScrollViewExtensions.swift */,
+			);
+			path = DbPullToRefresh;
 			sourceTree = "<group>";
 		};
 		BB2FA67420159BF100590C94 /* CustomViews */ = {
@@ -1231,6 +1261,15 @@
 			path = Research;
 			sourceTree = "<group>";
 		};
+		BBF0A5FC2215468500BFEAE2 /* CustomEmptyStatus */ = {
+			isa = PBXGroup;
+			children = (
+				BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */,
+				BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */,
+			);
+			path = CustomEmptyStatus;
+			sourceTree = "<group>";
+		};
 		C18E4305809E59F8E17DBC84 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1368,6 +1407,7 @@
 				BBC38A63206DDEE500B11C7B /* FontAwesome.ttf in Resources */,
 				BBC1569A21DE0AA500484B26 /* TaoLaunch.storyboard in Resources */,
 				BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */,
+				BB28109C2216D3F6003823FE /* DemoDbPullToRefreshViewController.xib in Resources */,
 				BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */,
 				BB26008A21D60FD100D5F41D /* demo.txt in Resources */,
 				BBDDD5DE219D653200AC4940 /* KBBottomBarView.xib in Resources */,
@@ -1560,6 +1600,7 @@
 				BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */,
 				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
+				BB2810A22216DDA6003823FE /* NSLayoutConstraintExtensions.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */,
 				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
@@ -1567,6 +1608,7 @@
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
+				BB28109F2216D42F003823FE /* DbPullLoader.swift in Sources */,
 				BBC38A52206DDE9500B11C7B /* IonIcons.swift in Sources */,
 				BBE6FA7121EC9A700030AA64 /* UIControl+Closures.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
@@ -1607,6 +1649,7 @@
 				BB228A502108302A00C5C6AA /* Actor.swift in Sources */,
 				BB06BC12220195F300227059 /* DetailCandySearchViewController.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
+				BB2810A42216DDEC003823FE /* DbPullLoadView.swift in Sources */,
 				BBE6FA6E21EC9A700030AA64 /* DbClosureHandler.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */,
@@ -1624,6 +1667,7 @@
 				BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */,
 				BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */,
 				BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */,
+				BBF0A5FB2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BB407ACF2181821A00C8E57F /* DbNSAttributedStringExtensions.swift in Sources */,
 				BBB1A534220031780047293E /* DbLocationManagerDefines.swift in Sources */,
@@ -1637,7 +1681,6 @@
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BB626EC820DBADCE0057F0CF /* DbDictionaryExtensions.swift in Sources */,
-				BB1303CE2212CDE4009FBFDE /* DbEmptyDataSet.swift in Sources */,
 				BB51AC522213F34800897CCC /* DbEmptyStatusProvider.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBDD202721F0940400788D3E /* DbAbstractSheet.swift in Sources */,
@@ -1658,8 +1701,8 @@
 				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
+				BB2810A62216E211003823FE /* UIScrollViewExtensions.swift in Sources */,
 				BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */,
-				BB1303CC2212CD96009FBFDE /* DbEmptyDataView.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */,
@@ -1668,7 +1711,6 @@
 				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,
 				BB26008D21D60FD100D5F41D /* DbSelectBox.swift in Sources */,
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
-				BB1303CA2212CCF8009FBFDE /* DbEmptyDataSetCommon.swift in Sources */,
 				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
 				BB5CE03E2146117500C92DA0 /* CountryUnitApi.swift in Sources */,
 				BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */,
@@ -1686,6 +1728,7 @@
 				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BB407ACE2181821A00C8E57F /* DbCommonExtensions.swift in Sources */,
+				BB28109B2216D3F6003823FE /* DemoDbPullToRefreshViewController.swift in Sources */,
 				BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
 				BB3FDBF2217EFD07002D570F /* DbStackCell.swift in Sources */,
@@ -1702,6 +1745,7 @@
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
 				BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */,
+				BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,
 				BBDDD5D8219D5DB400AC4940 /* KeyboarbHandleViewController.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,

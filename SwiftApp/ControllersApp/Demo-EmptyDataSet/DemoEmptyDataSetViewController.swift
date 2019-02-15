@@ -8,7 +8,7 @@
 
 import UIKit
 
-class DemoEmptyDataSetViewController: UIViewController , DbEmptyStatusController
+class DemoEmptyDataSetViewController: UIViewController
 {
     @IBOutlet weak var tableView: UITableView!
     
@@ -29,51 +29,69 @@ class DemoEmptyDataSetViewController: UIViewController , DbEmptyStatusController
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        //        let status = Status(isLoading: true, description: "Lädt…")
-        let status = DbEmptyStatus.simpleLoading
+        // let status = DbEmptyStatus(isLoading: true, description: "Loadinggggg …")
+        let status = DbEmptyStatus(isLoading: true,
+                                   spinnerColor: UIColor.red,
+                                   backgroundColor: UIColor.white,
+                                   description: "Loadinggggg …")
+        // let status = DbEmptyStatus.simpleLoading
         
-        show(status: status)
+        show(emptyStatus: status)
         
         self.fetchData()
     }
     
-    func fetchData()
+    func fetchData(_ result: Bool = false)
     {
         let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
             
-            let done = false
+            let done = result
             
             if done {
+                print("Hide status !!!")
+                self.hideEmptyStatus()
+
                 // -- Done load --
                 self.dataCount = 7
                 self.tableView.reloadData()
-                
-                print("Hide status !!!")
-                self.hideStatus()
             } else {
-                self.emptyStauts()
+                self.emptyStatus()
             }
         }
     }
     
-    func emptyStauts()
+    func emptyStatus()
     {
         title = "Empty"
         
-        let status = DbEmptyStatus(title: "no Data", description: "No data available.💣", actionTitle: "Create ⭐️", image: UIImage(named: "placeholder_instagram")) {
-            self.hideStatus()
+        let status = DbEmptyStatus(title: "no Data", description: "No data available.💣", actionTitle: "Retry ⭐️", image: UIImage(named: "placeholder_instagram")) {
+            // self.hideStatus()
+            
+            // -- Show loading --
+            let status = DbEmptyStatus.simpleLoading
+            self.show(emptyStatus: status)
+            
+            self.fetchData(true)
         }
         
-        self.show(status: status)
+        self.show(emptyStatus: status)
         
         // -- Auto hide --
-        let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
-        DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
-            self.hideStatus()
-        }
+//        let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+//        DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
+//            self.hideStatus()
+//        }
     }
     
+}
+
+extension DemoEmptyDataSetViewController: DbEmptyStatusController
+{
+    public var statusView: DbEmptyStatusView? {
+        // return DbEmptyDefaultStatusView()
+        return DbEmptyCustomStatusView()
+    }
 }
 
 extension DemoEmptyDataSetViewController: UITableViewDelegate, UITableViewDataSource

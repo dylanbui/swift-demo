@@ -4,7 +4,7 @@
 //
 //  Created by Dylan Bui on 2/13/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
-//
+//  Base on v1.2.10 : https://github.com/mariohahn/StatusProvider
 
 import Foundation
 import UIKit
@@ -12,6 +12,7 @@ import UIKit
 public protocol DbEmptyStatusModel {
     var verticalOffset: CGFloat { get }
     var isLoading: Bool         { get }
+    var spinnerColor: UIColor   { get }
     var backgroundColor: UIColor{ get }
     var title: String?          { get }
     var description: String?    { get }
@@ -28,6 +29,10 @@ extension DbEmptyStatusModel {
     
     public var isLoading: Bool {
         return false
+    }
+    
+    public var spinnerColor: UIColor {
+        return UIColor.lightGray
     }
 
     public var backgroundColor: UIColor {
@@ -59,18 +64,26 @@ extension DbEmptyStatusModel {
 public struct DbEmptyStatus: DbEmptyStatusModel {
     public let verticalOffset: CGFloat
     public let isLoading: Bool
+    public let spinnerColor: UIColor
+    public let backgroundColor: UIColor
     public let title: String?
     public let description: String?
     public let actionTitle: String?
     public let image: UIImage?
     public let action: (() -> Void)?
     
-    public init(isLoading: Bool = false, title: String? = nil, description: String? = nil,
+    public init(isLoading: Bool = false,
+                spinnerColor: UIColor = UIColor.lightGray,
+                backgroundColor: UIColor = UIColor.white,
+                title: String? = nil,
+                description: String? = nil,
                 actionTitle: String? = nil,
                 image: UIImage? = nil,
                 verticalOffset: CGFloat = 0.0,
                 action: (() -> Void)? = nil) {
         self.isLoading = isLoading
+        self.spinnerColor = spinnerColor
+        self.backgroundColor = backgroundColor
         self.title = title
         self.description = description
         self.actionTitle = actionTitle
@@ -94,8 +107,8 @@ public protocol DbEmptyStatusController {
     var onView: UIView { get }
     var statusView: DbEmptyStatusView?     { get }
     
-    func show(status: DbEmptyStatusModel)
-    func hideStatus()
+    func show(emptyStatus: DbEmptyStatusModel)
+    func hideEmptyStatus()
 }
 
 fileprivate let dbStatusViewTag = 666
@@ -106,7 +119,7 @@ extension DbEmptyStatusController {
         return DbEmptyDefaultStatusView()
     }
     
-    public func hideStatus() {
+    public func hideEmptyStatus() {
         if let view = onView.viewWithTag(dbStatusViewTag) {
             UIView.animate(withDuration: 0.2, animations: {
                 view.alpha = 0.0
@@ -127,8 +140,8 @@ extension DbEmptyStatusController {
         let view = sv.view
         
         let parentView = UIView.init(frame: containerView.frame)
-        parentView.tag = dbStatusViewTag // UIView.StatusViewTag
-        parentView.backgroundColor = UIColor.lightGray
+        parentView.tag = dbStatusViewTag
+        parentView.backgroundColor = sv.status?.backgroundColor
         containerView.addSubview(parentView)
         parentView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
@@ -137,9 +150,6 @@ extension DbEmptyStatusController {
             parentView.topAnchor.constraint(equalTo: containerView.topAnchor, constant: 0),
             parentView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0),
             ])
-        
-        //view.tag = UIView.StatusViewTag
-        // print("\(String(describing: containerView.frame))")
         
         parentView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
@@ -166,8 +176,8 @@ extension DbEmptyStatusController where Self: UIView {
         return self
     }
     
-    public func show(status: DbEmptyStatusModel) {
-        _show(status: status)
+    public func show(emptyStatus: DbEmptyStatusModel) {
+        _show(status: emptyStatus)
     }
 }
 
@@ -177,8 +187,8 @@ extension DbEmptyStatusController where Self: UIViewController {
         return view
     }
     
-    public func show(status: DbEmptyStatusModel) {
-        _show(status: status)
+    public func show(emptyStatus: DbEmptyStatusModel) {
+        _show(status: emptyStatus)
     }
 }
 
@@ -191,38 +201,7 @@ extension DbEmptyStatusController where Self: UITableViewController {
         return view
     }
     
-    public func show(status: DbEmptyStatusModel) {
-        _show(status: status)
+    public func show(emptyStatus: DbEmptyStatusModel) {
+        _show(status: emptyStatus)
     }
 }
-
-//public protocol DbEmptyStatusViewContainer: class {
-//    var statusContainerView: UIView? { get set }
-//}
-//
-//extension UIView: DbEmptyStatusViewContainer {
-//    public static let StatusViewTag = 666
-//
-//    open var statusContainerView: UIView? {
-//        get {
-//            return viewWithTag(UIView.StatusViewTag)
-//        }
-//        set {
-//            viewWithTag(UIView.StatusViewTag)?.removeFromSuperview()
-//
-//            guard let view = newValue else { return }
-//
-//            view.tag = UIView.StatusViewTag
-//            addSubview(view)
-//            view.translatesAutoresizingMaskIntoConstraints = false
-//            NSLayoutConstraint.activate([
-//                view.centerXAnchor.constraint(equalTo: centerXAnchor),
-//                view.centerYAnchor.constraint(equalTo: centerYAnchor),
-//                view.leadingAnchor.constraint(greaterThanOrEqualTo: readableContentGuide.leadingAnchor),
-//                view.trailingAnchor.constraint(lessThanOrEqualTo: readableContentGuide.trailingAnchor),
-//                view.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
-//                view.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor)
-//                ])
-//        }
-//    }
-//}

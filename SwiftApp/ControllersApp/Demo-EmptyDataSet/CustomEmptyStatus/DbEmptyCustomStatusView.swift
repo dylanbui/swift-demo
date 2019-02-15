@@ -1,15 +1,15 @@
 //
-//  DbEmptyDefaultStatusView.swift
+//  DbEmptyCustomStatusView.swift
 //  SwiftApp
 //
-//  Created by Dylan Bui on 2/13/19.
+//  Created by Dylan Bui on 2/14/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
+open class DbEmptyCustomStatusView: UIView, DbEmptyStatusView {
     
     public var view: UIView {
         return self
@@ -23,17 +23,15 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
             imageView.image = status.image
             titleLabel.text = status.title
             descriptionLabel.text = status.description
-            #if swift(>=4.2)
-            actionButton.setTitle(status.actionTitle, for: UIControl.State())
-            #else
             actionButton.setTitle(status.actionTitle, for: UIControlState())
-            #endif
             
-            activityIndicatorView.color = status.spinnerColor
+            activityIndicatorView.circleLayer.strokeColor = status.spinnerColor.cgColor
             if status.isLoading {
-                activityIndicatorView.startAnimating()
+                activityIndicatorView.isHidden = false
+                activityIndicatorView.beginRefreshing() //startAnimating()
             } else {
-                activityIndicatorView.stopAnimating()
+                activityIndicatorView.isHidden = true
+                activityIndicatorView.endRefreshing() //stopAnimating()
             }
             
             imageView.isHidden = imageView.image == nil
@@ -62,22 +60,13 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
         return $0
     }(UILabel())
     
-    #if swift(>=4.2)
-    public let activityIndicatorView: UIActivityIndicatorView = {
-    $0.isHidden = true
-    $0.hidesWhenStopped = true
-    $0.style = .gray
-    return $0
-    }(UIActivityIndicatorView(style: .whiteLarge))
-    #else
-    public let activityIndicatorView: UIActivityIndicatorView = {
+    public let activityIndicatorView: JTMaterialSpinner = {
         $0.isHidden = true
-        $0.hidesWhenStopped = true
-        $0.activityIndicatorViewStyle = .gray
-        $0.color = UIColor.lightGray
+        $0.circleLayer.lineWidth = 2.0
+        $0.circleLayer.strokeColor = UIColor.orange.cgColor
+        
         return $0
-    }(UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge))
-    #endif
+    }(JTMaterialSpinner(frame: CGRect(0, 0, 25, 25)))
     
     public let imageView: UIImageView = {
         $0.contentMode = .center
@@ -115,11 +104,11 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
         addSubview(horizontalStackView)
         
         horizontalStackView.addArrangedSubview(activityIndicatorView)
-        // -- Add Constraint for custom IndicatorView Size --
-//        NSLayoutConstraint.activate([
-//            activityIndicatorView.widthAnchor.constraint(equalToConstant: activityIndicatorView.frame.size.width),
-//            activityIndicatorView.heightAnchor.constraint(equalToConstant: activityIndicatorView.frame.size.height)
-//            ])
+        NSLayoutConstraint.activate([
+            activityIndicatorView.widthAnchor.constraint(equalToConstant: activityIndicatorView.frame.size.width),
+            activityIndicatorView.heightAnchor.constraint(equalToConstant: activityIndicatorView.frame.size.height)
+            ])
+        
         horizontalStackView.addArrangedSubview(verticalStackView)
         
         verticalStackView.addArrangedSubview(imageView)
