@@ -315,8 +315,8 @@ public class DbAbstractSheet: NSObject
             
             let viewOk = self.createButtonView(self.okButton!)
             let viewCancel = self.createButtonView(self.cancelButton!)
-            stackView.addArrangedSubview(viewOk)
             stackView.addArrangedSubview(viewCancel)
+            stackView.addArrangedSubview(viewOk)
         }
     }
     

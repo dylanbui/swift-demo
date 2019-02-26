@@ -31,8 +31,6 @@ class CustomPickerCell: _FieldCell<String>, CellType, ActionSheetCustomPickerDel
     public var arrSources: [CustomPickerItem] = []
     public var itemSelected: CustomPickerItem?
     
-    private var btn: UIButton!
-    
     private var customPicker: ActionSheetCustomPicker?
     
     required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
@@ -49,8 +47,17 @@ class CustomPickerCell: _FieldCell<String>, CellType, ActionSheetCustomPickerDel
     {
         super.setup()
         
-        // -- Tap on uitextfield action --
-        textField.onTap { (tapGestureRecognizer) in
+        // -- Tap on uitextfield action : Error--
+//        textField.onTap { (tapGestureRecognizer) in
+//            self.showPickerView()
+//        }
+
+        let btn: UIButton = UIButton(type: .custom)
+        textField.addSubview(btn)
+        // -- Phai dung Constraint moi co the xu ly duoc --
+        // btn.db_fillToSuperview(UIEdgeInsetsMake(2, 4, 3, 10))
+        btn.db_fillToSuperview()
+        btn.onTap { (tapGestureRecognizer) in
             self.showPickerView()
         }
         
@@ -65,8 +72,9 @@ class CustomPickerCell: _FieldCell<String>, CellType, ActionSheetCustomPickerDel
     override func update()
     {
         super.update()
+        
     }
-    
+
     // -- Select row action --
     override func didSelect()
     {

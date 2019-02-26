@@ -14,10 +14,7 @@ class PzCustomPickerCell: _FieldCell<String>, CellType
     public var arrSources: [DbItemProtocol] = []
     public var itemSelected: DbItemProtocol?
     
-    private var btn: UIButton!
-    
     private var picker: DbSheetPicker!
-    
     
     required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
@@ -33,11 +30,20 @@ class PzCustomPickerCell: _FieldCell<String>, CellType
     {
         super.setup()
         
-        // -- Tap on uitextfield action --
-        textField.onTap { (tapGestureRecognizer) in
+        // -- Tap on uitextfield action : Error--
+        // textField.onTap { (tapGestureRecognizer) in
+        //     self.showPickerView()
+        // }
+        
+        let btn: UIButton = UIButton(type: .custom)
+        textField.addSubview(btn)
+        // -- Phai dung Constraint moi co the xu ly duoc --
+        // btn.db_fillToSuperview(UIEdgeInsetsMake(2, 4, 3, 10))
+        btn.db_fillToSuperview()
+        btn.onTap { (tapGestureRecognizer) in
             self.showPickerView()
         }
-        
+
         // -- Add icon to right --
         //        self.textField.rightViewMode = UITextFieldViewMode.always
         //        let imageView = UIImageView(frame: CGRect(x: 0, y: 0, width: 20, height: 20))
@@ -53,6 +59,7 @@ class PzCustomPickerCell: _FieldCell<String>, CellType
 
         if let item = self.itemSelected {
             self.textField.text = item.dbItemTitle
+            self.row.value = item.dbItemTitle // => Active onChange Event
         }
     }
     

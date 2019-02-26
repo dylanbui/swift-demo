@@ -57,7 +57,7 @@ protocol DbItemProtocol {
 }
 
 extension DbItemProtocol {
-    var dbItemDesc: Any? {
+    var dbItemDesc: String? {
         get {
             return nil
         }

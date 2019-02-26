@@ -57,7 +57,7 @@
 		BB407ACE2181821A00C8E57F /* DbCommonExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407AC92181821900C8E57F /* DbCommonExtensions.swift */; };
 		BB407ACF2181821A00C8E57F /* DbNSAttributedStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407ACA2181821900C8E57F /* DbNSAttributedStringExtensions.swift */; };
 		BB407AD02181821A00C8E57F /* DbUITableViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407ACB2181821900C8E57F /* DbUITableViewExtensions.swift */; };
-		BB407AD12181821A00C8E57F /* DbUIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407ACC2181821900C8E57F /* DbUIViewController.swift */; };
+		BB407AD12181821A00C8E57F /* DbUIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407ACC2181821900C8E57F /* DbUIViewControllerExtensions.swift */; };
 		BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407AD22181835100C8E57F /* DbHtmlView.swift */; };
 		BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407AD32181835100C8E57F /* DbSpinner.swift */; };
 		BB48E20421F190CC002B2DEC /* DbSheetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */; };
@@ -125,6 +125,7 @@
 		BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887DBC203EA05700DFC060 /* NetworkViewController.swift */; };
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
 		BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */; };
+		BB9A7C5F22254BF9004EDEB4 /* DbNSLayoutConstraintsExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A7C5E22254BF9004EDEB4 /* DbNSLayoutConstraintsExtensions.swift */; };
 		BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0B521ED9AEF004BC430 /* CustomDecimalRow.swift */; };
 		BB9BC0B821ED9AF0004BC430 /* CustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0B621ED9AEF004BC430 /* CustomPickerRow.swift */; };
 		BB9BC0C221EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */; };
@@ -322,7 +323,7 @@
 		BB407AC92181821900C8E57F /* DbCommonExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbCommonExtensions.swift; sourceTree = "<group>"; };
 		BB407ACA2181821900C8E57F /* DbNSAttributedStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbNSAttributedStringExtensions.swift; sourceTree = "<group>"; };
 		BB407ACB2181821900C8E57F /* DbUITableViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUITableViewExtensions.swift; sourceTree = "<group>"; };
-		BB407ACC2181821900C8E57F /* DbUIViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIViewController.swift; sourceTree = "<group>"; };
+		BB407ACC2181821900C8E57F /* DbUIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BB407AD22181835100C8E57F /* DbHtmlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbHtmlView.swift; sourceTree = "<group>"; };
 		BB407AD32181835100C8E57F /* DbSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSpinner.swift; sourceTree = "<group>"; };
 		BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetCollectionView.swift; sourceTree = "<group>"; };
@@ -390,6 +391,7 @@
 		BB887DBC203EA05700DFC060 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
 		BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMMDrawerController.swift; sourceTree = "<group>"; };
+		BB9A7C5E22254BF9004EDEB4 /* DbNSLayoutConstraintsExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNSLayoutConstraintsExtensions.swift; sourceTree = "<group>"; };
 		BB9BC0B521ED9AEF004BC430 /* CustomDecimalRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDecimalRow.swift; sourceTree = "<group>"; };
 		BB9BC0B621ED9AEF004BC430 /* CustomPickerRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomPickerRow.swift; sourceTree = "<group>"; };
 		BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoActionSheetWindowViewController.swift; sourceTree = "<group>"; };
@@ -974,14 +976,15 @@
 				BB407ACA2181821900C8E57F /* DbNSAttributedStringExtensions.swift */,
 				BB407AC82181821800C8E57F /* DbUIImageExtensions.swift */,
 				BB407ACB2181821900C8E57F /* DbUITableViewExtensions.swift */,
-				BB407ACC2181821900C8E57F /* DbUIViewController.swift */,
+				BB407ACC2181821900C8E57F /* DbUIViewControllerExtensions.swift */,
+				BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */,
+				BB9A7C5E22254BF9004EDEB4 /* DbNSLayoutConstraintsExtensions.swift */,
 				BB626EC220DBADCE0057F0CF /* DbArrayExtensions.swift */,
 				BB626EC320DBADCE0057F0CF /* DbDateExtensions.swift */,
 				BB626EC120DBADCE0057F0CF /* DbDictionaryExtensions.swift */,
 				BB626EC420DBADCE0057F0CF /* DbStdlibExtensions.swift */,
 				BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */,
 				BB626EC020DBADCE0057F0CF /* DbUIKitExtensions.swift */,
-				BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */,
 				BBC1114A20DB901D002B2293 /* DbCGRectExtensions.swift */,
 				BBC1114520DB4B45002B2293 /* DbUserDefaultsExtensions.swift */,
 				BBC1114820DB5158002B2293 /* DbNotificationExtensions.swift */,
@@ -1590,7 +1593,7 @@
 			files = (
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB407AD02181821A00C8E57F /* DbUITableViewExtensions.swift in Sources */,
-				BB407AD12181821A00C8E57F /* DbUIViewController.swift in Sources */,
+				BB407AD12181821A00C8E57F /* DbUIViewControllerExtensions.swift in Sources */,
 				BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */,
 				BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
@@ -1629,6 +1632,7 @@
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
+				BB9A7C5F22254BF9004EDEB4 /* DbNSLayoutConstraintsExtensions.swift in Sources */,
 				BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB06BC152201965400227059 /* CandySearchFooter.swift in Sources */,
