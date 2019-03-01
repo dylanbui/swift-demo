@@ -53,11 +53,8 @@ target 'SwiftApp' do
     pod 'ActionSheetPicker-3.0' #, '2.3.0'
 
     # Libraries needed Swift 4
-    #pod 'DKImagePickerController' #, '3.8.1' them nhieu thu vien '4.0.2'
-    # su dung lai thang cu coi sao
-    pod 'DKImagePickerController', '3.8.1'
-    
-    pod 'CropViewController', '2.3.8' # Swift version of TOCropViewController
+    pod 'DKImagePickerController', '4.1.3', :subspecs => ['PhotoGallery', 'Camera', 'InlineCamera']
+    pod 'CropViewController', '2.4.0' # Swift version of TOCropViewController
     
     pod 'RevealingSplashView', '0.6.0'
     
