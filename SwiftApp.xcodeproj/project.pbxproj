@@ -24,6 +24,9 @@
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
 		BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19FAF420441A6B005F2669 /* Reachability.swift */; };
 		BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */; };
+		BB2229C52229A4CC00A82EA5 /* PhotoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2229C42229A4CC00A82EA5 /* PhotoAsset.swift */; };
+		BB2229C72229AA7100A82EA5 /* PhotoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2229C62229AA7100A82EA5 /* PhotoUploadOperation.swift */; };
+		BB2229C92229AE7900A82EA5 /* PhotoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2229C82229AE7900A82EA5 /* PhotoUploadManager.swift */; };
 		BB228A502108302A00C5C6AA /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB228A4F2108302A00C5C6AA /* Actor.swift */; };
 		BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008221D60FD000D5F41D /* DbActionSheetPicker.swift */; };
 		BB26008A21D60FD100D5F41D /* demo.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB26008421D60FD000D5F41D /* demo.txt */; };
@@ -124,6 +127,11 @@
 		BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8823422119847400A1BB76 /* JsonStringTransform.swift */; };
 		BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887DBC203EA05700DFC060 /* NetworkViewController.swift */; };
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
+		BB8BECC0222AEEEC00EC7620 /* ImageRowCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8BECBE222AEEEB00EC7620 /* ImageRowCollectionCell.xib */; };
+		BB8BECC1222AEEEC00EC7620 /* ImageRowCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECBF222AEEEB00EC7620 /* ImageRowCollectionCell.swift */; };
+		BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController.swift */; };
+		BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */; };
+		BB8BECC7222B068400EC7620 /* DbProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC6222B068400EC7620 /* DbProgressBar.swift */; };
 		BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */; };
 		BB9A193D22294CA400D7BE9A /* PGOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A193C22294CA400D7BE9A /* PGOperation.swift */; };
 		BB9A193F22294CD100D7BE9A /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A193E22294CD100D7BE9A /* ImageDownloadManager.swift */; };
@@ -293,6 +301,9 @@
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		BB19FAF420441A6B005F2669 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
+		BB2229C42229A4CC00A82EA5 /* PhotoAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAsset.swift; sourceTree = "<group>"; };
+		BB2229C62229AA7100A82EA5 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
+		BB2229C82229AE7900A82EA5 /* PhotoUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadManager.swift; sourceTree = "<group>"; };
 		BB228A4F2108302A00C5C6AA /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
 		BB26008221D60FD000D5F41D /* DbActionSheetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbActionSheetPicker.swift; sourceTree = "<group>"; };
 		BB26008421D60FD000D5F41D /* demo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo.txt; sourceTree = "<group>"; };
@@ -393,6 +404,11 @@
 		BB8823422119847400A1BB76 /* JsonStringTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonStringTransform.swift; sourceTree = "<group>"; };
 		BB887DBC203EA05700DFC060 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
+		BB8BECBE222AEEEB00EC7620 /* ImageRowCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageRowCollectionCell.xib; sourceTree = "<group>"; };
+		BB8BECBF222AEEEB00EC7620 /* ImageRowCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRowCollectionCell.swift; sourceTree = "<group>"; };
+		BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController.swift; sourceTree = "<group>"; };
+		BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoLazyUploadViewController.xib; sourceTree = "<group>"; };
+		BB8BECC6222B068400EC7620 /* DbProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbProgressBar.swift; sourceTree = "<group>"; };
 		BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMMDrawerController.swift; sourceTree = "<group>"; };
 		BB9A193C22294CA400D7BE9A /* PGOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGOperation.swift; sourceTree = "<group>"; };
 		BB9A193E22294CD100D7BE9A /* ImageDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadManager.swift; sourceTree = "<group>"; };
@@ -649,6 +665,17 @@
 			path = DbLibraries;
 			sourceTree = "<group>";
 		};
+		BB2229C32229A42000A82EA5 /* Example */ = {
+			isa = PBXGroup;
+			children = (
+				BB9A193C22294CA400D7BE9A /* PGOperation.swift */,
+				BB9A193E22294CD100D7BE9A /* ImageDownloadManager.swift */,
+				BB9A194122294D3100D7BE9A /* FlickrPhoto.swift */,
+				BB8BECC6222B068400EC7620 /* DbProgressBar.swift */,
+			);
+			path = Example;
+			sourceTree = "<group>";
+		};
 		BB26008121D60FD000D5F41D /* DbActionSheetPicker */ = {
 			isa = PBXGroup;
 			children = (
@@ -872,9 +899,14 @@
 		BB9A194022294CED00D7BE9A /* Demo-SmartLazyLoading */ = {
 			isa = PBXGroup;
 			children = (
-				BB9A193C22294CA400D7BE9A /* PGOperation.swift */,
-				BB9A193E22294CD100D7BE9A /* ImageDownloadManager.swift */,
-				BB9A194122294D3100D7BE9A /* FlickrPhoto.swift */,
+				BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController.swift */,
+				BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */,
+				BB8BECBF222AEEEB00EC7620 /* ImageRowCollectionCell.swift */,
+				BB8BECBE222AEEEB00EC7620 /* ImageRowCollectionCell.xib */,
+				BB2229C32229A42000A82EA5 /* Example */,
+				BB2229C42229A4CC00A82EA5 /* PhotoAsset.swift */,
+				BB2229C62229AA7100A82EA5 /* PhotoUploadOperation.swift */,
+				BB2229C82229AE7900A82EA5 /* PhotoUploadManager.swift */,
 			);
 			path = "Demo-SmartLazyLoading";
 			sourceTree = "<group>";
@@ -1442,6 +1474,7 @@
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
 				BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */,
 				BB7E580321E84AD5005C3FA6 /* floatLabelRow.gif in Resources */,
+				BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */,
 				BBB569DB1F7B5B880014A7A9 /* TaskDetailViewController.xib in Resources */,
 				BB7F3043203E857900185366 /* main_gate@2x.png in Resources */,
 				BB7E580021E84A91005C3FA6 /* EurekaHeader.xib in Resources */,
@@ -1449,6 +1482,7 @@
 				BB7F303B203E857900185366 /* demo_4.jpg in Resources */,
 				BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */,
 				BBB569E61F7B606C0014A7A9 /* TpUsersViewController.xib in Resources */,
+				BB8BECC0222AEEEC00EC7620 /* ImageRowCollectionCell.xib in Resources */,
 				BB7F303C203E857900185366 /* demo_5.png in Resources */,
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
@@ -1619,6 +1653,7 @@
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB407AD02181821A00C8E57F /* DbUITableViewExtensions.swift in Sources */,
 				BB407AD12181821A00C8E57F /* DbUIViewControllerExtensions.swift in Sources */,
+				BB8BECC7222B068400EC7620 /* DbProgressBar.swift in Sources */,
 				BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */,
 				BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
@@ -1626,6 +1661,7 @@
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
 				BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */,
 				BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */,
+				BB8BECC1222AEEEC00EC7620 /* ImageRowCollectionCell.swift in Sources */,
 				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BB2810A22216DDA6003823FE /* NSLayoutConstraintExtensions.swift in Sources */,
@@ -1644,6 +1680,7 @@
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */,
 				BB9A193F22294CD100D7BE9A /* ImageDownloadManager.swift in Sources */,
+				BB2229C72229AA7100A82EA5 /* PhotoUploadOperation.swift in Sources */,
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
@@ -1689,10 +1726,12 @@
 				BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */,
 				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
+				BB2229C52229A4CC00A82EA5 /* PhotoAsset.swift in Sources */,
 				BBE6FA7021EC9A700030AA64 /* UIBarButtonItem+Closures.swift in Sources */,
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
+				BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController.swift in Sources */,
 				BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */,
 				BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */,
 				BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */,
@@ -1739,6 +1778,7 @@
 				BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */,
 				BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
+				BB2229C92229AE7900A82EA5 /* PhotoUploadManager.swift in Sources */,
 				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,
 				BB26008D21D60FD100D5F41D /* DbSelectBox.swift in Sources */,
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,

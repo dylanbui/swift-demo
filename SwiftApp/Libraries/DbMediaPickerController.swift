@@ -12,9 +12,9 @@ import CropViewController
 
 typealias DbAsset = DKAsset
 
-//public enum DbMediaPickerControllerType : Int {
-//    case all, avatar, avatarCircle
-//}
+public enum DbMediaCropAvatarType : Int {
+    case none, circular
+}
 //var pickerType: DbMediaPickerControllerType! = .all
 
 
@@ -24,6 +24,7 @@ class DbMediaPickerController: DKImagePickerController
     var didCropToCircularImage: ((DbAsset, UIImage, CGRect, Int) -> Void)?
     var didCropToImage: ((DbAsset, UIImage, CGRect, Int) -> Void)?
     
+    private var avatarType: DbMediaCropAvatarType! = .none
     private var imgAvatar: UIImage?
     private var singleAsset: DbAsset!
     
@@ -45,7 +46,7 @@ class DbMediaPickerController: DKImagePickerController
         return pickerController
     }
     
-    public class func initSelectAvatar(_ avatar: UIImage? = nil) -> DbMediaPickerController
+    public class func initSelectAvatar(_ avatarType: DbMediaCropAvatarType = .none, avatar: UIImage? = nil) -> DbMediaPickerController
     {
         let pickerController = DbMediaPickerController()
         self.pickerConfig(pickerController)
@@ -53,6 +54,7 @@ class DbMediaPickerController: DKImagePickerController
         pickerController.singleSelect = true
         pickerController.autoCloseOnSingleSelect = false
         pickerController.imgAvatar = avatar
+        pickerController.avatarType = avatarType
         
         return pickerController
     }
@@ -121,7 +123,8 @@ class DbMediaPickerController: DKImagePickerController
     private func showCropViewController(_ image: UIImage, _ animated:Bool)
     {
         // -- Create CropViewController --
-        self.cropViewController = CropViewController(image: image)
+        self.cropViewController = CropViewController(croppingStyle: (self.avatarType == .none ? .default : .circular), image: image)
+
         self.cropViewController?.resetAspectRatioEnabled = false
         self.cropViewController?.rotateClockwiseButtonHidden = true
         self.cropViewController?.rotateButtonsHidden = true

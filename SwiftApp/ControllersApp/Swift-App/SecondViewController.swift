@@ -33,24 +33,24 @@ class SecondViewController: BaseViewController {
     
     @IBAction func btnPhoto_Click(_ sender: Any) {
         
-        let pickerController = DbMediaPickerController()
-        // pickerController.pickerType = .avatar
-
-        pickerController.didSelectAssets = { (assets: [DbAsset]) in
-            print("didSelectAssets")
-            print(assets)
-        }
-        
-        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
-            self.imgvAvatar.image = image
-            print("\(cropRect)")
-        }
-        
-        pickerController.didCancel = { () -> Void in
-            print("didCancel")
-        }
-
-        self.present(pickerController, animated: true)
+//        let pickerController = DbMediaPickerController()
+//        // pickerController.pickerType = .avatar
+//
+//        pickerController.didSelectAssets = { (assets: [DbAsset]) in
+//            print("didSelectAssets")
+//            print(assets)
+//        }
+//        
+//        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+//            self.imgvAvatar.image = image
+//            print("\(cropRect)")
+//        }
+//        
+//        pickerController.didCancel = { () -> Void in
+//            print("didCancel")
+//        }
+//
+//        self.present(pickerController, animated: true)
 
         
 //        let vclPhoto: PhotoGalleryViewController = PhotoGalleryViewController.sharedInstance

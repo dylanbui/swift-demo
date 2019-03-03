@@ -31,33 +31,33 @@ class PzLoginViewController: UIViewController
     
     @IBAction func btnLogin_Click(_ sender: Any)
     {
-        let pickerController = DbMediaPickerController()
-        pickerController.pickerType = .avatarCircle
-//        pickerController.pickerType = .all
-        
-        pickerController.didSelectAssets = { (assets: [DbAsset]) in
-            print("didSelectAssets")
-            print(assets)
-        }
-        
-        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
-//            self.imgvAvatar.image = image
-            print("\(cropRect)")
-        }
-        
-        pickerController.didCropAvatarToCircularImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
-            //            self.imgvAvatar.image = image
-            print("\(cropRect)")
-        }
-
-        
-        pickerController.didCancel = { () -> Void in
-            print("didCancel")
-        }
-        
-//        self.present(pickerController, animated: true)
-        
-        pickerController.present(withController: self)
+//        let pickerController = DbMediaPickerController()
+//        pickerController.pickerType = .avatarCircle
+////        pickerController.pickerType = .all
+//
+//        pickerController.didSelectAssets = { (assets: [DbAsset]) in
+//            print("didSelectAssets")
+//            print(assets)
+//        }
+//
+//        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+////            self.imgvAvatar.image = image
+//            print("\(cropRect)")
+//        }
+//
+//        pickerController.didCropAvatarToCircularImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+//            //            self.imgvAvatar.image = image
+//            print("\(cropRect)")
+//        }
+//
+//
+//        pickerController.didCancel = { () -> Void in
+//            print("didCancel")
+//        }
+//
+////        self.present(pickerController, animated: true)
+//
+//        pickerController.present(withController: self)
         
         
 //        MediaGallery.sharedInstance.showAvatar(with: self)
@@ -99,30 +99,30 @@ class PzLoginViewController: UIViewController
     
     @IBAction func btnRegister_Click(_ sender: Any)
     {
-        let pickerController = DbMediaPickerController()
-        pickerController.pickerType = .avatarCircle
-        
-        pickerController.didSelectAssets = { (assets: [DbAsset]) in
-            print("didSelectAssets")
-            print(assets)
-        }
-        
-        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
-            //            self.imgvAvatar.image = image
-            print("\(cropRect)")
-        }
-        
-        pickerController.didCropAvatarToCircularImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
-            //            self.imgvAvatar.image = image
-            print("\(cropRect)")
-        }
-        
-        
-        pickerController.didCancel = { () -> Void in
-            print("didCancel")
-        }
-
-        pickerController.present(withController: self, imageAvatar: UIImage.init(named: "main_gate")!)
+//        let pickerController = DbMediaPickerController()
+//        pickerController.pickerType = .avatarCircle
+//
+//        pickerController.didSelectAssets = { (assets: [DbAsset]) in
+//            print("didSelectAssets")
+//            print(assets)
+//        }
+//
+//        pickerController.didCropAvatarToImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+//            //            self.imgvAvatar.image = image
+//            print("\(cropRect)")
+//        }
+//
+//        pickerController.didCropAvatarToCircularImage = { (image: UIImage, cropRect: CGRect, angle: Int) -> Void in
+//            //            self.imgvAvatar.image = image
+//            print("\(cropRect)")
+//        }
+//
+//
+//        pickerController.didCancel = { () -> Void in
+//            print("didCancel")
+//        }
+//
+//        pickerController.present(withController: self, imageAvatar: UIImage.init(named: "main_gate")!)
         
         
     }
