@@ -47,7 +47,8 @@ class RootViewController: UIViewController
 //        let vcl = MasterCandySearchViewController() // Done
 //        let vcl = DemoEmptyDataSetViewController() // => Done
 //        let vcl = DemoDbPullToRefreshViewController() // => Done
-        let vcl = DemoLazyUploadViewController() // => Done
+        //let vcl = DemoLazyUploadViewController() // => Done
+        let vcl = DemoSurveyViewController() // => Done
 
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a
