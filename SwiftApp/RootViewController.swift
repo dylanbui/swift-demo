@@ -41,12 +41,13 @@ class RootViewController: UIViewController
         //let vcl = KeyboarbHandleViewController()
 //        let vcl = KBScrollViewViewController()
         // let vcl = DemoDecimalTextFieldViewController()
-        let vcl = DemoEurekaViewController()
+//        let vcl = DemoEurekaViewController()
         //let vcl = DemoDbSheetPickerViewController() // => Done
 //        let vcl = DemoDbLocationManagerViewController() // Done
 //        let vcl = MasterCandySearchViewController() // Done
 //        let vcl = DemoEmptyDataSetViewController() // => Done
 //        let vcl = DemoDbPullToRefreshViewController() // => Done
+        let vcl = DemoLazyUploadViewController() // => Done
 
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a

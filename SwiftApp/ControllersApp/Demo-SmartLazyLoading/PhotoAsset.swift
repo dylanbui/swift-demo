@@ -8,12 +8,19 @@
 
 import Foundation
 
+// This enum contains all the possible states a photo record can be in
+enum PhotoAssetUploadState {
+    case New, Done, Uploading, Failed, Waiting
+}
+
 class PhotoAsset : Equatable
 {
     public var localIdentifier: String
     public var fullImageUrl: String?
     public var indexPath: IndexPath?
-    public var uploadDone: Bool = false
+    public var uploadDone: Bool = false // Co the bo khong su dung, chuyen qua su dung uploadState
+    public var uploadState: PhotoAssetUploadState = .New
+    public var uploadProgress: Progress?
     
     private var asset: DbAsset!
     private let imageCache = NSCache<NSString, UIImage>()
@@ -22,10 +29,10 @@ class PhotoAsset : Equatable
         self.asset = asset
         self.localIdentifier = asset.localIdentifier
         self.indexPath = indexPath
+        self.uploadState = .New
         
         // -- Get thumb image and save to cache --
-        self.getThumbPhoto { (image) in
-        }
+        self.getThumbPhoto { (image) in }
     }
     
     func getThumbPhoto(complete: @escaping (_ image: UIImage) -> Void )
@@ -37,7 +44,7 @@ class PhotoAsset : Equatable
         }
         
         // -- Tinh toan image de lay thumb phu hop --
-        let size: CGSize = CGSize(width: 50, height: 50)
+        let size: CGSize = CGSize(width: 90, height: 90)
         self.asset.fetchImage(with: size) { (image, info) in
             if let newImage = image {
                 complete(newImage)

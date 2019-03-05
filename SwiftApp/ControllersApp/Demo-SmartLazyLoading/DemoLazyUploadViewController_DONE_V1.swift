@@ -7,11 +7,13 @@
 //
 
 /* Phien ban nay chay tot, kiem soat upload
+ nhung su dung asset.uploadDone chua tot
+ 
  */
 
 import UIKit
 
-class DemoLazyUploadViewController: UIViewController
+class DemoLazyUploadViewController_DONE_V1: UIViewController
 {
     @IBOutlet var myCollectionView: UICollectionView!
     
@@ -52,7 +54,7 @@ class DemoLazyUploadViewController: UIViewController
     {
         for asset in self.arrPhotoAsset {
             print("-- \(String(describing: asset.indexPath))")
-            print("     \(asset.uploadState == .Done ? "DONE" : "UPLOAD")")
+            print("     \(String(describing: asset.uploadDone))")
             print("     \(String(describing: asset.fullImageUrl))")
         }
     }
@@ -89,7 +91,7 @@ class DemoLazyUploadViewController: UIViewController
                 // self.myCollectionView.scrollToItem(at: indexPaths.last!, at: .right , animated: true)
             })
             self.myCollectionView.scrollToItem(at: indexPaths.last!, at: .right , animated: true)
-            DbUtils.performAfter(delay: 1.5, dispatch_block: {
+            DbUtils.performAfter(delay: 1.0, dispatch_block: {
                 self.startOperationForOnscreenRows()
             })
 
@@ -119,12 +121,13 @@ class DemoLazyUploadViewController: UIViewController
             PhotoUploadManager.shared.upload(asset, complete: { (asset, error) in
                 
                 DispatchQueue.main.async {
+                    // asset.uploadDone = true // Xu ly ben trong upload manager
                     // -- Cap nhat cell, khi da upload thanh cong --
                     // -- Chi chay 1 lan ham complete upload --
-                    if asset.uploadState == .Done {
+                    if asset.uploadDone {
                         return
                     }
-                    asset.uploadState = .Done
+                    asset.uploadDone = true
                     
                     print("asset.uploadDone = \(String(describing: asset.uploadDone))")
                     print("asset.fullImageUrl = \(String(describing: asset.fullImageUrl))")
@@ -135,8 +138,7 @@ class DemoLazyUploadViewController: UIViewController
                         // -- Day la nhung cell bi hidden khi di chuyen, se khong tim thay --
                         // -- Nhung cell bi an van chay Task Upload voi queuePriority = .low --
                         if let cell = self.myCollectionView.cellForItem(at: indexPath) as? ImageRowCollectionCell {
-                            // cell.reloadUploadStatusDone(done: true)
-                            cell.reloadCellFor(asset: asset)
+                            cell.reloadUploadStatusDone(done: true)
                         }
                     }
                 }
@@ -144,8 +146,6 @@ class DemoLazyUploadViewController: UIViewController
             }) { (asset, progress, error) in
                 
 //                print("IndexPath = " + String(asset.indexPath?.row ?? -1) + " - progress - " + String(Float(progress.fractionCompleted)))
-                asset.uploadProgress = progress
-                asset.uploadState = .Uploading
                 
                 // -- Upload cell progress --
                 DispatchQueue.main.async {
@@ -155,8 +155,7 @@ class DemoLazyUploadViewController: UIViewController
                         // self.myCollectionView.reloadItems(at: [indexPath])
                         // -- Day la nhung cell bi hidden khi di chuyen, se khong tim thay --
                         if let cell = self.myCollectionView.cellForItem(at: indexPath) as? ImageRowCollectionCell {
-                            // cell.reloadUploadStatusDone(done: false)
-                            cell.reloadCellFor(asset: asset)
+                            cell.reloadUploadStatusDone(done: false)
                         }
                     }
                 }
@@ -170,7 +169,7 @@ class DemoLazyUploadViewController: UIViewController
 
 }
 
-extension DemoLazyUploadViewController: UICollectionViewDataSource, UICollectionViewDelegate
+extension DemoLazyUploadViewController_DONE_V1: UICollectionViewDataSource, UICollectionViewDelegate
 {
     //MARK: UICollectionViewDelegate
     
@@ -202,12 +201,11 @@ extension DemoLazyUploadViewController: UICollectionViewDataSource, UICollection
         let cell: ImageRowCollectionCell = collectionView.dequeueReusableCell(withReuseIdentifier: "imageRowCollectionCell", for: indexPath) as! ImageRowCollectionCell
         
         let asset = self.arrPhotoAsset[indexPath.row]
-        cell.reloadCellFor(asset: asset)
+        cell.reloadUploadStatusDone(done: asset.uploadDone)
         
-//        cell.reloadUploadStatusDone(done: asset.uploadDone)
-//        asset.getThumbPhoto { (image) in
-//            cell.imageView.image = image
-//        }
+        asset.getThumbPhoto { (image) in
+            cell.imageView.image = image
+        }
         
         cell.imageView.isUserInteractionEnabled = true
         cell.indexPath = indexPath
@@ -220,6 +218,9 @@ extension DemoLazyUploadViewController: UICollectionViewDataSource, UICollection
             // -- Reload --
             self.myCollectionView.reloadSections(IndexSet(integer: 0))
         }
+        
+//        let asset = self.arrPhotoAsset[indexPath.row]
+//        cell.reloadUploadStatusDone(done: asset.uploadDone)
         
         return cell
     }

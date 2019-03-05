@@ -129,7 +129,7 @@
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
 		BB8BECC0222AEEEC00EC7620 /* ImageRowCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8BECBE222AEEEB00EC7620 /* ImageRowCollectionCell.xib */; };
 		BB8BECC1222AEEEC00EC7620 /* ImageRowCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECBF222AEEEB00EC7620 /* ImageRowCollectionCell.swift */; };
-		BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController.swift */; };
+		BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */; };
 		BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */; };
 		BB8BECC7222B068400EC7620 /* DbProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC6222B068400EC7620 /* DbProgressBar.swift */; };
 		BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */; };
@@ -142,6 +142,8 @@
 		BB9BC0C221EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */; };
 		BB9BC0C321EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB9BC0C121EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib */; };
 		BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0C521EDFA0E004BC430 /* PickerField.swift */; };
+		BB9E77AC222E22BC00BFC9C7 /* DemoLazyUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E77AB222E22BB00BFC9C7 /* DemoLazyUploadViewController.swift */; };
+		BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E77AD222E335A00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift */; };
 		BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4362117FB8500618AEF /* PzListing.swift */; };
 		BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4382117FBA000618AEF /* PzListingItem.swift */; };
 		BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A43A2117FC6000618AEF /* PzListingApi.swift */; };
@@ -406,7 +408,7 @@
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
 		BB8BECBE222AEEEB00EC7620 /* ImageRowCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageRowCollectionCell.xib; sourceTree = "<group>"; };
 		BB8BECBF222AEEEB00EC7620 /* ImageRowCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageRowCollectionCell.swift; sourceTree = "<group>"; };
-		BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController.swift; sourceTree = "<group>"; };
+		BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController_V1.swift; sourceTree = "<group>"; };
 		BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoLazyUploadViewController.xib; sourceTree = "<group>"; };
 		BB8BECC6222B068400EC7620 /* DbProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbProgressBar.swift; sourceTree = "<group>"; };
 		BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMMDrawerController.swift; sourceTree = "<group>"; };
@@ -419,6 +421,8 @@
 		BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoActionSheetWindowViewController.swift; sourceTree = "<group>"; };
 		BB9BC0C121EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoActionSheetWindowViewController.xib; sourceTree = "<group>"; };
 		BB9BC0C521EDFA0E004BC430 /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
+		BB9E77AB222E22BB00BFC9C7 /* DemoLazyUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController.swift; sourceTree = "<group>"; };
+		BB9E77AD222E335A00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController_DONE_V1.swift; sourceTree = "<group>"; };
 		BBA2A4362117FB8500618AEF /* PzListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListing.swift; sourceTree = "<group>"; };
 		BBA2A4382117FBA000618AEF /* PzListingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingItem.swift; sourceTree = "<group>"; };
 		BBA2A43A2117FC6000618AEF /* PzListingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingApi.swift; sourceTree = "<group>"; };
@@ -899,7 +903,9 @@
 		BB9A194022294CED00D7BE9A /* Demo-SmartLazyLoading */ = {
 			isa = PBXGroup;
 			children = (
-				BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController.swift */,
+				BB9E77AD222E335A00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift */,
+				BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */,
+				BB9E77AB222E22BB00BFC9C7 /* DemoLazyUploadViewController.swift */,
 				BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */,
 				BB8BECBF222AEEEB00EC7620 /* ImageRowCollectionCell.swift */,
 				BB8BECBE222AEEEB00EC7620 /* ImageRowCollectionCell.xib */,
@@ -1731,7 +1737,7 @@
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
-				BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController.swift in Sources */,
+				BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift in Sources */,
 				BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */,
 				BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */,
 				BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */,
@@ -1741,6 +1747,7 @@
 				BB407ACF2181821A00C8E57F /* DbNSAttributedStringExtensions.swift in Sources */,
 				BBB1A534220031780047293E /* DbLocationManagerDefines.swift in Sources */,
 				BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */,
+				BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
 				BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */,
@@ -1816,6 +1823,7 @@
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
 				BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */,
+				BB9E77AC222E22BC00BFC9C7 /* DemoLazyUploadViewController.swift in Sources */,
 				BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,
 				BBDDD5D8219D5DB400AC4940 /* KeyboarbHandleViewController.swift in Sources */,
