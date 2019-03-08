@@ -38,6 +38,8 @@ PODS:
     - SDWebImage/GIF
   - DZNEmptyDataSet (1.8.1)
   - EasyPeasy (1.7.0)
+  - EasyRealm (3.4.0):
+    - RealmSwift (~> 3.10)
   - Eureka (4.3.1)
   - FLAnimatedImage (1.0.12)
   - FloatLabelRow (1.0.0):
@@ -103,6 +105,7 @@ DEPENDENCIES:
   - DKImagePickerController/PhotoGallery (= 4.1.3)
   - DZNEmptyDataSet (= 1.8.1)
   - EasyPeasy (= 1.7.0)
+  - EasyRealm
   - Eureka (= 4.3.1)
   - FloatLabelRow (from `https://github.com/larsacus/FloatLabelRow`, branch `ExposeColorProperties`)
   - FSCalendar (= 2.8.0)
@@ -136,6 +139,7 @@ SPEC REPOS:
     - DKPhotoGallery
     - DZNEmptyDataSet
     - EasyPeasy
+    - EasyRealm
     - Eureka
     - FLAnimatedImage
     - FSCalendar
@@ -183,6 +187,7 @@ SPEC CHECKSUMS:
   DKPhotoGallery: e5fc53899345c26af4374503dd249caabac7d26a
   DZNEmptyDataSet: 9525833b9e68ac21c30253e1d3d7076cc828eaa7
   EasyPeasy: 2f2785ed78c6f9e9045221f2ff317730e7321bff
+  EasyRealm: 284b0f26de97e84821772aa61a363f9617e44c61
   Eureka: 28ea296f06710f6745266b71f17862048941a32d
   FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
   FloatLabelRow: 3c512fc96bf24acc534100b2dfa0c670ff71ed45
@@ -207,6 +212,6 @@ SPEC CHECKSUMS:
   TableRow: b5f19082db9e884e0ebab868035d57e7b19193c8
   ViewRow: e278428ff53da5eab18b191d3e19a16f3e299fc1
 
-PODFILE CHECKSUM: 39607191bc5cbb9cf513b4ce88a21a584fb1781b
+PODFILE CHECKSUM: 8327b534d247207d0cdfd09dd6a92f0fb8d32739
 
 COCOAPODS: 1.5.3

@@ -101,6 +101,8 @@
 		BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */; };
 		BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */; };
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
+		BB7518FA2232879400413607 /* DemoRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7518F82232879400413607 /* DemoRealmViewController.swift */; };
+		BB7518FB2232879400413607 /* DemoRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7518F92232879400413607 /* DemoRealmViewController.xib */; };
 		BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */; };
 		BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */; };
 		BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E57F821E842CE005C3FA6 /* DemoEurekaViewController.swift */; };
@@ -380,6 +382,8 @@
 		BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIViewExtensions.swift; sourceTree = "<group>"; };
 		BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
+		BB7518F82232879400413607 /* DemoRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRealmViewController.swift; sourceTree = "<group>"; };
+		BB7518F92232879400413607 /* DemoRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoRealmViewController.xib; sourceTree = "<group>"; };
 		BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLayoutViewCell.swift; sourceTree = "<group>"; };
 		BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskLayoutViewCell.xib; sourceTree = "<group>"; };
 		BB7E57F821E842CE005C3FA6 /* DemoEurekaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEurekaViewController.swift; sourceTree = "<group>"; };
@@ -1188,6 +1192,8 @@
 				BBD3CF181F7102D80028425E /* ToDoCell.swift */,
 				BBD3CF191F7102D80028425E /* ToDoCell.xib */,
 				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
+				BB7518F82232879400413607 /* DemoRealmViewController.swift */,
+				BB7518F92232879400413607 /* DemoRealmViewController.xib */,
 			);
 			path = "Demo-App";
 			sourceTree = "<group>";
@@ -1444,6 +1450,7 @@
 				BBD3CF151F70F8480028425E /* DemoTableViewController.xib in Resources */,
 				BBC38A66206DDEE500B11C7B /* map-icons.ttf in Resources */,
 				BB7E57FB21E842CE005C3FA6 /* DemoEurekaViewController.xib in Resources */,
+				BB7518FB2232879400413607 /* DemoRealmViewController.xib in Resources */,
 				BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */,
 				BB7F303F203E857900185366 /* demo_6@2x.png in Resources */,
 				BBC02E6B1F71747A0011FDE6 /* OpenSans-Semibold.ttf in Resources */,
@@ -1547,6 +1554,7 @@
 				"${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/DZNEmptyDataSet/DZNEmptyDataSet.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyPeasy/EasyPeasy.framework",
+				"${BUILT_PRODUCTS_DIR}/EasyRealm/EasyRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
@@ -1584,6 +1592,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKPhotoGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DZNEmptyDataSet.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyPeasy.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
@@ -1705,6 +1714,7 @@
 				BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB06BC152201965400227059 /* CandySearchFooter.swift in Sources */,
+				BB7518FA2232879400413607 /* DemoRealmViewController.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
 				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,

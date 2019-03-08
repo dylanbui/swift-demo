@@ -22,6 +22,7 @@ target 'SwiftApp' do
     pod 'RealmSwift', '3.11.0'
     # https://github.com/jakenberg/ObjectMapper-Realm
     pod 'ObjectMapper+Realm', '0.6'
+    pod 'EasyRealm', '3.4.0'
     
     pod 'ObjectMapperAdditions/Core', '4.2.1'
     pod 'ObjectMapperAdditions/Realm', '4.2.1'
