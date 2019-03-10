@@ -20,7 +20,7 @@ import ObjectMapper_Realm
  }
  */
 
-typealias CellDelegate = Object & Mappable
+//typealias CellDelegate = Object & Mappable
 
 class DbRealmObject: Object, Mappable
 {
@@ -39,10 +39,10 @@ class DbRealmObject: Object, Mappable
         //        friends               <- (map["friends"], ListTransform<User>())
     }
     
-    override class func primaryKey() -> String?
-    {
-        return "autoId"
-    }
+//    override class func primaryKey() -> String?
+//    {
+//        return "autoId"
+//    }
 }
 
 

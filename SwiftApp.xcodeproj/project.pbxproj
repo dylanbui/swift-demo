@@ -163,6 +163,8 @@
 		BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4D64A2028A44B0013F204 /* DbConnection.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
+		BBAF935922357F7B0086AC02 /* EditRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */; };
+		BBAF935A22357F7B0086AC02 /* EditRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */; };
 		BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */; };
 		BBB1A534220031780047293E /* DbLocationManagerDefines.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A533220031780047293E /* DbLocationManagerDefines.swift */; };
 		BBB1A53722004AF40047293E /* DemoDbLocationManagerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A53522004AF40047293E /* DemoDbLocationManagerViewController.swift */; };
@@ -447,6 +449,8 @@
 		BBA4D64A2028A44B0013F204 /* DbConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConnection.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRealmViewController.swift; sourceTree = "<group>"; };
+		BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditRealmViewController.xib; sourceTree = "<group>"; };
 		BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLocationManager.swift; sourceTree = "<group>"; };
 		BBB1A533220031780047293E /* DbLocationManagerDefines.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbLocationManagerDefines.swift; sourceTree = "<group>"; };
 		BBB1A53522004AF40047293E /* DemoDbLocationManagerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDbLocationManagerViewController.swift; sourceTree = "<group>"; };
@@ -1203,6 +1207,8 @@
 				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
 				BB7518F82232879400413607 /* DemoRealmViewController.swift */,
 				BB7518F92232879400413607 /* DemoRealmViewController.xib */,
+				BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */,
+				BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */,
 			);
 			path = "Demo-App";
 			sourceTree = "<group>";
@@ -1533,6 +1539,7 @@
 				BBC38A68206DDEE500B11C7B /* octicons.ttf in Resources */,
 				BB7F3039203E857900185366 /* demo_2.jpg in Resources */,
 				BB06BC0F2201953E00227059 /* MasterCandySearchViewController.xib in Resources */,
+				BBAF935A22357F7B0086AC02 /* EditRealmViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1744,6 +1751,7 @@
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
 				BB2810A42216DDEC003823FE /* DbPullLoadView.swift in Sources */,
 				BBE6FA6E21EC9A700030AA64 /* DbClosureHandler.swift in Sources */,
+				BBAF935922357F7B0086AC02 /* EditRealmViewController.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */,
 				BBC38A50206DDE9500B11C7B /* FontLoader.swift in Sources */,

@@ -153,18 +153,18 @@ class PzLoginViewController: UIViewController
 //            return
 //        }
 
-        guard let obj: CityUnit = CityUnit().getObjectByCondition("cityId = 1") else {
-            print("Khong tim thay du lieu")
-            return
-        }
-        print("obj.cityName = \(obj.description)")
-        
-
-        print("-----------------------------")
-        let arrObj = DistrictUnit().getAll(fromClass: DistrictUnit.self)
-        for district: DistrictUnit in arrObj {
-            print("districtName = \(district.districtName)")
-        }
+//        guard let obj: CityUnit = CityUnit().getObjectByCondition("cityId = 1") else {
+//            print("Khong tim thay du lieu")
+//            return
+//        }
+//        print("obj.cityName = \(obj.description)")
+//        
+//
+//        print("-----------------------------")
+//        let arrObj = DistrictUnit().getAll(fromClass: DistrictUnit.self)
+//        for district: DistrictUnit in arrObj {
+//            print("districtName = \(district.districtName)")
+//        }
         
         
         
