@@ -12,20 +12,20 @@ import CoreLocation
 
 private let DB_TIMESTAMP_DDMMYYYYHHMMSS = "dd-MM-YYYY HH:mm:ss"
 
-class DbLocationManager : NSObject
+public class DbLocationManager : NSObject
 {
     /**
      *  The delegate, using this the location events are fired.
      */
-    var delegate: DbLocationManagerDelegate?
+    public var delegate: DbLocationManagerDelegate?
     /**
      *  The last known Geocode address determinded, will be nil if there is no geocode was requested.
      */
-    var lastKnownGeocodeAddress: DbLocationInfo?
+    public var lastKnownGeocodeAddress: DbLocationInfo?
     /**
      *  The last known location received. Will be nil until a location has been received. Returns an Dictionary using keys DB_LATITUDE, DB_LONGITUDE, DB_ALTITUDE
      */
-    var lastKnownGeoLocation: DbLocationInfo?
+    public var lastKnownGeoLocation: DbLocationInfo?
     /**
      *   The desired location accuracy in meters. Default is 100 meters.
      *<p>
@@ -34,7 +34,7 @@ class DbLocationManager : NSObject
      power performance, be sure to specify an appropriate accuracy for your usage scenario (eg, use a large accuracy value when only a coarse location is needed). Set it to 0 to achieve the best possible accuracy.
      *</p>
      */
-    var desiredAcuracy: Double = 100.0 {
+    public var desiredAcuracy: Double = 100.0 {
         didSet {
             if self.desiredAcuracy < 50.0 {
                 self.locationManager.desiredAccuracy = kCLLocationAccuracyBest
@@ -54,7 +54,7 @@ class DbLocationManager : NSObject
      than the stated value, unless the accuracy has improved. Pass in 0 to be
      notified of all movements. By default, 100 meters is used.
      */
-    var distanceFilter: CLLocationDistance = 0.0 {
+    public var distanceFilter: CLLocationDistance = 0.0 {
         didSet {
             self.locationManager.distanceFilter = self.distanceFilter
         }
@@ -71,7 +71,7 @@ class DbLocationManager : NSObject
     private var geocodeCompletionBlock: GeoCodeUpdateBlock?
     private var activeLocationTaskType: DbLocationTaskType = .none
 
-    class var sharedInstance : DbLocationManager
+    public class var sharedInstance : DbLocationManager
     {
         struct Static {
             static let instance : DbLocationManager = DbLocationManager()
@@ -201,7 +201,7 @@ class DbLocationManager : NSObject
     /**
      *  Similar to lastKnownLocation, The last location received. Will be nil until a location has been received. Returns an Dictionary using keys DB_LATITUDE, DB_LONGITUDE, DB_ALTITUDE
      */
-    func getLocationInfo() -> DbLocationInfo?
+    public func getLocationInfo() -> DbLocationInfo?
     {
         guard let location = self.locationManager.location else {
             return nil
@@ -222,7 +222,7 @@ class DbLocationManager : NSObject
      *   </p>
      *   @return an Array of dictionary formatted DbFenceInfo
      */
-    func getCurrentFences() -> [DbFenceInfo]?
+    public func getCurrentFences() -> [DbFenceInfo]?
     {
         let existingArray = Array(self.locationManager.monitoredRegions)
         
@@ -243,7 +243,7 @@ class DbLocationManager : NSObject
      *   Those fences we created and are currently active, delete all of'em.
      *   </p>
      */
-    func deleteCurrentFences()
+    public func deleteCurrentFences()
     {
         let existingArray = Array(locationManager.monitoredRegions)
         
@@ -262,7 +262,7 @@ class DbLocationManager : NSObject
     /**
      *   Simple request location. Only run when get location sucessfully
      */
-    func requestLocation(_ completionHandler: @escaping (_ currentLocation: CLLocation) -> Void)
+    public func requestLocation(_ completionHandler: @escaping (_ currentLocation: CLLocation) -> Void)
     {
         getCurrentLocation(withCompletion: { success, locationDictionary, error in
             // -- Phai luon luon kiem tra lat, long != 0 de tranh bay ra bien --
@@ -279,7 +279,7 @@ class DbLocationManager : NSObject
      *   </p>
      *   @param delegate where the location will be delivered, which implements DbLocationManagerDelegate
      */
-    func getCurrentLocation(withDelegate delegate: DbLocationManagerDelegate)
+    public func getCurrentLocation(withDelegate delegate: DbLocationManagerDelegate)
     {
         self.delegate = delegate
         self.activeLocationTaskType = .getCurrentLocation
@@ -293,7 +293,7 @@ class DbLocationManager : NSObject
      *   </p>
      *   @param completion : A block which will be called when the location is updated
      */
-    func getCurrentLocationSkipAuthAlert(withCompletion completion: @escaping LocationUpdateBlock)
+    public func getCurrentLocationSkipAuthAlert(withCompletion completion: @escaping LocationUpdateBlock)
     {
         self.locationCompletionBlock = completion
         self.activeLocationTaskType = .getCurrentLocation
@@ -306,7 +306,7 @@ class DbLocationManager : NSObject
      *   </p>
      *   @param completion : A block which will be called when the location is updated
      */
-    func getCurrentLocation(withCompletion completion: @escaping LocationUpdateBlock)
+    public func getCurrentLocation(withCompletion completion: @escaping LocationUpdateBlock)
     {
         self.locationCompletionBlock = completion
         self.activeLocationTaskType = .getCurrentLocation
@@ -319,7 +319,7 @@ class DbLocationManager : NSObject
      *   </p>
      *   @return DbLocationManagerDidUpdateGeocodeAdress is called when the location and geocode is updated
      */
-    func getCurrentGeocodeAddress(withDelegate delegate: DbLocationManagerDelegate)
+    public func getCurrentGeocodeAddress(withDelegate delegate: DbLocationManagerDelegate)
     {
         self.delegate = delegate
         self.activeLocationTaskType = .getGeoCodeAddress
@@ -332,7 +332,7 @@ class DbLocationManager : NSObject
      *   </p>
      *   @return Callback block is called when the location and geocode is updated
      */
-    func getCurrentGeoCodeAddress(withCompletion completion: @escaping GeoCodeUpdateBlock)
+    public func getCurrentGeoCodeAddress(withCompletion completion: @escaping GeoCodeUpdateBlock)
     {
         self.geocodeCompletionBlock = completion
         self.activeLocationTaskType = .getGeoCodeAddress
@@ -448,7 +448,7 @@ class DbLocationManager : NSObject
      *   @param identifier: The name of the fence. If the indentifier is nil, this method will try to use geocode to determine the address of this coordinate and use it as identifer. WARNING: When using this method for adding multiple fence at once, always deliver Identifier value
      *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
      */
-    func addGeofenceAtlatitude(_ latitude: Double, andLongitude longitude: Double, withRadious radious: Double, withIdentifier identifier: String?)
+    public func addGeofenceAtlatitude(_ latitude: Double, andLongitude longitude: Double, withRadious radious: Double, withIdentifier identifier: String?)
     {
         self.addGeofence(atCoordinates: CLLocationCoordinate2DMake(latitude, longitude),
                          withRadious: CLLocationDistance(radious), withIdentifier: identifier)
@@ -464,7 +464,7 @@ class DbLocationManager : NSObject
      *   @param identifier: The name of the fence. If the indentifier is nil, this method will try to use geocode to determine the address of this coordinate and use it as identifer. WARNING: When using this method for adding multiple fence at once, always deliver Identifier value
      *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
      */
-    func addGeofence(atCoordinates coordinate: CLLocationCoordinate2D, withRadious radious: CLLocationDistance, withIdentifier identifier: String?)
+    public func addGeofence(atCoordinates coordinate: CLLocationCoordinate2D, withRadious radious: CLLocationDistance, withIdentifier identifier: String?)
     {
         let location = CLLocation(latitude: coordinate.latitude, longitude: coordinate.longitude)
         self.addGeofence(at: location, withRadious: radious, withIdentifier: identifier)
@@ -480,7 +480,7 @@ class DbLocationManager : NSObject
      *   @param identifier: The name of the fence. If the indentifier is nil, this method will try to use geocode to determine the address of this coordinate and use it as identifer. WARNING: When using this method for adding multiple fence at once, always deliver Identifier value
      *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
      */
-    func addGeofence(at location: CLLocation, withRadious radious: CLLocationDistance, withIdentifier identifier: String?)
+    public func addGeofence(at location: CLLocation, withRadious radious: CLLocationDistance, withIdentifier identifier: String?)
     {
         //------------------first check if we already have these coordinates inside existing regions----------
         if let currentRegion: CLCircularRegion = self.isFenceExists(forCoordinates: location.coordinate) {
@@ -528,7 +528,7 @@ class DbLocationManager : NSObject
         }
     }
     
-    func getGeoCode(at location: CLLocation)
+    public func getGeoCode(at location: CLLocation)
     {
         self.geocoder.reverseGeocodeLocation(location, completionHandler: { (placemarks, error) in
             
@@ -586,7 +586,7 @@ class DbLocationManager : NSObject
      *   @param fenceInfo: The location where to add the fence
      *   @return fires delegate DbLocationManagerDidAddFence: with a DbFenceEventTypeAdded event.
      */
-    func addGeoFence(using fenceInfo: DbFenceInfo)
+    public func addGeoFence(using fenceInfo: DbFenceInfo)
     {
         let coordinate: CLLocationCoordinate2D = self.locationCoordinate2d(from: fenceInfo)
         self.addGeofence(atCoordinates: coordinate,
@@ -600,7 +600,7 @@ class DbLocationManager : NSObject
      *   </p>
      *   @param identifier: The identifier of the geofence need to be deleted
      */
-    func deleteGeoFence(withIdentifier identifier: String)
+    public func deleteGeoFence(withIdentifier identifier: String)
     {
         let existingArray = Array(locationManager.monitoredRegions)
         for currentRegion: CLCircularRegion in existingArray as? [CLCircularRegion] ?? [] {
@@ -620,7 +620,7 @@ class DbLocationManager : NSObject
      *   </p>
      *   @param fenceInfo: The location where to add the fence
      */
-    func deleteGeoFence(_ fenceInfo: DbFenceInfo)
+    public func deleteGeoFence(_ fenceInfo: DbFenceInfo)
     {
         self.deleteGeoFence(withIdentifier: "BB: \(fenceInfo.fenceIDentifier)")
     }
@@ -748,8 +748,7 @@ class DbLocationManager : NSObject
 
 extension DbLocationManager: CLLocationManagerDelegate
 {
-    
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
+    public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         // Fetch Current Location
         guard let location: CLLocation = locations.last else {
@@ -817,7 +816,7 @@ extension DbLocationManager: CLLocationManagerDelegate
         }
     }
 
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
+    public func locationManager(_ manager: CLLocationManager, didFailWithError error: Error)
     {
         guard let error = error as? CLError else {
             return
@@ -851,7 +850,7 @@ extension DbLocationManager: CLLocationManagerDelegate
     }
     
     // -- Chi can thay doi AuthorizationStatus thi se chay ham nay (bao gom ca Cancel) --
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
+    public func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus)
     {
         // -- DucBui didChangeAuthorizationStatus => didFailWithError --
         if status != .denied && status != .restricted {
@@ -861,7 +860,7 @@ extension DbLocationManager: CLLocationManagerDelegate
         }
     }
     
-    func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion)
+    public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion)
     {
         if let theRegion = region as? CLCircularRegion {
             self.delegate?.dbLocationManagerDidAddFence(self.fenceInfo(for: theRegion, fenceEventType: .added))
@@ -871,7 +870,7 @@ extension DbLocationManager: CLLocationManagerDelegate
          //NSLog(str);*/
     }
     
-    func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error)
+    public func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error)
     {
         if let theRegion = region as? CLCircularRegion {
             self.delegate?.dbLocationManagerDidFailedFence(self.fenceInfo(for: theRegion, fenceEventType: .failed))
@@ -881,7 +880,7 @@ extension DbLocationManager: CLLocationManagerDelegate
          NSLog(str);*/
     }
     
-    func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
+    public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
     {
         if let theRegion = region as? CLCircularRegion {
             self.delegate?.dbLocationManagerDidEnterFence(self.fenceInfo(for: theRegion, fenceEventType: .enterFence))
@@ -892,7 +891,7 @@ extension DbLocationManager: CLLocationManagerDelegate
          NSLog(str);*/
     }
     
-    func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion)
+    public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion)
     {
         if let theRegion = region as? CLCircularRegion {
             self.delegate?.dbLocationManagerDidExitFence(self.fenceInfo(for: theRegion, fenceEventType: .exitFence))
@@ -903,7 +902,7 @@ extension DbLocationManager: CLLocationManagerDelegate
          NSLog(str);*/
     }
     
-    func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion)
+    public func locationManager(_ manager: CLLocationManager, didDetermineState state: CLRegionState, for region: CLRegion)
     {
         if state == .inside {
             //NSLog(@"[DbLocationManager] Entered Region - %@", region.identifier);
