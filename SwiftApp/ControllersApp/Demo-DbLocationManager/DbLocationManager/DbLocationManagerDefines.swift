@@ -76,8 +76,8 @@ let DB_ADDRESS_ZIPCODE = "address_zipcode"
 let DB_ADDRESS_COUNTRY = "address_country"
 let DB_ADDRESS_DICTIONARY = "address_full_dictionary"
 
-typealias LocationUpdateBlock = (Bool, DbLocationInfo, Error?) -> Void
-typealias GeoCodeUpdateBlock = (Bool, DbLocationInfo, Error?) -> Void
+public typealias LocationUpdateBlock = (Bool, DbLocationInfo, Error?) -> Void
+public typealias GeoCodeUpdateBlock = (Bool, DbLocationInfo, Error?) -> Void
 
 public protocol DbLocationManagerDelegate {
     /**
