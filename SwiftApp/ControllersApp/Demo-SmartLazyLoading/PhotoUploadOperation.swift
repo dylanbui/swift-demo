@@ -71,10 +71,13 @@ class PhotoUploadOperation: DbOperation
                 
                 guard let res: PropzyResponse = response as? PropzyResponse,
                     let data = res.data as? DictionaryType else {
-                    print("Co loi tra ve du lieu")
-                    self.completionHandler?(self.photoAsset, nil)
-                    self.finish()
-                    return
+                        print("Co loi tra ve du lieu")
+                        if self.isCancelled {
+                            self.photoAsset.uploadState = .Failed
+                        }
+                        self.completionHandler?(self.photoAsset, nil)
+                        self.finish()
+                        return
                 }
                 
                 // self.photoAsset.uploadDone = true

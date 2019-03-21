@@ -83,7 +83,17 @@ final class PhotoUploadManager
     
     func cancelAll()
     {
-        photoUploadQueue.cancelAllOperations()
+        self.photoUploadQueue.cancelAllOperations()
+    }
+    
+    func suspendedAll(_ status: Bool)
+    {
+        self.photoUploadQueue.isSuspended = status
+    }
+    
+    func whenComplete(complete: (() -> Void)?)
+    {
+        self.photoUploadQueue.whenEmpty = complete
     }
     
 }

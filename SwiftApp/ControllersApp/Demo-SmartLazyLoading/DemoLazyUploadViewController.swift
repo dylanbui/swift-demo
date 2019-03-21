@@ -14,6 +14,7 @@ import UIKit
 class DemoLazyUploadViewController: UIViewController
 {
     @IBOutlet var myCollectionView: UICollectionView!
+    private var isScrolling: Bool = false
     
     var arrPhotoAsset: [PhotoAsset] = []
 
@@ -109,6 +110,11 @@ class DemoLazyUploadViewController: UIViewController
             return
         }
         
+        PhotoUploadManager.shared.whenComplete {
+            // -- Setup screen when done upload --
+            self.myCollectionView.reloadData()
+        }
+        
         let indexPaths = self.myCollectionView.indexPathsForVisibleItems
         print("indexPathsForVisibleItems = \(String(describing: indexPaths))")
         for indexPath in indexPaths {
@@ -118,56 +124,70 @@ class DemoLazyUploadViewController: UIViewController
             // -- Bat dau upload photo --
             PhotoUploadManager.shared.upload(asset, complete: { (asset, error) in
                 
-                DispatchQueue.main.async {
-                    // -- Cap nhat cell, khi da upload thanh cong --
-                    // -- Chi chay 1 lan ham complete upload --
-                    if asset.uploadState == .Done {
-                        return
-                    }
-                    asset.uploadState = .Done
-                    
-                    print("asset.uploadDone = \(String(describing: asset.uploadDone))")
-                    print("asset.fullImageUrl = \(String(describing: asset.fullImageUrl))")
-                    print("asset.indexPath = \(String(describing: asset.indexPath))")
-                    
-                    if let indexPath = asset.indexPath {
-                        // self.myCollectionView.reloadItems(at: [indexPath])
-                        // -- Day la nhung cell bi hidden khi di chuyen, se khong tim thay --
-                        // -- Nhung cell bi an van chay Task Upload voi queuePriority = .low --
-                        if let cell = self.myCollectionView.cellForItem(at: indexPath) as? ImageRowCollectionCell {
-                            // cell.reloadUploadStatusDone(done: true)
-                            cell.reloadCellFor(asset: asset)
-                        }
-                    }
-                }
+                if let indexPath = asset.indexPath, self.isScrolling == false {
                 
+                    DispatchQueue.main.async {
+                        // -- Cap nhat cell, khi da upload thanh cong --
+                        // -- Chi chay 1 lan ham complete upload --
+                        if asset.uploadState == .Done || asset.uploadState == .Failed {
+                            return
+                        }
+                        asset.uploadState = .Done
+                        
+                        print("asset.uploadDone = \(String(describing: asset.uploadDone))")
+                        print("asset.fullImageUrl = \(String(describing: asset.fullImageUrl))")
+                        print("asset.indexPath = \(String(describing: asset.indexPath))")
+                        
+    //                    if let indexPath = asset.indexPath, self.isScrolling == false {
+                            // self.myCollectionView.reloadItems(at: [indexPath])
+                            // -- Day la nhung cell bi hidden khi di chuyen, se khong tim thay --
+                            // -- Nhung cell bi an van chay Task Upload voi queuePriority = .low --
+                            if let cell = self.myCollectionView.cellForItem(at: indexPath) as? ImageRowCollectionCell {
+                                // cell.reloadUploadStatusDone(done: true)
+                                cell.reloadCellFor(asset: asset)
+                            }
+    //                    }
+                    }
+                
+                }
+                    
             }) { (asset, progress, error) in
                 
 //                print("IndexPath = " + String(asset.indexPath?.row ?? -1) + " - progress - " + String(Float(progress.fractionCompleted)))
                 asset.uploadProgress = progress
                 asset.uploadState = .Uploading
                 
-                // -- Upload cell progress --
-                DispatchQueue.main.async {
-                    // -- Xu ly progress nay bao gom ca lan xuat hien lan dau --
-                    // -- Cap nhat cell, khi uploading --
-                    if let indexPath = asset.indexPath {
-                        // self.myCollectionView.reloadItems(at: [indexPath])
-                        // -- Day la nhung cell bi hidden khi di chuyen, se khong tim thay --
-                        if let cell = self.myCollectionView.cellForItem(at: indexPath) as? ImageRowCollectionCell {
-                            // cell.reloadUploadStatusDone(done: false)
-                            cell.reloadCellFor(asset: asset)
-                        }
-                    }
-                }
+                if let indexPath = asset.indexPath, self.isScrolling == false {
                 
+                    // -- Upload cell progress --
+                    DispatchQueue.main.async {
+                        // -- Xu ly progress nay bao gom ca lan xuat hien lan dau --
+                        // -- Cap nhat cell, khi uploading --
+    //                    if let indexPath = asset.indexPath, self.isScrolling == false {
+                            // self.myCollectionView.reloadItems(at: [indexPath])
+                            // -- Day la nhung cell bi hidden khi di chuyen, se khong tim thay --
+                            if let cell = self.myCollectionView.cellForItem(at: indexPath) as? ImageRowCollectionCell {
+                                // cell.reloadUploadStatusDone(done: false)
+                                cell.reloadCellFor(asset: asset)
+                            }
+    //                    }
+                    }
+                    
+                }
             }
             
         }
         
     }
     
-
+    private func suspendedUpload(status: Bool)
+    {
+        // -- true => stop upload --
+        // -- false => resume upload --
+        self.isScrolling = status
+        PhotoUploadManager.shared.suspendedAll(self.isScrolling)
+    }
+    
 }
 
 extension DemoLazyUploadViewController: UICollectionViewDataSource, UICollectionViewDelegate
@@ -224,11 +244,22 @@ extension DemoLazyUploadViewController: UICollectionViewDataSource, UICollection
         return cell
     }
     
+    // MARK: - UIScrollViewDelegate
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView)
+    {
+        // -- Stop het moi operator --
+        self.suspendedUpload(status: true)
+    }
+    
     
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool)
     {
         if !decelerate
         {
+            // -- Start het moi operator --
+            self.suspendedUpload(status: false)
+            
             self.startOperationForOnscreenRows()
         }
     }
@@ -236,7 +267,9 @@ extension DemoLazyUploadViewController: UICollectionViewDataSource, UICollection
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView)
     {
         print("==> scrollViewDidEndDecelerating")
-        self.startOperationForOnscreenRows()
+        // -- Start het moi operator --
+        self.suspendedUpload(status: false)
         
+        self.startOperationForOnscreenRows()
     }
 }
