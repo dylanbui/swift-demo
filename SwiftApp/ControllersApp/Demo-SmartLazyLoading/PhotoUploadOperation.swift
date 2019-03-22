@@ -29,11 +29,8 @@ class PhotoUploadOperation: DbOperation
     override func execute()
     {
         // do work, then call finish()
-//        DispatchQueue.main.delayed(self.delay) {
-//            self.finish()
-//        }
-        
-        self.photoAsset.fetchOriginalImage { (image, info) in
+        // -- Chu y , khi tao hinh anh luc nay khong can bat dong bo, vi no da chay trong task con --
+        self.photoAsset.fetchOriginalImage(Synchronous: true) { (image, info) in
             
             guard let uploadImg = image else {
                 // -- Loi khong tao duoc anh --

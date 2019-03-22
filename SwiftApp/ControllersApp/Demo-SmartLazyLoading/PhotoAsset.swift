@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Photos
 
 // This enum contains all the possible states a photo record can be in
 enum PhotoAssetUploadState {
@@ -53,10 +54,14 @@ class PhotoAsset : Equatable
         }
     }
     
-    func fetchOriginalImage(completeBlock: @escaping (_ image: UIImage?, _ info: [AnyHashable: Any]?) -> Void)
+    func fetchOriginalImage(Synchronous sync: Bool = false, completeBlock: @escaping (_ image: UIImage?, _ info: [AnyHashable: Any]?) -> Void)
     {
+        let options = PHImageRequestOptions()
+        options.version = .original
+        options.isSynchronous = sync
+        
         // -- Chinh lai ham nay de lay thong so phu hop cho upload file --
-        self.asset.fetchOriginalImage { (image, info) in
+        self.asset.fetchOriginalImage(options: options) { (image, info) in
             completeBlock(image, info)
         }
     }

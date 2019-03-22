@@ -130,6 +130,7 @@
 		BB7F3044203E857900185366 /* main_gate_img.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3036203E857900185366 /* main_gate_img.png */; };
 		BB7F3045203E857900185366 /* main_gate_img@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BB7F3037203E857900185366 /* main_gate_img@2x.png */; };
 		BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8823422119847400A1BB76 /* JsonStringTransform.swift */; };
+		BB887C632244F20B0045BF2F /* FileUploader.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887C622244F20B0045BF2F /* FileUploader.swift */; };
 		BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB887DBC203EA05700DFC060 /* NetworkViewController.swift */; };
 		BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB887DBD203EA05700DFC060 /* NetworkViewController.xib */; };
 		BB8BECC0222AEEEC00EC7620 /* ImageRowCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8BECBE222AEEEB00EC7620 /* ImageRowCollectionCell.xib */; };
@@ -416,6 +417,7 @@
 		BB7F3036203E857900185366 /* main_gate_img.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = main_gate_img.png; sourceTree = "<group>"; };
 		BB7F3037203E857900185366 /* main_gate_img@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "main_gate_img@2x.png"; sourceTree = "<group>"; };
 		BB8823422119847400A1BB76 /* JsonStringTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JsonStringTransform.swift; sourceTree = "<group>"; };
+		BB887C622244F20B0045BF2F /* FileUploader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileUploader.swift; sourceTree = "<group>"; };
 		BB887DBC203EA05700DFC060 /* NetworkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkViewController.swift; sourceTree = "<group>"; };
 		BB887DBD203EA05700DFC060 /* NetworkViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NetworkViewController.xib; sourceTree = "<group>"; };
 		BB8BECBE222AEEEB00EC7620 /* ImageRowCollectionCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ImageRowCollectionCell.xib; sourceTree = "<group>"; };
@@ -690,6 +692,7 @@
 				BB9A193E22294CD100D7BE9A /* ImageDownloadManager.swift */,
 				BB9A194122294D3100D7BE9A /* FlickrPhoto.swift */,
 				BB8BECC6222B068400EC7620 /* DbProgressBar.swift */,
+				BB887C622244F20B0045BF2F /* FileUploader.swift */,
 			);
 			path = Example;
 			sourceTree = "<group>";
@@ -1705,6 +1708,7 @@
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
 				BB28109F2216D42F003823FE /* DbPullLoader.swift in Sources */,
+				BB887C632244F20B0045BF2F /* FileUploader.swift in Sources */,
 				BBC38A52206DDE9500B11C7B /* IonIcons.swift in Sources */,
 				BBE6FA7121EC9A700030AA64 /* UIControl+Closures.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
