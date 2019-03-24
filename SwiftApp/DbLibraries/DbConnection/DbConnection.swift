@@ -12,8 +12,33 @@
 import UIKit
 import Alamofire
 
-typealias DbDispatchHandler = (DbResponse) -> ()
-typealias DbUploadProcessHandler = (Progress) -> ()
+typealias DbDispatchHandler = (DbResponse) -> Void
+typealias DbDispatchHandlerNews<T: DbResponseProtocol> = (T) -> Void
+typealias DbUploadProcessHandler = (Progress) -> Void
+
+class DbConn: NSObject {
+    // MARK: - dispatch : call server bat dong bo
+    // MARK: -
+    @discardableResult
+    class func dispatch<T: DbResponseProtocol>(Request request: DbRequest, queue: DispatchQueue? = nil, dispatchHandler: @escaping DbDispatchHandlerNews<T>) -> T?
+    {
+        // -- Check connection network --
+        if NetworkReachabilityManager()!.isReachable == false {
+            // -- Set data for response --
+            if let responseObj = request.response {
+                responseObj.parse(nil, error: DbNetworkError.connectionError)
+//                dispatchHandler(responseObj as DbResponseProtocol)
+//                dispatchHandler(DbResponse() as DbResponseProtocol)
+            }
+            return nil
+        }
+        
+        let t = T()
+        dispatchHandler(t)
+      
+        return nil
+    }
+}
 
 class DbHttp: NSObject {
     
@@ -23,7 +48,7 @@ class DbHttp: NSObject {
     // let _: GoogleResponse? = DbHttp.post(Url: "https://maps.googleapis.com") { (response) in}
     // -- Defaut return JSON --
     @discardableResult
-    class func get<T: DbResponse>(Url url: String, query: DbRequestQuery = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
+    class func get<T: DbResponse>(Url url: String, query: DbHttpParams = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
     {
         let request = DbRequestFor<T>()
         request.requestUrl = url
@@ -41,7 +66,7 @@ class DbHttp: NSObject {
     // let _: GoogleResponse? = DbHttp.get(Url: "https://maps.googleapis.com") { (response) in}
     // -- Defaut return JSON --
     @discardableResult
-    class func post<T: DbResponse>(Url url: String, query: DbRequestQuery = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
+    class func post<T: DbResponse>(Url url: String, query: DbHttpParams = [:], dispatchHandler: @escaping DbDispatchHandler) -> T?
     {
         let request = DbRequestFor<T>()
         request.requestUrl = url

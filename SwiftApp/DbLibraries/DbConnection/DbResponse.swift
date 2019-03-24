@@ -24,6 +24,8 @@ public protocol DbResponseProtocol {
     // var originalRequest: NSURLRequest? {get}
     var contentType: DbHttpContentType? {get}
     
+    init()
+    
     func parse(_ responseData: Any?, error: Error?) -> Void
     
 }

@@ -4,14 +4,14 @@
 //
 //  Created by Dylan Bui on 1/31/18.
 //  Copyright © 2018 Propzy Viet Nam. All rights reserved.
-//
+//  http://ilya.puchka.me/networking-in-swift/
 
 // MARK: - Define headers
 // MARK: -
 
 public typealias MIMEType = String
 
-public typealias DbRequestQuery = [String: Any]
+public typealias DbHttpParams = [String: Any]
 
 public struct DbUploadData
 {
@@ -144,24 +144,24 @@ enum DbNetworkError: Error {
 // MARK: - Define DbRequest
 // MARK: -
 
-public protocol DbRequestType {
+public protocol DbRequestProtocol {
     
     var method: DbHttpMethod {get}
     var requestUrl: String {get}
     var contentType: DbHttpContentType {get}
     var headers: [DbHttpHeader] {get}
-    var query: DbRequestQuery {get}
+    var query: DbHttpParams {get}
     
     var response: DbResponse? {get}
 }
 
-public class DbRequest: DbRequestType {
+public class DbRequest: DbRequestProtocol {
     
     public var method: DbHttpMethod
     public var requestUrl: String
     public var contentType: DbHttpContentType
     public var headers: [DbHttpHeader]
-    public var query: DbRequestQuery
+    public var query: DbHttpParams
     
     public var response: DbResponse?
     
@@ -173,7 +173,7 @@ public class DbRequest: DbRequestType {
         self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
     }
     
-    init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
+    init(method: DbHttpMethod, requestUrl: String, query: DbHttpParams = DbHttpParams(), headers: [DbHttpHeader] = []) {
         self.method = method
         self.requestUrl = requestUrl
         self.query = query
@@ -247,7 +247,7 @@ public class DbRequestFor<ResponseType: DbResponse>: DbRequest {
         self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
     }
     
-    override init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
+    override init(method: DbHttpMethod, requestUrl: String, query: DbHttpParams = DbHttpParams(), headers: [DbHttpHeader] = []) {
         super.init(method: method, requestUrl: requestUrl, query: query, headers: headers)
         self.response = ResponseType()
         
@@ -263,9 +263,9 @@ public class DbRequestFor<ResponseType: DbResponse>: DbRequest {
     }
 }
 
-// --------------
+// -------------- For example
 
-extension DbRequestType {
+extension DbRequestProtocol {
     public func exportHttpHeader() -> [String: String]
     {
         var paramHeaders: [String: String] = [:]
@@ -277,13 +277,13 @@ extension DbRequestType {
 
 }
 
-public struct DefaultRequest: DbRequestType
+public struct DefaultRequest: DbRequestProtocol
 {
     public var method: DbHttpMethod
     public var requestUrl: String
     public var contentType: DbHttpContentType
     public var headers: [DbHttpHeader]
-    public var query: DbRequestQuery
+    public var query: DbHttpParams
     
     public var response: DbResponse?
     
@@ -295,7 +295,7 @@ public struct DefaultRequest: DbRequestType
         self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
     }
     
-    init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
+    init(method: DbHttpMethod, requestUrl: String, query: DbHttpParams = DbHttpParams(), headers: [DbHttpHeader] = []) {
         self.method = method
         self.requestUrl = requestUrl
         self.query = query
@@ -316,13 +316,13 @@ public struct DefaultRequest: DbRequestType
 }
 
 
-public struct DefaultUploadRequest: DbRequestType
+public struct DefaultUploadRequest: DbRequestProtocol
 {
     public var method: DbHttpMethod
     public var requestUrl: String
     public var contentType: DbHttpContentType
     public var headers: [DbHttpHeader]
-    public var query: DbRequestQuery
+    public var query: DbHttpParams
     
     public var response: DbResponse?
  
@@ -337,7 +337,7 @@ public struct DefaultUploadRequest: DbRequestType
         self.init(method: method, requestUrl: requestUrl, query: [:], headers: [])
     }
     
-    init(method: DbHttpMethod, requestUrl: String, query: DbRequestQuery = DbRequestQuery(), headers: [DbHttpHeader] = []) {
+    init(method: DbHttpMethod, requestUrl: String, query: DbHttpParams = DbHttpParams(), headers: [DbHttpHeader] = []) {
         self.method = method
         self.requestUrl = requestUrl
         self.query = query
