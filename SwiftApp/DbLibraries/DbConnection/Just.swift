@@ -159,7 +159,7 @@ public final class HTTP: NSObject, URLSessionDelegate, JustAdaptor {
     }
     
     public func synthesizeRequest(
-        _ method: HTTPMethod,
+        _ method: DbHTTPMethod,
         url: URLComponentsConvertible,
         params: [String: Any],
         data: [String: Any],
@@ -240,7 +240,7 @@ public final class HTTP: NSObject, URLSessionDelegate, JustAdaptor {
     }
     
     public func request(
-        _ method: HTTPMethod,
+        _ method: DbHTTPMethod,
         url: URLComponentsConvertible,
         params: [String: Any],
         data: [String: Any],

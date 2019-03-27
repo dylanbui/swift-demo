@@ -49,8 +49,12 @@
 		BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */; };
 		BB2FE66F2192C440007470DD /* UIViewController+DbSemiModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FE66E2192C43F007470DD /* UIViewController+DbSemiModalViewController.swift */; };
 		BB2FE6712192CFCB007470DD /* DbMediaPickerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2FE6702192CFCB007470DD /* DbMediaPickerController.swift */; };
+		BB32A3DB224B20EC006265B7 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32A3D8224B20EB006265B7 /* DbResponse.swift */; };
+		BB32A3DC224B20EC006265B7 /* DbConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32A3D9224B20EC006265B7 /* DbConnection.swift */; };
+		BB32A3DD224B20EC006265B7 /* DbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32A3DA224B20EC006265B7 /* DbRequest.swift */; };
+		BB32A3E0224B2576006265B7 /* DemoJustViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB32A3DE224B2576006265B7 /* DemoJustViewController.swift */; };
+		BB32A3E1224B2576006265B7 /* DemoJustViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB32A3DF224B2576006265B7 /* DemoJustViewController.xib */; };
 		BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB330BA61F7815D900BEEA9A /* Constant.swift */; };
-		BB35CE70211A8B0100B88BEB /* DbMappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE6F211A8B0100B88BEB /* DbMappable.swift */; };
 		BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE77211AECEF00B88BEB /* PzLeftMenuViewController.swift */; };
 		BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35CE78211AECEF00B88BEB /* PzLeftMenuViewController.xib */; };
 		BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */; };
@@ -161,7 +165,6 @@
 		BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B4206CE77D00CD2F0F /* DbLabel.swift */; };
 		BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */; };
 		BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */; };
-		BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4D64A2028A44B0013F204 /* DbConnection.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
 		BBAF935922357F7B0086AC02 /* EditRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */; };
@@ -266,8 +269,6 @@
 		BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FA2017458100B21B1F /* ic_show_password@2x.png */; };
 		BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */; };
 		BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C5B20216C5E0044F661 /* DbDispatch.swift */; };
-		BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C772021C4BD0044F661 /* DbRequest.swift */; };
-		BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C792021DFD40044F661 /* DbResponse.swift */; };
 		BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */; };
 		BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0312121F102460009C753 /* DbSheetDatePicker.swift */; };
 		BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */; };
@@ -338,8 +339,12 @@
 		BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbViewFromXib.swift; sourceTree = "<group>"; };
 		BB2FE66E2192C43F007470DD /* UIViewController+DbSemiModalViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+DbSemiModalViewController.swift"; sourceTree = "<group>"; };
 		BB2FE6702192CFCB007470DD /* DbMediaPickerController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMediaPickerController.swift; sourceTree = "<group>"; };
+		BB32A3D8224B20EB006265B7 /* DbResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
+		BB32A3D9224B20EC006265B7 /* DbConnection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbConnection.swift; sourceTree = "<group>"; };
+		BB32A3DA224B20EC006265B7 /* DbRequest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbRequest.swift; sourceTree = "<group>"; };
+		BB32A3DE224B2576006265B7 /* DemoJustViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoJustViewController.swift; sourceTree = "<group>"; };
+		BB32A3DF224B2576006265B7 /* DemoJustViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoJustViewController.xib; sourceTree = "<group>"; };
 		BB330BA61F7815D900BEEA9A /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
-		BB35CE6F211A8B0100B88BEB /* DbMappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMappable.swift; sourceTree = "<group>"; };
 		BB35CE77211AECEF00B88BEB /* PzLeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzLeftMenuViewController.swift; sourceTree = "<group>"; };
 		BB35CE78211AECEF00B88BEB /* PzLeftMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzLeftMenuViewController.xib; sourceTree = "<group>"; };
 		BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzMainViewController.swift; sourceTree = "<group>"; };
@@ -450,7 +455,6 @@
 		BBA3D1B4206CE77D00CD2F0F /* DbLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLabel.swift; sourceTree = "<group>"; };
 		BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTextField.swift; sourceTree = "<group>"; };
 		BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSelectorActionSheet.swift; sourceTree = "<group>"; };
-		BBA4D64A2028A44B0013F204 /* DbConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConnection.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRealmViewController.swift; sourceTree = "<group>"; };
@@ -561,8 +565,6 @@
 		BBE813FA2017458100B21B1F /* ic_show_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_show_password@2x.png"; sourceTree = "<group>"; };
 		BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hide_password@2x.png"; sourceTree = "<group>"; };
 		BBE88C5B20216C5E0044F661 /* DbDispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDispatch.swift; sourceTree = "<group>"; };
-		BBE88C772021C4BD0044F661 /* DbRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRequest.swift; sourceTree = "<group>"; };
-		BBE88C792021DFD40044F661 /* DbResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbResponse.swift; sourceTree = "<group>"; };
 		BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetTableView.swift; sourceTree = "<group>"; };
 		BBF0312121F102460009C753 /* DbSheetDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetDatePicker.swift; sourceTree = "<group>"; };
 		BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMaterialSpinner.swift; sourceTree = "<group>"; };
@@ -805,6 +807,8 @@
 		BB4E235E210EBC6400524B0D /* Propzy-SAM */ = {
 			isa = PBXGroup;
 			children = (
+				BB32A3DE224B2576006265B7 /* DemoJustViewController.swift */,
+				BB32A3DF224B2576006265B7 /* DemoJustViewController.xib */,
 				BB5E1424210AFD7F0059A8C4 /* DemoUsing */,
 				BB4E2367210EBCE700524B0D /* Common */,
 				BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */,
@@ -868,7 +872,6 @@
 				BBA2A4382117FBA000618AEF /* PzListingItem.swift */,
 				BBA2A43A2117FC6000618AEF /* PzListingApi.swift */,
 				BB8823422119847400A1BB76 /* JsonStringTransform.swift */,
-				BB35CE6F211A8B0100B88BEB /* DbMappable.swift */,
 			);
 			path = DemoUsing;
 			sourceTree = "<group>";
@@ -1331,12 +1334,12 @@
 		BBE88C762021C4A80044F661 /* DbConnection */ = {
 			isa = PBXGroup;
 			children = (
-				BBCDB280224A3BB40097BA53 /* Just.swift */,
 				BBCDB281224A3BB60097BA53 /* JustCommon.swift */,
+				BBCDB280224A3BB40097BA53 /* Just.swift */,
 				BB19FAF420441A6B005F2669 /* Reachability.swift */,
-				BBE88C772021C4BD0044F661 /* DbRequest.swift */,
-				BBE88C792021DFD40044F661 /* DbResponse.swift */,
-				BBA4D64A2028A44B0013F204 /* DbConnection.swift */,
+				BB32A3D9224B20EC006265B7 /* DbConnection.swift */,
+				BB32A3DA224B20EC006265B7 /* DbRequest.swift */,
+				BB32A3D8224B20EB006265B7 /* DbResponse.swift */,
 			);
 			path = DbConnection;
 			sourceTree = "<group>";
@@ -1505,6 +1508,7 @@
 				BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */,
 				BB7E580821E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib in Resources */,
 				BBB1A53B22005BEA0047293E /* DbLocationManager.bundle in Resources */,
+				BB32A3E1224B2576006265B7 /* DemoJustViewController.xib in Resources */,
 				BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */,
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
@@ -1711,6 +1715,7 @@
 				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
 				BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
+				BB32A3DC224B20EC006265B7 /* DbConnection.swift in Sources */,
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
 				BB28109F2216D42F003823FE /* DbPullLoader.swift in Sources */,
@@ -1728,10 +1733,10 @@
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */,
 				BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */,
-				BB35CE70211A8B0100B88BEB /* DbMappable.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
 				BB5756B6219E7C48000BDACD /* KBScrollViewViewController.swift in Sources */,
+				BB32A3E0224B2576006265B7 /* DemoJustViewController.swift in Sources */,
 				BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */,
 				BB48E20D21F1E531002B2DEC /* DbSheetCalendar.swift in Sources */,
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
@@ -1743,14 +1748,13 @@
 				BB06BC152201965400227059 /* CandySearchFooter.swift in Sources */,
 				BB7518FA2232879400413607 /* DemoRealmViewController.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
-				BBA4D64B2028A44B0013F204 /* DbConnection.swift in Sources */,
-				BBE88C7A2021DFD40044F661 /* DbResponse.swift in Sources */,
 				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BB48E20421F190CC002B2DEC /* DbSheetCollectionView.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */,
+				BB32A3DB224B20EC006265B7 /* DbResponse.swift in Sources */,
 				BB2FE66F2192C440007470DD /* UIViewController+DbSemiModalViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
 				BB26008C21D60FD100D5F41D /* DbDropDownView.swift in Sources */,
@@ -1845,7 +1849,6 @@
 				BB4EE5E721F6FD9300D1BAFE /* DbCustomButtonSheetPicker.swift in Sources */,
 				BB2FA67A2015D37B00590C94 /* DbLoadableView.swift in Sources */,
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
-				BBE88C782021C4BD0044F661 /* DbRequest.swift in Sources */,
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BB407ACE2181821A00C8E57F /* DbCommonExtensions.swift in Sources */,
 				BB28109B2216D3F6003823FE /* DemoDbPullToRefreshViewController.swift in Sources */,
@@ -1861,6 +1864,7 @@
 				BB06BC0E2201953E00227059 /* MasterCandySearchViewController.swift in Sources */,
 				BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
+				BB32A3DD224B20EC006265B7 /* DbRequest.swift in Sources */,
 				BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,

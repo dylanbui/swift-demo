@@ -12,6 +12,11 @@ import Foundation
 import Dispatch
 #endif
 
+protocol MyResponseProtocol {
+    init()
+    func parseResult(resut: HTTPResult) -> Void
+}
+
 // stolen from python-requests
 let statusCodeDescriptions = [
     // Informational.
@@ -96,7 +101,7 @@ public enum HTTPFile {
 }
 
 // Supported request types
-public enum HTTPMethod: String {
+public enum DbHTTPMethod: String {
     case delete = "DELETE"
     case get = "GET"
     case head = "HEAD"
@@ -404,7 +409,7 @@ let errorDomain = "net.justhttp.Just"
 
 public protocol JustAdaptor {
     func request(
-        _ method: HTTPMethod,
+        _ method: DbHTTPMethod,
         url: URLComponentsConvertible,
         params: [String: Any],
         data: [String: Any],
@@ -437,7 +442,7 @@ extension JustOf {
     
     @discardableResult
     public func request(
-        _ method: HTTPMethod,
+        _ method: DbHTTPMethod,
         url: URLComponentsConvertible,
         params: [String: Any] = [:],
         data: [String: Any] = [:],
