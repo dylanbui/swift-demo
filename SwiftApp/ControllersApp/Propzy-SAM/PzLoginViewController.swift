@@ -21,6 +21,15 @@ class PzLoginViewController: UIViewController
         // -- mac dinh an bar --
         //self.navigationBarHiddenForThisController()
         // Do any additional setup after loading the view.
+        
+        let _: SimpleResponse = Just.getJsonFor("https://gogle.com", asyncProgressHandler: { (progress) in
+            
+        }) { (simpleResponse) in
+            
+        }
+        
+        Just.get("asdasd")
+
     }
 
     override func didReceiveMemoryWarning()
