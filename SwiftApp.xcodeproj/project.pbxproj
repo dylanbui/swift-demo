@@ -167,6 +167,7 @@
 		BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
+		BBA9BBD3224CB61E0068FFDC /* DbHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9BBD2224CB61E0068FFDC /* DbHttp.swift */; };
 		BBAF935922357F7B0086AC02 /* EditRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */; };
 		BBAF935A22357F7B0086AC02 /* EditRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */; };
 		BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */; };
@@ -457,6 +458,7 @@
 		BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSelectorActionSheet.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
+		BBA9BBD2224CB61E0068FFDC /* DbHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHttp.swift; sourceTree = "<group>"; };
 		BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRealmViewController.swift; sourceTree = "<group>"; };
 		BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditRealmViewController.xib; sourceTree = "<group>"; };
 		BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLocationManager.swift; sourceTree = "<group>"; };
@@ -1340,6 +1342,7 @@
 				BB32A3D9224B20EC006265B7 /* DbConnection.swift */,
 				BB32A3DA224B20EC006265B7 /* DbRequest.swift */,
 				BB32A3D8224B20EB006265B7 /* DbResponse.swift */,
+				BBA9BBD2224CB61E0068FFDC /* DbHttp.swift */,
 			);
 			path = DbConnection;
 			sourceTree = "<group>";
@@ -1704,6 +1707,7 @@
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
+				BBA9BBD3224CB61E0068FFDC /* DbHttp.swift in Sources */,
 				BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */,
 				BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */,
 				BB8BECC1222AEEEC00EC7620 /* ImageRowCollectionCell.swift in Sources */,

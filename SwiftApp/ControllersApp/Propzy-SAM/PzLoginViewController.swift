@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 //class PzLoginViewController: DbViewController {
 class PzLoginViewController: UIViewController
@@ -22,11 +23,18 @@ class PzLoginViewController: UIViewController
         //self.navigationBarHiddenForThisController()
         // Do any additional setup after loading the view.
         
-        let _: SimpleResponse = Just.getJsonFor("https://gogle.com", asyncProgressHandler: { (progress) in
+        Just.getJsonFor(SimpleResponse.self, url: "https://gogle.com", asyncProgressHandler: { (progress) in
             
         }) { (simpleResponse) in
             
         }
+        
+        
+//        let a: SimpleResponse = Just.getJsonFor("https://gogle.com", asyncProgressHandler: { (progress) in
+//
+//        }) { (simpleResponse) in
+//
+//        }
         
         Just.get("asdasd")
 

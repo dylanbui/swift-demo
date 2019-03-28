@@ -136,20 +136,63 @@ extension URL: URLComponentsConvertible {
 
 public protocol DbHTTPResponseProtocol {
     
-    init()
+    var httpResult: HTTPResult {get}
     
-    func parseResult(result: HTTPResult) -> Void
+    init(result: HTTPResult)
+    
+    func parseResult() -> Void
     
 }
 
 public class SimpleResponse: DbHTTPResponseProtocol {
     
-    var responseResult: HTTPResult!
+    public let httpResult: HTTPResult
     
-    required public init() { }
+    required public init(result: HTTPResult) {
+        self.httpResult = result
+    }
     
-    public func parseResult(result: HTTPResult) {
-        self.responseResult = result
+    public func parseResult() {
+
+    }
+}
+
+public class MyGoogleResponse: DbHTTPResponseProtocol {
+    
+    public let httpResult: HTTPResult
+    
+    var result: [String: Any]?
+    var addressComponents: [Any]?
+    var formattedAddress: String?
+    var geometry: Any?
+    var placeId: String?
+    
+    required public init(result: HTTPResult) {
+        self.httpResult = result
+    }
+    
+    public func parseResult()
+    {
+        if httpResult.ok == false {
+            return
+        }
+        
+        guard let responseData = self.httpResult.json as? [String: Any] else {
+            // -- responseData la nil , khong lam gi ca --
+            print("GoogleResponse responseData == nil")
+            return
+        }
+        
+        print("GoogleResponse = \(responseData)")
+        //let result: [AnyObject]? = responseData["results"] as? [AnyObject]
+        
+        if let results: [Any] = responseData["results"] as? [Any] {
+            self.result = results[0] as? [String: Any]
+            self.addressComponents = self.result!["address_components"] as? [Any]
+            self.formattedAddress = self.result!["formatted_address"] as? String
+            self.geometry = self.result!["geometry"] as Any
+            self.placeId = self.result!["place_id"] as? String
+        }
     }
     
 }
@@ -461,15 +504,16 @@ public struct JustOf<Adaptor: JustAdaptor> {
 extension JustOf {
     
     @discardableResult
-    public func requestFor<Res: DbHTTPResponseProtocol>(
-        _ method: DbHTTPMethod,
+    public func requestFor<T: DbHTTPResponseProtocol>(
+        _ typeObj: T.Type,
+        method: DbHTTPMethod,
         url: String, // String Url
         params: [String: Any] = [:], // Menthod Get params
         data: [String: Any] = [:], // Post params
         json: Any? = nil, // Post with json
         asyncProgressHandler: (TaskProgressHandler)? = nil,
-        asyncCompletionHandler: ((Res) -> Void)? = nil
-        ) -> Res {
+        asyncCompletionHandler: ((T) -> Void)? = nil
+        ) -> T {
         
         let result = adaptor.request(
             method,
@@ -488,26 +532,26 @@ extension JustOf {
             asyncProgressHandler: asyncProgressHandler)
         { (httpResult) in
             if let handle = asyncCompletionHandler {
-                let res = Res()
-                res.parseResult(result: httpResult)
+                let res = T.init(result: httpResult)
+                res.parseResult()
                 handle(res)
             }
         }
         
-        let res = Res()
-        res.parseResult(result: result)
+        let res = T.init(result: result)
+        res.parseResult()
         return res
     }
     
-    @discardableResult
-    public func getJsonFor<Res: DbHTTPResponseProtocol>(
-        _ url: String, // String Url
+    public func getJsonFor<T: DbHTTPResponseProtocol>(
+        _ typeObj: T.Type,
+        url: String, // String Url
         asyncProgressHandler: (TaskProgressHandler)? = nil,
-        asyncCompletionHandler: ((Res) -> Void)? = nil
-        ) -> Res {
+        asyncCompletionHandler: @escaping ((T) -> Void)
+        ) {
        
         // -- Khong goi lai ham requestFor<Res: DbHTTPResponseProtocol> duoc --
-        let result = adaptor.request(
+        _ = adaptor.request(
             .get,
             url: url,
             params: [:],
@@ -523,28 +567,23 @@ extension JustOf {
             requestBody: nil,
             asyncProgressHandler: asyncProgressHandler)
         { (httpResult) in
-            if let handle = asyncCompletionHandler {
-                let res = Res()
-                res.parseResult(result: httpResult)
-                handle(res)
-            }
+            let res = T.init(result: httpResult)
+            res.parseResult()
+            asyncCompletionHandler(res)
         }
         
-        let res = Res()
-        res.parseResult(result: result)
-        return res
     }
     
-    @discardableResult
-    public func postJsonFor<Res: DbHTTPResponseProtocol>(
-        _ url: URLComponentsConvertible, // String Url
+    public func postJsonFor<T: DbHTTPResponseProtocol>(
+        _ typeObj: T.Type,
+        url: URLComponentsConvertible, // String Url
         json: Any? = nil, // Post with json
         asyncProgressHandler: (TaskProgressHandler)? = nil,
-        asyncCompletionHandler: ((Res) -> Void)? = nil
-        ) -> Res {
+        asyncCompletionHandler: @escaping ((T) -> Void)
+        ) {
         
         // -- Khong goi lai ham requestFor<Res: DbHTTPResponseProtocol> duoc --
-        let result = adaptor.request(
+        _ = adaptor.request(
             .post,
             url: url,
             params: [:],
@@ -560,16 +599,11 @@ extension JustOf {
             requestBody: nil,
             asyncProgressHandler: asyncProgressHandler)
         { (httpResult) in
-            if let handle = asyncCompletionHandler {
-                let res = Res()
-                res.parseResult(result: httpResult)
-                handle(res)
-            }
+            let res = T.init(result: httpResult)
+            res.parseResult()
+            asyncCompletionHandler(res)
         }
         
-        let res = Res()
-        res.parseResult(result: result)
-        return res
     }
     
 }
