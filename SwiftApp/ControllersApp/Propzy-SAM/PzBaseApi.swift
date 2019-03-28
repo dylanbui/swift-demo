@@ -70,66 +70,38 @@ public class PzResponse: DbHTTPResponseProtocol
 
 typealias DbPzListHandler<T: Mappable> = (_ obj :[T]?, PzResponse) -> ()
 typealias DbPzObjectHandler<T: Mappable> = (_ obj :T?, PzResponse) -> ()
+//typealias DbDispatchHandler = (DbResponse) -> Void
 
 public class PzBaseApi
 {
-    class func upload(strUrl: String, uploadData: [DbUploadData], params: [String: String]? = nil, processHandler: @escaping DbUploadProcessHandler, dispatchHandler: @escaping DbDispatchHandler)
+    class func upload<T: Mappable>(strUrl: String, uploadData: [String: DbHTTPFile],
+                      params: [String: String]? = nil,
+                      processHandler: @escaping DbTaskProgressHandler, completionHandler: DbPzListHandler<T>?)
         
     {
-        let requestUpload = DbUploadRequestFor<PropzyResponse>()
-        requestUpload.requestUrl = strUrl
-        requestUpload.arrUploadData = uploadData
-        requestUpload.query = ["type": "avatar"]
-        
-        DbHttp.upload(UploadRequest: requestUpload, processHandler: { (progress) in
-            processHandler(progress)
-            // -- Print debug --
-            print("progress.fractionCompleted" + String(Float(progress.fractionCompleted)))
-            
-        }) { (response) in
-            dispatchHandler(response)
-            // -- Print debug --
-            print("Upload => successHandler")
-            print("responseData = \(String(describing: response.rawData))")
-            // debugPrint(response)
-            if let res: PropzyResponse = response as? PropzyResponse {
-                print("PropzyResponse = \(String(describing: res.data))")
-            }
+        //params!["type"] = "avatar"
+        DbHTTP.jsonUploadFor(PzResponse.self, url: strUrl, json: params, files: uploadData,
+                             asyncProgressHandler: processHandler) { (pzResponse) in
+                                if pzResponse.httpResult.ok {
+                                    completionHandler?(parseToArray(T.self, data: pzResponse.data), pzResponse)
+                                } else {
+                                    // Xu ly loi
+                                    completionHandler?(nil, pzResponse)
+                                }
         }
     }
     
-    class func requestForObject<T: Mappable>(strUrl: String, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyObjectHandler<T>?)
+    class func requestForObject<T: Mappable>(strUrl: String,
+                                             method: DbHTTPMethod = .get,
+                                             params: [String: String]? = nil,
+                                             completionHandler: DbPzObjectHandler<T>?)
     {
-        //        let request = DbRequestFor<PropzyResponse>.init(method: method, requestUrl: strUrl)
-        //        //        request.method = DbHttpMethod.POST
-        //        //        request.contentType = DbHttpContentType.JSON
-        //        //
-        //        //        var arrHeaders: [DbHttpHeader] = []
-        //        //        arrHeaders.append(DbHttpHeader.Custom("Accept-Encoding", "gzip"))
-        //        //        arrHeaders.append(DbHttpHeader.Custom("Accept-Language", "vi-VN"))
-        //        //        request.headers = arrHeaders
-        //
-        //        // let params: [String: String]! = ["buildingId" : "2", "buildingName" : "194 Golden Building"]
-        //        if let params = params {
-        //            request.query = params
-        //        }
-        //
-        //        DbHttp.dispatch(Request: request) { (response) in
-        //            if let res: PropzyResponse = response as? PropzyResponse {
-        //                print("Goi thu successHandler")
-        //                print("responseData = \(String(describing: res.dictData))")
-        //                completionHandler?(parseToArray(T.self, pzResponse: res)?.first, res)
-        //            }
-        //        }
-        
-        request(strUrl: strUrl, method: method) { (response) in
-            if let res: PropzyResponse = response as? PropzyResponse {
-                if let err = res.error {
-                    print("requestForObject Error = \(String(describing: err))")
-                    completionHandler?(nil, res)
-                    return
-                }
-                completionHandler?(parseToArray(T.self, pzResponse: res)?.first, res)
+        DbHTTP.requestFor(PzResponse.self, method: method, url: strUrl, json: params) { (pzResponse) in
+            if pzResponse.httpResult.ok {
+                completionHandler?(parseToArray(T.self, data: pzResponse.data)?.first, pzResponse)
+            } else {
+                // Xu ly loi
+                completionHandler?(nil, pzResponse)
             }
         }
     }
@@ -137,134 +109,67 @@ public class PzBaseApi
     // -- Con chua xu ly duoc cache 1 object --
     class func requestObjectWithCache<T: DbRealmObject>(strUrl: String, objectPrimaryKeyValue: Any?, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyObjectHandler<T>?)
     {
-        requestForObject(strUrl: strUrl, method: method, params: params) { (obj: T?, response: PropzyResponse) in
-            if let object = obj {
-                // -- Co du lieu tra ve tu Service --
-                // -- Save to Realm data, if existed primary key will be override  --
-                DbRealmManager.saveWithCompletion(T: object, completion: { (sucess) in
-                    print("Da ghi Realm Object thanh cong")
-                })
-                completionHandler?(object, response)
-            } else {
-                // -- Khong co du lieu tra ve tu Service => get from Realm db --
-                DbRealmManager.getFetchObjectWithCustomPrimareyKey(T: T(), objectPrimaryKey: T.primaryKey() ?? "id", objectPrimaryKeyValue: objectPrimaryKeyValue as? String ?? "none", completionHandler: { (itemCache) in
-                    completionHandler?(itemCache as? T, response)
-                })
-                //                DbRealmManager.getFetchObject(T: <#T##Object#>, objectID: <#T##String#>, completionHandler: <#T##(Object?) -> Void#>)
-                //                DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
-                //                    completionHandler?(arrCache as? [T] , response)
-                //                })
-            }
-        }
+//        requestForObject(strUrl: strUrl, method: method, params: params) { (obj: T?, response: PropzyResponse) in
+//            if let object = obj {
+//                // -- Co du lieu tra ve tu Service --
+//                // -- Save to Realm data, if existed primary key will be override  --
+//                DbRealmManager.saveWithCompletion(T: object, completion: { (sucess) in
+//                    print("Da ghi Realm Object thanh cong")
+//                })
+//                completionHandler?(object, response)
+//            } else {
+//                // -- Khong co du lieu tra ve tu Service => get from Realm db --
+//                DbRealmManager.getFetchObjectWithCustomPrimareyKey(T: T(), objectPrimaryKey: T.primaryKey() ?? "id", objectPrimaryKeyValue: objectPrimaryKeyValue as? String ?? "none", completionHandler: { (itemCache) in
+//                    completionHandler?(itemCache as? T, response)
+//                })
+//                //                DbRealmManager.getFetchObject(T: <#T##Object#>, objectID: <#T##String#>, completionHandler: <#T##(Object?) -> Void#>)
+//                //                DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
+//                //                    completionHandler?(arrCache as? [T] , response)
+//                //                })
+//            }
+//        }
     }
     
     class func requestListWithCache<T: DbRealmObject>(strUrl: String, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyListHandler<T>?)
     {
-        requestForList(strUrl: strUrl, method: method, params: params) { ( arr: [T]?, response: PropzyResponse) in
-            if let arrObject = arr {
-                // -- Co du lieu tra ve tu Service --
-                // -- Save to Realm data, if existed primary key will be override  --
-                DbRealmManager.saveArrayObjects(T: arrObject, completion: { (success) in
-                    print("Da ghi Realm List thanh cong")
-                })
-                completionHandler?(arrObject, response)
+//        requestForList(strUrl: strUrl, method: method, params: params) { ( arr: [T]?, response: PropzyResponse) in
+//            if let arrObject = arr {
+//                // -- Co du lieu tra ve tu Service --
+//                // -- Save to Realm data, if existed primary key will be override  --
+//                DbRealmManager.saveArrayObjects(T: arrObject, completion: { (success) in
+//                    print("Da ghi Realm List thanh cong")
+//                })
+//                completionHandler?(arrObject, response)
+//            } else {
+//
+//                // -- Khong co du lieu tra ve tu Service => get from Realm db --
+//                DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
+//                    completionHandler?(arrCache as? [T], response)
+//                })
+//            }
+//        }
+    }
+    
+    
+    class func requestForList<T: Mappable>(strUrl: String,
+                                           method: DbHTTPMethod = .get,
+                                           params: [String: String]? = nil,
+                                           completionHandler: DbPzListHandler<T>?)
+    {
+        DbHTTP.requestFor(PzResponse.self, method: method, url: strUrl, json: params) { (pzResponse) in
+            if pzResponse.httpResult.ok {
+                completionHandler?(parseToArray(T.self, data: pzResponse.data), pzResponse)
             } else {
-                
-                // -- Khong co du lieu tra ve tu Service => get from Realm db --
-                DbRealmManager.getAllListOf(T: T(), completionHandler: { (arrCache) in
-                    completionHandler?(arrCache as? [T], response)
-                })
+                // Xu ly loi
+                completionHandler?(nil, pzResponse)
             }
         }
     }
     
-    
-    class func requestForList<T: Mappable>(strUrl: String, method: DbHttpMethod = .GET, params: [String: String]? = nil, completionHandler: PropzyListHandler<T>?)
-    {
-        //        let request = DbRequestFor<PropzyResponse>.init(method: method, requestUrl: strUrl)
-        //        // let params: [String: String]! = ["buildingId" : "2", "buildingName" : "194 Golden Building"]
-        //        if let params = params {
-        //            request.query = params
-        //        }
-        //
-        //        DbHttp.dispatch(Request: request) { (response) in
-        //            if let res: PropzyResponse = response as? PropzyResponse {
-        //                print("Goi thu successHandler")
-        //                print("responseData = \(String(describing: res.dictData))")
-        //
-        //                completionHandler?(parseToArray(T.self, pzResponse: res), res)
-        //            }
-        //        }
-        
-        request(strUrl: strUrl, method: method) { (response) in
-            if let res: PropzyResponse = response as? PropzyResponse {
-                if let err = res.error {
-                    print("requestForList Error = \(String(describing: err))")
-                    completionHandler?(nil, res)
-                    return
-                }
-                completionHandler?(parseToArray(T.self, pzResponse: res), res)
-            }
-        }
-    }
-    
-    class func request(strUrl: String, method: DbHttpMethod = .POST, params: [String: String]? = nil, completionHandler: @escaping DbDispatchHandler)
-    {
-        let request = DbRequestFor<PropzyResponse>.init(method: method, requestUrl: strUrl)
-        // let params: [String: String]! = ["buildingId" : "2", "buildingName" : "194 Golden Building"]
-        if let params = params {
-            request.query = params
-        }
-        
-        DbHttp.dispatch(Request: request) { (response) in
-            
-            // -- Try debug --
-            //            debugPrint(request)
-            //            debugPrint(response)
-            //            print("Request = \(String(describing: request))")
-            //            print("Response = \(String(describing: response))")
-            // -- --------- --
-            // -- Chi xu ly loi mang, hien thong bao popup --
-            if let res: PropzyResponse = response as? PropzyResponse {
-                // -- Xu ly thong bao ket noi mang, hay cac thong bao loi thong dung --
-                if let errNetwork = res.error as? DbNetworkError {
-                    // -- Loi lien quan den mang --
-                    print("DbNetworkError = \(String(describing: errNetwork))")
-                    // -- Show warning network --
-                    Pz.showErrorNetwork()
-                }
-                // -- Complete Handle --
-                completionHandler(res)
-            }
-            
-            //            if let res: PropzyResponse = response as? PropzyResponse {
-            //                // -- Xu ly thong bao ket noi mang, hay cac thong bao loi thong dung --
-            //                if let errNetwork = res.error as? DbNetworkError {
-            //                    // -- Loi lien quan den mang --
-            //                    print("DbNetworkError = \(String(describing: errNetwork))")
-            //                    return
-            //                }
-            //                if let errPropzy = res.error as? PropzyError {
-            //                    // -- Loi lien quan den he thong Propzy --
-            //                    print("PropzyError = \(String(describing: errPropzy))")
-            //                    return
-            //                }
-            //                // -- Loi chung chung --
-            //                if let err = res.error {
-            //                    // -- Loi lien quan den mang --
-            //                    print("Common Error = \(String(describing: err))")
-            //                    return
-            //                }
-            //                // -- Complete Handle --
-            //                completionHandler(res)
-            //            }
-        }
-    }
-    
-    class func parseToArray<T: Mappable>(_ obj: T.Type, pzResponse: PropzyResponse) -> [T]?
+    class func parseToArray<T: Mappable>(_ obj: T.Type, data: Any?) -> [T]?
     {
         var arr: [T] = []
-        if let dataArr = pzResponse.data as? [AnyObject] {
+        if let dataArr = data as? [AnyObject] {
             for item in dataArr {
                 if let jsonResult = item as? Dictionary<String, Any> {
                     // do whatever with jsonResult
@@ -273,8 +178,7 @@ public class PzBaseApi
                 }
             }
             // return arr
-        } else if let jsonResult = pzResponse.data as? Dictionary<String, Any> {
-            //            arr.append(T(JSON: jsonResult)!)
+        } else if let jsonResult = data as? Dictionary<String, Any> {
             arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
         }
         return arr

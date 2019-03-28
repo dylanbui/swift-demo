@@ -80,7 +80,7 @@ extension ConnectionOf {
         _ typeObj: T.Type,
         method: DbHTTPMethod,
         url: URLComponentsConvertible, // String Url
-        params: [String: Any] = [:], // Menthod Get params
+        params: [String: Any] = [:], // Method Get params
         data: [String: Any] = [:], // Post params
         json: Any? = nil, // Post with json
         asyncProgressHandler: (DbTaskProgressHandler)? = nil,
