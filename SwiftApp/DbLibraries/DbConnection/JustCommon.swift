@@ -134,6 +134,26 @@ extension URL: URLComponentsConvertible {
     }
 }
 
+public protocol DbHTTPResponseProtocol {
+    
+    init()
+    
+    func parseResult(result: HTTPResult) -> Void
+    
+}
+
+public class SimpleResponse: DbHTTPResponseProtocol {
+    
+    var responseResult: HTTPResult!
+    
+    required public init() { }
+    
+    public func parseResult(result: HTTPResult) {
+        self.responseResult = result
+    }
+    
+}
+
 /// The only reason this is not a struct is the requirements for
 /// lazy evaluation of `headers` and `cookies`, which is mutating the
 /// struct. This would make those properties unusable with `HTTPResult`s
@@ -441,6 +461,122 @@ public struct JustOf<Adaptor: JustAdaptor> {
 extension JustOf {
     
     @discardableResult
+    public func requestFor<Res: DbHTTPResponseProtocol>(
+        _ method: DbHTTPMethod,
+        url: String, // String Url
+        params: [String: Any] = [:], // Menthod Get params
+        data: [String: Any] = [:], // Post params
+        json: Any? = nil, // Post with json
+        asyncProgressHandler: (TaskProgressHandler)? = nil,
+        asyncCompletionHandler: ((Res) -> Void)? = nil
+        ) -> Res {
+        
+        let result = adaptor.request(
+            method,
+            url: url,
+            params: params,
+            data: data,
+            json: json,
+            headers: [:],
+            files: [:],
+            auth: nil,
+            cookies: [:],
+            redirects: true,
+            timeout: nil,
+            urlQuery: nil,
+            requestBody: nil,
+            asyncProgressHandler: asyncProgressHandler)
+        { (httpResult) in
+            if let handle = asyncCompletionHandler {
+                let res = Res()
+                res.parseResult(result: httpResult)
+                handle(res)
+            }
+        }
+        
+        let res = Res()
+        res.parseResult(result: result)
+        return res
+    }
+    
+    @discardableResult
+    public func getJsonFor<Res: DbHTTPResponseProtocol>(
+        _ url: String, // String Url
+        asyncProgressHandler: (TaskProgressHandler)? = nil,
+        asyncCompletionHandler: ((Res) -> Void)? = nil
+        ) -> Res {
+       
+        // -- Khong goi lai ham requestFor<Res: DbHTTPResponseProtocol> duoc --
+        let result = adaptor.request(
+            .get,
+            url: url,
+            params: [:],
+            data: [:],
+            json: nil,
+            headers: ["content-type": "application/json"], // Nen set json
+            files: [:],
+            auth: nil,
+            cookies: [:],
+            redirects: true,
+            timeout: nil,
+            urlQuery: nil,
+            requestBody: nil,
+            asyncProgressHandler: asyncProgressHandler)
+        { (httpResult) in
+            if let handle = asyncCompletionHandler {
+                let res = Res()
+                res.parseResult(result: httpResult)
+                handle(res)
+            }
+        }
+        
+        let res = Res()
+        res.parseResult(result: result)
+        return res
+    }
+    
+    @discardableResult
+    public func postJsonFor<Res: DbHTTPResponseProtocol>(
+        _ url: URLComponentsConvertible, // String Url
+        json: Any? = nil, // Post with json
+        asyncProgressHandler: (TaskProgressHandler)? = nil,
+        asyncCompletionHandler: ((Res) -> Void)? = nil
+        ) -> Res {
+        
+        // -- Khong goi lai ham requestFor<Res: DbHTTPResponseProtocol> duoc --
+        let result = adaptor.request(
+            .post,
+            url: url,
+            params: [:],
+            data: [:],
+            json: json,
+            headers: [:],
+            files: [:],
+            auth: nil,
+            cookies: [:],
+            redirects: true,
+            timeout: nil,
+            urlQuery: nil,
+            requestBody: nil,
+            asyncProgressHandler: asyncProgressHandler)
+        { (httpResult) in
+            if let handle = asyncCompletionHandler {
+                let res = Res()
+                res.parseResult(result: httpResult)
+                handle(res)
+            }
+        }
+        
+        let res = Res()
+        res.parseResult(result: result)
+        return res
+    }
+    
+}
+
+extension JustOf {
+    
+    @discardableResult
     public func request(
         _ method: DbHTTPMethod,
         url: URLComponentsConvertible,
@@ -735,3 +871,4 @@ extension JustOf {
         )
     }
 }
+
