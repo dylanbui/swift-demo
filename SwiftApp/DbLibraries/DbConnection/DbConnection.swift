@@ -13,32 +13,7 @@ import UIKit
 import Alamofire
 
 typealias DbDispatchHandler = (DbResponse) -> Void
-typealias DbDispatchHandlerNews<T: DbResponseProtocol> = (T) -> Void
 typealias DbUploadProcessHandler = (Progress) -> Void
-
-class DbConn: NSObject {
-    // MARK: - dispatch : call server bat dong bo
-    // MARK: -
-    @discardableResult
-    class func dispatch<T: DbResponseProtocol>(Request request: DbRequest, queue: DispatchQueue? = nil, dispatchHandler: @escaping DbDispatchHandlerNews<T>) -> T?
-    {
-        // -- Check connection network --
-        if NetworkReachabilityManager()!.isReachable == false {
-            // -- Set data for response --
-            if let responseObj = request.response {
-                responseObj.parse(nil, error: DbNetworkError.connectionError)
-//                dispatchHandler(responseObj as DbResponseProtocol)
-//                dispatchHandler(DbResponse() as DbResponseProtocol)
-            }
-            return nil
-        }
-        
-        let t = T()
-        dispatchHandler(t)
-      
-        return nil
-    }
-}
 
 class DbHttp: NSObject {
     

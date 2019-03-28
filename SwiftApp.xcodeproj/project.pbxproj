@@ -168,6 +168,8 @@
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
 		BBA9BBD3224CB61E0068FFDC /* DbHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9BBD2224CB61E0068FFDC /* DbHttp.swift */; };
+		BBA9BBD5224CBFF50068FFDC /* DbHttpExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9BBD4224CBFF50068FFDC /* DbHttpExtensions.swift */; };
+		BBA9BBD7224CE0DE0068FFDC /* PzBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9BBD6224CE0DE0068FFDC /* PzBaseApi.swift */; };
 		BBAF935922357F7B0086AC02 /* EditRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */; };
 		BBAF935A22357F7B0086AC02 /* EditRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */; };
 		BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */; };
@@ -228,8 +230,6 @@
 		BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D19B21046E3D007675F9 /* DbRealmManager.swift */; };
 		BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC3D19D210471F4007675F9 /* DbRealmManagerExtensions.swift */; };
 		BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */; };
-		BBCDB282224A3BB60097BA53 /* Just.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCDB280224A3BB40097BA53 /* Just.swift */; };
-		BBCDB283224A3BB60097BA53 /* JustCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCDB281224A3BB60097BA53 /* JustCommon.swift */; };
 		BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */; };
 		BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */; };
 		BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */; };
@@ -459,6 +459,8 @@
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
 		BBA9BBD2224CB61E0068FFDC /* DbHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHttp.swift; sourceTree = "<group>"; };
+		BBA9BBD4224CBFF50068FFDC /* DbHttpExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHttpExtensions.swift; sourceTree = "<group>"; };
+		BBA9BBD6224CE0DE0068FFDC /* PzBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzBaseApi.swift; sourceTree = "<group>"; };
 		BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRealmViewController.swift; sourceTree = "<group>"; };
 		BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditRealmViewController.xib; sourceTree = "<group>"; };
 		BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLocationManager.swift; sourceTree = "<group>"; };
@@ -519,8 +521,6 @@
 		BBC3D19B21046E3D007675F9 /* DbRealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmManager.swift; sourceTree = "<group>"; };
 		BBC3D19D210471F4007675F9 /* DbRealmManagerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmManagerExtensions.swift; sourceTree = "<group>"; };
 		BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationDemo.swift; sourceTree = "<group>"; };
-		BBCDB280224A3BB40097BA53 /* Just.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Just.swift; sourceTree = "<group>"; };
-		BBCDB281224A3BB60097BA53 /* JustCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JustCommon.swift; sourceTree = "<group>"; };
 		BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAlertController.swift; sourceTree = "<group>"; };
 		BBD3CEEC1F70CFE50028425E /* SwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -809,6 +809,7 @@
 		BB4E235E210EBC6400524B0D /* Propzy-SAM */ = {
 			isa = PBXGroup;
 			children = (
+				BBA9BBD6224CE0DE0068FFDC /* PzBaseApi.swift */,
 				BB32A3DE224B2576006265B7 /* DemoJustViewController.swift */,
 				BB32A3DF224B2576006265B7 /* DemoJustViewController.xib */,
 				BB5E1424210AFD7F0059A8C4 /* DemoUsing */,
@@ -1336,13 +1337,12 @@
 		BBE88C762021C4A80044F661 /* DbConnection */ = {
 			isa = PBXGroup;
 			children = (
-				BBCDB281224A3BB60097BA53 /* JustCommon.swift */,
-				BBCDB280224A3BB40097BA53 /* Just.swift */,
 				BB19FAF420441A6B005F2669 /* Reachability.swift */,
 				BB32A3D9224B20EC006265B7 /* DbConnection.swift */,
 				BB32A3DA224B20EC006265B7 /* DbRequest.swift */,
 				BB32A3D8224B20EB006265B7 /* DbResponse.swift */,
 				BBA9BBD2224CB61E0068FFDC /* DbHttp.swift */,
+				BBA9BBD4224CBFF50068FFDC /* DbHttpExtensions.swift */,
 			);
 			path = DbConnection;
 			sourceTree = "<group>";
@@ -1747,6 +1747,7 @@
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BB9A7C5F22254BF9004EDEB4 /* DbNSLayoutConstraintsExtensions.swift in Sources */,
+				BBA9BBD7224CE0DE0068FFDC /* PzBaseApi.swift in Sources */,
 				BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB06BC152201965400227059 /* CandySearchFooter.swift in Sources */,
@@ -1765,7 +1766,6 @@
 				BBB1A53722004AF40047293E /* DemoDbLocationManagerViewController.swift in Sources */,
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
 				BB228A502108302A00C5C6AA /* Actor.swift in Sources */,
-				BBCDB283224A3BB60097BA53 /* JustCommon.swift in Sources */,
 				BB06BC12220195F300227059 /* DetailCandySearchViewController.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
 				BB2810A42216DDEC003823FE /* DbPullLoadView.swift in Sources */,
@@ -1819,6 +1819,7 @@
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
 				BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */,
+				BBA9BBD5224CBFF50068FFDC /* DbHttpExtensions.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */,
 				BB407ACD2181821A00C8E57F /* DbUIImageExtensions.swift in Sources */,
@@ -1835,7 +1836,6 @@
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BB2229C92229AE7900A82EA5 /* PhotoUploadManager.swift in Sources */,
 				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,
-				BBCDB282224A3BB60097BA53 /* Just.swift in Sources */,
 				BB26008D21D60FD100D5F41D /* DbSelectBox.swift in Sources */,
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
 				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
