@@ -70,7 +70,14 @@ public class MyGoogleResponse: DbHTTPResponseProtocol {
     
 }
 
-
+/*
+ Cac task khi hoan thanh deu o background thread. neu can update UI can chuyen len main thread
+ 
+ DispatchQueue.main.async{
+    //put your code here
+ }
+ 
+ */
 
 
 extension ConnectionOf {

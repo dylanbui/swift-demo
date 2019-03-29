@@ -37,9 +37,9 @@
                         <action selector="btnGet_Click:" destination="-1" eventType="touchUpInside" id="6Fi-Cb-qYi"/>
                     </connections>
                 </button>
-                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="demo_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="bhw-lA-qhe">
+                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="demo_5.png" translatesAutoresizingMaskIntoConstraints="NO" id="bhw-lA-qhe">
                     <rect key="frame" x="68" y="340" width="240" height="128"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="qSa-03-53y">
                     <rect key="frame" x="144" y="283" width="89" height="30"/>
@@ -47,6 +47,14 @@
                     <state key="normal" title="Upload"/>
                     <connections>
                         <action selector="btnUpload_Click:" destination="-1" eventType="touchUpInside" id="Zse-kH-fo4"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kZ8-q6-vUk">
+                    <rect key="frame" x="149" y="129" width="78" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Get Google"/>
+                    <connections>
+                        <action selector="btnGetGoogleData_Click:" destination="-1" eventType="touchUpInside" id="lVc-hn-ur9"/>
                     </connections>
                 </button>
             </subviews>

@@ -1,15 +1,15 @@
 //
-//  CountryUnit.swift
+//  RealmCommonUnit.swift
 //  SwiftApp
 //
-//  Created by Dylan Bui on 9/6/18.
-//  Copyright © 2018 Propzy Viet Nam. All rights reserved.
+//  Created by Dylan Bui on 3/29/19.
+//  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //
 
 import Foundation
 import ObjectMapper
 
-class CityUnit: DbRealmObject // , CustomStringConvertible
+class CityRmUnit: DbrmObjectMappable // , CustomStringConvertible
 {
     @objc dynamic var regionId: Int = -1
     @objc dynamic var countryId: Int = -1
@@ -32,9 +32,8 @@ class CityUnit: DbRealmObject // , CustomStringConvertible
         self.mapping(map: map)
     }
     
-    override func mapping(map: Map)
+    func mapping(map: Map)
     {
-        super.mapping(map: map)
         
         regionId                    <- map["regionId"]
         countryId                   <- map["countryId"]
@@ -53,7 +52,7 @@ class CityUnit: DbRealmObject // , CustomStringConvertible
     }
 }
 
-class DistrictUnit: DbRealmObject // , CustomStringConvertible
+class DistrictRmUnit: DbrmObjectMappable // , CustomStringConvertible
 {
     @objc dynamic var regionId: Int = -1
     @objc dynamic var countryId: Int = -1
@@ -76,10 +75,8 @@ class DistrictUnit: DbRealmObject // , CustomStringConvertible
         self.mapping(map: map)
     }
     
-    override func mapping(map: Map)
+    func mapping(map: Map)
     {
-        super.mapping(map: map)
-        
         regionId                    <- map["regionId"]
         countryId                   <- map["countryId"]
         cityId                      <- map["cityId"]
@@ -97,7 +94,7 @@ class DistrictUnit: DbRealmObject // , CustomStringConvertible
     }
 }
 
-extension DistrictUnit: DbItemProtocol {
+extension DistrictRmUnit: DbItemProtocol {
     var dbItemId: Int {
         return self.districtId
     }
@@ -107,7 +104,7 @@ extension DistrictUnit: DbItemProtocol {
     }
 }
 
-class WardUnit: DbRealmObject // , CustomStringConvertible
+class WardRmUnit: DbrmObjectMappable // , CustomStringConvertible
 {
     @objc dynamic var regionId: Int = -1
     @objc dynamic var countryId: Int = -1
@@ -133,10 +130,8 @@ class WardUnit: DbRealmObject // , CustomStringConvertible
         self.mapping(map: map)
     }
     
-    override func mapping(map: Map)
+    func mapping(map: Map)
     {
-        super.mapping(map: map)
-        
         regionId                    <- map["regionId"]
         countryId                   <- map["countryId"]
         cityId                      <- map["cityId"]
@@ -155,4 +150,3 @@ class WardUnit: DbRealmObject // , CustomStringConvertible
         // return "Response data: \(String(describing: representation))"
     }
 }
-

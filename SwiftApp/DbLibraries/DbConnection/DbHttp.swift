@@ -4,7 +4,7 @@
 //
 //  Created by Dylan Bui on 3/28/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
-//  Source: https://github.com/JustHTTP/Just
+//  Source v0.7.1: https://github.com/JustHTTP/Just
 //  Rename lai cho de su dung vao library
 
 import Foundation

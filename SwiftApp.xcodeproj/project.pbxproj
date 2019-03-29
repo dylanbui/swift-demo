@@ -142,6 +142,11 @@
 		BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */; };
 		BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */; };
 		BB8BECC7222B068400EC7620 /* DbProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC6222B068400EC7620 /* DbProgressBar.swift */; };
+		BB92D85B224DC4E300B8F244 /* DemoNetworkRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92D859224DC4E300B8F244 /* DemoNetworkRealmViewController.swift */; };
+		BB92D85C224DC4E300B8F244 /* DemoNetworkRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB92D85A224DC4E300B8F244 /* DemoNetworkRealmViewController.xib */; };
+		BB92D85E224DC6DF00B8F244 /* PzAdminApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92D85D224DC6DF00B8F244 /* PzAdminApi.swift */; };
+		BB92D860224E00BE00B8F244 /* DbRealmExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92D85F224E00BE00B8F244 /* DbRealmExtensions.swift */; };
+		BB92D864224E056300B8F244 /* RealmCommonUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92D863224E056300B8F244 /* RealmCommonUnit.swift */; };
 		BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */; };
 		BB9A193D22294CA400D7BE9A /* PGOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A193C22294CA400D7BE9A /* PGOperation.swift */; };
 		BB9A193F22294CD100D7BE9A /* ImageDownloadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9A193E22294CD100D7BE9A /* ImageDownloadManager.swift */; };
@@ -433,6 +438,11 @@
 		BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController_V1.swift; sourceTree = "<group>"; };
 		BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoLazyUploadViewController.xib; sourceTree = "<group>"; };
 		BB8BECC6222B068400EC7620 /* DbProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbProgressBar.swift; sourceTree = "<group>"; };
+		BB92D859224DC4E300B8F244 /* DemoNetworkRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkRealmViewController.swift; sourceTree = "<group>"; };
+		BB92D85A224DC4E300B8F244 /* DemoNetworkRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoNetworkRealmViewController.xib; sourceTree = "<group>"; };
+		BB92D85D224DC6DF00B8F244 /* PzAdminApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzAdminApi.swift; sourceTree = "<group>"; };
+		BB92D85F224E00BE00B8F244 /* DbRealmExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmExtensions.swift; sourceTree = "<group>"; };
+		BB92D863224E056300B8F244 /* RealmCommonUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCommonUnit.swift; sourceTree = "<group>"; };
 		BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseMMDrawerController.swift; sourceTree = "<group>"; };
 		BB9A193C22294CA400D7BE9A /* PGOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PGOperation.swift; sourceTree = "<group>"; };
 		BB9A193E22294CD100D7BE9A /* ImageDownloadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloadManager.swift; sourceTree = "<group>"; };
@@ -629,6 +639,7 @@
 			isa = PBXGroup;
 			children = (
 				BB5E1427210B200A0059A8C4 /* AppEvn.swift */,
+				BB92D865224E104B00B8F244 /* Demo-EasyRealmAndNetworking */,
 				BB06BC0B220194F300227059 /* Demo-UISearchController */,
 				BBB1A53021FFF8BE0047293E /* Demo-DbLocationManager */,
 				BB9BC0B921ED9B18004BC430 /* Demo-ActionSheetWindow */,
@@ -677,6 +688,7 @@
 				BB26008321D60FD000D5F41D /* DbDropDownView */,
 				BB2FE66D2192C43F007470DD /* DbSemiModalViewController */,
 				BB3FDBEE217EFCB9002D570F /* DbStackScrollView */,
+				BB92D866224E10B200B8F244 /* DbRealm */,
 				BBC3D19A21046E29007675F9 /* DbRealmManager */,
 				BBC38A43206DDE9500B11C7B /* SwiftIconFont */,
 				BBE44769206B75F900ED8CC2 /* ObjC-Libraries */,
@@ -809,9 +821,6 @@
 		BB4E235E210EBC6400524B0D /* Propzy-SAM */ = {
 			isa = PBXGroup;
 			children = (
-				BBA9BBD6224CE0DE0068FFDC /* PzBaseApi.swift */,
-				BB32A3DE224B2576006265B7 /* DemoJustViewController.swift */,
-				BB32A3DF224B2576006265B7 /* DemoJustViewController.xib */,
 				BB5E1424210AFD7F0059A8C4 /* DemoUsing */,
 				BB4E2367210EBCE700524B0D /* Common */,
 				BB4E235F210EBCAD00524B0D /* PzLoginViewController.swift */,
@@ -928,6 +937,28 @@
 				BB7F3037203E857900185366 /* main_gate_img@2x.png */,
 			);
 			path = Images;
+			sourceTree = "<group>";
+		};
+		BB92D865224E104B00B8F244 /* Demo-EasyRealmAndNetworking */ = {
+			isa = PBXGroup;
+			children = (
+				BBA9BBD6224CE0DE0068FFDC /* PzBaseApi.swift */,
+				BB92D85D224DC6DF00B8F244 /* PzAdminApi.swift */,
+				BB92D863224E056300B8F244 /* RealmCommonUnit.swift */,
+				BB32A3DE224B2576006265B7 /* DemoJustViewController.swift */,
+				BB32A3DF224B2576006265B7 /* DemoJustViewController.xib */,
+				BB92D859224DC4E300B8F244 /* DemoNetworkRealmViewController.swift */,
+				BB92D85A224DC4E300B8F244 /* DemoNetworkRealmViewController.xib */,
+			);
+			path = "Demo-EasyRealmAndNetworking";
+			sourceTree = "<group>";
+		};
+		BB92D866224E10B200B8F244 /* DbRealm */ = {
+			isa = PBXGroup;
+			children = (
+				BB92D85F224E00BE00B8F244 /* DbRealmExtensions.swift */,
+			);
+			path = DbRealm;
 			sourceTree = "<group>";
 		};
 		BB9A194022294CED00D7BE9A /* Demo-SmartLazyLoading */ = {
@@ -1531,6 +1562,7 @@
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
 				BB7F303A203E857900185366 /* demo_3.jpg in Resources */,
+				BB92D85C224DC4E300B8F244 /* DemoNetworkRealmViewController.xib in Resources */,
 				BBC02E641F71747A0011FDE6 /* OpenSans-BoldItalic.ttf in Resources */,
 				BB7F3044203E857900185366 /* main_gate_img.png in Resources */,
 				BBB569E11F7B5B880014A7A9 /* TaskViewCell.xib in Resources */,
@@ -1708,6 +1740,7 @@
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
 				BBA9BBD3224CB61E0068FFDC /* DbHttp.swift in Sources */,
+				BB92D85B224DC4E300B8F244 /* DemoNetworkRealmViewController.swift in Sources */,
 				BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */,
 				BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */,
 				BB8BECC1222AEEEC00EC7620 /* ImageRowCollectionCell.swift in Sources */,
@@ -1721,6 +1754,7 @@
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BB32A3DC224B20EC006265B7 /* DbConnection.swift in Sources */,
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
+				BB92D85E224DC6DF00B8F244 /* PzAdminApi.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
 				BB28109F2216D42F003823FE /* DbPullLoader.swift in Sources */,
 				BB887C632244F20B0045BF2F /* FileUploader.swift in Sources */,
@@ -1791,6 +1825,7 @@
 				BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */,
 				BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */,
 				BBF0A5FB2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift in Sources */,
+				BB92D860224E00BE00B8F244 /* DbRealmExtensions.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BB407ACF2181821A00C8E57F /* DbNSAttributedStringExtensions.swift in Sources */,
 				BBB1A534220031780047293E /* DbLocationManagerDefines.swift in Sources */,
@@ -1869,6 +1904,7 @@
 				BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BB32A3DD224B20EC006265B7 /* DbRequest.swift in Sources */,
+				BB92D864224E056300B8F244 /* RealmCommonUnit.swift in Sources */,
 				BB997713211BE8BD00C1052F /* BaseMMDrawerController.swift in Sources */,
 				BBDD9BA0207332D000217030 /* DbPropzyResponse.swift in Sources */,
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,

@@ -12,22 +12,46 @@ import UIKit
 // MARK: - Methods
 public extension UIImageView {
     
-    /// SwifterSwift: Set image from a URL.
-    ///
+    public func db_transition(toImage image: UIImage?) {
+        UIView.transition(with: self, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+            self.image = image
+        }, completion: nil)
+    }
+    
+    /// Set image from a URL.
+    ///    If image size to large => dont cache
     /// - Parameters:
     ///   - url: URL of image.
     ///   - contentMode: imageView content mode (default is .scaleAspectFit).
     ///   - placeHolder: optional placeholder image
+    ///   - cache: cache object
     ///   - completionHandler: optional completion handler to run when download finishs (default is nil).
     public func db_download(
         from url: URL,
-        contentMode: UIViewContentMode = .scaleAspectFit,
+        contentMode: UIViewContentMode? = nil, //  = .scaleAspectFill
         placeholder: UIImage? = nil,
+        cache: URLCache = URLCache.shared,
         completionHandler: ((UIImage?) -> Void)? = nil) {
         
-        image = placeholder
-        self.contentMode = contentMode
-        URLSession.shared.dataTask(with: url) { (data, response, _) in
+        if let placeholder = placeholder {
+            self.image = placeholder
+        }
+
+        if let contentMode = contentMode {
+            self.contentMode = contentMode
+        }
+        
+        // -- Get from cache --
+        let request = URLRequest(url: url)
+        if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
+            DispatchQueue.main.async {
+                self.db_transition(toImage: image)
+                completionHandler?(image)
+            }
+            return
+        }
+        // -- Get from URL --
+        URLSession.shared.dataTask(with: request) { (data, response, _) in
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
@@ -37,8 +61,13 @@ public extension UIImageView {
                     completionHandler?(nil)
                     return
             }
+            
+            // -- Save to cache --
+            let cachedData = CachedURLResponse(response: httpURLResponse, data: data)
+            cache.storeCachedResponse(cachedData, for: request)
+
             DispatchQueue.main.async {
-                self.image = image
+                self.db_transition(toImage: image)
                 completionHandler?(image)
             }
             }.resume()

@@ -64,25 +64,31 @@ class DemoJustViewController: BaseViewController
 //
 //        }
         
-        // https://via.placeholder.com/300/09f/fff.png
-        // Hinh 16mb
-        //http://www.effigis.com/wp-content/uploads/2015/02/Infoterra_Terrasar-X_1_75_m_Radar_2007DEC15_Toronto_EEC-RE_8bits_sub_r_12.jpg
-        DbHTTP.get("http://www.effigis.com/wp-content/uploads/2015/02/Infoterra_Terrasar-X_1_75_m_Radar_2007DEC15_Toronto_EEC-RE_8bits_sub_r_12.jpg"
-            , asyncProgressHandler: { (progress) in
-                // -- Khong chay xu ly nhung mong muon, chi tra ve 1 lan --
-                print("progress.type = \(progress.type) ==  progress.percent = \(progress.percent)")
-                print("progress.bytesProcessed = \(progress.bytesProcessed) ==  progress.bytesExpectedToProcess = \(progress.bytesExpectedToProcess)")
-                print(" ------------------------------ ")
-                
-        }) { (result) in
-            
-            if let imageData = result.content {
-                DbUtils.dispatchToMainQueue {
-                    self.imgTest.image = UIImage(data:imageData, scale:1.0)
-                }
-            }
-
+        self.imgTest.db_download(from: URL.init(string: "https://via.placeholder.com/300/09f/fff.png")!,
+                                 placeholder: UIImage(named: "Georgia1")
+        ) { (image) in
+            print("Da load xong anh")
         }
+        
+//        // https://via.placeholder.com/300/09f/fff.png
+//        // Hinh 16mb
+//        //http://www.effigis.com/wp-content/uploads/2015/02/Infoterra_Terrasar-X_1_75_m_Radar_2007DEC15_Toronto_EEC-RE_8bits_sub_r_12.jpg
+//        DbHTTP.get("http://www.effigis.com/wp-content/uploads/2015/02/Infoterra_Terrasar-X_1_75_m_Radar_2007DEC15_Toronto_EEC-RE_8bits_sub_r_12.jpg"
+//            , asyncProgressHandler: { (progress) in
+//                // -- Khong chay xu ly nhung mong muon, chi tra ve 1 lan --
+//                print("progress.type = \(progress.type) ==  progress.percent = \(progress.percent)")
+//                print("progress.bytesProcessed = \(progress.bytesProcessed) ==  progress.bytesExpectedToProcess = \(progress.bytesExpectedToProcess)")
+//                print(" ------------------------------ ")
+//
+//        }) { (result) in
+//
+//            if let imageData = result.content {
+//                DbUtils.dispatchToMainQueue {
+//                    self.imgTest.image = UIImage(data:imageData, scale:1.0)
+//                }
+//            }
+//
+//        }
         
         
     }
@@ -125,5 +131,56 @@ class DemoJustViewController: BaseViewController
         }
         
     }
+    
+    @IBAction func btnGetGoogleData_Click(_ sender: Any)
+    {
+        // -- Goi dong bo - synchronous --
+//        let httpResult = DbHTTP.get("https://maps.googleapis.com/maps/api/geocode/json?latlng=10.795785,106.675309&sensor=true&key=AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg")
+//
+//        let ggResponse = MyGoogleResponse.init(result: httpResult)
+//        ggResponse.parseResult()
+//
+//        if !ggResponse.httpResult.ok {
+//            print("Loi roi ban \(ggResponse.httpResult.reason)")
+//            return
+//        }
+//
+//        print("addressComponents = \(String(describing: ggResponse.addressComponents))")
+//        print("formattedAddress = \(String(describing: ggResponse.formattedAddress))")
+//        print("geometry = \(String(describing: ggResponse.geometry))")
+        
+        // -- Goi bat dong bo - asynchronous --
+        DbHTTP.jsonGetFor(MyGoogleResponse.self, url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=10.795785,106.675309&sensor=true&key=AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg") { (ggResponse) in
+
+            if !ggResponse.httpResult.ok {
+                print("Loi roi ban \(ggResponse.httpResult.reason)")
+                return
+            }
+
+            print("addressComponents = \(String(describing: ggResponse.addressComponents))")
+            print("formattedAddress = \(String(describing: ggResponse.formattedAddress))")
+            print("geometry = \(String(describing: ggResponse.geometry))")
+        }
+        
+        // -- Code cu --
+//        let _: GoogleResponse? = DbHttp.get(Url: "https://maps.googleapis.com/maps/api/geocode/json?latlng=10.795785,106.675309&sensor=true&key=AIzaSyDiMjnPpWQWVXndV-E1WnfEuW1g593BLhg") { (response) in
+//
+//            if let err = response.error {
+//                print("Loi roi ban \(err)")
+//                return
+//            }
+//
+//            guard let googleRes = response as? GoogleResponse else {
+//                print("GoogleResponse = nil")
+//                return
+//            }
+//
+//            print("addressComponents = \(String(describing: googleRes.addressComponents))")
+//            print("formattedAddress = \(String(describing: googleRes.formattedAddress))")
+//            print("geometry = \(String(describing: googleRes.geometry))")
+//        }
+    }
+    
+    
 
 }
