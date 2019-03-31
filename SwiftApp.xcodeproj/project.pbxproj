@@ -806,6 +806,17 @@
 			path = DbStackScrollView;
 			sourceTree = "<group>";
 		};
+		BB47E21D22512EFF0097D731 /* Demo-Realm */ = {
+			isa = PBXGroup;
+			children = (
+				BB7518F82232879400413607 /* DemoRealmViewController.swift */,
+				BB7518F92232879400413607 /* DemoRealmViewController.xib */,
+				BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */,
+				BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */,
+			);
+			path = "Demo-Realm";
+			sourceTree = "<group>";
+		};
 		BB48E20921F1C178002B2DEC /* Example */ = {
 			isa = PBXGroup;
 			children = (
@@ -1241,6 +1252,7 @@
 		BBDD5E962011F3F70089DD32 /* Demo-App */ = {
 			isa = PBXGroup;
 			children = (
+				BB47E21D22512EFF0097D731 /* Demo-Realm */,
 				BBD3CF161F70FBDC0028425E /* ToDoItem.swift */,
 				BBF5276F2105949B007CFFB4 /* Student.swift */,
 				BB228A4F2108302A00C5C6AA /* Actor.swift */,
@@ -1249,10 +1261,6 @@
 				BBD3CF181F7102D80028425E /* ToDoCell.swift */,
 				BBD3CF191F7102D80028425E /* ToDoCell.xib */,
 				BBC02E6E1F717D5D0011FDE6 /* SwiftyPlistManager.swift */,
-				BB7518F82232879400413607 /* DemoRealmViewController.swift */,
-				BB7518F92232879400413607 /* DemoRealmViewController.xib */,
-				BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */,
-				BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */,
 			);
 			path = "Demo-App";
 			sourceTree = "<group>";

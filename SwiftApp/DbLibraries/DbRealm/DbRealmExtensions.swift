@@ -78,6 +78,16 @@ public class DbRealm {
 
 public extension EasyRealmStatic where T:Object {
     
+    public func db_fromRealm<K>(with primaryKey: K) -> T?
+    {
+        do {
+            return try self.fromRealm(with: primaryKey)
+        } catch {
+            
+        }
+        return nil
+    }
+    
     public func db_all() -> [T]
     {
         return try! Array(self.all())

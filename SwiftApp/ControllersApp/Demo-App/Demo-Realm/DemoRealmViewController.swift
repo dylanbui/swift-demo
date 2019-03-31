@@ -66,10 +66,18 @@ class DemoRealmViewController: BaseViewController
         // -- Tra ve tat ca --
         // self.arrTask = try! Array(TaskItem.er.all().filter("title LIKE 'Task thu 9*'"))
         // self.arrTask = try! Array(TaskItem.er.all().sorted(byKeyPath: "title"))
-        self.arrTask = TaskItem.er.db_all(WithCondition: nil, sortedByKeyPath: "title")
+        // self.arrTask = TaskItem.er.db_all(WithCondition: nil, sortedByKeyPath: "title")
         // -- Tra ve 1 doi tuong --
 //        self.arrTask = try! [TaskItem.er.fromRealm(with: "31395DCE-318E-434F-9F41-AA0C052847F5")]
         
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        // -- Tra ve tat ca --
+        self.arrTask = TaskItem.er.db_all(WithCondition: nil, sortedByKeyPath: "title")
+        self.tblContent.reloadData()
     }
 
 }
@@ -135,6 +143,9 @@ extension DemoRealmViewController: UITableViewDelegate, UITableViewDataSource
         let item = self.arrTask[indexPath.row]
         print("\(String(describing: item))")
         
+        let vcl = EditRealmViewController()
+        vcl.autoId = item.autoId
+        self.navigationController?.pushViewController(vcl, animated: true)
     }
 }
 
