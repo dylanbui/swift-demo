@@ -112,6 +112,12 @@
 		BB7518FB2232879400413607 /* DemoRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7518F92232879400413607 /* DemoRealmViewController.xib */; };
 		BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */; };
 		BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */; };
+		BB7C50D92251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7C50D72251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift */; };
+		BB7C50DA2251BD1A0009E6F8 /* DemoDbSelectBoxViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7C50D82251BD1A0009E6F8 /* DemoDbSelectBoxViewController.xib */; };
+		BB7C50E12251BE5A0009E6F8 /* DropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7C50DD2251BE5A0009E6F8 /* DropDownCell.swift */; };
+		BB7C50E22251BE5A0009E6F8 /* DropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7C50DE2251BE5A0009E6F8 /* DropDownCell.xib */; };
+		BB7C50E32251BE5A0009E6F8 /* CustomDropDownCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7C50DF2251BE5A0009E6F8 /* CustomDropDownCell.xib */; };
+		BB7C50E42251BE5A0009E6F8 /* CustomDropDownCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7C50E02251BE5A0009E6F8 /* CustomDropDownCell.swift */; };
 		BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7E57F821E842CE005C3FA6 /* DemoEurekaViewController.swift */; };
 		BB7E57FB21E842CE005C3FA6 /* DemoEurekaViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7E57F921E842CE005C3FA6 /* DemoEurekaViewController.xib */; };
 		BB7E580021E84A91005C3FA6 /* EurekaHeader.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7E57FF21E84A91005C3FA6 /* EurekaHeader.xib */; };
@@ -408,6 +414,12 @@
 		BB7518F92232879400413607 /* DemoRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoRealmViewController.xib; sourceTree = "<group>"; };
 		BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLayoutViewCell.swift; sourceTree = "<group>"; };
 		BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskLayoutViewCell.xib; sourceTree = "<group>"; };
+		BB7C50D72251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDbSelectBoxViewController.swift; sourceTree = "<group>"; };
+		BB7C50D82251BD1A0009E6F8 /* DemoDbSelectBoxViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoDbSelectBoxViewController.xib; sourceTree = "<group>"; };
+		BB7C50DD2251BE5A0009E6F8 /* DropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DropDownCell.swift; sourceTree = "<group>"; };
+		BB7C50DE2251BE5A0009E6F8 /* DropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DropDownCell.xib; sourceTree = "<group>"; };
+		BB7C50DF2251BE5A0009E6F8 /* CustomDropDownCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomDropDownCell.xib; sourceTree = "<group>"; };
+		BB7C50E02251BE5A0009E6F8 /* CustomDropDownCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomDropDownCell.swift; sourceTree = "<group>"; };
 		BB7E57F821E842CE005C3FA6 /* DemoEurekaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEurekaViewController.swift; sourceTree = "<group>"; };
 		BB7E57F921E842CE005C3FA6 /* DemoEurekaViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoEurekaViewController.xib; sourceTree = "<group>"; };
 		BB7E57FF21E84A91005C3FA6 /* EurekaHeader.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EurekaHeader.xib; sourceTree = "<group>"; };
@@ -656,6 +668,7 @@
 				BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */,
 				BB28109D2216D3FB003823FE /* Demo-PullToRefresh */,
 				BB9A194022294CED00D7BE9A /* Demo-SmartLazyLoading */,
+				BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -897,6 +910,27 @@
 				BB8823422119847400A1BB76 /* JsonStringTransform.swift */,
 			);
 			path = DemoUsing;
+			sourceTree = "<group>";
+		};
+		BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */ = {
+			isa = PBXGroup;
+			children = (
+				BB7C50DC2251BE5A0009E6F8 /* CustomDropDownCell */,
+				BB7C50D72251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift */,
+				BB7C50D82251BD1A0009E6F8 /* DemoDbSelectBoxViewController.xib */,
+			);
+			path = "Demo-DropDownSelectBox";
+			sourceTree = "<group>";
+		};
+		BB7C50DC2251BE5A0009E6F8 /* CustomDropDownCell */ = {
+			isa = PBXGroup;
+			children = (
+				BB7C50DD2251BE5A0009E6F8 /* DropDownCell.swift */,
+				BB7C50DE2251BE5A0009E6F8 /* DropDownCell.xib */,
+				BB7C50DF2251BE5A0009E6F8 /* CustomDropDownCell.xib */,
+				BB7C50E02251BE5A0009E6F8 /* CustomDropDownCell.swift */,
+			);
+			path = CustomDropDownCell;
 			sourceTree = "<group>";
 		};
 		BB7E57FC21E842D6005C3FA6 /* Demo-Eureka */ = {
@@ -1522,6 +1556,7 @@
 				BB7518FB2232879400413607 /* DemoRealmViewController.xib in Resources */,
 				BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */,
 				BB7F303F203E857900185366 /* demo_6@2x.png in Resources */,
+				BB7C50E22251BE5A0009E6F8 /* DropDownCell.xib in Resources */,
 				BBC02E6B1F71747A0011FDE6 /* OpenSans-Semibold.ttf in Resources */,
 				BB4E2366210EBCD800524B0D /* PzRegisterViewController.xib in Resources */,
 				BB7F3038203E857900185366 /* demo_1.jpg in Resources */,
@@ -1532,6 +1567,7 @@
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
 				BBB1A53822004AF40047293E /* DemoDbLocationManagerViewController.xib in Resources */,
 				BBA2A43F211826F000618AEF /* PzListingViewController.xib in Resources */,
+				BB7C50DA2251BD1A0009E6F8 /* DemoDbSelectBoxViewController.xib in Resources */,
 				BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */,
 				BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */,
 				BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */,
@@ -1566,6 +1602,7 @@
 				BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */,
 				BBB569E61F7B606C0014A7A9 /* TpUsersViewController.xib in Resources */,
 				BB8BECC0222AEEEC00EC7620 /* ImageRowCollectionCell.xib in Resources */,
+				BB7C50E32251BE5A0009E6F8 /* CustomDropDownCell.xib in Resources */,
 				BB7F303C203E857900185366 /* demo_5.png in Resources */,
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
@@ -1829,6 +1866,7 @@
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
 				BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift in Sources */,
 				BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */,
+				BB7C50E42251BE5A0009E6F8 /* CustomDropDownCell.swift in Sources */,
 				BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */,
 				BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */,
 				BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */,
@@ -1849,10 +1887,12 @@
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BB626EC820DBADCE0057F0CF /* DbDictionaryExtensions.swift in Sources */,
 				BB51AC522213F34800897CCC /* DbEmptyStatusProvider.swift in Sources */,
+				BB7C50E12251BE5A0009E6F8 /* DropDownCell.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBDD202721F0940400788D3E /* DbAbstractSheet.swift in Sources */,
 				BB51AC542213F47300897CCC /* DbEmptyDefaultStatusView.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
+				BB7C50D92251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift in Sources */,
 				BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */,
 				BB9BC0B821ED9AF0004BC430 /* CustomPickerRow.swift in Sources */,
 				BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */,

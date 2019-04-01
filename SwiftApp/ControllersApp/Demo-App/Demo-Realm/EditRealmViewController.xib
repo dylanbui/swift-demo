@@ -67,7 +67,7 @@
                             <subviews>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aq8-ag-H69">
                                     <rect key="frame" x="0.0" y="0.0" width="275" height="81"/>
-                                    <state key="normal" title="Button"/>
+                                    <state key="normal" title="Save"/>
                                     <connections>
                                         <action selector="btnSave_Click:" destination="-1" eventType="touchUpInside" id="RbY-cP-Phe"/>
                                     </connections>

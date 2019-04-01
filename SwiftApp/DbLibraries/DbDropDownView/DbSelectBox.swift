@@ -10,11 +10,11 @@ import Foundation
 import UIKit
 
 class DbSelectBox: UIControl
-{    
+{
     fileprivate var title: UILabel!
     fileprivate var arrow: DbSelectBoxArrow!
     public var dropDownView: DbDropDownView!
-
+    
     public var placeholder: String! {
         didSet {
             title.text = placeholder
@@ -33,12 +33,6 @@ class DbSelectBox: UIControl
         didSet{
             let size = arrow.superview!.frame.size.width-(arrowPadding*2)
             arrow.frame = CGRect(x: arrowPadding, y: arrowPadding, width: size, height: size)
-        }
-    }
-    
-    public var anchorView: UIView? {
-        didSet {
-            self.dropDownView.anchorView = self.anchorView
         }
     }
     
@@ -63,23 +57,6 @@ class DbSelectBox: UIControl
             title.textAlignment = textAlignment!
         }
     }
-    
-    // Border
-//    public var cornerRadius: CGFloat = 3.0 {
-//        didSet{
-//            self.layer.cornerRadius = cornerRadius
-//        }
-//    }
-//    public var borderWidth: CGFloat = 0.5 {
-//        didSet{
-//            self.layer.borderWidth = borderWidth
-//        }
-//    }
-//    public var borderColor: UIColor = .black {
-//        didSet{
-//            self.layer.borderColor = borderColor.cgColor
-//        }
-//    }
     
     // MARK: - Init
     
@@ -128,6 +105,9 @@ class DbSelectBox: UIControl
     fileprivate func setupDropDown()
     {
         self.dropDownView = DbDropDownView(withAnchorView: self)
+        self.dropDownView.hideOptionsWhenSelect = true
+        // self.dropDownView.hideOptionsWhenTouchOut = true
+        
         self.dropDownView.theme = .selectBoxTheme()
         self.dropDownView.tableYOffset = 5.0
         
@@ -138,14 +118,27 @@ class DbSelectBox: UIControl
         self.dropDownView.tableDoingDisappear {
             self.arrow.position = .down
         }
-
+        
         self.dropDownView.tableDidDisappear {
             self.isSelected = false
+            self.superview?.viewWithTag(5002)?.removeFromSuperview()
         }
     }
     
     @objc fileprivate func touch()
     {
+        // -- Calculator Anchor view --
+        var anchorFrame = self.frame
+        anchorFrame.origin.y = self.frame.maxY
+        anchorFrame.size.height = 0
+        
+        let anchorView = UIView(frame: anchorFrame)
+        anchorView.tag = 5002
+        anchorView.backgroundColor = UIColor.purple
+        self.superview?.addSubview(anchorView)
+        
+        self.dropDownView.anchorView = anchorView
+        
         isSelected = !isSelected
         isSelected ? self.dropDownView.showDropDown() : self.dropDownView.hideDropDown()
     }
@@ -179,12 +172,12 @@ extension DbDropDownViewTheme {
     public static func selectBoxTheme() -> DbDropDownViewTheme
     {
         var theme = DbDropDownViewTheme(cellHeight: 40,
-                                   bgColor: UIColor (red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4),
-                                   borderColor: UIColor (red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0),
-                                   separatorColor: UIColor.lightGray.withAlphaComponent(0.5),
-                                   font: UIFont.boldSystemFont(ofSize: 13), fontColor: UIColor.white)
-
+                                        bgColor: UIColor (red: 0.8, green: 0.8, blue: 0.8, alpha: 0.4),
+                                        borderColor: UIColor (red: 0.7, green: 0.7, blue: 0.7, alpha: 1.0),
+                                        separatorColor: UIColor.lightGray.withAlphaComponent(0.5),
+                                        font: UIFont.boldSystemFont(ofSize: 13), fontColor: UIColor.gray)
         
+        theme.bgCellColor = .white //UIColor (red: 0.8, green: 0.8, blue: 0.8, alpha: 1.0)
         theme.subtitleFont = UIFont.italicSystemFont(ofSize: 10)
         theme.subtitleFontColor = UIColor.brown
         theme.checkmarkColor = UIColor.blue // User checkmark
@@ -259,6 +252,3 @@ class DbSelectBoxArrow: UIView
         self.layer.mask = shapeLayer
     }
 }
-
-
-

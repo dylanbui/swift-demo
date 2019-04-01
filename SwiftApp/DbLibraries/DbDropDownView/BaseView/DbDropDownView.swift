@@ -34,6 +34,7 @@ public class DbDropDownView: UITableView
     public var tableListHeight: CGFloat = 100.0
     
     public fileprivate(set) var selectedIndex: Int?
+    public var isShow = false // Status show, hide
     public var hideOptionsWhenSelect = true // Hide when choose
     public var hideOptionsWhenTouchOut = false // Hide when touch out
     public var animationType: DbDropDownViewAnimationType = .Default
@@ -200,6 +201,30 @@ public class DbDropDownView: UITableView
         privateTableDidDisappear = completion
     }
     
+    public func showDropDown(WithView view: UIView, BottomNavigationBarOf vcl: UIViewController)
+    {
+        guard let nav = vcl.navigationController else {
+            fatalError("UINavigationController find not found")
+        }
+        
+        // -- Remove old anhchor --
+        if let view = vcl.view.viewWithTag(5005) {
+            view.removeFromSuperview()
+            self.anchorView = nil
+        }
+        // -- Create new anchor --
+        let anchor = UIView(frame: CGRect(x: 0.0, y: nav.navigationBar.frame.origin.y + nav.navigationBar.frame.size.height
+            , width: nav.navigationBar.frame.size.width, height: 0.0))
+        anchor.backgroundColor = UIColor.clear
+        anchor.tag = 5005
+        vcl.view.addSubview(anchor)
+        
+        self.displayDirection = .TopToBottom
+        self.anchorView = anchor
+        
+        self.showDropDown(WithView: view, yOffset: 0.0)
+    }
+    
     public func showDropDown(WithView view: UIView, yOffset offset: CGFloat = 5.0, cornerRadius radius: CGFloat = 0)
     {
         //guard let parent = self.anchorView else {
@@ -294,6 +319,8 @@ public class DbDropDownView: UITableView
                             
             }, completion: { (didFinish) -> Void in
                 self.privateTableDidAppear()
+                // -- Set status --
+                self.isShow = true
             })
         case .Bouncing:
             self.transform = CGAffineTransform.identity.scaledBy(x: 0.001, y: 0.001)
@@ -328,6 +355,8 @@ public class DbDropDownView: UITableView
                             
             }, completion: { (didFinish) -> Void in
                 self.privateTableDidAppear()
+                // -- Set status --
+                self.isShow = true
             })
         case .Classic:
             UIView.animate(withDuration: 0.3,
@@ -357,6 +386,8 @@ public class DbDropDownView: UITableView
                             
             }, completion: { (finished) in
                 self.privateTableDidAppear()
+                // -- Set status --
+                self.isShow = true
             })
             
         }
@@ -398,6 +429,8 @@ public class DbDropDownView: UITableView
                 
                 // -- Remove temple anchor view --
                 self.containerView.viewWithTag(5001)?.removeFromSuperview()
+                // -- Set status --
+                self.isShow = false
             })
             
         case .Bouncing:
@@ -425,6 +458,8 @@ public class DbDropDownView: UITableView
                 
                 // -- Remove temple anchor view --
                 self.containerView.viewWithTag(5001)?.removeFromSuperview()
+                // -- Set status --
+                self.isShow = false
             })
             
         }
