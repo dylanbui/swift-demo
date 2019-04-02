@@ -52,7 +52,8 @@ class RootViewController: UIViewController
         //let vcl = DemoRealmViewController() // => Done
         // let vcl = DemoNetworkRealmViewController() // => Done
 //        let vcl = DemoJustViewController()
-        let vcl = DemoDbSelectBoxViewController() // => Done
+        // let vcl = DemoDbSelectBoxViewController() // => Done
+        let vcl = RkMapViewController() // => Done
 
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a

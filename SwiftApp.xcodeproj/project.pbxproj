@@ -165,6 +165,17 @@
 		BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC0C521EDFA0E004BC430 /* PickerField.swift */; };
 		BB9E77AC222E22BC00BFC9C7 /* DemoLazyUploadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E77AB222E22BB00BFC9C7 /* DemoLazyUploadViewController.swift */; };
 		BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB9E77AD222E335A00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift */; };
+		BBA1C8E8225320EB008FF2FF /* RkMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8E6225320EB008FF2FF /* RkMainViewController.swift */; };
+		BBA1C8E9225320EB008FF2FF /* RkMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA1C8E7225320EB008FF2FF /* RkMainViewController.xib */; };
+		BBA1C8EC22532164008FF2FF /* RkLocationMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8EB22532164008FF2FF /* RkLocationMonitor.swift */; };
+		BBA1C8EE22532320008FF2FF /* RkAppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8ED22532320008FF2FF /* RkAppConstants.swift */; };
+		BBA1C8F0225337AA008FF2FF /* MapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8EF225337AA008FF2FF /* MapDelegate.swift */; };
+		BBA1C8F222533A63008FF2FF /* AppleMapDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8F122533A63008FF2FF /* AppleMapDelegate.swift */; };
+		BBA1C8F422533A78008FF2FF /* AppleMapPin.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8F322533A78008FF2FF /* AppleMapPin.swift */; };
+		BBA1C8F8225347E1008FF2FF /* RkMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8F6225347E1008FF2FF /* RkMapViewController.swift */; };
+		BBA1C8F9225347E1008FF2FF /* RkMapViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBA1C8F7225347E1008FF2FF /* RkMapViewController.xib */; };
+		BBA1C8FB22534961008FF2FF /* UnitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8FA22534961008FF2FF /* UnitExtensions.swift */; };
+		BBA1C8FD225354C3008FF2FF /* FormatDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA1C8FC225354C3008FF2FF /* FormatDisplay.swift */; };
 		BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4362117FB8500618AEF /* PzListing.swift */; };
 		BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A4382117FBA000618AEF /* PzListingItem.swift */; };
 		BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA2A43A2117FC6000618AEF /* PzListingApi.swift */; };
@@ -175,6 +186,11 @@
 		BBA3D1B1206CA36400CD2F0F /* DbOperator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B0206CA36400CD2F0F /* DbOperator.swift */; };
 		BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B4206CE77D00CD2F0F /* DbLabel.swift */; };
 		BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */; };
+		BBA467152252216800E0749E /* UIGestureRecognizer+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA467102252216800E0749E /* UIGestureRecognizer+Closures.swift */; };
+		BBA467162252216800E0749E /* DbClosureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA467112252216800E0749E /* DbClosureHandler.swift */; };
+		BBA467172252216800E0749E /* UIView+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA467122252216800E0749E /* UIView+Closures.swift */; };
+		BBA467182252216800E0749E /* UIBarButtonItem+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA467132252216800E0749E /* UIBarButtonItem+Closures.swift */; };
+		BBA467192252216800E0749E /* UIControl+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA467142252216800E0749E /* UIControl+Closures.swift */; };
 		BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */; };
 		BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7551F721DAF00328377 /* BaseViewController.swift */; };
 		BBA7C7641F725D3F00328377 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA7C7631F725D3F00328377 /* Utils.swift */; };
@@ -267,11 +283,6 @@
 		BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */; };
 		BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */; };
 		BBDDD5DE219D653200AC4940 /* KBBottomBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */; };
-		BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6821EC9A700030AA64 /* UIGestureRecognizer+Closures.swift */; };
-		BBE6FA6E21EC9A700030AA64 /* DbClosureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6921EC9A700030AA64 /* DbClosureHandler.swift */; };
-		BBE6FA6F21EC9A700030AA64 /* UIView+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6A21EC9A700030AA64 /* UIView+Closures.swift */; };
-		BBE6FA7021EC9A700030AA64 /* UIBarButtonItem+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6B21EC9A700030AA64 /* UIBarButtonItem+Closures.swift */; };
-		BBE6FA7121EC9A700030AA64 /* UIControl+Closures.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE6FA6C21EC9A700030AA64 /* UIControl+Closures.swift */; };
 		BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */; };
 		BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */; };
 		BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */; };
@@ -467,6 +478,17 @@
 		BB9BC0C521EDFA0E004BC430 /* PickerField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 		BB9E77AB222E22BB00BFC9C7 /* DemoLazyUploadViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController.swift; sourceTree = "<group>"; };
 		BB9E77AD222E335A00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController_DONE_V1.swift; sourceTree = "<group>"; };
+		BBA1C8E6225320EB008FF2FF /* RkMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RkMainViewController.swift; sourceTree = "<group>"; };
+		BBA1C8E7225320EB008FF2FF /* RkMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RkMainViewController.xib; sourceTree = "<group>"; };
+		BBA1C8EB22532164008FF2FF /* RkLocationMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RkLocationMonitor.swift; sourceTree = "<group>"; };
+		BBA1C8ED22532320008FF2FF /* RkAppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RkAppConstants.swift; sourceTree = "<group>"; };
+		BBA1C8EF225337AA008FF2FF /* MapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDelegate.swift; sourceTree = "<group>"; };
+		BBA1C8F122533A63008FF2FF /* AppleMapDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapDelegate.swift; sourceTree = "<group>"; };
+		BBA1C8F322533A78008FF2FF /* AppleMapPin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppleMapPin.swift; sourceTree = "<group>"; };
+		BBA1C8F6225347E1008FF2FF /* RkMapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RkMapViewController.swift; sourceTree = "<group>"; };
+		BBA1C8F7225347E1008FF2FF /* RkMapViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RkMapViewController.xib; sourceTree = "<group>"; };
+		BBA1C8FA22534961008FF2FF /* UnitExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitExtensions.swift; sourceTree = "<group>"; };
+		BBA1C8FC225354C3008FF2FF /* FormatDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatDisplay.swift; sourceTree = "<group>"; };
 		BBA2A4362117FB8500618AEF /* PzListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListing.swift; sourceTree = "<group>"; };
 		BBA2A4382117FBA000618AEF /* PzListingItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingItem.swift; sourceTree = "<group>"; };
 		BBA2A43A2117FC6000618AEF /* PzListingApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzListingApi.swift; sourceTree = "<group>"; };
@@ -477,6 +499,11 @@
 		BBA3D1B0206CA36400CD2F0F /* DbOperator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbOperator.swift; sourceTree = "<group>"; };
 		BBA3D1B4206CE77D00CD2F0F /* DbLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLabel.swift; sourceTree = "<group>"; };
 		BBA3D1B6206CEC8100CD2F0F /* DbTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTextField.swift; sourceTree = "<group>"; };
+		BBA467102252216800E0749E /* UIGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
+		BBA467112252216800E0749E /* DbClosureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbClosureHandler.swift; sourceTree = "<group>"; };
+		BBA467122252216800E0749E /* UIView+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Closures.swift"; sourceTree = "<group>"; };
+		BBA467132252216800E0749E /* UIBarButtonItem+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Closures.swift"; sourceTree = "<group>"; };
+		BBA467142252216800E0749E /* UIControl+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Closures.swift"; sourceTree = "<group>"; };
 		BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSelectorActionSheet.swift; sourceTree = "<group>"; };
 		BBA7C7551F721DAF00328377 /* BaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseViewController.swift; sourceTree = "<group>"; };
 		BBA7C7631F725D3F00328377 /* Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utils.swift; sourceTree = "<group>"; };
@@ -575,11 +602,6 @@
 		BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboarbHandleViewController.xib; sourceTree = "<group>"; };
 		BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBottomBarView.swift; sourceTree = "<group>"; };
 		BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBBottomBarView.xib; sourceTree = "<group>"; };
-		BBE6FA6821EC9A700030AA64 /* UIGestureRecognizer+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIGestureRecognizer+Closures.swift"; sourceTree = "<group>"; };
-		BBE6FA6921EC9A700030AA64 /* DbClosureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbClosureHandler.swift; sourceTree = "<group>"; };
-		BBE6FA6A21EC9A700030AA64 /* UIView+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Closures.swift"; sourceTree = "<group>"; };
-		BBE6FA6B21EC9A700030AA64 /* UIBarButtonItem+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIBarButtonItem+Closures.swift"; sourceTree = "<group>"; };
-		BBE6FA6C21EC9A700030AA64 /* UIControl+Closures.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIControl+Closures.swift"; sourceTree = "<group>"; };
 		BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTableViewCell.swift; sourceTree = "<group>"; };
 		BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DbAssets.xcassets; sourceTree = "<group>"; };
 		BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordField.swift"; sourceTree = "<group>"; };
@@ -669,6 +691,7 @@
 				BB28109D2216D3FB003823FE /* Demo-PullToRefresh */,
 				BB9A194022294CED00D7BE9A /* Demo-SmartLazyLoading */,
 				BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */,
+				BBA1C8EA225320F7008FF2FF /* App-RunKeeper */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -696,7 +719,7 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
-				BBE6FA6721EC9A700030AA64 /* DbClosureUIControl.swift */,
+				BBA4670F2252216800E0749E /* DbClosureUIControl */,
 				BB26008121D60FD000D5F41D /* DbActionSheetPicker */,
 				BB26008321D60FD000D5F41D /* DbDropDownView */,
 				BB2FE66D2192C43F007470DD /* DbSemiModalViewController */,
@@ -1043,6 +1066,44 @@
 			path = "Demo-ActionSheetWindow";
 			sourceTree = "<group>";
 		};
+		BBA1C8EA225320F7008FF2FF /* App-RunKeeper */ = {
+			isa = PBXGroup;
+			children = (
+				BBA1C8F5225345C6008FF2FF /* Common */,
+				BBA1C8E6225320EB008FF2FF /* RkMainViewController.swift */,
+				BBA1C8E7225320EB008FF2FF /* RkMainViewController.xib */,
+				BBA1C8F6225347E1008FF2FF /* RkMapViewController.swift */,
+				BBA1C8F7225347E1008FF2FF /* RkMapViewController.xib */,
+			);
+			path = "App-RunKeeper";
+			sourceTree = "<group>";
+		};
+		BBA1C8F5225345C6008FF2FF /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				BBA1C8ED22532320008FF2FF /* RkAppConstants.swift */,
+				BBA1C8EB22532164008FF2FF /* RkLocationMonitor.swift */,
+				BBA1C8EF225337AA008FF2FF /* MapDelegate.swift */,
+				BBA1C8F322533A78008FF2FF /* AppleMapPin.swift */,
+				BBA1C8F122533A63008FF2FF /* AppleMapDelegate.swift */,
+				BBA1C8FA22534961008FF2FF /* UnitExtensions.swift */,
+				BBA1C8FC225354C3008FF2FF /* FormatDisplay.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		BBA4670F2252216800E0749E /* DbClosureUIControl */ = {
+			isa = PBXGroup;
+			children = (
+				BBA467102252216800E0749E /* UIGestureRecognizer+Closures.swift */,
+				BBA467112252216800E0749E /* DbClosureHandler.swift */,
+				BBA467122252216800E0749E /* UIView+Closures.swift */,
+				BBA467132252216800E0749E /* UIBarButtonItem+Closures.swift */,
+				BBA467142252216800E0749E /* UIControl+Closures.swift */,
+			);
+			path = DbClosureUIControl;
+			sourceTree = "<group>";
+		};
 		BBB1A53021FFF8BE0047293E /* Demo-DbLocationManager */ = {
 			isa = PBXGroup;
 			children = (
@@ -1330,19 +1391,6 @@
 			path = "ObjC-Libraries";
 			sourceTree = "<group>";
 		};
-		BBE6FA6721EC9A700030AA64 /* DbClosureUIControl.swift */ = {
-			isa = PBXGroup;
-			children = (
-				BBE6FA6821EC9A700030AA64 /* UIGestureRecognizer+Closures.swift */,
-				BBE6FA6921EC9A700030AA64 /* DbClosureHandler.swift */,
-				BBE6FA6A21EC9A700030AA64 /* UIView+Closures.swift */,
-				BBE6FA6B21EC9A700030AA64 /* UIBarButtonItem+Closures.swift */,
-				BBE6FA6C21EC9A700030AA64 /* UIControl+Closures.swift */,
-			);
-			name = DbClosureUIControl.swift;
-			path = ../../../PropzySam/PropzySam/DbLibraries/DbClosureUIControl.swift;
-			sourceTree = "<group>";
-		};
 		BBE813EC2016EB0600B21B1F /* BaseUIKit */ = {
 			isa = PBXGroup;
 			children = (
@@ -1609,6 +1657,7 @@
 				BB7F303A203E857900185366 /* demo_3.jpg in Resources */,
 				BB92D85C224DC4E300B8F244 /* DemoNetworkRealmViewController.xib in Resources */,
 				BBC02E641F71747A0011FDE6 /* OpenSans-BoldItalic.ttf in Resources */,
+				BBA1C8F9225347E1008FF2FF /* RkMapViewController.xib in Resources */,
 				BB7F3044203E857900185366 /* main_gate_img.png in Resources */,
 				BBB569E11F7B5B880014A7A9 /* TaskViewCell.xib in Resources */,
 				BBC02E611F71747A0011FDE6 /* artists.json in Resources */,
@@ -1632,6 +1681,7 @@
 				BBC38A68206DDEE500B11C7B /* octicons.ttf in Resources */,
 				BB7F3039203E857900185366 /* demo_2.jpg in Resources */,
 				BB06BC0F2201953E00227059 /* MasterCandySearchViewController.xib in Resources */,
+				BBA1C8E9225320EB008FF2FF /* RkMainViewController.xib in Resources */,
 				BBAF935A22357F7B0086AC02 /* EditRealmViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1781,6 +1831,7 @@
 				BB8BECC7222B068400EC7620 /* DbProgressBar.swift in Sources */,
 				BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */,
 				BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */,
+				BBA1C8EC22532164008FF2FF /* RkLocationMonitor.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
@@ -1792,6 +1843,7 @@
 				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BB2810A22216DDA6003823FE /* NSLayoutConstraintExtensions.swift in Sources */,
+				BBA467152252216800E0749E /* UIGestureRecognizer+Closures.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */,
 				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
@@ -1804,7 +1856,7 @@
 				BB28109F2216D42F003823FE /* DbPullLoader.swift in Sources */,
 				BB887C632244F20B0045BF2F /* FileUploader.swift in Sources */,
 				BBC38A52206DDE9500B11C7B /* IonIcons.swift in Sources */,
-				BBE6FA7121EC9A700030AA64 /* UIControl+Closures.swift in Sources */,
+				BBA1C8FB22534961008FF2FF /* UnitExtensions.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
 				BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
@@ -1818,7 +1870,10 @@
 				BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
+				BBA1C8FD225354C3008FF2FF /* FormatDisplay.swift in Sources */,
 				BB5756B6219E7C48000BDACD /* KBScrollViewViewController.swift in Sources */,
+				BBA467162252216800E0749E /* DbClosureHandler.swift in Sources */,
+				BBA467192252216800E0749E /* UIControl+Closures.swift in Sources */,
 				BB32A3E0224B2576006265B7 /* DemoJustViewController.swift in Sources */,
 				BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */,
 				BB48E20D21F1E531002B2DEC /* DbSheetCalendar.swift in Sources */,
@@ -1826,12 +1881,15 @@
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
 				BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */,
 				BB9A7C5F22254BF9004EDEB4 /* DbNSLayoutConstraintsExtensions.swift in Sources */,
+				BBA1C8F222533A63008FF2FF /* AppleMapDelegate.swift in Sources */,
 				BBA9BBD7224CE0DE0068FFDC /* PzBaseApi.swift in Sources */,
 				BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */,
+				BBA1C8F422533A78008FF2FF /* AppleMapPin.swift in Sources */,
 				BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */,
 				BB06BC152201965400227059 /* CandySearchFooter.swift in Sources */,
 				BB7518FA2232879400413607 /* DemoRealmViewController.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
+				BBA467172252216800E0749E /* UIView+Closures.swift in Sources */,
 				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
@@ -1848,7 +1906,6 @@
 				BB06BC12220195F300227059 /* DetailCandySearchViewController.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
 				BB2810A42216DDEC003823FE /* DbPullLoadView.swift in Sources */,
-				BBE6FA6E21EC9A700030AA64 /* DbClosureHandler.swift in Sources */,
 				BBAF935922357F7B0086AC02 /* EditRealmViewController.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
 				BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */,
@@ -1860,7 +1917,6 @@
 				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
 				BB2229C52229A4CC00A82EA5 /* PhotoAsset.swift in Sources */,
-				BBE6FA7021EC9A700030AA64 /* UIBarButtonItem+Closures.swift in Sources */,
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
@@ -1880,7 +1936,6 @@
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
 				BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */,
-				BBE6FA6F21EC9A700030AA64 /* UIView+Closures.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
 				BB4E2369210EBD1F00524B0D /* UserSession.swift in Sources */,
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
@@ -1896,11 +1951,13 @@
 				BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */,
 				BB9BC0B821ED9AF0004BC430 /* CustomPickerRow.swift in Sources */,
 				BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */,
+				BBA1C8EE22532320008FF2FF /* RkAppConstants.swift in Sources */,
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
 				BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */,
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
+				BBA1C8F0225337AA008FF2FF /* MapDelegate.swift in Sources */,
 				BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */,
 				BBA9BBD5224CBFF50068FFDC /* DbHttpExtensions.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
@@ -1914,7 +1971,6 @@
 				BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
-				BBE6FA6D21EC9A700030AA64 /* UIGestureRecognizer+Closures.swift in Sources */,
 				BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BB2229C92229AE7900A82EA5 /* PhotoUploadManager.swift in Sources */,
@@ -1930,6 +1986,7 @@
 				BBA2A43E211826F000618AEF /* PzListingViewController.swift in Sources */,
 				BB2E8514222EE8E200CD8E28 /* SurveyView.swift in Sources */,
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
+				BBA1C8F8225347E1008FF2FF /* RkMapViewController.swift in Sources */,
 				BB2FE6712192CFCB007470DD /* DbMediaPickerController.swift in Sources */,
 				BBC38A55206DDE9500B11C7B /* MaterialIcon.swift in Sources */,
 				BBF2368C2202E6DA0067952B /* PzCustomPickerRow.swift in Sources */,
@@ -1958,12 +2015,14 @@
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
 				BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */,
 				BB9E77AC222E22BC00BFC9C7 /* DemoLazyUploadViewController.swift in Sources */,
+				BBA467182252216800E0749E /* UIBarButtonItem+Closures.swift in Sources */,
 				BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,
 				BBDDD5D8219D5DB400AC4940 /* KeyboarbHandleViewController.swift in Sources */,
 				BB9A194222294D3100D7BE9A /* FlickrPhoto.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
+				BBA1C8E8225320EB008FF2FF /* RkMainViewController.swift in Sources */,
 				BBC38A56206DDE9500B11C7B /* Octicon.swift in Sources */,
 				BB5E1426210AFDA10059A8C4 /* PropzyBaseApi.swift in Sources */,
 				BB4E2361210EBCAD00524B0D /* PzLoginViewController.swift in Sources */,
