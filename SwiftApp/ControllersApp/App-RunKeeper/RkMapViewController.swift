@@ -23,6 +23,7 @@ class RkMapViewController: BaseViewController
     private var seconds = 0
     private var timer: Timer?
     private var locationList: [CLLocation] = []
+    private var listPolyline: [MKPolyline] = []
     private var isRunning: Bool = false
 
     override func viewDidLoad()
@@ -90,6 +91,10 @@ class RkMapViewController: BaseViewController
     {
         self.seconds = 0
         self.distance = 0
+        
+        for line in self.listPolyline {
+            self.mapView.remove(line)
+        }
         locationList.removeAll()
         updateDisplay()
         
@@ -101,13 +106,11 @@ class RkMapViewController: BaseViewController
     
     private func stopRun()
     {
-//        launchPromptStackView.isHidden = false
-//        dataStackView.isHidden = true
-//        startButton.isHidden = false
-//        stopButton.isHidden = true
-//        mapContainerView.isHidden = true
-//
-//        locationManager.stopUpdatingLocation()
+        for line in self.listPolyline {
+            self.mapView.remove(line)
+        }
+        
+        locationList.removeAll()
         
         // -- Stop scheduledTimer --
         self.timer?.invalidate()
@@ -143,12 +146,17 @@ extension RkMapViewController: RkLocationMonitorDelegate
             // guard newLocation.horizontalAccuracy < 20 && abs(howRecent) < 10 else { continue }
             
             if let lastLocation = locationList.last {
-                let delta = newLocation.distance(from: lastLocation) / 1000 // => convert to meter
+                let delta = newLocation.distance(from: lastLocation) // => convert to meter
                 distance = distance + delta //Measurement(value: delta, unit: UnitLength.meters)
                 let coordinates = [lastLocation.coordinate, newLocation.coordinate]
-                self.mapView.add(MKPolyline(coordinates: coordinates, count: 2))
+                let line = MKPolyline(coordinates: coordinates, count: 2)
+                self.listPolyline.append(line)
+                self.mapView.add(line)
                 
-                self.mapView.setCenter(newLocation.coordinate, animated: true)
+                //self.mapView.setCenter(newLocation.coordinate, animated: true)
+                let latlongMeters = RkAppConstants.initialMapZoomRadiusMiles*RkAppConstants.metersPerMile
+                let region = MKCoordinateRegionMakeWithDistance(newLocation.coordinate, latlongMeters,latlongMeters)
+                self.mapView.setRegion(region, animated: true)
             }
             
             locationList.append(newLocation)

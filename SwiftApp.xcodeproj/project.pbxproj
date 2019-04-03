@@ -19,6 +19,7 @@
 		BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */; };
 		BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */; };
 		BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */; };
+		BB15F5CC2254965000597341 /* read_me.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15F5CB2254965000597341 /* read_me.swift */; };
 		BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D43200BBFAA005514C3 /* DbConstant.swift */; };
 		BB197D46200BC051005514C3 /* DbUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D45200BC051005514C3 /* DbUtils.swift */; };
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
@@ -332,6 +333,7 @@
 		BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSheetPicker.swift; sourceTree = "<group>"; };
 		BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEmptyDataSetViewController.swift; sourceTree = "<group>"; };
 		BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoEmptyDataSetViewController.xib; sourceTree = "<group>"; };
+		BB15F5CB2254965000597341 /* read_me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = read_me.swift; sourceTree = "<group>"; };
 		BB197D43200BBFAA005514C3 /* DbConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbConstant.swift; sourceTree = "<group>"; };
 		BB197D45200BC051005514C3 /* DbUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUtils.swift; sourceTree = "<group>"; };
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
@@ -1069,6 +1071,7 @@
 		BBA1C8EA225320F7008FF2FF /* App-RunKeeper */ = {
 			isa = PBXGroup;
 			children = (
+				BB15F5CB2254965000597341 /* read_me.swift */,
 				BBA1C8F5225345C6008FF2FF /* Common */,
 				BBA1C8E6225320EB008FF2FF /* RkMainViewController.swift */,
 				BBA1C8E7225320EB008FF2FF /* RkMainViewController.xib */,
@@ -1966,6 +1969,7 @@
 				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BB9A193D22294CA400D7BE9A /* PGOperation.swift in Sources */,
+				BB15F5CC2254965000597341 /* read_me.swift in Sources */,
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
 				BB2810A62216E211003823FE /* UIScrollViewExtensions.swift in Sources */,
 				BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */,
