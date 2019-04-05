@@ -284,6 +284,9 @@
 		BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */; };
 		BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */; };
 		BBDDD5DE219D653200AC4940 /* KBBottomBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */; };
+		BBE35FB722573C87004E5024 /* Geometry.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE35FB622573C87004E5024 /* Geometry.swift */; };
+		BBE35FBA22573D03004E5024 /* LocationDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE35FB922573D03004E5024 /* LocationDoc.swift */; };
+		BBE35FBC22573D91004E5024 /* PlaceDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE35FBB22573D91004E5024 /* PlaceDoc.swift */; };
 		BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */; };
 		BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */; };
 		BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */; };
@@ -604,6 +607,9 @@
 		BBDDD5D7219D5DB400AC4940 /* KeyboarbHandleViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KeyboarbHandleViewController.xib; sourceTree = "<group>"; };
 		BBDDD5DB219D651F00AC4940 /* KBBottomBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBBottomBarView.swift; sourceTree = "<group>"; };
 		BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBBottomBarView.xib; sourceTree = "<group>"; };
+		BBE35FB622573C87004E5024 /* Geometry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Geometry.swift; sourceTree = "<group>"; };
+		BBE35FB922573D03004E5024 /* LocationDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationDoc.swift; sourceTree = "<group>"; };
+		BBE35FBB22573D91004E5024 /* PlaceDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceDoc.swift; sourceTree = "<group>"; };
 		BBE813EA2016E93B00B21B1F /* DbTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTableViewCell.swift; sourceTree = "<group>"; };
 		BBE813EF2016EBB700B21B1F /* DbAssets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = DbAssets.xcassets; sourceTree = "<group>"; };
 		BBE813F320171DD000B21B1F /* UITextField+PasswordField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField+PasswordField.swift"; sourceTree = "<group>"; };
@@ -1091,6 +1097,7 @@
 				BBA1C8F122533A63008FF2FF /* AppleMapDelegate.swift */,
 				BBA1C8FA22534961008FF2FF /* UnitExtensions.swift */,
 				BBA1C8FC225354C3008FF2FF /* FormatDisplay.swift */,
+				BBE35FB822573C8E004E5024 /* Model */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -1385,6 +1392,16 @@
 				BBDDD5DD219D653200AC4940 /* KBBottomBarView.xib */,
 			);
 			path = "Demo-KeyboarbHandle";
+			sourceTree = "<group>";
+		};
+		BBE35FB822573C8E004E5024 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BBE35FB622573C87004E5024 /* Geometry.swift */,
+				BBE35FB922573D03004E5024 /* LocationDoc.swift */,
+				BBE35FBB22573D91004E5024 /* PlaceDoc.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		BBE44769206B75F900ED8CC2 /* ObjC-Libraries */ = {
@@ -1930,6 +1947,7 @@
 				BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */,
 				BBC3D19C21046E3D007675F9 /* DbRealmManager.swift in Sources */,
 				BBF0A5FB2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift in Sources */,
+				BBE35FBC22573D91004E5024 /* PlaceDoc.swift in Sources */,
 				BB92D860224E00BE00B8F244 /* DbRealmExtensions.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BB407ACF2181821A00C8E57F /* DbNSAttributedStringExtensions.swift in Sources */,
@@ -1948,6 +1966,7 @@
 				BB7C50E12251BE5A0009E6F8 /* DropDownCell.swift in Sources */,
 				BBC02E6F1F717D5D0011FDE6 /* SwiftyPlistManager.swift in Sources */,
 				BBDD202721F0940400788D3E /* DbAbstractSheet.swift in Sources */,
+				BBE35FB722573C87004E5024 /* Geometry.swift in Sources */,
 				BB51AC542213F47300897CCC /* DbEmptyDefaultStatusView.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
 				BB7C50D92251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift in Sources */,
@@ -2002,6 +2021,7 @@
 				BB28109B2216D3F6003823FE /* DemoDbPullToRefreshViewController.swift in Sources */,
 				BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
+				BBE35FBA22573D03004E5024 /* LocationDoc.swift in Sources */,
 				BB3FDBF2217EFD07002D570F /* DbStackCell.swift in Sources */,
 				BB9BC0C221EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,

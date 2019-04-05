@@ -15,17 +15,17 @@ class RkAppConstants: NSObject {
     // MARK: App Settings
     
     // -- Location monitor settings --
-    static let minMetersLocationAccuracy : Double = 5 //25
+    static let minMetersLocationAccuracy : Double = 25 //25
     static let minMetersLocationAccuracyBackground : Double = 20 // 100
     
-    static let minMetersBetweenLocations : Double = 0.5 //15
+    static let minMetersBetweenLocations : Double = 5.0 //15
     static let minMetersBetweenLocationsBackground : Double = 5 // 100
     
-    static let minSecondsBetweenLocations : Double = 0.01 //15
+    static let minSecondsBetweenLocations : Double = 0.8 //15
     
     // -- Map settings --
     static let locationDisplayCount = 100
-    static let initialMapZoomRadiusMiles : Double = 5
+    static let initialMapZoomRadiusMiles : Double = 2.5
     static let offlineMapRadiusMiles: Double = 5
     static let placeRadiusMeters: Double = (2.5 * RkAppConstants.metersPerMile)
     

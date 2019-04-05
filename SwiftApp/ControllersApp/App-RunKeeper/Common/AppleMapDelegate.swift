@@ -43,23 +43,23 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
         }
     }
     
-    func getPin(coordinate: CLLocationCoordinate2D, title: String, color: UIColor) -> MapPin {
-        return AppleMapPin(
-            coordinate: coordinate,
-            title: title,
-            color: color
-        )
+    func getPin(coordinate: CLLocationCoordinate2D, title: String, color: UIColor) -> MapPin
+    {
+        return AppleMapPin(coordinate: coordinate, title: title, color: color)
     }
     
-    func addPin(pin: MapPin) {
+    func addPin(pin: MapPin)
+    {
         self.mapView.addAnnotation(pin as! AppleMapPin)
     }
     
-    func removePins(pins: [MapPin]) {
+    func removePins(pins: [MapPin])
+    {
         self.mapView.removeAnnotations(pins as! [AppleMapPin])
     }
     
-    func drawPath(coordinates: [CLLocationCoordinate2D]) {
+    func drawPath(coordinates: [CLLocationCoordinate2D])
+    {
         // remove polyline if one exists
         if (self.polyline != nil) {
             self.mapView.remove(self.polyline!)

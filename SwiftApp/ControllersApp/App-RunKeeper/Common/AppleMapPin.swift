@@ -14,9 +14,13 @@ class AppleMapPin: MapPin, MKAnnotation
         return self.p_coordinate
     }
     
-    
-    
-    
+    var title: String? {
+        return "title"
+    }
+
+    var subtitle: String? {
+        return "subtitle"
+    }
     
 }
 
