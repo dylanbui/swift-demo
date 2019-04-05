@@ -12,6 +12,8 @@ import MapKit
 class RkMapViewController: BaseViewController
 {
     @IBOutlet weak var mapView : MKMapView!
+    @IBOutlet weak var selectBox : DbSelectBox!
+    
     @IBOutlet weak var lblDistance: UILabel!
     @IBOutlet weak var lblTime: UILabel!
     @IBOutlet weak var lblPace: UILabel!
@@ -19,8 +21,8 @@ class RkMapViewController: BaseViewController
     var mapDelegate: MapDelegate!
     var lastLocationDocMapDownload: LocationDoc? = nil
 
-    var locationDocs: [LocationDoc] = []
-    var locationPins: [MapPin] = []
+    var arrLocationDocs: [LocationDoc] = []
+    // var locationPins: [MapPin] = []
     
     private var distance: Double = 0.0
     private var seconds = 0
@@ -32,7 +34,8 @@ class RkMapViewController: BaseViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        
+        self.edgesForExtendedLayout = []
+        self.navigationController?.navigationBar.isTranslucent = true
         // Do any additional setup after loading the view.
 
         let btnStart = UIBarButtonItem.init(title: "Start", style: .plain) { (owner) in
@@ -49,6 +52,17 @@ class RkMapViewController: BaseViewController
             }
         }
         self.navigationItem.rightBarButtonItems =  [btnStart]
+        
+        
+        // self.selectBox.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY - 100)
+        self.selectBox.dropDownView.dataSourceStrings(["Mexico", "USA", "England", "France", "Germany", "Spain", "Italy", "Canada"])
+        self.selectBox.placeholder = "Select your country..."
+        // Max results list height - Default: No limit
+        self.selectBox.dropDownView.tableListHeight = 200
+        
+        self.selectBox.didSelect { (options, index) in
+            // print("selectBox: \(options.count) at index: \(index)")
+        }
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -150,18 +164,18 @@ class RkMapViewController: BaseViewController
     
     func addLocation(locationDoc: LocationDoc, drawPath: Bool, drawRadius: Bool = false)
     {
-        self.locationDocs.append(locationDoc)
-        self.addLocationPin(locationDoc: locationDoc, title: "\(self.locationDocs.count)", drawPath: drawPath, drawRadius: drawRadius)
+        self.arrLocationDocs.append(locationDoc)
+        self.addLocationPin(locationDoc: locationDoc, title: "\(self.arrLocationDocs.count)", drawPath: drawPath, drawRadius: drawRadius)
     }
     
     func addLocationPin(locationDoc: LocationDoc, title: String, drawPath: Bool, drawRadius: Bool)
     {
-        let pin = self.mapDelegate!.getPin(
-            coordinate: CLLocationCoordinate2DMake(locationDoc.geometry!.latitude, locationDoc.geometry!.longitude),
-            title: title,
-            color: UIColor.blue
-        )
-        self.locationPins.append(pin)
+//        let pin = self.mapDelegate!.getPin(
+//            coordinate: CLLocationCoordinate2DMake(locationDoc.geometry!.latitude, locationDoc.geometry!.longitude),
+//            title: title,
+//            color: UIColor.blue
+//        )
+//        self.locationPins.append(pin)
         
         // -- drawPin --
         // self.mapDelegate.addPin(pin: pin)
@@ -176,7 +190,7 @@ class RkMapViewController: BaseViewController
     
     func addAllLocationPins()
     {
-        for (index,locationDoc) in self.locationDocs.enumerated() {
+        for (index,locationDoc) in self.arrLocationDocs.enumerated() {
             self.addLocationPin(locationDoc: locationDoc, title: "\(index+1)" , drawPath: false, drawRadius: false)
         }
         self.drawLocationPath()
@@ -185,24 +199,30 @@ class RkMapViewController: BaseViewController
     func removeAllLocations()
     {
         self.removeAllLocationPins();
-        self.locationDocs.removeAll()
+        self.arrLocationDocs.removeAll()
     }
     
     func removeAllLocationPins()
     {
         self.mapDelegate?.eraseRadius()
         self.mapDelegate?.erasePath()
-        self.mapDelegate?.removePins(pins: locationPins)
-        self.locationPins.removeAll()
+//        self.mapDelegate?.removePins(pins: locationPins)
+//        self.locationPins.removeAll()
     }
     
     func drawLocationPath()
     {
-        // create an array of coordinates from allPins
+        // create an array of coordinates from arrLocationDocs
         var coordinates: [CLLocationCoordinate2D] = [];
-        for pin: MapPin in self.locationPins {
-            coordinates.append(pin.p_coordinate)
+        
+//        for pin: MapPin in self.locationPins {
+//            coordinates.append(pin.p_coordinate)
+//        }
+        
+        for docLocation in self.arrLocationDocs {
+            coordinates.append(docLocation.location.coordinate)
         }
+        
         self.mapDelegate?.drawPath(coordinates: coordinates)
     }
     
@@ -263,12 +283,12 @@ extension RkMapViewController: RkLocationMonitorDelegate{
     func locationUpdated(bestLocation: CLLocation, locations: [CLLocation], inBackground: Bool)
     {
         // create location document
-        let locationDoc = LocationDoc(docId: nil, latitude: bestLocation.coordinate.latitude, longitude:bestLocation.coordinate.longitude, timestamp: NSDate(), background: inBackground)
+        let locationDoc = LocationDoc(docId: nil, location: bestLocation, timestamp: NSDate(), background: inBackground)
         
-        if let lastDoc = self.locationDocs.last {
+        if let lastDoc = self.arrLocationDocs.last {
             // -- Tinh toan khoang cach --
-            let lastLocation = CLLocation.init(latitude: lastDoc.geometry.latitude, longitude: lastDoc.geometry.longitude)
-            let delta = bestLocation.distance(from: lastLocation) // => convert to meter
+            // newLocation.distance(from: lastLocation)
+            let delta = bestLocation.distance(from: lastDoc.location) // => convert to meter, con loi chua chay on dinh
             distance = distance + delta
         }
         

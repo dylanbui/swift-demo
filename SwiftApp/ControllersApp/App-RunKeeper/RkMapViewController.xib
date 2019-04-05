@@ -16,6 +16,7 @@
                 <outlet property="lblPace" destination="BK2-zF-0MB" id="qmX-Mn-Wjs"/>
                 <outlet property="lblTime" destination="eQ0-5h-Yim" id="pe3-d1-me9"/>
                 <outlet property="mapView" destination="qQC-5W-hQu" id="ssa-zH-lO0"/>
+                <outlet property="selectBox" destination="CKv-th-Hjg" id="92y-jW-fdA"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -26,6 +27,19 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tOc-N0-EXJ">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BFx-nJ-9O3">
+                            <rect key="frame" x="280" y="15" width="80" height="30"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <state key="normal" title="Add"/>
+                        </button>
+                        <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKv-th-Hjg" customClass="DbSelectBox" customModule="SwiftApp" customModuleProvider="target">
+                            <rect key="frame" x="10" y="10" width="263" height="40"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        </view>
+                    </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="60" id="5JJ-yw-55G"/>
@@ -70,11 +84,11 @@
                 <constraint firstItem="tOc-N0-EXJ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1hW-xf-Hp0"/>
                 <constraint firstItem="dQD-6P-NTX" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="54x-wE-Vzq"/>
                 <constraint firstItem="qQC-5W-hQu" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="EGq-Nn-Iv1"/>
-                <constraint firstItem="tOc-N0-EXJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="Q30-De-mWo"/>
                 <constraint firstItem="qQC-5W-hQu" firstAttribute="top" secondItem="tOc-N0-EXJ" secondAttribute="bottom" id="T8N-Yt-679"/>
                 <constraint firstItem="dQD-6P-NTX" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="bbZ-96-N4l"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="dQD-6P-NTX" secondAttribute="bottom" id="eTV-EV-zfV"/>
                 <constraint firstItem="tOc-N0-EXJ" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="m7u-D7-1rc"/>
+                <constraint firstItem="tOc-N0-EXJ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="mKN-5S-RmX"/>
                 <constraint firstItem="qQC-5W-hQu" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="nZq-2D-j2B"/>
                 <constraint firstItem="qQC-5W-hQu" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="pfR-Bn-l9n"/>
             </constraints>

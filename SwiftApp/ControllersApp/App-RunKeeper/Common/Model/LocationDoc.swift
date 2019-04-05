@@ -7,21 +7,23 @@
 //
 
 import Foundation
+import CoreLocation
 
 class LocationDoc: NSObject {
     
     var docId: String!
     var geometry: Geometry!
+    var location: CLLocation!
     var properties: DictionaryType = [:]
     
-    init(docId: String?, latitude: Double, longitude: Double,
-         timestamp: NSDate, background: Bool?)
+    init(docId: String?, location: CLLocation, timestamp: NSDate, background: Bool = false)
     {
         self.docId = docId
-        self.geometry = Geometry(latitude: latitude, longitude: longitude)
+        self.location = location
+        self.geometry = Geometry.init(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
         self.properties = Dictionary<String,String>()
         self.properties["timestamp"] = (NSDate().timeIntervalSince1970 * 1000)
-        self.properties["background"] = (background == nil ? false : background)
+        self.properties["background"] = background
         //
         super.init()
     }

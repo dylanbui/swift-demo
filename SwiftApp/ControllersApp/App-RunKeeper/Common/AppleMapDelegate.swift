@@ -11,7 +11,6 @@ import MapKit
 
 class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
 {
-    
     var mapView: MKMapView
     var polyline: MKPolyline? = nil
     var circle: MKCircle? = nil
@@ -24,11 +23,12 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
                                                     "Hybrid":MKMapType.hybrid,
                                                     "Hybrid Flyover":MKMapType.hybridFlyover]
     
-    init(mapView: MKMapView) {
+    init(mapView: MKMapView)
+    {
         self.mapView = mapView
         self.mapView.showsUserLocation = true
         super.init()
-        self.mapView.delegate = self;
+        self.mapView.delegate = self
     }
     
     // MARK: LocationMapViewDelegate Members
