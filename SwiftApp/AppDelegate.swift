@@ -82,6 +82,19 @@ class AppDelegate: DbAppDelegate {
                 print("Value successfully added into plist.")
             }
         }
+        
+        let dictData: [DictionaryType] = [
+            ["id": 1, "name": "Công viên"],
+            ["id": 2, "name": "Cây xăng"],
+            ["id": 3, "name": "Trạm nghỉ"],
+            ["id": 4, "name": "Nhà vệ sinh công cộng"],
+            ["id": 5, "name": "Đồn cảnh sát"]
+        ]
+        for data in dictData {
+            // let anchor = AnchorLocationDoc(map: Map(mappingType: .fromJSON, JSON: data))
+            let anchor = AnchorLocationDoc(anchorId: data.db_int(key: "id"), anchorName: data.db_string(key: "name"))
+            anchor.er.db_saveOrUpdate()
+        }
     }
 
 //    func applicationWillResignActive(_ application: UIApplication) {

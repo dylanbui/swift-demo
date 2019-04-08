@@ -220,6 +220,9 @@
 		BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569EA1F7BC5420014A7A9 /* Post.swift */; };
 		BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB569EC1F7BC8880014A7A9 /* TpPostsViewController.swift */; };
 		BBB569EF1F7BC8880014A7A9 /* TpPostsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBB569ED1F7BC8880014A7A9 /* TpPostsViewController.xib */; };
+		BBB5B14C225B051700D16C53 /* AnchorLocationDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5B14B225B051700D16C53 /* AnchorLocationDoc.swift */; };
+		BBB5B14E225B099C00D16C53 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5B14D225B099C00D16C53 /* DateTransform.swift */; };
+		BBB5B150225B2B9200D16C53 /* RoadCarDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5B14F225B2B9200D16C53 /* RoadCarDoc.swift */; };
 		BBC02E611F71747A0011FDE6 /* artists.json in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E541F71747A0011FDE6 /* artists.json */; };
 		BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E571F71747A0011FDE6 /* OpenSans-Bold.ttf */; };
 		BBC02E641F71747A0011FDE6 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E581F71747A0011FDE6 /* OpenSans-BoldItalic.ttf */; };
@@ -537,6 +540,9 @@
 		BBB569EA1F7BC5420014A7A9 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		BBB569EC1F7BC8880014A7A9 /* TpPostsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TpPostsViewController.swift; sourceTree = "<group>"; };
 		BBB569ED1F7BC8880014A7A9 /* TpPostsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TpPostsViewController.xib; sourceTree = "<group>"; };
+		BBB5B14B225B051700D16C53 /* AnchorLocationDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorLocationDoc.swift; sourceTree = "<group>"; };
+		BBB5B14D225B099C00D16C53 /* DateTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTransform.swift; sourceTree = "<group>"; };
+		BBB5B14F225B2B9200D16C53 /* RoadCarDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadCarDoc.swift; sourceTree = "<group>"; };
 		BBC02E541F71747A0011FDE6 /* artists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = artists.json; sourceTree = "<group>"; };
 		BBC02E571F71747A0011FDE6 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		BBC02E581F71747A0011FDE6 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -1397,9 +1403,12 @@
 		BBE35FB822573C8E004E5024 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				BBB5B14D225B099C00D16C53 /* DateTransform.swift */,
 				BBE35FB622573C87004E5024 /* Geometry.swift */,
 				BBE35FB922573D03004E5024 /* LocationDoc.swift */,
 				BBE35FBB22573D91004E5024 /* PlaceDoc.swift */,
+				BBB5B14B225B051700D16C53 /* AnchorLocationDoc.swift */,
+				BBB5B14F225B2B9200D16C53 /* RoadCarDoc.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -1970,6 +1979,7 @@
 				BB51AC542213F47300897CCC /* DbEmptyDefaultStatusView.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
 				BB7C50D92251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift in Sources */,
+				BBB5B150225B2B9200D16C53 /* RoadCarDoc.swift in Sources */,
 				BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */,
 				BB9BC0B821ED9AF0004BC430 /* CustomPickerRow.swift in Sources */,
 				BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */,
@@ -2027,6 +2037,7 @@
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
+				BBB5B14E225B099C00D16C53 /* DateTransform.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
 				BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */,
 				BB06BC0E2201953E00227059 /* MasterCandySearchViewController.swift in Sources */,
@@ -2049,6 +2060,7 @@
 				BBA1C8E8225320EB008FF2FF /* RkMainViewController.swift in Sources */,
 				BBC38A56206DDE9500B11C7B /* Octicon.swift in Sources */,
 				BB5E1426210AFDA10059A8C4 /* PropzyBaseApi.swift in Sources */,
+				BBB5B14C225B051700D16C53 /* AnchorLocationDoc.swift in Sources */,
 				BB4E2361210EBCAD00524B0D /* PzLoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
