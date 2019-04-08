@@ -116,7 +116,7 @@ class RkMapViewController: BaseViewController
     
     func resetMapZoom(lastLocationDoc: LocationDoc)
     {
-        let coordinate: CLLocationCoordinate2D  = CLLocationCoordinate2D(latitude: lastLocationDoc.geometry.latitude, longitude: lastLocationDoc.geometry.longitude)
+        let coordinate: CLLocationCoordinate2D  = CLLocationCoordinate2D(latitude: lastLocationDoc.latitude, longitude: lastLocationDoc.longitude)
         let latlongMeters = RkAppConstants.initialMapZoomRadiusMiles*RkAppConstants.metersPerMile
         self.mapDelegate?.centerAndZoom(centerCoordinate: coordinate, radiusMeters:latlongMeters, animated:true)
     }
@@ -236,7 +236,7 @@ class RkMapViewController: BaseViewController
     
     func drawLocationRadius(locationDoc:LocationDoc)
     {
-        self.mapDelegate?.drawRadius(centerCoordinate: CLLocationCoordinate2DMake(locationDoc.geometry!.latitude, locationDoc.geometry!.longitude), radiusMeters: RkAppConstants.placeRadiusMeters)
+        self.mapDelegate?.drawRadius(centerCoordinate: CLLocationCoordinate2DMake(locationDoc.latitude, locationDoc.longitude), radiusMeters: RkAppConstants.placeRadiusMeters)
     }
     
 //    // MARK: Map Places
@@ -291,7 +291,7 @@ extension RkMapViewController: RkLocationMonitorDelegate{
     func locationUpdated(bestLocation: CLLocation, locations: [CLLocation], inBackground: Bool)
     {
         // create location document
-        let locationDoc = LocationDoc(docId: nil, location: bestLocation, timestamp: NSDate(), background: inBackground)
+        let locationDoc = LocationDoc.init(location: bestLocation, timestamp: Date(), background: inBackground)
         
         if let lastDoc = self.arrLocationDocs.last {
             // -- Tinh toan khoang cach --

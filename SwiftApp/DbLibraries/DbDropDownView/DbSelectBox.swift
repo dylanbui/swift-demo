@@ -148,7 +148,7 @@ class DbSelectBox: UIControl
         
         let anchorView = UIView(frame: anchorFrame)
         anchorView.tag = 5002
-        anchorView.backgroundColor = UIColor.purple
+        anchorView.backgroundColor = UIColor.clear
         self.superview?.addSubview(anchorView)
         
         self.dropDownView.anchorView = anchorView
