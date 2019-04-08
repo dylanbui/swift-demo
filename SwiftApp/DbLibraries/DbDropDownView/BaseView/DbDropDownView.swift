@@ -48,11 +48,11 @@ public class DbDropDownView: UITableView
     /// Set an array of strings to be used for suggestions
     public func dataSourceStrings(_ strings: [String]) {
         var items = [DbDropDownViewItem]()
-        
+        var count: Int = 1
         for value in strings {
-            items.append(DbDropDownViewItem(title: value))
+            items.append(DbDropDownViewItem(id: count, title: value))
+            count += 1
         }
-        
         dataSourceItems(items)
     }
     

@@ -115,25 +115,29 @@ open class DbDropDownViewItem
     public var attributedSubtitle: NSMutableAttributedString?
     
     // Public interface
+    public var itemId: Int
     public var title: String
     public var subtitle: String?
     public var image: UIImage?
     
     public var rawData: Any?
     
-    public init(title: String, subtitle: String?, image: UIImage?) {
+    public init(id: Int, title: String, subtitle: String?, image: UIImage?)
+    {
+        self.itemId = id
         self.title = title
         self.subtitle = subtitle
         self.image = image
     }
     
-    public init(title: String, subtitle: String?) {
-        self.title = title
-        self.subtitle = subtitle
+    convenience init(id: Int, title: String, subtitle: String?)
+    {
+        self.init(id: id, title: title, subtitle: subtitle, image: nil)
     }
     
-    public init(title: String) {
-        self.title = title
-    }
+    convenience init(id: Int, title: String)
+    {
+        self.init(id: id, title: title, subtitle: nil, image: nil)
+    }    
 }
 

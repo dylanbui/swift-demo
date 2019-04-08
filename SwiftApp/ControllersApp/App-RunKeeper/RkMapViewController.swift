@@ -12,7 +12,14 @@ import MapKit
 class RkMapViewController: BaseViewController
 {
     @IBOutlet weak var mapView : MKMapView!
-    @IBOutlet weak var selectBox : DbSelectBox!
+    @IBOutlet weak var selectBox : DbSelectBox! {
+        didSet{
+            self.selectBox.placeholder = "Chọn vị trí đặc biệt..."
+            self.selectBox.dropDownView.tableListHeight = 200
+            self.selectBox.dropDownView.hideOptionsWhenTouchOut = true
+            self.selectBox.arrowPadding = 10.0
+        }
+    }
     
     @IBOutlet weak var lblDistance: UILabel!
     @IBOutlet weak var lblTime: UILabel!
@@ -53,15 +60,16 @@ class RkMapViewController: BaseViewController
         }
         self.navigationItem.rightBarButtonItems =  [btnStart]
         
-        
-        // self.selectBox.center = CGPoint(x: self.view.frame.midX, y: self.view.frame.midY - 100)
-        self.selectBox.dropDownView.dataSourceStrings(["Mexico", "USA", "England", "France", "Germany", "Spain", "Italy", "Canada"])
-        self.selectBox.placeholder = "Select your country..."
-        // Max results list height - Default: No limit
-        self.selectBox.dropDownView.tableListHeight = 200
-        
+        // -- Config selectbox --
+        self.selectBox.dropDownView.dataSourceItems([
+            DbDropDownViewItem.init(id: 1, title: "Cột điện"),
+            DbDropDownViewItem.init(id: 2, title: "Đường cầu"),
+            DbDropDownViewItem.init(id: 3, title: "Trạm biến áp"),
+            DbDropDownViewItem.init(id: 4, title: "Công viên"),
+            DbDropDownViewItem.init(id: 5, title: "Nhà nghỉ"),
+            DbDropDownViewItem.init(id: 6, title: "Khách sạn")])
         self.selectBox.didSelect { (options, index) in
-            // print("selectBox: \(options.count) at index: \(index)")
+            print("selectBox: \(options.count) at index: \(index)")
         }
     }
     

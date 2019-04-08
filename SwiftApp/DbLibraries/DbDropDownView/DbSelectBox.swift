@@ -84,15 +84,11 @@ class DbSelectBox: UIControl
         title.textAlignment = .center
         self.addSubview(title)
         
-        let arrowContainer = UIView(frame: CGRect(x: title.frame.maxX,
-                                                  y: 0,
-                                                  width: title.frame.height,
-                                                  height: title.frame.height))
+        let arrowContainer = UIView(frame: CGRect.zero)
         arrowContainer.isUserInteractionEnabled = false
         self.addSubview(arrowContainer)
         
-        arrow = DbSelectBoxArrow(origin: CGPoint(x: arrowPadding, y: arrowPadding),
-                                 size: arrowContainer.frame.width-(arrowPadding*2))
+        arrow = DbSelectBoxArrow(frame: CGRect.zero)
         arrow.backgroundColor = .black
         arrowContainer.addSubview(arrow)
         
@@ -100,6 +96,24 @@ class DbSelectBox: UIControl
         self.layer.borderWidth = borderWidth
         self.layer.borderColor = borderColor?.cgColor
         self.addTarget(self, action: #selector(touch), for: .touchUpInside)
+    }
+    
+    override open func layoutSubviews()
+    {
+        super.layoutSubviews()
+        
+        // -- Phai update size trong nay khi su dung xib --
+        title.frame = CGRect(x: 0, y: 0,
+                             width: (self.frame.width-self.frame.height),
+                             height: self.frame.height)
+        
+        if let arrowContainer = self.arrow.superview {
+            arrowContainer.frame = CGRect(x: title.frame.maxX, y: 0,
+                                          width: title.frame.height,
+                                          height: title.frame.height)
+            let arrowWidth = arrowContainer.frame.width-(arrowPadding*2)
+            self.arrow.frame = CGRect(x: arrowPadding, y: arrowPadding, width: arrowWidth, height: arrowWidth)
+        }
     }
     
     fileprivate func setupDropDown()
@@ -219,6 +233,10 @@ class DbSelectBoxArrow: UIView
                 break
             }
         }
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
     }
     
     init(origin: CGPoint, size: CGFloat) {
