@@ -27,6 +27,7 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
     {
         self.mapView = mapView
         self.mapView.showsUserLocation = true
+        self.mapView.userTrackingMode = .followWithHeading
         super.init()
         self.mapView.delegate = self
     }

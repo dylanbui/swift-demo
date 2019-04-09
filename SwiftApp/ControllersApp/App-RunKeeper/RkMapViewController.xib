@@ -33,6 +33,9 @@
                             <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <state key="normal" title="Add"/>
+                            <connections>
+                                <action selector="btnAdd_Click:" destination="-1" eventType="touchUpInside" id="Der-E3-UtC"/>
+                            </connections>
                         </button>
                         <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CKv-th-Hjg" customClass="DbSelectBox" customModule="SwiftApp" customModuleProvider="target">
                             <rect key="frame" x="10" y="10" width="263" height="40"/>

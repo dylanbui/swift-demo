@@ -16,6 +16,19 @@ class DbSelectBox: UIControl
     public var dropDownView: DbDropDownView!
     public var selectedItem: DbDropDownViewItem?
     
+    public var selectedIndex: Int? {
+        get {
+            return self.dropDownView.selectedIndex
+        }
+        set {
+            if newValue == nil {
+                self.title.text = self.placeholder
+                self.selectedItem = nil
+            }
+            self.dropDownView.selectedIndex = newValue
+        }
+    }
+    
     public var placeholder: String! {
         didSet {
             title.text = placeholder

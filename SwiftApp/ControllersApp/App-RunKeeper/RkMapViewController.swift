@@ -38,6 +38,8 @@ class RkMapViewController: BaseViewController
     private var listPolyline: [MKPolyline] = []
     private var isRunning: Bool = false
     
+    let locationManager = CLLocationManager()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -79,29 +81,52 @@ class RkMapViewController: BaseViewController
         self.selectBox.dropDownView.dataSourceItems(arrDataSource)
         self.selectBox.didSelect { (options, index) in
             print("selectBox: \(options.count) at index: \(index)")
-            guard let selectedItem = options[index].rawData as? AnchorLocationDoc else {
-                print("Khong tim thay gia tri")
-                return
-            }
-            
-            
-            if let lastDoc = self.arrLocationDocs.last {
-                // -- Make pin --
-                let pin = self.mapDelegate!.getPin(
-                    coordinate: CLLocationCoordinate2DMake(lastDoc.latitude, lastDoc.longitude),
-                    title: selectedItem.anchorName,
-                    color: UIColor.init(hexString: "#"+selectedItem.hexColor)
-                )
-            
-                self.arrLocationPins.append(pin)
-                
-                // -- drawPin --
-                self.mapDelegate.addPin(pin: pin)
-            }
-
-            
-            
         }
+        
+        self.requestLocationAccess()
+    }
+    
+    func requestLocationAccess() {
+        let status = CLLocationManager.authorizationStatus()
+        
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            return
+            
+        case .denied, .restricted:
+            print("location access denied")
+            
+        default:
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    @IBAction func btnAdd_Click(_ sender: AnyObject)
+    {
+        guard let selectedItem = self.selectBox.selectedItem
+            , let anchor = selectedItem.rawData as? AnchorLocationDoc else {
+            print("Khong tim thay gia tri")
+            
+            return
+        }
+        
+        if let lastDoc = self.arrLocationDocs.last {
+            // -- Make pin --
+            let pin = self.mapDelegate!.getPin(
+                coordinate: CLLocationCoordinate2DMake(lastDoc.latitude, lastDoc.longitude),
+                title: anchor.anchorName,
+                color: UIColor.init(hexString: "#"+anchor.hexColor)
+            )
+
+            self.arrLocationPins.append(pin)
+
+            // -- drawPin --
+            self.mapDelegate.addPin(pin: pin)
+        }
+
+        // -- Reset selectedIndex --
+//        print("\(self.selectBox.selectedIndex)")
+//        self.selectBox.selectedIndex = nil
     }
     
     override func viewWillAppear(_ animated: Bool)

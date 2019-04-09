@@ -33,7 +33,8 @@ public class DbDropDownView: UITableView
     /// Maximum height of the table list
     public var tableListHeight: CGFloat = 100.0
     
-    public fileprivate(set) var selectedIndex: Int?
+    // public fileprivate(set) var selectedIndex: Int?
+    public var selectedIndex: Int?
     public var isShow = false // Status show, hide
     public var hideOptionsWhenSelect = true // Hide when choose
     public var hideOptionsWhenTouchOut = false // Hide when touch out
