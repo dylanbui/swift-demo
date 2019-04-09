@@ -15,12 +15,12 @@ class AppleMapPin: MapPin, MKAnnotation
     }
     
     var title: String? {
-        return "title"
+        return self.p_title
     }
 
-    var subtitle: String? {
-        return "subtitle"
-    }
+//    var subtitle: String? {
+//        return "subtitle"
+//    }
     
 }
 

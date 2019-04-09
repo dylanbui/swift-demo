@@ -29,7 +29,7 @@ class RkMapViewController: BaseViewController
     var lastLocationDocMapDownload: LocationDoc? = nil
 
     var arrLocationDocs: [LocationDoc] = []
-    // var locationPins: [MapPin] = []
+    var arrLocationPins: [MapPin] = []
     
     private var distance: Double = 0.0
     private var seconds = 0
@@ -61,15 +61,46 @@ class RkMapViewController: BaseViewController
         self.navigationItem.rightBarButtonItems =  [btnStart]
         
         // -- Config selectbox --
-        self.selectBox.dropDownView.dataSourceItems([
-            DbDropDownViewItem.init(id: 1, title: "Cột điện"),
-            DbDropDownViewItem.init(id: 2, title: "Đường cầu"),
-            DbDropDownViewItem.init(id: 3, title: "Trạm biến áp"),
-            DbDropDownViewItem.init(id: 4, title: "Công viên"),
-            DbDropDownViewItem.init(id: 5, title: "Nhà nghỉ"),
-            DbDropDownViewItem.init(id: 6, title: "Khách sạn")])
+//        self.selectBox.dropDownView.dataSourceItems([
+//            DbDropDownViewItem.init(id: 1, title: "Cột điện"),
+//            DbDropDownViewItem.init(id: 2, title: "Đường cầu"),
+//            DbDropDownViewItem.init(id: 3, title: "Trạm biến áp"),
+//            DbDropDownViewItem.init(id: 4, title: "Công viên"),
+//            DbDropDownViewItem.init(id: 5, title: "Nhà nghỉ"),
+//            DbDropDownViewItem.init(id: 6, title: "Khách sạn")])
+        
+        // let arrAnchorLocation = AnchorLocationDoc.er.db_all()
+        var arrDataSource: [DbDropDownViewItem] = []
+        for anchor in AnchorLocationDoc.er.db_all() {
+            let item = DbDropDownViewItem.init(id: anchor.anchorId, title: anchor.anchorName)
+            item.rawData = anchor
+            arrDataSource.append(item)
+        }
+        self.selectBox.dropDownView.dataSourceItems(arrDataSource)
         self.selectBox.didSelect { (options, index) in
             print("selectBox: \(options.count) at index: \(index)")
+            guard let selectedItem = options[index].rawData as? AnchorLocationDoc else {
+                print("Khong tim thay gia tri")
+                return
+            }
+            
+            
+            if let lastDoc = self.arrLocationDocs.last {
+                // -- Make pin --
+                let pin = self.mapDelegate!.getPin(
+                    coordinate: CLLocationCoordinate2DMake(lastDoc.latitude, lastDoc.longitude),
+                    title: selectedItem.anchorName,
+                    color: UIColor.init(hexString: "#"+selectedItem.hexColor)
+                )
+            
+                self.arrLocationPins.append(pin)
+                
+                // -- drawPin --
+                self.mapDelegate.addPin(pin: pin)
+            }
+
+            
+            
         }
     }
     

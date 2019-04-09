@@ -31,7 +31,7 @@ class AppDelegate: DbAppDelegate {
 //        })
 //        Realm.Configuration.defaultConfiguration = config
         
-        DbRealm.configureDB(version: 1)
+        DbRealm.configureDB(version: 2)
         
         // Override point for customization after application launch.
         IQKeyboardManager.shared.enable = true
@@ -84,15 +84,18 @@ class AppDelegate: DbAppDelegate {
         }
         
         let dictData: [DictionaryType] = [
-            ["id": 1, "name": "Công viên"],
-            ["id": 2, "name": "Cây xăng"],
-            ["id": 3, "name": "Trạm nghỉ"],
-            ["id": 4, "name": "Nhà vệ sinh công cộng"],
-            ["id": 5, "name": "Đồn cảnh sát"]
+            ["id": 1, "name": "Công viên", "hexColor": "167810"],
+            ["id": 2, "name": "Cây xăng", "hexColor": "f99706"],
+            ["id": 3, "name": "Trạm nghỉ", "hexColor": "070806"],
+            ["id": 4, "name": "Khách sạn", "hexColor": "deaf23"],
+            ["id": 5, "name": "Nhà vệ sinh công cộng", "hexColor": "fd5f00"],
+            ["id": 6, "name": "Đồn cảnh sát", "hexColor": "be2409"]
         ]
         for data in dictData {
             // let anchor = AnchorLocationDoc(map: Map(mappingType: .fromJSON, JSON: data))
-            let anchor = AnchorLocationDoc(anchorId: data.db_int(key: "id"), anchorName: data.db_string(key: "name"))
+            let anchor = AnchorLocationDoc(anchorId: data.db_int(key: "id")
+                ,anchorName: data.db_string(key: "name")
+                ,hexColor: data.db_string(key: "hexColor"))
             anchor.er.db_saveOrUpdate()
         }
     }

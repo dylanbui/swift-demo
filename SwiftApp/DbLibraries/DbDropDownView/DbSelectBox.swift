@@ -14,6 +14,7 @@ class DbSelectBox: UIControl
     fileprivate var title: UILabel!
     fileprivate var arrow: DbSelectBoxArrow!
     public var dropDownView: DbDropDownView!
+    public var selectedItem: DbDropDownViewItem?
     
     public var placeholder: String! {
         didSet {
@@ -171,7 +172,8 @@ class DbSelectBox: UIControl
     public func didSelect(completion: @escaping (_ options: [DbDropDownViewItem], _ index: Int) -> ())
     {
         self.dropDownView.didSelect(completion: { (options, index) in
-            self.title.text = options[index].title
+            self.selectedItem = options[index]
+            self.title.text = self.selectedItem!.title
             completion(options, index)
         })
     }

@@ -13,6 +13,7 @@ class AnchorLocationDoc: DbrmObjectMappable // , CustomStringConvertible
 {
     @objc dynamic var anchorId: Int = -1
     @objc dynamic var anchorName: String = ""
+    @objc dynamic var hexColor: String = "120996"
     
     override class func primaryKey() -> String?
     {
@@ -26,6 +27,12 @@ class AnchorLocationDoc: DbrmObjectMappable // , CustomStringConvertible
         self.anchorName = anchorName
     }
     
+    convenience init(anchorId: Int, anchorName: String, hexColor: String)
+    {
+        self.init(anchorId: anchorId, anchorName: anchorName)
+        self.hexColor = hexColor
+    }
+
     required convenience init?(map: Map)
     {
         self.init()
@@ -34,8 +41,9 @@ class AnchorLocationDoc: DbrmObjectMappable // , CustomStringConvertible
     
     func mapping(map: Map)
     {
-        anchorId                    <- map["anchorId"]
-        anchorName                   <- map["anchorName"]
+        anchorId                   <- map["anchorId"]
+        anchorName                 <- map["anchorName"]
+        hexColor                   <- map["hexColor"]
     }
     
     override public var description: String
