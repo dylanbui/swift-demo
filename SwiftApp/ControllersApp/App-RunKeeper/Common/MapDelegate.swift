@@ -10,11 +10,18 @@ import Foundation
 import CoreLocation
 import UIKit
 
+enum PinType {
+    case currentUser
+    case anchorPoint
+    case defaultPoint
+}
+
 class MapPin : NSObject
 {
     var p_coordinate: CLLocationCoordinate2D
     var p_title: String?
     var p_color: UIColor?
+    var type: PinType = .defaultPoint
     
     init(coordinate: CLLocationCoordinate2D, title: String, color: UIColor) {
         self.p_coordinate = coordinate
@@ -22,6 +29,10 @@ class MapPin : NSObject
         self.p_color = color
     }
     
+    convenience init(WithType type: PinType, coordinate: CLLocationCoordinate2D, title: String, color: UIColor) {
+        self.init(coordinate: coordinate, title: title, color: color)
+        self.type = type
+    }
 }
 
 protocol MapDelegate
@@ -36,4 +47,7 @@ protocol MapDelegate
     func drawRadius(centerCoordinate: CLLocationCoordinate2D, radiusMeters: CLLocationDistance)
     func eraseRadius()
     func centerAndZoom(centerCoordinate: CLLocationCoordinate2D, radiusMeters: CLLocationDistance, animated: Bool)
+    func updateCurrentLoctionDirection(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D)
+    func addCurrentUserPin(coordinate: CLLocationCoordinate2D) -> MapPin
+
 }

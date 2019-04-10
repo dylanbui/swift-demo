@@ -31,6 +31,7 @@ class RkMapViewController: BaseViewController
     var arrLocationDocs: [LocationDoc] = []
     var arrLocationPins: [MapPin] = []
     
+    private var pinCurrentUser: MapPin? = nil
     private var distance: Double = 0.0
     private var seconds = 0
     private var timer: Timer?
@@ -39,6 +40,8 @@ class RkMapViewController: BaseViewController
     private var isRunning: Bool = false
     
     let locationManager = CLLocationManager()
+    
+    private var myAnnotation: MKPointAnnotation?
     
     override func viewDidLoad()
     {
@@ -84,49 +87,6 @@ class RkMapViewController: BaseViewController
         }
         
         self.requestLocationAccess()
-    }
-    
-    func requestLocationAccess() {
-        let status = CLLocationManager.authorizationStatus()
-        
-        switch status {
-        case .authorizedAlways, .authorizedWhenInUse:
-            return
-            
-        case .denied, .restricted:
-            print("location access denied")
-            
-        default:
-            locationManager.requestWhenInUseAuthorization()
-        }
-    }
-    
-    @IBAction func btnAdd_Click(_ sender: AnyObject)
-    {
-        guard let selectedItem = self.selectBox.selectedItem
-            , let anchor = selectedItem.rawData as? AnchorLocationDoc else {
-            print("Khong tim thay gia tri")
-            
-            return
-        }
-        
-        if let lastDoc = self.arrLocationDocs.last {
-            // -- Make pin --
-            let pin = self.mapDelegate!.getPin(
-                coordinate: CLLocationCoordinate2DMake(lastDoc.latitude, lastDoc.longitude),
-                title: anchor.anchorName,
-                color: UIColor.init(hexString: "#"+anchor.hexColor)
-            )
-
-            self.arrLocationPins.append(pin)
-
-            // -- drawPin --
-            self.mapDelegate.addPin(pin: pin)
-        }
-
-        // -- Reset selectedIndex --
-//        print("\(self.selectBox.selectedIndex)")
-//        self.selectBox.selectedIndex = nil
     }
     
     override func viewWillAppear(_ animated: Bool)
@@ -184,7 +144,7 @@ class RkMapViewController: BaseViewController
         self.seconds = 0
         self.distance = 0
         
-        self.mapView.showsUserLocation = true
+        // self.mapView.showsUserLocation = true
         
         // -- Clear all --
         self.removeAllLocations()
@@ -199,7 +159,7 @@ class RkMapViewController: BaseViewController
 
     private func stopRun()
     {
-        self.mapView.showsUserLocation = false
+        // self.mapView.showsUserLocation = false
         
         // -- Stop scheduledTimer --
         self.timer?.invalidate()
@@ -222,6 +182,51 @@ class RkMapViewController: BaseViewController
         self.lblDistance.text = "Distance:  \(formattedDistance) m"
         self.lblTime.text = "Time:  \(formattedTime) s"
         self.lblPace.text = "Pace:  \(formattedPace) m/s"
+    }
+    
+    private func requestLocationAccess() {
+        let status = CLLocationManager.authorizationStatus()
+        
+        switch status {
+        case .authorizedAlways, .authorizedWhenInUse:
+            return
+            
+        case .denied, .restricted:
+            print("location access denied")
+            
+        default:
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    // MARK: Action functions
+    
+    @IBAction func btnAdd_Click(_ sender: AnyObject)
+    {
+        guard let selectedItem = self.selectBox.selectedItem
+            , let anchor = selectedItem.rawData as? AnchorLocationDoc else {
+                print("Khong tim thay gia tri")
+                
+                return
+        }
+        
+        if let lastDoc = self.arrLocationDocs.last {
+            // -- Make pin --
+            let pin = self.mapDelegate!.getPin(
+                coordinate: CLLocationCoordinate2DMake(lastDoc.latitude, lastDoc.longitude),
+                title: anchor.anchorName,
+                color: UIColor.init(hexString: "#"+anchor.hexColor)
+            )
+            
+            self.arrLocationPins.append(pin)
+            
+            // -- drawPin --
+            self.mapDelegate.addPin(pin: pin)
+        }
+        
+        // -- Reset selectedIndex --
+        print("\(String(describing: self.selectBox.selectedIndex))")
+        self.selectBox.selectedIndex = nil
     }
     
     // MARK: Map Locations
@@ -349,11 +354,27 @@ extension RkMapViewController: RkLocationMonitorDelegate{
         // create location document
         let locationDoc = LocationDoc.init(location: bestLocation, timestamp: Date(), background: inBackground)
         
+//        if self.myAnnotation == nil {
+//            self.myAnnotation = MKPointAnnotation()
+//            // Add annotation to map.
+//            self.myAnnotation!.coordinate = bestLocation.coordinate
+//            self.mapView.addAnnotation(myAnnotation!)
+//        }
+        
+        if self.pinCurrentUser == nil {
+            self.pinCurrentUser = self.mapDelegate.addCurrentUserPin(coordinate: bestLocation.coordinate)
+        }
+        
         if let lastDoc = self.arrLocationDocs.last {
             // -- Tinh toan khoang cach --
             // newLocation.distance(from: lastLocation)
             let delta = bestLocation.distance(from: lastDoc.location) // => convert to meter, con loi chua chay on dinh
             distance = distance + delta
+            
+            // self.myAnnotation!.coordinate = bestLocation.coordinate
+            
+            self.mapDelegate.updateCurrentLoctionDirection(from: lastDoc.location.coordinate,
+                                                           to: bestLocation.coordinate)
         }
         
         // add location to map

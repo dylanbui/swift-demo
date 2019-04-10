@@ -14,6 +14,7 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
     var mapView: MKMapView
     var polyline: MKPolyline? = nil
     var circle: MKCircle? = nil
+    var pinCurrentUser: AppleMapPin? = nil
     
     static let mapDefaultStyleId = "Standard"
     static let mapStyleIds = ["Standard","Satellite","Satellite Flyover","Hybrid","Hybrid Flyover"]
@@ -26,8 +27,8 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
     init(mapView: MKMapView)
     {
         self.mapView = mapView
-        self.mapView.showsUserLocation = true
-        self.mapView.userTrackingMode = .followWithHeading
+        // self.mapView.showsUserLocation = true
+        // self.mapView.userTrackingMode = .followWithHeading // Auto start
         super.init()
         self.mapView.delegate = self
     }
@@ -42,6 +43,42 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
         if let mapType = AppleMapDelegate.mapStyleTypes[styleId] {
             self.mapView.mapType = mapType;
         }
+    }
+    
+    func addCurrentUserPin(coordinate: CLLocationCoordinate2D) -> MapPin
+    {
+        let pin = AppleMapPin(WithType: .currentUser, coordinate: coordinate, title: "", color: UIColor.clear)
+        self.pinCurrentUser = pin
+        self.mapView.addAnnotation(self.pinCurrentUser!)
+        return self.pinCurrentUser!
+    }
+    
+    func updateCurrentLoctionDirection(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D)
+    {
+        guard let pin = self.pinCurrentUser else {
+            return
+        }
+        
+        let getAngle = self.angle(FromCoordinate: from, toCoordinate: to)
+        
+        print("From : \(from.latitude) -- \(from.longitude) <==> To : \(to.latitude) -- \(to.longitude)")
+        pin.coordinate = to
+        
+        let annotationView: CurrentAnnotationView = self.mapView.view(for: pin) as! CurrentAnnotationView
+        annotationView.transform = CGAffineTransform(rotationAngle: CGFloat(getAngle))
+        annotationView.annotation = pin
+
+        
+//        let getAngle = self.angle(FromCoordinate: from, toCoordinate: to)
+//
+//        UIView.animate(withDuration: 2.5) {
+//
+//            print("From : \(from.latitude) -- \(from.longitude) <==> To : \(to.latitude) -- \(to.longitude)")
+//            pin.coordinate = to
+//            let annotationView: CurrentAnnotationView = self.mapView.view(for: pin) as! CurrentAnnotationView
+//            annotationView.transform = CGAffineTransform(rotationAngle: CGFloat(getAngle))
+//            annotationView.annotation = pin
+//        }
     }
     
     func getPin(coordinate: CLLocationCoordinate2D, title: String, color: UIColor) -> MapPin
@@ -102,6 +139,24 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
         self.mapView.setRegion(region, animated: animated)
     }
     
+    func angle(FromCoordinate first:CLLocationCoordinate2D, toCoordinate second:CLLocationCoordinate2D) -> Double
+    {
+        let deltaLongitude:Double = second.longitude - first.longitude
+        let deltaLatitude:Double = second.latitude - first.latitude
+        let angle:Double = (Double.pi * 0.5) - atan(deltaLatitude / deltaLongitude)
+        
+        if deltaLongitude > 0 {
+            return angle
+        } else if (deltaLongitude < 0) {
+            return angle + Double.pi
+        } else if (deltaLatitude < 0)  {
+            return Double.pi
+        }
+        return Double.pi
+        // return 0.0
+    }
+    
+    
     // MARK: MKMapViewDelegate Members
     
     func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
@@ -124,6 +179,33 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
         if annotation is MKUserLocation {
             return nil
         }
+        
+        guard let pin = annotation as? MapPin else {
+            return nil
+        }
+        
+        if pin.type == .currentUser {
+            var currAnnotation: CurrentAnnotationView? = self.mapView.dequeueReusableAnnotationView(withIdentifier: "CurrentPinAnnotation") as? CurrentAnnotationView
+            if(currAnnotation == nil) {
+                currAnnotation = CurrentAnnotationView(annotation: self.pinCurrentUser, reuseIdentifier: "CurrentPinAnnotation")
+                // -- Tung loai khac nhau thi xu ly khac nhau --
+                let imgCar = UIImage.init(named: "icCarTopRed")!
+                currAnnotation?.btnInfor = UIButton.init()
+                currAnnotation?.frame = CGRect.init(0.0, 0.0, imgCar.size.width, imgCar.size.height)
+                currAnnotation?.btnInfor?.frame = currAnnotation!.frame
+                currAnnotation?.btnInfor?.setBackgroundImage(imgCar, for: .normal)
+                currAnnotation?.addSubview((currAnnotation?.btnInfor)!)
+                // currAnnotation?.isDraggable = true
+            }
+            else {
+                currAnnotation?.annotation = self.pinCurrentUser
+            }
+            
+            currAnnotation?.canShowCallout = true
+            return currAnnotation
+        }
+        
+        // -- Kiem tra theo tung loai pin thi tao cac doi tuong khac nhau --
         let reuseIdentifier = "PinAnnotation"
         var pinAnnotation: MKPinAnnotationView? = self.mapView.dequeueReusableAnnotationView(withIdentifier: reuseIdentifier) as? MKPinAnnotationView
         if(pinAnnotation == nil) {
@@ -132,11 +214,9 @@ class AppleMapDelegate: NSObject, MapDelegate, MKMapViewDelegate
         else {
             pinAnnotation?.annotation = annotation
         }
-        if let pin = annotation as? MapPin {
-            pinAnnotation!.pinTintColor = pin.p_color
-        }
+        pinAnnotation!.pinTintColor = pin.p_color
         pinAnnotation?.canShowCallout = true
-        return pinAnnotation;
+        return pinAnnotation
     }
     
 }
