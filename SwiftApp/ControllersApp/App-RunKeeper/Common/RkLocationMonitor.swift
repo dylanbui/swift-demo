@@ -11,6 +11,7 @@ import MapKit
 
 protocol RkLocationMonitorDelegate {
     func locationUpdated(bestLocation:CLLocation, locations: [CLLocation], inBackground: Bool)
+    func locationUpdated(Heading newHeading: CLHeading)
     func locationManagerEnabled()
     func locationManagerDisabled()
 }
@@ -18,6 +19,7 @@ protocol RkLocationMonitorDelegate {
 extension RkLocationMonitorDelegate {
     func locationManagerEnabled() { }
     func locationManagerDisabled() { }
+    func locationUpdated(Heading newHeading: CLHeading) { }
 }
 
 
@@ -134,6 +136,12 @@ class RkLocationMonitor: NSObject, CLLocationManagerDelegate {
         }
     }
     
+    func notifyUpdatedHeading(newHeading: CLHeading) {
+        for delegate:RkLocationMonitorDelegate in self.delegates {
+            delegate.locationUpdated(Heading: newHeading)
+        }
+    }
+    
     func notifyLocationManagerEnabled() {
         for delegate:RkLocationMonitorDelegate in self.delegates {
             delegate.locationManagerEnabled()
@@ -207,6 +215,16 @@ class RkLocationMonitor: NSObject, CLLocationManagerDelegate {
                 }
             }
         }
+    }
+    
+    
+    //func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading)
+    func locationManager(_ manager: CLLocationManager, didUpdateHeading newHeading: CLHeading)
+    {
+        if newHeading.headingAccuracy < 0 { return }
+        
+        // let heading = newHeading.trueHeading > 0 ? newHeading.trueHeading : newHeading.magneticHeading
+        self.notifyUpdatedHeading(newHeading: newHeading)
     }
     
     func processLocation(bestLocation: CLLocation, locations: [CLLocation], inBackground:Bool) {

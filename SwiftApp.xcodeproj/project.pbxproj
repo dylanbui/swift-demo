@@ -308,6 +308,8 @@
 		BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */; };
 		BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276D21058220007CFFB4 /* DbRealmObject.swift */; };
 		BBF527702105949B007CFFB4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276F2105949B007CFFB4 /* Student.swift */; };
+		BBF9F347225F33F5001EE7BB /* MapKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F346225F33F5001EE7BB /* MapKitDelegate.swift */; };
+		BBF9F349225F4009001EE7BB /* svgBlackArrowUp.svg in Resources */ = {isa = PBXBuildFile; fileRef = BBF9F348225F4008001EE7BB /* svgBlackArrowUp.svg */; };
 		BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */; };
 		BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBFAA0FC200D243700718E95 /* DbViewController.swift */; };
 		E30D5F2105DB6D031E1304FB /* Pods_SwiftAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FF2814C1B7C4BB0116DD7E9 /* Pods_SwiftAppTests.framework */; };
@@ -634,6 +636,8 @@
 		BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearPicker.swift; sourceTree = "<group>"; };
 		BBF5276D21058220007CFFB4 /* DbRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmObject.swift; sourceTree = "<group>"; };
 		BBF5276F2105949B007CFFB4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
+		BBF9F346225F33F5001EE7BB /* MapKitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitDelegate.swift; sourceTree = "<group>"; };
+		BBF9F348225F4008001EE7BB /* svgBlackArrowUp.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = svgBlackArrowUp.svg; sourceTree = "<group>"; };
 		BBFAA0FA200D1EF700718E95 /* DbAppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAppDelegate.swift; sourceTree = "<group>"; };
 		BBFAA0FC200D243700718E95 /* DbViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbViewController.swift; sourceTree = "<group>"; };
 		CEFA6F353D569F5651FF6856 /* Pods-SwiftApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwiftApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1101,6 +1105,7 @@
 				BBA1C8EF225337AA008FF2FF /* MapDelegate.swift */,
 				BBA1C8F322533A78008FF2FF /* AppleMapPin.swift */,
 				BBA1C8F122533A63008FF2FF /* AppleMapDelegate.swift */,
+				BBF9F346225F33F5001EE7BB /* MapKitDelegate.swift */,
 				BBA1C8FA22534961008FF2FF /* UnitExtensions.swift */,
 				BBA1C8FC225354C3008FF2FF /* FormatDisplay.swift */,
 				BBE35FB822573C8E004E5024 /* Model */,
@@ -1183,6 +1188,7 @@
 		BBC02E531F71747A0011FDE6 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				BBF9F348225F4008001EE7BB /* svgBlackArrowUp.svg */,
 				BB7F3029203E857900185366 /* Images */,
 				BBC02E541F71747A0011FDE6 /* artists.json */,
 				BBC02E551F71747A0011FDE6 /* Fonts */,
@@ -1667,6 +1673,7 @@
 				BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */,
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
+				BBF9F349225F4009001EE7BB /* svgBlackArrowUp.svg in Resources */,
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
 				BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */,
 				BB7E580321E84AD5005C3FA6 /* floatLabelRow.gif in Resources */,
@@ -1863,6 +1870,7 @@
 				BBA1C8EC22532164008FF2FF /* RkLocationMonitor.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
+				BBF9F347225F33F5001EE7BB /* MapKitDelegate.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
 				BBA9BBD3224CB61E0068FFDC /* DbHttp.swift in Sources */,
 				BB92D85B224DC4E300B8F244 /* DemoNetworkRealmViewController.swift in Sources */,

@@ -21,18 +21,18 @@ class AppleMapPin: MapPin, MKAnnotation
 //    var title: String?
 //    var subtitle: String?
     
-//    var coordinate: CLLocationCoordinate2D {
-//        return self.p_coordinate
-//    }
-    
     var coordinate: CLLocationCoordinate2D {
-        get {
-            return self.p_coordinate
-        }
-        set {
-            self.p_coordinate = newValue
-        }
+        return self.p_coordinate
     }
+    
+//    var coordinate: CLLocationCoordinate2D {
+//        get {
+//            return self.p_coordinate
+//        }
+//        set {
+//            self.p_coordinate = newValue
+//        }
+//    }
     
     var title: String? {
         return self.p_title

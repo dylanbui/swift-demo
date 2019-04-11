@@ -48,6 +48,7 @@ protocol MapDelegate
     func eraseRadius()
     func centerAndZoom(centerCoordinate: CLLocationCoordinate2D, radiusMeters: CLLocationDistance, animated: Bool)
     func updateCurrentLoctionDirection(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D)
+    func updateCurrentLoctionDirection(forView view: UIView?, from: CLLocationCoordinate2D, to: CLLocationCoordinate2D)
     func addCurrentUserPin(coordinate: CLLocationCoordinate2D) -> MapPin
 
 }
