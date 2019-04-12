@@ -9,6 +9,45 @@
 import Foundation
 import MapKit
 
+// MARK: - Methods
+public extension CLLocation {
+    
+    /// - Returns: Calculated bearing degrees in the range 0° ... 360°
+    func bearing(to destination: CLLocation) -> Double {
+        // http://stackoverflow.com/questions/3925942/cllocation-category-for-calculating-bearing-w-haversine-function
+        let lat1 = Double.pi * coordinate.latitude / 180.0
+        let long1 = Double.pi * coordinate.longitude / 180.0
+        let lat2 = Double.pi * destination.coordinate.latitude / 180.0
+        let long2 = Double.pi * destination.coordinate.longitude / 180.0
+        
+        // Formula: θ = atan2( sin Δλ ⋅ cos φ2 , cos φ1 ⋅ sin φ2 − sin φ1 ⋅ cos φ2 ⋅ cos Δλ )
+        // Source: http://www.movable-type.co.uk/scripts/latlong.html
+        let rads = atan2(
+            sin(long2 - long1) * cos(lat2),
+            cos(lat1) * sin(lat2) - sin(lat1) * cos(lat2) * cos(long2 - long1))
+        let degrees = rads * 180 / Double.pi
+        
+        return (degrees+360).truncatingRemainder(dividingBy: 360)
+    }
+    
+    func angle(to destination: CLLocation) -> Double
+    {
+        let deltaLongitude:Double = destination.coordinate.longitude - self.coordinate.longitude
+        let deltaLatitude:Double = destination.coordinate.latitude - self.coordinate.latitude
+        let angle:Double = (Double.pi * 0.5) - atan(deltaLatitude / deltaLongitude)
+        
+        if deltaLongitude > 0 {
+            return angle
+        } else if (deltaLongitude < 0) {
+            return angle + Double.pi
+        } else if (deltaLatitude < 0)  {
+            return Double.pi
+        }
+        return Double.pi
+    }
+    
+}
+
 protocol RkLocationMonitorDelegate {
     func locationUpdated(bestLocation:CLLocation, locations: [CLLocation], inBackground: Bool)
     func locationUpdated(Heading newHeading: CLHeading)

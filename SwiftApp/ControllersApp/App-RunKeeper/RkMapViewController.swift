@@ -87,18 +87,18 @@ class RkMapViewController: BaseViewController
         }
         
         self.requestLocationAccess()
+        
+        // initialize the map provider (or reset if map type changed in settings)
+        // -- Chuyen toan bo cac xu ly vao MapKitDelegate --
+        initMapProvider()
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
         
-        // initialize the map provider (or reset if map type changed in settings)
-        initMapProvider();
-        
         // Sync locations when we start up
         // This will pull the 100 most recent locations from Cloudant
-
     }
     
     override func viewDidAppear(_ animated: Bool)
@@ -295,22 +295,22 @@ class RkMapViewController: BaseViewController
         self.mapDelegate?.drawRadius(centerCoordinate: CLLocationCoordinate2DMake(locationDoc.latitude, locationDoc.longitude), radiusMeters: RkAppConstants.placeRadiusMeters)
     }
     
-    func angle(FromCoordinate first:CLLocationCoordinate2D, toCoordinate second:CLLocationCoordinate2D) -> Double
-    {
-        let deltaLongitude:Double = second.longitude - first.longitude
-        let deltaLatitude:Double = second.latitude - first.latitude
-        let angle:Double = (Double.pi * 0.5) - atan(deltaLatitude / deltaLongitude)
-        
-        if deltaLongitude > 0 {
-            return angle
-        } else if (deltaLongitude < 0) {
-            return angle + Double.pi
-        } else if (deltaLatitude < 0)  {
-            return Double.pi
-        }
-        return Double.pi
-        // return 0.0
-    }
+//    func angle(FromCoordinate first:CLLocationCoordinate2D, toCoordinate second:CLLocationCoordinate2D) -> Double
+//    {
+//        let deltaLongitude:Double = second.longitude - first.longitude
+//        let deltaLatitude:Double = second.latitude - first.latitude
+//        let angle:Double = (Double.pi * 0.5) - atan(deltaLatitude / deltaLongitude)
+//        
+//        if deltaLongitude > 0 {
+//            return angle
+//        } else if (deltaLongitude < 0) {
+//            return angle + Double.pi
+//        } else if (deltaLatitude < 0)  {
+//            return Double.pi
+//        }
+//        return Double.pi
+//        // return 0.0
+//    }
     
 }
 
@@ -373,7 +373,7 @@ extension RkMapViewController: RkLocationMonitorDelegate
         // add location to map
         self.addLocation(locationDoc: locationDoc, drawPath: true, drawRadius: false)
         // reset map zoom
-        self.resetMapZoom(lastLocationDoc: locationDoc)
+         self.resetMapZoom(lastLocationDoc: locationDoc)
         
         // TODO: save location to datastore
         // TODO: sync places based on latest location

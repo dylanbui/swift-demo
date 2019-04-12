@@ -71,7 +71,27 @@ class MapKitDelegate: NSObject
     init(mapView: MKMapView)
     {
         self.mapView = mapView
-        self.mapView.showsUserLocation = true
+        self.mapView.showsCompass = true
+        
+        // -- Co 2 cach xu ly lay location o day --
+        // C1 : lay location binh thuong tu thiet bi, roi gan cho map, dung centerAndZoom de move map theo location
+        // C2 : Cho map tu lay location, minh se dung location cua map lam chuan
+        /* Phai set
+              self.mapView.showsUserLocation = true
+              self.mapView.userTrackingMode = .followWithHeading // Auto start
+         
+         Set frame hien thi tu dau
+             let span = MKCoordinateSpan.init(latitudeDelta: 0.0075, longitudeDelta: 0.0075)
+             let region = MKCoordinateRegion.init(center: (locationManager.location?.coordinate)!, span: span)
+             mapView.setRegion(region, animated: true)
+         
+         Khi do chung ta se lay location tu delegate va move map
+             func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
+                    mapView.setCenter(userLocation.coordinate, animated: true)
+             }
+         */
+        
+        // self.mapView.showsUserLocation = true
         // self.mapView.userTrackingMode = .followWithHeading // Auto start
         super.init()
         self.mapView.delegate = self
@@ -258,16 +278,25 @@ extension MapKitDelegate: MKMapViewDelegate
     
     func addHeadingView(toAnnotationView annotationView: MKAnnotationView)
     {
+//        if let locationView = annotationView as? MKModernUserLocationView {
+//        
+//        }
+        
         if self.imgArrowHeading == nil {
             
-            let image = UIImage.init(named: "icBlueArrowUp") //#YOUR BLUE ARROW ICON#
+            print("annotationView = \(String(describing: type(of: annotationView)))")
+            
+            annotationView.image = nil
+            
+            // let image = UIImage.init(named: "icBlueArrowUp") //#YOUR BLUE ARROW ICON#
+            let image = UIImage(named: "icVCarTopRed")
             
             print("annotationView = \(String(describing: annotationView.frame))")
             print("image?.size = \(String(describing: image?.size))")
             print("annotationView.center = \(String(describing: annotationView.center))")
             
-            let width = annotationView.frame.size.width*3/2
-            let height = annotationView.frame.size.height*3
+            let width = annotationView.frame.size.width //*3/2
+            let height = annotationView.frame.size.height //*3
             
             self.imgArrowHeading = UIImageView(image: image)
             self.imgArrowHeading!.frame = CGRect(x: (annotationView.frame.size.width - width)/2,
@@ -276,7 +305,8 @@ extension MapKitDelegate: MKMapViewDelegate
                                                  height: height)
             
             annotationView.addSubview(self.imgArrowHeading!)
-            annotationView.sendSubview(toBack: self.imgArrowHeading!)
+            // annotationView.sendSubview(toBack: self.imgArrowHeading!)
+            annotationView.bringSubview(toFront: self.imgArrowHeading!)
             self.imgArrowHeading!.isHidden = true
         }
     }
@@ -319,6 +349,11 @@ extension MapKitDelegate: MKMapViewDelegate
         pinAnnotation?.canShowCallout = true
         return pinAnnotation
         
+    }
+    
+    func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation)
+    {
+        mapView.setCenter(userLocation.coordinate, animated: true)
     }
     
 }
