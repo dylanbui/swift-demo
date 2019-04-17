@@ -90,15 +90,15 @@ class DbSheetCalendar: DbAbstractSheet
         
         // -- Default Single Type --
         self.selectionType = .selectionTypeSingle
-        
         // -- Delegate Sheet --
         self.pickerFieldDelegate = self
+        // -- Default height --
+        self.fieldHeight = 350.0
     }
     
+    @discardableResult
     override func setupContentView() -> UIView?
     {
-        self.fieldHeight = 350.0
-
         return self.fsCalendar
     }
     

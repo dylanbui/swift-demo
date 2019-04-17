@@ -40,7 +40,7 @@ class DbSheetMonthYearLimitPicker: DbSheetCustomPicker
             self.arrYear.append("\(i)")
         }
         
-        self.customPickerDelegate = self
+        self.customPickerViewDelegate = self
         self.pickerFieldDelegate = self
         self.cancelWhenTouchUpOutside = true
     }
@@ -135,7 +135,7 @@ extension DbSheetMonthYearLimitPicker: DbAbstractSheetDelegate
 
 // Mark:- UIPicker
 
-extension DbSheetMonthYearLimitPicker: DbSheetCustomPickerDelegate
+extension DbSheetMonthYearLimitPicker: DbSheetCustomPickerViewDelegate
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {

@@ -22,17 +22,17 @@ class DbSheetCollectionView: DbAbstractSheet
     {
         super.init()
         
+        // -- Default config --
+        self.defaultButtonType = .none
+        // -- Default height --
+        self.fieldHeight = 300
+        self.cancelWhenTouchUpOutside = true
         self.pickerFieldDelegate = self
     }
     
+    @discardableResult
     override func setupContentView() -> UIView?
     {
-        // -- Default config --
-        self.defaultButtonType = .none
-        
-        self.fieldHeight = 300
-        self.cancelWhenTouchUpOutside = true
-        
         self.collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
         self.collectionView.dataSource = self
         self.collectionView.delegate = self

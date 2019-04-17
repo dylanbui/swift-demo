@@ -14,7 +14,6 @@ typealias DbTFTPickerCancelBlock = (_ picker: DbSheetTimeFromToPicker) -> Void
 
 class DbSheetTimeFromToPicker: DbSheetCustomPicker
 {
-    
     private var arrHour: [String] = []
     private var arrMinutes: [String] = []
     
@@ -23,6 +22,8 @@ class DbSheetTimeFromToPicker: DbSheetCustomPicker
     
     var selToTime: Date = Date().db_adding(.minute, value: 60)
     var selToRow: (hour: Int, minutes: Int) = (0, 0)
+    
+    var limitBetween2Time: Int = 3600 // s == 1h
 
     var sheetDoneBlock: DbTFTPickerDoneBlock?
     var sheetCancelBlock: DbTFTPickerCancelBlock?
@@ -39,16 +40,16 @@ class DbSheetTimeFromToPicker: DbSheetCustomPicker
             self.arrMinutes.append("\(i)")
         }
 
-        self.customPickerDelegate = self
+        self.customPickerViewDelegate = self
         self.pickerFieldDelegate = self
         self.cancelWhenTouchUpOutside = true
     }
     
-    @discardableResult
-    override func setupContentView() -> UIView?
-    {
-        return super.setupContentView()
-    }
+//    @discardableResult
+//    override func setupContentView() -> UIView?
+//    {
+//        return super.setupContentView()
+//    }
     
     static func initWithTitle(title: String,
                               fromTime: Date = Date(),
@@ -63,7 +64,6 @@ class DbSheetTimeFromToPicker: DbSheetCustomPicker
         picker.cancelButton?.setTitle(cancelTitle, for: .normal)
         return picker
     }
-    
     
     override func show()
     {
@@ -116,7 +116,7 @@ extension DbSheetTimeFromToPicker: DbAbstractSheetDelegate
 
 // Mark:- UIPicker
 
-extension DbSheetTimeFromToPicker: DbSheetCustomPickerDelegate
+extension DbSheetTimeFromToPicker: DbSheetCustomPickerViewDelegate
 {
     func numberOfComponents(in pickerView: UIPickerView) -> Int
     {
@@ -244,7 +244,7 @@ extension DbSheetTimeFromToPicker: DbSheetCustomPickerDelegate
     private func validate(fromDate: Date, toDate: Date) -> Bool
     {
         let range = toDate.db_unixTimestamp - fromDate.db_unixTimestamp
-        if range >= 60*60 { // Cach nhau 1h
+        if range >= Double(self.limitBetween2Time) { // 60*60 = Cach nhau 1h
             return true
         }
         return false

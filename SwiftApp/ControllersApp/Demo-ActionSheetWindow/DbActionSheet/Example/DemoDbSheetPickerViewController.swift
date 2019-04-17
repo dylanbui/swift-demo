@@ -19,12 +19,12 @@ class DemoDbSheetPickerViewController: UIViewController
 
     @IBAction func customPickerHorizontal_Click(_ sender: UIButton)
     {
-        let sheet = DbSheetMonthYearLimitPicker.initWithTitle(title: "Chon thoi gian", okTitle: "Chọn", cancelTitle: "Bỏ qua")
-        sheet.sheetDoneBlock = { (_ picker: DbSheetMonthYearLimitPicker, _ fromDate: Date, toDate: Date) in
-            print("fromDate = \(fromDate.db_dateString(ofStyle: .long))")
-            print("toDate = \(toDate.db_dateString(ofStyle: .full))")
-        }
-        sheet.show()
+//        let sheet = DbSheetMonthYearLimitPicker.initWithTitle(title: "Chon thoi gian", okTitle: "Chọn", cancelTitle: "Bỏ qua")
+//        sheet.sheetDoneBlock = { (_ picker: DbSheetMonthYearLimitPicker, _ fromDate: Date, toDate: Date) in
+//            print("fromDate = \(fromDate.db_dateString(ofStyle: .long))")
+//            print("toDate = \(toDate.db_dateString(ofStyle: .full))")
+//        }
+//        sheet.show()
         
 //        let sheet = DbSheetTimeFromToPicker.initWithTitle(title: "Chon thoi gian", okTitle: "Chọn", cancelTitle: "Bỏ qua")
 //        sheet.sheetDoneBlock = { (_ picker: DbSheetTimeFromToPicker, _ fromTime: Date, toTime: Date) in
@@ -33,7 +33,6 @@ class DemoDbSheetPickerViewController: UIViewController
 //        }
 //        sheet.show()
 
-        return
         
         // DbTopAlertController.alert("Hien ra di chaaaa")
 //        DbTopAlertController.alert("Hien ra ne", message: "Hine cai gi day", acceptMessage: "Chon di") {
@@ -65,7 +64,7 @@ class DemoDbSheetPickerViewController: UIViewController
 
         let picker = DbSheetPicker.initWithTitle(title: "Sắp xếp dữ liệu",
                                                  rows: arrSortItem,
-                                                 initialSelections: nil,
+                                                 initialSelections: DbItem(id: 4, title: "Diện tích từ lớn đến nhỏ"),
                                                  okTitle: "Đồng ý",
                                                  cancelTitle: "Bỏ qua")
         picker.anchorControl = sender
@@ -258,7 +257,25 @@ class DemoDbSheetPickerViewController: UIViewController
 
     }
     
+    @IBAction func customPickerMonthYearLimit_Click(_ sender: UIButton)
+    {
+        let sheet = DbSheetMonthYearLimitPicker.initWithTitle(title: "Chon thoi gian", okTitle: "Chọn", cancelTitle: "Bỏ qua")
+        sheet.sheetDoneBlock = { (_ picker: DbSheetMonthYearLimitPicker, _ fromDate: Date, toDate: Date) in
+            print("fromDate = \(fromDate.db_dateString(ofStyle: .long))")
+            print("toDate = \(toDate.db_dateString(ofStyle: .full))")
+        }
+        sheet.show()
+    }
     
+    @IBAction func customPickerTimeFromTo_Click(_ sender: UIButton)
+    {
+        let sheet = DbSheetTimeFromToPicker.initWithTitle(title: "Chon thoi gian", okTitle: "Chọn", cancelTitle: "Bỏ qua")
+        sheet.sheetDoneBlock = { (_ picker: DbSheetTimeFromToPicker, _ fromTime: Date, toTime: Date) in
+            print("fromTime = \(fromTime.db_timeString())")
+            print("toTime = \(toTime.db_timeString())")
+        }
+        sheet.show()
+    }
 }
 
 

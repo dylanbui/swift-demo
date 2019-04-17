@@ -84,6 +84,22 @@
                         <action selector="monthYearPicker_Click:" destination="-1" eventType="touchUpInside" id="kmZ-W8-ds3"/>
                     </connections>
                 </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dHJ-TR-Pit">
+                    <rect key="frame" x="129" y="484" width="116" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Month Year Limit"/>
+                    <connections>
+                        <action selector="customPickerMonthYearLimit_Click:" destination="-1" eventType="touchUpInside" id="2gh-Ns-bZq"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="e5g-lo-DIj">
+                    <rect key="frame" x="140" y="523" width="94" height="30"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <state key="normal" title="Time From To"/>
+                    <connections>
+                        <action selector="customPickerTimeFromTo_Click:" destination="-1" eventType="touchUpInside" id="oCD-Wb-BFg"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>

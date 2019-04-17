@@ -8,13 +8,13 @@
 
 import Foundation
 
-typealias DbSheetCustomPickerDelegate = UIPickerViewDelegate & UIPickerViewDataSource
+typealias DbSheetCustomPickerViewDelegate = UIPickerViewDelegate & UIPickerViewDataSource
 
 class DbSheetCustomPicker: DbAbstractSheet
 {
     internal var pickerView: UIPickerView!
     
-    var customPickerDelegate: DbSheetCustomPickerDelegate?
+    var customPickerViewDelegate: DbSheetCustomPickerViewDelegate?
     
     var customButtons: [UIButton]?
     var customButtonsAxis: NSLayoutConstraint.Axis = .vertical
@@ -28,8 +28,8 @@ class DbSheetCustomPicker: DbAbstractSheet
     override func setupContentView() -> UIView?
     {
         self.pickerView = UIPickerView()
-        self.pickerView.dataSource = self.customPickerDelegate
-        self.pickerView.delegate = customPickerDelegate
+        self.pickerView.dataSource = self.customPickerViewDelegate
+        self.pickerView.delegate = customPickerViewDelegate
         
         // -- Create custom buttons view --
         if let arrButtons = self.customButtons {

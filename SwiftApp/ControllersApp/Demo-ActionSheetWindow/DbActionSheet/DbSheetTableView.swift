@@ -31,30 +31,53 @@
 import Foundation
 
 typealias DbSheetTableViewDidSelectRowBlock = (_ picker: DbSheetTableView, _ didSelectRow: DbItemProtocol, _ indexPath: IndexPath) -> Void
+typealias DbSheetTableViewCellConfiguration = ([DbItemProtocol], IndexPath, UITableViewCell) -> Void
 
 class DbSheetTableView: DbAbstractSheet
 {
     internal var tableView: UITableView!
     
+    var separatorColor: UIColor? {
+        get {
+            return self.tableView.separatorColor
+        }
+        set {
+            self.tableView.separatorColor = newValue
+        }
+    }
+    
+    var cellHeight: CGFloat? {
+        get {
+            return self.tableView.estimatedRowHeight
+        }
+        set {
+            self.tableView.estimatedRowHeight = (newValue != nil ? newValue! : UITableViewAutomaticDimension)
+        }
+    }
+    
     var arrSource: [DbItemProtocol]?
     var didSelectRowBlock: DbSheetTableViewDidSelectRowBlock?
+    var cellConfiguration: DbSheetTableViewCellConfiguration?
+    
+    fileprivate static let cellIdentifier = "DbSheetTableCell"
+    fileprivate var reuseIdentifier: String?
     
     override init()
     {
         super.init()
         
+        // -- Default height --
+        self.fieldHeight = 400
+        // -- Default config --
+        self.defaultButtonType = .none
+        
         self.pickerFieldDelegate = self
         self.cancelWhenTouchUpOutside = true
     }
     
+    @discardableResult
     override func setupContentView() -> UIView?
     {
-        // -- Default config --
-        self.defaultButtonType = .none
-        
-        self.fieldHeight = 400
-        self.cancelWhenTouchUpOutside = true
-
         self.tableView = UITableView()
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -73,6 +96,17 @@ class DbSheetTableView: DbAbstractSheet
         picker.okButton?.setTitle(okTitle, for: .normal)
         picker.cancelButton?.setTitle(cancelTitle, for: .normal)
         return picker
+    }
+    
+    public func registerCellNib(nib: UINib, forCellReuseIdentifier identifier: String)
+    {
+        self.tableView.register(nib, forCellReuseIdentifier: identifier)
+        self.reuseIdentifier = identifier
+    }
+    
+    public func registerCellString(identifier: String)
+    {
+        self.registerCellNib(nib: UINib(nibName: identifier, bundle: nil), forCellReuseIdentifier: identifier)
     }
 }
 
@@ -110,29 +144,36 @@ extension DbSheetTableView: UITableViewDelegate, UITableViewDataSource
         return self.arrSource?.count ?? 0
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
+    public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell
     {
-        // Trick to get static variable in Swift
-        struct staticVariable { static var tableIdentifier = "TableIdentifier" }
+        var cell: UITableViewCell?
         
-        var cell:UITableViewCell? = tableView.dequeueReusableCell(
-            withIdentifier: staticVariable.tableIdentifier)
-        
-        if cell == nil {
-            cell = UITableViewCell(style: .subtitle, reuseIdentifier: staticVariable.tableIdentifier)
+        if let identifier = self.reuseIdentifier {
+            cell = tableView.dequeueReusableCell(withIdentifier: identifier)
+        } else {
+            // -- Make default cell --
+            cell = tableView.dequeueReusableCell(withIdentifier: DbSheetTableView.cellIdentifier)
+            if cell == nil {
+                cell = UITableViewCell(style: .subtitle, reuseIdentifier: DbSheetTableView.cellIdentifier)
+            }
+            
+            // -- Fill data to default cell --
+            if let item: DbItemProtocol = self.arrSource?[indexPath.row] {
+                cell?.textLabel?.text = item.dbItemTitle
+                cell?.detailTextLabel?.text = item.dbItemDesc
+                cell?.backgroundColor = .clear
+                // -- Image config --
+//                let image=UIImage(named: country.code)
+//                cell.imageView?.image = image
+//                cell.imageView?.contentMode = .scaleAspectFill
+//                cell.imageView?.layer.cornerRadius = 15
+//                cell.imageView?.clipsToBounds=true
+            }
         }
         
-        if let item: DbItemProtocol = self.arrSource?[indexPath.row] {
-            cell?.textLabel?.text = item.dbItemTitle
-            cell?.detailTextLabel?.text = item.dbItemDesc
-            // -- Image config --
-    //        let image=UIImage(named: country.code)
-    //        cell.imageView?.image = image
-    //        cell.imageView?.contentMode = .scaleAspectFill
-    //        cell.imageView?.layer.cornerRadius = 15
-    //        cell.imageView?.clipsToBounds=true
-            cell?.backgroundColor = .clear
-        }
+        // -- Run configuration cell --
+        self.cellConfiguration?(self.arrSource ?? [], indexPath, cell!)
+        
         return cell!
     }
     

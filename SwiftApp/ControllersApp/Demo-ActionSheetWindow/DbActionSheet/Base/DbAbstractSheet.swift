@@ -4,7 +4,7 @@
 //
 //  Created by Dylan Bui on 1/17/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
-//
+//  Build upon your ideas : https://github.com/MostafaTaghipour/mtpPickerField
 
 import UIKit
 
@@ -55,7 +55,7 @@ public class DbAbstractSheet: NSObject
     public weak var anchorControl: UIView?
     public weak var pickerFieldDelegate: DbAbstractSheetDelegate?
     
-    public var fieldHeight: CGFloat=250 {
+    public var fieldHeight: CGFloat = 250 {
         didSet{
             heightConstraint?.constant = fieldHeight
         }
