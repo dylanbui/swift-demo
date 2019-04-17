@@ -110,27 +110,34 @@ class DemoActionSheetWindowViewController: UIViewController
 
     @IBAction func pickerClick(_ sender: UIButton)
     {
-        let arrSortItem = [
-            DbItem(id: 1, title: "red", desc: "red", raw: Color(title: "red", color: UIColor.red)),
-            DbItem(id: 2, title: "black", desc: "black", raw: Color(title: "black", color: UIColor.black)),
-            DbItem(id: 3, title: "blue", desc: "blue", raw: Color(title: "blue", color: UIColor.blue)),
-            DbItem(id: 4, title: "brown", desc: "brown", raw: Color(title: "brown", color: UIColor.brown)),
-            DbItem(id: 5, title: "cyan", desc: "cyan", raw: Color(title: "cyan", color: UIColor.cyan)),
-            DbItem(id: 6, title: "darkGray", desc: "darkGray", raw: Color(title: "darkGray", color: UIColor.darkGray)),
-            DbItem(id: 7, title: "green", desc: "green", raw: Color(title: "green", color: UIColor.green)),
-            DbItem(id: 8, title: "magenta", desc: "magenta", raw: Color(title: "magenta", color: UIColor.magenta)),
-            DbItem(id: 9, title: "yellow", desc: "yellow", raw: Color(title: "yellow", color: UIColor.yellow)),
-            DbItem(id: 10, title: "orange", desc: "orange", raw: Color(title: "orange", color: UIColor.orange)),
-            DbItem(id: 11, title: "purple", desc: "purple", raw: Color(title: "purple", color: UIColor.purple)),
-            DbItem(id: 12, title: "green", desc: "green", raw: Color(title: "green", color: UIColor.green))
-        ]
-        
-        let sheet = DbSheetCollectionView.initWithTitle(title: "Chọn từ bảng",
-                                                        rows: arrSortItem)
-        sheet.didSelectCellBlock = { (_ picker: DbSheetCollectionView, _ didSelectRow: DbItemProtocol, indexPath: IndexPath) in
-            print("VUA MOI CHON DONG : \(didSelectRow)")
+        let sheet = DbSheetTimeFromToPicker.initWithTitle(title: "Chon thoi gian", okTitle: "Chọn", cancelTitle: "Bỏ qua")
+        sheet.sheetDoneBlock = { (_ picker: DbSheetTimeFromToPicker, _ fromTime: Date, toTime: Date) in
+            print("fromTime = \(fromTime.db_timeString())")
+            print("toTime = \(toTime.db_timeString())")
         }
         sheet.show()
+        
+//        let arrSortItem = [
+//            DbItem(id: 1, title: "red", desc: "red", raw: Color(title: "red", color: UIColor.red)),
+//            DbItem(id: 2, title: "black", desc: "black", raw: Color(title: "black", color: UIColor.black)),
+//            DbItem(id: 3, title: "blue", desc: "blue", raw: Color(title: "blue", color: UIColor.blue)),
+//            DbItem(id: 4, title: "brown", desc: "brown", raw: Color(title: "brown", color: UIColor.brown)),
+//            DbItem(id: 5, title: "cyan", desc: "cyan", raw: Color(title: "cyan", color: UIColor.cyan)),
+//            DbItem(id: 6, title: "darkGray", desc: "darkGray", raw: Color(title: "darkGray", color: UIColor.darkGray)),
+//            DbItem(id: 7, title: "green", desc: "green", raw: Color(title: "green", color: UIColor.green)),
+//            DbItem(id: 8, title: "magenta", desc: "magenta", raw: Color(title: "magenta", color: UIColor.magenta)),
+//            DbItem(id: 9, title: "yellow", desc: "yellow", raw: Color(title: "yellow", color: UIColor.yellow)),
+//            DbItem(id: 10, title: "orange", desc: "orange", raw: Color(title: "orange", color: UIColor.orange)),
+//            DbItem(id: 11, title: "purple", desc: "purple", raw: Color(title: "purple", color: UIColor.purple)),
+//            DbItem(id: 12, title: "green", desc: "green", raw: Color(title: "green", color: UIColor.green))
+//        ]
+//
+//        let sheet = DbSheetCollectionView.initWithTitle(title: "Chọn từ bảng",
+//                                                        rows: arrSortItem)
+//        sheet.didSelectCellBlock = { (_ picker: DbSheetCollectionView, _ didSelectRow: DbItemProtocol, indexPath: IndexPath) in
+//            print("VUA MOI CHON DONG : \(didSelectRow)")
+//        }
+//        sheet.show()
         
 //        let sheetDate = DbSheetDatePicker.initWithTitle(title: "Chọn ngày tháng",
 //                                                        datePickerMode: .dateAndTime,
@@ -176,7 +183,6 @@ class DemoActionSheetWindowViewController: UIViewController
 //        }
 //        sheet.show()
         
-        return
         
 //        let picker = PickerField()
 //
@@ -200,24 +206,24 @@ class DemoActionSheetWindowViewController: UIViewController
         // self.pickerViewField.show()
         
 
-        let picker = DbSheetPicker.initWithTitle(title: "Chon quoc gia",
-                                                 rows: arrSortItem,
-                                                 initialSelections: nil,
-                                                 okTitle: "Dong y",
-                                                 cancelTitle: "Bo qua")
-        picker.anchorControl = sender
-        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
-            print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
-        }
-
-        picker.cancelBlock = { (_ picker: DbSheetPicker) in
-            print("Bo qua chon")
-        }
-
-        picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
-            print("VUA MOI CHON DONG : \(didSelectRow)")
-        }
-        picker.show()
+//        let picker = DbSheetPicker.initWithTitle(title: "Chon quoc gia",
+//                                                 rows: arrSortItem,
+//                                                 initialSelections: nil,
+//                                                 okTitle: "Dong y",
+//                                                 cancelTitle: "Bo qua")
+//        picker.anchorControl = sender
+//        picker.doneBlock = { (_ picker: DbSheetPicker, _ selectedIndex: Int, _ selectedValue: DbItemProtocol) in
+//            print("Gia tri vua chon : \(selectedValue.dbItemTitle)")
+//        }
+//
+//        picker.cancelBlock = { (_ picker: DbSheetPicker) in
+//            print("Bo qua chon")
+//        }
+//
+//        picker.didSelectRowBlock = { (_ picker: DbSheetPicker, _ didSelectRow: Int) in
+//            print("VUA MOI CHON DONG : \(didSelectRow)")
+//        }
+//        picker.show()
 
     }
 }
