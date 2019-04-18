@@ -752,11 +752,7 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
-				BBA4670F2252216800E0749E /* DbClosureUIControl */,
-				BB26008121D60FD000D5F41D /* DbActionSheetPicker */,
-				BB26008321D60FD000D5F41D /* DbDropDownView */,
-				BB2FE66D2192C43F007470DD /* DbSemiModalViewController */,
-				BB3FDBEE217EFCB9002D570F /* DbStackScrollView */,
+				BB8B2B6922681E630032C48F /* UIControl */,
 				BB92D866224E10B200B8F244 /* DbRealm */,
 				BBC3D19A21046E29007675F9 /* DbRealmManager */,
 				BBC38A43206DDE9500B11C7B /* SwiftIconFont */,
@@ -891,8 +887,6 @@
 			children = (
 				BB48E20A21F1C359002B2DEC /* readme.txt */,
 				BB9BC0C521EDFA0E004BC430 /* PickerField.swift */,
-				BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */,
-				BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */,
 				BB4EE5E621F6FD9300D1BAFE /* DbCustomButtonSheetPicker.swift */,
 			);
 			path = Example;
@@ -1040,6 +1034,19 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
+		BB8B2B6922681E630032C48F /* UIControl */ = {
+			isa = PBXGroup;
+			children = (
+				BBDD202521F093D200788D3E /* DbActionSheet */,
+				BBA4670F2252216800E0749E /* DbClosureUIControl */,
+				BB26008121D60FD000D5F41D /* DbActionSheetPicker */,
+				BB26008321D60FD000D5F41D /* DbDropDownView */,
+				BB2FE66D2192C43F007470DD /* DbSemiModalViewController */,
+				BB3FDBEE217EFCB9002D570F /* DbStackScrollView */,
+			);
+			path = UIControl;
+			sourceTree = "<group>";
+		};
 		BB92D865224E104B00B8F244 /* Demo-EasyRealmAndNetworking */ = {
 			isa = PBXGroup;
 			children = (
@@ -1092,7 +1099,9 @@
 		BB9BC0B921ED9B18004BC430 /* Demo-ActionSheetWindow */ = {
 			isa = PBXGroup;
 			children = (
-				BBDD202521F093D200788D3E /* DbActionSheet */,
+				BBEEDF3422042F0B00061334 /* Research */,
+				BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */,
+				BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */,
 				BB9BC0C021EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift */,
 				BB9BC0C121EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib */,
 			);
@@ -1347,7 +1356,6 @@
 		BBDD202521F093D200788D3E /* DbActionSheet */ = {
 			isa = PBXGroup;
 			children = (
-				BBEEDF3422042F0B00061334 /* Research */,
 				BB48E20921F1C178002B2DEC /* Example */,
 				BB04DD5F22677A1700BC9A39 /* Base */,
 				BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */,
