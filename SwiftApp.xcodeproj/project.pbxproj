@@ -752,7 +752,7 @@
 		BB197D42200BBF4B005514C3 /* DbLibraries */ = {
 			isa = PBXGroup;
 			children = (
-				BB8B2B6922681E630032C48F /* UIControl */,
+				BB8B2B6922681E630032C48F /* DbUIControl */,
 				BB92D866224E10B200B8F244 /* DbRealm */,
 				BBC3D19A21046E29007675F9 /* DbRealmManager */,
 				BBC38A43206DDE9500B11C7B /* SwiftIconFont */,
@@ -1034,7 +1034,7 @@
 			path = Images;
 			sourceTree = "<group>";
 		};
-		BB8B2B6922681E630032C48F /* UIControl */ = {
+		BB8B2B6922681E630032C48F /* DbUIControl */ = {
 			isa = PBXGroup;
 			children = (
 				BBDD202521F093D200788D3E /* DbActionSheet */,
@@ -1044,7 +1044,7 @@
 				BB2FE66D2192C43F007470DD /* DbSemiModalViewController */,
 				BB3FDBEE217EFCB9002D570F /* DbStackScrollView */,
 			);
-			path = UIControl;
+			path = DbUIControl;
 			sourceTree = "<group>";
 		};
 		BB92D865224E104B00B8F244 /* Demo-EasyRealmAndNetworking */ = {
