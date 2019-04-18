@@ -485,7 +485,7 @@ public class DbLocationManager : NSObject
         //------------------first check if we already have these coordinates inside existing regions----------
         if let currentRegion: CLCircularRegion = self.isFenceExists(forCoordinates: location.coordinate) {
             print("[DbLocationManager] Fence already exist for area: \(identifier ?? "") ---- inside: \(currentRegion.identifier)")
-            self.delegate?.dbLocationManagerDidAddFence(self.fenceInfo(for: currentRegion, fenceEventType: .repeated))
+            self.delegate?.dbLocationManager(DidAddFence: self.fenceInfo(for: currentRegion, fenceEventType: .repeated))
             return
 
         }
@@ -572,7 +572,7 @@ public class DbLocationManager : NSObject
             
             //send through delegate
             // -- Call delegate --
-            self.delegate?.dbLocationManagerDidUpdateGeocodeAdress(self.lastKnownGeocodeAddress)
+            self.delegate?.dbLocationManager(DidUpdateGeocodeAdress: self.lastKnownGeocodeAddress)
             // -- Call closure --
             self.geocodeCompletionBlock?(error != nil ? false : true, self.lastKnownGeocodeAddress!, error)
         })
@@ -750,6 +750,9 @@ extension DbLocationManager: CLLocationManagerDelegate
 {
     public func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
+        // -- Raw Location --
+        self.delegate?.dbLocationManager(DidUpdateListLocations: locations)
+        
         // Fetch Current Location
         guard let location: CLLocation = locations.last else {
             return
@@ -787,7 +790,7 @@ extension DbLocationManager: CLLocationManagerDelegate
             ]
             self.lastKnownGeoLocation = locationDict
             
-            self.delegate?.dbLocationManagerDidUpdateLocation(locationDict)
+            self.delegate?.dbLocationManager(DidUpdateBestLocation: locationDict)
             
             if self.locationCompletionBlock != nil {
                 self.locationCompletionBlock?(true, locationDict, nil)
@@ -808,7 +811,7 @@ extension DbLocationManager: CLLocationManagerDelegate
             ]
             self.lastKnownGeoLocation = locationDict
             
-            self.delegate?.dbLocationManagerDidUpdateLocation(locationDict)
+            self.delegate?.dbLocationManager(DidUpdateBestLocation: locationDict)
         }
         
         else {
@@ -831,7 +834,7 @@ extension DbLocationManager: CLLocationManagerDelegate
 
         // -- DucBui 30/01/2019 sua lai cho nay, luon thong bao loi --
         // -- Call delegate --
-        self.delegate?.dbLocationManagerDidFailLocation(error)
+        self.delegate?.dbLocationManager(DidFailLocation: error)
         // -- Call closure --
         self.locationCompletionBlock?(false, locationDict, error)
         // -- Chi goi khi bi Denied --
@@ -863,7 +866,7 @@ extension DbLocationManager: CLLocationManagerDelegate
     public func locationManager(_ manager: CLLocationManager, didStartMonitoringFor region: CLRegion)
     {
         if let theRegion = region as? CLCircularRegion {
-            self.delegate?.dbLocationManagerDidAddFence(self.fenceInfo(for: theRegion, fenceEventType: .added))
+            self.delegate?.dbLocationManager(DidAddFence: self.fenceInfo(for: theRegion, fenceEventType: .added))
         }
         /*NSString *str = [NSString stringWithFormat:@"Added region %@, lat-long-radious:%@", region.identifier,[NSString stringWithFormat:@"%.1f - %.1f - %f", region.center.latitude, region.center.longitude, region.radius]];
          [[[UIAlertView alloc] initWithTitle:@"Gefence Alert" message:str delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
@@ -873,7 +876,7 @@ extension DbLocationManager: CLLocationManagerDelegate
     public func locationManager(_ manager: CLLocationManager, monitoringDidFailFor region: CLRegion?, withError error: Error)
     {
         if let theRegion = region as? CLCircularRegion {
-            self.delegate?.dbLocationManagerDidFailedFence(self.fenceInfo(for: theRegion, fenceEventType: .failed))
+            self.delegate?.dbLocationManager(DidFailedFence: self.fenceInfo(for: theRegion, fenceEventType: .failed))
         }
         /*NSString *str = [NSString stringWithFormat:@"Failed region %@, lat-long-radious:%@", region.identifier,[NSString stringWithFormat:@"%.1f - %.1f - %f", region.center.latitude, region.center.longitude, region.radius]];
          [[[UIAlertView alloc] initWithTitle:@"Gefence Alert" message:str delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
@@ -883,7 +886,7 @@ extension DbLocationManager: CLLocationManagerDelegate
     public func locationManager(_ manager: CLLocationManager, didEnterRegion region: CLRegion)
     {
         if let theRegion = region as? CLCircularRegion {
-            self.delegate?.dbLocationManagerDidEnterFence(self.fenceInfo(for: theRegion, fenceEventType: .enterFence))
+            self.delegate?.dbLocationManager(DidEnterFence: self.fenceInfo(for: theRegion, fenceEventType: .enterFence))
         }
         /*NSString *str = [NSString stringWithFormat:@"Entered region %@, lat-long-radious:%@", theRegion.identifier,[NSString stringWithFormat:@"%.1f - %.1f - %f", theRegion.center.latitude, theRegion.center.longitude, theRegion.radius]];
          [[[UIAlertView alloc] initWithTitle:@"Gefence Alert" message:str delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];
@@ -894,7 +897,7 @@ extension DbLocationManager: CLLocationManagerDelegate
     public func locationManager(_ manager: CLLocationManager, didExitRegion region: CLRegion)
     {
         if let theRegion = region as? CLCircularRegion {
-            self.delegate?.dbLocationManagerDidExitFence(self.fenceInfo(for: theRegion, fenceEventType: .exitFence))
+            self.delegate?.dbLocationManager(DidExitFence: self.fenceInfo(for: theRegion, fenceEventType: .exitFence))
         }
         /*    NSString *str = [NSString stringWithFormat:@"Exit region %@, lat-long-radious:%@", theRegion.identifier,[NSString stringWithFormat:@"%.1f - %.1f - %f", theRegion.center.latitude, theRegion.center.longitude, theRegion.radius]];
          [[[UIAlertView alloc] initWithTitle:@"Gefence Alert" message:str delegate:nil cancelButtonTitle:@"ok" otherButtonTitles:nil] show];

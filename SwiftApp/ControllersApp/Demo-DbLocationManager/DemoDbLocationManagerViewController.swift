@@ -162,7 +162,7 @@ class DemoDbLocationManagerViewController: UIViewController
 
 extension DemoDbLocationManagerViewController: DbLocationManagerDelegate
 {
-    func dbLocationManagerDidAddFence(_ fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidAddFence fenceInfo: DbFenceInfo?)
     {
         let text = "Added GeoFence: \(fenceInfo!.dictionary.description)"
         print("\(text)")
@@ -170,7 +170,7 @@ extension DemoDbLocationManagerViewController: DbLocationManagerDelegate
         self.showInMaps(withDictionary: fenceInfo!.fenceCoordinate, title: "Added GeoFence")
     }
     
-    func dbLocationManagerDidFailedFence(_ fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidFailedFence fenceInfo: DbFenceInfo?)
     {
         let text = "Failed to add GeoFence: \(fenceInfo!.dictionary.description)"
         print("\(text)")
@@ -178,7 +178,7 @@ extension DemoDbLocationManagerViewController: DbLocationManagerDelegate
         self.showInMaps(withDictionary: fenceInfo!.fenceCoordinate, title: "Failed GeoFence")
     }
     
-    func dbLocationManagerDidEnterFence(_ fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidEnterFence fenceInfo: DbFenceInfo?)
     {
         var text: String? = nil
         if let description = fenceInfo?.dictionary.description {
@@ -190,7 +190,7 @@ extension DemoDbLocationManagerViewController: DbLocationManagerDelegate
         self.showInMaps(withDictionary: fenceInfo!.fenceCoordinate, title: "Enter GeoFence")
     }
     
-    func dbLocationManagerDidExitFence(_ fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidExitFence fenceInfo: DbFenceInfo?)
     {
         var text: String? = nil
         if let description = fenceInfo?.dictionary.description {
@@ -202,14 +202,14 @@ extension DemoDbLocationManagerViewController: DbLocationManagerDelegate
         self.showInMaps(withDictionary: fenceInfo!.fenceCoordinate, title: "Exit GeoFence")
     }
     
-    func dbLocationManagerDidUpdateLocation(_ latLongAltitudeDictionary: DbLocationInfo)
+    func dbLocationManager(DidUpdateBestLocation latLongAltitudeDictionary: DbLocationInfo)
     {
         print("Current Location: \(latLongAltitudeDictionary.description)")
         self.logtext("Current Location: \(latLongAltitudeDictionary.description) at time: \(Date().description)")
         self.showInMaps(withDictionary: latLongAltitudeDictionary, title: "Current Location")
     }
     
-    func dbLocationManagerDidUpdateGeocodeAdress(_ addressDictionary: DbLocationInfo?)
+    func dbLocationManager(DidUpdateGeocodeAdress addressDictionary: DbLocationInfo?)
     {
         print("Current Location GeoCode/Address: \(addressDictionary?.description ?? "")")
         self.logtext("Current Location: \(addressDictionary?.description ?? "") at time: \(Date().description)")

@@ -79,46 +79,49 @@ let DB_ADDRESS_DICTIONARY = "address_full_dictionary"
 public typealias LocationUpdateBlock = (Bool, DbLocationInfo, Error?) -> Void
 public typealias GeoCodeUpdateBlock = (Bool, DbLocationInfo, Error?) -> Void
 
-public protocol DbLocationManagerDelegate {
+public protocol DbLocationManagerDelegate {    
+    /**
+     *   Raw get locations
+     */
+    func dbLocationManager(DidUpdateListLocations locations: [CLLocation])
     /**
      *   Gives an Location Dictionary using keys "latitude", "longitude" and "altitude". You can use these macros: DB_LATITUDE, DB_LONGITUDE and DB_ALTITUDE.
      *   Sample output dictionary @{ @"latitude" : 23.6850, "longitude" : 90.3563, "altitude" : 10.4604}
      */
-    func dbLocationManagerDidUpdateLocation(_ latLongAltitudeDictionary: DbLocationInfo)
-
+    func dbLocationManager(DidUpdateBestLocation latLongAltitudeDictionary: DbLocationInfo)
     /**
      *   Fail get location
      */
-    func dbLocationManagerDidFailLocation(_ withError: CLError)
-    
+    func dbLocationManager(DidFailLocation withError: CLError)
     /**
      *   Gives an DbFenceInfo Object of the Fence which just added
      */
-    func dbLocationManagerDidAddFence(_ fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidAddFence fenceInfo: DbFenceInfo?)
     /**
      *   Gives an DbFenceInfo Object of the Fence which just failed to monitor
      */
-    func dbLocationManagerDidFailedFence(_ fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidFailedFence fenceInfo: DbFenceInfo?)
     /**
      *   Gives an DbFenceInfo Object of a Fence just entered
      */
-    func dbLocationManagerDidEnterFence(_ fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidEnterFence fenceInfo: DbFenceInfo?)
     /**
      *   Gives an DbFenceInfo Object of a Exited Fence
      */
-    func dbLocationManagerDidExitFence(_ fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidExitFence fenceInfo: DbFenceInfo?)
     /**
      *   Gives an Dictionary using current geocode or adress information with DB_ADDRESS_* keys
      */
-    func dbLocationManagerDidUpdateGeocodeAdress(_ addressDictionary: DbLocationInfo?)
+    func dbLocationManager(DidUpdateGeocodeAdress addressDictionary: DbLocationInfo?)
 }
 
 // -- Optional --
 extension DbLocationManagerDelegate {
-    func dbLocationManagerDidFailLocation(_ withError: CLError) {}
-    func dbLocationManagerDidAddFence(_ fenceInfo: DbFenceInfo?) {}
-    func dbLocationManagerDidFailedFence(_ fenceInfo: DbFenceInfo?) {}
-    func dbLocationManagerDidEnterFence(_ fenceInfo: DbFenceInfo?) {}
-    func dbLocationManagerDidExitFence(_ fenceInfo: DbFenceInfo?) {}
-    func dbLocationManagerDidUpdateGeocodeAdress(_ addressDictionary: DbLocationInfo?) {}
+    func dbLocationManager(DidUpdateListLocations locations: [CLLocation]) {}
+    func dbLocationManager(DidFailLocation withError: CLError) {}
+    func dbLocationManager(DidAddFence fenceInfo: DbFenceInfo?) {}
+    func dbLocationManager(DidFailedFence fenceInfo: DbFenceInfo?) {}
+    func dbLocationManager(DidEnterFence fenceInfo: DbFenceInfo?) {}
+    func dbLocationManager(DidExitFence fenceInfo: DbFenceInfo?) {}
+    func dbLocationManager(DidUpdateGeocodeAdress addressDictionary: DbLocationInfo?) {}
 }
