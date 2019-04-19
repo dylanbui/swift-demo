@@ -8,7 +8,6 @@
 
 import UIKit
 import Alamofire
-import INTULocationManager
 
 class FirstViewController: BaseViewController {
     
