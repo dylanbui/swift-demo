@@ -4,7 +4,7 @@
 //
 //  Created by Dylan Bui on 2/15/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
-//
+//  Base on v1.2.0 : https://github.com/krimpedance/KRPullLoader
 
 import UIKit
 

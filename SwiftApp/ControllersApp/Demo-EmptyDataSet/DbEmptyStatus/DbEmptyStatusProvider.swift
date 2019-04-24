@@ -16,9 +16,11 @@ public protocol DbEmptyStatusModel {
     var backgroundColor: UIColor{ get }
     var title: String?          { get }
     var description: String?    { get }
-    var actionTitle: String?    { get }
     var image: UIImage?         { get }
-    var action: (() -> Void)?   { get }
+    
+//    var actionTitle: String?    { get }
+//    var action: (() -> Void)?   { get }
+    var actionButton: UIButton?  { get }
 }
 
 extension DbEmptyStatusModel {
@@ -47,50 +49,118 @@ extension DbEmptyStatusModel {
         return nil
     }
     
-    public var actionTitle: String? {
-        return nil
-    }
+//    public var actionTitle: String? {
+//        return nil
+//    }
     
     public var image: UIImage? {
         return nil
     }
     
-    public var action: (() -> Void)? {
+//    public var action: (() -> Void)? {
+//        return nil
+//    }
+    
+    public var actionButton: UIButton? {
         return nil
     }
     
 }
 
-public struct DbEmptyStatus: DbEmptyStatusModel {
+//class <#ClassName#>: CustomStringConvertible
+//{
+//    var desc: String = ""
+//
+//    // Extension CustomStringConvertible
+//    var description: String {
+//        return "Desc: \(desc)"
+//    }
+//
+//    init() { }
+//
+//    convenience init(desc: String) {
+//        self.init()
+//        self.desc = desc
+//    }
+//}
+
+public class DbEmptyStatus: DbEmptyStatusModel {
     public let verticalOffset: CGFloat
+    public let backgroundColor: UIColor
+    
     public let isLoading: Bool
     public let spinnerColor: UIColor
-    public let backgroundColor: UIColor
+
+    public let image: UIImage?
     public let title: String?
     public let description: String?
-    public let actionTitle: String?
-    public let image: UIImage?
-    public let action: (() -> Void)?
+    
+//    public let actionTitle: String?
+//    public let action: (() -> Void)?
+    public let actionButton: UIButton?
+    
+    
+    
+    private var action: (() -> Void)?
     
     public init(isLoading: Bool = false,
+                verticalOffset: CGFloat = 0.0,
                 spinnerColor: UIColor = UIColor.lightGray,
                 backgroundColor: UIColor = UIColor.white,
+                image: UIImage? = nil,
                 title: String? = nil,
                 description: String? = nil,
-                actionTitle: String? = nil,
-                image: UIImage? = nil,
-                verticalOffset: CGFloat = 0.0,
-                action: (() -> Void)? = nil) {
+                actionButton: UIButton? = nil)
+    {
         self.isLoading = isLoading
+        self.verticalOffset = verticalOffset
         self.spinnerColor = spinnerColor
         self.backgroundColor = backgroundColor
+        
+        self.image = image
         self.title = title
         self.description = description
-        self.actionTitle = actionTitle
-        self.image = image
-        self.action = action
-        self.verticalOffset = verticalOffset
+
+        self.actionButton = actionButton
+//        UIButton(type: .system)
+//        self.actionButton?.setTitle(actionTitle, for: .normal)
+//        self.actionButton?.addTarget(DbEmptyStatus.self, action: #selector(DbEmptyStatus.actionButtonAction), for: .touchUpInside)
+////        self.actionTitle = actionTitle
+//        self.action = action
+//        self.actionButton = nil
     }
+    
+//    actionTitle: String? = nil,
+//    image: UIImage? = nil,
+//    verticalOffset: CGFloat = 0.0,
+//    action: (() -> Void
+    
+    public convenience init(isLoading: Bool = false,
+                            verticalOffset: CGFloat = 0.0,
+                            spinnerColor: UIColor = UIColor.lightGray,
+                            backgroundColor: UIColor = UIColor.white,
+                            image: UIImage? = nil,
+                            title: String? = nil,
+                            actionTitle: String? = nil, action: (() -> Void))
+    {
+        let btn = UIButton(type: .system)
+        btn.setTitle(actionTitle, for: .normal)
+        
+        #if swift(>=4.2)
+        btn.setTitle(actionTitle, for: UIControl.State())
+        #else
+        btn.setTitle(actionTitle, for: UIControlState())
+        #endif
+        
+        btn.addTarget(DbEmptyStatus.self, action: #selector(DbEmptyStatus.actionButtonAction), for: .touchUpInside)
+        
+        self.init(isLoading: isLoading, verticalOffset: verticalOffset, spinnerColor: spinnerColor, backgroundColor: backgroundColor, image: image, title: title, actionButton: btn)
+    }
+    
+    @objc private func actionButtonAction() {
+         self.action?()
+    }
+
     
     public static var simpleLoading: DbEmptyStatus {
         return DbEmptyStatus(isLoading: true, verticalOffset: 150)

@@ -111,6 +111,7 @@
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BB7518FA2232879400413607 /* DemoRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7518F82232879400413607 /* DemoRealmViewController.swift */; };
 		BB7518FB2232879400413607 /* DemoRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7518F92232879400413607 /* DemoRealmViewController.xib */; };
+		BB751E4A22706956003B062C /* DemoPropzyStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB751E4922706956003B062C /* DemoPropzyStatusView.swift */; };
 		BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */; };
 		BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */; };
 		BB7C50D92251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7C50D72251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift */; };
@@ -435,6 +436,7 @@
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BB7518F82232879400413607 /* DemoRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRealmViewController.swift; sourceTree = "<group>"; };
 		BB7518F92232879400413607 /* DemoRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoRealmViewController.xib; sourceTree = "<group>"; };
+		BB751E4922706956003B062C /* DemoPropzyStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoPropzyStatusView.swift; sourceTree = "<group>"; };
 		BB75684E2146F42E0006013C /* TaskLayoutViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskLayoutViewCell.swift; sourceTree = "<group>"; };
 		BB75684F2146F42E0006013C /* TaskLayoutViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskLayoutViewCell.xib; sourceTree = "<group>"; };
 		BB7C50D72251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoDbSelectBoxViewController.swift; sourceTree = "<group>"; };
@@ -1538,6 +1540,7 @@
 			children = (
 				BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */,
 				BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */,
+				BB751E4922706956003B062C /* DemoPropzyStatusView.swift */,
 			);
 			path = CustomEmptyStatus;
 			sourceTree = "<group>";
@@ -2028,6 +2031,7 @@
 				BB15F5CC2254965000597341 /* read_me.swift in Sources */,
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
 				BB2810A62216E211003823FE /* UIScrollViewExtensions.swift in Sources */,
+				BB751E4A22706956003B062C /* DemoPropzyStatusView.swift in Sources */,
 				BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,

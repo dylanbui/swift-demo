@@ -1,15 +1,15 @@
 //
-//  DbEmptyDefaultStatusView.swift
+//  DemoPropzyStatusView.swift
 //  SwiftApp
 //
-//  Created by Dylan Bui on 2/13/19.
+//  Created by Dylan Bui on 4/24/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //
 
 import Foundation
 import UIKit
 
-open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
+open class DemoPropzyStatusView: UIView, DbEmptyStatusView {
     
     public var view: UIView {
         return self
@@ -23,11 +23,7 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
             imageView.image = status.image
             titleLabel.text = status.title
             descriptionLabel.text = status.description
-//            #if swift(>=4.2)
-//            actionButton.setTitle(status.actionTitle, for: UIControl.State())
-//            #else
-//            actionButton.setTitle(status.actionTitle, for: UIControlState())
-//            #endif
+            actionButton.setTitle(status.actionTitle, for: UIControlState())
             
             activityIndicatorView.color = status.spinnerColor
             if status.isLoading {
@@ -39,15 +35,13 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
             imageView.isHidden = imageView.image == nil
             titleLabel.isHidden = titleLabel.text == nil
             descriptionLabel.isHidden = descriptionLabel.text == nil
+            actionButton.isHidden = status.action == nil
             
-            self.actionButton = status.actionButton
-            let actionButtonHidden: Bool = status.actionButton == nil
-            
-            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButtonHidden
+            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButton.isHidden
         }
     }
     
-    public let titleLabel: UILabel = {
+    public var titleLabel: UILabel = {
         $0.font = UIFont.preferredFont(forTextStyle: .headline)
         $0.textColor = UIColor.black
         $0.textAlignment = .center
@@ -55,7 +49,7 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
         return $0
     }(UILabel())
     
-    public let descriptionLabel: UILabel = {
+    public var descriptionLabel: UILabel = {
         $0.font = UIFont.preferredFont(forTextStyle: .caption2)
         $0.textColor = UIColor.black
         $0.textAlignment = .center
@@ -64,14 +58,6 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
         return $0
     }(UILabel())
     
-    #if swift(>=4.2)
-    public let activityIndicatorView: UIActivityIndicatorView = {
-    $0.isHidden = true
-    $0.hidesWhenStopped = true
-    $0.style = .gray
-    return $0
-    }(UIActivityIndicatorView(style: .whiteLarge))
-    #else
     public let activityIndicatorView: UIActivityIndicatorView = {
         $0.isHidden = true
         $0.hidesWhenStopped = true
@@ -79,7 +65,6 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
         $0.color = UIColor.lightGray
         return $0
     }(UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge))
-    #endif
     
     public let imageView: UIImageView = {
         $0.contentMode = .center
@@ -87,7 +72,14 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
         return $0
     }(UIImageView())
     
-    public var actionButton: UIButton?
+    public var actionButton: UIButton = {
+        
+        return $0
+    }(UIButton(type: .system)) {
+        didSet {
+            
+        }
+    }
     
     public let verticalStackView: UIStackView = {
         $0.axis = .vertical
@@ -109,25 +101,22 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        // actionButton.addTarget(self, action: #selector(DbEmptyDefaultStatusView.actionButtonAction), for: .touchUpInside)
+        actionButton.addTarget(self, action: #selector(DbEmptyDefaultStatusView.actionButtonAction), for: .touchUpInside)
         
         addSubview(horizontalStackView)
         
         horizontalStackView.addArrangedSubview(activityIndicatorView)
-        // -- Add Constraint for custom IndicatorView Size --
-//        NSLayoutConstraint.activate([
-//            activityIndicatorView.widthAnchor.constraint(equalToConstant: activityIndicatorView.frame.size.width),
-//            activityIndicatorView.heightAnchor.constraint(equalToConstant: activityIndicatorView.frame.size.height)
-//            ])
+        NSLayoutConstraint.activate([
+            activityIndicatorView.widthAnchor.constraint(equalToConstant: activityIndicatorView.frame.size.width),
+            activityIndicatorView.heightAnchor.constraint(equalToConstant: activityIndicatorView.frame.size.height)
+            ])
+        
         horizontalStackView.addArrangedSubview(verticalStackView)
         
         verticalStackView.addArrangedSubview(imageView)
         verticalStackView.addArrangedSubview(titleLabel)
         verticalStackView.addArrangedSubview(descriptionLabel)
-        
-        if let btn = self.actionButton {
-            verticalStackView.addArrangedSubview(btn)
-        }
+        verticalStackView.addArrangedSubview(actionButton)
         
         NSLayoutConstraint.activate([
             horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -137,9 +126,9 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
             ])
     }
     
-//    @objc func actionButtonAction() {
-//        status?.action?()
-//    }
+    @objc func actionButtonAction() {
+        status?.action?()
+    }
     
     open override var tintColor: UIColor! {
         didSet {

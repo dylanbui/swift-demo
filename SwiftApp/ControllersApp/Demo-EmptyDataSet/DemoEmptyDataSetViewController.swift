@@ -30,13 +30,13 @@ class DemoEmptyDataSetViewController: UIViewController
         self.tableView.delegate = self
         
         // let status = DbEmptyStatus(isLoading: true, description: "Loadinggggg …")
-        let status = DbEmptyStatus(isLoading: true,
-                                   spinnerColor: UIColor.red,
-                                   backgroundColor: UIColor.white,
-                                   description: "Loadinggggg …")
-        // let status = DbEmptyStatus.simpleLoading
-        
-        show(emptyStatus: status)
+//        let status = DbEmptyStatus(isLoading: true,
+//                                   spinnerColor: UIColor.red,
+//                                   backgroundColor: UIColor.white,
+//                                   description: "Loadinggggg …", verticalOffset: 160)
+//        // let status = DbEmptyStatus.simpleLoading
+//
+//        show(emptyStatus: status)
         
         self.fetchData()
     }
@@ -65,17 +65,17 @@ class DemoEmptyDataSetViewController: UIViewController
     {
         title = "Empty"
         
-        let status = DbEmptyStatus(title: "no Data", description: "No data available.💣", actionTitle: "Retry ⭐️", image: UIImage(named: "placeholder_instagram")) {
-            // self.hideStatus()
-            
-            // -- Show loading --
-            let status = DbEmptyStatus.simpleLoading
-            self.show(emptyStatus: status)
-            
-            self.fetchData(true)
-        }
-        
-        self.show(emptyStatus: status)
+//        let status = DbEmptyStatus(title: "no Data", description: "No data available.💣", actionTitle: "Retry ⭐️", image: UIImage(named: "placeholder_instagram")) {
+//            // self.hideStatus()
+//            
+//            // -- Show loading --
+//            let status = DbEmptyStatus.simpleLoading
+//            self.show(emptyStatus: status)
+//            
+//            self.fetchData(true)
+//        }
+//        
+//        self.show(emptyStatus: status)
         
         // -- Auto hide --
 //        let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
