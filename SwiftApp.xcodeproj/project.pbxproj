@@ -309,6 +309,7 @@
 		BBF2368C2202E6DA0067952B /* PzCustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */; };
 		BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368D2202FA620067952B /* DbTopAlertController.swift */; };
 		BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */; };
+		BBF4EF86226CE15600B5722E /* DbHtmlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4EF85226CE15600B5722E /* DbHtmlViewController.swift */; };
 		BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276D21058220007CFFB4 /* DbRealmObject.swift */; };
 		BBF527702105949B007CFFB4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276F2105949B007CFFB4 /* Student.swift */; };
 		BBF9F347225F33F5001EE7BB /* MapKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F346225F33F5001EE7BB /* MapKitDelegate.swift */; };
@@ -640,6 +641,7 @@
 		BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzCustomPickerRow.swift; sourceTree = "<group>"; };
 		BBF2368D2202FA620067952B /* DbTopAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTopAlertController.swift; sourceTree = "<group>"; };
 		BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearPicker.swift; sourceTree = "<group>"; };
+		BBF4EF85226CE15600B5722E /* DbHtmlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHtmlViewController.swift; sourceTree = "<group>"; };
 		BBF5276D21058220007CFFB4 /* DbRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmObject.swift; sourceTree = "<group>"; };
 		BBF5276F2105949B007CFFB4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		BBF9F346225F33F5001EE7BB /* MapKitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitDelegate.swift; sourceTree = "<group>"; };
@@ -833,9 +835,8 @@
 		BB2FA67420159BF100590C94 /* CustomViews */ = {
 			isa = PBXGroup;
 			children = (
+				BBF4EF88226CE4B700B5722E /* LoadViewFromXibFile */,
 				BB2FA67B2015F18A00590C94 /* DbViewFromXib.swift */,
-				BB2FA67220158E7700590C94 /* DbPopupView.swift */,
-				BB2FA6792015D37B00590C94 /* DbLoadableView.swift */,
 				BBA4828E201CEC1500824A39 /* DbSelectorActionSheet.swift */,
 			);
 			path = CustomViews;
@@ -1500,17 +1501,14 @@
 		BBE88C5A20216BFB0044F661 /* UtilsClass */ = {
 			isa = PBXGroup;
 			children = (
-				BB407AD22181835100C8E57F /* DbHtmlView.swift */,
-				BB407AD32181835100C8E57F /* DbSpinner.swift */,
-				BB5CE03F214615D600C92DA0 /* DbScreenLoading.swift */,
+				BBF4EF82226CDFEC00B5722E /* BackgroundThread */,
+				BBF4EF83226CE00800B5722E /* RegisterEventNotification */,
+				BBF4EF84226CE13500B5722E /* HtmlViewController */,
+				BBF4EF87226CE37000B5722E /* SpinnerLoading */,
 				BB197D45200BC051005514C3 /* DbUtils.swift */,
 				BBDD5E902011B18C0089DD32 /* DbSession.swift */,
 				BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */,
-				BBE88C5B20216C5E0044F661 /* DbDispatch.swift */,
-				BBA3D1B0206CA36400CD2F0F /* DbOperator.swift */,
 				BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */,
-				BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */,
-				BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */,
 			);
 			path = UtilsClass;
 			sourceTree = "<group>";
@@ -1543,6 +1541,51 @@
 				BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */,
 			);
 			path = CustomEmptyStatus;
+			sourceTree = "<group>";
+		};
+		BBF4EF82226CDFEC00B5722E /* BackgroundThread */ = {
+			isa = PBXGroup;
+			children = (
+				BBE88C5B20216C5E0044F661 /* DbDispatch.swift */,
+				BBA3D1B0206CA36400CD2F0F /* DbOperator.swift */,
+			);
+			path = BackgroundThread;
+			sourceTree = "<group>";
+		};
+		BBF4EF83226CE00800B5722E /* RegisterEventNotification */ = {
+			isa = PBXGroup;
+			children = (
+				BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */,
+				BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */,
+			);
+			path = RegisterEventNotification;
+			sourceTree = "<group>";
+		};
+		BBF4EF84226CE13500B5722E /* HtmlViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BB407AD22181835100C8E57F /* DbHtmlView.swift */,
+				BBF4EF85226CE15600B5722E /* DbHtmlViewController.swift */,
+			);
+			path = HtmlViewController;
+			sourceTree = "<group>";
+		};
+		BBF4EF87226CE37000B5722E /* SpinnerLoading */ = {
+			isa = PBXGroup;
+			children = (
+				BB407AD32181835100C8E57F /* DbSpinner.swift */,
+				BB5CE03F214615D600C92DA0 /* DbScreenLoading.swift */,
+			);
+			path = SpinnerLoading;
+			sourceTree = "<group>";
+		};
+		BBF4EF88226CE4B700B5722E /* LoadViewFromXibFile */ = {
+			isa = PBXGroup;
+			children = (
+				BB2FA67220158E7700590C94 /* DbPopupView.swift */,
+				BB2FA6792015D37B00590C94 /* DbLoadableView.swift */,
+			);
+			path = LoadViewFromXibFile;
 			sourceTree = "<group>";
 		};
 		C18E4305809E59F8E17DBC84 /* Pods */ = {
@@ -1977,6 +2020,7 @@
 				BBA3D1B1206CA36400CD2F0F /* DbOperator.swift in Sources */,
 				BBC5093C2266E5BB009068A6 /* DbSheetCustomPicker.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
+				BBF4EF86226CE15600B5722E /* DbHtmlViewController.swift in Sources */,
 				BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */,
 				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
