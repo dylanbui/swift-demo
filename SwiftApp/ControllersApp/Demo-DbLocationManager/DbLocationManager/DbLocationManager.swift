@@ -71,7 +71,7 @@ public class DbLocationManager : NSObject
     private var geocodeCompletionBlock: GeoCodeUpdateBlock?
     private var activeLocationTaskType: DbLocationTaskType = .none
 
-    public class var sharedInstance : DbLocationManager
+    public class var shared : DbLocationManager
     {
         struct Static {
             static let instance : DbLocationManager = DbLocationManager()
@@ -164,7 +164,11 @@ public class DbLocationManager : NSObject
                     let settingsURL = URL(string: UIApplicationOpenSettingsURLString)
                     let application = UIApplication.shared
                     if let settingsURL = settingsURL {
-                        application.openURL(settingsURL)
+                        if #available(iOS 10, *) {
+                            application.open(settingsURL, options: [:], completionHandler: { (success) in })
+                        } else {
+                            application.openURL(settingsURL)
+                        }
                     }
                 })
                 

@@ -21,7 +21,7 @@ class DemoDbLocationManagerViewController: UIViewController
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         manager.delegate = self //not mandatory here, just to get the delegate calls
         
 
@@ -40,7 +40,7 @@ class DemoDbLocationManagerViewController: UIViewController
 
     @IBAction func showAllGeoFences(_ sender: Any)
     {
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         
         let geoFences = manager.getCurrentFences()
         var allFencetxt = "All fences: "
@@ -62,14 +62,14 @@ class DemoDbLocationManagerViewController: UIViewController
     
     @IBAction func addFenceGeoatCurrentLocation(_ sender: Any)
     {
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         manager.delegate = self
         manager.addGeofenceAtCurrentLocation(withRadious: 100)
     }
     
     @IBAction func removeAllGeofence(_ sender: Any)
     {
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         
         let geoFences = manager.getCurrentFences()
         
@@ -81,7 +81,7 @@ class DemoDbLocationManagerViewController: UIViewController
 
     @IBAction func getCurrentLocation(_ sender: Any)
     {
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         manager.getCurrentLocation(withCompletion: { success, latLongAltitudeDictionary, error in
             self.logtext("Current Location: \(latLongAltitudeDictionary.description)")
             self.showInMaps(withDictionary: latLongAltitudeDictionary, title: "Current Location")
@@ -91,7 +91,7 @@ class DemoDbLocationManagerViewController: UIViewController
     
     @IBAction func getCurrentGeoCodeAddress(_ sender: Any)
     {
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         manager.getCurrentGeoCodeAddress(withCompletion: { success, addressDictionary, error in
             //access the dict using BB_LATITUDE, BB_LONGITUDE, BB_ALTITUDE
             self.logtext("Current Location GeoCode/Address: \(addressDictionary.description)")
@@ -103,21 +103,21 @@ class DemoDbLocationManagerViewController: UIViewController
     @IBAction func getContiniousLocation(_ sender: Any)
     {
         print("getContiniousLocation ----")
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         manager.getContiniousLocation(withDelegate: self)
     }
     
     @IBAction func getSignificantLocationChange(_ sender: Any)
     {
         print("getSignificantLocationChange ----")
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         manager.getSignificantLocationChange(withDelegate: self)
     }
     
     @IBAction func stopGettingLocation(_ sender: Any)
     {
         print("stopGettingLocation ----")
-        let manager: DbLocationManager = DbLocationManager.sharedInstance
+        let manager: DbLocationManager = DbLocationManager.shared
         manager.stopGettingLocation()
     }
     

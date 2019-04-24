@@ -48,8 +48,8 @@ target 'SwiftApp' do
     pod 'SwiftyJSON', '4.0.0'
 
     # Libraries needed Objective C
-    pod 'APNumberPad', '1.2.2' # Use for DecimalTextField
-    pod 'INTULocationManager', '4.3.2'
+    # pod 'APNumberPad', '1.2.2' # Use for DecimalTextField
+    # pod 'INTULocationManager', '4.3.2'
     pod 'FSCalendar', '2.8.0'
     pod 'ActionSheetPicker-3.0' #, '2.3.0'
 

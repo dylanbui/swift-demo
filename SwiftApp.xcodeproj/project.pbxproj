@@ -264,7 +264,6 @@
 		BBC5093E2266E916009068A6 /* DbSheetTimeFromToPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5093D2266E916009068A6 /* DbSheetTimeFromToPicker.swift */; };
 		BBC509402267125F009068A6 /* DbSheetMonthYearLimitPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC5093F2267125F009068A6 /* DbSheetMonthYearLimitPicker.swift */; };
 		BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */; };
-		BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */; };
 		BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */; };
 		BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */; };
 		BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEF11F70CFE50028425E /* ViewController.swift */; };
@@ -590,7 +589,6 @@
 		BBC5093D2266E916009068A6 /* DbSheetTimeFromToPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetTimeFromToPicker.swift; sourceTree = "<group>"; };
 		BBC5093F2267125F009068A6 /* DbSheetMonthYearLimitPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearLimitPicker.swift; sourceTree = "<group>"; };
 		BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationDemo.swift; sourceTree = "<group>"; };
-		BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAlertController.swift; sourceTree = "<group>"; };
 		BBD3CEEC1F70CFE50028425E /* SwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1473,7 +1471,6 @@
 				BB2FE6702192CFCB007470DD /* DbMediaPickerController.swift */,
 				BBE813F52017210C00B21B1F /* DecimalTextField */,
 				BBE813F220171D7A00B21B1F /* UITextField+PasswordField */,
-				BBD2E5D02019C1CE005C7C37 /* LocationManager.swift */,
 			);
 			path = Libraries;
 			sourceTree = "<group>";
@@ -1809,7 +1806,6 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/APNumberPad/APNumberPad.framework",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
@@ -1823,7 +1819,6 @@
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
 				"${BUILT_PRODUCTS_DIR}/FloatLabelRow/FloatLabelRow.framework",
-				"${BUILT_PRODUCTS_DIR}/INTULocationManager/INTULocationManager.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManagerSwift/IQKeyboardManagerSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
@@ -1847,7 +1842,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/APNumberPad.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
@@ -1861,7 +1855,6 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatLabelRow.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/INTULocationManager.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/IQKeyboardManagerSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
@@ -2069,7 +2062,6 @@
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
 				BBA1C8F0225337AA008FF2FF /* MapDelegate.swift in Sources */,
-				BBD2E5D12019C1CE005C7C37 /* LocationManager.swift in Sources */,
 				BBA9BBD5224CBFF50068FFDC /* DbHttpExtensions.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */,
