@@ -23,7 +23,6 @@ open class DbEmptyCustomStatusView: UIView, DbEmptyStatusView {
             imageView.image = status.image
             titleLabel.text = status.title
             descriptionLabel.text = status.description
-            actionButton.setTitle(status.actionTitle, for: UIControlState())
             
             activityIndicatorView.circleLayer.strokeColor = status.spinnerColor.cgColor
             if status.isLoading {
@@ -37,9 +36,9 @@ open class DbEmptyCustomStatusView: UIView, DbEmptyStatusView {
             imageView.isHidden = imageView.image == nil
             titleLabel.isHidden = titleLabel.text == nil
             descriptionLabel.isHidden = descriptionLabel.text == nil
-            actionButton.isHidden = status.action == nil
+            let actionButtonHidden: Bool = status.actionButton == nil
             
-            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButton.isHidden
+            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButtonHidden
         }
     }
     
@@ -74,11 +73,6 @@ open class DbEmptyCustomStatusView: UIView, DbEmptyStatusView {
         return $0
     }(UIImageView())
     
-    public let actionButton: UIButton = {
-        
-        return $0
-    }(UIButton(type: .system))
-    
     public let verticalStackView: UIStackView = {
         $0.axis = .vertical
         $0.spacing = 10
@@ -99,8 +93,6 @@ open class DbEmptyCustomStatusView: UIView, DbEmptyStatusView {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        actionButton.addTarget(self, action: #selector(DbEmptyDefaultStatusView.actionButtonAction), for: .touchUpInside)
-        
         addSubview(horizontalStackView)
         
         horizontalStackView.addArrangedSubview(activityIndicatorView)
@@ -114,7 +106,11 @@ open class DbEmptyCustomStatusView: UIView, DbEmptyStatusView {
         verticalStackView.addArrangedSubview(imageView)
         verticalStackView.addArrangedSubview(titleLabel)
         verticalStackView.addArrangedSubview(descriptionLabel)
-        verticalStackView.addArrangedSubview(actionButton)
+        
+        if let btn = self.status?.actionButton {
+            verticalStackView.addArrangedSubview(btn)
+        }
+
         
         NSLayoutConstraint.activate([
             horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -124,9 +120,6 @@ open class DbEmptyCustomStatusView: UIView, DbEmptyStatusView {
             ])
     }
     
-    @objc func actionButtonAction() {
-        status?.action?()
-    }
     
     open override var tintColor: UIColor! {
         didSet {

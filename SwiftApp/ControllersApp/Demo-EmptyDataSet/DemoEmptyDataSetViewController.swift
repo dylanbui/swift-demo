@@ -29,21 +29,21 @@ class DemoEmptyDataSetViewController: UIViewController
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        // let status = DbEmptyStatus(isLoading: true, description: "Loadinggggg …")
+         let status = DbEmptyStatus(isLoading: true, description: "Loadinggggg …")
 //        let status = DbEmptyStatus(isLoading: true,
 //                                   spinnerColor: UIColor.red,
 //                                   backgroundColor: UIColor.white,
 //                                   description: "Loadinggggg …", verticalOffset: 160)
 //        // let status = DbEmptyStatus.simpleLoading
 //
-//        show(emptyStatus: status)
+        show(emptyStatus: status)
         
         self.fetchData()
     }
     
     func fetchData(_ result: Bool = false)
     {
-        let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let delayTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
             
             let done = result
@@ -65,6 +65,37 @@ class DemoEmptyDataSetViewController: UIViewController
     {
         title = "Empty"
         
+//        let status = DbEmptyStatus.init(image: UIImage(named: "placeholder_instagram"),
+//                                        title: "no Data", description: "No data available.💣",
+//                                        actionTitle: "Retry ⭐️") {
+//
+//                                            // -- Show loading --
+//                                            let status = DbEmptyStatus.simpleLoading
+//                                            self.show(emptyStatus: status)
+//                                            self.fetchData(true)
+//        }
+//
+//        self.show(emptyStatus: status)
+        
+        let btn = UIButton.init(type: .system)
+        btn.frame = CGRect.init(0, 0, 100, 75)
+        btn.backgroundColor = UIColor.orange
+        btn.setTitle("bấm zô", for: UIControl.State())
+        btn.onTap { (tapGesture) in
+            // -- Show loading --
+            let status = DbEmptyStatus.simpleLoading
+            self.show(emptyStatus: status)
+            self.fetchData(true)
+            print("CUng lam giong nhu ai")
+        }
+        
+        let statusBtn = DbEmptyStatus.init(image: UIImage(named: "placeholder_instagram"),
+                                        title: "no Data", description: "No data available.💣",
+                                        actionButton: btn)
+        
+        self.show(emptyStatus: statusBtn)
+
+
 //        let status = DbEmptyStatus(title: "no Data", description: "No data available.💣", actionTitle: "Retry ⭐️", image: UIImage(named: "placeholder_instagram")) {
 //            // self.hideStatus()
 //            
@@ -89,8 +120,8 @@ class DemoEmptyDataSetViewController: UIViewController
 extension DemoEmptyDataSetViewController: DbEmptyStatusController
 {
     public var statusView: DbEmptyStatusView? {
-        // return DbEmptyDefaultStatusView()
-        return DbEmptyCustomStatusView()
+        return DbEmptyDefaultStatusView()
+        //return DbEmptyCustomStatusView()
     }
 }
 

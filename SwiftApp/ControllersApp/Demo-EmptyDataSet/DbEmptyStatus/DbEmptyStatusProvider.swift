@@ -141,7 +141,8 @@ public class DbEmptyStatus: DbEmptyStatusModel {
                             backgroundColor: UIColor = UIColor.white,
                             image: UIImage? = nil,
                             title: String? = nil,
-                            actionTitle: String? = nil, action: (() -> Void))
+                            description: String? = nil,
+                            actionTitle: String? = nil, action: @escaping (() -> Void))
     {
         let btn = UIButton(type: .system)
         btn.setTitle(actionTitle, for: .normal)
@@ -152,15 +153,15 @@ public class DbEmptyStatus: DbEmptyStatusModel {
         btn.setTitle(actionTitle, for: UIControlState())
         #endif
         
-        btn.addTarget(DbEmptyStatus.self, action: #selector(DbEmptyStatus.actionButtonAction), for: .touchUpInside)
-        
-        self.init(isLoading: isLoading, verticalOffset: verticalOffset, spinnerColor: spinnerColor, backgroundColor: backgroundColor, image: image, title: title, actionButton: btn)
+        self.init(isLoading: isLoading, verticalOffset: verticalOffset, spinnerColor: spinnerColor, backgroundColor: backgroundColor, image: image, title: title, description: description, actionButton: btn)
+        // -- Only access to self variable when call init --
+        self.action = action
+        btn.addTarget(self, action: #selector(DbEmptyStatus.actionButtonAction), for: .touchUpInside)
     }
     
     @objc private func actionButtonAction() {
          self.action?()
     }
-
     
     public static var simpleLoading: DbEmptyStatus {
         return DbEmptyStatus(isLoading: true, verticalOffset: 150)

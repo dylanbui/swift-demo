@@ -29,6 +29,8 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
 //            actionButton.setTitle(status.actionTitle, for: UIControlState())
 //            #endif
             
+            
+            
             activityIndicatorView.color = status.spinnerColor
             if status.isLoading {
                 activityIndicatorView.startAnimating()
@@ -40,10 +42,24 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
             titleLabel.isHidden = titleLabel.text == nil
             descriptionLabel.isHidden = descriptionLabel.text == nil
             
-            self.actionButton = status.actionButton
-            let actionButtonHidden: Bool = status.actionButton == nil
+            actionButton.isHidden = true
+            //self.actionButton = status.actionButton
+            //var actionButtonHidden: Bool = true //Bool = status.actionButton == nil
+            if let btn = status.actionButton {
+                // actionButtonHidden = false
+                //self.actionButton = btn
+                self.actionButton.setTitle("actionTitle1", for: UIControl.State())
+                self.actionButton.isHidden = false
+                
+                verticalStackView.addArrangedSubview(btn)
+            }
             
-            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButtonHidden
+//            actionButton.isHidden = status.actionButton  == nil
+//            self.actionButton.setTitle("actionTitle1", for: UIControl.State())
+            
+            //self.actionButton.isHidden = status.action == nil
+            
+            verticalStackView.isHidden = imageView.isHidden && descriptionLabel.isHidden && actionButton.isHidden
         }
     }
     
@@ -87,13 +103,15 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
         return $0
     }(UIImageView())
     
-    public var actionButton: UIButton?
+    public var actionButton: UIButton = {
+        
+        return $0
+    }(UIButton(type: .system))
     
     public let verticalStackView: UIStackView = {
         $0.axis = .vertical
         $0.spacing = 10
         $0.alignment = .center
-        
         return $0
     }(UIStackView())
     
@@ -124,10 +142,7 @@ open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
         verticalStackView.addArrangedSubview(imageView)
         verticalStackView.addArrangedSubview(titleLabel)
         verticalStackView.addArrangedSubview(descriptionLabel)
-        
-        if let btn = self.actionButton {
-            verticalStackView.addArrangedSubview(btn)
-        }
+        //verticalStackView.addArrangedSubview(actionButton)
         
         NSLayoutConstraint.activate([
             horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
