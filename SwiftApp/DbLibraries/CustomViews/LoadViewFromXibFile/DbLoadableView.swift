@@ -4,7 +4,8 @@
 //
 //  Created by Dylan Bui on 8/10/18.
 //  Copyright © 2017 Propzy Viet Nam. All rights reserved.
-//  Base on v3.0.0 : https://github.com/MLSDev/LoadableViews
+//  Update : 25/04/2019
+//  Base on v3.3.0 : https://github.com/MLSDev/LoadableViews
 
 import Foundation
 import UIKit
@@ -56,6 +57,41 @@ extension DbNibLoadableProtocol {
     }
 }
 
+extension DbNibLoadableProtocol where Self: UIView {
+    
+    /// Sets the frame of the view to result of `systemLayoutSizeFitting` method call with `UIView.layoutFittingCompressedSize` parameter.
+    ///
+    /// - Returns: loadable view
+    public func compressedLayout() -> Self {
+        frame.size = systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        return self
+    }
+    
+    /// Sets the frame of the view to result of `systemLayoutSizeFitting` method call with `UIView.layoutFittingExpandedSize` parameter.
+    ///
+    /// - Returns: loadable view
+    public func expandedLayout() -> Self {
+        frame.size = systemLayoutSizeFitting(UILayoutFittingExpandedSize)
+        return self
+    }
+    
+    /// Sets the frame of the view to result of `systemLayoutSizeFitting` method call with provided parameters.
+    ///
+    /// - Parameters:
+    ///   - fittingSize: fittingSize to be passed to `systemLayoutSizeFitting` method.
+    ///   - horizontalPriority: horizontal priority to be passed to `systemLayoutSizeFitting` method.
+    ///   - verticalPriority: vertical priority to be passed to `systemLayoutSizeFitting` method.
+    /// - Returns: loadable view
+    public func systemLayout(fittingSize: CGSize,
+                             horizontalPriority: UILayoutPriority,
+                             verticalPriority: UILayoutPriority) -> Self {
+        frame.size = systemLayoutSizeFitting(fittingSize,
+                                             withHorizontalFittingPriority: horizontalPriority,
+                                             verticalFittingPriority: verticalPriority)
+        return self
+    }
+}
+
 /// UIView subclass, that can be loaded into different xib or storyboard by simply referencing it's class.
 open class DbLoadableView: UIView, DbNibLoadableProtocol {
     
@@ -80,10 +116,17 @@ open class DbLoadableTableViewCell: UITableViewCell, DbNibLoadableProtocol {
         return contentView
     }
     
+    #if swift(>=4.2)
+    override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    setupNib()
+    }
+    #else
     override public init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupNib()
     }
+    #endif
     
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
@@ -168,34 +211,35 @@ open class DbLoadableControl: UIControl, DbNibLoadableProtocol {
 }
 
 
+
 /// UIView subclass, that can be loaded into different xib or storyboard by simply referencing it's class.
 // -- DucBui (22/01/2018) : Use for popup control --
 open class DbLoadablePopupView: UIView, DbNibLoadableProtocol {
-    
+
     private var contentView: UIView!
-    
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
         setupNib()
     }
-    
+
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         setupNib()
     }
-    
+
     open func setupNib() {
         // -- Khong dung thang nay --
         // -- Khi su dung thang nay, khong resize subview duoc --
         // setupView(loadNib(), inContainer: nibContainerView)
-        
+
         backgroundColor = UIColor.clear
         contentView = loadNib()
         // use bounds not frame or it'll be offset
         contentView.frame = bounds
         // Adding custom subview on top of our view
         addSubview(contentView)
-        
+
         contentView.translatesAutoresizingMaskIntoConstraints = false
         addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|[childView]|",
                                                       options: [],

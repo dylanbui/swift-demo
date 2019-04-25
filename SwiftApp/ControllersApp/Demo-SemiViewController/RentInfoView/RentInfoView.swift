@@ -8,6 +8,7 @@
 
 import UIKit
 
+// bo contrain chay tot
 
 @IBDesignable
 class RentInfoView: DbLoadableView

@@ -23,7 +23,7 @@ class DemoSemiModalViewController: BaseViewController
     {
         let view = RentInfoView()
         view.handleViewAction = { (owner, sid, params, error) in
-            self.vclParent?.db_dismissSemiModalView()
+            self.db_dismissSemiModalView()
         }
 
         let options: [DbSemiModalOption: Any] = [
@@ -39,7 +39,7 @@ class DemoSemiModalViewController: BaseViewController
     {
         let view = RentInfoView()
         view.handleViewAction = { (owner, sid, params, error) in
-            self.vclParent?.db_dismissSemiModalView()
+            self.db_dismissSemiModalView()
         }
         
         let options: [DbSemiModalOption: Any] = [
@@ -47,7 +47,7 @@ class DemoSemiModalViewController: BaseViewController
             // DbSemiModalOption.transitionStyle: DbSemiModalTransitionStyle.fadeInOutCenter,
             DbSemiModalOption.animationDurationIn: 0.4,
             DbSemiModalOption.animationDurationOut: 0.2,
-            .contentYOffset : -50,
+            //.contentYOffset : -50,
             // .backgroundView : blurEffectView
         ]
         
@@ -58,7 +58,7 @@ class DemoSemiModalViewController: BaseViewController
     {
         let view = RentInfoView()
         view.handleViewAction = { (owner, sid, params, error) in
-            self.vclParent?.db_dismissSemiModalView()
+            self.db_dismissSemiModalView()
         }
         
         let options: [DbSemiModalOption: Any] = [
