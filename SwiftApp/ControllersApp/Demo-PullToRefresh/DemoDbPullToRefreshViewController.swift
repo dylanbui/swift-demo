@@ -25,13 +25,30 @@ class DemoDbPullToRefreshViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        self.navigationItem.title = "Full to refresh"
 
         // Do any additional setup after loading the view.
+        self.edgesForExtendedLayout = []
         
         // -- Start load data --
         for i in 0..<40 {
             self.dataSources.append("StartLoad - Cell data -- " + String(i))
         }
+        
+        
+        let refreshView = DbPullLoadView()
+        refreshView.delegate = self
+        self.tableView.addPullLoadableView(refreshView, type: .refresh)
+        // self.tableView.contentInset.top = 50
+        
+//        self.tableView.addPullToHandlerView(type: .refresh) {
+//            print("++ refreshView.startLoading")
+//
+//            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+//                self.tableView.stopPullToHandlerView(type: .refresh)
+//                self.tableView.reloadData()
+//            }
+//        }
         
     }
 
@@ -53,6 +70,45 @@ class DemoDbPullToRefreshViewController: UIViewController
             self.fetchingMore = false
             self.tableView.reloadData()
         })
+    }
+
+}
+
+// MARK: - KRPullLoadView delegate -------------------
+extension DemoDbPullToRefreshViewController: DbPullLoadViewDelegate
+{
+    func pullLoadView(_ pullLoadView: DbPullLoadView, didChangeState state: DbPullLoaderState, viewType type: DbPullLoaderType)
+    {
+        if type == .loadMore {
+            return
+        }
+        
+        switch state {
+        case .none:
+            pullLoadView.messageLabel.text = ""
+
+        case let .pulling(offset, threshould):
+            if offset.y > threshould {
+                pullLoadView.messageLabel.text = "Pull more. offset: \(Int(offset.y)), threshould: \(Int(threshould)))"
+            } else {
+                pullLoadView.messageLabel.text = "Release to refresh. offset: \(Int(offset.y)), threshould: \(Int(threshould)))"
+            }
+            
+        case let .loading(completionHandler):
+            pullLoadView.messageLabel.text = "Updating..."
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now()+1) {
+                completionHandler()
+                //self.index += 1
+                
+                // -- Simulator self.dataSources reStart load data --
+                self.dataSources.removeAll()
+                for i in 0..<40 {
+                    self.dataSources.append("StartLoad - Cell data -- " + String(i))
+                }
+                
+                self.tableView.reloadData()
+            }
+        }
     }
 
 }

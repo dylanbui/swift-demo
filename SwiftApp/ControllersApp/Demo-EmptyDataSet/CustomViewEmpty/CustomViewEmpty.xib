@@ -35,15 +35,11 @@
                             <subviews>
                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="iconEmpty" translatesAutoresizingMaskIntoConstraints="NO" id="xwu-Oz-jQb">
                                     <rect key="frame" x="54" y="0.0" width="237" height="183.5"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="237" id="Yga-i8-Lsg"/>
-                                        <constraint firstAttribute="height" priority="999" constant="183.5" id="zXo-j3-hSA"/>
-                                    </constraints>
                                 </imageView>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PeF-44-Dr5">
                                     <rect key="frame" x="151.5" y="187.5" width="42" height="20.5"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="20.5" id="5eA-YI-0ep"/>
+                                        <constraint firstAttribute="height" priority="999" constant="20.5" id="5eA-YI-0ep"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                     <nil key="textColor"/>

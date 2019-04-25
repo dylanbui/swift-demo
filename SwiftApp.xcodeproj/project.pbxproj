@@ -305,6 +305,12 @@
 		BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0312121F102460009C753 /* DbSheetDatePicker.swift */; };
 		BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */; };
 		BBF0A5FB2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */; };
+		BBF1E8992271A3E8000D00BE /* CustomViewEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF1E8972271A3E8000D00BE /* CustomViewEmpty.swift */; };
+		BBF1E89A2271A3E8000D00BE /* CustomViewEmpty.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF1E8982271A3E8000D00BE /* CustomViewEmpty.xib */; };
+		BBF1E8A02271DA31000D00BE /* RentInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF1E89E2271DA31000D00BE /* RentInfoView.swift */; };
+		BBF1E8A12271DA31000D00BE /* RentInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF1E89F2271DA31000D00BE /* RentInfoView.xib */; };
+		BBF1E8A42271ED5F000D00BE /* DemoSemiModalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF1E8A22271ED5F000D00BE /* DemoSemiModalViewController.swift */; };
+		BBF1E8A52271ED5F000D00BE /* DemoSemiModalViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF1E8A32271ED5F000D00BE /* DemoSemiModalViewController.xib */; };
 		BBF2368C2202E6DA0067952B /* PzCustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */; };
 		BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368D2202FA620067952B /* DbTopAlertController.swift */; };
 		BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */; };
@@ -636,6 +642,12 @@
 		BBF0312121F102460009C753 /* DbSheetDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetDatePicker.swift; sourceTree = "<group>"; };
 		BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMaterialSpinner.swift; sourceTree = "<group>"; };
 		BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyCustomStatusView.swift; sourceTree = "<group>"; };
+		BBF1E8972271A3E8000D00BE /* CustomViewEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewEmpty.swift; sourceTree = "<group>"; };
+		BBF1E8982271A3E8000D00BE /* CustomViewEmpty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomViewEmpty.xib; sourceTree = "<group>"; };
+		BBF1E89E2271DA31000D00BE /* RentInfoView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RentInfoView.swift; sourceTree = "<group>"; };
+		BBF1E89F2271DA31000D00BE /* RentInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RentInfoView.xib; sourceTree = "<group>"; };
+		BBF1E8A22271ED5F000D00BE /* DemoSemiModalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoSemiModalViewController.swift; sourceTree = "<group>"; };
+		BBF1E8A32271ED5F000D00BE /* DemoSemiModalViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoSemiModalViewController.xib; sourceTree = "<group>"; };
 		BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzCustomPickerRow.swift; sourceTree = "<group>"; };
 		BBF2368D2202FA620067952B /* DbTopAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTopAlertController.swift; sourceTree = "<group>"; };
 		BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearPicker.swift; sourceTree = "<group>"; };
@@ -705,6 +717,7 @@
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BBF1E89C2271DA31000D00BE /* Demo-SemiViewController */,
 				BB5E1427210B200A0059A8C4 /* AppEvn.swift */,
 				BB92D865224E104B00B8F244 /* Demo-EasyRealmAndNetworking */,
 				BB06BC0B220194F300227059 /* Demo-UISearchController */,
@@ -741,6 +754,7 @@
 		BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */ = {
 			isa = PBXGroup;
 			children = (
+				BBF1E8962271A3E8000D00BE /* CustomViewEmpty */,
 				BBF0A5FC2215468500BFEAE2 /* CustomEmptyStatus */,
 				BB51AC552213F65C00897CCC /* DbEmptyStatus */,
 				BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */,
@@ -976,8 +990,8 @@
 			children = (
 				BB7C50DD2251BE5A0009E6F8 /* DropDownCell.swift */,
 				BB7C50DE2251BE5A0009E6F8 /* DropDownCell.xib */,
-				BB7C50DF2251BE5A0009E6F8 /* CustomDropDownCell.xib */,
 				BB7C50E02251BE5A0009E6F8 /* CustomDropDownCell.swift */,
+				BB7C50DF2251BE5A0009E6F8 /* CustomDropDownCell.xib */,
 			);
 			path = CustomDropDownCell;
 			sourceTree = "<group>";
@@ -1540,6 +1554,34 @@
 			path = CustomEmptyStatus;
 			sourceTree = "<group>";
 		};
+		BBF1E8962271A3E8000D00BE /* CustomViewEmpty */ = {
+			isa = PBXGroup;
+			children = (
+				BBF1E8972271A3E8000D00BE /* CustomViewEmpty.swift */,
+				BBF1E8982271A3E8000D00BE /* CustomViewEmpty.xib */,
+			);
+			path = CustomViewEmpty;
+			sourceTree = "<group>";
+		};
+		BBF1E89C2271DA31000D00BE /* Demo-SemiViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BBF1E89D2271DA31000D00BE /* RentInfoView */,
+				BBF1E8A22271ED5F000D00BE /* DemoSemiModalViewController.swift */,
+				BBF1E8A32271ED5F000D00BE /* DemoSemiModalViewController.xib */,
+			);
+			path = "Demo-SemiViewController";
+			sourceTree = "<group>";
+		};
+		BBF1E89D2271DA31000D00BE /* RentInfoView */ = {
+			isa = PBXGroup;
+			children = (
+				BBF1E89E2271DA31000D00BE /* RentInfoView.swift */,
+				BBF1E89F2271DA31000D00BE /* RentInfoView.xib */,
+			);
+			path = RentInfoView;
+			sourceTree = "<group>";
+		};
 		BBF4EF82226CDFEC00B5722E /* BackgroundThread */ = {
 			isa = PBXGroup;
 			children = (
@@ -1710,6 +1752,7 @@
 				BB7F3038203E857900185366 /* demo_1.jpg in Resources */,
 				BB1079472071D7B300A99D9A /* DemoUKitViewController.xib in Resources */,
 				BB48E20B21F1C359002B2DEC /* readme.txt in Resources */,
+				BBF1E8A12271DA31000D00BE /* RentInfoView.xib in Resources */,
 				BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */,
 				BBC38A64206DDEE500B11C7B /* Ionicons.ttf in Resources */,
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
@@ -1737,6 +1780,7 @@
 				BB32A3E1224B2576006265B7 /* DemoJustViewController.xib in Resources */,
 				BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */,
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
+				BBF1E8A52271ED5F000D00BE /* DemoSemiModalViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
 				BBF9F349225F4009001EE7BB /* svgBlackArrowUp.svg in Resources */,
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
@@ -1754,6 +1798,7 @@
 				BB7C50E32251BE5A0009E6F8 /* CustomDropDownCell.xib in Resources */,
 				BB7F303C203E857900185366 /* demo_5.png in Resources */,
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
+				BBF1E89A2271A3E8000D00BE /* CustomViewEmpty.xib in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
 				BB7F303A203E857900185366 /* demo_3.jpg in Resources */,
 				BB92D85C224DC4E300B8F244 /* DemoNetworkRealmViewController.xib in Resources */,
@@ -1998,6 +2043,7 @@
 				BB32A3DB224B20EC006265B7 /* DbResponse.swift in Sources */,
 				BB2FE66F2192C440007470DD /* UIViewController+DbSemiModalViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
+				BBF1E8992271A3E8000D00BE /* CustomViewEmpty.swift in Sources */,
 				BB26008C21D60FD100D5F41D /* DbDropDownView.swift in Sources */,
 				BBB1A53722004AF40047293E /* DemoDbLocationManagerViewController.swift in Sources */,
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
@@ -2108,6 +2154,7 @@
 				BB9BC0C221EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */,
+				BBF1E8A42271ED5F000D00BE /* DemoSemiModalViewController.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBB5B14E225B099C00D16C53 /* DateTransform.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
@@ -2122,6 +2169,7 @@
 				BBC38A58206DDE9500B11C7B /* SwiftIconLabel.swift in Sources */,
 				BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */,
 				BB9E77AC222E22BC00BFC9C7 /* DemoLazyUploadViewController.swift in Sources */,
+				BBF1E8A02271DA31000D00BE /* RentInfoView.swift in Sources */,
 				BBA467182252216800E0749E /* UIBarButtonItem+Closures.swift in Sources */,
 				BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,

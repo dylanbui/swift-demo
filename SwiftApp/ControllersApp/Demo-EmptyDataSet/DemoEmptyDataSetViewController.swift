@@ -30,11 +30,12 @@ class DemoEmptyDataSetViewController: UIViewController
         self.tableView.delegate = self
         
         // let status = DbEmptyStatus(isLoading: true, description: "Loadinggggg …")
-        let status = DbEmptyStatus(isLoading: true,
-                                   spinnerColor: UIColor.red,
-                                   backgroundColor: UIColor.white,
-                                   description: "Loadinggggg …")
-        // let status = DbEmptyStatus.simpleLoading
+//        let status = DbEmptyStatus(isLoading: true,
+//                                   spinnerColor: UIColor.red,
+//                                   backgroundColor: UIColor.white,
+//                                   title: "Loading ...",
+//                                   description: "Loadinggggg …")
+        let status = DbEmptyStatus.simpleLoading
         
         show(emptyStatus: status)
         
@@ -43,7 +44,7 @@ class DemoEmptyDataSetViewController: UIViewController
     
     func fetchData(_ result: Bool = false)
     {
-        let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let delayTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
             
             let done = result
@@ -63,17 +64,28 @@ class DemoEmptyDataSetViewController: UIViewController
     
     func emptyStatus()
     {
-        title = "Empty"
+        title = "Empty" // iconEmpty
         
-        let status = DbEmptyStatus(title: "no Data", description: "No data available.💣", actionTitle: "Retry ⭐️", image: UIImage(named: "placeholder_instagram")) {
+//        let status = DbEmptyStatus(title: "no Data", actionTitle: "Retry ⭐️", image: UIImage(named: "placeholder_instagram"))
+        
+        let status = DbEmptyStatus(title: "no Data", actionTitle: "Retry ⭐️", image: UIImage(named: "iconEmpty")) {
             // self.hideStatus()
-            
             // -- Show loading --
             let status = DbEmptyStatus.simpleLoading
             self.show(emptyStatus: status)
-            
+
             self.fetchData(true)
         }
+        
+//        let status = DbEmptyStatus(title: "no Data", description: "No data available.💣", actionTitle: "Retry ⭐️", image: UIImage(named: "placeholder_instagram")) {
+//            // self.hideStatus()
+//
+//            // -- Show loading --
+//            let status = DbEmptyStatus.simpleLoading
+//            self.show(emptyStatus: status)
+//
+//            self.fetchData(true)
+//        }
         
         self.show(emptyStatus: status)
         
@@ -89,8 +101,13 @@ class DemoEmptyDataSetViewController: UIViewController
 extension DemoEmptyDataSetViewController: DbEmptyStatusController
 {
     public var statusView: DbEmptyStatusView? {
+        return CustomViewEmpty()
         // return DbEmptyDefaultStatusView()
-        return DbEmptyCustomStatusView()
+//        let view = DbEmptyCustomStatusView()
+//        view.actionButton.backgroundColor = UIColor.orange
+//        view.actionButton.widthAnchor.constraint(equalToConstant: 170).isActive = true
+//        view.actionButton.heightAnchor.constraint(equalToConstant: 38).isActive = true
+//        return view //DbEmptyCustomStatusView()
     }
 }
 
