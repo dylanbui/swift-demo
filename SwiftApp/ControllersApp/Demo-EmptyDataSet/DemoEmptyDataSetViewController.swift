@@ -38,7 +38,7 @@ class DemoEmptyDataSetViewController: UIViewController
 //
         show(emptyStatus: status)
         
-        self.fetchData()
+        // self.fetchData()
     }
     
     func fetchData(_ result: Bool = false)
@@ -120,8 +120,11 @@ class DemoEmptyDataSetViewController: UIViewController
 extension DemoEmptyDataSetViewController: DbEmptyStatusController
 {
     public var statusView: DbEmptyStatusView? {
-        return DbEmptyDefaultStatusView()
-        //return DbEmptyCustomStatusView()
+        // 375, 300
+        return CustomViewEmpty() //.init(frame: CGRect(0, 0, 375, 300))
+//         return DbEmptyDefaultStatusView()
+//        let view = DbEmptyDefaultStatusView()
+//        return DbEmptyDefaultStatusView()
     }
 }
 

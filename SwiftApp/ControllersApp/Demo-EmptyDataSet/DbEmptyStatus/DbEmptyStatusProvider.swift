@@ -209,6 +209,7 @@ extension DbEmptyStatusController {
         containerView.viewWithTag(dbStatusViewTag)?.removeFromSuperview()
         
         let view = sv.view
+        view.backgroundColor = UIColor.orange
         
         let parentView = UIView.init(frame: containerView.frame)
         parentView.tag = dbStatusViewTag

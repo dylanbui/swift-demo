@@ -306,6 +306,8 @@
 		BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0312121F102460009C753 /* DbSheetDatePicker.swift */; };
 		BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */; };
 		BBF0A5FB2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */; };
+		BBF1E8922271566F000D00BE /* CustomViewEmpty.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF1E8902271566F000D00BE /* CustomViewEmpty.swift */; };
+		BBF1E8932271566F000D00BE /* CustomViewEmpty.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF1E8912271566F000D00BE /* CustomViewEmpty.xib */; };
 		BBF2368C2202E6DA0067952B /* PzCustomPickerRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */; };
 		BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368D2202FA620067952B /* DbTopAlertController.swift */; };
 		BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */; };
@@ -637,6 +639,8 @@
 		BBF0312121F102460009C753 /* DbSheetDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetDatePicker.swift; sourceTree = "<group>"; };
 		BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMaterialSpinner.swift; sourceTree = "<group>"; };
 		BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEmptyCustomStatusView.swift; sourceTree = "<group>"; };
+		BBF1E8902271566F000D00BE /* CustomViewEmpty.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomViewEmpty.swift; sourceTree = "<group>"; };
+		BBF1E8912271566F000D00BE /* CustomViewEmpty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomViewEmpty.xib; sourceTree = "<group>"; };
 		BBF2368B2202E6DA0067952B /* PzCustomPickerRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzCustomPickerRow.swift; sourceTree = "<group>"; };
 		BBF2368D2202FA620067952B /* DbTopAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTopAlertController.swift; sourceTree = "<group>"; };
 		BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearPicker.swift; sourceTree = "<group>"; };
@@ -741,6 +745,7 @@
 		BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */ = {
 			isa = PBXGroup;
 			children = (
+				BBF1E88F2271566F000D00BE /* CustomViewEmpty */,
 				BBF0A5FC2215468500BFEAE2 /* CustomEmptyStatus */,
 				BB51AC552213F65C00897CCC /* DbEmptyStatus */,
 				BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */,
@@ -1545,6 +1550,15 @@
 			path = CustomEmptyStatus;
 			sourceTree = "<group>";
 		};
+		BBF1E88F2271566F000D00BE /* CustomViewEmpty */ = {
+			isa = PBXGroup;
+			children = (
+				BBF1E8902271566F000D00BE /* CustomViewEmpty.swift */,
+				BBF1E8912271566F000D00BE /* CustomViewEmpty.xib */,
+			);
+			path = CustomViewEmpty;
+			sourceTree = "<group>";
+		};
 		C18E4305809E59F8E17DBC84 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1714,6 +1728,7 @@
 				BB7C50E32251BE5A0009E6F8 /* CustomDropDownCell.xib in Resources */,
 				BB7F303C203E857900185366 /* demo_5.png in Resources */,
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
+				BBF1E8932271566F000D00BE /* CustomViewEmpty.xib in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
 				BB7F303A203E857900185366 /* demo_3.jpg in Resources */,
 				BB92D85C224DC4E300B8F244 /* DemoNetworkRealmViewController.xib in Resources */,
@@ -1958,6 +1973,7 @@
 				BB32A3DB224B20EC006265B7 /* DbResponse.swift in Sources */,
 				BB2FE66F2192C440007470DD /* UIViewController+DbSemiModalViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
+				BBF1E8922271566F000D00BE /* CustomViewEmpty.swift in Sources */,
 				BB26008C21D60FD100D5F41D /* DbDropDownView.swift in Sources */,
 				BBB1A53722004AF40047293E /* DemoDbLocationManagerViewController.swift in Sources */,
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
