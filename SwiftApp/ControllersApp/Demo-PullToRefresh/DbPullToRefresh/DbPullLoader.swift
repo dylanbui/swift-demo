@@ -240,37 +240,3 @@ private extension DbPullLoader {
         }, completion: nil)
     }
 }
-
-// MARK: - Internal extensions ---------------
-
-fileprivate extension UIScrollView {
-    var distanceOffset: CGPoint {
-        get {
-            return CGPoint(
-                x: contentOffset.x + contentInset.left,
-                y: contentOffset.y + contentInset.top
-            )
-        }
-        set {
-            contentOffset = CGPoint(
-                x: newValue.x - contentInset.left,
-                y: newValue.y - contentInset.top
-            )
-        }
-    }
-    
-    var distanceEndOffset: CGPoint {
-        get {
-            return CGPoint(
-                x: (contentSize.width + contentInset.right) - (contentOffset.x + bounds.width),
-                y: (contentSize.height + contentInset.bottom) - (contentOffset.y + bounds.height)
-            )
-        }
-        set {
-            contentOffset = CGPoint(
-                x: newValue.x - (bounds.width - (contentSize.width + contentInset.right)),
-                y: newValue.y - (bounds.height - (contentSize.height + contentInset.bottom))
-            )
-        }
-    }
-}

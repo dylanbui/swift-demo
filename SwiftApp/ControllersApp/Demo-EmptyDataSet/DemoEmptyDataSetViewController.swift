@@ -34,7 +34,8 @@ class DemoEmptyDataSetViewController: UIViewController
 //                                   spinnerColor: UIColor.red,
 //                                   backgroundColor: UIColor.white,
 //                                   title: "Loading ...",
-//                                   description: "Loadinggggg …")
+//                                   description: "Loadinggggg …",
+//                                   verticalOffset: 5)
         let status = DbEmptyStatus.simpleLoading
         
         show(emptyStatus: status)
@@ -44,7 +45,7 @@ class DemoEmptyDataSetViewController: UIViewController
     
     func fetchData(_ result: Bool = false)
     {
-        let delayTime = DispatchTime.now() + Double(Int64(1.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
             
             let done = result
@@ -102,7 +103,16 @@ extension DemoEmptyDataSetViewController: DbEmptyStatusController
 {
     public var statusView: DbEmptyStatusView? {
         return CustomViewEmpty()
-        // return DbEmptyDefaultStatusView()
+        // -- Su dung duoc cho cac phien ban > 10 --
+//        let view = DbEmptyDefaultStatusView()
+//        // -- Add Constraint for custom Button Size --
+//        NSLayoutConstraint.activate([
+//            view.actionButton.widthAnchor.constraint(equalToConstant: 170),
+//            view.actionButton.heightAnchor.constraint(equalToConstant: 38)
+//            ])
+//        view.actionButton.backgroundColor = UIColor.orange
+//        return view
+        
 //        let view = DbEmptyCustomStatusView()
 //        view.actionButton.backgroundColor = UIColor.orange
 //        view.actionButton.widthAnchor.constraint(equalToConstant: 170).isActive = true

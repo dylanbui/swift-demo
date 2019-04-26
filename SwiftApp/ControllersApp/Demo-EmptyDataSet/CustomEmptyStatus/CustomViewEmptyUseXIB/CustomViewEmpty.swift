@@ -8,10 +8,13 @@
 
 import UIKit
 
+/*
+ Khi custom empty view thi phai su dung UIStackView de lam layout
+ */
+
 @IBDesignable
 class CustomViewEmpty: DbLoadableView, DbEmptyStatusView
 {
-
     @IBOutlet weak var verticalStackView: UIStackView!
     @IBOutlet weak var horizontalStackView: UIStackView!
 
@@ -48,7 +51,8 @@ class CustomViewEmpty: DbLoadableView, DbEmptyStatusView
             self.verticalStackView.isHidden = self.imgEmpty.isHidden && self.lblTitle.isHidden && self.btnSur.isHidden
             
             // -- Update layout when update StackView Constraint --
-            self.layoutIfNeeded()
+            // -- Add Constraint chieu cao cua tung view --
+            // Phai co 1 view cho priority thap, de no se chiem chieu cao cua view nay
         }
     }
     
@@ -71,6 +75,9 @@ class CustomViewEmpty: DbLoadableView, DbEmptyStatusView
         self.viewActivityIndicator.hidesWhenStopped = true
         self.viewActivityIndicator.activityIndicatorViewStyle = .gray
         self.viewActivityIndicator.color = UIColor.lightGray
+        
+        // -- Su dung cach nay hay set trong file xib deu duoc --
+        self.btnSur.db_anchor(widthConstant: 170, heightConstant: 40)
     }
     
     @IBAction func btn_Click(_ sender: AnyObject)

@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+/*
+ Khi custom empty view thi phai su dung UIStackView de lam layout
+ */
+
 open class DbEmptyDefaultStatusView: UIView, DbEmptyStatusView {
     
     public var view: UIView {

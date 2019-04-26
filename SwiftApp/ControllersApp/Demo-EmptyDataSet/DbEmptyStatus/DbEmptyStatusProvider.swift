@@ -155,9 +155,18 @@ extension DbEmptyStatusController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         if status.verticalOffset != 0.0 {
+            
+            // -- DucBui 26/04/2019 : Kiem tra navigationbar size --
+            var offset = status.verticalOffset
+            if let viewController = self as? UIViewController {
+                if viewController.navigationController != nil {
+                    offset += 64 // navigationBar
+                }
+            }
+            
             NSLayoutConstraint.activate([
                 view.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
-                view.topAnchor.constraint(equalTo: parentView.topAnchor, constant: status.verticalOffset) // Cach top 150 chua bao gom navigation bar
+                view.topAnchor.constraint(equalTo: parentView.topAnchor, constant: offset) // Cach top 150 chua bao gom navigation bar
                 ])
             
         } else {

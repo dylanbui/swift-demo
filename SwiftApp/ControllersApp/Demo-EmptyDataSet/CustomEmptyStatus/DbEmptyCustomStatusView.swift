@@ -115,6 +115,13 @@ open class DbEmptyCustomStatusView: UIView, DbEmptyStatusView {
         verticalStackView.addArrangedSubview(titleLabel)
         verticalStackView.addArrangedSubview(descriptionLabel)
         verticalStackView.addArrangedSubview(actionButton)
+
+        // Fixed size
+//        NSLayoutConstraint.activate([
+//            actionButton.widthAnchor.constraint(equalToConstant: 170),
+//            actionButton.heightAnchor.constraint(equalToConstant: 38)
+//            ])
+//        actionButton.backgroundColor = UIColor.orange
         
         NSLayoutConstraint.activate([
             horizontalStackView.leadingAnchor.constraint(equalTo: leadingAnchor),

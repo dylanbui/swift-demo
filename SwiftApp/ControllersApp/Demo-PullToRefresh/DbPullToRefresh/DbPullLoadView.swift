@@ -26,7 +26,7 @@ public protocol DbPullLoadViewDelegate: class {
  Simple view which inherited DbPullLoadable protocol.
  This has only activity indicator and message label.
  */
-open class DbPullLoadView: UIView {
+open class DbPullLoadView: UIView, DbPullLoadable {
     
     private lazy var oneTimeSetUp: Void = { self.setUp() }()
     
@@ -69,12 +69,8 @@ open class DbPullLoadView: UIView {
         )
     }
     
-}
-
-// MARK: - DbPullLoadable --------------
-
-extension DbPullLoadView: DbPullLoadable
-{
+    // MARK: - DbPullLoadable --------------
+    
     open func didChangeState(_ state: DbPullLoaderState, viewType type: DbPullLoaderType) {
         switch state {
         case .none:

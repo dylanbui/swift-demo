@@ -198,6 +198,8 @@
 		BBA9BBD3224CB61E0068FFDC /* DbHttp.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9BBD2224CB61E0068FFDC /* DbHttp.swift */; };
 		BBA9BBD5224CBFF50068FFDC /* DbHttpExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9BBD4224CBFF50068FFDC /* DbHttpExtensions.swift */; };
 		BBA9BBD7224CE0DE0068FFDC /* PzBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBA9BBD6224CE0DE0068FFDC /* PzBaseApi.swift */; };
+		BBACDF872273116700E664EF /* CustomFullLoadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBACDF862273116700E664EF /* CustomFullLoadView.swift */; };
+		BBACDF892273128500E664EF /* PullUIScrollViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBACDF882273128500E664EF /* PullUIScrollViewExtensions.swift */; };
 		BBAF935922357F7B0086AC02 /* EditRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */; };
 		BBAF935A22357F7B0086AC02 /* EditRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */; };
 		BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */; };
@@ -529,6 +531,8 @@
 		BBA9BBD2224CB61E0068FFDC /* DbHttp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHttp.swift; sourceTree = "<group>"; };
 		BBA9BBD4224CBFF50068FFDC /* DbHttpExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHttpExtensions.swift; sourceTree = "<group>"; };
 		BBA9BBD6224CE0DE0068FFDC /* PzBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzBaseApi.swift; sourceTree = "<group>"; };
+		BBACDF862273116700E664EF /* CustomFullLoadView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomFullLoadView.swift; sourceTree = "<group>"; };
+		BBACDF882273128500E664EF /* PullUIScrollViewExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PullUIScrollViewExtensions.swift; sourceTree = "<group>"; };
 		BBAF935722357F7B0086AC02 /* EditRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditRealmViewController.swift; sourceTree = "<group>"; };
 		BBAF935822357F7B0086AC02 /* EditRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EditRealmViewController.xib; sourceTree = "<group>"; };
 		BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbLocationManager.swift; sourceTree = "<group>"; };
@@ -754,7 +758,6 @@
 		BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */ = {
 			isa = PBXGroup;
 			children = (
-				BBF1E8962271A3E8000D00BE /* CustomViewEmpty */,
 				BBF0A5FC2215468500BFEAE2 /* CustomEmptyStatus */,
 				BB51AC552213F65C00897CCC /* DbEmptyStatus */,
 				BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */,
@@ -829,6 +832,8 @@
 				BB2810A02216D437003823FE /* DbPullToRefresh */,
 				BB2810992216D3F6003823FE /* DemoDbPullToRefreshViewController.swift */,
 				BB28109A2216D3F6003823FE /* DemoDbPullToRefreshViewController.xib */,
+				BBACDF862273116700E664EF /* CustomFullLoadView.swift */,
+				BBACDF882273128500E664EF /* PullUIScrollViewExtensions.swift */,
 			);
 			path = "Demo-PullToRefresh";
 			sourceTree = "<group>";
@@ -836,10 +841,10 @@
 		BB2810A02216D437003823FE /* DbPullToRefresh */ = {
 			isa = PBXGroup;
 			children = (
-				BB2810A12216DDA6003823FE /* NSLayoutConstraintExtensions.swift */,
 				BB28109E2216D42F003823FE /* DbPullLoader.swift */,
 				BB2810A32216DDEC003823FE /* DbPullLoadView.swift */,
 				BB2810A52216E211003823FE /* UIScrollViewExtensions.swift */,
+				BB2810A12216DDA6003823FE /* NSLayoutConstraintExtensions.swift */,
 			);
 			path = DbPullToRefresh;
 			sourceTree = "<group>";
@@ -1550,17 +1555,18 @@
 			children = (
 				BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */,
 				BBF0A5FA2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift */,
+				BBF1E8962271A3E8000D00BE /* CustomViewEmptyUseXIB */,
 			);
 			path = CustomEmptyStatus;
 			sourceTree = "<group>";
 		};
-		BBF1E8962271A3E8000D00BE /* CustomViewEmpty */ = {
+		BBF1E8962271A3E8000D00BE /* CustomViewEmptyUseXIB */ = {
 			isa = PBXGroup;
 			children = (
 				BBF1E8972271A3E8000D00BE /* CustomViewEmpty.swift */,
 				BBF1E8982271A3E8000D00BE /* CustomViewEmpty.xib */,
 			);
-			path = CustomViewEmpty;
+			path = CustomViewEmptyUseXIB;
 			sourceTree = "<group>";
 		};
 		BBF1E89C2271DA31000D00BE /* Demo-SemiViewController */ = {
@@ -2019,6 +2025,7 @@
 				BBA467192252216800E0749E /* UIControl+Closures.swift in Sources */,
 				BB32A3E0224B2576006265B7 /* DemoJustViewController.swift in Sources */,
 				BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */,
+				BBACDF872273116700E664EF /* CustomFullLoadView.swift in Sources */,
 				BB48E20D21F1E531002B2DEC /* DbSheetCalendar.swift in Sources */,
 				BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */,
 				BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */,
@@ -2125,6 +2132,7 @@
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BB2229C92229AE7900A82EA5 /* PhotoUploadManager.swift in Sources */,
 				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,
+				BBACDF892273128500E664EF /* PullUIScrollViewExtensions.swift in Sources */,
 				BB26008D21D60FD100D5F41D /* DbSelectBox.swift in Sources */,
 				BBC38A54206DDE9500B11C7B /* MapIcon.swift in Sources */,
 				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
