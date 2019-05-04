@@ -11,8 +11,8 @@ target 'SwiftApp' do
     # Libraries system Swift 4
     pod 'Alamofire', '4.7.3'
     pod 'MBProgressHUD', '1.1.0'
-    pod 'SVPullToRefresh', '0.4.1'
-    pod 'DZNEmptyDataSet', '1.8.1'
+    #pod 'SVPullToRefresh', '0.4.1' # Cu khong su dung
+    #pod 'DZNEmptyDataSet', '1.8.1' # Cu khong su dung
     
     pod 'IQKeyboardManagerSwift', '6.2.0'
     pod 'SnapKit', '4.0.1' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
@@ -67,10 +67,11 @@ target 'SwiftApp' do
     # Eureka extensions : https://github.com/EurekaCommunity
     # FloatLabelRow => bi trung file DecimalFormatter voi Eureka, phai delete no trong pod
     pod 'FloatLabelRow', :git => 'https://github.com/larsacus/FloatLabelRow', :branch => 'ExposeColorProperties' # Version : 1.0.0
-    pod 'ViewRow', :git => 'https://github.com/EurekaCommunity/ViewRow' # Version : 0.3.0
-    pod 'TableRow', '0.3.1'
-    pod 'SuggestionRow', '2.2.0'
+    # pod 'ViewRow', :git => 'https://github.com/EurekaCommunity/ViewRow' # Version : 0.3.0
+    # Da tich hop ViewRow vao trong source du an PropzySam
     
+    pod 'TableRow', '0.3.1' # Khong phu hop
+    pod 'SuggestionRow', '2.2.0' # Khong phu hop
     
 
   # Pods for SwiftApp

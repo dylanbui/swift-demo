@@ -5,6 +5,7 @@
 //  Created by Dylan Bui on 2/13/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //  Base on v1.2.10 : https://github.com/mariohahn/StatusProvider
+//  Rename function in protocol DbEmptyStatusController
 
 import Foundation
 import UIKit
@@ -62,15 +63,15 @@ extension DbEmptyStatusModel {
 }
 
 public struct DbEmptyStatus: DbEmptyStatusModel {
-    public let verticalOffset: CGFloat
-    public let isLoading: Bool
-    public let spinnerColor: UIColor
-    public let backgroundColor: UIColor
-    public let title: String?
-    public let description: String?
-    public let actionTitle: String?
-    public let image: UIImage?
-    public let action: (() -> Void)?
+    public var verticalOffset: CGFloat
+    public var isLoading: Bool
+    public var spinnerColor: UIColor
+    public var backgroundColor: UIColor
+    public var title: String?
+    public var description: String?
+    public var actionTitle: String?
+    public var image: UIImage?
+    public var action: (() -> Void)?
     
     public init(isLoading: Bool = false,
                 spinnerColor: UIColor = UIColor.lightGray,
@@ -93,7 +94,7 @@ public struct DbEmptyStatus: DbEmptyStatusModel {
     }
     
     public static var simpleLoading: DbEmptyStatus {
-        return DbEmptyStatus(isLoading: true, verticalOffset: 150)
+        return DbEmptyStatus(isLoading: true, verticalOffset: 50)
     }
 }
 
@@ -104,23 +105,23 @@ public protocol DbEmptyStatusView: class {
 }
 
 public protocol DbEmptyStatusController {
-    var onView: UIView { get }
-    var statusView: DbEmptyStatusView?     { get }
+    var emptyStatusOnView: UIView { get }
+    var emptyStatusView: DbEmptyStatusView?     { get }
     
-    func show(emptyStatus: DbEmptyStatusModel)
-    func hideEmptyStatus()
+    func showEmptyView(WithStatus: DbEmptyStatusModel)
+    func hideEmptyViewStatus()
 }
 
 fileprivate let dbStatusViewTag = 666
 
 extension DbEmptyStatusController {
     
-    public var statusView: DbEmptyStatusView? {
+    public var emptyStatusView: DbEmptyStatusView? {
         return DbEmptyDefaultStatusView()
     }
     
-    public func hideEmptyStatus() {
-        if let view = onView.viewWithTag(dbStatusViewTag) {
+    public func hideEmptyViewStatus() {
+        if let view = emptyStatusOnView.viewWithTag(dbStatusViewTag) {
             UIView.animate(withDuration: 0.2, animations: {
                 view.alpha = 0.0
             }) { (finished) in
@@ -130,10 +131,10 @@ extension DbEmptyStatusController {
     }
     
     fileprivate func _show(status: DbEmptyStatusModel) {
-        guard let sv = statusView else { return }
+        guard let sv = emptyStatusView else { return }
         sv.status = status
         
-        let containerView: UIView = onView
+        let containerView: UIView = emptyStatusOnView
         // -- Remove DbEmptyStatus View if have --
         containerView.viewWithTag(dbStatusViewTag)?.removeFromSuperview()
         
@@ -155,12 +156,18 @@ extension DbEmptyStatusController {
         view.translatesAutoresizingMaskIntoConstraints = false
         
         if status.verticalOffset != 0.0 {
-            
             // -- DucBui 26/04/2019 : Kiem tra navigationbar size --
             var offset = status.verticalOffset
             if let viewController = self as? UIViewController {
-                if viewController.navigationController != nil {
-                    offset += 64 // navigationBar
+                // -- Khong can navigationBar vi parentView nam duoi navigationBar --
+                // Nen neu khong co navigationBar thi phai cong them 64
+                // Neu edgesForExtendedLayout.rawValue != 0 thi UIViewController se cover toan bo man hinh
+                if let nav = viewController.navigationController {
+                    if nav.isNavigationBarHidden == true {
+                        offset += 64 // navigationBar
+                    } else if viewController.edgesForExtendedLayout.rawValue != 0 {
+                        offset += 64 // navigationBar
+                    }
                 }
             }
             
@@ -170,9 +177,31 @@ extension DbEmptyStatusController {
                 ])
             
         } else {
+            // -- DucBui 26/04/2019 : Kiem tra Tabbar size khi canh giua --
+            var offset: CGFloat = 0.0
+            // -- Kiem tra UIViewController co cover toan man hinh ko --
+            // Kiem tra the nao cung khong thay dung lam, nen khong su dung
+            if let viewController = self as? UIViewController {
+                // -- Khong can navigationBar vi canh giua tu giua len --
+                // Neu edgesForExtendedLayout.rawValue != 0 thi UIViewController se cover toan bo man hinh
+                if let nav = viewController.navigationController {
+                    if nav.isNavigationBarHidden == true {
+                        offset -= 44 // navigationBar
+                    } else if viewController.edgesForExtendedLayout.rawValue != 0 {
+                        offset -= 44 // navigationBar
+                    }
+                }
+            }
+            // -- Kiem tra tabbar --
+            if let viewController = self as? UIViewController {
+                if viewController.tabBarController != nil {
+                    offset -= 49 // tabBarController
+                }
+            } 
+            
             NSLayoutConstraint.activate([
                 view.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
-                view.centerYAnchor.constraint(equalTo: parentView.centerYAnchor), // Canh giua
+                view.centerYAnchor.constraint(equalTo: parentView.centerYAnchor, constant: offset), // Canh giua
                 ])
         }
     }
@@ -181,36 +210,38 @@ extension DbEmptyStatusController {
 
 extension DbEmptyStatusController where Self: UIView {
     
-    public var onView: UIView {
+    public var emptyStatusOnView: UIView {
         return self
     }
     
-    public func show(emptyStatus: DbEmptyStatusModel) {
+    
+    
+    public func showEmptyView(WithStatus emptyStatus: DbEmptyStatusModel) {
         _show(status: emptyStatus)
     }
 }
 
 extension DbEmptyStatusController where Self: UIViewController {
     
-    public var onView: UIView {
+    public var emptyStatusOnView: UIView {
         return view
     }
     
-    public func show(emptyStatus: DbEmptyStatusModel) {
+    public func showEmptyView(WithStatus emptyStatus: DbEmptyStatusModel) {
         _show(status: emptyStatus)
     }
 }
 
 extension DbEmptyStatusController where Self: UITableViewController {
     
-    public var onView: UIView {
+    public var emptyStatusOnView: UIView {
         if let backgroundView = tableView.backgroundView {
             return backgroundView
         }
         return view
     }
     
-    public func show(emptyStatus: DbEmptyStatusModel) {
+    public func showEmptyView(WithStatus emptyStatus: DbEmptyStatusModel) {
         _show(status: emptyStatus)
     }
 }

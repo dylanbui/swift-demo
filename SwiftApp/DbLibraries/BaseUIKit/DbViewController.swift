@@ -8,8 +8,8 @@
 
 import Foundation
 import UIKit
-import DZNEmptyDataSet
-import SVPullToRefresh
+//import DZNEmptyDataSet
+//import SVPullToRefresh
 
 protocol ManageNavigationBar where Self : UIViewController {
     // protocol stuff here
@@ -102,8 +102,8 @@ class DbViewController: UIViewController
             tbl.dataSource = self as? UITableViewDataSource
             
             // -- Da dinh nghia trong cung file roi nen khong can ep kieu as?
-            tbl.emptyDataSetSource = self as DZNEmptyDataSetSource
-            tbl.emptyDataSetDelegate = self as? DZNEmptyDataSetDelegate
+//            tbl.emptyDataSetSource = self as DZNEmptyDataSetSource
+//            tbl.emptyDataSetDelegate = self as? DZNEmptyDataSetDelegate
         }
         
     }
@@ -152,59 +152,59 @@ class DbViewController: UIViewController
 
 // MARK: - DZNEmptyDataSetSource
 // MARK: -
-
-extension DbViewController: DZNEmptyDataSetSource {
-
-    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat
-    {
-        if self.verticalOffsetForEmptyDataSet != 0 {
-            return CGFloat(self.verticalOffsetForEmptyDataSet)
-        }
-        
-        if self.defaultImageForEmptyDataSet != nil {
-           return  (CGFloat(Db.screenHeight()) - self.defaultImageForEmptyDataSet!.size.height)/2 - 64
-        }
-        
-        return 100.0
-//        return CGFloat((self.tblContent.tableHeaderView?.frame.size.height)!/2.0)
-//         return CGFloat(Db.screenHeight()/3)
-    }
-    
-    func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView!
-    {
-        // -- Network connection --
-        if (errorCode == 1005) {
-            let vwError = DbErrorView()
-            vwError.errorNetworkConnection()
-            return vwError
-        }
-        
-        // -- Empty data --
-        if (!self.isLoadingDataSource) {
-            let vwError = DbErrorView()
-            vwError.errorEmptyData()
-            if self.defaultTitleForEmptyDataSet != nil {
-                vwError.lblTitle.text = self.defaultTitleForEmptyDataSet
-            }
-            if self.defaultImageForEmptyDataSet != nil {
-                vwError.imgError.image = self.defaultImageForEmptyDataSet
-            }
-            // vwError.backgroundColor = UIColor.yellow // Debug
-            return vwError
-        }
-        
-        // -- Default is loading --
-        let loadingView = UIView(frame: CGRect(0, 0, Db.screenWidth(), 50))
-        let activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
-        activityView.frame = CGRect(0, 0, 50, 50)
-        activityView.center = view.center
-        activityView.centerY = activityView.height/2
-        activityView.startAnimating()
-        activityView.hidesWhenStopped = true
-        loadingView.addSubview(activityView)
-        return loadingView
-    }
-    
-}
+// Khong su dung, thay the bang thang khac
+//extension DbViewController: DZNEmptyDataSetSource {
+//
+//    func verticalOffset(forEmptyDataSet scrollView: UIScrollView!) -> CGFloat
+//    {
+//        if self.verticalOffsetForEmptyDataSet != 0 {
+//            return CGFloat(self.verticalOffsetForEmptyDataSet)
+//        }
+//        
+//        if self.defaultImageForEmptyDataSet != nil {
+//           return  (CGFloat(Db.screenHeight()) - self.defaultImageForEmptyDataSet!.size.height)/2 - 64
+//        }
+//        
+//        return 100.0
+////        return CGFloat((self.tblContent.tableHeaderView?.frame.size.height)!/2.0)
+////         return CGFloat(Db.screenHeight()/3)
+//    }
+//    
+//    func customView(forEmptyDataSet scrollView: UIScrollView!) -> UIView!
+//    {
+//        // -- Network connection --
+//        if (errorCode == 1005) {
+//            let vwError = DbErrorView()
+//            vwError.errorNetworkConnection()
+//            return vwError
+//        }
+//        
+//        // -- Empty data --
+//        if (!self.isLoadingDataSource) {
+//            let vwError = DbErrorView()
+//            vwError.errorEmptyData()
+//            if self.defaultTitleForEmptyDataSet != nil {
+//                vwError.lblTitle.text = self.defaultTitleForEmptyDataSet
+//            }
+//            if self.defaultImageForEmptyDataSet != nil {
+//                vwError.imgError.image = self.defaultImageForEmptyDataSet
+//            }
+//            // vwError.backgroundColor = UIColor.yellow // Debug
+//            return vwError
+//        }
+//        
+//        // -- Default is loading --
+//        let loadingView = UIView(frame: CGRect(0, 0, Db.screenWidth(), 50))
+//        let activityView = UIActivityIndicatorView.init(activityIndicatorStyle: .gray)
+//        activityView.frame = CGRect(0, 0, 50, 50)
+//        activityView.center = view.center
+//        activityView.centerY = activityView.height/2
+//        activityView.startAnimating()
+//        activityView.hidesWhenStopped = true
+//        loadingView.addSubview(activityView)
+//        return loadingView
+//    }
+//    
+//}
 
 

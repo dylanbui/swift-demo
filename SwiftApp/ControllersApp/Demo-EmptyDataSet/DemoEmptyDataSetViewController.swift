@@ -25,6 +25,14 @@ class DemoEmptyDataSetViewController: UIViewController
     {
         super.viewDidLoad()
         title = "Loading"
+        //self.edgesForExtendedLayout = []
+        
+        print("edgesForExtendedLayout = \(String(describing: self.edgesForExtendedLayout))")
+//        if self.edgesForExtendedLayout.rawValue == 0 {
+        if self.edgesForExtendedLayout == [] {
+            print("NO navigation bar")
+        }
+        
         
         self.tableView.dataSource = self
         self.tableView.delegate = self
@@ -37,8 +45,7 @@ class DemoEmptyDataSetViewController: UIViewController
 //                                   description: "Loadinggggg …",
 //                                   verticalOffset: 5)
         let status = DbEmptyStatus.simpleLoading
-        
-        show(emptyStatus: status)
+        self.showEmptyView(WithStatus: status)
         
         self.fetchData()
     }
@@ -52,7 +59,7 @@ class DemoEmptyDataSetViewController: UIViewController
             
             if done {
                 print("Hide status !!!")
-                self.hideEmptyStatus()
+                self.hideEmptyViewStatus()
 
                 // -- Done load --
                 self.dataCount = 7
@@ -73,7 +80,7 @@ class DemoEmptyDataSetViewController: UIViewController
             // self.hideStatus()
             // -- Show loading --
             let status = DbEmptyStatus.simpleLoading
-            self.show(emptyStatus: status)
+            self.showEmptyView(WithStatus: status)
 
             self.fetchData(true)
         }
@@ -88,7 +95,7 @@ class DemoEmptyDataSetViewController: UIViewController
 //            self.fetchData(true)
 //        }
         
-        self.show(emptyStatus: status)
+        self.showEmptyView(WithStatus: status)
         
         // -- Auto hide --
 //        let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
@@ -101,7 +108,7 @@ class DemoEmptyDataSetViewController: UIViewController
 
 extension DemoEmptyDataSetViewController: DbEmptyStatusController
 {
-    public var statusView: DbEmptyStatusView? {
+    var emptyStatusView: DbEmptyStatusView? {
         return CustomViewEmpty()
         // -- Su dung duoc cho cac phien ban > 10 --
 //        let view = DbEmptyDefaultStatusView()
