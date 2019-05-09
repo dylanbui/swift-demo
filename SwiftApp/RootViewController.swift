@@ -45,7 +45,7 @@ class RootViewController: UIViewController
 //        let vcl = DemoDbSheetPickerViewController() // => Done
 //        let vcl = DemoDbLocationManagerViewController() // Done
 //        let vcl = MasterCandySearchViewController() // Done
-        let vcl = DemoEmptyDataSetViewController() // => Done
+//        let vcl = DemoEmptyDataSetViewController() // => Done
 //        let vcl = DemoDbPullToRefreshViewController() // => Done
 //        let vcl = DemoCustomPullForProjectViewController() // => Done
 //        let vcl = DemoLazyUploadViewController() // => Done
@@ -56,7 +56,7 @@ class RootViewController: UIViewController
         // let vcl = DemoDbSelectBoxViewController() // => Done
 //        let vcl = RkMapViewController() // => Done
 
-//        let vcl = DemoSemiModalViewController() // => Done
+        let vcl = DemoSemiModalViewController() // => Done
         
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a

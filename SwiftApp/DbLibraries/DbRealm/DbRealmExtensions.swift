@@ -117,6 +117,17 @@ public extension EasyRealmStatic where T:Object {
         }
     }
     
+    public func db_delete(ByPrimaryKey key: Any)
+    {
+        var condition : String = ""
+        let primaryKey = T.self.primaryKey() ?? "_none_"
+        if key is String {
+            condition = "\(primaryKey) == '\(key)'"
+        }else{
+            condition = "\(primaryKey) == \(key)"
+        }
+        db_delete(WithCondition: condition)
+    }
     
 }
 

@@ -9,8 +9,13 @@
 import UIKit
 
 
-class BaseViewController: DbViewController
+class BaseViewController: DbViewController, DbEmptyStatusController
 {
+    // -- Extenstion protocol DbEmptyStatusController --
+    // Can to override in child class
+    var emptyStatusView: DbEmptyStatusView? {
+        return CustomViewEmpty()
+    }
     
     override init() {
         super.init()

@@ -8,8 +8,25 @@
 
 import UIKit
 
-class DemoEmptyDataSetViewController: UIViewController
+class DemoEmptyDataSetViewController: BaseViewController
 {
+    override var emptyStatusView: DbEmptyStatusView? {
+        // -- Su dung duoc cho cac phien ban > 10 --
+        let view = DbEmptyDefaultStatusView()
+        // -- Add Constraint for custom Button Size --
+//        NSLayoutConstraint.activate([
+//            view.actionButton.widthAnchor.constraint(equalToConstant: 170),
+//            view.actionButton.heightAnchor.constraint(equalToConstant: 38)
+//            ])
+//        view.actionButton.backgroundColor = UIColor.orange
+        
+        // Cach 2
+        view.actionButton.backgroundColor = UIColor.blue
+        view.actionButton.widthAnchor.constraint(equalToConstant: 170).isActive = true
+        view.actionButton.heightAnchor.constraint(equalToConstant: 38).isActive = true
+        return view
+    }
+    
     @IBOutlet weak var tableView: UITableView!
     
     fileprivate struct CellIdentifier {
@@ -106,27 +123,27 @@ class DemoEmptyDataSetViewController: UIViewController
     
 }
 
-extension DemoEmptyDataSetViewController: DbEmptyStatusController
-{
-    var emptyStatusView: DbEmptyStatusView? {
-        return CustomViewEmpty()
-        // -- Su dung duoc cho cac phien ban > 10 --
-//        let view = DbEmptyDefaultStatusView()
-//        // -- Add Constraint for custom Button Size --
-//        NSLayoutConstraint.activate([
-//            view.actionButton.widthAnchor.constraint(equalToConstant: 170),
-//            view.actionButton.heightAnchor.constraint(equalToConstant: 38)
-//            ])
-//        view.actionButton.backgroundColor = UIColor.orange
-//        return view
-        
-//        let view = DbEmptyCustomStatusView()
-//        view.actionButton.backgroundColor = UIColor.orange
-//        view.actionButton.widthAnchor.constraint(equalToConstant: 170).isActive = true
-//        view.actionButton.heightAnchor.constraint(equalToConstant: 38).isActive = true
-//        return view //DbEmptyCustomStatusView()
-    }
-}
+//extension DemoEmptyDataSetViewController: DbEmptyStatusController
+//{
+//    var emptyStatusView: DbEmptyStatusView? {
+//        return CustomViewEmpty()
+//        // -- Su dung duoc cho cac phien ban > 10 --
+////        let view = DbEmptyDefaultStatusView()
+////        // -- Add Constraint for custom Button Size --
+////        NSLayoutConstraint.activate([
+////            view.actionButton.widthAnchor.constraint(equalToConstant: 170),
+////            view.actionButton.heightAnchor.constraint(equalToConstant: 38)
+////            ])
+////        view.actionButton.backgroundColor = UIColor.orange
+////        return view
+//
+////        let view = DbEmptyCustomStatusView()
+////        view.actionButton.backgroundColor = UIColor.orange
+////        view.actionButton.widthAnchor.constraint(equalToConstant: 170).isActive = true
+////        view.actionButton.heightAnchor.constraint(equalToConstant: 38).isActive = true
+////        return view //DbEmptyCustomStatusView()
+//    }
+//}
 
 extension DemoEmptyDataSetViewController: UITableViewDelegate, UITableViewDataSource
 {

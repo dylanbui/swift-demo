@@ -5,6 +5,7 @@
 //  Created by Dylan Bui on 2/13/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //  Base on v1.2.10 : https://github.com/mariohahn/StatusProvider
+//  Da co thay doi nhieu chi dua tren y tuong
 //  Rename function in protocol DbEmptyStatusController
 
 import Foundation
