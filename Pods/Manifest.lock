@@ -78,16 +78,12 @@ PODS:
     - FLAnimatedImage (~> 1.0)
     - SDWebImage/Core
   - SnapKit (4.0.1)
-  - SuggestionRow (2.2.0):
-    - Eureka (~> 4.0)
   - SwiftLocation (3.2.3):
     - SwiftyJSON (~> 4.0.0-alpha.1)
   - SwiftMessages (6.0.0):
     - SwiftMessages/App (= 6.0.0)
   - SwiftMessages/App (6.0.0)
   - SwiftyJSON (4.0.0)
-  - TableRow (0.3.1):
-    - Eureka (~> 4.3)
 
 DEPENDENCIES:
   - ActionSheetPicker-3.0
@@ -111,11 +107,9 @@ DEPENDENCIES:
   - RealmSwift (= 3.11.0)
   - RevealingSplashView (= 0.6.0)
   - SnapKit (= 4.0.1)
-  - SuggestionRow (= 2.2.0)
   - SwiftLocation (= 3.2.3)
   - SwiftMessages (= 6.0.0)
   - SwiftyJSON (= 4.0.0)
-  - TableRow (= 0.3.1)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -141,11 +135,9 @@ SPEC REPOS:
     - RevealingSplashView
     - SDWebImage
     - SnapKit
-    - SuggestionRow
     - SwiftLocation
     - SwiftMessages
     - SwiftyJSON
-    - TableRow
 
 EXTERNAL SOURCES:
   FloatLabelRow:
@@ -181,12 +173,10 @@ SPEC CHECKSUMS:
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
-  SuggestionRow: 694a6ed2fae513b4234bda76126eaffb287a732e
   SwiftLocation: a3c3bc2023118171ef3572188a31def94aa0892c
   SwiftMessages: da7c981256a65b3e58022d9027a36584cf4eccf5
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
-  TableRow: b5f19082db9e884e0ebab868035d57e7b19193c8
 
-PODFILE CHECKSUM: b24944eeccc8caa6abb23c6064b07e07a24fa75a
+PODFILE CHECKSUM: cb517b31ef06cf133187af90961a376620ef6dae
 
 COCOAPODS: 1.6.1

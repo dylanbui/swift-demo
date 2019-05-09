@@ -11,27 +11,27 @@ import UIKit
 //import DZNEmptyDataSet
 //import SVPullToRefresh
 
-protocol ManageNavigationBar where Self : UIViewController {
-    // protocol stuff here
-    var isNavigationBarHidden: Bool { get set }
-    func navigationBarHiddenForThisController() -> Void
-}
-
-// -- Khong su dung, dang nghien cuu --
-extension ManageNavigationBar where Self : UIViewController {
-//    var isNavigationBarHidden: Bool = false
-//    override func viewWillAppear(_ animated: Bool)
-//    {
-//        super.viewWillAppear(animated)
-//        self.navigationController?.setNavigationBarHidden(self.isNavigationBarHidden, animated: true)
-//        //[self.navigationController setNavigationBarHidden:self.isNavigationBarHidden animated:YES];
+//protocol ManageNavigationBar where Self : UIViewController {
+//    // protocol stuff here
+//    var isNavigationBarHidden: Bool { get set }
+//    func navigationBarHiddenForThisController() -> Void
+//}
+//
+//// -- Khong su dung, dang nghien cuu --
+//extension ManageNavigationBar where Self : UIViewController {
+////    var isNavigationBarHidden: Bool = false
+////    override func viewWillAppear(_ animated: Bool)
+////    {
+////        super.viewWillAppear(animated)
+////        self.navigationController?.setNavigationBarHidden(self.isNavigationBarHidden, animated: true)
+////        //[self.navigationController setNavigationBarHidden:self.isNavigationBarHidden animated:YES];
+////    }
+//    
+//    mutating func navigationBarHiddenForThisController() -> Void {
+//        self.isNavigationBarHidden = true;
+//        self.navigationController?.setNavigationBarHidden(true, animated: false)
 //    }
-    
-    mutating func navigationBarHiddenForThisController() -> Void {
-        self.isNavigationBarHidden = true;
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
-    }
-}
+//}
 
 class DbViewController: UIViewController
 {

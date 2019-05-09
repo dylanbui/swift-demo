@@ -70,8 +70,9 @@ target 'SwiftApp' do
     # pod 'ViewRow', :git => 'https://github.com/EurekaCommunity/ViewRow' # Version : 0.3.0
     # Da tich hop ViewRow vao trong source du an PropzySam
     
-    pod 'TableRow', '0.3.1' # Khong phu hop
-    pod 'SuggestionRow', '2.2.0' # Khong phu hop
+    # Deu khong xu dung duoc khi dung xcode 10.2.1 Swift 5
+    # pod 'TableRow', '0.3.1' # Khong phu hop
+    # pod 'SuggestionRow', '2.2.0' # Khong phu hop
     
 
   # Pods for SwiftApp
