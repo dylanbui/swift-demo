@@ -82,7 +82,11 @@ class DemoNavBarViewController: DbViewController
         // self.nav?.updateNav_ShowAll("Day la top", bottom: "Dat la bottom")
 //        self.nav?.updateNav_NoBackAndTop("Trang chu")
 //        self.nav?.updateNav_NoTop("Khong co top, chi co back")
-        self.nav?.updateNav_NoBack("Day la top", bottom: "Dat la bottom")
+        // self.nav?.updateNav_NoBack("Day la top", bottom: "Dat la bottom")
+        
+        let statusModel = NavBarViewModel(isHiddenBackButton: true, topTitle: "Day la TOP title",
+                                     bottomTitle: "Day la BOTTOM title")
+        self.nav?.navBarModel = statusModel
 
         // Do any additional setup after loading the view.
     }
@@ -92,6 +96,13 @@ class DemoNavBarViewController: DbViewController
 //        let height = CGFloat(70)
 //        self.navigationController?.navigationBar.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: height)
 //    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        self.nav?.lblTop.text = "Thay doi tai viewWillAppear"
+    }
 
 }
 

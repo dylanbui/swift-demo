@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+
+
 class MyCustomNavigationBarView: DbNavigationBarView
 {
     let defaultNavHeight: CGFloat = 70
@@ -17,6 +19,28 @@ class MyCustomNavigationBarView: DbNavigationBarView
     @IBOutlet weak var lblCenter: UILabel!
     @IBOutlet weak var lblBottom: UILabel!
     @IBOutlet weak var btnBack: UIButton!
+    
+    public var navBarModel: CustomNavBarViewModel? {
+        didSet {
+            guard let navBarModel = navBarModel else { return }
+            
+            lblTop.text = navBarModel.topTitle
+            lblCenter.text = navBarModel.centerTitle
+            lblBottom.text = navBarModel.bottomTitle
+            
+            lblTop.isHidden = lblTop.text == nil
+            lblCenter.isHidden = lblCenter.text == nil
+            lblBottom.isHidden = lblBottom.text == nil
+            
+            if navBarModel.isHiddenBackButton == true {
+                // -- Hide button --
+                self.hideBackButton()
+                // Update position uilabel
+                self.hideAllItemNavigationBar()
+            }
+        }
+        
+    }
     
     override func initView()
     {
@@ -104,6 +128,11 @@ class MyCustomNavigationBarView: DbNavigationBarView
     
     @IBAction func btnBack_Click(_ sender: AnyObject)
     {
+        if let backAction = navBarModel?.backButtonAction {
+            backAction()
+            return
+        }
+        // -- Default action --
         self.vclContainer.navigationController?.popViewController(animated: true)
     }
     
@@ -118,4 +147,57 @@ class MyCustomNavigationBarView: DbNavigationBarView
         }
     }
     
+}
+
+public protocol CustomNavBarViewModel {
+    var isHiddenBackButton: Bool { get }
+    var backButtonAction: (() -> Void)?   { get }
+    
+    var topTitle: String?       { get }
+    var centerTitle: String?    { get }
+    var bottomTitle: String?    { get }
+}
+
+extension CustomNavBarViewModel {
+    
+    public var isHiddenBackButton: Bool {
+        return false
+    }
+    
+    public var backButtonAction: (() -> Void)? {
+        return nil
+    }
+    
+    public var topTitle: String? {
+        return nil
+    }
+    
+    public var centerTitle: String? {
+        return nil
+    }
+    
+    public var bottomTitle: String? {
+        return nil
+    }
+}
+
+public struct NavBarViewModel: CustomNavBarViewModel {
+    public var isHiddenBackButton: Bool
+    public var backButtonAction: (() -> Void)?
+    
+    public var topTitle: String?
+    public var centerTitle: String?
+    public var bottomTitle: String?
+    
+    public init(isHiddenBackButton: Bool = false,
+                backButtonAction: (() -> Void)? = nil,
+                topTitle: String? = nil,
+                centerTitle: String? = nil,
+                bottomTitle: String? = nil) {
+        self.isHiddenBackButton = isHiddenBackButton
+        self.backButtonAction = backButtonAction
+        self.topTitle = topTitle
+        self.centerTitle = centerTitle
+        self.bottomTitle = bottomTitle
+    }
 }
