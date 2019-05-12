@@ -70,12 +70,14 @@ class DemoNavBarViewController: DbViewController
     {
         super.viewDidLoad()
         self.edgesForExtendedLayout = []
+        
+        //self.navigationController?.navigationBar.navHeight = 70
 
         //Important!
-        if #available(iOS 11.0, *) {
-            //Default NavigationBar Height is 44. Custom NavigationBar Height is 66. So We should set additionalSafeAreaInsets to 66-44 = 22
-            self.additionalSafeAreaInsets.top = 26
-        }
+//        if #available(iOS 11.0, *) {
+//            //Default NavigationBar Height is 44. Custom NavigationBar Height is 66. So We should set additionalSafeAreaInsets to 66-44 = 22
+//            self.additionalSafeAreaInsets.top = 26
+//        }
         
         // self.nav?.updateNav_ShowAll("Day la top", bottom: "Dat la bottom")
 //        self.nav?.updateNav_NoBackAndTop("Trang chu")

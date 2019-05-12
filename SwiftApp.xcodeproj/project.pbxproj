@@ -154,8 +154,9 @@
 		BB922A892288174000E09A6F /* NavBarPushOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB922A872288173F00E09A6F /* NavBarPushOneViewController.xib */; };
 		BB922A8C2288186D00E09A6F /* NavBarPushTwoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB922A8A2288186D00E09A6F /* NavBarPushTwoViewController.swift */; };
 		BB922A8D2288186D00E09A6F /* NavBarPushTwoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB922A8B2288186D00E09A6F /* NavBarPushTwoViewController.xib */; };
-		BB922A8F228873D700E09A6F /* MyCustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB922A8E228873D700E09A6F /* MyCustomNavigationBarView.swift */; };
 		BB922A912288788900E09A6F /* MyCustomNavigationBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB922A902288788900E09A6F /* MyCustomNavigationBarView.xib */; };
+		BB922A93228891A700E09A6F /* DbNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB922A92228891A700E09A6F /* DbNavigationBarView.swift */; };
+		BB922A95228891C300E09A6F /* MyCustomNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB922A94228891C200E09A6F /* MyCustomNavigationBarView.swift */; };
 		BB92D85B224DC4E300B8F244 /* DemoNetworkRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92D859224DC4E300B8F244 /* DemoNetworkRealmViewController.swift */; };
 		BB92D85C224DC4E300B8F244 /* DemoNetworkRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB92D85A224DC4E300B8F244 /* DemoNetworkRealmViewController.xib */; };
 		BB92D85E224DC6DF00B8F244 /* PzAdminApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB92D85D224DC6DF00B8F244 /* PzAdminApi.swift */; };
@@ -278,7 +279,6 @@
 		BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */; };
 		BBCBDEE12286CD390026B9B1 /* DemoNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCBDEDF2286CD390026B9B1 /* DemoNavBarViewController.swift */; };
 		BBCBDEE22286CD390026B9B1 /* DemoNavBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBCBDEE02286CD390026B9B1 /* DemoNavBarViewController.xib */; };
-		BBCBDEE52286CEC50026B9B1 /* DbNavigationBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCBDEE42286CEC50026B9B1 /* DbNavigationBarView.swift */; };
 		BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */; };
 		BBD3CEF01F70CFE50028425E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */; };
 		BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CEF11F70CFE50028425E /* ViewController.swift */; };
@@ -500,8 +500,9 @@
 		BB922A872288173F00E09A6F /* NavBarPushOneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBarPushOneViewController.xib; sourceTree = "<group>"; };
 		BB922A8A2288186D00E09A6F /* NavBarPushTwoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarPushTwoViewController.swift; sourceTree = "<group>"; };
 		BB922A8B2288186D00E09A6F /* NavBarPushTwoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBarPushTwoViewController.xib; sourceTree = "<group>"; };
-		BB922A8E228873D700E09A6F /* MyCustomNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyCustomNavigationBarView.swift; sourceTree = "<group>"; };
 		BB922A902288788900E09A6F /* MyCustomNavigationBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MyCustomNavigationBarView.xib; sourceTree = "<group>"; };
+		BB922A92228891A700E09A6F /* DbNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbNavigationBarView.swift; sourceTree = "<group>"; };
+		BB922A94228891C200E09A6F /* MyCustomNavigationBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyCustomNavigationBarView.swift; sourceTree = "<group>"; };
 		BB92D859224DC4E300B8F244 /* DemoNetworkRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNetworkRealmViewController.swift; sourceTree = "<group>"; };
 		BB92D85A224DC4E300B8F244 /* DemoNetworkRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoNetworkRealmViewController.xib; sourceTree = "<group>"; };
 		BB92D85D224DC6DF00B8F244 /* PzAdminApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzAdminApi.swift; sourceTree = "<group>"; };
@@ -624,7 +625,6 @@
 		BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationDemo.swift; sourceTree = "<group>"; };
 		BBCBDEDF2286CD390026B9B1 /* DemoNavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNavBarViewController.swift; sourceTree = "<group>"; };
 		BBCBDEE02286CD390026B9B1 /* DemoNavBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoNavBarViewController.xib; sourceTree = "<group>"; };
-		BBCBDEE42286CEC50026B9B1 /* DbNavigationBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNavigationBarView.swift; sourceTree = "<group>"; };
 		BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAlertController.swift; sourceTree = "<group>"; };
 		BBD3CEEC1F70CFE50028425E /* SwiftApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BBD3CEEF1F70CFE50028425E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -1364,8 +1364,8 @@
 			children = (
 				BBCBDEDF2286CD390026B9B1 /* DemoNavBarViewController.swift */,
 				BBCBDEE02286CD390026B9B1 /* DemoNavBarViewController.xib */,
-				BBCBDEE42286CEC50026B9B1 /* DbNavigationBarView.swift */,
-				BB922A8E228873D700E09A6F /* MyCustomNavigationBarView.swift */,
+				BB922A92228891A700E09A6F /* DbNavigationBarView.swift */,
+				BB922A94228891C200E09A6F /* MyCustomNavigationBarView.swift */,
 				BB922A902288788900E09A6F /* MyCustomNavigationBarView.xib */,
 				BB922A842287440300E09A6F /* MyCustomNavigationBarView.txt */,
 				BB922A862288173F00E09A6F /* NavBarPushOneViewController.swift */,
@@ -2066,6 +2066,7 @@
 				BB9A193F22294CD100D7BE9A /* ImageDownloadManager.swift in Sources */,
 				BB2229C72229AA7100A82EA5 /* PhotoUploadOperation.swift in Sources */,
 				BBC38A59206DDE9500B11C7B /* ThemifyIcon.swift in Sources */,
+				BB922A93228891A700E09A6F /* DbNavigationBarView.swift in Sources */,
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */,
@@ -2094,7 +2095,6 @@
 				BB7518FA2232879400413607 /* DemoRealmViewController.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
 				BBA467172252216800E0749E /* UIView+Closures.swift in Sources */,
-				BBCBDEE52286CEC50026B9B1 /* DbNavigationBarView.swift in Sources */,
 				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
@@ -2211,7 +2211,7 @@
 				BB197D44200BBFAA005514C3 /* DbConstant.swift in Sources */,
 				BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */,
 				BB407ACE2181821A00C8E57F /* DbCommonExtensions.swift in Sources */,
-				BB922A8F228873D700E09A6F /* MyCustomNavigationBarView.swift in Sources */,
+				BB922A95228891C300E09A6F /* MyCustomNavigationBarView.swift in Sources */,
 				BB28109B2216D3F6003823FE /* DemoDbPullToRefreshViewController.swift in Sources */,
 				BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,

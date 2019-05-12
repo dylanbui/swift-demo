@@ -16,7 +16,7 @@
                 <outlet property="lblBottom" destination="qss-hb-Phn" id="4bP-Yd-PKx"/>
                 <outlet property="lblCenter" destination="98u-7j-ywT" id="h1c-xH-9uH"/>
                 <outlet property="lblTop" destination="xbR-TR-d0L" id="DGs-Ef-eZT"/>
-                <outlet property="vwBarContent" destination="nHx-m1-ZwU" id="eVq-7r-cAE"/>
+                <outlet property="vwBarContent" destination="nHx-m1-ZwU" id="YDT-wY-NOj"/>
             </connections>
         </placeholder>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
