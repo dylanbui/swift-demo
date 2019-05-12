@@ -9,11 +9,11 @@
 import UIKit
 
 // -- Cach nay dung, chi dung duoc cho duoi 11 --
-extension UINavigationBar {
-    open override func sizeThatFits(_ size: CGSize) -> CGSize {
-        return CGSize(width: UIScreen.main.bounds.width, height: 70)
-    }
-}
+//extension UINavigationBar {
+//    open override func sizeThatFits(_ size: CGSize) -> CGSize {
+//        return CGSize(width: UIScreen.main.bounds.width, height: 70)
+//    }
+//}
 
 // -- Duoi thang ios 11 thi dung cai nay --
 //private var AssociatedObjectHandle: UInt8 = 0

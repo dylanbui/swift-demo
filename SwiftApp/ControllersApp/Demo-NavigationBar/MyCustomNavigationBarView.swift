@@ -8,6 +8,30 @@
 
 import Foundation
 
+// -- Use for ios < 10 --
+private var AssociatedObjectHandle: UInt8 = 0
+extension UINavigationBar {
+
+    var navHeight: CGFloat {
+        get {
+            if let h = objc_getAssociatedObject(self, &AssociatedObjectHandle) as? CGFloat {
+                return h
+            }
+            return 0
+        }
+        set {
+            objc_setAssociatedObject(self, &AssociatedObjectHandle, newValue, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+
+    override open func sizeThatFits(_ size: CGSize) -> CGSize {
+        if self.navHeight > 0 {
+            return CGSize(width: UIScreen.main.bounds.width, height: self.navHeight)
+        }
+        return super.sizeThatFits(size)
+    }
+}
+
 @IBDesignable
 class MyCustomNavigationBarView: DbLoadableView
 {
@@ -57,6 +81,23 @@ class MyCustomNavigationBarView: DbLoadableView
     
     func initView()
     {
+        // -- Set default height for navigationBar --
+        self.vclContainer.navigationController?.navigationBar.navHeight = 70
+        
+        /*
+         Doi voi ios truoc 11, co the thay doi chieu cao cua UINavigationBar, sau ios 11 khong the thay doi
+         do do phai dieu chinh content hien thi ben duoi UINavigationBar
+         Chua test doi voi cac loai pull to refresh
+         */
+        /* De chinh content hien thi duoi UINavigationBar cao hon */
+        //Important!
+        if #available(iOS 11.0, *) {
+            // Default NavigationBar Height is 44. Custom NavigationBar Height is 66.
+            // So We should set additionalSafeAreaInsets to 70-44 = 26
+            self.vclContainer.additionalSafeAreaInsets.top = 26
+        }
+
+        
         let viewFrame = CGRect(0, 0, CGFloat(Db.screenWidth()), 70)
         self.frame = viewFrame
         
