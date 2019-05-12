@@ -115,6 +115,13 @@ class DbViewController: UIViewController
         self.navigationController?.setNavigationBarHidden(self.isNavigationBarHidden, animated: true)
     }
     
+
+    override func viewWillDisappear(_ animated: Bool)
+    {
+        super.viewWillDisappear(animated)
+        Notification.post(Notification.Name.MyViewControllerWillDisappear, object: self)
+    }
+    
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return .lightContent
     }

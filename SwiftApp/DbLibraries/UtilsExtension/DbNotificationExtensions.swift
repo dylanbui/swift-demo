@@ -15,8 +15,8 @@ extension Notification.Name {
     static let MyViewControllerDidLoad = Notification.Name(rawValue: "MyViewControllerDidLoad")
     static let MyViewControllerWillAppear = Notification.Name(rawValue: "MyViewControllerWillAppear")
     static let MyViewControllerDidAppear = Notification.Name(rawValue: "MyViewControllerDidAppear")
-    static let MyViewControllerWillDisAppear = Notification.Name(rawValue: "MyViewControllerWillDisAppear")
-    static let MyViewControllerDidDisAppear = Notification.Name(rawValue: "MyViewControllerDidDisAppear")
+    static let MyViewControllerWillDisappear = Notification.Name(rawValue: "MyViewControllerWillDisappear")
+    static let MyViewControllerDidDisappear = Notification.Name(rawValue: "MyViewControllerDidDisappear")
 }
 
 extension Notification {

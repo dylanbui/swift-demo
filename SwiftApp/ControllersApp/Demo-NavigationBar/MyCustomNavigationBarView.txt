@@ -1,0 +1,156 @@
+//
+//  MyCustomNavigationBarView.swift
+//  SwiftApp
+//
+//  Created by Dylan Bui on 5/12/19.
+//  Copyright © 2019 Propzy Viet Nam. All rights reserved.
+//
+
+import Foundation
+
+
+class MyCustomNavigationBarView: DbNavigationBarView
+{
+    public let lblTop: UILabel = {
+        $0.font = UIFont.systemFont(ofSize: 15)
+        $0.textColor = UIColor.white
+        $0.text = nil
+        $0.numberOfLines = 0
+        
+        return $0
+    }(UILabel())
+    
+    public let lblBottom: UILabel = {
+        $0.font = UIFont.systemFont(ofSize: 17)
+        $0.textColor = UIColor.white
+        $0.text = nil
+        $0.numberOfLines = 0
+        
+        return $0
+    }(UILabel())
+    
+    public let btnBack: UIButton = {
+        $0.setBackgroundImage(UIImage.init(named: "icoBack48"), for: .normal)
+        
+        return $0
+    }(UIButton(type: .custom))
+    
+    public let stvVertical: UIStackView = {
+        $0.axis = .vertical
+//        $0.spacing = 10
+//        $0.alignment = .center
+        
+        return $0
+    }(UIStackView())
+    
+    public let stvHorizontal: UIStackView = {
+        $0.translatesAutoresizingMaskIntoConstraints = false
+        $0.axis = .horizontal
+        // $0.spacing = 10
+        $0.alignment = .center
+        
+        return $0
+    }(UIStackView())
+    
+    override func initView()
+    {
+        super.initView()
+        
+        // -- Fix height size --
+        self.frame = CGRect(0, 0, CGFloat(Db.screenWidth()), 70.0)
+        self.backgroundColor = UIColor.gray
+        
+        self.addSubview(stvHorizontal)
+        
+        self.btnBack.addTarget(self, action: #selector(MyCustomNavigationBarView.actionButtonAction), for: .touchUpInside)
+        
+        stvHorizontal.addArrangedSubview(self.btnBack)
+        // -- Add Constraint for custom IndicatorView Size --
+        NSLayoutConstraint.activate([
+            self.btnBack.widthAnchor.constraint(equalToConstant: 40.0),
+            self.btnBack.heightAnchor.constraint(equalToConstant: 24.0)
+            ])
+        stvHorizontal.addArrangedSubview(stvVertical)
+        
+        stvVertical.addArrangedSubview(lblTop)
+        stvVertical.addArrangedSubview(lblBottom)
+        
+        NSLayoutConstraint.activate([
+            stvHorizontal.leadingAnchor.constraint(equalTo: leadingAnchor),
+            stvHorizontal.trailingAnchor.constraint(equalTo: trailingAnchor),
+            stvHorizontal.topAnchor.constraint(equalTo: topAnchor),
+            stvHorizontal.bottomAnchor.constraint(equalTo: bottomAnchor)
+            ])
+        
+        // -- Hide all control --
+        self.hideAllItemNavigationBar()
+    }
+    
+    @objc func actionButtonAction()
+    {
+        self.vclContainer.navigationController?.popViewController(animated: true)
+    }
+    
+    func updateNav_ShowAll(_ top: String, bottom: String)
+    {
+        self.lblTop.text = top
+        self.lblBottom.text = bottom
+        
+        self.lblTop.isHidden = false
+        self.lblBottom.isHidden = false
+        self.btnBack.isHidden = false
+    }
+    
+    func updateNav_NoBack(_ top: String, bottom: String)
+    {
+        self.lblTop.text = top
+        self.lblBottom.text = bottom
+        
+        self.animationTrans {
+            self.lblTop.isHidden = false
+            self.lblBottom.isHidden = false
+            self.btnBack.isHidden = true
+        }
+    }
+    
+    func updateNav_NoTop(_ bottom: String)
+    {
+        self.lblBottom.text = bottom
+        
+        self.animationTrans {
+            self.lblTop.isHidden = true
+            self.lblBottom.isHidden = false
+            self.btnBack.isHidden = false
+        }
+    }
+    
+    func updateNav_NoBackAndTop(_ bottom: String)
+    {
+        self.lblBottom.text = bottom
+        
+        self.animationTrans {
+            self.lblTop.isHidden = true
+            self.lblBottom.isHidden = false
+            self.btnBack.isHidden = true
+        }
+    }
+    
+    func animationTrans(_ start: @escaping () -> Void) {
+        
+        // -- Demo animation --
+        UIView.animate(
+            withDuration: 0.35,
+            delay: 0,
+            usingSpringWithDamping: 0.9,
+            initialSpringVelocity: 1,
+            options: [],
+            animations: {
+                start()
+                self.stvHorizontal.layoutIfNeeded()
+        },
+            completion: nil
+        )
+        
+    }
+    
+}
