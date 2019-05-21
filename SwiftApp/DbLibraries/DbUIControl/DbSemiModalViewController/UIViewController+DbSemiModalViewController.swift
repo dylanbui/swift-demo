@@ -237,6 +237,10 @@ extension UIViewController
                                                name: NSNotification.Name.UIDeviceOrientationDidChange,
                                                object: nil)
         
+        if view.height <= 0 {
+            fatalError("Error : Set height for UIView before display SemiView")
+        }
+        
         let semiViewHeight = view.height
         let contentYOffset: CGFloat = CGFloat(db_optionForKey(.contentYOffset) as! Double)
         let leftRightPadding: CGFloat = CGFloat(db_optionForKey(.leftRightPadding) as! Double)

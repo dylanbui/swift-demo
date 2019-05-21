@@ -158,14 +158,19 @@ class DbSelectBox: UIControl
         // -- Calculator Anchor view --
         var anchorFrame = self.frame
         anchorFrame.origin.y = self.frame.maxY
-        anchorFrame.size.height = 0
+        anchorFrame.size.height = 5
         
         let anchorView = UIView(frame: anchorFrame)
         anchorView.tag = 5002
-        anchorView.backgroundColor = UIColor.clear
+        anchorView.backgroundColor = UIColor.yellow
         self.superview?.addSubview(anchorView)
         
         self.dropDownView.anchorView = anchorView
+        
+        if (anchorView.frame.maxY + self.dropDownView.tableListHeight) > UIScreen.main.bounds.size.height {
+            // Vuot qua man hinh, se doi chieu hien thi
+            self.dropDownView.tableYOffset += self.frame.height
+        }
         
         isSelected = !isSelected
         isSelected ? self.dropDownView.showDropDown() : self.dropDownView.hideDropDown()

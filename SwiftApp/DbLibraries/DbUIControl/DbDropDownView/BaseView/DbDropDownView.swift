@@ -290,6 +290,26 @@ public class DbDropDownView: UITableView
             parent.superview?.insertSubview(self.dismissableView, belowSubview: self)
         }
         
+        // -- Default .TopToBottom --
+        var valY: CGFloat = 0.0
+        if self.displayDirection == .TopToBottom {
+            valY = parent.frame.maxY + self.tableYOffset
+            let realHeight = valY + self.tableListHeight
+            if realHeight > UIScreen.main.bounds.size.height {
+                // Vuot qua khung hinh, doi nguoc lai cach hien thi
+                self.displayDirection = .BottomToTop
+                valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
+            }
+        }
+        if self.displayDirection == .BottomToTop {
+            valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
+            if valY <= 0 {
+                // An phia tren khung man hinh, doi nguoc lai cach hien thi
+                self.displayDirection = .TopToBottom
+                valY = parent.frame.maxY + self.tableYOffset
+            }
+        }
+        
         switch animationType {
         case .Default:
             UIView.animate(withDuration: 0.9,
@@ -300,10 +320,10 @@ public class DbDropDownView: UITableView
                            animations: { () -> Void in
                             
                             // -- Default .TopToBottom --
-                            var valY = parent.frame.maxY + self.tableYOffset
-                            if self.displayDirection == .BottomToTop {
-                                valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
-                            }
+//                            var valY = parent.frame.maxY + self.tableYOffset
+//                            if self.displayDirection == .BottomToTop {
+//                                valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
+//                            }
                             
                             self.frame = CGRect(x: parent.frame.minX,
                                                 y: valY,
@@ -336,10 +356,10 @@ public class DbDropDownView: UITableView
                             self.transform = CGAffineTransform.identity.scaledBy(x: 1, y: 1)
                             
                             // -- Default .TopToBottom --
-                            var valY = parent.frame.maxY + self.tableYOffset
-                            if self.displayDirection == .BottomToTop {
-                                valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
-                            }
+//                            var valY = parent.frame.maxY + self.tableYOffset
+//                            if self.displayDirection == .BottomToTop {
+//                                valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
+//                            }
                             
                             self.frame = CGRect(x: parent.frame.minX,
                                                 y: valY, ///parent.frame.maxY+self.tableYOffset,
@@ -367,10 +387,10 @@ public class DbDropDownView: UITableView
                            options: .curveEaseInOut, animations: {
                             
                             // -- Default .TopToBottom --
-                            var valY = parent.frame.maxY + self.tableYOffset
-                            if self.displayDirection == .BottomToTop {
-                                valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
-                            }
+//                            var valY = parent.frame.maxY + self.tableYOffset
+//                            if self.displayDirection == .BottomToTop {
+//                                valY = parent.frame.minY - (self.tableListHeight+self.tableYOffset)
+//                            }
                             
                             self.frame = CGRect(x: parent.frame.minX,
                                                 y: valY,
