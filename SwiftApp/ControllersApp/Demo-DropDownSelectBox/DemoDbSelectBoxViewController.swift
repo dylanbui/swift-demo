@@ -40,7 +40,7 @@ class DemoDbSelectBoxViewController: BaseViewController
         self.selectBox.dropDownView.dataSourceStrings(["Mexico", "USA", "England", "France", "Germany", "Spain", "Italy", "Canada"])
         self.selectBox.placeholder = "Select your country..."
         // Max results list height - Default: No limit
-        self.selectBox.dropDownView.tableListHeight = 200
+        self.selectBox.dropDownView.tableListHeight = 250
         
         self.selectBox.didSelect { (options, index) in
             // print("selectBox: \(options.count) at index: \(index)")
@@ -141,7 +141,7 @@ class DemoDbSelectBoxViewController: BaseViewController
         // listViewPanel.showDropDown()
         // Define a header - Default: nothing
         // -- Show DbDropDownView same panel style --
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: self.anchorDbDropDownPanel.frame.width, height: 100))
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: self.anchorDbDropDownPanel.frame.width, height: 300))
         // header.backgroundColor = UIColor.cyan //UIColor.lightGray.withAlphaComponent(0.3)
         //        header.textAlignment = .center
         //        header.font = UIFont.systemFont(ofSize: 14)
@@ -168,7 +168,7 @@ class DemoDbSelectBoxViewController: BaseViewController
     
     @IBAction func btnShowUpPanel_Click(_ sender: AnyObject)
     {
-        let header = UIView(frame: CGRect(x: 0, y: 0, width: self.anchorDbDropDownPanel.frame.width, height: 100))
+        let header = UIView(frame: CGRect(x: 0, y: 0, width: self.anchorDbDropDownPanel.frame.width, height: 300))
         header.backgroundColor = UIColor.cyan //UIColor.green.withAlphaComponent(0.5)
         
         let btn = UIButton.init(frame: CGRect(x: 20, y: 20, width: 50, height: 30))
