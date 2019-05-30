@@ -57,7 +57,9 @@ class RootViewController: UIViewController
 
         // let vcl = DemoSemiModalViewController() // => Done
         
-        let vcl = DemoNavBarViewController() // => Done
+        //let vcl = DemoNavBarViewController() // => Done
+        
+        let vcl = DemoWebViewViewController()
         
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a

@@ -42,6 +42,14 @@ public class DbHtmlView: UIView {
     
     public var html: String? {
         didSet {
+            // -- Allow scroll --
+            webView.scrollView.isScrollEnabled = true
+            webView.loadHTMLString(html ?? "", baseURL: baseUrl)
+        }
+    }
+    
+    public var htmlContent: String? {
+        didSet {
             // -- Dont allow scroll --
             webView.scrollView.isScrollEnabled = false
             webView.loadHTMLString(html ?? "", baseURL: baseUrl)

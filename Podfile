@@ -74,6 +74,9 @@ target 'SwiftApp' do
     # pod 'TableRow', '0.3.1' # Khong phu hop
     # pod 'SuggestionRow', '2.2.0' # Khong phu hop
     
+    # Dung thang nay de hien thi tips cho guide user, va hien thi Tips aciton
+    pod 'EasyTipView', '2.0.4'
+    
 
   # Pods for SwiftApp
 

@@ -330,6 +330,10 @@
 		BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2368D2202FA620067952B /* DbTopAlertController.swift */; };
 		BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */; };
 		BBF4EF86226CE15600B5722E /* DbHtmlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4EF85226CE15600B5722E /* DbHtmlViewController.swift */; };
+		BBF4EFC8228BB68600B3944D /* DemoWebViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF4EFC6228BB68600B3944D /* DemoWebViewViewController.swift */; };
+		BBF4EFC9228BB68600B3944D /* DemoWebViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBF4EFC7228BB68600B3944D /* DemoWebViewViewController.xib */; };
+		BBF4EFD5228C20E300B3944D /* ic-dot-utility.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF4EFD4228C20E300B3944D /* ic-dot-utility.png */; };
+		BBF4EFD7228C225E00B3944D /* ic-check-utility.png in Resources */ = {isa = PBXBuildFile; fileRef = BBF4EFD6228C225E00B3944D /* ic-check-utility.png */; };
 		BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276D21058220007CFFB4 /* DbRealmObject.swift */; };
 		BBF527702105949B007CFFB4 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF5276F2105949B007CFFB4 /* Student.swift */; };
 		BBF9F347225F33F5001EE7BB /* MapKitDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF9F346225F33F5001EE7BB /* MapKitDelegate.swift */; };
@@ -682,6 +686,10 @@
 		BBF2368D2202FA620067952B /* DbTopAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTopAlertController.swift; sourceTree = "<group>"; };
 		BBF2B73C21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetMonthYearPicker.swift; sourceTree = "<group>"; };
 		BBF4EF85226CE15600B5722E /* DbHtmlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbHtmlViewController.swift; sourceTree = "<group>"; };
+		BBF4EFC6228BB68600B3944D /* DemoWebViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoWebViewViewController.swift; sourceTree = "<group>"; };
+		BBF4EFC7228BB68600B3944D /* DemoWebViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoWebViewViewController.xib; sourceTree = "<group>"; };
+		BBF4EFD4228C20E300B3944D /* ic-dot-utility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-dot-utility.png"; sourceTree = "<group>"; };
+		BBF4EFD6228C225E00B3944D /* ic-check-utility.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic-check-utility.png"; sourceTree = "<group>"; };
 		BBF5276D21058220007CFFB4 /* DbRealmObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbRealmObject.swift; sourceTree = "<group>"; };
 		BBF5276F2105949B007CFFB4 /* Student.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Student.swift; sourceTree = "<group>"; };
 		BBF9F346225F33F5001EE7BB /* MapKitDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitDelegate.swift; sourceTree = "<group>"; };
@@ -747,6 +755,8 @@
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BBF4EFC6228BB68600B3944D /* DemoWebViewViewController.swift */,
+				BBF4EFC7228BB68600B3944D /* DemoWebViewViewController.xib */,
 				BBCBDEE32286CD400026B9B1 /* Demo-NavigationBar */,
 				BBF1E89C2271DA31000D00BE /* Demo-SemiViewController */,
 				BB5E1427210B200A0059A8C4 /* AppEvn.swift */,
@@ -1061,6 +1071,8 @@
 		BB7F3029203E857900185366 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BBF4EFD6228C225E00B3944D /* ic-check-utility.png */,
+				BBF4EFD4228C20E300B3944D /* ic-dot-utility.png */,
 				BB7F302A203E857900185366 /* demo_1.jpg */,
 				BB7F302B203E857900185366 /* demo_2.jpg */,
 				BB7F302C203E857900185366 /* demo_3.jpg */,
@@ -1828,6 +1840,7 @@
 				BBB569EF1F7BC8880014A7A9 /* TpPostsViewController.xib in Resources */,
 				BB922A892288174000E09A6F /* NavBarPushOneViewController.xib in Resources */,
 				BBCBDEE22286CD390026B9B1 /* DemoNavBarViewController.xib in Resources */,
+				BBF4EFC9228BB68600B3944D /* DemoWebViewViewController.xib in Resources */,
 				BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */,
 				BBC38A63206DDEE500B11C7B /* FontAwesome.ttf in Resources */,
 				BBC1569A21DE0AA500484B26 /* TaoLaunch.storyboard in Resources */,
@@ -1860,9 +1873,11 @@
 				BB7F303B203E857900185366 /* demo_4.jpg in Resources */,
 				BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */,
 				BBB569E61F7B606C0014A7A9 /* TpUsersViewController.xib in Resources */,
+				BBF4EFD7228C225E00B3944D /* ic-check-utility.png in Resources */,
 				BB8BECC0222AEEEC00EC7620 /* ImageRowCollectionCell.xib in Resources */,
 				BB7C50E32251BE5A0009E6F8 /* CustomDropDownCell.xib in Resources */,
 				BB7F303C203E857900185366 /* demo_5.png in Resources */,
+				BBF4EFD5228C20E300B3944D /* ic-dot-utility.png in Resources */,
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
 				BBF1E89A2271A3E8000D00BE /* CustomViewEmpty.xib in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
@@ -1926,6 +1941,7 @@
 				"${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyPeasy/EasyPeasy.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyRealm/EasyRealm.framework",
+				"${BUILT_PRODUCTS_DIR}/EasyTipView/EasyTipView.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
 				"${BUILT_PRODUCTS_DIR}/FLAnimatedImage/FLAnimatedImage.framework",
 				"${BUILT_PRODUCTS_DIR}/FSCalendar/FSCalendar.framework",
@@ -1957,6 +1973,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKPhotoGallery.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyPeasy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyRealm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyTipView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FLAnimatedImage.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FSCalendar.framework",
@@ -2099,6 +2116,7 @@
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
 				BBA7C7641F725D3F00328377 /* Utils.swift in Sources */,
 				BBC509402267125F009068A6 /* DbSheetMonthYearLimitPicker.swift in Sources */,
+				BBF4EFC8228BB68600B3944D /* DemoWebViewViewController.swift in Sources */,
 				BB48E20421F190CC002B2DEC /* DbSheetCollectionView.swift in Sources */,
 				BBB569E51F7B606C0014A7A9 /* TpUsersViewController.swift in Sources */,
 				BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */,
