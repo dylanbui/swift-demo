@@ -290,6 +290,7 @@
 		BBD3CF171F70FBDC0028425E /* ToDoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF161F70FBDC0028425E /* ToDoItem.swift */; };
 		BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD3CF181F7102D80028425E /* ToDoCell.swift */; };
 		BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBD3CF191F7102D80028425E /* ToDoCell.xib */; };
+		BBD6A1A822A0483B00EB7208 /* DbTipMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD6A1A722A0483B00EB7208 /* DbTipMenuView.swift */; };
 		BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */; };
 		BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */; };
 		BBDD202721F0940400788D3E /* DbAbstractSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBDD202621F0940400788D3E /* DbAbstractSheet.swift */; };
@@ -646,6 +647,7 @@
 		BBD3CF161F70FBDC0028425E /* ToDoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoItem.swift; sourceTree = "<group>"; };
 		BBD3CF181F7102D80028425E /* ToDoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToDoCell.swift; sourceTree = "<group>"; };
 		BBD3CF191F7102D80028425E /* ToDoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToDoCell.xib; sourceTree = "<group>"; };
+		BBD6A1A722A0483B00EB7208 /* DbTipMenuView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbTipMenuView.swift; sourceTree = "<group>"; };
 		BBD8343920D7CCC9008259D8 /* DbUserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUserDefault.swift; sourceTree = "<group>"; };
 		BBD8343B20D7D36E008259D8 /* DbEventNotification.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbEventNotification.swift; sourceTree = "<group>"; };
 		BBDD202621F0940400788D3E /* DbAbstractSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAbstractSheet.swift; sourceTree = "<group>"; };
@@ -779,6 +781,7 @@
 				BB9A194022294CED00D7BE9A /* Demo-SmartLazyLoading */,
 				BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */,
 				BBA1C8EA225320F7008FF2FF /* App-RunKeeper */,
+				BBD6A1A722A0483B00EB7208 /* DbTipMenuView.swift */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -2164,6 +2167,7 @@
 				BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
+				BBD6A1A822A0483B00EB7208 /* DbTipMenuView.swift in Sources */,
 				BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
 				BB4E2369210EBD1F00524B0D /* UserSession.swift in Sources */,

@@ -8,6 +8,89 @@
 
 import UIKit
 
+
+public protocol DbHelperCompatible {
+    associatedtype someType
+    var db: someType { get }
+}
+
+public extension DbHelperCompatible {
+    var db: DbHelper<Self> {
+        get { return DbHelper(self) }
+    }
+}
+
+public struct DbHelper<Base> {
+    let base: Base
+    init(_ base: Base) {
+        self.base = base
+    }
+}
+
+// All conformance here
+extension UIView: DbHelperCompatible {}
+
+
+
+extension DbHelper where Base: UIView
+{
+    /// SwifterSwift: x origin of view.
+    public var x: CGFloat {
+        get {
+            return base.frame.origin.x
+        }
+        set {
+            base.frame.origin.x = newValue
+        }
+    }
+    
+    /// SwifterSwift: y origin of view.
+    public var y: CGFloat {
+        get {
+            return base.frame.origin.y
+        }
+        set {
+            base.frame.origin.y = newValue
+        }
+    }
+    
+    /// SwifterSwift: Width of view.
+    public var width: CGFloat {
+        get {
+            return base.frame.size.width
+        }
+        set {
+            base.frame.size.width = newValue
+        }
+    }
+    
+    // SwifterSwift: Height of view.
+    public var height: CGFloat {
+        get {
+            return base.frame.size.height
+        }
+        set {
+            base.frame.size.height = newValue
+        }
+    }
+    
+    
+    func toHienThiTest() -> String
+    {
+        // some code to create an image from color
+        return "MyHelper where Base: UIView"
+    }
+}
+
+extension UIView
+{
+    func toHienThiTest() -> String
+    {
+        // some code to create an image from color
+        return "MyHelper where Base: UIView"
+    }
+}
+
 class DemoDbSelectBoxViewController: BaseViewController
 {
     @IBOutlet weak var btnShow: UIButton!
@@ -26,6 +109,14 @@ class DemoDbSelectBoxViewController: BaseViewController
         super.viewDidLoad()
         self.navigationItem.title = "Demo View Controller"
         // Do any additional setup after loading the view, typically from a nib.
+        
+        let view = UIView()
+        view.frame = .zero
+        print("1 = \(view.db.toHienThiTest())")
+        print("1 = \(view.toHienThiTest())")
+        
+        let a = view.db.x
+        let b = view.x
         
         self.selectViewBottomNavigationBar()
         
