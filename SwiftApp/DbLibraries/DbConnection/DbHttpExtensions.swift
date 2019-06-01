@@ -90,6 +90,9 @@ extension ConnectionOf {
         params: [String: Any] = [:], // Method Get params
         data: [String: Any] = [:], // Post params
         json: Any? = nil, // Post with json
+        headers: [String: String] = [:],
+        auth: (String, String)? = nil,
+        cookies: [String: String] = [:],
         asyncProgressHandler: (DbTaskProgressHandler)? = nil,
         asyncCompletionHandler: ((T) -> Void)? = nil
         ) -> T {
@@ -100,10 +103,10 @@ extension ConnectionOf {
             params: params,
             data: data,
             json: json,
-            headers: [:],
+            headers: headers,
             files: [:],
-            auth: nil,
-            cookies: [:],
+            auth: auth,
+            cookies: cookies,
             redirects: true,
             timeout: nil,
             urlQuery: nil,
