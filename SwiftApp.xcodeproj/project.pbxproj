@@ -25,10 +25,16 @@
 		BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */; };
 		BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB19FAF420441A6B005F2669 /* Reachability.swift */; };
 		BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */; };
+		BB2163EF22A0D83100356271 /* DemoTipMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2163ED22A0D83100356271 /* DemoTipMenuViewController.swift */; };
+		BB2163F022A0D83100356271 /* DemoTipMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB2163EE22A0D83100356271 /* DemoTipMenuViewController.xib */; };
 		BB2229C52229A4CC00A82EA5 /* PhotoAsset.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2229C42229A4CC00A82EA5 /* PhotoAsset.swift */; };
 		BB2229C72229AA7100A82EA5 /* PhotoUploadOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2229C62229AA7100A82EA5 /* PhotoUploadOperation.swift */; };
 		BB2229C92229AE7900A82EA5 /* PhotoUploadManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB2229C82229AE7900A82EA5 /* PhotoUploadManager.swift */; };
 		BB228A502108302A00C5C6AA /* Actor.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB228A4F2108302A00C5C6AA /* Actor.swift */; };
+		BB23604022A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23603E22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift */; };
+		BB23604122A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB23603F22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib */; };
+		BB23604422A2EB6E002DDCE9 /* TipMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23604222A2EB6E002DDCE9 /* TipMenuViewCell.swift */; };
+		BB23604522A2EB6E002DDCE9 /* TipMenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB23604322A2EB6E002DDCE9 /* TipMenuViewCell.xib */; };
 		BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008221D60FD000D5F41D /* DbActionSheetPicker.swift */; };
 		BB26008A21D60FD100D5F41D /* demo.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB26008421D60FD000D5F41D /* demo.txt */; };
 		BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008621D60FD000D5F41D /* DbDropDownViewCommon.swift */; };
@@ -376,10 +382,16 @@
 		BB197D4B200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbUINavigationControllerExtensions.swift; sourceTree = "<group>"; };
 		BB19FAF420441A6B005F2669 /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
 		BB1E34E8201F0D44008F0679 /* ServiceUrl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceUrl.swift; sourceTree = "<group>"; };
+		BB2163ED22A0D83100356271 /* DemoTipMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTipMenuViewController.swift; sourceTree = "<group>"; };
+		BB2163EE22A0D83100356271 /* DemoTipMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoTipMenuViewController.xib; sourceTree = "<group>"; };
 		BB2229C42229A4CC00A82EA5 /* PhotoAsset.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoAsset.swift; sourceTree = "<group>"; };
 		BB2229C62229AA7100A82EA5 /* PhotoUploadOperation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadOperation.swift; sourceTree = "<group>"; };
 		BB2229C82229AE7900A82EA5 /* PhotoUploadManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoUploadManager.swift; sourceTree = "<group>"; };
 		BB228A4F2108302A00C5C6AA /* Actor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Actor.swift; sourceTree = "<group>"; };
+		BB23603E22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoTipMenuInTableViewController.swift; sourceTree = "<group>"; };
+		BB23603F22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoTipMenuInTableViewController.xib; sourceTree = "<group>"; };
+		BB23604222A2EB6E002DDCE9 /* TipMenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipMenuViewCell.swift; sourceTree = "<group>"; };
+		BB23604322A2EB6E002DDCE9 /* TipMenuViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipMenuViewCell.xib; sourceTree = "<group>"; };
 		BB26008221D60FD000D5F41D /* DbActionSheetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbActionSheetPicker.swift; sourceTree = "<group>"; };
 		BB26008421D60FD000D5F41D /* demo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo.txt; sourceTree = "<group>"; };
 		BB26008621D60FD000D5F41D /* DbDropDownViewCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbDropDownViewCommon.swift; sourceTree = "<group>"; };
@@ -782,6 +794,12 @@
 				BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */,
 				BBA1C8EA225320F7008FF2FF /* App-RunKeeper */,
 				BBD6A1A722A0483B00EB7208 /* DbTipMenuView.swift */,
+				BB2163ED22A0D83100356271 /* DemoTipMenuViewController.swift */,
+				BB2163EE22A0D83100356271 /* DemoTipMenuViewController.xib */,
+				BB23603E22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift */,
+				BB23603F22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib */,
+				BB23604222A2EB6E002DDCE9 /* TipMenuViewCell.swift */,
+				BB23604322A2EB6E002DDCE9 /* TipMenuViewCell.xib */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -1846,6 +1864,7 @@
 				BBF4EFC9228BB68600B3944D /* DemoWebViewViewController.xib in Resources */,
 				BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */,
 				BBC38A63206DDEE500B11C7B /* FontAwesome.ttf in Resources */,
+				BB2163F022A0D83100356271 /* DemoTipMenuViewController.xib in Resources */,
 				BBC1569A21DE0AA500484B26 /* TaoLaunch.storyboard in Resources */,
 				BBC02E6C1F71747A0011FDE6 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				BB28109C2216D3F6003823FE /* DemoDbPullToRefreshViewController.xib in Resources */,
@@ -1870,6 +1889,7 @@
 				BB7E580321E84AD5005C3FA6 /* floatLabelRow.gif in Resources */,
 				BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */,
 				BBB569DB1F7B5B880014A7A9 /* TaskDetailViewController.xib in Resources */,
+				BB23604522A2EB6E002DDCE9 /* TipMenuViewCell.xib in Resources */,
 				BB7F3043203E857900185366 /* main_gate@2x.png in Resources */,
 				BB7E580021E84A91005C3FA6 /* EurekaHeader.xib in Resources */,
 				BB5756B7219E7C48000BDACD /* KBScrollViewViewController.xib in Resources */,
@@ -1883,6 +1903,7 @@
 				BBF4EFD5228C20E300B3944D /* ic-dot-utility.png in Resources */,
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
 				BBF1E89A2271A3E8000D00BE /* CustomViewEmpty.xib in Resources */,
+				BB23604122A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
 				BB7F303A203E857900185366 /* demo_3.jpg in Resources */,
 				BB92D85C224DC4E300B8F244 /* DemoNetworkRealmViewController.xib in Resources */,
@@ -2159,6 +2180,7 @@
 				BBF0A5FB2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift in Sources */,
 				BBE35FBC22573D91004E5024 /* PlaceDoc.swift in Sources */,
 				BB92D860224E00BE00B8F244 /* DbRealmExtensions.swift in Sources */,
+				BB23604422A2EB6E002DDCE9 /* TipMenuViewCell.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BB407ACF2181821A00C8E57F /* DbNSAttributedStringExtensions.swift in Sources */,
 				BBB1A534220031780047293E /* DbLocationManagerDefines.swift in Sources */,
@@ -2172,6 +2194,7 @@
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
 				BB4E2369210EBD1F00524B0D /* UserSession.swift in Sources */,
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
+				BB2163EF22A0D83100356271 /* DemoTipMenuViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,
 				BB626EC820DBADCE0057F0CF /* DbDictionaryExtensions.swift in Sources */,
 				BB51AC522213F34800897CCC /* DbEmptyStatusProvider.swift in Sources */,
@@ -2221,6 +2244,7 @@
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
 				BB5692402111A8220007757F /* Pz.swift in Sources */,
 				BBA2A43E211826F000618AEF /* PzListingViewController.swift in Sources */,
+				BB23604022A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift in Sources */,
 				BB2E8514222EE8E200CD8E28 /* SurveyView.swift in Sources */,
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
 				BBA1C8F8225347E1008FF2FF /* RkMapViewController.swift in Sources */,
