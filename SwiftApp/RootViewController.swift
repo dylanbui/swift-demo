@@ -61,8 +61,8 @@ class RootViewController: UIViewController
         //let vcl = DemoNavBarViewController() // => Done
         
         //let vcl = DemoWebViewViewController()
-        //let vcl = DemoTipMenuViewController()
-        let vcl = DemoTipMenuInTableViewController()
+        //let vcl = DemoTipMenuViewController() // => Done
+        let vcl = DemoTipMenuInTableViewController() // => Done
 
 //        let vcl = DemoNavBarViewController() // => Done
         

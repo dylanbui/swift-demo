@@ -71,6 +71,12 @@ extension DbTipMenuViewTheme
 
 public class DbTipMenuView: UITableView
 {
+    // Header View For Menu
+    public var menuHeaderView: UIView? = nil
+    
+    // Footer View For Menu
+    public var menuFooterView: UIView? = nil
+    
     /// Force the results list to adapt to RTL languages
     public var forceRightToLeft = false
     // selected
@@ -195,7 +201,13 @@ public class DbTipMenuView: UITableView
         self.separatorColor = theme.separatorColor
         
         // -- UITableView frame --
-        let height = (self.rowHeight * CGFloat(self.dataSourceItems.count)) - 5 // 5 = padding
+        var height = (self.rowHeight * CGFloat(self.dataSourceItems.count)) - 5 // 5 = padding
+        height += (self.menuHeaderView?.frame.size.height ?? 0)
+        if self.menuFooterView != nil {
+            // -- Neu co footer thi chieu cao phai duoc cong them padding = 5 --
+            height += (self.menuFooterView?.frame.size.height ?? 0) + 5
+        }
+        
         var width = CGFloat(Db.screenWidth()*2 / 3) // Default get 2/3 screen
         if theme.tipViewWidth > 0 {
             width = theme.tipViewWidth
@@ -348,5 +360,26 @@ extension DbTipMenuView: UITableViewDelegate, UITableViewDataSource
             self.privatedidSelect(self.dataSourceItems, self.selectedIndex!)
         }
     }
+    
+    public func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView?
+    {
+        return self.menuHeaderView
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat
+    {
+        return self.menuHeaderView?.frame.size.height ?? 0
+    }
+    
+    public func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView?
+    {
+        return self.menuFooterView
+    }
+    
+    public func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat
+    {
+        return self.menuFooterView?.frame.size.height ?? 0
+    }
+    
 }
 

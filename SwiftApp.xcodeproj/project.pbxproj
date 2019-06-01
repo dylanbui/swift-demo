@@ -793,13 +793,7 @@
 				BB9A194022294CED00D7BE9A /* Demo-SmartLazyLoading */,
 				BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */,
 				BBA1C8EA225320F7008FF2FF /* App-RunKeeper */,
-				BBD6A1A722A0483B00EB7208 /* DbTipMenuView.swift */,
-				BB2163ED22A0D83100356271 /* DemoTipMenuViewController.swift */,
-				BB2163EE22A0D83100356271 /* DemoTipMenuViewController.xib */,
-				BB23603E22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift */,
-				BB23603F22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib */,
-				BB23604222A2EB6E002DDCE9 /* TipMenuViewCell.swift */,
-				BB23604322A2EB6E002DDCE9 /* TipMenuViewCell.xib */,
+				BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -854,6 +848,20 @@
 				BB887C622244F20B0045BF2F /* FileUploader.swift */,
 			);
 			path = Example;
+			sourceTree = "<group>";
+		};
+		BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */ = {
+			isa = PBXGroup;
+			children = (
+				BBD6A1A722A0483B00EB7208 /* DbTipMenuView.swift */,
+				BB2163ED22A0D83100356271 /* DemoTipMenuViewController.swift */,
+				BB2163EE22A0D83100356271 /* DemoTipMenuViewController.xib */,
+				BB23603E22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift */,
+				BB23603F22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib */,
+				BB23604222A2EB6E002DDCE9 /* TipMenuViewCell.swift */,
+				BB23604322A2EB6E002DDCE9 /* TipMenuViewCell.xib */,
+			);
+			path = "Demo-TipMenuViewController";
 			sourceTree = "<group>";
 		};
 		BB26008121D60FD000D5F41D /* DbActionSheetPicker */ = {

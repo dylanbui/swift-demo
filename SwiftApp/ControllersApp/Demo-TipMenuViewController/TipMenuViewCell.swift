@@ -18,7 +18,18 @@ class TipMenuViewCell: UITableViewCell
     
     @IBAction func btnTip_Click(_ sender: UIButton)
     {
+        let lblH = UILabel.init(frame: CGRect(0 , 0, self.frame.size.width, 50))
+        lblH.text = "Header \(indexPath?.row ?? 0)"
+        lblH.backgroundColor = UIColor.blue
+
+        let lblF = UILabel.init(frame: CGRect(0 , 0, self.frame.size.width, 50))
+        lblF.text = "Footer \(indexPath?.row ?? 0)"
+        lblF.backgroundColor = UIColor.red
+
         let menu = DbTipMenuView()
+        menu.menuHeaderView = lblH
+        menu.menuFooterView = lblF
+        
         menu.dataSourceStrings(["Action 1", "Action 2", "Action 3", "Action 4"])
         menu.didSelect { (dataSource, index) in
             // print("dataSource = \(dataSource)")
