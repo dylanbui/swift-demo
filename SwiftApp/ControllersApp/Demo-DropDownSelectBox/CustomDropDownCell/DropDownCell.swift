@@ -57,7 +57,7 @@ extension DropDownCell {
                     self.backgroundColor = selectedBackgroundColor
                     self.optionLabel.textColor = self.highlightTextColor
                 } else {
-                    self.backgroundColor = .clear
+                    self.backgroundColor = .white
                     self.optionLabel.textColor = self.normalTextColor
                 }
             }

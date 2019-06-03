@@ -62,7 +62,7 @@ public class DbDropDownView: UITableView
     
     ////////////////////////////////////////////////////////////////////////
     // Private implementation
-    fileprivate var containerView: UIView! // Top View Add Self
+    fileprivate var containerView: UIView? // Top View Add Self
     
     fileprivate var dismissableView: UIView!
     fileprivate var fontConversionRate: CGFloat = 0.7
@@ -228,8 +228,7 @@ public class DbDropDownView: UITableView
     
     public func showDropDown(WithView view: UIView, yOffset offset: CGFloat = 5.0, cornerRadius radius: CGFloat = 0)
     {
-        //guard let parent = self.anchorView else {
-        guard let subAnchorView = self.anchorView else {
+        guard let anchorView = self.anchorView else {
             fatalError("AnchorView not found")
         }
         // -- Set theme --
@@ -239,8 +238,7 @@ public class DbDropDownView: UITableView
         self.tableYOffset = offset
         self.tableCornerRadius = radius
         
-        // self.dataSourceItems.removeAll()
-        var frame = subAnchorView.frame
+        var frame = anchorView.frame
         frame.size.height = view.frame.size.height
         view.frame = frame
         self.tableListHeight = view.frame.size.height // view.frame.height
@@ -256,25 +254,28 @@ public class DbDropDownView: UITableView
         
         privateTableWillAppear()
         
-        //guard let parent = self.anchorView else {
-        guard let subAnchorView = self.anchorView else {
+        guard let anchorView = self.anchorView else {
             fatalError("AnchorView not found")
         }
         
-        if let viewController = subAnchorView.firstViewController {
+        // -- Get parent view contain anchorView --
+        if let viewController = anchorView.firstViewController {
             self.containerView = viewController.view
         } else {
             print("==> ParentViewController not found. Use RootViewController")
             self.containerView = UIApplication.shared.keyWindow?.rootViewController?.view!
         }
         
-        let frameMatchParent: CGRect! = subAnchorView.superview?.convert(subAnchorView.frame, to: containerView)
+        let frameMatchParent: CGRect! = anchorView.superview?.convert(anchorView.frame, to: containerView)
         // print("frameMatchParent = \(String(describing: frameMatchParent))")
         
         let parent = UIView(frame: frameMatchParent)
         parent.tag = 5001
         parent.backgroundColor = UIColor.clear // Test color
-        containerView.addSubview(parent)
+        containerView!.addSubview(parent)
+        // -- Hide when tick to anchor view --
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(touchToBackground(sender:)))
+        parent.addGestureRecognizer(tapGesture)
         
         self.frame = CGRect(x: parent.frame.minX,
                             y: parent.frame.minY,
@@ -282,12 +283,12 @@ public class DbDropDownView: UITableView
                             height: parent.frame.height)
         self.alpha = 0
         
-        parent.superview?.insertSubview(self, belowSubview: parent)
+        self.containerView!.insertSubview(self, belowSubview: parent)
         
         // -- Add touch out background --
         if self.hideOptionsWhenTouchOut {
             self.dismissableView.alpha = 0
-            parent.superview?.insertSubview(self.dismissableView, belowSubview: self)
+            self.containerView!.insertSubview(self.dismissableView, belowSubview: self)
         }
         
         // -- Default .TopToBottom --
@@ -449,7 +450,7 @@ public class DbDropDownView: UITableView
                 self.privateTableDidDisappear()
                 
                 // -- Remove temple anchor view --
-                self.containerView.viewWithTag(5001)?.removeFromSuperview()
+                self.containerView?.viewWithTag(5001)?.removeFromSuperview()
                 // -- Set status --
                 self.isShow = false
             })
@@ -478,7 +479,7 @@ public class DbDropDownView: UITableView
                 self.privateTableDidDisappear()
                 
                 // -- Remove temple anchor view --
-                self.containerView.viewWithTag(5001)?.removeFromSuperview()
+                self.containerView?.viewWithTag(5001)?.removeFromSuperview()
                 // -- Set status --
                 self.isShow = false
             })
@@ -512,7 +513,7 @@ extension DbDropDownView: UITableViewDelegate, UITableViewDataSource
         cell.detailTextLabel?.font = UIFont(name: theme.subtitleFont.fontName, size: theme.subtitleFont.pointSize * fontConversionRate)
         cell.detailTextLabel?.textColor = theme.subtitleFontColor
         
-        cell.selectionStyle = .none
+        cell.selectionStyle = .default
         
         return cell
     }

@@ -189,6 +189,9 @@ class DemoDbSelectBoxViewController: BaseViewController
                 return
             }
             
+            ddCell.selectedBackgroundColor = UIColor.gray
+            ddCell.highlightTextColor = UIColor.red
+            
             lbltext.text = "\(indexPath.row) - " + options[indexPath.row].title + "- DropDownCell"
         }
         

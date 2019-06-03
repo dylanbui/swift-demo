@@ -52,7 +52,7 @@ class RootViewController: UIViewController
         //let vcl = DemoRealmViewController() // => Done
         // let vcl = DemoNetworkRealmViewController() // => Done
 //        let vcl = DemoJustViewController()
-//         let vcl = DemoDbSelectBoxViewController() // => Done
+         let vcl = DemoDbSelectBoxViewController() // => Done
 //        let vcl = RkMapViewController() // => Done
 
         // let vcl = DemoSemiModalViewController() // => Done
@@ -62,7 +62,7 @@ class RootViewController: UIViewController
         
         //let vcl = DemoWebViewViewController()
         //let vcl = DemoTipMenuViewController() // => Done
-        let vcl = DemoTipMenuInTableViewController() // => Done
+//        let vcl = DemoTipMenuInTableViewController() // => Done
 
 //        let vcl = DemoNavBarViewController() // => Done
         

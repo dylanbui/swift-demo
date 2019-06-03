@@ -66,6 +66,7 @@
 		BB35CE7A211AECEF00B88BEB /* PzLeftMenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35CE78211AECEF00B88BEB /* PzLeftMenuViewController.xib */; };
 		BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */; };
 		BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */; };
+		BB37B8C922A4DEAF001EB15A /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB37B8C822A4DEAF001EB15A /* read_me.txt */; };
 		BB390FD12109B31C0091FB6D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB390FD02109B31C0091FB6D /* Category.swift */; };
 		BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */; };
 		BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */; };
@@ -423,6 +424,7 @@
 		BB35CE78211AECEF00B88BEB /* PzLeftMenuViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzLeftMenuViewController.xib; sourceTree = "<group>"; };
 		BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzMainViewController.swift; sourceTree = "<group>"; };
 		BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzMainViewController.xib; sourceTree = "<group>"; };
+		BB37B8C822A4DEAF001EB15A /* read_me.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
 		BB390FD02109B31C0091FB6D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStackScrollView.swift; sourceTree = "<group>"; };
 		BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStackCellType.swift; sourceTree = "<group>"; };
@@ -853,7 +855,6 @@
 		BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */ = {
 			isa = PBXGroup;
 			children = (
-				BBD6A1A722A0483B00EB7208 /* DbTipMenuView.swift */,
 				BB2163ED22A0D83100356271 /* DemoTipMenuViewController.swift */,
 				BB2163EE22A0D83100356271 /* DemoTipMenuViewController.xib */,
 				BB23603E22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift */,
@@ -943,6 +944,15 @@
 				BB997712211BE8BD00C1052F /* BaseMMDrawerController.swift */,
 			);
 			path = "Main Controller";
+			sourceTree = "<group>";
+		};
+		BB37B8C722A4DE86001EB15A /* DbTipMenuView */ = {
+			isa = PBXGroup;
+			children = (
+				BBD6A1A722A0483B00EB7208 /* DbTipMenuView.swift */,
+				BB37B8C822A4DEAF001EB15A /* read_me.txt */,
+			);
+			path = DbTipMenuView;
 			sourceTree = "<group>";
 		};
 		BB3FDBEE217EFCB9002D570F /* DbStackScrollView */ = {
@@ -1123,6 +1133,7 @@
 		BB8B2B6922681E630032C48F /* DbUIControl */ = {
 			isa = PBXGroup;
 			children = (
+				BB37B8C722A4DE86001EB15A /* DbTipMenuView */,
 				BBDD202521F093D200788D3E /* DbActionSheet */,
 				BBA4670F2252216800E0749E /* DbClosureUIControl */,
 				BB26008121D60FD000D5F41D /* DbActionSheetPicker */,
@@ -1870,6 +1881,7 @@
 				BB922A892288174000E09A6F /* NavBarPushOneViewController.xib in Resources */,
 				BBCBDEE22286CD390026B9B1 /* DemoNavBarViewController.xib in Resources */,
 				BBF4EFC9228BB68600B3944D /* DemoWebViewViewController.xib in Resources */,
+				BB37B8C922A4DEAF001EB15A /* read_me.txt in Resources */,
 				BBDDD5D9219D5DB400AC4940 /* KeyboarbHandleViewController.xib in Resources */,
 				BBC38A63206DDEE500B11C7B /* FontAwesome.ttf in Resources */,
 				BB2163F022A0D83100356271 /* DemoTipMenuViewController.xib in Resources */,
