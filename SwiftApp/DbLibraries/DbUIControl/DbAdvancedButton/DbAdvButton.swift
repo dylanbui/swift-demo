@@ -1,24 +1,26 @@
 //
-//  DbButton.swift
-//  DbButtonDemo
+//  DbAdvButton.swift
+//  SwiftApp
 //
-//  Created by Lorenzo Greco on 28/05/2017.
-//  Copyright © 2017 Lorenzo Greco. All rights reserved.
-//
+//  Created by Dylan Bui on 6/3/19.
+//  Copyright © 2019 Propzy Viet Nam. All rights reserved.
+//  Base on v1.1.4 : https://github.com/loregr/LGButton/blob/develop/LGButton/Classes/LGButton.swift
+
+import Foundation
 import UIKit
 import QuartzCore
 
-
 @IBDesignable
-public class DbButton: UIControl {
+public class DbAdvButton: UIControl
+{
     
     enum TouchAlphaValues : CGFloat {
         case touched = 0.7
         case untouched = 1.0
     }
-
+    
     let touchDisableRadius : CGFloat = 100.0
-
+    
     let availableFontIcons = ["fa", "io", "oc", "ic", "ma", "ti", "mi"]
     
     var gradient : CAGradientLayer?
@@ -53,7 +55,7 @@ public class DbButton: UIControl {
     
     public var isLoading = false {
         didSet {
-           showLoadingView()
+            showLoadingView()
         }
     }
     
@@ -112,11 +114,11 @@ public class DbButton: UIControl {
         }
     }
     
-//    @IBInspectable public var borderColor: UIColor = UIColor.white {
-//        didSet{
-//            setupView()
-//        }
-//    }
+    //    @IBInspectable public var borderColor: UIColor = UIColor.white {
+    //        didSet{
+    //            setupView()
+    //        }
+    //    }
     
     @IBInspectable public override var borderColor: UIColor? {
         didSet{
@@ -400,7 +402,7 @@ public class DbButton: UIControl {
             let d = pow(sinf((2*Float(Double.pi)*((xAngle+0.5)/2))),2)
             gradient!.startPoint = CGPoint(x: CGFloat(a), y: CGFloat(b))
             gradient!.endPoint = CGPoint(x: CGFloat(c), y: CGFloat(d))
-        
+            
             bgContentView.layer.addSublayer(gradient!)
         }
     }
@@ -597,7 +599,7 @@ public class DbButton: UIControl {
             touchAlpha = (pressed) ? .touched : .untouched
         }
     }
-
+    
     override public func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?){
         pressed = true
     }

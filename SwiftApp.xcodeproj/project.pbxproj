@@ -17,6 +17,9 @@
 		BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */; };
 		BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB10D3F31F79225100B7DF4B /* DbActionView.swift */; };
 		BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */; };
+		BB12450E22A8BABD003DF0ED /* DbString+HtmlExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB12450D22A8BABD003DF0ED /* DbString+HtmlExtensions.swift */; };
+		BB12451122A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB12450F22A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift */; };
+		BB12451222A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB12451022A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib */; };
 		BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */; };
 		BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */; };
 		BB15F5CC2254965000597341 /* read_me.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB15F5CB2254965000597341 /* read_me.swift */; };
@@ -67,6 +70,9 @@
 		BB35CE81211AF2E700B88BEB /* PzMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */; };
 		BB35CE82211AF2E700B88BEB /* PzMainViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */; };
 		BB37B8C922A4DEAF001EB15A /* read_me.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB37B8C822A4DEAF001EB15A /* read_me.txt */; };
+		BB37B8D222A50080001EB15A /* DbAdvButton.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB37B8D022A50080001EB15A /* DbAdvButton.xib */; };
+		BB37B8D422A50148001EB15A /* DbAdvButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB37B8D322A50148001EB15A /* DbAdvButton.swift */; };
+		BB37B8D722A50216001EB15A /* read me.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB37B8D622A50216001EB15A /* read me.txt */; };
 		BB390FD12109B31C0091FB6D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB390FD02109B31C0091FB6D /* Category.swift */; };
 		BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */; };
 		BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */; };
@@ -375,6 +381,9 @@
 		BB1079462071D7B300A99D9A /* DemoUKitViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoUKitViewController.swift; sourceTree = "<group>"; };
 		BB10D3F31F79225100B7DF4B /* DbActionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbActionView.swift; sourceTree = "<group>"; };
 		BB11D80721EF7DEC00134CAD /* DbSheetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSheetPicker.swift; sourceTree = "<group>"; };
+		BB12450D22A8BABD003DF0ED /* DbString+HtmlExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "DbString+HtmlExtensions.swift"; sourceTree = "<group>"; };
+		BB12450F22A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoHtmlWithAdvButtonViewController.swift; sourceTree = "<group>"; };
+		BB12451022A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoHtmlWithAdvButtonViewController.xib; sourceTree = "<group>"; };
 		BB1303C42212CA28009FBFDE /* DemoEmptyDataSetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoEmptyDataSetViewController.swift; sourceTree = "<group>"; };
 		BB1303C52212CA28009FBFDE /* DemoEmptyDataSetViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoEmptyDataSetViewController.xib; sourceTree = "<group>"; };
 		BB15F5CB2254965000597341 /* read_me.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = read_me.swift; sourceTree = "<group>"; };
@@ -425,6 +434,9 @@
 		BB35CE7F211AF2E700B88BEB /* PzMainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PzMainViewController.swift; sourceTree = "<group>"; };
 		BB35CE80211AF2E700B88BEB /* PzMainViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PzMainViewController.xib; sourceTree = "<group>"; };
 		BB37B8C822A4DEAF001EB15A /* read_me.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = read_me.txt; sourceTree = "<group>"; };
+		BB37B8D022A50080001EB15A /* DbAdvButton.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DbAdvButton.xib; sourceTree = "<group>"; };
+		BB37B8D322A50148001EB15A /* DbAdvButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAdvButton.swift; sourceTree = "<group>"; };
+		BB37B8D622A50216001EB15A /* read me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "read me.txt"; sourceTree = "<group>"; };
 		BB390FD02109B31C0091FB6D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
 		BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStackScrollView.swift; sourceTree = "<group>"; };
 		BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStackCellType.swift; sourceTree = "<group>"; };
@@ -796,6 +808,8 @@
 				BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */,
 				BBA1C8EA225320F7008FF2FF /* App-RunKeeper */,
 				BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */,
+				BB12450F22A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift */,
+				BB12451022A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -953,6 +967,16 @@
 				BB37B8C822A4DEAF001EB15A /* read_me.txt */,
 			);
 			path = DbTipMenuView;
+			sourceTree = "<group>";
+		};
+		BB37B8D522A501C0001EB15A /* DbAdvancedButton */ = {
+			isa = PBXGroup;
+			children = (
+				BB37B8D322A50148001EB15A /* DbAdvButton.swift */,
+				BB37B8D022A50080001EB15A /* DbAdvButton.xib */,
+				BB37B8D622A50216001EB15A /* read me.txt */,
+			);
+			path = DbAdvancedButton;
 			sourceTree = "<group>";
 		};
 		BB3FDBEE217EFCB9002D570F /* DbStackScrollView */ = {
@@ -1133,6 +1157,7 @@
 		BB8B2B6922681E630032C48F /* DbUIControl */ = {
 			isa = PBXGroup;
 			children = (
+				BB37B8D522A501C0001EB15A /* DbAdvancedButton */,
 				BB37B8C722A4DE86001EB15A /* DbTipMenuView */,
 				BBDD202521F093D200788D3E /* DbActionSheet */,
 				BBA4670F2252216800E0749E /* DbClosureUIControl */,
@@ -1337,6 +1362,7 @@
 		BBC1114720DB4B4F002B2293 /* UtilsExtension */ = {
 			isa = PBXGroup;
 			children = (
+				BB12450D22A8BABD003DF0ED /* DbString+HtmlExtensions.swift */,
 				BB407AC92181821900C8E57F /* DbCommonExtensions.swift */,
 				BB407ACA2181821900C8E57F /* DbNSAttributedStringExtensions.swift */,
 				BB407AC82181821800C8E57F /* DbUIImageExtensions.swift */,
@@ -1871,6 +1897,7 @@
 				BBC38A64206DDEE500B11C7B /* Ionicons.ttf in Resources */,
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
 				BBB1A53822004AF40047293E /* DemoDbLocationManagerViewController.xib in Resources */,
+				BB12451222A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib in Resources */,
 				BBA2A43F211826F000618AEF /* PzListingViewController.xib in Resources */,
 				BB7C50DA2251BD1A0009E6F8 /* DemoDbSelectBoxViewController.xib in Resources */,
 				BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */,
@@ -1890,6 +1917,7 @@
 				BB28109C2216D3F6003823FE /* DemoDbPullToRefreshViewController.xib in Resources */,
 				BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */,
 				BB26008A21D60FD100D5F41D /* demo.txt in Resources */,
+				BB37B8D722A50216001EB15A /* read me.txt in Resources */,
 				BBDDD5DE219D653200AC4940 /* KBBottomBarView.xib in Resources */,
 				BBC38A69206DDEE500B11C7B /* open-iconic.ttf in Resources */,
 				BB922A912288788900E09A6F /* MyCustomNavigationBarView.xib in Resources */,
@@ -1926,6 +1954,7 @@
 				BB23604122A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib in Resources */,
 				BBD3CEF71F70CFE50028425E /* Assets.xcassets in Resources */,
 				BB7F303A203E857900185366 /* demo_3.jpg in Resources */,
+				BB37B8D222A50080001EB15A /* DbAdvButton.xib in Resources */,
 				BB92D85C224DC4E300B8F244 /* DemoNetworkRealmViewController.xib in Resources */,
 				BBC02E641F71747A0011FDE6 /* OpenSans-BoldItalic.ttf in Resources */,
 				BBA1C8F9225347E1008FF2FF /* RkMapViewController.xib in Resources */,
@@ -2122,6 +2151,7 @@
 				BBA1C8FB22534961008FF2FF /* UnitExtensions.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
 				BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */,
+				BB12451122A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */,
 				BB9A193F22294CD100D7BE9A /* ImageDownloadManager.swift in Sources */,
@@ -2237,6 +2267,7 @@
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
 				BBA1C8F0225337AA008FF2FF /* MapDelegate.swift in Sources */,
 				BBA9BBD5224CBFF50068FFDC /* DbHttpExtensions.swift in Sources */,
+				BB37B8D422A50148001EB15A /* DbAdvButton.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */,
 				BB407ACD2181821A00C8E57F /* DbUIImageExtensions.swift in Sources */,
@@ -2289,6 +2320,7 @@
 				BBF1E8A42271ED5F000D00BE /* DemoSemiModalViewController.swift in Sources */,
 				BBB569E91F7B615D0014A7A9 /* User.swift in Sources */,
 				BBB5B14E225B099C00D16C53 /* DateTransform.swift in Sources */,
+				BB12450E22A8BABD003DF0ED /* DbString+HtmlExtensions.swift in Sources */,
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
 				BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */,
 				BB06BC0E2201953E00227059 /* MasterCandySearchViewController.swift in Sources */,

@@ -180,6 +180,18 @@ public extension UILabel {
         }
     }
     
+    public var htmlText: String? {
+        get {
+            return nil
+        }
+        set(newVal) {
+            if let val = newVal {
+                self.attributedText = val.htmlAttributed(family: self.font.fontName,
+                                                         size: self.font.pointSize, color: self.textColor)
+            }
+        }
+    }
+    
     /// SwifterSwift: Initialize a UILabel with text
     public convenience init(text: String?) {
         self.init()
