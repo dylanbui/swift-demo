@@ -576,7 +576,7 @@ public class DbAdvButton: UIControl
     fileprivate func loadViewFromNib() -> UIView {
         
         let bundle = Bundle(for: type(of: self))
-        let nib = UINib(nibName: "DbButton", bundle: bundle)
+        let nib = UINib(nibName: "DbAdvButton", bundle: bundle)
         let view = nib.instantiate(withOwner: self, options: nil)[0] as! UIView
         
         return view

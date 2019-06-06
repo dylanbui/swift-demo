@@ -808,8 +808,7 @@
 				BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */,
 				BBA1C8EA225320F7008FF2FF /* App-RunKeeper */,
 				BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */,
-				BB12450F22A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift */,
-				BB12451022A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib */,
+				BB12451522A8ED20003DF0ED /* Demo-HtmlWithAdvButton */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -821,6 +820,15 @@
 				BB1079452071D7B300A99D9A /* DemoUKitViewController.xib */,
 			);
 			path = "Demo-Button-Label-Textfield";
+			sourceTree = "<group>";
+		};
+		BB12451522A8ED20003DF0ED /* Demo-HtmlWithAdvButton */ = {
+			isa = PBXGroup;
+			children = (
+				BB12450F22A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift */,
+				BB12451022A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib */,
+			);
+			path = "Demo-HtmlWithAdvButton";
 			sourceTree = "<group>";
 		};
 		BB1303C82212CA41009FBFDE /* Demo-EmptyDataSet */ = {
