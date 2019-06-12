@@ -20,6 +20,16 @@ class DemoNetworkRealmViewController: BaseViewController
         // Do any additional setup after loading the view.
         self.tblContent.separatorStyle = .none
         
+        let loadData = {
+            PzAdminApi.getDistrictList { (arrDistrict, response) in
+                if let arr = arrDistrict {
+                    print("Da load = \(arr.count) - District")
+                    self.arrDictrict = arr
+                }
+            }
+        }
+        
+        // -- Right --
         let btnAdd = UIBarButtonItem(
             title: "Phường",
             style: .plain,
@@ -27,13 +37,20 @@ class DemoNetworkRealmViewController: BaseViewController
             action: #selector(loadWardByDistrict(sender:))
         )
         self.navigationItem.rightBarButtonItem = btnAdd
-        
-        PzAdminApi.getDistrictList { (arrDistrict, response) in
-            if let arr = arrDistrict {
-                print("Da load = \(arr.count) - District")
-                self.arrDictrict = arr
-            }
+        // -- Left --
+        let btnReload = UIBarButtonItem.init(title: "Reload", style: .plain) { (button) in
+            loadData()
         }
+        self.navigationItem.leftBarButtonItem = btnReload
+        
+        loadData()
+        
+//        PzAdminApi.getDistrictList { (arrDistrict, response) in
+//            if let arr = arrDistrict {
+//                print("Da load = \(arr.count) - District")
+//                self.arrDictrict = arr
+//            }
+//        }
         
     }
     

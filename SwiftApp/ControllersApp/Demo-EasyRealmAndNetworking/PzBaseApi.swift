@@ -10,8 +10,24 @@ import Foundation
 import ObjectMapper
 //import RealmSwift
 
-public class PzResponse: DbHTTPResponseProtocol
+
+
+public class PzResponse: NSObject, DbHTTPResponseProtocol, NSCoding
 {
+    public func encode(with aCoder: NSCoder)
+    {
+        aCoder.encode(self.httpResult, forKey: "httpResult")
+    }
+    
+    public required init?(coder aDecoder: NSCoder)
+    {
+        let result = aDecoder.decodeObject(forKey: "httpResult") as! DbHTTPResult
+        self.httpResult = result
+        
+        super.init()
+        self.parseResult()
+    }
+    
     var message: String?
     var result: Bool = false
     var code: Int = 0
@@ -128,6 +144,36 @@ public class PzBaseApi
         }
     }
     
+    class func cacheRequestForList<T: Mappable>(strUrl: String,
+                                           method: DbHTTPMethod = .get,
+                                           params: [String: String]? = nil,
+                                           cacheName: String,
+                                           cacheAge: Int = 0,
+                                           completionHandler: DbPzListHandler<T>?)
+    {
+        print("===> Cache name = \(cacheName)")
+        if let pzRes = DbCache.instance.readObject(forKey: cacheName) as? PzResponse {
+            print("Read from cache")
+            completionHandler?(parseToArray(T.self, data: pzRes.data), pzRes)
+            return
+        }
+        
+        DbHTTP.requestFor(PzResponse.self, method: method, url: strUrl, json: params) { (pzResponse) in
+            if pzResponse.httpResult.ok {
+                // -- Save to cache --
+                print("Save to cache")
+                DbCache.instance.write(object: pzResponse, forKey: cacheName)
+            }
+            DbUtils.dispatchToMainQueue {
+                if pzResponse.httpResult.ok {
+                    completionHandler?(parseToArray(T.self, data: pzResponse.data), pzResponse)
+                } else {
+                    // Xu ly loi
+                    completionHandler?(nil, pzResponse)
+                }
+            }
+        }
+    }
     
     class func requestForList<T: Mappable>(strUrl: String,
                                            method: DbHTTPMethod = .get,

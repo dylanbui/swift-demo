@@ -269,6 +269,26 @@ public final class DbHTTPResult : NSObject {
     }
 }
 
+// -- DucBui 12/06/2019: Add support encode for Cache --
+
+extension DbHTTPResult : NSCoding {
+    public func encode(with aCoder: NSCoder)
+    {
+        aCoder.encode(self.content, forKey: "DbHTTPResult.content")
+        aCoder.encode(self.response, forKey: "DbHTTPResult.response")
+        aCoder.encode(self.error, forKey: "DbHTTPResult.error")
+    }
+    
+    public convenience init?(coder aDecoder: NSCoder)
+    {
+        let content = aDecoder.decodeObject(forKey: "DbHTTPResult.content") as? Data
+        let response = aDecoder.decodeObject(forKey: "DbHTTPResult.response") as? URLResponse
+        let error = aDecoder.decodeObject(forKey: "DbHTTPResult.error") as? Error
+        
+        self.init(data: content, response: response, error: error, task: nil)
+    }
+}
+
 public struct CaseInsensitiveDictionary<Key: Hashable, Value>: Collection,
     ExpressibleByDictionaryLiteral
 {

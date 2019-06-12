@@ -12,17 +12,24 @@ class PzAdminApi: PzBaseApi
 {
     class func getDistrictList(completionHandler: @escaping DbPzListHandler<DistrictRmUnit>) -> Void
     {
-        let url = "http://45.117.162.60:8080/sam/api/districts/-1"
+        let url = "http://45.117.162.39:8080/sam/api/districts/-1"
         // -- Chay tot --
-        requestListWithCache(strUrl: url) { (arr: [DistrictRmUnit]?, pzResponse: PzResponse) in
+//        requestListWithCache(strUrl: url) { (arr: [DistrictRmUnit]?, pzResponse: PzResponse) in
+//            print("da lay xong DISTRICT")
+//            completionHandler(arr, pzResponse)
+//        }
+
+        // -- Test thu cache --
+        cacheRequestForList(strUrl: url, cacheName: "api_districts") { (arr: [DistrictRmUnit]?, pzResponse: PzResponse) in
             print("da lay xong DISTRICT")
             completionHandler(arr, pzResponse)
         }
+        
     }
     
     class func getWardList(completionHandler: @escaping DbPzListHandler<WardRmUnit>) -> Void
     {
-        let url = "http://45.117.162.60:8080/sam/api/wards/-1"
+        let url = "http://45.117.162.39:8080/sam/api/wards/-1"
         
         // -- Chay tot --
         requestListWithCache(strUrl: url) { (arr: [WardRmUnit]?, pzResponse: PzResponse) in
@@ -33,7 +40,7 @@ class PzAdminApi: PzBaseApi
     
     class func getWardBy(District districtId: Int, completionHandler: @escaping DbPzListHandler<WardRmUnit>) -> Void
     {
-        let url = "http://45.117.162.60:8080/sam/api/wards/\(districtId)"
+        let url = "http://45.117.162.39:8080/sam/api/wards/\(districtId)"
         
         // -- Lay ve ward theo district => save or update to Ward Table --
         requestListWithCache(strUrl: url) { (arr: [WardRmUnit]?, pzResponse: PzResponse) in

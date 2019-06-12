@@ -50,7 +50,7 @@ class RootViewController: UIViewController
 //        let vcl = DemoLazyUploadViewController() // => Done
         //let vcl = DemoSurveyViewController() // => Done
         //let vcl = DemoRealmViewController() // => Done
-        // let vcl = DemoNetworkRealmViewController() // => Done
+         let vcl = DemoNetworkRealmViewController() // => Done
 //        let vcl = DemoJustViewController()
 //         let vcl = DemoDbSelectBoxViewController() // => Done
 //        let vcl = RkMapViewController() // => Done
@@ -65,7 +65,7 @@ class RootViewController: UIViewController
 
 //        let vcl = DemoNavBarViewController() // => Done
         
-        let vcl = DemoHtmlWithAdvButtonViewController() // => Done
+//        let vcl = DemoHtmlWithAdvButtonViewController() // => Done
         
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a
