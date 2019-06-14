@@ -75,7 +75,7 @@ class RowsExampleViewController: FormViewController {
             <<< DecimalFloatLabelRow() {
                 $0.title = "Decimal field"
                 $0.value = 2017
-                $0.formatter = DecimalFormatter()
+                //$0.formatter = DecimalFormatter()
                 $0.useFormatterDuringInput = true
             }
             <<< URLFloatLabelRow() {
