@@ -188,21 +188,21 @@ public extension Reachability {
     }
     
     // MARK: - *** Connection test methods ***
-//    @available(swift, deprecated: 4.0, obsoleted: 4.3.0, message: "Please use `connection != .none`")
-//    var isReachable: Bool {
-//        return connection != .none
-//    }
-//    
-//    @available(swift, deprecated: 4.0, obsoleted: 4.3.0, message: "Please use `connection == .cellular`")
-//    var isReachableViaWWAN: Bool {
-//        // Check we're not on the simulator, we're REACHABLE and check we're on WWAN
-//        return connection == .cellular
-//    }
-//    
-//    @available(swift, deprecated: 4.0, obsoleted: 4.3.0, message: "Please use `connection == .wifi`Please use `connection == .wifi`")
-//    var isReachableViaWiFi: Bool {
-//        return connection == .wifi
-//    }
+    @available(swift, deprecated: 4.0, obsoleted: 4.3.0, message: "Please use `connection != .none`")
+    var isReachable: Bool {
+        return connection != .none
+    }
+    
+    @available(swift, deprecated: 4.0, obsoleted: 4.3.0, message: "Please use `connection == .cellular`")
+    var isReachableViaWWAN: Bool {
+        // Check we're not on the simulator, we're REACHABLE and check we're on WWAN
+        return connection == .cellular
+    }
+    
+    @available(swift, deprecated: 4.0, obsoleted: 4.3.0, message: "Please use `connection == .wifi`Please use `connection == .wifi`")
+    var isReachableViaWiFi: Bool {
+        return connection == .wifi
+    }
     
     var description: String {
         guard let flags = flags else { return "unavailable flags" }

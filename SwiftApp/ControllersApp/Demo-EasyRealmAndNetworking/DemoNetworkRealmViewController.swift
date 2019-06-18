@@ -39,7 +39,19 @@ class DemoNetworkRealmViewController: BaseViewController
         self.navigationItem.rightBarButtonItem = btnAdd
         // -- Left --
         let btnReload = UIBarButtonItem.init(title: "Reload", style: .plain) { (button) in
-            loadData()
+            // loadData()
+            
+            let dict: [String: Any] = ["So_1": Date(), "So_2": Date()]
+           
+            if let cache = DbCache.instance.readDictionary(forKey: "dict_key") as? [String: Date] {
+                print("GET FROM CACHE")
+                print("===> Da co cache: \(cache.description)")
+            } else {
+                print("KHONG TON TAI CACHE => SAVE 10s")
+                print("===> SAVE cache: \(dict.description)")
+                DbCache.instance.write(dictionary: dict, forKey: "dict_key", withAge: 10)
+            }
+            
         }
         self.navigationItem.leftBarButtonItem = btnReload
         
@@ -51,6 +63,7 @@ class DemoNetworkRealmViewController: BaseViewController
 //                self.arrDictrict = arr
 //            }
 //        }
+        
         
     }
     

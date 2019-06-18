@@ -14,16 +14,16 @@ internal extension Dictionary {
     }
 }
 
-public enum DbCacheImageFormat {
+public enum DbDataCacheImageFormat {
     case unknown, png, jpeg
 }
 
-open class DbCache {
-    static let cacheDirectoryPrefix = "com.dbcache.cache."
-    static let ioQueuePrefix = "com.dbcache.queue."
+open class DbDataCache {
+    static let cacheDirectoryPrefix = "com.dbdatacache.cache."
+    static let ioQueuePrefix = "com.dbdatacache.queue."
     static let defaultMaxCachePeriodInSecond: TimeInterval = 60 * 60 * 24 * 7         // a week
     
-    public static var instance = DbCache(name: "default")
+    public static var instance = DbDataCache(name: "default")
     
     var cachePath: String
     
@@ -35,7 +35,7 @@ open class DbCache {
     open var name: String = ""
     
     /// Life time of disk cache, in second. Default is a week
-    open var maxCachePeriodInSecond = DbCache.defaultMaxCachePeriodInSecond
+    open var maxCachePeriodInSecond = DbDataCache.defaultMaxCachePeriodInSecond
     
     /// Size is allocated for disk cache, in byte. 0 mean no limit. Default is 0
     open var maxDiskCacheSize: UInt = 0
@@ -45,15 +45,15 @@ open class DbCache {
         self.name = name
         
         cachePath = path ?? NSSearchPathForDirectoriesInDomains(.cachesDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first!
-        cachePath = (cachePath as NSString).appendingPathComponent(DbCache.cacheDirectoryPrefix + name)
+        cachePath = (cachePath as NSString).appendingPathComponent(DbDataCache.cacheDirectoryPrefix + name)
         
-        ioQueue = DispatchQueue(label: DbCache.ioQueuePrefix + name)
+        ioQueue = DispatchQueue(label: DbDataCache.ioQueuePrefix + name)
         
         self.fileManager = FileManager()
         
         #if !os(OSX) && !os(watchOS)
-        NotificationCenter.default.addObserver(self, selector: #selector(DbCache.cleanExpiredDiskCache), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(DbCache.cleanExpiredDiskCache), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DbDataCache.cleanExpiredDiskCache), name: NSNotification.Name.UIApplicationWillTerminate, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DbDataCache.cleanExpiredDiskCache), name: NSNotification.Name.UIApplicationDidEnterBackground, object: nil)
         #endif
     }
     
@@ -64,7 +64,7 @@ open class DbCache {
 
 // MARK: Store data
 
-extension DbCache {
+extension DbDataCache {
     
     /// Write data for key. This is an async operation.
     public func write(data: Data, forKey key: String) {
@@ -162,7 +162,7 @@ extension DbCache {
     // MARK: Read & write image
     
     /// Write image for key. Please use this method to write an image instead of `writeObject(_:forKey:)`
-    public func write(image: UIImage, forKey key: String, format: DbCacheImageFormat? = nil) {
+    public func write(image: UIImage, forKey key: String, format: DbDataCacheImageFormat? = nil) {
         var data: Data? = nil
         
         if let format = format, format == .png {
@@ -190,7 +190,7 @@ extension DbCache {
 
 // MARK: Utils
 
-extension DbCache {
+extension DbDataCache {
     
     /// Check if has data on disk
     public func hasDataOnDisk(forKey key: String) -> Bool {
@@ -205,7 +205,7 @@ extension DbCache {
 
 // MARK: Clean
 
-extension DbCache {
+extension DbDataCache {
     
     /// Clean all mem cache and disk cache. This is an async operation.
     public func cleanAll() {
@@ -304,7 +304,7 @@ extension DbCache {
 
 // MARK: Helpers
 
-extension DbCache {
+extension DbDataCache {
     
     // This method is from Kingfisher
     fileprivate func travelCachedFiles(onlyForCacheSize: Bool) -> (urlsToDelete: [URL], diskCacheSize: UInt, cachedFiles: [URL: URLResourceValues]) {
@@ -443,3 +443,214 @@ private enum HMACAlgo {
     }
 }
 
+// MARK: - Extension class DbDataCache
+// MARK: -
+
+open class DbCache
+{
+    private struct CacheInfo: NSCoding {
+        
+        let key: String
+        let timeInterval: TimeInterval
+        let lastUpdate: Date
+        
+        init(key: String, timeInterval: TimeInterval, lastUpdate: Date) {
+            self.key = key
+            self.timeInterval = timeInterval
+            self.lastUpdate = lastUpdate
+        }
+        
+        init?(coder aDecoder: NSCoder)
+        {
+            guard let key = aDecoder.decodeObject(forKey: "key") as? String,
+                let timeInterval = aDecoder.decodeObject(forKey: "timeInterval") as? TimeInterval,
+                let lastUpdate = aDecoder.decodeObject(forKey: "lastUpdate") as? Date else {
+                    return nil
+            }
+
+            // decoding your array
+            self.init(key: key, timeInterval: timeInterval, lastUpdate: lastUpdate)
+        }
+        
+        public func encode(with aCoder: NSCoder)
+        {
+            //encoding
+            aCoder.encode(key, forKey: "key")
+            aCoder.encode(timeInterval, forKey: "timeInterval")
+            aCoder.encode(lastUpdate, forKey: "lastUpdate")
+        }
+        
+//        init?(dictionary : [String: Any])
+//        {
+//            guard let key = dictionary["key"] as? String,
+//                let timeInterval = dictionary["timeInterval"] as? TimeInterval,
+//                let lastUpdate = dictionary["lastUpdate"] as? Date else {
+//                    return nil
+//            }
+//            self.init(key: key, timeInterval: timeInterval, lastUpdate: lastUpdate)
+//        }
+//
+//        var propertyListRepresentation : [String: Any] {
+//            return ["title": key, "artist": timeInterval, "lastUpdate": lastUpdate]
+//        }
+    }
+    
+    public static var instance = DbCache()
+    
+    var dataCache: DbDataCache!
+    
+    /// Specify distinc name param, it represents folder name for disk cache
+    public init()
+    {
+        self.dataCache = DbDataCache(name: "defaultDbCache")
+        self.dataCache.maxCachePeriodInSecond = 60 * 60 * 24 * 7 * 2         // 2 week
+    }
+    
+    private func getLastUpdateCacheWith(Key key: String) -> CacheInfo?
+    {
+        if let cacheGlobal = UserDefaults.getDictionary(key: "pri_cacheInfo") as? [String: CacheInfo],
+            let cache = cacheGlobal[key] {
+            return cache
+        }
+        return nil
+    }
+
+    private func setLastUpdateCacheFor(Key key: String, with cacheInfo: CacheInfo)
+    {
+        var cacheGlobal = UserDefaults.getDictionary(key: "pri_cacheInfo") as? [String: CacheInfo]
+        if cacheGlobal != nil {
+            cacheGlobal?[key] = cacheInfo
+        } else {
+            cacheGlobal = [key: cacheInfo]
+        }
+        UserDefaults.setObject(key: "pri_cacheInfo", value: cacheGlobal)
+    }
+
+    private func expired(Key key: String) -> Bool
+    {
+        guard let lastAccessData = self.getLastUpdateCacheWith(Key: key) else {
+            return true
+        }
+        
+        let expiredDate: Date? = (lastAccessData.timeInterval <= 0) ? nil : Date(timeIntervalSinceNow: -lastAccessData.timeInterval)
+        // If this file is expired
+        if let expiredDate = expiredDate,
+            (lastAccessData.lastUpdate as NSDate).laterDate(expiredDate) == expiredDate
+        {
+            // -- this key is expired --
+            return true
+        }
+    
+        return false
+    }
+    
+    /// Write data for key. This is an async operation.
+    public func write(data: Data, forKey key: String, withAge age: TimeInterval = 86400)
+    {
+        self.dataCache.write(data: data, forKey: key)
+        self.setLastUpdateCacheFor(Key: key, with: CacheInfo(key: key, timeInterval: age, lastUpdate: Date()))
+    }
+    
+    /// Read data for key
+    public func readData(forKey key:String) -> Data?
+    {
+        if self.expired(Key: key) {
+            return nil
+        }
+        return self.dataCache.readData(forKey: key)
+    }
+
+    // MARK: Read & write utils
+    
+    /// Write an object for key. This object must inherit from `NSObject` and implement `NSCoding` protocol. `String`, `Array`, `Dictionary` conform to this method.
+    ///
+    /// NOTE: Can't write `UIImage` with this method. Please use `writeImage(_:forKey:)` to write an image
+    public func write(object: NSCoding, forKey key: String, withAge age: TimeInterval = 86400)
+    {
+        let data = NSKeyedArchiver.archivedData(withRootObject: object)
+        self.write(data: data, forKey: key, withAge: age)
+    }
+    
+    /// Write a string for key
+    public func write(string: String, forKey key: String, withAge age: TimeInterval = 86400)
+    {
+        write(object: string as NSCoding, forKey: key, withAge: age)
+    }
+    
+    /// Write a dictionary for key
+    public func write(dictionary: Dictionary<AnyHashable, Any>, forKey key: String, withAge age: TimeInterval = 86400)
+    {
+        write(object: dictionary as NSCoding, forKey: key, withAge: age)
+    }
+    
+    /// Write an array for key
+    public func write(array: Array<Any>, forKey key: String, withAge age: TimeInterval = 86400)
+    {
+        write(object: array as NSCoding, forKey: key, withAge: age)
+    }
+    
+    /// Read an object for key. This object must inherit from `NSObject` and implement NSCoding protocol. `String`, `Array`, `Dictionary` conform to this method
+    public func readObject(forKey key: String) -> NSObject?
+    {
+        let data = readData(forKey: key)
+        
+        if let data = data {
+            return NSKeyedUnarchiver.unarchiveObject(with: data) as? NSObject
+        }
+        
+        return nil
+    }
+    
+    /// Read a string for key
+    public func readString(forKey key: String) -> String?
+    {
+        return readObject(forKey: key) as? String
+    }
+    
+    /// Read an array for key
+    public func readArray(forKey key: String) -> Array<Any>?
+    {
+        return readObject(forKey: key) as? Array<Any>
+    }
+    
+    /// Read a dictionary for key
+    public func readDictionary(forKey key: String) -> Dictionary<AnyHashable, Any>?
+    {
+        return readObject(forKey: key) as? Dictionary<AnyHashable, Any>
+    }
+    
+    // MARK: Read & write image
+    
+    /// Write image for key. Please use this method to write an image instead of `writeObject(_:forKey:)`
+    public func write(image: UIImage, forKey key: String,
+                      format: DbDataCacheImageFormat? = nil,
+                      withAge age: TimeInterval = 86400)
+    {
+        var data: Data? = nil
+        
+        if let format = format, format == .png {
+            data = UIImagePNGRepresentation(image)
+        }
+        else {
+            data = UIImageJPEGRepresentation(image, 0.9)
+        }
+        
+        if let data = data {
+            write(data: data, forKey: key, withAge: age)
+        }
+    }
+    
+    /// Read image for key. Please use this method to write an image instead of `readObjectForKey(_:)`
+    public func readImageForKey(key: String) -> UIImage?
+    {
+        let data = readData(forKey: key)
+        if let data = data {
+            return UIImage(data: data, scale: 1.0)
+        }
+        
+        return nil
+    }
+
+    
+    
+}
