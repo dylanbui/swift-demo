@@ -13,41 +13,61 @@ public extension UIApplication
 {
     fileprivate static let _sharedApplication = UIApplication.shared
     
-    public class func db_open(url: Foundation.URL) {
+    // -- Change color background status bar --
+    /*
+     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.red
+        return true
+     }
+     // Or
+     override func viewDidLoad() {
+        super.viewDidLoad()
+        UIApplication.shared.statusBarView?.backgroundColor = UIColor.red
+     }     
+     */
+    var db_statusBarView: UIView? {
+        return value(forKey: "statusBar") as? UIView
+    }
+    
+    class func db_open(url: Foundation.URL) {
         if _sharedApplication.canOpenURL(url) {
-            _sharedApplication.openURL(url)
+            if #available(iOS 10, *) {
+                _sharedApplication.open(url, options: [:], completionHandler: { (success) in })
+            } else {
+                _sharedApplication.openURL(url)
+            }
         } else {
             print("Can not execute the given action.")
         }
     }
     
-    public class func db_open(urlPath: String) {
+    class func db_open(urlPath: String) {
         if let url = URL(string: urlPath) {
             UIApplication.db_open(url: url)
         }
     }
     
-    public class func db_makePhone(to phoneNumber: String) {
+    class func db_makePhone(to phoneNumber: String) {
         db_open(urlPath: "telprompt:\(phoneNumber)")
     }
     
-    public class func db_sendMessage(to phoneNumber: String) {
+    class func db_sendMessage(to phoneNumber: String) {
         db_open(urlPath: "sms:\(phoneNumber)")
     }
     
-    public class func db_email(to email: String) {
+    class func db_email(to email: String) {
         db_open(urlPath: "mailto:\(email)")
     }
     
-    public class func db_clearIconBadge() {
+    class func db_clearIconBadge() {
         let badgeNumber = _sharedApplication.applicationIconBadgeNumber
         _sharedApplication.applicationIconBadgeNumber = 1
         _sharedApplication.applicationIconBadgeNumber = 0
-        _sharedApplication.cancelAllLocalNotifications()
+        // _sharedApplication.cancelAllLocalNotifications()
         _sharedApplication.applicationIconBadgeNumber = badgeNumber
     }
     
-    public class func db_sendAction(_ action: Selector, fromSender sender: AnyObject?, forEvent event: UIEvent? = nil) -> Bool {
+    class func db_sendAction(_ action: Selector, fromSender sender: AnyObject?, forEvent event: UIEvent? = nil) -> Bool {
         // Get the target in the responder chain
         var target = sender
         
@@ -62,15 +82,45 @@ public extension UIApplication
         return false
     }
     
-    /// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.
-    public class func db_makeStatusBarDark() {
-        // UIApplication.shared.statusBarStyle = .default
+    static var db_appVersion: String {
+        if let appVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") {
+            return "\(appVersion)"
+        } else {
+            return ""
+        }
     }
     
-    /// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.
-    public class func db_makeStatusBarLight() {
-        // UIApplication.shared.statusBarStyle = .lightContent
+    static var db_build: String {
+        if let buildVersion = Bundle.main.object(forInfoDictionaryKey: kCFBundleVersionKey as String) {
+            return "\(buildVersion)"
+        } else {
+            return ""
+        }
     }
+    
+    static var db_versionBuild: String {
+        let version = UIApplication.db_appVersion
+        let build = UIApplication.db_build
+        
+        var versionAndBuild = "v\(version)"
+        
+        if version != build {
+            versionAndBuild = "v\(version)(\(build))"
+        }
+        
+        return versionAndBuild
+    }
+
+    
+    /// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.
+//    class func db_makeStatusBarDark() {
+//        UIApplication.shared.statusBarStyle = .default
+//    }
+    
+    /// Setting the statusBarStyle does nothing if your application is using the default UIViewController-based status bar system.
+//    class func db_makeStatusBarLight() {
+//        UIApplication.shared.statusBarStyle = .lightContent
+//    }
 }
 
 // MARK: - UIWindow
@@ -86,7 +136,7 @@ public extension UIWindow {
     ///   - duration: animation duration in seconds (default is 0.5).
     ///   - options: animataion options (default is .transitionFlipFromRight).
     ///   - completion: optional completion handler called after view controller is changed.
-    public func db_switchRootViewController(
+    func db_switchRootViewController(
         to viewController: UIViewController,
         animated: Bool = true,
         duration: TimeInterval = 0.5,
@@ -113,7 +163,7 @@ public extension UIWindow {
 
 public extension UIViewController {
     
-    public func db_backOrDismiss() {
+    func db_backOrDismiss() {
         if presentingViewController != nil ||
             navigationController?.presentingViewController?.presentedViewController === navigationController ||
             tabBarController?.presentingViewController is UITabBarController {
@@ -131,7 +181,7 @@ public extension UIViewController {
     }
     
     
-    public func db_backToPrevious(animated: Bool = true) {
+    func db_backToPrevious(animated: Bool = true) {
         if let presentingViewController = presentingViewController {
             presentingViewController.dismiss(animated: animated, completion: nil)
         } else {
@@ -139,7 +189,7 @@ public extension UIViewController {
         }
     }
     
-    public func db_backToRoot(animated: Bool = true) {
+    func db_backToRoot(animated: Bool = true) {
         if let presentingViewController = presentingViewController {
             presentingViewController.dismiss(animated: animated, completion: nil)
         } else {
@@ -147,11 +197,11 @@ public extension UIViewController {
         }
     }
     
-    public func db_dismiss(completion: (() -> Void)? = nil) {
+    func db_dismiss(completion: (() -> Void)? = nil) {
         presentingViewController?.dismiss(animated: true, completion: completion)
     }
     
-    public func db_dismissToTop(animated: Bool = true, completion: (() -> Void)? = nil) {
+    func db_dismissToTop(animated: Bool = true, completion: (() -> Void)? = nil) {
         var presentedViewController = self
         while let presentingViewController = presentedViewController.presentingViewController {
             presentedViewController = presentingViewController
@@ -159,7 +209,7 @@ public extension UIViewController {
         presentedViewController.dismiss(animated: animated, completion: completion)
     }
     
-    public func db_addChild(_ viewController: UIViewController) {
+    func db_addChild(_ viewController: UIViewController) {
         viewController.willMove(toParentViewController: self)
         addChildViewController(viewController)
         viewController.view.frame = view.frame
@@ -172,18 +222,18 @@ public extension UIViewController {
 // MARK: - Methods
 public extension UINavigationController {
     
-    public func db_getCurrentViewController() -> UIViewController? {
+    func db_getCurrentViewController() -> UIViewController? {
         return viewControllers.last
     }
     
-    public func db_replaceCurrentViewController(_ viewController: UIViewController, animated: Bool) {
+    func db_replaceCurrentViewController(_ viewController: UIViewController, animated: Bool) {
         var editableViewControllers = viewControllers
         editableViewControllers.removeLast()
         editableViewControllers.append(viewController)
         setViewControllers(editableViewControllers, animated: animated)
     }
     
-    public func db_pushOrReplaceToFirstViewController(_ viewController: UIViewController, animated: Bool) {
+    func db_pushOrReplaceToFirstViewController(_ viewController: UIViewController, animated: Bool) {
         if viewControllers.count > 1 {
             // db_replaceCurrentViewController(viewController, animated: animated)
             db_pushArrayViewControllerToFirstViewController([viewController], animated: animated)
@@ -192,13 +242,13 @@ public extension UINavigationController {
         }
     }
     
-    public func db_popToFirstViewControllerWithAnimated(_ animated: Bool) {
+    func db_popToFirstViewControllerWithAnimated(_ animated: Bool) {
         if viewControllers.count > 1 {
             popToViewController(viewControllers[1], animated: animated)
         }
     }
     
-    public func db_pushArrayViewControllerToFirstViewController(_ arrViewController: [UIViewController], animated: Bool) {
+    func db_pushArrayViewControllerToFirstViewController(_ arrViewController: [UIViewController], animated: Bool) {
         var editableViewControllers = [UIViewController]()
         editableViewControllers.append(viewControllers[0])
         editableViewControllers.append(contentsOf: arrViewController)
@@ -208,7 +258,7 @@ public extension UINavigationController {
     // MARK: - Fade Animation
     // MARK: -
     
-    public func db_pushFadeViewController(_ viewController: UIViewController, duration: Double = 0.3) {
+    func db_pushFadeViewController(_ viewController: UIViewController, duration: Double = 0.3) {
         let transition = CATransition()
         transition.duration = duration
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -218,7 +268,7 @@ public extension UINavigationController {
         self.pushViewController(viewController, animated: false)
     }
     
-    public func db_popFadeViewController(_ duration: Double = 0.3) {
+    func db_popFadeViewController(_ duration: Double = 0.3) {
         let transition = CATransition()
         transition.duration = duration
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -228,7 +278,7 @@ public extension UINavigationController {
         self.popViewController(animated: false)
     }
     
-    public func db_popFadeToRootViewController(_ duration: Double = 0.3) {
+    func db_popFadeToRootViewController(_ duration: Double = 0.3) {
         let transition = CATransition()
         transition.duration = duration
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -238,7 +288,7 @@ public extension UINavigationController {
         self.popToRootViewController(animated: false)
     }
     
-    public func db_popFadeToFirstViewController(_ duration: Double = 0.3) {
+    func db_popFadeToFirstViewController(_ duration: Double = 0.3) {
         let transition = CATransition()
         transition.duration = duration
         transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
@@ -248,11 +298,11 @@ public extension UINavigationController {
         self.db_popToFirstViewControllerWithAnimated(false)
     }
     
-    public func db_replaceFadeCurrentViewController(withViewController controller: UIViewController, duration seconds: Double = 0.3) {
+    func db_replaceFadeCurrentViewController(withViewController controller: UIViewController, duration seconds: Double = 0.3) {
         self.db_replaceFadeCountViewControllers(1, withViewController: controller, duration: seconds)
     }
     
-    public func db_replaceFadeCountViewControllers(_ nums: Int, withViewController controller: UIViewController, duration seconds: Double) {
+    func db_replaceFadeCountViewControllers(_ nums: Int, withViewController controller: UIViewController, duration seconds: Double) {
         var controllers = self.viewControllers;
         
         var controllerIndex = controllers.count - nums
@@ -276,11 +326,26 @@ public extension UINavigationController {
     /// SwifterSwift: Pop ViewController with completion handler.
     ///
     /// - Parameter completion: optional completion handler (default is nil).
-    public func db_popViewController(_ completion: (() -> Void)? = nil) {
+    func db_popViewController(_ completion: (() -> Void)? = nil) {
         // https://github.com/cotkjaer/UserInterface/blob/master/UserInterface/UIViewController.swift
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
         popViewController(animated: true)
+        CATransaction.commit()
+    }
+    
+    func db_popFadeViewController(_ completion: (() -> Void)? = nil) {
+        // https://github.com/cotkjaer/UserInterface/blob/master/UserInterface/UIViewController.swift
+        
+        let transition = CATransition()
+        transition.duration = 0.3
+        transition.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        transition.type = kCATransitionFade
+        self.view.layer.add(transition, forKey: nil)
+        
+        CATransaction.begin()
+        CATransaction.setCompletionBlock(completion)
+        popViewController(animated: false)
         CATransaction.commit()
     }
     
@@ -289,7 +354,7 @@ public extension UINavigationController {
     /// - Parameters:
     ///   - viewController: viewController to push.
     ///   - completion: optional completion handler (default is nil).
-    public func db_pushViewController(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
+    func db_pushViewController(_ viewController: UIViewController, completion: (() -> Void)? = nil) {
         // https://github.com/cotkjaer/UserInterface/blob/master/UserInterface/UIViewController.swift
         CATransaction.begin()
         CATransaction.setCompletionBlock(completion)
@@ -300,7 +365,7 @@ public extension UINavigationController {
     /// SwifterSwift: Make navigation controller's navigation bar transparent.
     ///
     /// - Parameter tint: tint color (default is .white).
-    public func db_makeTransparent(withTint tint: UIColor = .white) {
+    func db_makeTransparent(withTint tint: UIColor = .white) {
         navigationBar.setBackgroundImage(UIImage(), for: .default)
         navigationBar.shadowImage = UIImage()
         navigationBar.isTranslucent = true

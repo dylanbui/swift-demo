@@ -1,0 +1,7 @@
+//
+//  DbButton.swift
+
+https://github.com/loregr/LGButton
+Da lam xong DbButton.swift tu LGButton, nhung kho su dung, lam lai cho don gian hon.
+Tach SwiftIconFont ra lam 1 phan rieng de su dung trong cac Class khac
+ 

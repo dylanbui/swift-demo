@@ -9,52 +9,53 @@
 import UIKit
 
 // -- Da hoan thanh, chay tot : 15/01/2019 --
+// Da dua doan ma nay vao DbUIViewExtensions.swift
 
-extension UIView {
-    
-    // In order to create computed properties for extensions, we need a key to
-    // store and access the stored property
-    fileprivate struct DbKeyboardHandlerParams {
-        static var keyboardHandler = "UIView_keyboardHandler"
-    }
-
-    
-    private var keyboardHandler: DbKeyboardHandler {
-        get {
-            var keyboardHandler = objc_getAssociatedObject(self, &DbKeyboardHandlerParams.keyboardHandler) as? DbKeyboardHandler
-            if keyboardHandler == nil {
-                keyboardHandler = DbKeyboardHandler()
-                objc_setAssociatedObject(self, &DbKeyboardHandlerParams.keyboardHandler, keyboardHandler, .OBJC_ASSOCIATION_RETAIN)
-            }
-            return keyboardHandler!
-        }
-    }
-    
-    func db_anchorViewToBottomViewWithKeyboard() -> Void
-    {
-        self.y = CGFloat(Db.screenHeight()) - self.height - DbUtils.safeAreaBottomPadding()
-        
-        keyboardHandler.listen { (keyboardInfo) in
-            // print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.keyboardFrame))")
-            // print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.status))")
-            
-            // -- Move view control --
-            //var inputViewFrame: CGRect = self.viewButtonControl.frame
-            if keyboardInfo.status == .KeyboardStatusWillShow {
-                if self.tag == 0 {
-                    self.y = keyboardInfo.keyboardFrame.origin.y - self.height
-                    self.tag = 1010
-                }
-            } else if keyboardInfo.status == .KeyboardStatusWillHide {
-                if self.tag == 1010 {
-                    self.y = keyboardInfo.keyboardFrame.size.height + self.y - DbUtils.safeAreaBottomPadding()
-                    self.tag = 0
-                }
-            }
-            
-        }
-    }
-}
+//extension UIView {
+//
+//    // In order to create computed properties for extensions, we need a key to
+//    // store and access the stored property
+//    fileprivate struct DbKeyboardHandlerParams {
+//        static var keyboardHandler = "UIView_keyboardHandler"
+//    }
+//
+//
+//    private var keyboardHandler: DbKeyboardHandler {
+//        get {
+//            var keyboardHandler = objc_getAssociatedObject(self, &DbKeyboardHandlerParams.keyboardHandler) as? DbKeyboardHandler
+//            if keyboardHandler == nil {
+//                keyboardHandler = DbKeyboardHandler()
+//                objc_setAssociatedObject(self, &DbKeyboardHandlerParams.keyboardHandler, keyboardHandler, .OBJC_ASSOCIATION_RETAIN)
+//            }
+//            return keyboardHandler!
+//        }
+//    }
+//
+//    func db_anchorViewToBottomViewWithKeyboard() -> Void
+//    {
+//        self.y = CGFloat(Db.screenHeight()) - self.height - DbUtils.safeAreaBottomPadding()
+//
+//        keyboardHandler.listen { (keyboardInfo) in
+//            // print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.keyboardFrame))")
+//            // print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.status))")
+//
+//            // -- Move view control --
+//            //var inputViewFrame: CGRect = self.viewButtonControl.frame
+//            if keyboardInfo.status == .KeyboardStatusWillShow {
+//                if self.tag == 0 {
+//                    self.y = keyboardInfo.keyboardFrame.origin.y - self.height
+//                    self.tag = 1010
+//                }
+//            } else if keyboardInfo.status == .KeyboardStatusWillHide {
+//                if self.tag == 1010 {
+//                    self.y = keyboardInfo.keyboardFrame.size.height + self.y - DbUtils.safeAreaBottomPadding()
+//                    self.tag = 0
+//                }
+//            }
+//
+//        }
+//    }
+//}
 
 class KeyboarbHandleViewController: UIViewController
 {

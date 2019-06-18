@@ -10,22 +10,20 @@ import UIKit
 import Foundation
 
 fileprivate extension UIColor {
-    fileprivate var hexString: String {
-        var r:CGFloat = 0
-        var g:CGFloat = 0
-        var b:CGFloat = 0
-        var a:CGFloat = 0
-
-        self.getRed(&r, green: &g, blue: &b, alpha: &a)
-        let rgb:Int = (Int)(r*255)<<16 | (Int)(g*255)<<8 | (Int)(b*255)<<0
-
-        return String(format:"%06x", rgb)
+    var hexString:String? {
+        if let components = self.cgColor.components {
+            let r = components[0]
+            let g = components[1]
+            let b = components[2]
+            return  String(format: "%02X%02X%02X", (Int)(r * 255), (Int)(g * 255), (Int)(b * 255))
+        }
+        return nil
     }
 }
 
 public extension String
 {
-    public var html2Attributed: NSAttributedString?
+    var html2Attributed: NSAttributedString?
     {
         do {
             guard let data = data(using: String.Encoding.utf8) else {
@@ -41,7 +39,7 @@ public extension String
         }
     }
     
-    public var htmlAttributed: (NSAttributedString?, NSDictionary?)
+    var htmlAttributed: (NSAttributedString?, NSDictionary?)
     {
         do {
             guard let data = data(using: String.Encoding.utf8) else {
@@ -68,7 +66,7 @@ public extension String
                 "html *" +
                 "{" +
                 "font-size: \(font.pointSize)pt !important;" +
-                "color: #\(color.hexString) !important;" +
+                "color: #\(color.hexString!) !important;" +
                 "font-family: \(font.familyName), Helvetica !important;" +
             "}</style> \(self)"
             
@@ -93,7 +91,7 @@ public extension String
                 "html *" +
                 "{" +
                 "font-size: \(size)pt !important;" +
-                "color: #\(color.hexString) !important;" +
+                "color: #\(color.hexString!) !important;" +
                 "font-family: \(family ?? "Helvetica"), Helvetica !important;" +
             "}</style> \(self)"
             

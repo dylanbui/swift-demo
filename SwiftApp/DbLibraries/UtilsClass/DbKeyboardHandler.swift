@@ -1,9 +1,9 @@
 //
 //  DbKeyboardHandler.swift
-//  SwiftApp
+//  PropzySam
 //
 //  Created by Dylan Bui on 11/15/18.
-//  Copyright © 2018 Propzy Viet Nam. All rights reserved.
+//  Copyright © 2018 Dylan Bui. All rights reserved.
 //
 
 import Foundation
@@ -44,7 +44,7 @@ class DbKeyboardHandler: NSObject
 {
     private var delegate: DbKeyboardHandlerDelegate?
     private var block: ((DbKeyboardInfo) -> Void)?
- 
+    
     convenience init(WithDelegate delegate: DbKeyboardHandlerDelegate)
     {
         self.init()
@@ -58,7 +58,7 @@ class DbKeyboardHandler: NSObject
         self.registerForKeyboardNotification()
         self.block = block
     }
-
+    
     deinit {
         self.block = nil
         Notification.remove(self)
@@ -80,17 +80,17 @@ class DbKeyboardHandler: NSObject
     {
         self.provideKeyboardFrameFromNotification(notification, visibility: .KeyboardStatusWillShow)
     }
-
+    
     @objc func keyboardDidShow(_ notification: NSNotification)
     {
         self.provideKeyboardFrameFromNotification(notification, visibility: .KeyboardStatusDidShow)
     }
-
+    
     @objc func keyboardWillHide(_ notification: NSNotification)
     {
         self.provideKeyboardFrameFromNotification(notification, visibility: .KeyboardStatusWillHide)
     }
-
+    
     @objc func keyboardDidHide(_ notification: NSNotification)
     {
         self.provideKeyboardFrameFromNotification(notification, visibility: .KeyboardStatusDidHide)
@@ -104,5 +104,6 @@ class DbKeyboardHandler: NSObject
         // -- Call Block --
         self.block?(model)
     }
-
+    
 }
+

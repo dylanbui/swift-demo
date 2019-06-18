@@ -15,7 +15,7 @@ public extension DbRealmManager {
     /// Initializate DB default
     ///
     /// - Parameter version: version number of your DB. Increment your version number when you have to update your db file.
-    public class func configureDB(version: UInt64){
+    class func configureDB(version: UInt64){
         DbRealmManager.configureDB(version: version, migrationBlock: nil)
 //        let config = Realm.Configuration(schemaVersion: version, migrationBlock: { migration, oldSchemaVersion in
 //            if (oldSchemaVersion < version) {
@@ -30,7 +30,7 @@ public extension DbRealmManager {
     /// Initializate DB default
     ///
     /// - Parameter version: version number of your DB. Increment your version number when you have to update your db file.
-    public class func configureDB(version: UInt64, migrationBlock: MigrationBlock?){
+    class func configureDB(version: UInt64, migrationBlock: MigrationBlock?){
         let config = Realm.Configuration(schemaVersion: version, migrationBlock: { migration, oldSchemaVersion in
             if let migrationBlock = migrationBlock {
                 migrationBlock(migration, oldSchemaVersion)
@@ -45,7 +45,7 @@ public extension DbRealmManager {
     /// - Parameters:
     ///   - ApplicationGroupIdentifier: Application Security Group Identifier defined on iTunesConnect account like app.identifier.com
     ///   - version: version number of your DB. Increment your version number when you have to update your db file.
-    public class func configureSharedDB(ApplicationGroupIdentifier:String, version: UInt64){
+    class func configureSharedDB(ApplicationGroupIdentifier:String, version: UInt64){
         let AppGroupContainerUrl = FileManager.default.containerURL(forSecurityApplicationGroupIdentifier: ApplicationGroupIdentifier)
         let realmPath = AppGroupContainerUrl?.appendingPathComponent("db.realm")
         var config = Realm.Configuration(schemaVersion: version, migrationBlock: { migration, oldSchemaVersion in
@@ -62,7 +62,7 @@ public extension DbRealmManager {
     /// Save Object without waiting until finished
     ///
     /// - Parameter T: Realm Object
-    public class func save(T: Object)  {
+    class func save(T: Object)  {
         DbRealmManager.addOrUpdate(model: String(describing: T.self), object: T, completionHandler: { (error) in
         })
     }
@@ -72,7 +72,7 @@ public extension DbRealmManager {
     /// - Parameters:
     ///   - T: Realm Object
     ///   - completion: returns success or not for this task.
-    public class func saveWithCompletion(T: Object?, completion: @escaping (_ success : Bool) -> Void)  {
+    class func saveWithCompletion(T: Object?, completion: @escaping (_ success : Bool) -> Void)  {
         if T == nil {
             completion (false)
         }
@@ -91,7 +91,7 @@ public extension DbRealmManager {
     /// - Parameters:
     ///   - T: Array of Realm Objects
     ///   - completion: Returns success or not for this task.
-    public class func saveArrayObjects(T: [Object], completion: @escaping (_ success : Bool) -> Void) {
+    class func saveArrayObjects(T: [Object], completion: @escaping (_ success : Bool) -> Void) {
         DbRealmManager.addOrUpdate(model: String(describing: T.self), object: T, completionHandler: { (error) in
             completion(error == nil ? true : false)
         })
@@ -112,7 +112,7 @@ public extension DbRealmManager {
     /// - Parameters:
     ///   - T: Realm Object like ObjectNameClass()
     ///   - completionHandler: Returns array list of objects
-    public class func getAllListOf(T: Object, completionHandler: @escaping(_ result:[Object]) -> Void)  {
+    class func getAllListOf(T: Object, completionHandler: @escaping(_ result:[Object]) -> Void)  {
         //Fetches all objects inside 'Class' model class
         DbRealmManager.fetch(model: String(describing: T.classForCoder), condition: nil, completionHandler: { (result) in
             let arrayMutable : NSMutableArray = []
@@ -129,7 +129,7 @@ public extension DbRealmManager {
     ///   - T: Realm Object like ObjectNameClass()
     ///   - objectID: Identifier of Object assuming that key of object is 'id'
     ///   - completionHandler: Return object or nil if not exist
-    public class func getFetchObject(T: Object, objectID: String, completionHandler: @escaping(_ result:Object?) -> Void)  {
+    class func getFetchObject(T: Object, objectID: String, completionHandler: @escaping(_ result:Object?) -> Void)  {
         getAllListOf(T: T) { (objects) in
             var condition : String = ""
             if objects.count > 0{
@@ -165,7 +165,7 @@ public extension DbRealmManager {
     ///   - objectPrimaryKey: Primary Key defined for Object
     ///   - objectPrimaryKeyValue: Primary Key Value for Object that you want to look for.
     ///   - completionHandler: Return object or nil if not exist
-    public class func getFetchObjectWithCustomPrimareyKey(T: Object, objectPrimaryKey: String, objectPrimaryKeyValue: String, completionHandler: @escaping(_ result:Object?) -> Void)  {
+    class func getFetchObjectWithCustomPrimareyKey(T: Object, objectPrimaryKey: String, objectPrimaryKeyValue: String, completionHandler: @escaping(_ result:Object?) -> Void)  {
         getAllListOf(T: T) { (objects) in
             var condition : String = ""
             if objects.count > 0{
@@ -203,7 +203,7 @@ public extension DbRealmManager {
     ///   - T: Realm Object like ObjectNameClass()
     ///   - condition: Optional parameter with condition like -> condition: "keyParam == valueParam AND keyParam == valueParam"
     ///   - completionHandler: Returns array list of objects by condition
-    public class func getFetchList(T: Object, condition: String?, completionHandler: @escaping(_ result:[Object]) -> Void)  {
+    class func getFetchList(T: Object, condition: String?, completionHandler: @escaping(_ result:[Object]) -> Void)  {
         DbRealmManager.fetch(model: String(describing: T.classForCoder), condition: condition, completionHandler: { (result) in
             let arrayMutable : NSMutableArray = []
             for T in result {
@@ -219,7 +219,7 @@ public extension DbRealmManager {
     ///   - T: Realm Object like ObjectNameClass()
     ///   - objectID: Identifier of Object assuming that key of object is 'id'
     ///   - completionHandler: Return if operation is completed properly
-    public class func deleteObjectById(T: Object, objectID: String, completionHandler: @escaping(_ success:Bool) -> Void)  {
+    class func deleteObjectById(T: Object, objectID: String, completionHandler: @escaping(_ success:Bool) -> Void)  {
         getAllListOf(T: T) { (objects) in
             var condition : String = ""
             if objects.count > 0{
@@ -250,7 +250,7 @@ public extension DbRealmManager {
     ///   - objectPrimaryKey: Primary Key defined for Object
     ///   - objectPrimaryKeyValue: Primary Key Value for Object that you want to look for.
     ///   - completionHandler: Return if operation is completed properly
-    public class func deleteObjectByCustomPrimaryKey(T: Object, objectPrimaryKey: String, objectPrimaryKeyValue: String, completionHandler: @escaping(_ success:Bool) -> Void)  {
+    class func deleteObjectByCustomPrimaryKey(T: Object, objectPrimaryKey: String, objectPrimaryKeyValue: String, completionHandler: @escaping(_ success:Bool) -> Void)  {
         getAllListOf(T: T) { (objects) in
             var condition : String = ""
             if objects.count > 0{
@@ -280,7 +280,7 @@ public extension DbRealmManager {
     ///   - T: Realm Object like ObjectNameClass()
     ///   - condition: Optional parameter with condition like -> condition: "keyParam == valueParam AND keyParam == valueParam"
     ///   - completionHandler: Return if operation is completed properly
-    public class func deleteObjectByCondition(T: Object, condition: String, completionHandler: @escaping(_ success:Bool) -> Void)  {
+    class func deleteObjectByCondition(T: Object, condition: String, completionHandler: @escaping(_ success:Bool) -> Void)  {
         getFetchList(T: T, condition: condition) { (objects) in
             if objects.count > 0 {
                 let totalObjectToDelete: Int = objects.count
@@ -305,7 +305,7 @@ public extension DbRealmManager {
     /// - Parameters:
     ///   - T: Realm Object like ObjectNameClass()
     ///   - completionHandler: Return if operation is completed properly
-    public class func deleteAllObjectWithCompletion(T: Object, completionHandler: @escaping(_ success:Bool) -> Void)  {
+    class func deleteAllObjectWithCompletion(T: Object, completionHandler: @escaping(_ success:Bool) -> Void)  {
         let realm = try! Realm()
         let allObjects = realm.objects(Object.self)
         do {
@@ -321,7 +321,7 @@ public extension DbRealmManager {
     /// - Parameters:
     ///   - T: Object to delete
     ///   - completionHandler: Return if operation is completed properly
-    public class func deleteObjectWithCompletion(T: Object, completionHandler: @escaping(_ success:Bool) -> Void)  {
+    class func deleteObjectWithCompletion(T: Object, completionHandler: @escaping(_ success:Bool) -> Void)  {
         DbRealmManager.deleteObject(object: T) { (error) in
             if error == nil{
                 completionHandler (true)

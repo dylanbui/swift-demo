@@ -11,7 +11,7 @@ import UIKit
 public extension UIControl {
     
     /// Adds a handler that will be invoked for the specified control events
-    public func on(_ controlEvents: UIControlEvents, invokeHandler handler: @escaping (UIControl) -> Void) -> AnyObject {
+    func on(_ controlEvents: UIControlEvents, invokeHandler handler: @escaping (UIControl) -> Void) -> AnyObject {
         let closureHandler = DbClosureHandler(handler: handler, control: self)
         addTarget(closureHandler, action: DbClosureHandlerSelector, for: controlEvents)
         var handlers = self.handlers ?? Set<DbClosureHandler<UIControl>>()
@@ -21,7 +21,7 @@ public extension UIControl {
     }
     
     /// Removes a handler from the control
-    public func removeHandler(_ handler: AnyObject) {
+    func removeHandler(_ handler: AnyObject) {
         guard let handler = handler as? DbClosureHandler<UIControl> else { return }
         removeTarget(handler, action: DbClosureHandlerSelector, for: .allEvents)
         if var handlers = self.handlers {

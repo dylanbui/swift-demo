@@ -12,12 +12,12 @@ private var HandlerKey: UInt8 = 0
 
 internal extension UIGestureRecognizer {
     
-    internal func setHandler<T: UIGestureRecognizer>(_ instance: T, handler: DbClosureHandler<T>) {
+    func setHandler<T: UIGestureRecognizer>(_ instance: T, handler: DbClosureHandler<T>) {
         objc_setAssociatedObject(self, &HandlerKey, handler, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
         handler.control = instance
     }
     
-    internal func handler<T>() -> DbClosureHandler<T> {
+    func handler<T>() -> DbClosureHandler<T> {
         return objc_getAssociatedObject(self, &HandlerKey) as! DbClosureHandler
     }
 }
@@ -27,7 +27,7 @@ public extension UITapGestureRecognizer {
     /**
      Initializes a touch gesture-recognizer with the specificed number of taps, touches and handler
      */
-    public convenience init(taps: Int = 1, touches: Int = 1, handler: @escaping (UITapGestureRecognizer) -> Void) {
+    convenience init(taps: Int = 1, touches: Int = 1, handler: @escaping (UITapGestureRecognizer) -> Void) {
         let handler = DbClosureHandler<UITapGestureRecognizer>(handler: handler)
         self.init(target: handler, action: DbClosureHandlerSelector)
         setHandler(self, handler: handler)
@@ -41,7 +41,7 @@ public extension UILongPressGestureRecognizer {
     /**
      Initializes a long press gesture recognizer with the specificed handler
      */
-    public convenience init(handler: @escaping (UILongPressGestureRecognizer) -> Void) {
+    convenience init(handler: @escaping (UILongPressGestureRecognizer) -> Void) {
         let handler = DbClosureHandler<UILongPressGestureRecognizer>(handler: handler)
         self.init(target: handler, action: DbClosureHandlerSelector)
         setHandler(self, handler: handler)
@@ -53,7 +53,7 @@ public extension UISwipeGestureRecognizer {
     /**
      Initializes a swipe gesture recognizer with the specificed direction and handler
      */
-    public convenience init(direction: UISwipeGestureRecognizerDirection, handler: @escaping (UISwipeGestureRecognizer) -> Void) {
+    convenience init(direction: UISwipeGestureRecognizerDirection, handler: @escaping (UISwipeGestureRecognizer) -> Void) {
         let handler = DbClosureHandler<UISwipeGestureRecognizer>(handler: handler)
         self.init(target: handler, action: DbClosureHandlerSelector)
         setHandler(self, handler: handler)
@@ -66,7 +66,7 @@ public extension UIPanGestureRecognizer {
     /**
      Initializes a pan gesture recognizer with the specificed handler
      */
-    @objc public convenience init(handler: @escaping (UIPanGestureRecognizer) -> Void) {
+    @objc convenience init(handler: @escaping (UIPanGestureRecognizer) -> Void) {
         let handler = DbClosureHandler<UIPanGestureRecognizer>(handler: handler)
         self.init(target: handler, action: DbClosureHandlerSelector)
         setHandler(self, handler: handler)
@@ -78,7 +78,7 @@ public extension UIPinchGestureRecognizer {
     /**
      Initializes a pinch gesture-recognizer with the specificed handler
      */
-    public convenience init(handler: @escaping (UIPinchGestureRecognizer) -> Void) {
+    convenience init(handler: @escaping (UIPinchGestureRecognizer) -> Void) {
         let handler = DbClosureHandler<UIPinchGestureRecognizer>(handler: handler)
         self.init(target: handler, action: DbClosureHandlerSelector)
         setHandler(self, handler: handler)
@@ -90,7 +90,7 @@ public extension UIRotationGestureRecognizer {
     /**
      Initializes a rotation gesture-recognizer with the specificed handler
      */
-    public convenience init(handler: @escaping (UIRotationGestureRecognizer) -> Void) {
+    convenience init(handler: @escaping (UIRotationGestureRecognizer) -> Void) {
         let handler = DbClosureHandler<UIRotationGestureRecognizer>(handler: handler)
         self.init(target: handler, action: DbClosureHandlerSelector)
         setHandler(self, handler: handler)
@@ -102,7 +102,7 @@ public extension UIScreenEdgePanGestureRecognizer {
     /**
      Initializes a screen edge pan gesture-recognizer with the specificed handler
      */
-    public convenience init(handler: @escaping (UIScreenEdgePanGestureRecognizer) -> Void) {
+    convenience init(handler: @escaping (UIScreenEdgePanGestureRecognizer) -> Void) {
         let handler = DbClosureHandler<UIScreenEdgePanGestureRecognizer>(handler: handler)
         self.init(target: handler, action: DbClosureHandlerSelector)
         setHandler(self, handler: handler)

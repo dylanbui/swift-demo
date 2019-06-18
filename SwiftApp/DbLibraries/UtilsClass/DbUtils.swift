@@ -78,6 +78,24 @@ class DbUtils: NSObject
             completion(application.openURL(url!))
         }
     }
+    
+    class func openUrl(_ link: String, completionHandler completion: ((_ success: Bool) -> Void)?)
+    {
+        guard let url = URL.init(string: link) else {
+            completion?(false)
+            return
+        }
+        
+        let application = UIApplication.shared
+        if #available(iOS 10.0, *) {
+            application.open(url, options: [:]) { (isSuccess) in
+                completion?(isSuccess)
+            }
+        } else {
+            // Fallback on earlier versions
+            completion?(application.openURL(url))
+        }
+    }
 
     
     // MARK: - Popup Notification
@@ -86,15 +104,61 @@ class DbUtils: NSObject
     static func showErrorNetwork() -> Void {
         let warning = MessageView.viewFromNib(layout: .cardView)
         //warning.configureTheme(.warning)
-        warning.configureTheme(backgroundColor: UIColor.orange, foregroundColor: .white)
+        warning.configureTheme(backgroundColor: UIColor.blue, foregroundColor: .white)
         warning.configureDropShadow()
         
         //let iconText = ["🤔", "😳", "🙄", "😶"].sm_random()!
         //warning.configureContent(title: "Warning", body: "Network don't connected.", iconText: iconText)
         warning.configureContent(title: "Thông báo", body: "Vui lòng kiểm tra lại kết nối mạng.", iconImage: UIImage(named: "ic_warning_white")!)
         warning.button?.isHidden = true
-        let warningConfig = SwiftMessages.Config()// .defaultConfig
-        // warningConfig.presentationContext = .window(windowLevel: .statusBar)
+        let warningConfig = SwiftMessages.defaultConfig
+        // warningConfig.preferredStatusBarStyle
+        // warningConfig.preferredStatusBarStyle = .window(windowLevel: UIWindowLevelStatusBar)
+        SwiftMessages.show(config: warningConfig, view: warning)
+
+    }
+    
+//    static func showPropzyFloatingMessage(title: String, msg: String) -> Void {
+//        let warning = MessageView.viewFromNib(layout: .cardView)
+//        //warning.configureTheme(.warning)
+//        warning.configureTheme(backgroundColor: .PROPZY_OGRANGE, foregroundColor: .white)
+//        warning.configureDropShadow()
+//
+//        warning.configureContent(title: title, body: msg, iconImage: UIImage(named: "ic_warning_white")!)
+//        warning.button?.isHidden = true
+//        var warningConfig = SwiftMessages.defaultConfig
+//        warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+//        SwiftMessages.show(config: warningConfig, view: warning)
+//    }
+    
+//    static func showFloatingMessage(title: String, msg: String) -> Void {
+//        let warning = MessageView.viewFromNib(layout: .cardView)
+//        //warning.configureTheme(.warning)
+//        // warning.configureTheme(backgroundColor: .PROPZY_OGRANGE, foregroundColor: .white)
+//        warning.configureDropShadow()
+//
+//        // https://emojipedia.org/apple/
+//        // let iconText = ["🤔", "😳", "🙄", "😶", "👨🏽‍💻"].sm_random()!
+//        warning.configureContent(title: title, body: msg, iconText: "🤔")
+//        // warning.configureContent(title: "Thông báo", body: "Vui lòng kiểm tra lại kết nối mạng.", iconImage: UIImage(named: "ic_warning_white")!)
+//
+//        warning.button?.isHidden = true
+//        var warningConfig = SwiftMessages.defaultConfig
+//        warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
+//        SwiftMessages.show(config: warningConfig, view: warning)
+//    }
+    
+    static func showStatusBarMessage(msg: String) -> Void {
+        let warning = MessageView.viewFromNib(layout: .statusLine)
+        // warning.configureTheme(.warning)
+        warning.configureTheme(backgroundColor: UIColor.blue, foregroundColor: .white)
+        warning.configureDropShadow()
+
+        warning.configureContent(body: msg)
+        
+        // warning.button?.isHidden = true
+        let warningConfig = SwiftMessages.defaultConfig
+        // warningConfig.presentationContext = .window(windowLevel: UIWindowLevelStatusBar)
         SwiftMessages.show(config: warningConfig, view: warning)
     }
     
@@ -233,7 +297,7 @@ class DbUtils: NSObject
         }
         return returnConstraint
     }
-
+    
     static func safeArea() -> UIEdgeInsets {
         if #available(iOS 11.0, *) {
             let window = UIApplication.shared.keyWindow

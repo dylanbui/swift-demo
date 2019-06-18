@@ -12,46 +12,22 @@ import UIKit
 // MARK: - Methods
 public extension UIImageView {
     
-    public func db_transition(toImage image: UIImage?) {
-        UIView.transition(with: self, duration: 0.3, options: [.transitionCrossDissolve], animations: {
-            self.image = image
-        }, completion: nil)
-    }
-    
-    /// Set image from a URL.
-    ///    If image size to large => dont cache
+    /// SwifterSwift: Set image from a URL.
+    ///
     /// - Parameters:
     ///   - url: URL of image.
     ///   - contentMode: imageView content mode (default is .scaleAspectFit).
     ///   - placeHolder: optional placeholder image
-    ///   - cache: cache object
     ///   - completionHandler: optional completion handler to run when download finishs (default is nil).
-    public func db_download(
+    func db_download(
         from url: URL,
-        contentMode: UIViewContentMode? = nil, //  = .scaleAspectFill
+        contentMode: UIViewContentMode = .scaleAspectFit,
         placeholder: UIImage? = nil,
-        cache: URLCache = URLCache.shared,
         completionHandler: ((UIImage?) -> Void)? = nil) {
         
-        if let placeholder = placeholder {
-            self.image = placeholder
-        }
-
-        if let contentMode = contentMode {
-            self.contentMode = contentMode
-        }
-        
-        // -- Get from cache --
-        let request = URLRequest(url: url)
-        if let data = cache.cachedResponse(for: request)?.data, let image = UIImage(data: data) {
-            DispatchQueue.main.async {
-                self.db_transition(toImage: image)
-                completionHandler?(image)
-            }
-            return
-        }
-        // -- Get from URL --
-        URLSession.shared.dataTask(with: request) { (data, response, _) in
+        image = placeholder
+        self.contentMode = contentMode
+        URLSession.shared.dataTask(with: url) { (data, response, _) in
             guard
                 let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
                 let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
@@ -61,13 +37,8 @@ public extension UIImageView {
                     completionHandler?(nil)
                     return
             }
-            
-            // -- Save to cache --
-            let cachedData = CachedURLResponse(response: httpURLResponse, data: data)
-            cache.storeCachedResponse(cachedData, for: request)
-
             DispatchQueue.main.async {
-                self.db_transition(toImage: image)
+                self.image = image
                 completionHandler?(image)
             }
             }.resume()
@@ -76,7 +47,7 @@ public extension UIImageView {
     /// SwifterSwift: Make image view blurry
     ///
     /// - Parameter style: UIBlurEffectStyle (default is .light).
-    public func db_blur(withStyle style: UIBlurEffectStyle = .light) {
+    func db_blur(withStyle style: UIBlurEffectStyle = .light) {
         let blurEffect = UIBlurEffect(style: style)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = bounds
@@ -89,13 +60,13 @@ public extension UIImageView {
     ///
     /// - Parameter style: UIBlurEffectStyle (default is .light).
     /// - Returns: blurred version of self.
-    public func db_blurred(withStyle style: UIBlurEffectStyle = .light) -> UIImageView {
+    func db_blurred(withStyle style: UIBlurEffectStyle = .light) -> UIImageView {
         let imgView = self
         imgView.db_blur(withStyle: style)
         return imgView
     }
     
-    public func db_changeImage(_ toImage: UIImage?, duration: CFTimeInterval = 0.3) -> Void {
+    func db_changeImage(_ toImage: UIImage?, duration: CFTimeInterval = 0.3) -> Void {
         UIView.transition(with: self,
                           duration: duration,
                           options: .transitionCrossDissolve,
@@ -110,25 +81,30 @@ public extension UIImageView {
 public extension UIImage {
     
     /// SwifterSwift: Size in bytes of UIImage
-    public var bytesSize: Int {
+    var db_bytesSize: Int {
         return UIImageJPEGRepresentation(self, 1)?.count ?? 0
     }
     
     /// SwifterSwift: Size in kilo bytes of UIImage
-    public var kilobytesSize: Int {
-        return bytesSize / 1024
+    var db_kilobytesSize: Int {
+        return db_bytesSize / 1024
     }
     
     /// SwifterSwift: UIImage with .alwaysOriginal rendering mode.
-    public var original: UIImage {
+    var db_original: UIImage {
         return withRenderingMode(.alwaysOriginal)
     }
     
     /// SwifterSwift: UIImage with .alwaysTemplate rendering mode.
-    public var template: UIImage {
+    var db_template: UIImage {
         return withRenderingMode(.alwaysTemplate)
     }
     
+    func db_printDebugImage() -> Void
+    {
+        print("Size = \(String(describing: self.size))")
+        print("Size of your image is \(self.db_kilobytesSize) KB")
+    }
 }
 
 // MARK: - Methods
@@ -138,7 +114,7 @@ public extension UIImage {
     ///
     /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
     /// - Returns: optional UIImage (if applicable).
-    public func db_compressed(quality: CGFloat = 0.5) -> UIImage? {
+    func db_compressed(quality: CGFloat = 0.5) -> UIImage? {
         guard let data = db_compressedData(quality: quality) else { return nil }
         return UIImage(data: data)
     }
@@ -147,7 +123,7 @@ public extension UIImage {
     ///
     /// - Parameter quality: The quality of the resulting JPEG image, expressed as a value from 0.0 to 1.0. The value 0.0 represents the maximum compression (or lowest quality) while the value 1.0 represents the least compression (or best quality), (default is 0.5).
     /// - Returns: optional Data (if applicable).
-    public func db_compressedData(quality: CGFloat = 0.5) -> Data? {
+    func db_compressedData(quality: CGFloat = 0.5) -> Data? {
         return UIImageJPEGRepresentation(self, quality)
     }
     
@@ -155,7 +131,7 @@ public extension UIImage {
     ///
     /// - Parameter rect: CGRect to crop UIImage to.
     /// - Returns: cropped UIImage
-    public func db_cropped(to rect: CGRect) -> UIImage {
+    func db_cropped(to rect: CGRect) -> UIImage {
         guard rect.size.height < size.height && rect.size.height < size.height else { return self }
         guard let image: CGImage = cgImage?.cropping(to: rect) else { return self }
         return UIImage(cgImage: image)
@@ -167,7 +143,7 @@ public extension UIImage {
     ///   - toHeight: new height.
     ///   - opaque: flag indicating whether the bitmap is opaque.
     /// - Returns: optional scaled UIImage (if applicable).
-    public func db_scaled(toHeight: CGFloat, opaque: Bool = false) -> UIImage? {
+    func db_scaled(toHeight: CGFloat, opaque: Bool = false) -> UIImage? {
         let scale = toHeight / size.height
         let newWidth = size.width * scale
         UIGraphicsBeginImageContextWithOptions(CGSize(width: newWidth, height: toHeight), opaque, 0)
@@ -183,7 +159,7 @@ public extension UIImage {
     ///   - toWidth: new width.
     ///   - opaque: flag indicating whether the bitmap is opaque.
     /// - Returns: optional scaled UIImage (if applicable).
-    public func db_scaled(toWidth: CGFloat, opaque: Bool = false) -> UIImage? {
+    func db_scaled(toWidth: CGFloat, opaque: Bool = false) -> UIImage? {
         let scale = toWidth / size.width
         let newHeight = size.height * scale
         UIGraphicsBeginImageContextWithOptions(CGSize(width: toWidth, height: newHeight), opaque, 0)
@@ -197,7 +173,7 @@ public extension UIImage {
     ///
     /// - Parameter color: color to fill image with.
     /// - Returns: UIImage filled with given color.
-    public func db_filled(withColor color: UIColor) -> UIImage {
+    func db_filled(withColor color: UIColor) -> UIImage {
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         color.setFill()
         guard let context = UIGraphicsGetCurrentContext() else { return self }
@@ -222,7 +198,7 @@ public extension UIImage {
     ///   - color: color to tint image with.
     ///   - blendMode: how to blend the tint
     /// - Returns: UIImage tinted with given color.
-    public func db_tint(_ color: UIColor, blendMode: CGBlendMode) -> UIImage {
+    func db_tint(_ color: UIColor, blendMode: CGBlendMode) -> UIImage {
         let drawRect = CGRect(x: 0.0, y: 0.0, width: size.width, height: size.height)
         UIGraphicsBeginImageContextWithOptions(size, false, scale)
         let context = UIGraphicsGetCurrentContext()
@@ -240,7 +216,7 @@ public extension UIImage {
     /// - Parameters:
     ///   - radius: corner radius (optional), resulting image will be round if unspecified
     /// - Returns: UIImage with all corners rounded
-    public func db_withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
+    func db_withRoundedCorners(radius: CGFloat? = nil) -> UIImage? {
         let maxRadius = min(size.width, size.height) / 2
         let cornerRadius: CGFloat
         if let radius = radius, radius > 0 && radius <= maxRadius {
@@ -260,7 +236,7 @@ public extension UIImage {
         return image
     }
     
-    public func db_cropCenterToSize(_ targetSize :CGSize) -> UIImage
+    func db_cropCenterToSize(_ targetSize :CGSize) -> UIImage
     {
         // https://stackoverflow.com/questions/32041420/cropping-image-with-swift-and-put-it-on-center-position
         
@@ -299,7 +275,7 @@ public extension UIImage {
     /// - Parameters:
     ///   - color: image fill color.
     ///   - size: image size.
-    public convenience init(color: UIColor, size: CGSize) {
+    convenience init(color: UIColor, size: CGSize) {
         UIGraphicsBeginImageContextWithOptions(size, false, 1)
         
         defer {

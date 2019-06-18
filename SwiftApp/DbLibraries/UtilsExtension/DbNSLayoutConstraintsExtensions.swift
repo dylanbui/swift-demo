@@ -1,9 +1,9 @@
 //
-//  UIViewConstraintsExtensions.swift
-//  SwiftApp
+//  DbNSLayoutConstraintsExtensions.swift
+//  PropzySurvey
 //
 //  Created by Dylan Bui on 2/26/19.
-//  Copyright © 2019 Propzy Viet Nam. All rights reserved.
+//  Copyright © 2019 Dylan Bui. All rights reserved.
 //
 
 import Foundation
@@ -133,3 +133,4 @@ extension UIView {
         db_anchorCenterYToSuperview()
     }
 }
+

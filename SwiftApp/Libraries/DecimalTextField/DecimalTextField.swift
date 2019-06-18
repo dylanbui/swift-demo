@@ -157,14 +157,14 @@ fileprivate extension String
     /// - Parameters:
     ///   - start: string index the slicing should start from.
     ///   - end: string index the slicing should end at.
-    fileprivate mutating func string_slice(from start: Int, to end: Int) {
+    mutating func string_slice(from start: Int, to end: Int) {
         guard end >= start else { return }
         if let str = self[safe: start..<end] {
             self = str
         }
     }
     
-    fileprivate func string_substring(to : Int) -> String {
+    func string_substring(to : Int) -> String {
         let toIndex = self.index(self.startIndex, offsetBy: to)
         return String(self[...toIndex])
     }

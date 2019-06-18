@@ -57,7 +57,7 @@ public extension UIFont{
 
 public extension UIImage
 {
-    public static func icon(from font: IconFonts, code: String, iconColor: UIColor, imageSize: CGSize, ofSize size: CGFloat) -> UIImage
+    static func icon(from font: IconFonts, code: String, iconColor: UIColor, imageSize: CGSize, ofSize size: CGFloat) -> UIImage
     {
         let drawText = String.getIcon(from: font, code: code)
         
@@ -73,98 +73,75 @@ public extension UIImage
         return image!
     }
     
-    public static func fontAwesomeIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
+    static func fontAwesomeIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
         return icon(from: IconFonts.FontAwesome, code: code, iconColor: iconColor, imageSize: CGSize(width: size, height: size), ofSize: size)
     }
     
-    public static func fontOcticon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
+    static func fontOcticon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
         return icon(from: IconFonts.Octicon, code: code, iconColor: iconColor, imageSize: CGSize(width: size, height: size), ofSize: size)
     }
 
-    public static func fontIonIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
+    static func fontIonIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
         return icon(from: IconFonts.Ionicon, code: code, iconColor: iconColor, imageSize: CGSize(width: size, height: size), ofSize: size)
     }
 
-    public static func fontIconicIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
+    static func fontIconicIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
         return icon(from: IconFonts.Iconic, code: code, iconColor: iconColor, imageSize: CGSize(width: size, height: size), ofSize: size)
     }
 
-    public static func fontThemifyIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
+    static func fontThemifyIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
         return icon(from: IconFonts.Themify, code: code, iconColor: iconColor, imageSize: CGSize(width: size, height: size), ofSize: size)
     }
 
-    public static func fontMapIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
+    static func fontMapIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
         return icon(from: IconFonts.MapIcon, code: code, iconColor: iconColor, imageSize: CGSize(width: size, height: size), ofSize: size)
     }
     
-    public static func fontMaterialIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
+    static func fontMaterialIcon(_ code: String, iconColor: UIColor = UIColor.black, ofSize size: CGFloat = 20.0) -> UIImage {
         return icon(from: IconFonts.MaterialIcon, code: code, iconColor: iconColor, imageSize: CGSize(width: size, height: size), ofSize: size)
     }
     
 }
-// Initialization code
-//imgIcon.imageFontMaterialIcon("keyboard.arrow.right", iconColor: UIColor(95, 95, 95))
 
-@IBDesignable
 public extension UIImageView
 {
-    @IBInspectable var iconText: String {
-        get {
-            return ""
-        }
-        set {
-            self.imageFontMaterialIcon(newValue, iconColor: UIColor.black)
-        }
-        
-    }
-//    @IBInspectable var iconColor: UIColor? {
-//        get {
-//            return UIColor(cgColor: self.layer.borderColor!)
-//        }
-//        set {
-//            self.layer.borderColor = newValue?.cgColor
-//        }
-//    }
-    
-    
-    
-    public func imageFontIcon(from font: IconFonts, code: String, iconColor: UIColor) {
+    func imageFontIcon(from font: IconFonts, code: String, iconColor: UIColor) {
         contentMode = .center
         image = UIImage.icon(from: font, code: code, iconColor: iconColor, imageSize: size, ofSize: size.width)
     }
     
-    public func imageFontAwesomeIcon(_ code: String, iconColor: UIColor = UIColor.black) {
+    func imageFontAwesomeIcon(_ code: String, iconColor: UIColor = UIColor.black) {
         imageFontIcon(from: IconFonts.FontAwesome, code: code, iconColor: iconColor)
     }
-    
-    public func imageFontOcticon(_ code: String, iconColor: UIColor) {
+
+    func imageFontOcticon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.Octicon, code: code, iconColor: iconColor)
     }
-    
-    public func imageFontIonIcon(_ code: String, iconColor: UIColor) {
+
+    func imageFontIonIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.Ionicon, code: code, iconColor: iconColor)
     }
-    
-    public func imageFontIconicIcon(_ code: String, iconColor: UIColor) {
+
+    func imageFontIconicIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.Iconic, code: code, iconColor: iconColor)
     }
-    
-    public func imageFontThemifyIcon(_ code: String, iconColor: UIColor) {
+
+    func imageFontThemifyIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.Themify, code: code, iconColor: iconColor)
     }
     
-    public func imageFontMapIcon(_ code: String, iconColor: UIColor) {
+    func imageFontMapIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.MapIcon, code: code, iconColor: iconColor)
     }
     
-    public func imageFontMaterialIcon(_ code: String, iconColor: UIColor) {
+    func imageFontMaterialIcon(_ code: String, iconColor: UIColor) {
         imageFontIcon(from: IconFonts.MaterialIcon, code: code, iconColor: iconColor)
     }
 }
 
 public extension String {
     
-    public static func getIcon(from font: IconFonts, code: String) -> String? {
+    static func getIcon(from font: IconFonts, code: String) -> String? {
         switch font {
         case .FontAwesome:
             return fontAwesomeIcon(code)
@@ -183,28 +160,28 @@ public extension String {
         }
     }
     
-    public static func fontAwesomeIcon(_ code: String) -> String? {
+    static func fontAwesomeIcon(_ code: String) -> String? {
         if let icon = fontAwesomeIconArr[code] {
             return icon
         }
         return nil
     }
     
-    public static func fontOcticon(_ code: String) -> String? {
+    static func fontOcticon(_ code: String) -> String? {
         if let icon = octiconArr[code] {
             return icon
         }
         return nil
     }
     
-    public static func fontIonIcon(_ code: String) -> String? {
+    static func fontIonIcon(_ code: String) -> String? {
         if let icon = ioniconArr[code] {
             return icon
         }
         return nil
     }
     
-    public static func fontIconicIcon(_ code: String) -> String? {
+    static func fontIconicIcon(_ code: String) -> String? {
         if let icon = iconicIconArr[code] {
             return icon
         }
@@ -212,21 +189,21 @@ public extension String {
     }
     
     
-    public static func fontThemifyIcon(_ code: String) -> String? {
+    static func fontThemifyIcon(_ code: String) -> String? {
         if let icon = temifyIconArr[code] {
             return icon
         }
         return nil
     }
     
-    public static func fontMapIcon(_ code: String) -> String? {
+    static func fontMapIcon(_ code: String) -> String? {
         if let icon = mapIconArr[code] {
             return icon
         }
         return nil
     }
     
-    public static func fontMaterialIcon(_ code: String) -> String? {
+    static func fontMaterialIcon(_ code: String) -> String? {
         if let icon = materialIconArr[code] {
             return icon
         }

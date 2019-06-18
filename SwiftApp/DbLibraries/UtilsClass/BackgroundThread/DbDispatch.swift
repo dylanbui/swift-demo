@@ -56,18 +56,19 @@ public struct DbGroup {
     public func leave() {
         group.leave()
     }
-    
-    public mutating func enterOnce() {
-        enter()
-        onceToken = 1
-    }
-    
-    @discardableResult
-    public mutating func leaveOnce() -> Bool {
-        guard OSAtomicCompareAndSwapInt(1, 0, &onceToken) else { return false }
-        leave()
-        return true
-    }
+
+    // -- DucBui 21/01/2019: Remove from ios > 10 --
+//    public mutating func enterOnce() {
+//        enter()
+//        onceToken = 1
+//    }
+//
+//    @discardableResult
+//    public mutating func leaveOnce() -> Bool {
+//        guard OSAtomicCompareAndSwapInt(1, 0, &onceToken) else { return false }
+//        leave()
+//        return true
+//    }
     
     @discardableResult
     public func async(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbGroup {
@@ -141,35 +142,35 @@ public extension DbDispatch {
     
     //MARK: - Static methods
     @discardableResult
-    public static func asyncMain(_ closure: @escaping DbDispatchClosure) -> DbDispatch {
+    static func asyncMain(_ closure: @escaping DbDispatchClosure) -> DbDispatch {
         return DbDispatch.async(DbQueue.main,  closure: closure)
     }
 
     @discardableResult
-    public static func asyncBg(_ closure: @escaping DbDispatchClosure) -> DbDispatch {
+    static func asyncBg(_ closure: @escaping DbDispatchClosure) -> DbDispatch {
         return DbDispatch.async(DbQueue.global(.background), closure: closure)
         
     }
     
     @discardableResult
-    public static func async(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
+    static func async(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
         let dispatch = DbDispatch(closure)
         queue.async(execute: dispatch.currentItem)
         return dispatch
     }
     
     @discardableResult
-    public static func syncMain(_ closure: @escaping DbDispatchClosure) -> DbDispatch {
+    static func syncMain(_ closure: @escaping DbDispatchClosure) -> DbDispatch {
         return DbDispatch.sync(DbQueue.main, closure: closure)
     }
     
     @discardableResult
-    public static func syncBg(_ closure: @escaping DbDispatchClosure) -> DbDispatch {
+    static func syncBg(_ closure: @escaping DbDispatchClosure) -> DbDispatch {
         return DbDispatch.sync(DbQueue.global(.background), closure: closure)
     }
     
     @discardableResult
-    public static func sync(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
+    static func sync(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
         let dispatch = DbDispatch(closure)
         if (queue == DbQueue.main) && Thread.isMainThread {
             dispatch.currentItem.perform()
@@ -180,12 +181,12 @@ public extension DbDispatch {
     }
     
     @discardableResult
-    public static func after(_ time: TimeInterval, closure: @escaping DbDispatchClosure) -> DbDispatch {
+    static func after(_ time: TimeInterval, closure: @escaping DbDispatchClosure) -> DbDispatch {
         return after(time, queue: DbQueue.main, closure: closure)
     }
     
     @discardableResult
-    public static func after(_ time: TimeInterval, queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
+    static func after(_ time: TimeInterval, queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
         let dispatch = DbDispatch(closure)
         queue.asyncAfter(deadline: DispatchTime.now() + Double(getTimeout(time)) / Double(NSEC_PER_SEC), execute: dispatch.currentItem)
         return dispatch
@@ -193,22 +194,22 @@ public extension DbDispatch {
     
     //MARK: - Instance methods
     @discardableResult
-    public func async(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
+    func async(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
         return chainClosure(queue: queue, closure: closure)
     }
     
     @discardableResult
-    public func after(_ time: TimeInterval, closure: @escaping DbDispatchClosure) -> DbDispatch {
+    func after(_ time: TimeInterval, closure: @escaping DbDispatchClosure) -> DbDispatch {
         return after(time, queue: DbQueue.main, closure: closure)
     }
     
     @discardableResult
-    public func after(_ time: TimeInterval, queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
+    func after(_ time: TimeInterval, queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
         return chainClosure(time, queue: queue, closure: closure)
     }
     
     @discardableResult
-    public func sync(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
+    func sync(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) -> DbDispatch {
         let syncWrapper: DbDispatchClosure = {
             queue.sync(execute: closure)
         }
@@ -236,29 +237,29 @@ public extension DbDispatch {
 
 public extension DbDispatch {
     
-    public static func barrierAsync(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) {
+    static func barrierAsync(_ queue: DispatchQueue, closure: @escaping DbDispatchClosure) {
         queue.async(flags: .barrier, execute: closure)
     }
     
-    public static func barrierSync(_ queue: DispatchQueue, closure: DbDispatchClosure) {
+    static func barrierSync(_ queue: DispatchQueue, closure: DbDispatchClosure) {
         queue.sync(flags: .barrier, execute: closure)
     }
     
-    public static func apply(_ iterations: Int, queue: DispatchQueue, closure: @escaping DbDispatchApplyClosure) {
+    static func apply(_ iterations: Int, queue: DispatchQueue, closure: @escaping DbDispatchApplyClosure) {
         queue.async {
             DispatchQueue.concurrentPerform(iterations: iterations, execute: closure)
         }
     }
     
-    public static func time(_ timeout: TimeInterval) -> DispatchTime {
+    static func time(_ timeout: TimeInterval) -> DispatchTime {
         return dispatchTimeCalc(timeout)
     }
     
-    public static var group: DbGroup {
+    static var group: DbGroup {
         return DbGroup()
     }
     
-    public static func semaphore(_ value: Int = 0) -> DbSemaphore {
+    static func semaphore(_ value: Int = 0) -> DbSemaphore {
         return DbSemaphore(value: value)
     }
     
@@ -267,17 +268,17 @@ public extension DbDispatch {
 //MARK: - Block methods
 
 public extension DbDispatch {
-    public func cancel() {
+    func cancel() {
         currentItem.cancel()
     }
     
     @discardableResult
-    public func wait() -> DispatchTimeoutResult {
+    func wait() -> DispatchTimeoutResult {
         return currentItem.wait(timeout: DispatchTime.distantFuture)
     }
     
     @discardableResult
-    public func wait(_ timeout: TimeInterval) -> DispatchTimeoutResult {
+    func wait(_ timeout: TimeInterval) -> DispatchTimeoutResult {
         return currentItem.wait(timeout: dispatchTimeCalc(timeout))
     }
 }
@@ -288,7 +289,7 @@ public extension DispatchQueue
 {
     private static var _onceTracker = [String]()
     
-    public class func once(token: String, block:() -> Void)
+    class func once(token: String, block:() -> Void)
     {
         objc_sync_enter(self); defer { objc_sync_exit(self) }
         

@@ -30,7 +30,7 @@ class EditRealmViewController: UIViewController
 //            print("Khong tim thay du lieu")
 //        }
         
-        guard let item = TaskItem.er.db_fromRealm(with: self.autoId) else {
+        guard let item = TaskItem.er.db_get(withPrimaryKey: self.autoId) else {
             self.lblAutoId.text = "Khong tim thay du lieu"
             print("autoId = \(String(describing: self.autoId))")
             return

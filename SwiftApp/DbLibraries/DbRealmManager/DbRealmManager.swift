@@ -171,33 +171,6 @@ public class DbRealmManager {
 }
 
 extension DbRealmManager {
-    
-    public class func fetchSysn(model: String, condition: String?, order: String?) -> Results<Object> {
-        let realm = try! Realm()
-        
-        return fetchSysnWithRealm(model: model, realm: realm, condition: condition, order: order)
-    }
-    
-    ///MARK: FilePrivates
-    fileprivate class func fetchSysnWithRealm(model: String, realm: Realm, condition: String?, order: String?) -> Results<Object> {
-        // All object inside the model passed.
-        var fetchedObjects = realm.objects(swiftClassFromString(className: model) as! Object.Type)
-        
-        if let cond = condition {
-            // filters the result if condition exists
-            fetchedObjects = fetchedObjects.filter(cond)
-        }
-        
-        if let orderFilter = order {
-            // sorted the result if orderField exists
-            fetchedObjects = fetchedObjects.sorted(byKeyPath: orderFilter)
-        }
-        
-        return fetchedObjects
-    }
-}
-
-extension DbRealmManager {
     ///MARK: FilePrivates
     fileprivate class func fetchWithRealm(model: String, realm: Realm, condition: String?, completionHandler:@escaping(_ result: Results<Object>) -> Void) {
         //NOTE: threading for this function shall be user's preference because

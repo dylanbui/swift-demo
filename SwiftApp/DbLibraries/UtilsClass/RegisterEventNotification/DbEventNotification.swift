@@ -8,16 +8,6 @@
 
 import Foundation
 
-//@objc protocol DbEventProtocol {
-//
-//    func startEvent(_ notification: DbNotification) -> Void
-//    func cancelEvent() -> Void;
-//    func eventRunBackgroundMode() -> [String]
-//
-//    @objc optional func eventPriority() -> Int
-//    @objc optional func eventGroup() -> String
-//}
-
 typealias DbEventRegisterID = Int
 
 // -- Protocol for AnyObject --
@@ -26,7 +16,7 @@ protocol DbEventProtocol : AnyObject {
     var eventID: DbEventRegisterID { get set }      //read-write
     
     func startEvent(_ notification: Notification) -> Void
-    func cancelEvent() -> Void;
+    func cancelEvent() -> Void
     func eventRunBackgroundMode() -> [Notification.Name]
     
     func eventPriority() -> Int
@@ -79,6 +69,7 @@ class DbEventNotification {
         self.arrEventRegisted = [];
         // -- Default system mode --
         self.arrSupportMode = [
+            .MyApplicationIsReady,
             .UIApplicationDidFinishLaunching,
             .UIApplicationDidEnterBackground,
             .UIApplicationWillEnterForeground,

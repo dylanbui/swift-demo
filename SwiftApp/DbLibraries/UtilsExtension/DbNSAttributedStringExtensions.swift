@@ -32,27 +32,27 @@ import Foundation
 public extension NSAttributedString {
     
     /// SwifterSwift: Bolded string.
-    public var db_bolded: NSAttributedString {
+    var db_bolded: NSAttributedString {
         return applying(attributes: [.font: UIFont.boldSystemFont(ofSize: UIFont.systemFontSize)])
     }
     
     /// SwifterSwift: Underlined string.
-    public var db_underlined: NSAttributedString {
+    var db_underlined: NSAttributedString {
         return applying(attributes: [.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
     }
     
     /// SwifterSwift: Italicized string.
-    public var db_italicized: NSAttributedString {
+    var db_italicized: NSAttributedString {
         return applying(attributes: [.font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)])
     }
     
     /// SwifterSwift: Struckthrough string.
-    public var db_struckthrough: NSAttributedString {
+    var db_struckthrough: NSAttributedString {
         return applying(attributes: [.strikethroughStyle: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int)])
     }
     
     /// SwifterSwift: Dictionary of the attributes applied across the whole string
-    public var db_attributes: [NSAttributedStringKey: Any] {
+    var db_attributes: [NSAttributedStringKey: Any] {
         return attributes(at: 0, effectiveRange: nil)
     }
     
@@ -83,7 +83,7 @@ public extension NSAttributedString {
     ///
     /// - Parameter color: text color.
     /// - Returns: a NSAttributedString colored with given color.
-    public func db_colored(with color: UIColor) -> NSAttributedString {
+    func db_colored(with color: UIColor) -> NSAttributedString {
         return applying(attributes: [.foregroundColor: color])
     }
     
@@ -93,7 +93,7 @@ public extension NSAttributedString {
     ///   - attributes: Dictionary of attributes
     ///   - pattern: a regular expression to target
     /// - Returns: An NSAttributedString with attributes applied to substrings matching the pattern
-    public func db_applying(attributes: [NSAttributedStringKey: Any], toRangesMatching pattern: String) -> NSAttributedString {
+    func db_applying(attributes: [NSAttributedStringKey: Any], toRangesMatching pattern: String) -> NSAttributedString {
         guard let pattern = try? NSRegularExpression(pattern: pattern, options: []) else { return self }
         
         let matches = pattern.matches(in: string, options: [], range: NSRange(0..<length))
@@ -112,7 +112,7 @@ public extension NSAttributedString {
     ///   - attributes: Dictionary of attributes
     ///   - target: a subsequence string for the attributes to be applied to
     /// - Returns: An NSAttributedString with attributes applied on the target string
-    public func db_applying<T: StringProtocol>(attributes: [NSAttributedStringKey: Any], toOccurrencesOf target: T) -> NSAttributedString {
+    func db_applying<T: StringProtocol>(attributes: [NSAttributedStringKey: Any], toOccurrencesOf target: T) -> NSAttributedString {
         let pattern = "\\Q\(target)\\E"
         
         return db_applying(attributes: attributes, toRangesMatching: pattern)
@@ -127,7 +127,7 @@ public extension NSAttributedString {
     /// - Parameters:
     ///   - lhs: NSAttributedString to add to.
     ///   - rhs: NSAttributedString to add.
-    public static func += (lhs: inout NSAttributedString, rhs: NSAttributedString) {
+    static func += (lhs: inout NSAttributedString, rhs: NSAttributedString) {
         let string = NSMutableAttributedString(attributedString: lhs)
         string.append(rhs)
         lhs = string
@@ -139,7 +139,7 @@ public extension NSAttributedString {
     ///   - lhs: NSAttributedString to add.
     ///   - rhs: NSAttributedString to add.
     /// - Returns: New instance with added NSAttributedString.
-    public static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
+    static func + (lhs: NSAttributedString, rhs: NSAttributedString) -> NSAttributedString {
         let string = NSMutableAttributedString(attributedString: lhs)
         string.append(rhs)
         return NSAttributedString(attributedString: string)
@@ -150,7 +150,7 @@ public extension NSAttributedString {
     /// - Parameters:
     ///   - lhs: NSAttributedString to add to.
     ///   - rhs: String to add.
-    public static func += (lhs: inout NSAttributedString, rhs: String) {
+    static func += (lhs: inout NSAttributedString, rhs: String) {
         lhs += NSAttributedString(string: rhs)
     }
     
@@ -160,7 +160,7 @@ public extension NSAttributedString {
     ///   - lhs: NSAttributedString to add.
     ///   - rhs: String to add.
     /// - Returns: New instance with added NSAttributedString.
-    public static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
+    static func + (lhs: NSAttributedString, rhs: String) -> NSAttributedString {
         return lhs + NSAttributedString(string: rhs)
     }
     
@@ -183,11 +183,11 @@ if let range = attributedString.string.range(of: "12345") {
 
 public extension NSMutableAttributedString {
     
-    public func db_addAttribute(_ name: NSAttributedStringKey, value: Any, matchOfString: String) {
+    func db_addAttribute(_ name: NSAttributedStringKey, value: Any, matchOfString: String) {
         db_addAttributes([name: value], matchOfString: matchOfString)
     }
     
-    public func db_addAttributes(_ attrs: [NSAttributedStringKey : Any] = [:], matchOfString: String) {
+    func db_addAttributes(_ attrs: [NSAttributedStringKey : Any] = [:], matchOfString: String) {
         // NSRange(range, in: )
         if let range = self.string.range(of: matchOfString)  {
             addAttributes(attrs, range: NSRange(range, in: self.string))

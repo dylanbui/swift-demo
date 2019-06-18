@@ -9,38 +9,60 @@
 // MARK: - Methods
 public extension Dictionary {
     
-    public func db_string(key: Key) -> String {
+    func db_string(key: Key) -> String {
         return db_string(key: key, default: "")
     }
     
-    public func db_string(key: Key, default def: String ) -> String {
+    func db_string(key: Key, default def: String ) -> String {
         if let val = self[key] as? String {
             return val
         }
         return def
     }
     
-    public func db_float(key: Key) -> Float {
+    func db_float(key: Key) -> Float {
         return db_float(key: key, default: 0)
     }
     
-    public func db_float(key: Key, default def: Float ) -> Float {
+    func db_float(key: Key, default def: Float ) -> Float {
         if let val = self[key] as? Float {
             return val
         }
         return def
     }
     
-    public func db_int(key: Key) -> Int {
+    func db_double(key: Key) -> Double {
+        return db_double(key: key, default: 0)
+    }
+    
+    func db_double(key: Key, default def: Double ) -> Double {
+        if let val = self[key] as? Double {
+            return val
+        }
+        return def
+    }
+    
+    func db_int(key: Key) -> Int {
         return db_int(key: key, default: 0)
     }
     
-    public func db_int(key: Key, default def: Int ) -> Int {
+    func db_int(key: Key, default def: Int ) -> Int {
         if let val = self[key] as? Int {
             return val
         }
         return def
         //return index(forKey: key) != nil ? self[key] as! Int : def
+    }
+    
+    func db_bool(key: Key) -> Bool {
+        return db_bool(key: key, default: false)
+    }
+    
+    func db_bool(key: Key, default def: Bool) -> Bool {
+        if let val = self[key] as? Bool {
+            return val
+        }
+        return def
     }
     
     /// SwifterSwift: Check if key exists in dictionary.
@@ -51,7 +73,7 @@ public extension Dictionary {
     ///
     /// - Parameter key: key to search for
     /// - Returns: true if key exists in dictionary.
-    public func db_has(key: Key) -> Bool {
+    func db_has(key: Key) -> Bool {
         return index(forKey: key) != nil
     }
     
@@ -64,7 +86,7 @@ public extension Dictionary {
     ///        dict.keys.contains("key2") -> false
     ///
     /// - Parameter keys: keys to be removed
-    public mutating func db_removeAll(keys: [Key]) {
+    mutating func db_removeAll(keys: [Key]) {
         keys.forEach({ removeValue(forKey: $0)})
     }
     
@@ -72,7 +94,7 @@ public extension Dictionary {
     ///
     /// - Parameter prettify: set true to prettify data (default is false).
     /// - Returns: optional JSON Data (if applicable).
-    public func db_jsonData(prettify: Bool = false) -> Data? {
+    func db_jsonData(prettify: Bool = false) -> Data? {
         guard JSONSerialization.isValidJSONObject(self) else {
             return nil
         }
@@ -103,7 +125,7 @@ public extension Dictionary {
     ///
     /// - Parameter prettify: set true to prettify string (default is false).
     /// - Returns: optional JSON String (if applicable).
-    public func db_jsonString(prettify: Bool = false) -> String? {
+    func db_jsonString(prettify: Bool = false) -> String? {
         guard JSONSerialization.isValidJSONObject(self) else {
             return nil
         }
@@ -116,7 +138,7 @@ public extension Dictionary {
     ///
     /// - Parameter where: condition to evaluate each tuple entry against.
     /// - Returns: Count of entries that matches the where clousure.
-    public func db_count(where condition: @escaping ((key: Key, value: Value)) throws -> Bool) rethrows -> Int {
+    func db_count(where condition: @escaping ((key: Key, value: Value)) throws -> Bool) rethrows -> Int {
         var count: Int = 0
         try self.forEach {
             if try condition($0) {
@@ -143,7 +165,7 @@ public extension Dictionary {
     ///   - lhs: dictionary
     ///   - rhs: dictionary
     /// - Returns: An dictionary with keys and values from both.
-    public static func + (lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
+    static func + (lhs: [Key: Value], rhs: [Key: Value]) -> [Key: Value] {
         var result = lhs
         rhs.forEach { result[$0] = $1 }
         return result
@@ -162,7 +184,7 @@ public extension Dictionary {
     /// - Parameters:
     ///   - lhs: dictionary
     ///   - rhs: dictionary
-    public static func += (lhs: inout [Key: Value], rhs: [Key: Value]) {
+    static func += (lhs: inout [Key: Value], rhs: [Key: Value]) {
         rhs.forEach { lhs[$0] = $1}
     }
     
@@ -178,7 +200,7 @@ public extension Dictionary {
     ///   - lhs: dictionary
     ///   - rhs: array with the keys to be removed.
     /// - Returns: a new dictionary with keys removed.
-    public static func - (lhs: [Key: Value], keys: [Key]) -> [Key: Value] {
+    static func - (lhs: [Key: Value], keys: [Key]) -> [Key: Value] {
         var result = lhs
         result.db_removeAll(keys: keys)
         return result
@@ -195,7 +217,7 @@ public extension Dictionary {
     /// - Parameters:
     ///   - lhs: dictionary
     ///   - rhs: array with the keys to be removed.
-    public static func -= (lhs: inout [Key: Value], keys: [Key]) {
+    static func -= (lhs: inout [Key: Value], keys: [Key]) {
         lhs.db_removeAll(keys: keys)
     }
     
@@ -210,7 +232,7 @@ public extension Dictionary where Key: ExpressibleByStringLiteral {
     ///        dict.lowercaseAllKeys()
     ///        print(dict) // prints "["testkey": "value"]"
     ///
-    public mutating func db_lowercaseAllKeys() {
+    mutating func db_lowercaseAllKeys() {
         // http://stackoverflow.com/questions/33180028/extend-dictionary-where-key-is-of-type-string
         for key in keys {
             if let lowercaseKey = String(describing: key).lowercased() as? Key {

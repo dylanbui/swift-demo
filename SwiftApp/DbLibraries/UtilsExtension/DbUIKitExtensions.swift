@@ -14,7 +14,7 @@ public extension UITextField {
     /// - emailAddress: UITextField is used to enter email addresses.
     /// - password: UITextField is used to enter passwords.
     /// - generic: UITextField is used to enter generic text.
-    public enum DbTextType {
+    enum DbTextType {
         case emailAddress
         case password
         case generic
@@ -26,7 +26,7 @@ public extension UITextField {
 public extension UITextField {
     
     /// SwifterSwift: Set textField for common text types.
-    public var textType: DbTextType {
+    var textType: DbTextType {
         get {
             if keyboardType == .emailAddress {
                 return .emailAddress
@@ -59,20 +59,20 @@ public extension UITextField {
     }
     
     /// SwifterSwift: Check if text field is empty.
-    public var isEmpty: Bool {
+    var isEmpty: Bool {
         return text?.isEmpty == true
     }
     
-    public var isPhoneNumber: Bool {
+    var isPhoneNumber: Bool {
         return text?.db_isPhoneNumber == true
     }
     
-    public var isEmail: Bool {
+    var isEmail: Bool {
         return text?.db_isEmail == true
     }
     
     /// SwifterSwift: Return text with no spaces or new lines in beginning and end.
-    public var trimmedText: String? {
+    var trimmedText: String? {
         return text?.trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
@@ -84,7 +84,7 @@ public extension UITextField {
     ///        textField.text = "swifterswift"
     ///        textField.hasValidEmail -> false
     ///
-    public var hasValidEmail: Bool {
+    var hasValidEmail: Bool {
         // http://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
         return text!.range(of: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}",
                            options: String.CompareOptions.regularExpression,
@@ -92,7 +92,7 @@ public extension UITextField {
     }
     
     /// SwifterSwift: Left view tint color.
-    @IBInspectable public var leftViewTintColor: UIColor? {
+    @IBInspectable var leftViewTintColor: UIColor? {
         get {
             guard let iconView = leftView as? UIImageView else { return nil }
             return iconView.tintColor
@@ -105,7 +105,7 @@ public extension UITextField {
     }
     
     /// SwifterSwift: Right view tint color.
-    @IBInspectable public var rightViewTintColor: UIColor? {
+    @IBInspectable var rightViewTintColor: UIColor? {
         get {
             guard let iconView = rightView as? UIImageView else { return nil }
             return iconView.tintColor
@@ -123,7 +123,7 @@ public extension UITextField {
 public extension UITextField {
     
     /// SwifterSwift: Clear text.
-    public func db_clear() {
+    func db_clear() {
         text = ""
         attributedText = NSAttributedString(string: "")
     }
@@ -131,7 +131,7 @@ public extension UITextField {
     /// SwifterSwift: Set placeholder text color.
     ///
     /// - Parameter color: placeholder text color.
-    public func db_setPlaceHolderTextColor(_ color: UIColor) {
+    func db_setPlaceHolderTextColor(_ color: UIColor) {
         guard let holder = placeholder, !holder.isEmpty else { return }
         self.attributedPlaceholder = NSAttributedString(string: holder, attributes: [.foregroundColor: color])
     }
@@ -139,7 +139,7 @@ public extension UITextField {
     /// SwifterSwift: Add padding to the left of the textfield rect.
     ///
     /// - Parameter padding: amount of padding to apply to the left of the textfield rect.
-    public func db_addPaddingLeft(_ padding: CGFloat) {
+    func db_addPaddingLeft(_ padding: CGFloat) {
         let paddingView = UIView(frame: CGRect(x: 0, y: 0, width: padding, height: frame.height))
         leftView = paddingView
         leftViewMode = .always
@@ -150,7 +150,7 @@ public extension UITextField {
     /// - Parameters:
     ///   - image: left image
     ///   - padding: amount of padding between icon and the left of textfield
-    public func db_addPaddingLeftIcon(_ image: UIImage, padding: CGFloat) {
+    func db_addPaddingLeftIcon(_ image: UIImage, padding: CGFloat) {
         let imageView = UIImageView(image: image)
         imageView.contentMode = .center
         self.leftView = imageView
@@ -165,7 +165,7 @@ public extension UITextField {
 public extension UILabel {
     
     /// Use same textFadeTransition
-    public var textFade: String? {
+    var textFade: String? {
         get {
             return self.text
         }
@@ -180,7 +180,7 @@ public extension UILabel {
         }
     }
     
-    public var htmlText: String? {
+    var htmlText: String? {
         get {
             return nil
         }
@@ -193,13 +193,13 @@ public extension UILabel {
     }
     
     /// SwifterSwift: Initialize a UILabel with text
-    public convenience init(text: String?) {
+    convenience init(text: String?) {
         self.init()
         self.text = text
     }
     
     /// SwifterSwift: Required height for a label
-    public var db_requiredHeight: CGFloat {
+    var db_requiredHeight: CGFloat {
         let label = UILabel(frame: CGRect(x: 0, y: 0, width: frame.width, height: CGFloat.greatestFiniteMagnitude))
         label.numberOfLines = 0
         label.lineBreakMode = NSLineBreakMode.byWordWrapping
@@ -210,7 +210,7 @@ public extension UILabel {
         return label.frame.height
     }
     
-    func textFadeTransition(_ text: String,_ duration: CFTimeInterval = 0.5) {
+    func db_textFadeTransition(_ text: String,_ duration: CFTimeInterval = 0.5) {
         let animation = CATransition()
         animation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         animation.type = kCATransitionFade
@@ -220,26 +220,34 @@ public extension UILabel {
         self.text = text
     }
     
+    // Recalculation center point after sizeToFit
+    func db_sizeToFit()
+    {
+        let origin = self.center
+        self.sizeToFit()
+        self.center = CGPoint(origin.x, self.center.y)
+    }
+    
 }
 
 // MARK: - UITextView Methods
 public extension UITextView {
     
     /// SwifterSwift: Clear text.
-    public func db_clear() {
+    func db_clear() {
         text = ""
         attributedText = NSAttributedString(string: "")
     }
     
     /// SwifterSwift: Scroll to the bottom of text view
-    public func db_scrollToBottom() {
+    func db_scrollToBottom() {
         let range = NSMakeRange((text as NSString).length - 1, 1)
         scrollRangeToVisible(range)
         
     }
     
     /// SwifterSwift: Scroll to the top of text view
-    public func db_scrollToTop() {
+    func db_scrollToTop() {
         let range = NSMakeRange(0, 1)
         scrollRangeToVisible(range)
     }

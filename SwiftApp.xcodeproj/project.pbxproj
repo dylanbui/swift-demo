@@ -75,6 +75,7 @@
 		BB37B8D422A50148001EB15A /* DbAdvButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB37B8D322A50148001EB15A /* DbAdvButton.swift */; };
 		BB37B8D722A50216001EB15A /* read me.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB37B8D622A50216001EB15A /* read me.txt */; };
 		BB390FD12109B31C0091FB6D /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB390FD02109B31C0091FB6D /* Category.swift */; };
+		BB3E61A922B89A7B004C903D /* DbUIStackViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3E61A722B89A7B004C903D /* DbUIStackViewExtensions.swift */; };
 		BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */; };
 		BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */; };
 		BB3FDBF2217EFD07002D570F /* DbStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB3FDBF0217EFD07002D570F /* DbStackCell.swift */; };
@@ -437,6 +438,7 @@
 		BB37B8D322A50148001EB15A /* DbAdvButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAdvButton.swift; sourceTree = "<group>"; };
 		BB37B8D622A50216001EB15A /* read me.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "read me.txt"; sourceTree = "<group>"; };
 		BB390FD02109B31C0091FB6D /* Category.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		BB3E61A722B89A7B004C903D /* DbUIStackViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIStackViewExtensions.swift; sourceTree = "<group>"; };
 		BB3FDBEC217EFC88002D570F /* DbStackScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbStackScrollView.swift; sourceTree = "<group>"; };
 		BB3FDBEF217EFD06002D570F /* DbStackCellType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStackCellType.swift; sourceTree = "<group>"; };
 		BB3FDBF0217EFD07002D570F /* DbStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStackCell.swift; sourceTree = "<group>"; };
@@ -757,7 +759,6 @@
 				DA5E5B2F5EBA1B32044A92BF /* Pods-SwiftAppTests.debug.xcconfig */,
 				CBB0463E0C5CE0291D490D2A /* Pods-SwiftAppTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -1382,6 +1383,7 @@
 		BBC1114720DB4B4F002B2293 /* UtilsExtension */ = {
 			isa = PBXGroup;
 			children = (
+				BB3E61A722B89A7B004C903D /* DbUIStackViewExtensions.swift */,
 				BB12450D22A8BABD003DF0ED /* DbString+HtmlExtensions.swift */,
 				BB407AC92181821900C8E57F /* DbCommonExtensions.swift */,
 				BB407ACA2181821900C8E57F /* DbNSAttributedStringExtensions.swift */,
@@ -2278,6 +2280,7 @@
 				BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */,
 				BBA1C8EE22532320008FF2FF /* RkAppConstants.swift in Sources */,
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
+				BB3E61A922B89A7B004C903D /* DbUIStackViewExtensions.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
 				BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */,
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,

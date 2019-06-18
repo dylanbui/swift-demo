@@ -20,212 +20,147 @@ import ObjectMapper_Realm
  }
  */
 
-//typealias CellDelegate = Object & Mappable
-
 class DbRealmObject: Object, Mappable
 {
-    //    dynamic var username: NSString?
-    //    var friends: List<User>?
+//    dynamic var username: NSString?
+//    var friends: List<User>?
     
     required convenience init?(map: Map)
     {
         self.init()
-        self.mapping(map: map)
     }
     
     func mapping(map: Map)
     {
-        //        username              <- map["username"]
-        //        friends               <- (map["friends"], ListTransform<User>())
+//        username              <- map["username"]
+//        friends               <- (map["friends"], ListTransform<User>())
     }
     
-//    override class func primaryKey() -> String?
+    // -- Update when exist row --
+    func save() -> Void
+    {
+        // -- Realm save --
+        DbRealmManager.save(T: self)
+    }
+    
+    // Khong su dung
+//    func incID(_ primaryKey: String) -> Int
 //    {
-//        return "autoId"
-//    }
-}
-
-
-//class DbRealmObject: Object, Mappable
-//{
-////    dynamic var username: NSString?
-////    var friends: List<User>?
-//
-//    required convenience init?(map: Map)
-//    {
-//        self.init()
-//    }
-//
-//    func mapping(map: Map)
-//    {
-////        username              <- map["username"]
-////        friends               <- (map["friends"], ListTransform<User>())
-//    }
-//
-//    // -- Update when exist row --
-//    func save() -> Void
-//    {
-//        // -- Realm save --
-//        DbRealmManager.save(T: self)
-//    }
-//
-//    // Khong su dung
-////    func incID(_ primaryKey: String) -> Int
-////    {
-////        // let primaryKey = type(of: self).primaryKey()!
-////        // All object inside the model passed.
-////        let realm = try! Realm()
-////        return (realm.objects(type(of: self)).max(ofProperty: primaryKey) as Int? ?? 0) + 1
-////    }
-////
-////    func saveWithIncId(_ completion: @escaping (_ success : Bool, _ incId: Int) -> Void)
-////    {
-////        let primaryKey = type(of: self).primaryKey()!
-//////        let primaryKey = "incId"
-////
-////        let id = self.incID(primaryKey)
-////        // -- Set id for primary key --
-////        self.setValue(id, forKey: primaryKey)
-////        // -- Realm save --
-////        // DbRealmManager.save(T: self)
-////        DbRealmManager.saveWithCompletion(T: self, completion: { (done) in
-////            completion(done, id)
-////        })
-////
-////    }
-//
-//    func saveWithIncrementID() -> Void
-//    {
-//        self.saveWithIncrementID { (newId) in }
-//    }
-//
-//    // Generate auto-increment id manually
-//    func saveWithIncrementID(completionHandler: @escaping(_ newId: Int) -> Void) -> Void
-//    {
-//        // Get the default Realm
-//        // String(describing: self.classForCoder)
-//        DbRealmManager.fetch(model: String(describing: self.classForCoder), condition: nil) { (results) in
-//            // print("primaryKey = \(type(of: self).primaryKey()!)")
-//            let primaryKey = type(of: self).primaryKey()!
-//
-////            var id: Int = 1
-////            if results.count > 0 {
-////                id = (results.max(ofProperty: primaryKey) as Int? ?? 0) + 1
-////            }
-//
-//            let id: Int = (results.max(ofProperty: primaryKey) as Int? ?? 0) + 1
-//            // -- Set id for primary key --
-//            self.setValue(id, forKey: primaryKey)
-//            // -- Realm save --
-//            // DbRealmManager.save(T: self)
-//            DbRealmManager.saveWithCompletion(T: self, completion: { (done) in
-//                // -- Callback --
-//                completionHandler(id)
-//            })
-//        }
-//    }
-//
-//    /*
-//     let arrObj = DistrictUnit().getAll(fromClass: DistrictUnit.self)
-//     for district: DistrictUnit in arrObj {
-//        print("districtName = \(district.districtName)")
-//     }
-//     */
-//
-//    func sysnGetAll(condition: String? = nil, order: String? = nil) -> [DbRealmObject]?
-//    {
-//        let results = DbRealmManager.fetchSysn(model: String(describing: self.classForCoder), condition: condition, order: order)
-//        let arrayMutable : NSMutableArray = []
-//        for T in results {
-//            arrayMutable.add(T)
-//        }
-//        return (arrayMutable.copy() as! [DbRealmObject])
-//    }
-//
-////    func sysnGetAll<T: DbRealmObject>(condition: String? = nil, order: String? = nil) -> Results<T>
-////    {
-//        //DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: { (success) in })
-////        let Results = DbRealmManager.fetchSysn(model: String(describing: self.classForCoder), condition: condition, order: order)
-////
-////        let arrayMutable : NSMutableArray = []
-////        for T in Results {
-////            arrayMutable.add(T)
-////        }
-////        return (arrayMutable.copy() as! [DbRealmObject])
-//
-//        // All object inside the model passed.
-////        let realm = try! Realm()
-////        var fetchedObjects = realm.objects(cls)
-////        if let cond = condition {
-////            // filters the result if condition exists
-////            fetchedObjects = fetchedObjects.filter(cond)
-////        }
-////        if let order = orderField {
-////            // sorted the result if orderField exists
-////            fetchedObjects = fetchedObjects.sorted(byKeyPath: order)
-////        }
-////        return fetchedObjects
-////    }
-//
-//    func getAll<T: DbRealmObject>(fromClass cls: T.Type, condition: String? = nil, orderField: String? = nil) -> Results<T>
-//    {
-//        //var fetchedObjects = realm.objects(swiftClassFromString(className: model!) as! Object.Type)
-//
+//        // let primaryKey = type(of: self).primaryKey()!
 //        // All object inside the model passed.
 //        let realm = try! Realm()
-//        var fetchedObjects = realm.objects(cls)
-//        if let cond = condition {
-//            // filters the result if condition exists
-//            fetchedObjects = fetchedObjects.filter(cond)
-//        }
-//        if let order = orderField {
-//            // sorted the result if orderField exists
-//            fetchedObjects = fetchedObjects.sorted(byKeyPath: order)
-//        }
-//        return fetchedObjects
+//        return (realm.objects(type(of: self)).max(ofProperty: primaryKey) as Int? ?? 0) + 1
 //    }
 //
-//    /*
-//     // Cach 1
-//     let obj: CityUnit = CityUnit().getObjectById(1) as! CityUnit
-//     print("obj.cityName = \(obj.cityName)")
-//     // Cach 2
-//     guard let obj: CityUnit = CityUnit().getObjectByCondition("cityId = 1") else {
-//        print("Khong tim thay du lieu")
-//        return
-//     }
-//     print("obj.cityName = \(obj.description)")
-//     */
-//    func getObjectById(_ idVal: Any) -> Self?
+//    func saveWithIncId(_ completion: @escaping (_ success : Bool, _ incId: Int) -> Void)
 //    {
-//        var condition : String = ""
 //        let primaryKey = type(of: self).primaryKey()!
-//        if idVal is String {
-//            condition = "\(primaryKey) == '\(idVal)'"
-//        }else{
-//            condition = "\(primaryKey) == \(idVal)"
-//        }
-//        return self.getObjectByCondition(condition)
+////        let primaryKey = "incId"
+//
+//        let id = self.incID(primaryKey)
+//        // -- Set id for primary key --
+//        self.setValue(id, forKey: primaryKey)
+//        // -- Realm save --
+//        // DbRealmManager.save(T: self)
+//        DbRealmManager.saveWithCompletion(T: self, completion: { (done) in
+//            completion(done, id)
+//        })
+//
 //    }
-//
-//    func getObjectByCondition(_ cond: String) -> Self?
-//    {
-//        // All object inside the model passed.
-//        let realm = try! Realm()
-//      //var fetchedObjects = realm.objects(swiftClassFromString(className: model!) as! Object.Type)
-//        let fetchedObjects = realm.objects(type(of: self)).filter(cond)
-//        return fetchedObjects.count > 0 ? fetchedObjects.first : nil
-//    }
-//
-//    func deleteByCondition(_ condition: String)
-//    {
-//        DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: { (success) in })
-//    }
-//
-//    func deleteByCondition(_ condition: String, completionHandler: @escaping(_ success:Bool) -> Void)
-//    {
-//        DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: completionHandler)
-//    }
-//
-//
-//}
+
+    func saveWithIncrementID() -> Void
+    {
+        self.saveWithIncrementID { (newId) in }
+    }
+    
+    // Generate auto-increment id manually
+    func saveWithIncrementID(completionHandler: @escaping(_ newId: Int) -> Void) -> Void
+    {
+        // Get the default Realm
+        // String(describing: self.classForCoder)
+        DbRealmManager.fetch(model: String(describing: self.classForCoder), condition: nil) { (results) in
+            // print("primaryKey = \(type(of: self).primaryKey()!)")
+            let primaryKey = type(of: self).primaryKey()!
+            
+//            var id: Int = 1
+//            if results.count > 0 {
+//                id = (results.max(ofProperty: primaryKey) as Int? ?? 0) + 1
+//            }
+            
+            let id: Int = (results.max(ofProperty: primaryKey) as Int? ?? 0) + 1
+            // -- Set id for primary key --
+            self.setValue(id, forKey: primaryKey)
+            // -- Realm save --
+            // DbRealmManager.save(T: self)
+            DbRealmManager.saveWithCompletion(T: self, completion: { (done) in
+                // -- Callback --
+                completionHandler(id)
+            })
+        }
+    }
+    
+    /*
+     let arrObj = DistrictUnit().getAll(fromClass: DistrictUnit.self)
+     for district: DistrictUnit in arrObj {
+        print("districtName = \(district.districtName)")
+     }
+     */
+    func getAll<T: DbRealmObject>(fromClass cls: T.Type, condition: String? = nil, orderField: String? = nil) -> Results<T>
+    {
+        // All object inside the model passed.
+        let realm = try! Realm()
+        var fetchedObjects = realm.objects(cls)
+        if let cond = condition {
+            // filters the result if condition exists
+            fetchedObjects = fetchedObjects.filter(cond)
+        }
+        if let order = orderField {
+            // sorted the result if orderField exists
+            fetchedObjects = fetchedObjects.sorted(byKeyPath: order)
+        }
+        return fetchedObjects
+    }
+    
+    /*
+     // Cach 1
+     let obj: CityUnit = CityUnit().getObjectById(1) as! CityUnit
+     print("obj.cityName = \(obj.cityName)")
+     // Cach 2
+     guard let obj: CityUnit = CityUnit().getObjectByCondition("cityId = 1") else {
+        print("Khong tim thay du lieu")
+        return
+     }
+     print("obj.cityName = \(obj.description)")
+     */
+    func getObjectById(_ idVal: Any) -> Self?
+    {
+        var condition : String = ""
+        let primaryKey = type(of: self).primaryKey()!
+        if idVal is String {
+            condition = "\(primaryKey) == '\(idVal)'"
+        }else{
+            condition = "\(primaryKey) == \(idVal)"
+        }
+        return self.getObjectByCondition(condition)
+    }
+    
+    func getObjectByCondition(_ cond: String) -> Self?
+    {
+        // All object inside the model passed.
+        let realm = try! Realm()
+        let fetchedObjects = realm.objects(type(of: self)).filter(cond)
+        return fetchedObjects.count > 0 ? fetchedObjects.first : nil
+    }
+    
+    func deleteByCondition(_ condition: String)
+    {
+        DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: { (success) in })
+    }
+    
+    func deleteByCondition(_ condition: String, completionHandler: @escaping(_ success:Bool) -> Void)
+    {
+        DbRealmManager.deleteObjectByCondition(T: self, condition: condition, completionHandler: completionHandler)
+    }
+    
+    
+}

@@ -115,8 +115,8 @@ class DemoDbSelectBoxViewController: BaseViewController
         print("1 = \(view.db.toHienThiTest())")
         print("1 = \(view.toHienThiTest())")
         
-        let a = view.db.x
-        let b = view.x
+        _ = view.db.x
+        _ = view.x
         
         self.selectViewBottomNavigationBar()
         

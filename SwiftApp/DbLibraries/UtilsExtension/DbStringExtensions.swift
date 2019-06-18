@@ -14,7 +14,7 @@ public extension String {
     ///
     ///        "SGVsbG8gV29ybGQh".base64Decoded = Optional("Hello World!")
     ///
-    public var db_base64Decoded: String? {
+    var db_base64Decoded: String? {
         // https://github.com/Reza-Rg/Base64-Swift-Extension/blob/master/Base64.swift
         guard let decodedData = Data(base64Encoded: self) else { return nil }
         return String(data: decodedData, encoding: .utf8)
@@ -24,7 +24,7 @@ public extension String {
     ///
     ///        "Hello World!".base64Encoded -> Optional("SGVsbG8gV29ybGQh")
     ///
-    public var db_base64Encoded: String? {
+    var db_base64Encoded: String? {
         // https://github.com/Reza-Rg/Base64-Swift-Extension/blob/master/Base64.swift
         let plainData = data(using: .utf8)
         return plainData?.base64EncodedString()
@@ -32,7 +32,7 @@ public extension String {
     
     /// SwifterSwift: Array of characters of a string.
     ///
-    public var db_charactersArray: [Character] {
+    var db_charactersArray: [Character] {
         return Array(self)
     }
     
@@ -40,7 +40,7 @@ public extension String {
     ///
     ///        "sOme vAriable naMe".camelCased -> "someVariableName"
     ///
-    public var db_camelCased: String {
+    var db_camelCased: String {
         let source = lowercased()
         let first = source[..<source.index(after: source.startIndex)]
         if source.contains(" ") {
@@ -57,7 +57,7 @@ public extension String {
     ///
     ///        "Hello 😀".containEmoji -> true
     ///
-    public var db_containEmoji: Bool {
+    var db_containEmoji: Bool {
         // http://stackoverflow.com/questions/30757193/find-out-if-character-in-string-is-emoji
         for scalar in unicodeScalars {
             switch scalar.value {
@@ -79,7 +79,7 @@ public extension String {
     ///        "Hello".firstCharacterAsString -> Optional("H")
     ///        "".firstCharacterAsString -> nil
     ///
-    public var db_firstCharacterAsString: String? {
+    var db_firstCharacterAsString: String? {
         guard let first = self.first else { return nil }
         return String(first)
     }
@@ -89,7 +89,7 @@ public extension String {
     ///        "123abc".hasLetters -> true
     ///        "123".hasLetters -> false
     ///
-    public var db_hasLetters: Bool {
+    var db_hasLetters: Bool {
         return rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
     }
     
@@ -98,7 +98,7 @@ public extension String {
     ///        "abcd".hasNumbers -> false
     ///        "123abc".hasNumbers -> true
     ///
-    public var db_hasNumbers: Bool {
+    var db_hasNumbers: Bool {
         return rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
     }
     
@@ -107,7 +107,7 @@ public extension String {
     ///        "abc".isAlphabetic -> true
     ///        "123abc".isAlphabetic -> false
     ///
-    public var db_isAlphabetic: Bool {
+    var db_isAlphabetic: Bool {
         let hasLetters = rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
         let hasNumbers = rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
         return hasLetters && !hasNumbers
@@ -119,7 +119,7 @@ public extension String {
     ///        "123abc".isAlphaNumeric -> true
     ///        "abc".isAlphaNumeric -> false
     ///
-    public var db_isAlphaNumeric: Bool {
+    var db_isAlphaNumeric: Bool {
         let hasLetters = rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
         let hasNumbers = rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
         let comps = components(separatedBy: .alphanumerics)
@@ -130,7 +130,7 @@ public extension String {
     ///
     ///        "john@doe.com".isEmail -> true
     ///
-    public var db_isEmail: Bool {
+    var db_isEmail: Bool {
         // http://stackoverflow.com/questions/25471114/how-to-validate-an-e-mail-address-in-swift
         return db_matches(pattern: "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}")
     }
@@ -139,7 +139,7 @@ public extension String {
     ///
     ///        "https://google.com".isValidUrl -> true
     ///
-    public var db_isValidUrl: Bool {
+    var db_isValidUrl: Bool {
         return URL(string: self) != nil
     }
     
@@ -148,7 +148,7 @@ public extension String {
     ///        "https://google.com".isValidSchemedUrl -> true
     ///        "google.com".isValidSchemedUrl -> false
     ///
-    public var db_isValidSchemedUrl: Bool {
+    var db_isValidSchemedUrl: Bool {
         guard let url = URL(string: self) else { return false }
         return url.scheme != nil
     }
@@ -157,7 +157,7 @@ public extension String {
     ///
     ///        "https://google.com".isValidHttpsUrl -> true
     ///
-    public var db_isValidHttpsUrl: Bool {
+    var db_isValidHttpsUrl: Bool {
         guard let url = URL(string: self) else { return false }
         return url.scheme == "https"
     }
@@ -166,7 +166,7 @@ public extension String {
     ///
     ///        "http://google.com".isValidHttpUrl -> true
     ///
-    public var db_isValidHttpUrl: Bool {
+    var db_isValidHttpUrl: Bool {
         guard let url = URL(string: self) else { return false }
         return url.scheme == "http"
     }
@@ -175,7 +175,7 @@ public extension String {
     ///
     ///        "file://Documents/file.txt".isValidFileUrl -> true
     ///
-    public var db_isValidFileUrl: Bool {
+    var db_isValidFileUrl: Bool {
         return URL(string: self)?.isFileURL ?? false
     }
     
@@ -184,7 +184,7 @@ public extension String {
     ///        "123".isNumeric -> true
     ///        "abc".isNumeric -> false
     ///
-    public var db_isNumeric: Bool {
+    var db_isNumeric: Bool {
         let hasLetters = rangeOfCharacter(from: .letters, options: .numeric, range: nil) != nil
         let hasNumbers = rangeOfCharacter(from: .decimalDigits, options: .literal, range: nil) != nil
         return !hasLetters && hasNumbers
@@ -195,7 +195,7 @@ public extension String {
     ///        "Hello".lastCharacterAsString -> Optional("o")
     ///        "".lastCharacterAsString -> nil
     ///
-    public var db_lastCharacterAsString: String? {
+    var db_lastCharacterAsString: String? {
         guard let last = self.last else { return nil }
         return String(last)
     }
@@ -204,7 +204,7 @@ public extension String {
     ///
     ///        "Hèllö Wórld!".latinized -> "Hello World!"
     ///
-    public var db_latinized: String {
+    var db_latinized: String {
         return folding(options: .diacriticInsensitive, locale: Locale.current)
     }
     
@@ -214,7 +214,7 @@ public extension String {
     ///        "False".bool -> false
     ///        "Hello".bool = nil
     ///
-    public var db_bool: Bool? {
+    var db_bool: Bool? {
         let selfLowercased = db_trimmed.lowercased()
         if selfLowercased == "true" || selfLowercased == "1" {
             return true
@@ -228,7 +228,7 @@ public extension String {
     ///
     ///        "2007-06-29".date -> Optional(Date)
     ///
-    public var db_date: Date? {
+    var db_date: Date? {
         let selfLowercased = db_trimmed.lowercased()
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
@@ -240,7 +240,7 @@ public extension String {
     ///
     ///        "2007-06-29 14:23:09".dateTime -> Optional(Date)
     ///
-    public var db_dateTime: Date? {
+    var db_dateTime: Date? {
         let selfLowercased = db_trimmed.lowercased()
         let formatter = DateFormatter()
         formatter.timeZone = TimeZone.current
@@ -252,7 +252,7 @@ public extension String {
     ///
     ///        "101".int -> 101
     ///
-    public var db_int: Int? {
+    var db_int: Int? {
         return Int(self)
     }
     
@@ -260,7 +260,7 @@ public extension String {
     ///
     /// - Parameter length: number of characters to limit lorem ipsum to (default is 445 - full lorem ipsum).
     /// - Returns: Lorem ipsum dolor sit amet... string.
-    public static func db_loremIpsum(ofLength length: Int = 445) -> String {
+    static func db_loremIpsum(ofLength length: Int = 445) -> String {
         guard length > 0 else { return "" }
         
         // https://www.lipsum.com/
@@ -278,7 +278,7 @@ public extension String {
     ///        "https://google.com".url -> URL(string: "https://google.com")
     ///        "not url".url -> nil
     ///
-    public var db_url: URL? {
+    var db_url: URL? {
         return URL(string: self)
     }
     
@@ -286,7 +286,7 @@ public extension String {
     ///
     ///        "   hello  \n".trimmed -> "hello"
     ///
-    public var db_trimmed: String {
+    var db_trimmed: String {
         return trimmingCharacters(in: .whitespacesAndNewlines)
     }
     
@@ -294,7 +294,7 @@ public extension String {
     ///
     ///        "it's%20easy%20to%20decode%20strings".urlDecoded -> "it's easy to decode strings"
     ///
-    public var db_urlDecoded: String {
+    var db_urlDecoded: String {
         return removingPercentEncoding ?? self
     }
     
@@ -302,7 +302,7 @@ public extension String {
     ///
     ///        "it's easy to encode strings".urlEncoded -> "it's%20easy%20to%20encode%20strings"
     ///
-    public var db_urlEncoded: String {
+    var db_urlEncoded: String {
         return addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
     }
     
@@ -310,7 +310,7 @@ public extension String {
     ///
     ///        "   \n Swifter   \n  Swift  ".withoutSpacesAndNewLines -> "SwifterSwift"
     ///
-    public var db_withoutSpacesAndNewLines: String {
+    var db_withoutSpacesAndNewLines: String {
         return replacingOccurrences(of: " ", with: "").replacingOccurrences(of: "\n", with: "")
     }
     
@@ -323,7 +323,7 @@ public extension String {
     ///
     /// - Parameter locale: Locale (default is Locale.current)
     /// - Returns: Optional Float value from given string.
-    public func db_float(locale: Locale = .current) -> Float? {
+    func db_float(locale: Locale = .current) -> Float? {
         let formatter = NumberFormatter()
         formatter.locale = locale
         formatter.allowsFloats = true
@@ -334,7 +334,7 @@ public extension String {
     ///
     /// - Parameter locale: Locale (default is Locale.current)
     /// - Returns: Optional Double value from given string.
-    public func db_double(locale: Locale = .current) -> Double? {
+    func db_double(locale: Locale = .current) -> Double? {
         let formatter = NumberFormatter()
         formatter.locale = locale
         formatter.allowsFloats = true
@@ -345,7 +345,7 @@ public extension String {
     ///
     /// - Parameter locale: Locale (default is Locale.current)
     /// - Returns: Optional CGFloat value from given string.
-    public func db_cgFloat(locale: Locale = .current) -> CGFloat? {
+    func db_cgFloat(locale: Locale = .current) -> CGFloat? {
         let formatter = NumberFormatter()
         formatter.locale = locale
         formatter.allowsFloats = true
@@ -357,7 +357,7 @@ public extension String {
     ///        "Hello\ntest".lines() -> ["Hello", "test"]
     ///
     /// - Returns: Strings separated by new lines.
-    public func db_lines() -> [String] {
+    func db_lines() -> [String] {
         var result = [String]()
         enumerateLines { line, _ in
             result.append(line)
@@ -369,7 +369,7 @@ public extension String {
     ///
     ///        "Hello world".localized -> Hallo Welt
     ///
-    public func db_localized(comment: String = "") -> String {
+    func db_localized(comment: String = "") -> String {
         return NSLocalizedString(self, comment: comment)
     }
     
@@ -378,7 +378,7 @@ public extension String {
     ///        "This is a test, since e is appearing everywhere e should be the common character".mostCommonCharacter() -> "e"
     ///
     /// - Returns: The most common character.
-    public func db_mostCommonCharacter() -> Character? {
+    func db_mostCommonCharacter() -> Character? {
         let mostCommon = db_withoutSpacesAndNewLines.reduce(into: [Character: Int]()) {
             let count = $0[$1] ?? 0
             $0[$1] = count + 1
@@ -392,7 +392,7 @@ public extension String {
     ///        "SwifterSwift".unicodeArray -> [83, 119, 105, 102, 116, 101, 114, 83, 119, 105, 102, 116]
     ///
     /// - Returns: The unicodes for all characters in a string.
-    public func db_unicodeArray() -> [Int] {
+    func db_unicodeArray() -> [Int] {
         return unicodeScalars.map({ $0.hashValue })
     }
     
@@ -401,7 +401,7 @@ public extension String {
     ///        "Swift is amazing".words() -> ["Swift", "is", "amazing"]
     ///
     /// - Returns: The words contained in a string.
-    public func db_words() -> [String] {
+    func db_words() -> [String] {
         // https://stackoverflow.com/questions/42822838
         let chararacterSet = CharacterSet.whitespacesAndNewlines.union(.punctuationCharacters)
         let comps = components(separatedBy: chararacterSet)
@@ -413,7 +413,7 @@ public extension String {
     ///        "Swift is amazing".wordsCount() -> 3
     ///
     /// - Returns: The count of words contained in a string.
-    public func db_wordCount() -> Int {
+    func db_wordCount() -> Int {
         // https://stackoverflow.com/questions/42822838
         return db_words().count
     }
@@ -424,7 +424,7 @@ public extension String {
     ///        "Hello World!"[20] -> nil
     ///
     /// - Parameter i: index.
-    public subscript(safe i: Int) -> Character? {
+    subscript(safe i: Int) -> Character? {
         guard i >= 0 && i < count else { return nil }
         return self[index(startIndex, offsetBy: i)]
     }
@@ -435,7 +435,7 @@ public extension String {
     ///        "Hello World!"[21..<110] -> nil
     ///
     /// - Parameter range: Half-open range.
-    public subscript(safe range: CountableRange<Int>) -> String? {
+    subscript(safe range: CountableRange<Int>) -> String? {
         guard let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) else { return nil }
         guard let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound, limitedBy: endIndex) else { return nil }
         return String(self[lowerIndex..<upperIndex])
@@ -447,7 +447,7 @@ public extension String {
     ///        "Hello World!"[21...110] -> nil
     ///
     /// - Parameter range: Closed range.
-    public subscript(safe range: ClosedRange<Int>) -> String? {
+    subscript(safe range: ClosedRange<Int>) -> String? {
         guard let lowerIndex = index(startIndex, offsetBy: max(0, range.lowerBound), limitedBy: endIndex) else { return nil }
         guard let upperIndex = index(lowerIndex, offsetBy: range.upperBound - range.lowerBound + 1, limitedBy: endIndex) else { return nil }
         return String(self[lowerIndex..<upperIndex])
@@ -458,7 +458,7 @@ public extension String {
     ///
     ///        "SomeText".copyToPasteboard() // copies "SomeText" to pasteboard
     ///
-    public func db_copyToPasteboard() {
+    func db_copyToPasteboard() {
         #if os(iOS)
             UIPasteboard.general.string = self
         #elseif os(macOS)
@@ -474,13 +474,13 @@ public extension String {
     ///        str.camelize()
     ///        print(str) // prints "someVariableName"
     ///
-    public mutating func db_camelize() {
+    mutating func db_camelize() {
         self = db_camelCased
     }
     
     /// SwifterSwift: Check if string contains only unique characters.
     ///
-    public func db_hasUniqueCharacters() -> Bool {
+    func db_hasUniqueCharacters() -> Bool {
         guard count > 0 else { return false }
         var uniqueChars = Set<String>()
         for char in self {
@@ -499,7 +499,7 @@ public extension String {
     ///   - string: substring to search for.
     ///   - caseSensitive: set true for case sensitive search (default is true).
     /// - Returns: true if string contains one or more instance of substring.
-    public func db_contains(_ string: String, caseSensitive: Bool = true) -> Bool {
+    func db_contains(_ string: String, caseSensitive: Bool = true) -> Bool {
         if !caseSensitive {
             return range(of: string, options: .caseInsensitive) != nil
         }
@@ -515,7 +515,7 @@ public extension String {
     ///   - string: substring to search for.
     ///   - caseSensitive: set true for case sensitive search (default is true).
     /// - Returns: count of appearance of substring in string.
-    public func db_count(of string: String, caseSensitive: Bool = true) -> Int {
+    func db_count(of string: String, caseSensitive: Bool = true) -> Int {
         if !caseSensitive {
             return lowercased().components(separatedBy: string.lowercased()).count - 1
         }
@@ -531,7 +531,7 @@ public extension String {
     ///   - suffix: substring to search if string ends with.
     ///   - caseSensitive: set true for case sensitive search (default is true).
     /// - Returns: true if string ends with substring.
-    public func db_ends(with suffix: String, caseSensitive: Bool = true) -> Bool {
+    func db_ends(with suffix: String, caseSensitive: Bool = true) -> Bool {
         if !caseSensitive {
             return lowercased().hasSuffix(suffix.lowercased())
         }
@@ -544,7 +544,7 @@ public extension String {
     ///        str.latinize()
     ///        print(str) // prints "Hello World!"
     ///
-    public mutating func db_latinize() {
+    mutating func db_latinize() {
         self = db_latinized
     }
     
@@ -554,7 +554,7 @@ public extension String {
     ///
     /// - Parameter length: number of characters in string.
     /// - Returns: random string of given length.
-    public static func db_random(ofLength length: Int) -> String {
+    static func db_random(ofLength length: Int) -> String {
         guard length > 0 else { return "" }
         let base = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
         var randomString = ""
@@ -567,7 +567,7 @@ public extension String {
     }
     
     /// SwifterSwift: Reverse string.
-    public mutating func db_reverse() {
+    mutating func db_reverse() {
         let chars: [Character] = reversed()
         self = String(chars)
     }
@@ -580,7 +580,7 @@ public extension String {
     ///   - i: string index the slicing should start from.
     ///   - length: amount of characters to be sliced after given index.
     /// - Returns: sliced substring of length number of characters (if applicable) (example: "Hello World".slicing(from: 6, length: 5) -> "World")
-    public func db_slicing(from i: Int, length: Int) -> String? {
+    func db_slicing(from i: Int, length: Int) -> String? {
         guard length >= 0, i >= 0, i < count  else { return nil }
         guard i.advanced(by: length) <= count else {
             return self[safe: i..<count]
@@ -598,7 +598,7 @@ public extension String {
     /// - Parameters:
     ///   - i: string index the slicing should start from.
     ///   - length: amount of characters to be sliced after given index.
-    public mutating func db_slice(from i: Int, length: Int) {
+    mutating func db_slice(from i: Int, length: Int) {
         if let str = self.db_slicing(from: i, length: length) {
             self = String(str)
         }
@@ -613,7 +613,7 @@ public extension String {
     /// - Parameters:
     ///   - start: string index the slicing should start from.
     ///   - end: string index the slicing should end at.
-    public mutating func db_slice(from start: Int, to end: Int) {
+    mutating func db_slice(from start: Int, to end: Int) {
         guard end >= start else { return }
         if let str = self[safe: start..<end] {
             self = str
@@ -627,7 +627,7 @@ public extension String {
     ///        print(str) // prints "World"
     ///
     /// - Parameter i: string index the slicing should start from.
-    public mutating func db_slice(at i: Int) {
+    mutating func db_slice(at i: Int) {
         guard i < count else { return }
         if let str = self[safe: i..<count] {
             self = str
@@ -643,7 +643,7 @@ public extension String {
     ///   - suffix: substring to search if string starts with.
     ///   - caseSensitive: set true for case sensitive search (default is true).
     /// - Returns: true if string starts with substring.
-    public func db_starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
+    func db_starts(with prefix: String, caseSensitive: Bool = true) -> Bool {
         if !caseSensitive {
             return lowercased().hasPrefix(prefix.lowercased())
         }
@@ -657,7 +657,7 @@ public extension String {
     ///
     /// - Parameter format: date format.
     /// - Returns: Date object from string (if applicable).
-    public func db_date(withFormat format: String) -> Date? {
+    func db_date(withFormat format: String) -> Date? {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = format
         return dateFormatter.date(from: self)
@@ -669,7 +669,7 @@ public extension String {
     ///        str.trim()
     ///        print(str) // prints "Hello World"
     ///
-    public mutating func db_trim() {
+    mutating func db_trim() {
         self = trimmingCharacters(in: CharacterSet.whitespacesAndNewlines)
     }
     
@@ -682,7 +682,7 @@ public extension String {
     /// - Parameters:
     ///   - toLength: maximum number of characters before cutting.
     ///   - trailing: string to add at the end of truncated string (default is "...").
-    public mutating func db_truncate(toLength length: Int, trailing: String? = "...") {
+    mutating func db_truncate(toLength length: Int, trailing: String? = "...") {
         guard length > 0 else { return }
         if count > length {
             self = self[startIndex..<index(startIndex, offsetBy: length)] + (trailing ?? "")
@@ -698,7 +698,7 @@ public extension String {
     ///   - toLength: maximum number of characters before cutting.
     ///   - trailing: string to add at the end of truncated string.
     /// - Returns: truncated string (this is an extr...).
-    public func db_truncated(toLength length: Int, trailing: String? = "...") -> String {
+    func db_truncated(toLength length: Int, trailing: String? = "...") -> String {
         guard 1..<count ~= length else { return self }
         return self[startIndex..<index(startIndex, offsetBy: length)] + (trailing ?? "")
     }
@@ -709,7 +709,7 @@ public extension String {
     ///        str.urlDecode()
     ///        print(str) // prints "it's easy to decode strings"
     ///
-    public mutating func db_urlDecode() {
+    mutating func db_urlDecode() {
         if let decoded = removingPercentEncoding {
             self = decoded
         }
@@ -721,7 +721,7 @@ public extension String {
     ///        str.urlEncode()
     ///        print(str) // prints "it's%20easy%20to%20encode%20strings"
     ///
-    public mutating func db_urlEncode() {
+    mutating func db_urlEncode() {
         if let encoded = addingPercentEncoding(withAllowedCharacters: .urlHostAllowed) {
             self = encoded
         }
@@ -731,7 +731,7 @@ public extension String {
     ///
     /// - Parameter pattern: Pattern to verify.
     /// - Returns: true if string matches the pattern.
-    public func db_matches(pattern: String) -> Bool {
+    func db_matches(pattern: String) -> Bool {
         return range(of: pattern,
                      options: String.CompareOptions.regularExpression,
                      range: nil, locale: nil) != nil
@@ -744,7 +744,7 @@ public extension String {
     ///
     /// - Parameter length: The target length to pad.
     /// - Parameter string: Pad string. Default is " ".
-    public mutating func db_padStart(_ length: Int, with string: String = " ") {
+    mutating func db_padStart(_ length: Int, with string: String = " ") {
         self = db_paddingStart(length, with: string)
     }
     
@@ -756,7 +756,7 @@ public extension String {
     /// - Parameter length: The target length to pad.
     /// - Parameter string: Pad string. Default is " ".
     /// - Returns: The string with the padding on the start.
-    public func db_paddingStart(_ length: Int, with string: String = " ") -> String {
+    func db_paddingStart(_ length: Int, with string: String = " ") -> String {
         guard count < length else { return self }
         
         let padLength = length - count
@@ -778,7 +778,7 @@ public extension String {
     ///
     /// - Parameter length: The target length to pad.
     /// - Parameter string: Pad string. Default is " ".
-    public mutating func db_padEnd(_ length: Int, with string: String = " ") {
+    mutating func db_padEnd(_ length: Int, with string: String = " ") {
         self = db_paddingEnd(length, with: string)
     }
     
@@ -790,7 +790,7 @@ public extension String {
     /// - Parameter length: The target length to pad.
     /// - Parameter string: Pad string. Default is " ".
     /// - Returns: The string with the padding on the end.
-    public func db_paddingEnd(_ length: Int, with string: String = " ") -> String {
+    func db_paddingEnd(_ length: Int, with string: String = " ") -> String {
         guard count < length else { return self }
         
         let padLength = length - count
@@ -818,7 +818,7 @@ public extension String {
     ///   - lhs: string to repeat.
     ///   - rhs: number of times to repeat character.
     /// - Returns: new string with given string repeated n times.
-    public static func * (lhs: String, rhs: Int) -> String {
+    static func * (lhs: String, rhs: Int) -> String {
         guard rhs > 0 else { return "" }
         return String(repeating: lhs, count: rhs)
     }
@@ -831,7 +831,7 @@ public extension String {
     ///   - lhs: number of times to repeat character.
     ///   - rhs: string to repeat.
     /// - Returns: new string with given string repeated n times.
-    public static func * (lhs: Int, rhs: String) -> String {
+    static func * (lhs: Int, rhs: String) -> String {
         guard lhs > 0 else { return "" }
         return String(repeating: rhs, count: lhs)
     }
@@ -847,7 +847,7 @@ public extension String {
     ///        String(base64: "hello") = nil
     ///
     /// - Parameter base64: base64 string.
-    public init?(base64: String) {
+    init?(base64: String) {
         guard let str = base64.db_base64Decoded else { return nil }
         self.init(str)
     }
@@ -857,7 +857,7 @@ public extension String {
     ///        String(randomOfLength: 10) -> "gY8r3MHvlQ"
     ///
     /// - Parameter length: number of characters in string.
-    public init(randomOfLength length: Int) {
+    init(randomOfLength length: Int) {
         self = String.db_random(ofLength: length)
     }
     
@@ -868,7 +868,7 @@ public extension String {
     
     #if !os(tvOS) && !os(watchOS)
     /// SwifterSwift: Bold string.
-    public var db_bold: NSAttributedString {
+    var db_bold: NSAttributedString {
         #if os(macOS)
             return NSMutableAttributedString(string: self, attributes: [.font: NSFont.boldSystemFont(ofSize: NSFont.systemFontSize)])
         #else
@@ -878,18 +878,18 @@ public extension String {
     #endif
     
     /// SwifterSwift: Underlined string
-    public var db_underline: NSAttributedString {
+    var db_underline: NSAttributedString {
         return NSAttributedString(string: self, attributes: [.underlineStyle: NSUnderlineStyle.styleSingle.rawValue])
     }
     
     /// SwifterSwift: Strikethrough string.
-    public var db_strikethrough: NSAttributedString {
+    var db_strikethrough: NSAttributedString {
         return NSAttributedString(string: self, attributes: [.strikethroughStyle: NSNumber(value: NSUnderlineStyle.styleSingle.rawValue as Int)])
     }
     
     #if os(iOS)
     /// SwifterSwift: Italic string.
-    public var db_italic: NSAttributedString {
+    var db_italic: NSAttributedString {
         return NSMutableAttributedString(string: self, attributes: [.font: UIFont.italicSystemFont(ofSize: UIFont.systemFontSize)])
     }
     #endif
@@ -899,7 +899,7 @@ public extension String {
     ///
     /// - Parameter color: text color.
     /// - Returns: a NSAttributedString versions of string colored with given color.
-    public func db_colored(with color: NSColor) -> NSAttributedString {
+    func db_colored(with color: NSColor) -> NSAttributedString {
         return NSMutableAttributedString(string: self, attributes: [.foregroundColor: color])
     }
     #else
@@ -907,7 +907,7 @@ public extension String {
     ///
     /// - Parameter color: text color.
     /// - Returns: a NSAttributedString versions of string colored with given color.
-    public func db_colored(with color: UIColor) -> NSAttributedString {
+    func db_colored(with color: UIColor) -> NSAttributedString {
         return NSMutableAttributedString(string: self, attributes: [.foregroundColor: color])
     }
     #endif
@@ -918,32 +918,32 @@ public extension String {
 public extension String {
     
     /// SwifterSwift: NSString from a string.
-    public var db_nsString: NSString {
+    var db_nsString: NSString {
         return NSString(string: self)
     }
     
     /// SwifterSwift: NSString lastPathComponent.
-    public var db_lastPathComponent: String {
+    var db_lastPathComponent: String {
         return (self as NSString).lastPathComponent
     }
     
     /// SwifterSwift: NSString pathExtension.
-    public var db_pathExtension: String {
+    var db_pathExtension: String {
         return (self as NSString).pathExtension
     }
     
     /// SwifterSwift: NSString deletingLastPathComponent.
-    public var db_deletingLastPathComponent: String {
+    var db_deletingLastPathComponent: String {
         return (self as NSString).deletingLastPathComponent
     }
     
     /// SwifterSwift: NSString deletingPathExtension.
-    public var db_deletingPathExtension: String {
+    var db_deletingPathExtension: String {
         return (self as NSString).deletingPathExtension
     }
     
     /// SwifterSwift: NSString pathComponents.
-    public var db_pathComponents: [String] {
+    var db_pathComponents: [String] {
         return (self as NSString).pathComponents
     }
     
@@ -951,7 +951,7 @@ public extension String {
     ///
     /// - Parameter str: the path component to append to the receiver.
     /// - Returns: a new string made by appending aString to the receiver, preceded if necessary by a path separator.
-    public func db_appendingPathComponent(_ str: String) -> String {
+    func db_appendingPathComponent(_ str: String) -> String {
         return (self as NSString).appendingPathComponent(str)
     }
     
@@ -959,7 +959,7 @@ public extension String {
     ///
     /// - Parameter str: The extension to append to the receiver.
     /// - Returns: a new string made by appending to the receiver an extension separator followed by ext (if applicable).
-    public func db_appendingPathExtension(_ str: String) -> String? {
+    func db_appendingPathExtension(_ str: String) -> String? {
         return (self as NSString).appendingPathExtension(str)
     }
     
@@ -968,28 +968,34 @@ public extension String {
 // MARK: - DucBui: Methods
 public extension String {
     
-    public var db_isPhoneNumber: Bool {
+    var db_isPhoneNumber: Bool {
         
-        let PHONE_REGEX = "^((\\+)|(0))[0-9]{6,14}$"
+        /*
+         ^     #Match the beginning of the string
+         [6-9] #Match a 6, 7, 8 or 9
+         \\d   #Match a digit (0-9 and anything else that is a "digit" in the regex engine)
+         {9}   #Repeat the previous "\d" 9 times (9 digits)
+         $     #Match the end of the string
+         */
+        
+        // -- Phone number la 10 so bat dau bang 0 --
+        let PHONE_REGEX = "^[0]\\d{9}$"
+        // -- Phone number chieu dai 6-14 so bat dau bang + hay 0 --
+        //        let PHONE_REGEX = "^((\\+)|(0))[0-9]{6,14}$"
         let phoneTest = NSPredicate(format: "SELF MATCHES %@", PHONE_REGEX)
         let result = phoneTest.evaluate(with: self)
         return result
-
-        // -- Bi loi khong biet vi sao --
-//        let phoneRegex = "^((\\+)|(0))[0-9]{10,11}$"
-//        let phoneTest = NSPredicate(format: "SELF MATCHES %@", phoneRegex)
-//        return phoneTest.evaluate(with: self)
     }
     
-    public func db_slice(by str:String) -> [String] {
+    func db_slice(by str:String) -> [String] {
         return self.components(separatedBy: str)
     }
     
-    public func db_replace(string originalString: String, with newString:String) -> String {
+    func db_replace(string originalString: String, with newString:String) -> String {
         return self.replacingOccurrences(of: originalString, with: newString)
     }
     
-    public func db_replace(strings set: [String], with newString: String) -> String {
+    func db_replace(strings set: [String], with newString: String) -> String {
         var stringObject = self
         for string in set {
             stringObject = self.replacingOccurrences(of: string, with: newString)
@@ -999,7 +1005,7 @@ public extension String {
     
     /// Parse hashtags in string
     // Ex: "I made this wonderful pic last #christmas... #instagram #nofilter #snow #fun".hashtags() => ["christmas", "instagram", "nofilter", "snow", "fun"]
-    public func db_hashtags() -> [String]
+    func db_hashtags() -> [String]
     {
         if let regex = try? NSRegularExpression(pattern: "#[a-z0-9]+", options: .caseInsensitive)
         {
@@ -1012,7 +1018,7 @@ public extension String {
     }
     
     //-- right is the first encountered string after left
-    public func db_between(_ left: String, _ right: String) -> String? {
+    func db_between(_ left: String, _ right: String) -> String? {
         guard
             let leftRange = range(of: left), let rightRange = range(of: right, options: .backwards)
             , leftRange.upperBound <= rightRange.lowerBound
@@ -1029,29 +1035,62 @@ public extension String {
         }
     }
     
-    public func db_substring(to : Int) -> String {
+    func db_substring(to : Int) -> String {
         let toIndex = self.index(self.startIndex, offsetBy: to)
         return String(self[...toIndex])
     }
     
-    public func db_substring(from : Int) -> String {
+    func db_substring(from : Int) -> String {
         let fromIndex = self.index(self.startIndex, offsetBy: from)
         return String(self[fromIndex...])
     }
     
-    public func db_substring(_ r: Range<Int>) -> String {
+    func db_substring(_ r: Range<Int>) -> String {
         let fromIndex = self.index(self.startIndex, offsetBy: r.lowerBound)
         let toIndex = self.index(self.startIndex, offsetBy: r.upperBound)
         let indexRange = Range<String.Index>(uncheckedBounds: (lower: fromIndex, upper: toIndex))
         return String(self[indexRange])
     }
     
-    public func db_character(_ at: Int) -> Character {
+    func db_character(_ at: Int) -> Character {
         return self[self.index(self.startIndex, offsetBy: at)]
     }
     
-    public func db_lastIndexOfCharacter(_ c: Character) -> Int? {
+    func db_lastIndexOfCharacter(_ c: Character) -> Int? {
         return range(of: String(c), options: .backwards)?.lowerBound.encodedOffset
+    }
+    
+    /* Example: https://stackoverflow.com/questions/27880650/swift-extract-regex-matches/40040472#40040472
+     "prefix12 aaa3 prefix45".matchingStrings(regex: "fix([0-9])([0-9])")
+     // Prints: [["fix12", "1", "2"], ["fix45", "4", "5"]]
+     
+     "prefix12".matchingStrings(regex: "(?:prefix)?([0-9]+)")
+     // Prints: [["prefix12", "12"]]
+     
+     "12".matchingStrings(regex: "(?:prefix)?([0-9]+)")
+     // Prints: [["12", "12"]], other answers return an empty array here
+     
+     // Safely accessing the capture of the first match (if any):
+     let number = "prefix12suffix".matchingStrings(regex: "fix([0-9]+)su").first?[1]
+     // Prints: Optional("12")
+     */
+    
+    func db_matchingStrings(regex: String) -> [[String]] {
+        do {
+            let regex = try NSRegularExpression(pattern: regex)
+            let nsString = self as NSString
+            let results  = regex.matches(in: self, options: [], range: NSMakeRange(0, nsString.length))
+            return results.map { result in
+                (0..<result.numberOfRanges).map {
+                    result.range(at: $0).location != NSNotFound
+                        ? nsString.substring(with: result.range(at: $0))
+                        : ""
+                }
+            }
+        } catch let error {
+            print("invalid regex: \(error.localizedDescription)")
+            return []
+        }
     }
     
 }

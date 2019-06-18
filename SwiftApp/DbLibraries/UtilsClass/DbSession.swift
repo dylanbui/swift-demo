@@ -31,11 +31,11 @@ class DbSession: DbObject {
     
     // MARK: - Push Notify Info
     // MARK: -
-    func getPushNotifyInfo() -> [String: AnyObject]? {
+    func getPushNotifyInfo() -> [String: Any]? {
         return UserDefaults.getDictionary(key: DB_PUSH_NOTIFY_INFO_TOKEN)
     }
     
-    func setPushNotifyInfo(_ params: [String: AnyObject]) {
+    func setPushNotifyInfo(_ params: [String: Any]) {
         UserDefaults.setObject(key: DB_PUSH_NOTIFY_INFO_TOKEN, value: params)
     }
     
@@ -72,6 +72,16 @@ class DbSession: DbObject {
     func clearAllSessionData() {
         // -- Clear data --
         UserDefaults.remove(key: DB_APP_SESSION_KEY)
+        
+        // -- clear accessToken --
+        self.accessToken = nil
+        
+        self.userId = nil
+        self.address = nil
+        self.email = nil
+        self.name = nil
+        self.phone = nil
+        self.photo = nil
     }
     
     override init() {
@@ -103,26 +113,26 @@ class DbSession: DbObject {
     
 }
 
-extension DbSession: CustomStringConvertible, CustomDebugStringConvertible {
-    
-    public var description:String {
-        return "==>accessToken           = " + (accessToken ?? "")
-    }
-    
-    public var debugDescription:String {
-        var output: [String] = []
-
-        output.append("userId       = " + (userId ?? ""))
-        output.append("address      = " + (address ?? ""))
-        output.append("email        = " + (email ?? ""))
-        output.append("name         = " + (name ?? ""))
-        output.append("phone        = " + (phone ?? ""))
-        output.append("photo        = " + (photo ?? ""))
-        output.append("createdDate  = " + (createdDate?.db_string() ?? ""))
-        output.append("birthDay     = " + (birthDay ?? ""))
-        output.append("accessToken  = " + (accessToken ?? ""))
-        
-        return output.joined(separator: "\n")
-    }
-}
+//extension DbSession: CustomStringConvertible, CustomDebugStringConvertible {
+//    
+//    public var description:String {
+//        return "==>accessToken           = " + (accessToken ?? "")
+//    }
+//    
+//    public var debugDescription:String {
+//        var output: [String] = []
+//
+//        output.append("userId       = " + (userId ?? ""))
+//        output.append("address      = " + (address ?? ""))
+//        output.append("email        = " + (email ?? ""))
+//        output.append("name         = " + (name ?? ""))
+//        output.append("phone        = " + (phone ?? ""))
+//        output.append("photo        = " + (photo ?? ""))
+//        output.append("createdDate  = " + (createdDate?.db_string() ?? ""))
+//        output.append("birthDay     = " + (birthDay ?? ""))
+//        output.append("accessToken  = " + (accessToken ?? ""))
+//        
+//        return output.joined(separator: "\n")
+//    }
+//}
 

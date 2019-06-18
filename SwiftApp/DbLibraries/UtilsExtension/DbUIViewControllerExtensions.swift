@@ -12,7 +12,7 @@ import UIKit
 public extension UIViewController {
     
     /// SwifterSwift: Check if ViewController is onscreen and not hidden.
-    public var db_isVisible: Bool {
+    var db_isVisible: Bool {
         // http://stackoverflow.com/questions/2777438/how-to-tell-if-uiviewcontrollers-view-is-visible
         return self.isViewLoaded && view.window != nil
     }
@@ -27,14 +27,14 @@ public extension UIViewController {
     /// - Parameters:
     ///   - child: the view controller to add as a child
     ///   - containerView: the containerView for the child viewcontroller's root view.
-    public func db_addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
+    func db_addChildViewController(_ child: UIViewController, toContainerView containerView: UIView) {
         addChildViewController(child)
         containerView.addSubview(child.view)
         child.didMove(toParentViewController: self)
     }
     
     /// SwifterSwift: Helper method to remove a UIViewController from its parent.
-    public func db_removeViewAndControllerFromParentViewController() {
+    func db_removeViewAndControllerFromParentViewController() {
         guard parent != nil else { return }
         
         willMove(toParentViewController: nil)

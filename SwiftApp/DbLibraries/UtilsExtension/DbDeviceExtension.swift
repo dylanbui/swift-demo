@@ -4,14 +4,13 @@
 //
 //  Created by Dylan Bui on 7/30/18.
 //  Copyright © 2018 Propzy Viet Nam. All rights reserved.
-//
+//  Base on : https://github.com/schickling/Device.swift
 
+// MARK: Imports
 import Foundation
 import UIKit
 
-// MARK: Imports
 // MARK: -
-
 /// Enum representing the different types of iOS devices available
 public enum DeviceType: String, CaseIterable {
     case iPhone2G
@@ -42,6 +41,10 @@ public enum DeviceType: String, CaseIterable {
     
     case iPhoneX
     
+    case iPhoneXS
+    case iPhoneXSMax
+    case iPhoneXR
+    
     case iPodTouch1G
     case iPodTouch2G
     case iPodTouch3G
@@ -69,7 +72,6 @@ public enum DeviceType: String, CaseIterable {
     case notAvailable
     
     // MARK: Constants
-    
     /// The current device type
     public static var current: DeviceType {
         
@@ -89,8 +91,18 @@ public enum DeviceType: String, CaseIterable {
         return DeviceType(identifier: identifier)
     }
     
-    // MARK: Variables
+    func screenOverflowDevices() -> Bool {
+        let devices: [String] = [DeviceType.iPhoneX.rawValue,
+                                  DeviceType.iPhoneXS.rawValue,
+                                  DeviceType.iPhoneXSMax.rawValue,
+                                  DeviceType.iPhoneXR.rawValue]
+        if devices.contains(self.rawValue) {
+            return true
+        }
+        return false
+    }
     
+    // MARK: Variables
     /// The display name of the device type
     public var displayName: String {
         
@@ -113,6 +125,9 @@ public enum DeviceType: String, CaseIterable {
         case .iPhone8: return "iPhone 8"
         case .iPhone8Plus: return "iPhone 8 Plus"
         case .iPhoneX: return "iPhone X"
+        case .iPhoneXS: return "iPhone XS"
+        case .iPhoneXSMax: return "iPhone XS Max"
+        case .iPhoneXR: return "iPhone XR"
         case .iPodTouch1G: return "iPod Touch 1G"
         case .iPodTouch2G: return "iPod Touch 2G"
         case .iPodTouch3G: return "iPod Touch 3G"
@@ -162,6 +177,9 @@ public enum DeviceType: String, CaseIterable {
         case .iPhone8: return ["iPhone10,1", "iPhone10,4"]
         case .iPhone8Plus: return ["iPhone10,2", "iPhone10,5"]
         case .iPhoneX: return ["iPhone10,3", "iPhone10,6"]
+        case .iPhoneXS: return ["iPhone11,2"]
+        case .iPhoneXSMax: return ["iPhone11,4", "iPhone11,6"]
+        case .iPhoneXR: return ["iPhone11,8"]
             
         case .iPodTouch1G: return ["iPod1,1"]
         case .iPodTouch2G: return ["iPod2,1"]
@@ -187,7 +205,6 @@ public enum DeviceType: String, CaseIterable {
     }
     
     // MARK: Inits
-    
     /// Creates a device type
     ///
     /// - Parameter identifier: The identifier of the device
@@ -206,20 +223,18 @@ public enum DeviceType: String, CaseIterable {
 }
 
 // MARK: -
-
 public extension UIDevice {
     
     /// The `DeviceType` of the device in use
-    public var deviceType: DeviceType {
+    var deviceType: DeviceType {
         return DeviceType.current
-    }    
+    }
 }
 
 #if swift(>=4.2)
 #else
 
 // MARK: -
-
 internal protocol CaseIterable {
     associatedtype AllCases: Collection where AllCases.Element == Self
     static var allCases: AllCases { get }

@@ -5,9 +5,8 @@
 //  Created by Dylan Bui on 3/29/19.
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //  Da build thanh cong
-/*
- Day la phien ban hoan thanh ket hop EasyRealm. Bo khong su dung
- */
+
+/* Day la phien ban hoan thanh ket hop EasyRealm. */
 
 import Foundation
 import Realm
@@ -16,11 +15,6 @@ import ObjectMapper
 import EasyRealm
 
 typealias DbrmObjectMappable = Object & Mappable
-
-//
-//extension NSObject where T: DbObject {
-//
-//}
 
 public class DbRealm {
     
@@ -78,22 +72,34 @@ public class DbRealm {
 
 public extension EasyRealmStatic where T:Object {
     
-    public func db_fromRealm<K>(with primaryKey: K) -> T?
+    func db_get<K>(withPrimaryKey key: K) -> T?
     {
         do {
-            return try self.fromRealm(with: primaryKey)
+            return try self.fromRealm(with: key)
         } catch {
             
         }
         return nil
     }
     
-    public func db_all() -> [T]
+    func db_delete(withPrimaryKey key: Any)
+    {
+        var condition : String = ""
+        let strPrimaryKey = T.self.primaryKey() ?? "_none_"
+        if key is String {
+            condition = "\(strPrimaryKey) == '\(key)'"
+        }else{
+            condition = "\(strPrimaryKey) == \(key)"
+        }
+        db_delete(WithCondition: condition)
+    }
+    
+    func db_all() -> [T]
     {
         return try! Array(self.all())
     }
     
-    public func db_all(WithCondition condition: String? = nil, sortedByKeyPath keyPath: String? = nil, ascending: Bool = true) -> [T]
+    func db_all(WithCondition condition: String? = nil, sortedByKeyPath keyPath: String? = nil, ascending: Bool = true) -> [T]
     {
         var objects = try! self.all()
         if condition != nil {
@@ -105,7 +111,7 @@ public extension EasyRealmStatic where T:Object {
         return Array(objects)
     }
     
-    public func db_delete(WithCondition condition: String)
+    func db_delete(WithCondition condition: String)
     {
         do {
             let realm = try Realm()
@@ -116,38 +122,26 @@ public extension EasyRealmStatic where T:Object {
             fatalError("Delete condition: '\(condition)' error => \(String(describing: error))")
         }
     }
-    
-    public func db_delete(ByPrimaryKey key: Any)
-    {
-        var condition : String = ""
-        let primaryKey = T.self.primaryKey() ?? "_none_"
-        if key is String {
-            condition = "\(primaryKey) == '\(key)'"
-        }else{
-            condition = "\(primaryKey) == \(key)"
-        }
-        db_delete(WithCondition: condition)
-    }
-    
 }
 
-extension EasyRealm where T:Object
+public extension EasyRealm where T:Object
 {
-    public func db_saveOrUpdate()
+    func db_saveOrUpdate()
     {
         let _ = try! self.saved(update: true)
     }
     
-    public func db_edit(_ closure: @escaping (_ T:T) -> Void) {
+    func db_edit(_ closure: @escaping (_ T:T) -> Void) {
         
         try! self.edit(closure)
         
         //self.isManaged ? try managed_edit(closure) : try unmanaged_dit(closure)
     }
     
-    public func db_delete()
+    func db_delete()
     {
         try! self.delete()
         
     }
 }
+

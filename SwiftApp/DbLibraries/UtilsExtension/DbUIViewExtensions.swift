@@ -44,7 +44,7 @@ public extension UIView {
     
     /// SwifterSwift: Border color of view; also inspectable from Storyboard.
     @IBInspectable
-    public var borderColor: UIColor? {
+    var borderColor: UIColor? {
         get {
             guard let color = layer.borderColor else { return nil }
             return UIColor(cgColor: color)
@@ -60,7 +60,7 @@ public extension UIView {
     
     /// SwifterSwift: Border width of view; also inspectable from Storyboard.
     @IBInspectable
-    public var borderWidth: CGFloat {
+    var borderWidth: CGFloat {
         get {
             return layer.borderWidth
         }
@@ -71,7 +71,7 @@ public extension UIView {
     
     /// SwifterSwift: Corner radius of view; also inspectable from Storyboard.
     @IBInspectable
-    public var cornerRadius: CGFloat {
+    var cornerRadius: CGFloat {
         get {
             return layer.cornerRadius
         }
@@ -82,7 +82,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: First responder.
-    public var firstResponder: UIView? {
+    var firstResponder: UIView? {
         guard !isFirstResponder else { return self }
         for subView in subviews where subView.isFirstResponder {
             return subView
@@ -91,7 +91,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: Take screenshot of view (if applicable).
-    public var screenshot: UIImage? {
+    var screenshot: UIImage? {
         UIGraphicsBeginImageContextWithOptions(layer.frame.size, false, 0)
         defer {
             UIGraphicsEndImageContext()
@@ -102,7 +102,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: Shadow color of view; also inspectable from Storyboard.
-    public var shadowColor: UIColor? {
+    var shadowColor: UIColor? {
         get {
             guard let color = layer.shadowColor else { return nil }
             return UIColor(cgColor: color)
@@ -113,7 +113,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: Shadow offset of view; also inspectable from Storyboard.
-    public var shadowOffset: CGSize {
+    var shadowOffset: CGSize {
         get {
             return layer.shadowOffset
         }
@@ -123,7 +123,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: Shadow opacity of view; also inspectable from Storyboard.
-    public var shadowOpacity: Float {
+    var shadowOpacity: Float {
         get {
             return layer.shadowOpacity
         }
@@ -133,7 +133,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: Shadow radius of view; also inspectable from Storyboard.
-    public var shadowRadius: CGFloat {
+    var shadowRadius: CGFloat {
         get {
             return layer.shadowRadius
         }
@@ -143,7 +143,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: Get view's parent view controller
-    public var parentViewController: UIViewController? {
+    var parentViewController: UIViewController? {
         weak var parentResponder: UIResponder? = self
         while parentResponder != nil {
             parentResponder = parentResponder!.next
@@ -160,7 +160,7 @@ public extension UIView {
 public extension UIView {
     
     /// SwifterSwift: x origin of view.
-    public var x: CGFloat {
+    var x: CGFloat {
         get {
             return frame.origin.x
         }
@@ -170,7 +170,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: y origin of view.
-    public var y: CGFloat {
+    var y: CGFloat {
         get {
             return frame.origin.y
         }
@@ -180,7 +180,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: Width of view.
-    public var width: CGFloat {
+    var width: CGFloat {
         get {
             return frame.size.width
         }
@@ -190,7 +190,7 @@ public extension UIView {
     }
     
     // SwifterSwift: Height of view.
-    public var height: CGFloat {
+    var height: CGFloat {
         get {
             return frame.size.height
         }
@@ -200,7 +200,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: Size of view.
-    public var size: CGSize {
+    var size: CGSize {
         get {
             return frame.size
         }
@@ -210,7 +210,7 @@ public extension UIView {
         }
     }
     
-    public var origin: CGPoint {
+    var origin: CGPoint {
         get {
             return frame.origin
         }
@@ -221,7 +221,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: center x origin of view.
-    public var centerX: CGFloat {
+    var centerX: CGFloat {
         get {
             return center.x
         }
@@ -231,7 +231,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: center y origin of view.
-    public var centerY: CGFloat {
+    var centerY: CGFloat {
         get {
             return center.y
         }
@@ -241,7 +241,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: x origin of view.
-    public var top: CGFloat {
+    var top: CGFloat {
         get {
             return y
         }
@@ -251,7 +251,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: y origin of view.
-    public var left: CGFloat {
+    var left: CGFloat {
         get {
             return x
         }
@@ -261,7 +261,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: bottom origin of view.
-    public var bottom: CGFloat {
+    var bottom: CGFloat {
         get {
             return y + height
         }
@@ -271,7 +271,7 @@ public extension UIView {
     }
     
     /// SwifterSwift: bottom origin of view.
-    public var right: CGFloat {
+    var right: CGFloat {
         get {
             return x + width
         }
@@ -289,7 +289,7 @@ public extension UIView {
     /// - Parameters:
     ///   - corners: array of corners to change (example: [.bottomLeft, .topRight]).
     ///   - radius: radius for selected corners.
-    public func db_roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
+    func db_roundCorners(_ corners: UIRectCorner, radius: CGFloat) {
         let maskPath = UIBezierPath(roundedRect: bounds,
                                     byRoundingCorners: corners,
                                     cornerRadii: CGSize(width: radius, height: radius))
@@ -305,7 +305,7 @@ public extension UIView {
     ///   - radius: shadow radius (default is 3).
     ///   - offset: shadow offset (default is .zero).
     ///   - opacity: shadow opacity (default is 0.5).
-    public func db_addShadow(ofColor color: UIColor = UIColor(red: 0.07, green: 0.47, blue: 0.57, alpha: 1.0), radius: CGFloat = 3, offset: CGSize = .zero, opacity: Float = 0.5) {
+    func db_addShadow(ofColor color: UIColor = UIColor(red: 0.07, green: 0.47, blue: 0.57, alpha: 1.0), radius: CGFloat = 3, offset: CGSize = .zero, opacity: Float = 0.5) {
         layer.shadowColor = color.cgColor
         layer.shadowOffset = offset
         layer.shadowRadius = radius
@@ -316,7 +316,7 @@ public extension UIView {
     /// SwifterSwift: Add array of subviews to view.
     ///
     /// - Parameter subviews: array of subviews to add to self.
-    public func db_addSubviews(_ subviews: [UIView]) {
+    func db_addSubviews(_ subviews: [UIView]) {
         subviews.forEach({self.addSubview($0)})
     }
     
@@ -325,7 +325,7 @@ public extension UIView {
     /// - Parameters:
     ///   - duration: animation duration in seconds (default is 1 second).
     ///   - completion: optional completion handler to run with animation finishes (default is nil)
-    public func db_fadeIn(duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
+    func db_fadeIn(duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
         if isHidden {
             isHidden = false
         }
@@ -339,7 +339,7 @@ public extension UIView {
     /// - Parameters:
     ///   - duration: animation duration in seconds (default is 1 second).
     ///   - completion: optional completion handler to run with animation finishes (default is nil)
-    public func db_fadeOut(duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
+    func db_fadeOut(duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
         if isHidden {
             isHidden = false
         }
@@ -354,17 +354,17 @@ public extension UIView {
     ///   - name: nib name.
     ///   - bundle: bundle of nib (default is nil).
     /// - Returns: optional UIView (if applicable).
-    public class func db_loadFromNib(named name: String, bundle: Bundle? = nil) -> UIView? {
+    class func db_loadFromNib(named name: String, bundle: Bundle? = nil) -> UIView? {
         return UINib(nibName: name, bundle: bundle).instantiate(withOwner: nil, options: nil)[0] as? UIView
     }
     
     /// SwifterSwift: Remove all subviews in view.
-    public func db_removeSubviews() {
+    func db_removeSubviews() {
         subviews.forEach({$0.removeFromSuperview()})
     }
     
     /// SwifterSwift: Remove all gesture recognizers from view.
-    public func db_removeGestureRecognizers() {
+    func db_removeGestureRecognizers() {
         gestureRecognizers?.forEach(removeGestureRecognizer)
     }
     
@@ -376,7 +376,7 @@ public extension UIView {
     ///   - animated: set true to animate rotation (default is true).
     ///   - duration: animation duration in seconds (default is 1 second).
     ///   - completion: optional completion handler to run with animation finishes (default is nil).
-    public func db_rotate(byAngle angle: CGFloat, ofType type: DbAngleUnit, animated: Bool = false, duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
+    func db_rotate(byAngle angle: CGFloat, ofType type: DbAngleUnit, animated: Bool = false, duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
         let angleWithType = (type == .degrees) ? CGFloat.pi * angle / 180.0 : angle
         let aDuration = animated ? duration : 0
         UIView.animate(withDuration: aDuration, delay: 0, options: .curveLinear, animations: { () -> Void in
@@ -392,7 +392,7 @@ public extension UIView {
     ///   - animated: set true to animate rotation (default is false).
     ///   - duration: animation duration in seconds (default is 1 second).
     ///   - completion: optional completion handler to run with animation finishes (default is nil).
-    public func db_rotate(toAngle angle: CGFloat, ofType type: DbAngleUnit, animated: Bool = false, duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
+    func db_rotate(toAngle angle: CGFloat, ofType type: DbAngleUnit, animated: Bool = false, duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
         let angleWithType = (type == .degrees) ? CGFloat.pi * angle / 180.0 : angle
         let aDuration = animated ? duration : 0
         UIView.animate(withDuration: aDuration, animations: {
@@ -407,7 +407,7 @@ public extension UIView {
     ///   - animated: set true to animate scaling (default is false).
     ///   - duration: animation duration in seconds (default is 1 second).
     ///   - completion: optional completion handler to run with animation finishes (default is nil).
-    public func db_scale(by offset: CGPoint, animated: Bool = false, duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
+    func db_scale(by offset: CGPoint, animated: Bool = false, duration: TimeInterval = 1, completion: ((Bool) -> Void)? = nil) {
         if animated {
             UIView.animate(withDuration: duration, delay: 0, options: .curveLinear, animations: { () -> Void in
                 self.transform = self.transform.scaledBy(x: offset.x, y: offset.y)
@@ -425,7 +425,7 @@ public extension UIView {
     ///   - duration: animation duration in seconds (default is 1 second).
     ///   - animationType: shake animation type (default is .easeOut).
     ///   - completion: optional completion handler to run with animation finishes (default is nil).
-    public func db_shake(direction: DbShakeDirection = .horizontal, duration: TimeInterval = 1, animationType: DbShakeAnimationType = .easeOut, completion:(() -> Void)? = nil) {
+    func db_shake(direction: DbShakeDirection = .horizontal, duration: TimeInterval = 1, animationType: DbShakeAnimationType = .easeOut, completion:(() -> Void)? = nil) {
         
         CATransaction.begin()
         let animation: CAKeyframeAnimation
@@ -485,7 +485,7 @@ public extension UIView {
     
     // This is the meat of the sauce, here we create the tap gesture recognizer and
     // store the closure the user passed to us in the associated object we declared above
-    public func db_addTapGestureRecognizer(action: (() -> Void)?) {
+    func db_addTapGestureRecognizer(action: (() -> Void)?) {
         self.isUserInteractionEnabled = true
         self.tapGestureRecognizerAction = action
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(handleTapGesture))
@@ -531,6 +531,186 @@ public extension UIView {
         }
     }
 
-    
+    func db_isShow(duration: TimeInterval = 0.3, completion: ((Bool) -> Void)? = nil)
+    {
+        // -- Set for hidden --
+        if isHidden == false {
+           isHidden = true
+        }
+        
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 1.0
+        }, completion: { finished in
+            self.isHidden = false
+            completion?(finished)
+        })
+    }
+
+    func db_isHidden(duration: TimeInterval = 0.3, removeFromSuperview: Bool = false, completion: ((Bool) -> Void)? = nil)
+    {
+        // -- Set for show --
+        if isHidden == true {
+            isHidden = false
+        }
+
+        UIView.animate(withDuration: duration, animations: {
+            self.alpha = 0.0
+        }, completion: { finished in
+            self.isHidden = true
+            if removeFromSuperview {
+                self.removeFromSuperview()
+            }
+            completion?(finished)
+        })
+    }
+
 }
 
+// MARK: - Anchor view to bottom, animation with keyboard (hide/show)
+
+extension UIView {
+    
+    // In order to create computed properties for extensions, we need a key to
+    // store and access the stored property
+    fileprivate struct DbKeyboardHandlerParams {
+        static var keyboardHandler = "UIView_keyboardHandler"
+    }
+    
+    private var keyboardHandler: DbKeyboardHandler {
+        get {
+            var keyboardHandler = objc_getAssociatedObject(self, &DbKeyboardHandlerParams.keyboardHandler) as? DbKeyboardHandler
+            if keyboardHandler == nil {
+                keyboardHandler = DbKeyboardHandler()
+                objc_setAssociatedObject(self, &DbKeyboardHandlerParams.keyboardHandler, keyboardHandler, .OBJC_ASSOCIATION_RETAIN)
+            }
+            return keyboardHandler!
+        }
+    }
+    
+    func db_anchorViewToBottomViewWithKeyboard() -> Void
+    {
+        // -- Khong hieu vi dau ma demo chay duoc, nhung khi ap dung vao project thi chay sai, mac du debug gia tri la dung --
+        self.y = CGFloat(Db.screenHeight()) - self.height - DbUtils.safeAreaBottomPadding()
+        
+        // -- Co the define bien o day --
+        //        var keyboardHandler = objc_getAssociatedObject(self, &DbKeyboardHandlerParams) as? DbKeyboardHandler
+        //        if keyboardHandler == nil {
+        //            keyboardHandler = DbKeyboardHandler()
+        //            objc_setAssociatedObject(self, &DbKeyboardHandlerParams, keyboardHandler, .OBJC_ASSOCIATION_RETAIN)
+        //        }
+        
+        keyboardHandler.listen { (keyboardInfo) in
+            // print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.keyboardFrame))")
+            // print("keyboardInfo.keyboardFrame = \(String(describing: keyboardInfo.status))")
+            
+            // -- Move view control --
+            //var inputViewFrame: CGRect = self.viewButtonControl.frame
+            if keyboardInfo.status == .KeyboardStatusWillShow {
+                if self.tag == 0 {
+                    self.y = keyboardInfo.keyboardFrame.origin.y - self.height
+                    self.tag = 1010
+                }
+            } else if keyboardInfo.status == .KeyboardStatusWillHide {
+                if self.tag == 1010 {
+                    self.y = keyboardInfo.keyboardFrame.size.height + self.y - DbUtils.safeAreaBottomPadding()
+                    self.tag = 0
+                }
+            }
+            
+        }
+    }
+}
+
+extension UIView {
+    
+    // In order to create computed properties for extensions, we need a key to
+    // store and access the stored property
+    fileprivate struct PrivateHeightLayoutConstraintObjectKeys {
+        static var heightConstraint = "HeightLayoutConstraintObjectKeys"
+    }
+    
+    // Set our computed property type to a closure
+    fileprivate var privateHeightLayoutConstraint: Int {
+        get {
+            return objc_getAssociatedObject(self, &PrivateHeightLayoutConstraintObjectKeys.heightConstraint) as? Int ?? 0
+        }
+        set {
+            objc_setAssociatedObject(self, &PrivateHeightLayoutConstraintObjectKeys.heightConstraint, newValue as Int, .OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+        }
+    }
+    
+    func db_getNSLayoutConstraint(layoutAttribute: NSLayoutAttribute) -> NSLayoutConstraint?
+    {
+        var returnConstraint: NSLayoutConstraint?
+        
+        for constraint: NSLayoutConstraint in self.constraints {
+            if constraint.firstAttribute == layoutAttribute {
+                returnConstraint = constraint
+                break
+            }
+        }
+        
+        return returnConstraint
+    }
+    
+    /*
+     Note: Dung de hide/show UIView co NSLayoutConstraintHeight, chieu cao hien tai cua no se duoc save vao view.tag
+     nen dung cach nay thi khong su dung view.tag
+     - superView : co the truyen vao hay lay mac dinh la self.superview
+     */
+    
+    func db_isHiddenWithHeightConstraint(hidden: Bool, animation: Bool = false, superView view: UIView? = nil)
+    {
+        // -- Dang cung trang thai thi khong can chay --
+        if self.isHidden == hidden {
+            return
+        }
+        
+        guard let heightConstraint = self.db_getNSLayoutConstraint(layoutAttribute: .height) else {
+            fatalError("Dont have heightConstraint")
+        }
+        
+        var parentView = self.superview
+        if view != nil {
+            parentView = view
+        }
+        
+        // print("heightConstraint.constant = \(String(describing: heightConstraint.constant))")
+        
+        if hidden { // Showing => hide
+            self.privateHeightLayoutConstraint = Int(heightConstraint.constant)
+            // self.tag = Int(heightConstraint.constant)
+            heightConstraint.constant = 0
+        } else {      // Hiding => Show
+            heightConstraint.constant = CGFloat(self.privateHeightLayoutConstraint)
+            self.privateHeightLayoutConstraint = 0
+//            heightConstraint.constant = CGFloat(self.tag)
+//            self.tag = 0
+        }
+        
+        if animation {
+            // -- Run animation update constraint --
+            if !hidden {
+                self.isHidden = false
+            }
+            
+            self.alpha = hidden ? 1.0 : 0.0
+            UIView.animate(withDuration: 0.3, animations: {
+                //parentView?.superview?.layoutIfNeeded()
+                parentView?.layoutIfNeeded()
+                
+                self.alpha = hidden ? 0.0 : 1.0
+                
+                
+            }) { (finished) in
+                if hidden {
+                    self.isHidden = true
+                }
+            }
+        } else {
+            self.isHidden = hidden
+        }
+
+    }
+    
+}

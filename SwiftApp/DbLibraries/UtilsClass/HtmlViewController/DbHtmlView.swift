@@ -42,7 +42,7 @@ public class DbHtmlView: UIView {
     
     public var html: String? {
         didSet {
-            // -- Allow scroll --
+            // -- Dont allow scroll --
             webView.scrollView.isScrollEnabled = true
             webView.loadHTMLString(html ?? "", baseURL: baseUrl)
         }
@@ -81,6 +81,10 @@ public class DbHtmlView: UIView {
             webView.topAnchor.constraint(equalTo: topAnchor).isActive = true
             webView.bottomAnchor.constraint(equalTo: bottomAnchor).isActive = true
             webViewHeightConstraint = webView.heightAnchor.constraint(equalToConstant: self.bounds.height)
+            // Fixing constraint issues
+            // https://github.com/Vugla/PSHTMLView/issues/1
+            webViewHeightConstraint.priority = UILayoutPriority(rawValue: 999)
+            // -----
             webViewHeightConstraint.isActive = true
             webView.scrollView.isScrollEnabled = false
             webView.allowsBackForwardNavigationGestures = false
