@@ -49,7 +49,7 @@ class DemoNetworkRealmViewController: BaseViewController
             } else {
                 print("KHONG TON TAI CACHE => SAVE 10s")
                 print("===> SAVE cache: \(dict.description)")
-                DbCache.instance.write(dictionary: dict, forKey: "dict_key", withAge: 10)
+                DbCache.instance.write(dictionary: dict, forKey: "dict_key", withAge: 30)
             }
             
         }

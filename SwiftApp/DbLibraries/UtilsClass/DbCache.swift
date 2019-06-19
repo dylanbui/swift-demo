@@ -443,61 +443,13 @@ private enum HMACAlgo {
     }
 }
 
-// MARK: - Extension class DbDataCache
+// MARK: - DbCache
 // MARK: -
 
 open class DbCache
 {
-    private struct CacheInfo: NSCoding {
-        
-        let key: String
-        let timeInterval: TimeInterval
-        let lastUpdate: Date
-        
-        init(key: String, timeInterval: TimeInterval, lastUpdate: Date) {
-            self.key = key
-            self.timeInterval = timeInterval
-            self.lastUpdate = lastUpdate
-        }
-        
-        init?(coder aDecoder: NSCoder)
-        {
-            guard let key = aDecoder.decodeObject(forKey: "key") as? String,
-                let timeInterval = aDecoder.decodeObject(forKey: "timeInterval") as? TimeInterval,
-                let lastUpdate = aDecoder.decodeObject(forKey: "lastUpdate") as? Date else {
-                    return nil
-            }
-
-            // decoding your array
-            self.init(key: key, timeInterval: timeInterval, lastUpdate: lastUpdate)
-        }
-        
-        public func encode(with aCoder: NSCoder)
-        {
-            //encoding
-            aCoder.encode(key, forKey: "key")
-            aCoder.encode(timeInterval, forKey: "timeInterval")
-            aCoder.encode(lastUpdate, forKey: "lastUpdate")
-        }
-        
-//        init?(dictionary : [String: Any])
-//        {
-//            guard let key = dictionary["key"] as? String,
-//                let timeInterval = dictionary["timeInterval"] as? TimeInterval,
-//                let lastUpdate = dictionary["lastUpdate"] as? Date else {
-//                    return nil
-//            }
-//            self.init(key: key, timeInterval: timeInterval, lastUpdate: lastUpdate)
-//        }
-//
-//        var propertyListRepresentation : [String: Any] {
-//            return ["title": key, "artist": timeInterval, "lastUpdate": lastUpdate]
-//        }
-    }
-    
     public static var instance = DbCache()
-    
-    var dataCache: DbDataCache!
+    private var dataCache: DbDataCache!
     
     /// Specify distinc name param, it represents folder name for disk cache
     public init()
@@ -506,49 +458,12 @@ open class DbCache
         self.dataCache.maxCachePeriodInSecond = 60 * 60 * 24 * 7 * 2         // 2 week
     }
     
-    private func getLastUpdateCacheWith(Key key: String) -> CacheInfo?
-    {
-        if let cacheGlobal = UserDefaults.getDictionary(key: "pri_cacheInfo") as? [String: CacheInfo],
-            let cache = cacheGlobal[key] {
-            return cache
-        }
-        return nil
-    }
-
-    private func setLastUpdateCacheFor(Key key: String, with cacheInfo: CacheInfo)
-    {
-        var cacheGlobal = UserDefaults.getDictionary(key: "pri_cacheInfo") as? [String: CacheInfo]
-        if cacheGlobal != nil {
-            cacheGlobal?[key] = cacheInfo
-        } else {
-            cacheGlobal = [key: cacheInfo]
-        }
-        UserDefaults.setObject(key: "pri_cacheInfo", value: cacheGlobal)
-    }
-
-    private func expired(Key key: String) -> Bool
-    {
-        guard let lastAccessData = self.getLastUpdateCacheWith(Key: key) else {
-            return true
-        }
-        
-        let expiredDate: Date? = (lastAccessData.timeInterval <= 0) ? nil : Date(timeIntervalSinceNow: -lastAccessData.timeInterval)
-        // If this file is expired
-        if let expiredDate = expiredDate,
-            (lastAccessData.lastUpdate as NSDate).laterDate(expiredDate) == expiredDate
-        {
-            // -- this key is expired --
-            return true
-        }
-    
-        return false
-    }
-    
     /// Write data for key. This is an async operation.
+    // Default age = 1 days
     public func write(data: Data, forKey key: String, withAge age: TimeInterval = 86400)
     {
         self.dataCache.write(data: data, forKey: key)
-        self.setLastUpdateCacheFor(Key: key, with: CacheInfo(key: key, timeInterval: age, lastUpdate: Date()))
+        self.setLastUpdateCacheFor(Key: key, with: ["key": key, "timeInterval": age, "lastUpdate": Date()])
     }
     
     /// Read data for key
@@ -650,7 +565,48 @@ open class DbCache
         
         return nil
     }
-
     
+    // MARK: - Private functions
+    // MARK: -
+
+    private func getLastUpdateCacheWith(Key key: String) -> DictionaryType?
+    {
+        if let cacheGlobal = UserDefaults.getDictionary(key: "pri_cacheInfo") as? [String: DictionaryType],
+            let cache = cacheGlobal[key] {
+            return cache
+        }
+        return nil
+    }
+    
+    private func setLastUpdateCacheFor(Key key: String, with cacheInfo: DictionaryType)
+    {
+        var cacheGlobal = UserDefaults.getDictionary(key: "pri_cacheInfo") as? [String: DictionaryType]
+        if cacheGlobal != nil {
+            cacheGlobal?[key] = cacheInfo
+        } else {
+            cacheGlobal = [key: cacheInfo]
+        }
+        UserDefaults.setObject(key: "pri_cacheInfo", value: cacheGlobal)
+    }
+    
+    private func expired(Key key: String) -> Bool
+    {
+        guard let lastAccessData = self.getLastUpdateCacheWith(Key: key),
+            let timeInterval = lastAccessData["timeInterval"] as? TimeInterval,
+            let lastUpdate = lastAccessData["lastUpdate"] as? Date else {
+                return true
+        }
+        
+        let expiredDate: Date? = (timeInterval <= 0) ? nil : Date(timeIntervalSinceNow: -timeInterval)
+        // If this file is expired
+        if let expiredDate = expiredDate,
+            (lastUpdate as NSDate).laterDate(expiredDate) == expiredDate
+        {
+            // -- this key is expired --
+            return true
+        }
+        
+        return false
+    }
     
 }
