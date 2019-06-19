@@ -448,13 +448,16 @@ private enum HMACAlgo {
 
 open class DbCache
 {
-    public static var instance = DbCache()
+    public static var instance = DbCache(uniqueName: "defaultDbCache")
     private var dataCache: DbDataCache!
+    private var uniqueName: String!
     
     /// Specify distinc name param, it represents folder name for disk cache
-    public init()
+    public init(uniqueName: String)
     {
-        self.dataCache = DbDataCache(name: "defaultDbCache")
+        // Unique in UserDefaults
+        self.uniqueName = "DbCache_\(uniqueName)"
+        self.dataCache = DbDataCache(name: self.uniqueName)
         self.dataCache.maxCachePeriodInSecond = 60 * 60 * 24 * 7 * 2         // 2 week
     }
     
@@ -473,6 +476,20 @@ open class DbCache
             return nil
         }
         return self.dataCache.readData(forKey: key)
+    }
+    
+    /// Clean cache by key. This is an async operation.
+    public func clean(byKey key: String)
+    {
+        self.setLastUpdateCacheFor(Key: key, with: [:])
+        self.dataCache.clean(byKey: key)
+    }
+    
+    /// Clean all mem cache and disk cache. This is an async operation.
+    public func cleanAll()
+    {
+        UserDefaults.setObject(key: self.uniqueName, value: [:])
+        self.dataCache.cleanAll()
     }
 
     // MARK: Read & write utils
@@ -571,7 +588,7 @@ open class DbCache
 
     private func getLastUpdateCacheWith(Key key: String) -> DictionaryType?
     {
-        if let cacheGlobal = UserDefaults.getDictionary(key: "pri_cacheInfo") as? [String: DictionaryType],
+        if let cacheGlobal = UserDefaults.getDictionary(key: self.uniqueName) as? [String: DictionaryType],
             let cache = cacheGlobal[key] {
             return cache
         }
@@ -580,13 +597,13 @@ open class DbCache
     
     private func setLastUpdateCacheFor(Key key: String, with cacheInfo: DictionaryType)
     {
-        var cacheGlobal = UserDefaults.getDictionary(key: "pri_cacheInfo") as? [String: DictionaryType]
+        var cacheGlobal = UserDefaults.getDictionary(key: self.uniqueName) as? [String: DictionaryType]
         if cacheGlobal != nil {
             cacheGlobal?[key] = cacheInfo
         } else {
             cacheGlobal = [key: cacheInfo]
         }
-        UserDefaults.setObject(key: "pri_cacheInfo", value: cacheGlobal)
+        UserDefaults.setObject(key: self.uniqueName, value: cacheGlobal)
     }
     
     private func expired(Key key: String) -> Bool

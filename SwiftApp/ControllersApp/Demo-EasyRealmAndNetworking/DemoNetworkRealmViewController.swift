@@ -47,7 +47,7 @@ class DemoNetworkRealmViewController: BaseViewController
                 print("GET FROM CACHE")
                 print("===> Da co cache: \(cache.description)")
             } else {
-                print("KHONG TON TAI CACHE => SAVE 10s")
+                print("KHONG TON TAI CACHE => SAVE 30s")
                 print("===> SAVE cache: \(dict.description)")
                 DbCache.instance.write(dictionary: dict, forKey: "dict_key", withAge: 30)
             }
