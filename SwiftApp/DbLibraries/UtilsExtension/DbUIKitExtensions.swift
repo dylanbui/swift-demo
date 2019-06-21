@@ -228,6 +228,21 @@ public extension UILabel {
         self.center = CGPoint(origin.x, self.center.y)
     }
     
+    func db_doDisable(_ disable: Bool)
+    {
+        if disable {
+            self.isEnabled = false
+            self.isUserInteractionEnabled = false
+            let color: UIColor = self.textColor
+            self.textColor = color.withAlphaComponent(0.4)
+        } else {
+            self.isEnabled = true
+            self.isUserInteractionEnabled = true
+            let color: UIColor = self.textColor
+            self.textColor = color.withAlphaComponent(1.0)
+        }
+    }
+    
 }
 
 // MARK: - UITextView Methods

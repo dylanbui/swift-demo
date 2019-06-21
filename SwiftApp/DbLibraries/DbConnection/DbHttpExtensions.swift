@@ -132,28 +132,33 @@ extension ConnectionOf {
         asyncCompletionHandler: @escaping ((T) -> Void)
         ) {
         
-        // -- Khong goi lai ham requestFor<Res: DbHTTPResponseProtocol> duoc --
-        _ = adaptor.request(
-            .get,
-            url: url,
-            params: [:],
-            data: [:],
-            json: nil,
-            headers: ["content-type": "application/json"], // Nen set json
-            files: [:],
-            auth: nil,
-            cookies: [:],
-            redirects: true,
-            timeout: nil,
-            urlQuery: nil,
-            requestBody: nil,
-            asyncProgressHandler: asyncProgressHandler)
-        { (httpResult) in
-            let res = typeObj.init(result: httpResult)
-            res.parseResult()
-            asyncCompletionHandler(res)
-        }
+        // -- DucBui 21/06/2019 : fix --
+        self.requestFor(T.self, method: .get, url: url,
+                        headers: ["content-type": "application/json"], // Nen set json
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler)
         
+        // -- Khong goi lai ham requestFor<Res: DbHTTPResponseProtocol> duoc --
+//        _ = adaptor.request(
+//            .get,
+//            url: url,
+//            params: [:],
+//            data: [:],
+//            json: nil,
+//            headers: ["content-type": "application/json"], // Nen set json
+//            files: [:],
+//            auth: nil,
+//            cookies: [:],
+//            redirects: true,
+//            timeout: nil,
+//            urlQuery: nil,
+//            requestBody: nil,
+//            asyncProgressHandler: asyncProgressHandler)
+//        { (httpResult) in
+//            let res = typeObj.init(result: httpResult)
+//            res.parseResult()
+//            asyncCompletionHandler(res)
+//        }
     }
     
     public func jsonPostFor<T: DbHTTPResponseProtocol>(
@@ -164,27 +169,33 @@ extension ConnectionOf {
         asyncCompletionHandler: @escaping ((T) -> Void)
         ) {
         
+        // -- DucBui 21/06/2019 : fix --
+        self.requestFor(T.self, method: .post, url: url, json: json,
+                        headers: ["content-type": "application/json"], // Nen set json
+            asyncProgressHandler: asyncProgressHandler,
+            asyncCompletionHandler: asyncCompletionHandler)
+        
         // -- Khong goi lai ham requestFor<T: DbHTTPResponseProtocol> duoc --
-        _ = adaptor.request(
-            .post,
-            url: url,
-            params: [:],
-            data: [:],
-            json: json,
-            headers: [:],
-            files: [:],
-            auth: nil,
-            cookies: [:],
-            redirects: true,
-            timeout: nil,
-            urlQuery: nil,
-            requestBody: nil,
-            asyncProgressHandler: asyncProgressHandler)
-        { (httpResult) in
-            let res = typeObj.init(result: httpResult)
-            res.parseResult()
-            asyncCompletionHandler(res)
-        }
+//        _ = adaptor.request(
+//            .post,
+//            url: url,
+//            params: [:],
+//            data: [:],
+//            json: json,
+//            headers: ["content-type": "application/json"], // Nen set json
+//            files: [:],
+//            auth: nil,
+//            cookies: [:],
+//            redirects: true,
+//            timeout: nil,
+//            urlQuery: nil,
+//            requestBody: nil,
+//            asyncProgressHandler: asyncProgressHandler)
+//        { (httpResult) in
+//            let res = typeObj.init(result: httpResult)
+//            res.parseResult()
+//            asyncCompletionHandler(res)
+//        }
     }
     
     public func jsonUploadFor<T: DbHTTPResponseProtocol>(
@@ -196,7 +207,8 @@ extension ConnectionOf {
         asyncCompletionHandler: @escaping ((T) -> Void)
         ) {
         
-        // -- Khong goi lai ham requestFor<T: DbHTTPResponseProtocol> duoc --
+        // -- Khong goi lai ham requestFor<T: DbHTTPResponseProtocol> vi la upload --
+        // -- requestFor ko co files --
         _ = adaptor.request(
             .post,
             url: url,
@@ -217,7 +229,6 @@ extension ConnectionOf {
             res.parseResult()
             asyncCompletionHandler(res)
         }
-        
     }
     
 }
