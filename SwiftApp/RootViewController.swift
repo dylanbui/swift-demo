@@ -48,9 +48,10 @@ class RootViewController: UIViewController
 //        let vcl = DemoDbPullToRefreshViewController() // => Done
 //        let vcl = DemoCustomPullForProjectViewController() // => Done
 //        let vcl = DemoLazyUploadViewController() // => Done
+        let vcl = DemoUploadCollectionViewController() // => Done
         //let vcl = DemoSurveyViewController() // => Done
         //let vcl = DemoRealmViewController() // => Done
-         let vcl = DemoNetworkRealmViewController() // => Done
+//         let vcl = DemoNetworkRealmViewController() // => Done
 //        let vcl = DemoJustViewController()
 //         let vcl = DemoDbSelectBoxViewController() // => Done
 //        let vcl = RkMapViewController() // => Done
