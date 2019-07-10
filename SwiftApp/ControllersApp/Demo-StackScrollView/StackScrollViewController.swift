@@ -79,6 +79,12 @@ class StackScrollViewController: UIViewController {
     views.append(MarginStackCell(height: 40, backgroundColor: marginColor))
     
     views.append(HeaderStackCell(title: "TextViewStackCell", backgroundColor: marginColor))
+    
+    views.append({
+        let v = ShowMoreLabelStackCell()
+        v.set(value: "I've been wracking my head against this for the last 3 hours.I have a custom cell with class JobDescriptionCell whose row height is set to UITableViewAutomaticDimension. This cell has a label containing the job description. By default the numberOfLines on the label is 3, but tapping on the label should change the numberOfLines to 0 so that the full text is visible. In order to implement this, I added a BOOL property in JobDescriptionCell named expanded. The setter for this property changes the numberOfLines to 0 or 3 depending on whether expanded is YES or NO respectively. I added a second boolean property jobDescriptionExpanded in the ViewController containing the UITableView. When the DescriptionCell is selected, I reverse jobDescriptionExpanded and reload the cell, passing in the updated value of expansion state. This is the only way I could get it to work and it sucks. It's convoluted and I'm sure there is an easier way. Could you guys please tell me how you managed to implement this?")
+        return v
+        }())
 
     // -- 6 dong remove --
     (0..<6).forEach { _ in

@@ -23,6 +23,8 @@ final class ShowMoreLabelStackCell: StackCellBase
     {
         super.init()
         
+        backgroundColor = UIColor.lightGray
+        
         addSubview(lblContent)
         
         lblContent.snp.makeConstraints { (make) in
