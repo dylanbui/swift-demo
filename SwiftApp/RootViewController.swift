@@ -36,7 +36,7 @@ class RootViewController: UIViewController
 //        let vcl = CategoriesViewController()
 //        let vcl = PzLoginViewController()
 //        let vcl = PzListingViewController()
-//        let vcl = StackScrollViewController()
+        let vcl = StackScrollViewController()
         //let vcl = KeyboarbHandleViewController()
 //        let vcl = KBScrollViewViewController()
         // let vcl = DemoDecimalTextFieldViewController()
@@ -48,7 +48,7 @@ class RootViewController: UIViewController
 //        let vcl = DemoDbPullToRefreshViewController() // => Done
 //        let vcl = DemoCustomPullForProjectViewController() // => Done
 //        let vcl = DemoLazyUploadViewController() // => Done
-        let vcl = DemoUploadCollectionViewController() // => Done
+        //let vcl = DemoUploadCollectionViewController() // => Done
         //let vcl = DemoSurveyViewController() // => Done
         //let vcl = DemoRealmViewController() // => Done
 //         let vcl = DemoNetworkRealmViewController() // => Done

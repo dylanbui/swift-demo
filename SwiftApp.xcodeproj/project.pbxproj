@@ -294,6 +294,26 @@
 		BBC63C7D227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC63C7B227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift */; };
 		BBC63C7E227AEE3D00A0168D /* DemoCustomPullForProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC63C7C227AEE3D00A0168D /* DemoCustomPullForProjectViewController.xib */; };
 		BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */; };
+		BBC92C9222D5A410009C571E /* ButtonStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C7D22D5A410009C571E /* ButtonStackCell.swift */; };
+		BBC92C9322D5A410009C571E /* StackCellBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C7E22D5A410009C571E /* StackCellBase.swift */; };
+		BBC92C9422D5A410009C571E /* TapStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C7F22D5A410009C571E /* TapStackCell.swift */; };
+		BBC92C9522D5A410009C571E /* SwitchStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8022D5A410009C571E /* SwitchStackCell.swift */; };
+		BBC92C9622D5A410009C571E /* StackScrollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8122D5A410009C571E /* StackScrollViewController.swift */; };
+		BBC92C9722D5A410009C571E /* HeaderStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8222D5A410009C571E /* HeaderStackCell.swift */; };
+		BBC92C9822D5A410009C571E /* TextFieldStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8322D5A410009C571E /* TextFieldStackCell.swift */; };
+		BBC92C9922D5A410009C571E /* LabelStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8422D5A410009C571E /* LabelStackCell.swift */; };
+		BBC92C9B22D5A410009C571E /* SeparatorStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8622D5A410009C571E /* SeparatorStackCell.swift */; };
+		BBC92C9C22D5A410009C571E /* DatePickerStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8722D5A410009C571E /* DatePickerStackCell.swift */; };
+		BBC92C9D22D5A410009C571E /* MarginStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8822D5A410009C571E /* MarginStackCell.swift */; };
+		BBC92C9E22D5A410009C571E /* StackScrollViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC92C8922D5A410009C571E /* StackScrollViewController.xib */; };
+		BBC92C9F22D5A410009C571E /* TextViewStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8A22D5A410009C571E /* TextViewStackCell.swift */; };
+		BBC92CA022D5A410009C571E /* NibItemStackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC92C8C22D5A410009C571E /* NibItemStackCell.xib */; };
+		BBC92CA122D5A410009C571E /* NibToggerShow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C8D22D5A410009C571E /* NibToggerShow.swift */; };
+		BBC92CA222D5A410009C571E /* NibToggerShow.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC92C8E22D5A410009C571E /* NibToggerShow.xib */; };
+		BBC92CA322D5A410009C571E /* NibStackCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC92C8F22D5A410009C571E /* NibStackCell.xib */; };
+		BBC92CA422D5A410009C571E /* NibStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C9022D5A410009C571E /* NibStackCell.swift */; };
+		BBC92CA522D5A410009C571E /* NibItemStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C9122D5A410009C571E /* NibItemStackCell.swift */; };
+		BBC92CA822D5FDD2009C571E /* ShowMoreLabelStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92CA722D5FDD2009C571E /* ShowMoreLabelStackCell.swift */; };
 		BBCBDEE12286CD390026B9B1 /* DemoNavBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBCBDEDF2286CD390026B9B1 /* DemoNavBarViewController.swift */; };
 		BBCBDEE22286CD390026B9B1 /* DemoNavBarViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBCBDEE02286CD390026B9B1 /* DemoNavBarViewController.xib */; };
 		BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */; };
@@ -659,6 +679,26 @@
 		BBC63C7B227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCustomPullForProjectViewController.swift; sourceTree = "<group>"; };
 		BBC63C7C227AEE3D00A0168D /* DemoCustomPullForProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoCustomPullForProjectViewController.xib; sourceTree = "<group>"; };
 		BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationDemo.swift; sourceTree = "<group>"; };
+		BBC92C7D22D5A410009C571E /* ButtonStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStackCell.swift; sourceTree = "<group>"; };
+		BBC92C7E22D5A410009C571E /* StackCellBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCellBase.swift; sourceTree = "<group>"; };
+		BBC92C7F22D5A410009C571E /* TapStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8022D5A410009C571E /* SwitchStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8122D5A410009C571E /* StackScrollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackScrollViewController.swift; sourceTree = "<group>"; };
+		BBC92C8222D5A410009C571E /* HeaderStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8322D5A410009C571E /* TextFieldStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8422D5A410009C571E /* LabelStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8622D5A410009C571E /* SeparatorStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8722D5A410009C571E /* DatePickerStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatePickerStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8822D5A410009C571E /* MarginStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarginStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8922D5A410009C571E /* StackScrollViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StackScrollViewController.xib; sourceTree = "<group>"; };
+		BBC92C8A22D5A410009C571E /* TextViewStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextViewStackCell.swift; sourceTree = "<group>"; };
+		BBC92C8C22D5A410009C571E /* NibItemStackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibItemStackCell.xib; sourceTree = "<group>"; };
+		BBC92C8D22D5A410009C571E /* NibToggerShow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibToggerShow.swift; sourceTree = "<group>"; };
+		BBC92C8E22D5A410009C571E /* NibToggerShow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibToggerShow.xib; sourceTree = "<group>"; };
+		BBC92C8F22D5A410009C571E /* NibStackCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = NibStackCell.xib; sourceTree = "<group>"; };
+		BBC92C9022D5A410009C571E /* NibStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibStackCell.swift; sourceTree = "<group>"; };
+		BBC92C9122D5A410009C571E /* NibItemStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibItemStackCell.swift; sourceTree = "<group>"; };
+		BBC92CA722D5FDD2009C571E /* ShowMoreLabelStackCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowMoreLabelStackCell.swift; sourceTree = "<group>"; };
 		BBCBDEDF2286CD390026B9B1 /* DemoNavBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoNavBarViewController.swift; sourceTree = "<group>"; };
 		BBCBDEE02286CD390026B9B1 /* DemoNavBarViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoNavBarViewController.xib; sourceTree = "<group>"; };
 		BBD2E5D22019CC8E005C7C37 /* DbAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbAlertController.swift; sourceTree = "<group>"; };
@@ -800,6 +840,7 @@
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BBC92C7C22D5A410009C571E /* Demo-StackScrollView */,
 				BBF4EFC6228BB68600B3944D /* DemoWebViewViewController.swift */,
 				BBF4EFC7228BB68600B3944D /* DemoWebViewViewController.xib */,
 				BBCBDEE32286CD400026B9B1 /* Demo-NavigationBar */,
@@ -826,6 +867,7 @@
 				BBA1C8EA225320F7008FF2FF /* App-RunKeeper */,
 				BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */,
 				BB12451522A8ED20003DF0ED /* Demo-HtmlWithAdvButton */,
+				BBC92C7B22D5A3D9009C571E /* New Group */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -1465,6 +1507,56 @@
 			path = CustomForOtherProject;
 			sourceTree = "<group>";
 		};
+		BBC92C7B22D5A3D9009C571E /* New Group */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "New Group";
+			sourceTree = "<group>";
+		};
+		BBC92C7C22D5A410009C571E /* Demo-StackScrollView */ = {
+			isa = PBXGroup;
+			children = (
+				BBC92C8122D5A410009C571E /* StackScrollViewController.swift */,
+				BBC92C8922D5A410009C571E /* StackScrollViewController.xib */,
+				BBC92CA622D5A636009C571E /* CustomStackCell */,
+				BBC92C8022D5A410009C571E /* SwitchStackCell.swift */,
+				BBC92C7D22D5A410009C571E /* ButtonStackCell.swift */,
+				BBC92C8222D5A410009C571E /* HeaderStackCell.swift */,
+				BBC92C8622D5A410009C571E /* SeparatorStackCell.swift */,
+				BBC92C8822D5A410009C571E /* MarginStackCell.swift */,
+				BBC92C8722D5A410009C571E /* DatePickerStackCell.swift */,
+				BBC92C8322D5A410009C571E /* TextFieldStackCell.swift */,
+				BBC92C8A22D5A410009C571E /* TextViewStackCell.swift */,
+				BBC92CA722D5FDD2009C571E /* ShowMoreLabelStackCell.swift */,
+				BBC92C8B22D5A410009C571E /* Nib Views */,
+			);
+			path = "Demo-StackScrollView";
+			sourceTree = "<group>";
+		};
+		BBC92C8B22D5A410009C571E /* Nib Views */ = {
+			isa = PBXGroup;
+			children = (
+				BBC92C8D22D5A410009C571E /* NibToggerShow.swift */,
+				BBC92C8E22D5A410009C571E /* NibToggerShow.xib */,
+				BBC92C9022D5A410009C571E /* NibStackCell.swift */,
+				BBC92C8F22D5A410009C571E /* NibStackCell.xib */,
+				BBC92C9122D5A410009C571E /* NibItemStackCell.swift */,
+				BBC92C8C22D5A410009C571E /* NibItemStackCell.xib */,
+			);
+			path = "Nib Views";
+			sourceTree = "<group>";
+		};
+		BBC92CA622D5A636009C571E /* CustomStackCell */ = {
+			isa = PBXGroup;
+			children = (
+				BBC92C7F22D5A410009C571E /* TapStackCell.swift */,
+				BBC92C7E22D5A410009C571E /* StackCellBase.swift */,
+				BBC92C8422D5A410009C571E /* LabelStackCell.swift */,
+			);
+			path = CustomStackCell;
+			sourceTree = "<group>";
+		};
 		BBCBDEE32286CD400026B9B1 /* Demo-NavigationBar */ = {
 			isa = PBXGroup;
 			children = (
@@ -1914,6 +2006,7 @@
 				BBE813FC2017458100B21B1F /* ic_hide_password.png in Resources */,
 				BBC38A64206DDEE500B11C7B /* Ionicons.ttf in Resources */,
 				BBC02E711F717DD20011FDE6 /* DemoData.plist in Resources */,
+				BBC92CA022D5A410009C571E /* NibItemStackCell.xib in Resources */,
 				BBB1A53822004AF40047293E /* DemoDbLocationManagerViewController.xib in Resources */,
 				BB12451222A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib in Resources */,
 				BBA2A43F211826F000618AEF /* PzListingViewController.xib in Resources */,
@@ -1945,17 +2038,20 @@
 				BB7E580821E857AE005C3FA6 /* DemoDecimalTextFieldViewController.xib in Resources */,
 				BBB1A53B22005BEA0047293E /* DbLocationManager.bundle in Resources */,
 				BB32A3E1224B2576006265B7 /* DemoJustViewController.xib in Resources */,
+				BBC92CA222D5A410009C571E /* NibToggerShow.xib in Resources */,
 				BB1303C72212CA28009FBFDE /* DemoEmptyDataSetViewController.xib in Resources */,
 				BB547320201789460055CAD9 /* FirstViewController.xib in Resources */,
 				BBF1E8A52271ED5F000D00BE /* DemoSemiModalViewController.xib in Resources */,
 				BBD3CF1B1F7102D80028425E /* ToDoCell.xib in Resources */,
 				BBF9F349225F4009001EE7BB /* svgBlackArrowUp.svg in Resources */,
+				BBC92C9E22D5A410009C571E /* StackScrollViewController.xib in Resources */,
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
 				BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */,
 				BB7E580321E84AD5005C3FA6 /* floatLabelRow.gif in Resources */,
 				BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */,
 				BBB569DB1F7B5B880014A7A9 /* TaskDetailViewController.xib in Resources */,
 				BB23604522A2EB6E002DDCE9 /* TipMenuViewCell.xib in Resources */,
+				BBC92CA322D5A410009C571E /* NibStackCell.xib in Resources */,
 				BB7F3043203E857900185366 /* main_gate@2x.png in Resources */,
 				BB7E580021E84A91005C3FA6 /* EurekaHeader.xib in Resources */,
 				BB5756B7219E7C48000BDACD /* KBScrollViewViewController.xib in Resources */,
@@ -2140,6 +2236,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BBC92C9822D5A410009C571E /* TextFieldStackCell.swift in Sources */,
 				BBB569DA1F7B5B880014A7A9 /* TaskDetailViewController.swift in Sources */,
 				BB922A852287440300E09A6F /* MyCustomNavigationBarView.txt in Sources */,
 				BB407AD02181821A00C8E57F /* DbUITableViewExtensions.swift in Sources */,
@@ -2161,6 +2258,7 @@
 				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BB2810A22216DDA6003823FE /* DbPullLoaderNSLayoutConstraintExtensions.swift in Sources */,
+				BBC92C9722D5A410009C571E /* HeaderStackCell.swift in Sources */,
 				BBA467152252216800E0749E /* UIGestureRecognizer+Closures.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
 				BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */,
@@ -2191,6 +2289,7 @@
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BBC63C7D227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift in Sources */,
 				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
+				BBC92CA822D5FDD2009C571E /* ShowMoreLabelStackCell.swift in Sources */,
 				BBA1C8FD225354C3008FF2FF /* FormatDisplay.swift in Sources */,
 				BB5756B6219E7C48000BDACD /* KBScrollViewViewController.swift in Sources */,
 				BBA467162252216800E0749E /* DbClosureHandler.swift in Sources */,
@@ -2240,10 +2339,13 @@
 				BBC5093C2266E5BB009068A6 /* DbSheetCustomPicker.swift in Sources */,
 				BBFAA0FD200D243700718E95 /* DbViewController.swift in Sources */,
 				BBF4EF86226CE15600B5722E /* DbHtmlViewController.swift in Sources */,
+				BBC92CA422D5A410009C571E /* NibStackCell.swift in Sources */,
 				BB4E236D210ECB1F00524B0D /* DbDeviceExtension.swift in Sources */,
 				BB626ECA20DBADCE0057F0CF /* DbDateExtensions.swift in Sources */,
 				BB2FA67620159EEC00590C94 /* TpPostDetailView.swift in Sources */,
 				BB2229C52229A4CC00A82EA5 /* PhotoAsset.swift in Sources */,
+				BBC92C9222D5A410009C571E /* ButtonStackCell.swift in Sources */,
+				BBC92C9D22D5A410009C571E /* MarginStackCell.swift in Sources */,
 				BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */,
 				BBA3D1B5206CE77D00CD2F0F /* DbLabel.swift in Sources */,
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
@@ -2258,12 +2360,16 @@
 				BB92D860224E00BE00B8F244 /* DbRealmExtensions.swift in Sources */,
 				BB23604422A2EB6E002DDCE9 /* TipMenuViewCell.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
+				BBC92C9422D5A410009C571E /* TapStackCell.swift in Sources */,
 				BB407ACF2181821A00C8E57F /* DbNSAttributedStringExtensions.swift in Sources */,
 				BBB1A534220031780047293E /* DbLocationManagerDefines.swift in Sources */,
 				BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */,
 				BB922A882288174000E09A6F /* NavBarPushOneViewController.swift in Sources */,
+				BBC92C9C22D5A410009C571E /* DatePickerStackCell.swift in Sources */,
+				BBC92C9F22D5A410009C571E /* TextViewStackCell.swift in Sources */,
 				BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
+				BBC92CA122D5A410009C571E /* NibToggerShow.swift in Sources */,
 				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
 				BBD6A1A822A0483B00EB7208 /* DbTipMenuView.swift in Sources */,
 				BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */,
@@ -2280,6 +2386,7 @@
 				BBE35FB722573C87004E5024 /* Geometry.swift in Sources */,
 				BB51AC542213F47300897CCC /* DbEmptyDefaultStatusView.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
+				BBC92C9922D5A410009C571E /* LabelStackCell.swift in Sources */,
 				BB7C50D92251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift in Sources */,
 				BBB5B150225B2B9200D16C53 /* RoadCarDoc.swift in Sources */,
 				BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */,
@@ -2311,6 +2418,7 @@
 				BB2FA67C2015F18A00590C94 /* DbViewFromXib.swift in Sources */,
 				BBF5276E21058220007CFFB4 /* DbRealmObject.swift in Sources */,
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
+				BBC92C9622D5A410009C571E /* StackScrollViewController.swift in Sources */,
 				BB2229C92229AE7900A82EA5 /* PhotoUploadManager.swift in Sources */,
 				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,
 				BBACDF892273128500E664EF /* PullUIScrollViewExtensions.swift in Sources */,
@@ -2327,6 +2435,7 @@
 				BB2E8514222EE8E200CD8E28 /* SurveyView.swift in Sources */,
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
 				BBA1C8F8225347E1008FF2FF /* RkMapViewController.swift in Sources */,
+				BBC92C9B22D5A410009C571E /* SeparatorStackCell.swift in Sources */,
 				BB2FE6712192CFCB007470DD /* DbMediaPickerController.swift in Sources */,
 				BBC38A55206DDE9500B11C7B /* MaterialIcon.swift in Sources */,
 				BBC5093E2266E916009068A6 /* DbSheetTimeFromToPicker.swift in Sources */,
@@ -2338,11 +2447,13 @@
 				BB407ACE2181821A00C8E57F /* DbCommonExtensions.swift in Sources */,
 				BB922A95228891C300E09A6F /* MyCustomNavigationBarView.swift in Sources */,
 				BB28109B2216D3F6003823FE /* DemoDbPullToRefreshViewController.swift in Sources */,
+				BBC92CA522D5A410009C571E /* NibItemStackCell.swift in Sources */,
 				BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
 				BBE35FBA22573D03004E5024 /* LocationDoc.swift in Sources */,
 				BB3FDBF2217EFD07002D570F /* DbStackCell.swift in Sources */,
 				BB9BC0C221EDE5F9004BC430 /* DemoActionSheetWindowViewController.swift in Sources */,
+				BBC92C9322D5A410009C571E /* StackCellBase.swift in Sources */,
 				BB4E235D210EBA8F00524B0D /* CategoryApi.swift in Sources */,
 				BB11D80821EF7DED00134CAD /* DbSheetPicker.swift in Sources */,
 				BBF1E8A42271ED5F000D00BE /* DemoSemiModalViewController.swift in Sources */,
@@ -2368,6 +2479,7 @@
 				BBDDD5D8219D5DB400AC4940 /* KeyboarbHandleViewController.swift in Sources */,
 				BBCBDEE12286CD390026B9B1 /* DemoNavBarViewController.swift in Sources */,
 				BB9A194222294D3100D7BE9A /* FlickrPhoto.swift in Sources */,
+				BBC92C9522D5A410009C571E /* SwitchStackCell.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
 				BBA1C8E8225320EB008FF2FF /* RkMainViewController.swift in Sources */,

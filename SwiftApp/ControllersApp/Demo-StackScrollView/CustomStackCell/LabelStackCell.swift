@@ -7,10 +7,9 @@
 //
 
 import Foundation
-//import StackScrollView
 import SnapKit
 
-final class LabelStackCell: DbStackCellBase
+final class LabelStackCell: StackCellBase
 {
     private let label = UILabel()
   

@@ -11,7 +11,7 @@ import Foundation
 //import EasyPeasy
 //import StackScrollView
 
-final class TextFieldStackCell: DbStackCellBase {
+final class TextFieldStackCell: StackCellBase {
   
   private let textField = UITextField()
   
@@ -19,6 +19,7 @@ final class TextFieldStackCell: DbStackCellBase {
     super.init()
     
     textField.font = UIFont.preferredFont(forTextStyle: .body)
+    textField.backgroundColor = UIColor.white
     
     addSubview(textField)
 //    textField <- Edges(UIEdgeInsets(top: 8, left: 16, bottom: 8, right: 16))
@@ -28,9 +29,9 @@ final class TextFieldStackCell: DbStackCellBase {
         make.edges.equalTo(self).inset(UIEdgeInsets(top: 8, left: 20, bottom: 8, right: 20))
     }
 
-//    self.snp.makeConstraints { (make) in
-//        make.height.greaterThanOrEqualTo(40)
-//    }
+    self.snp.makeConstraints { (make) in
+        make.height.greaterThanOrEqualTo(80)
+    }
     
 //    self <- Height(>=40)
   }

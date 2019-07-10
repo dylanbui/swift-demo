@@ -8,10 +8,10 @@
 
 import UIKit
 
-import EasyPeasy
+//import EasyPeasy
 //import StackScrollView
 
-final class DatePickerStackCell: DbTapStackCell {
+final class DatePickerStackCell: TapStackCell {
   
   let pickerView = UIDatePicker()
   let titleLabel = UILabel()
@@ -28,10 +28,9 @@ final class DatePickerStackCell: DbTapStackCell {
     
     backgroundColor = UIColor.white
     
-    pickerContainerView.clipsToBounds = true
-    
     pickerView.setContentHuggingPriority(.init(100), for: .horizontal)
-    
+
+    pickerContainerView.clipsToBounds = true
     pickerContainerView.addSubview(pickerView)
     
     addSubview(bodyContainerView)
@@ -57,10 +56,13 @@ final class DatePickerStackCell: DbTapStackCell {
     bodyContainerView.addSubview(titleLabel)
     bodyContainerView.addSubview(valueLabel)
     
+    titleLabel.backgroundColor = UIColor.lightGray
     titleLabel.snp.makeConstraints { (make) in
         make.top.greaterThanOrEqualTo(12)
         make.bottom.lessThanOrEqualTo(12)
         make.left.equalTo(16)
+//        make.right.equalTo(valueLabel.snp.left)
+        make.width.equalTo(50)
         make.centerY.equalToSuperview()
     }
     
@@ -71,12 +73,16 @@ final class DatePickerStackCell: DbTapStackCell {
 //      CenterY(),
 //    ])
     
+    valueLabel.textAlignment = .right
+    valueLabel.numberOfLines = 0
+    valueLabel.backgroundColor = UIColor.red
+    valueLabel.text = "noi dung" // Phai co du lieu , Label nay moi hien thi
     valueLabel.snp.makeConstraints { (make) in
         make.top.greaterThanOrEqualTo(12)
         make.bottom.lessThanOrEqualTo(12)
-        make.left.greaterThanOrEqualTo(titleLabel.snp.right).offset(-24)
+        make.left.equalTo(titleLabel.snp.right).offset(5)
         make.centerY.equalToSuperview()
-        make.right.equalTo(16)
+        make.right.equalTo(-16)
     }
     
 //    valueLabel.easy.layout([
@@ -91,7 +97,8 @@ final class DatePickerStackCell: DbTapStackCell {
         make.top.equalToSuperview()
         make.right.equalToSuperview()
         make.left.equalToSuperview()
-        make.bottom.equalTo(pickerView.snp.top)
+        //make.bottom.equalToSuperview()
+        make.bottom.equalTo(borderView.snp.top)
     }
     
 //    bodyContainerView.easy.layout([
@@ -101,10 +108,13 @@ final class DatePickerStackCell: DbTapStackCell {
 //      Bottom().to(borderView, .top),
 //    ])
     
+    borderView.backgroundColor = UIColor.red
+    borderView.alpha = 0
     borderView.snp.makeConstraints { (make) in
         make.right.equalTo(16)
         make.left.equalTo(16)
-        make.height.equalTo(1 / UIScreen.main.scale)
+        //make.height.equalTo(1 / UIScreen.main.scale)
+        make.height.equalTo(1)
         make.bottom.equalTo(pickerContainerView.snp.top)
     }
     
@@ -130,12 +140,6 @@ final class DatePickerStackCell: DbTapStackCell {
 //    ])
     
     bodyContainerView.isUserInteractionEnabled = false
-    
-    valueLabel.textAlignment = .right
-    valueLabel.numberOfLines = 0
-    
-    borderView.backgroundColor = UIColor(white: 0.95, alpha: 1)
-    borderView.alpha = 0
   }
 
   override func tap() {
@@ -205,7 +209,8 @@ final class DatePickerStackCell: DbTapStackCell {
       animations: {
         
         self.pickerContainerView.snp.updateConstraints({ (update) in
-            update.height.equalToSuperview()
+            //update.height.equalToSuperview()
+            update.height.equalTo(200)
         })
 
 //        NSLayoutConstraint.deactivate(
@@ -228,7 +233,9 @@ final class DatePickerStackCell: DbTapStackCell {
     
   }
   
-  func set(title: String) {
-    titleLabel.text = title
-  }
+  
+    func set(title: String)
+    {
+        titleLabel.text = title
+    }
 } 

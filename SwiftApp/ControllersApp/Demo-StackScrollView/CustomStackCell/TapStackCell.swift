@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TapStackCell: DbStackCellBase {
+class TapStackCell: StackCellBase {
   
   var highlightedBackgroundColor: UIColor = .init(white: 0.95, alpha: 1)
   var normalBackgroundColor: UIColor = .white
