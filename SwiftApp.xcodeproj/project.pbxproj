@@ -354,6 +354,11 @@
 		BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FA2017458100B21B1F /* ic_show_password@2x.png */; };
 		BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */; };
 		BBE88C5C20216C5E0044F661 /* DbDispatch.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBE88C5B20216C5E0044F661 /* DbDispatch.swift */; };
+		BBEDA76022DC3D6000AA84C3 /* MapKitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEDA75E22DC3D6000AA84C3 /* MapKitViewController.swift */; };
+		BBEDA76122DC3D6000AA84C3 /* MapKitViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBEDA75F22DC3D6000AA84C3 /* MapKitViewController.xib */; };
+		BBEDCE8422DC5A370008ACF0 /* PropertySearchParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEDCE8322DC5A370008ACF0 /* PropertySearchParams.swift */; };
+		BBEDCE8622DC5DA80008ACF0 /* PropertyUnit.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEDCE8522DC5DA80008ACF0 /* PropertyUnit.swift */; };
+		BBEDCE8822DC607F0008ACF0 /* PropertySearchApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBEDCE8722DC607F0008ACF0 /* PropertySearchApi.swift */; };
 		BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */; };
 		BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0312121F102460009C753 /* DbSheetDatePicker.swift */; };
 		BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */; };
@@ -745,6 +750,11 @@
 		BBE813FA2017458100B21B1F /* ic_show_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_show_password@2x.png"; sourceTree = "<group>"; };
 		BBE813FB2017458100B21B1F /* ic_hide_password@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_hide_password@2x.png"; sourceTree = "<group>"; };
 		BBE88C5B20216C5E0044F661 /* DbDispatch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbDispatch.swift; sourceTree = "<group>"; };
+		BBEDA75E22DC3D6000AA84C3 /* MapKitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapKitViewController.swift; sourceTree = "<group>"; };
+		BBEDA75F22DC3D6000AA84C3 /* MapKitViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MapKitViewController.xib; sourceTree = "<group>"; };
+		BBEDCE8322DC5A370008ACF0 /* PropertySearchParams.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySearchParams.swift; sourceTree = "<group>"; };
+		BBEDCE8522DC5DA80008ACF0 /* PropertyUnit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyUnit.swift; sourceTree = "<group>"; };
+		BBEDCE8722DC607F0008ACF0 /* PropertySearchApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertySearchApi.swift; sourceTree = "<group>"; };
 		BBF0311F21F0F0D90009C753 /* DbSheetTableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetTableView.swift; sourceTree = "<group>"; };
 		BBF0312121F102460009C753 /* DbSheetDatePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetDatePicker.swift; sourceTree = "<group>"; };
 		BBF0A5F822150F2E00BFEAE2 /* JTMaterialSpinner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JTMaterialSpinner.swift; sourceTree = "<group>"; };
@@ -867,7 +877,7 @@
 				BBA1C8EA225320F7008FF2FF /* App-RunKeeper */,
 				BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */,
 				BB12451522A8ED20003DF0ED /* Demo-HtmlWithAdvButton */,
-				BBC92C7B22D5A3D9009C571E /* New Group */,
+				BBC92C7B22D5A3D9009C571E /* Demo-ClusterKit-MapPins */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -1507,11 +1517,16 @@
 			path = CustomForOtherProject;
 			sourceTree = "<group>";
 		};
-		BBC92C7B22D5A3D9009C571E /* New Group */ = {
+		BBC92C7B22D5A3D9009C571E /* Demo-ClusterKit-MapPins */ = {
 			isa = PBXGroup;
 			children = (
+				BBEDA75E22DC3D6000AA84C3 /* MapKitViewController.swift */,
+				BBEDA75F22DC3D6000AA84C3 /* MapKitViewController.xib */,
+				BBEDCE8322DC5A370008ACF0 /* PropertySearchParams.swift */,
+				BBEDCE8722DC607F0008ACF0 /* PropertySearchApi.swift */,
+				BBEDCE8522DC5DA80008ACF0 /* PropertyUnit.swift */,
 			);
-			path = "New Group";
+			path = "Demo-ClusterKit-MapPins";
 			sourceTree = "<group>";
 		};
 		BBC92C7C22D5A410009C571E /* Demo-StackScrollView */ = {
@@ -2015,6 +2030,7 @@
 				BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */,
 				BB54731C201789300055CAD9 /* SecondViewController.xib in Resources */,
 				BBC38A67206DDEE500B11C7B /* MaterialIcons-Regular.ttf in Resources */,
+				BBEDA76122DC3D6000AA84C3 /* MapKitViewController.xib in Resources */,
 				BBB569EF1F7BC8880014A7A9 /* TpPostsViewController.xib in Resources */,
 				BB922A892288174000E09A6F /* NavBarPushOneViewController.xib in Resources */,
 				BBCBDEE22286CD390026B9B1 /* DemoNavBarViewController.xib in Resources */,
@@ -2144,11 +2160,11 @@
 				"${PODS_ROOT}/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
 				"${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework",
 				"${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework",
 				"${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework",
-				"${BUILT_PRODUCTS_DIR}/EasyPeasy/EasyPeasy.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyRealm/EasyRealm.framework",
 				"${BUILT_PRODUCTS_DIR}/EasyTipView/EasyTipView.framework",
 				"${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework",
@@ -2176,11 +2192,11 @@
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKCamera.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKImagePickerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DKPhotoGallery.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyPeasy.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyRealm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/EasyTipView.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Eureka.framework",
@@ -2266,6 +2282,7 @@
 				BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BB32A3DC224B20EC006265B7 /* DbConnection.swift in Sources */,
+				BBEDA76022DC3D6000AA84C3 /* MapKitViewController.swift in Sources */,
 				BBA3D1B7206CEC8100CD2F0F /* DbTextField.swift in Sources */,
 				BB92D85E224DC6DF00B8F244 /* PzAdminApi.swift in Sources */,
 				BBD3CF1A1F7102D80028425E /* ToDoCell.swift in Sources */,
@@ -2359,6 +2376,7 @@
 				BBE35FBC22573D91004E5024 /* PlaceDoc.swift in Sources */,
 				BB92D860224E00BE00B8F244 /* DbRealmExtensions.swift in Sources */,
 				BB23604422A2EB6E002DDCE9 /* TipMenuViewCell.swift in Sources */,
+				BBEDCE8622DC5DA80008ACF0 /* PropertyUnit.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
 				BBC92C9422D5A410009C571E /* TapStackCell.swift in Sources */,
 				BB407ACF2181821A00C8E57F /* DbNSAttributedStringExtensions.swift in Sources */,
@@ -2396,6 +2414,7 @@
 				BB197D46200BC051005514C3 /* DbUtils.swift in Sources */,
 				BB3E61A922B89A7B004C903D /* DbUIStackViewExtensions.swift in Sources */,
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
+				BBEDCE8822DC607F0008ACF0 /* PropertySearchApi.swift in Sources */,
 				BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */,
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
@@ -2473,6 +2492,7 @@
 				BB1303C62212CA28009FBFDE /* DemoEmptyDataSetViewController.swift in Sources */,
 				BB9E77AC222E22BC00BFC9C7 /* DemoLazyUploadViewController.swift in Sources */,
 				BBF1E8A02271DA31000D00BE /* RentInfoView.swift in Sources */,
+				BBEDCE8422DC5A370008ACF0 /* PropertySearchParams.swift in Sources */,
 				BBA467182252216800E0749E /* UIBarButtonItem+Closures.swift in Sources */,
 				BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,

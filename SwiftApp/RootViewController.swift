@@ -36,7 +36,7 @@ class RootViewController: UIViewController
 //        let vcl = CategoriesViewController()
 //        let vcl = PzLoginViewController()
 //        let vcl = PzListingViewController()
-        let vcl = StackScrollViewController()
+//        let vcl = StackScrollViewController() // => Done
         //let vcl = KeyboarbHandleViewController()
 //        let vcl = KBScrollViewViewController()
         // let vcl = DemoDecimalTextFieldViewController()
@@ -63,10 +63,10 @@ class RootViewController: UIViewController
         //let vcl = DemoWebViewViewController()
         //let vcl = DemoTipMenuViewController() // => Done
 //        let vcl = DemoTipMenuInTableViewController() // => Done
-
 //        let vcl = DemoNavBarViewController() // => Done
-        
 //        let vcl = DemoHtmlWithAdvButtonViewController() // => Done
+        
+        let vcl = MapKitViewController() // => Done
         
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a

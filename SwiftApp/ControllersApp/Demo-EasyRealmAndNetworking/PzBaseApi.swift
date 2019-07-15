@@ -10,7 +10,8 @@ import Foundation
 import ObjectMapper
 //import RealmSwift
 
-
+public let pzUtilNetworkQueue = DispatchQueue(label: "vn.propzy.uti.network", qos: .utility)
+public let pzBgNetworkQueue = DispatchQueue(label: "vn.propzy.bg.network", qos: .background)
 
 public class PzResponse: NSObject, DbHTTPResponseProtocol, NSCoding
 {
@@ -177,17 +178,16 @@ public class PzBaseApi
     
     class func requestForList<T: Mappable>(strUrl: String,
                                            method: DbHTTPMethod = .get,
-                                           params: [String: String]? = nil,
+                                           params: DictionaryType? = nil,
+                                           queue: DispatchQueue = DispatchQueue.main,
                                            completionHandler: DbPzListHandler<T>?)
     {
-        DbHTTP.requestFor(PzResponse.self, method: method, url: strUrl, json: params) { (pzResponse) in
-            DbUtils.dispatchToMainQueue {
-                if pzResponse.httpResult.ok {
-                    completionHandler?(parseToArray(T.self, data: pzResponse.data), pzResponse)
-                } else {
-                    // Xu ly loi
-                    completionHandler?(nil, pzResponse)
-                }
+        DbHTTP.requestFor(PzResponse.self, method: method, url: strUrl, json: params, queue: queue) { (pzResponse) in
+            if pzResponse.httpResult.ok {
+                completionHandler?(parseToArray(T.self, data: pzResponse.data), pzResponse)
+            } else {
+                // Xu ly loi
+                completionHandler?(nil, pzResponse)
             }
         }
     }

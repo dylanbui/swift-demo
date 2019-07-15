@@ -1,6 +1,9 @@
 PODS:
   - ActionSheetPicker-3.0 (2.3.0)
   - Alamofire (4.7.3)
+  - ClusterKit/Core (0.4.0)
+  - ClusterKit/MapKit (0.4.0):
+    - ClusterKit/Core
   - CropViewController (2.4.0)
   - DKCamera (1.6.4)
   - DKImagePickerController/Camera (4.1.3):
@@ -35,7 +38,6 @@ PODS:
     - SDWebImage/GIF
   - DKPhotoGallery/Resource (0.0.11):
     - SDWebImage/GIF
-  - EasyPeasy (1.7.0)
   - EasyRealm (3.4.0):
     - RealmSwift (~> 3.10)
   - EasyTipView (2.0.4)
@@ -89,11 +91,11 @@ PODS:
 DEPENDENCIES:
   - ActionSheetPicker-3.0
   - Alamofire (= 4.7.3)
+  - ClusterKit/MapKit
   - CropViewController (= 2.4.0)
   - DKImagePickerController/Camera (= 4.1.3)
   - DKImagePickerController/InlineCamera (= 4.1.3)
   - DKImagePickerController/PhotoGallery (= 4.1.3)
-  - EasyPeasy (= 1.7.0)
   - EasyRealm (= 3.4.0)
   - EasyTipView (= 2.0.4)
   - Eureka (= 4.3.1)
@@ -117,11 +119,11 @@ SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - ActionSheetPicker-3.0
     - Alamofire
+    - ClusterKit
     - CropViewController
     - DKCamera
     - DKImagePickerController
     - DKPhotoGallery
-    - EasyPeasy
     - EasyRealm
     - EasyTipView
     - Eureka
@@ -155,11 +157,11 @@ CHECKOUT OPTIONS:
 SPEC CHECKSUMS:
   ActionSheetPicker-3.0: eef157d75e151f255c5333d26656c7fbfe905a51
   Alamofire: c7287b6e5d7da964a70935e5db17046b7fde6568
+  ClusterKit: a15da2e7a437c525b18e10f007fd2198336e3e2e
   CropViewController: a090820b15fc3da68e694d7c192a4708c576828b
   DKCamera: 61fa47629a39354e5111bca1fe96695de020dcb9
   DKImagePickerController: 7c8c788a17251dfbcf4920c5f042d55c3b900d68
   DKPhotoGallery: e5fc53899345c26af4374503dd249caabac7d26a
-  EasyPeasy: 2f2785ed78c6f9e9045221f2ff317730e7321bff
   EasyRealm: 284b0f26de97e84821772aa61a363f9617e44c61
   EasyTipView: 4f8beae0a82db2ca4a9b5fd658785fc5f61d296b
   Eureka: 28ea296f06710f6745266b71f17862048941a32d
@@ -181,6 +183,6 @@ SPEC CHECKSUMS:
   SwiftMessages: da7c981256a65b3e58022d9027a36584cf4eccf5
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: 5ce76659b2b5d26e481e292d051f2017b3cc653d
+PODFILE CHECKSUM: c72534ba5d0d7e2bdab0111d82d358e55e640a7d
 
 COCOAPODS: 1.6.1

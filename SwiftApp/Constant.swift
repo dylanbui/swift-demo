@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class DE_s: UIControl {
     
@@ -62,6 +63,11 @@ let ENV_DEV_APP = 1 // Develop model
 //    let UPLOAD_PHOTO_BASE_URL       = "http://124.158.14.28:8080/pama/api" // Develop Server
 //
 //#endif
+
+// -- Demo toa nha bixteco la mac dinh --
+let DEF_LOCATION                         = CLLocationCoordinate2DMake(10.763997, 106.656375)
+let DEF_LAT                              = 10.763997
+let DEF_LONG                             = 106.656375
 
 extension UIFont {
 

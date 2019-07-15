@@ -60,7 +60,9 @@ target 'SwiftApp' do
     pod 'RevealingSplashView', '0.6.0'
     
     #pod 'StackScrollView', '1.2.0'
-    pod 'EasyPeasy', '1.7.0'
+    #pod 'EasyPeasy', '1.7.0'
+    #pod 'ClusterKit', '0.4.0'
+    pod 'ClusterKit/MapKit'
     
     # => updated 10/01/2019, Eureka chay khong on dinh trong cac phien ban < ios 11
     pod 'Eureka', '4.3.1'

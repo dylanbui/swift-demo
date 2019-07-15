@@ -8,8 +8,6 @@
 
 import UIKit
 
-import EasyPeasy
-
 final class SwitchStackCell: StackCellBase {
   
   var valueChanged: (Bool) -> Void = { _ in }
