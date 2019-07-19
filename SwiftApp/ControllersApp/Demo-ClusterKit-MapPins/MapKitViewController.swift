@@ -30,23 +30,40 @@ class MapKitViewController: UIViewController
         algorithm.cellSize = 200
         
         // MKPointAnnotation
-        
+
         self.mapView.delegate = self
         self.mapView.clusterManager.algorithm = algorithm
         self.mapView.clusterManager.marginFactor = 1
         
         // -- Set frame zoom --
-        let span = MKCoordinateSpan.init(latitudeDelta: 0.1, longitudeDelta: 0.1)
         let pzLocation = CLLocationCoordinate2D(latitude: DEF_LAT, longitude: DEF_LONG)
-        let region = MKCoordinateRegion.init(center: pzLocation, span: span)
-        self.mapView.setRegion(region, animated: false)
-        // self.mapView.setCenter(propzy, animated: false)
+        // let span = MKCoordinateSpan.init(latitudeDelta: 0.05, longitudeDelta: 0.05)
+        // let region = MKCoordinateRegion.init(center: pzLocation, span: span)
+        // self.mapView.setRegion(region, animated: false)
+        self.mapView.setCenterCoordinate(pzLocation, withZoomLevel: 18, animated: false)
         
         self.searchParam = PropertySearchParam()
         self.searchParam?.pagingAtPage = 1
         self.searchParam?.pagingWithLimit = 1000
         
-        PropertySearchApi.getPropertiesMapPin(searchParam: self.searchParam!) { (success, totalItems, arrPin) in
+        self.loadPinData()
+    }
+    
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+    }
+    
+    private func loadPinData()
+    {
+        // -- Lay 4 goc --
+        let northEast: CLLocationCoordinate2D = self.mapView.northEastCoordinate
+        let southWest: CLLocationCoordinate2D = self.mapView.southWestCoordinate
+        let southEast: CLLocationCoordinate2D = self.mapView.southEastCoordinate
+        let northWest: CLLocationCoordinate2D = self.mapView.northWestCoordinate
+        self.searchParam?.locationBounds = [northEast, southWest, southEast, northWest]
+        
+        PropertySearchApi.getPropertiesMapPinInAreas(searchParam: self.searchParam!) { (success, totalItems, arrPin) in
             if Thread.isMainThread {
                 print("MMAIN THREAD")
             } else {
@@ -63,7 +80,6 @@ class MapKitViewController: UIViewController
             DbDispatch.asyncMain {
                 // -- Load du lieu trong Main Thread --
                 self.mapView.clusterManager.annotations = arrPin
-                self.mapView.clusterManager.addAnnotations(<#T##annotations: [MKAnnotation]##[MKAnnotation]#>)
             }
         }
         
@@ -96,6 +112,25 @@ extension MapKitViewController: MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool)
     {
+        print("self.mapView.currentZoomLevel = \(self.mapView.currentZoomLevel)")
+        if self.mapView.currentZoomLevel < 16 {
+            self.mapView.setCenterCoordinate(self.mapView.region.center, withZoomLevel: 12, animated: false)
+            return
+        }
+        
+        let northEast: CLLocationCoordinate2D = self.mapView.northEastCoordinate
+        let southWest: CLLocationCoordinate2D = self.mapView.southWestCoordinate
+        let southEast: CLLocationCoordinate2D = self.mapView.southEastCoordinate
+        let northWest: CLLocationCoordinate2D = self.mapView.northWestCoordinate
+        
+        //self.mapView.region.center
+
+        
+        print("\([northEast, southWest, southEast, northWest].debugDescription)")
+        
+        
+        
+        
         self.mapView.clusterManager.updateClustersIfNeeded()
     }
     
@@ -220,21 +255,3 @@ class CKClusterView: MKAnnotationView
 }
 
 
-extension MKMapView
-{
-    var northWestCoordinate: CLLocationCoordinate2D {
-        return MKMapPoint(x: visibleMapRect.minX, y: visibleMapRect.minY).coordinate
-    }
-    
-    var northEastCoordinate: CLLocationCoordinate2D {
-        return MKMapPoint(x: visibleMapRect.maxX, y: visibleMapRect.minY).coordinate
-    }
-    
-    var southEastCoordinate: CLLocationCoordinate2D {
-        return MKMapPoint(x: visibleMapRect.maxX, y: visibleMapRect.maxY).coordinate
-    }
-    
-    var southWestCoordinate: CLLocationCoordinate2D {
-        return MKMapPoint(x: visibleMapRect.minX, y: visibleMapRect.maxY).coordinate
-    }
-}

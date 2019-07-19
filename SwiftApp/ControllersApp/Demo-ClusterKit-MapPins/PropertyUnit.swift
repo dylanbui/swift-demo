@@ -40,13 +40,43 @@ class DateTransformUnit: TransformType
 
 let ERR_LOCATION = CLLocationCoordinate2DMake(0, 0)
 
-class MapKitPin : NSObject, MKAnnotation
+//class MapKitPin : NSObject, MKAnnotation
+//{
+//    var coordinate: CLLocationCoordinate2D
+//    var title: String?
+//    var subtitle: String?
+//
+//    var unitProperty: PropertyUnit?
+//
+//    convenience init(property: PropertyUnit)
+//    {
+//        self.init(coordinate: property.unitLocation?.coordinate ?? ERR_LOCATION, title: property.title ?? "", subtitle: "")
+//        self.unitProperty = property
+//    }
+//
+//    init(coordinate: CLLocationCoordinate2D, title: String, subtitle: String)
+//    {
+//        self.coordinate = coordinate
+//        self.title = title
+//        self.subtitle = subtitle
+//    }
+//}
+
+class MapKitPin : NSObject, Mappable, MKAnnotation
 {
     var coordinate: CLLocationCoordinate2D
     var title: String?
     var subtitle: String?
     
     var unitProperty: PropertyUnit?
+    
+    required convenience init?(map: Map)
+    {
+        guard let unitProperty = PropertyUnit.init(map: map) else {
+            return nil
+        }
+        self.init(property: unitProperty)
+    }
     
     convenience init(property: PropertyUnit)
     {
@@ -60,7 +90,13 @@ class MapKitPin : NSObject, MKAnnotation
         self.title = title
         self.subtitle = subtitle
     }
+    
+    func mapping(map: Map)
+    {
+        
+    }
 }
+
 
 
 class PropertyUnit: Mappable
@@ -117,7 +153,7 @@ class PropertyUnit: Mappable
     
     var unitLocation: PropertyLocationUnit?
     
-    required convenience  init?(map: Map)
+    required convenience init?(map: Map)
     {
         self.init()
         self.mapping(map: map)

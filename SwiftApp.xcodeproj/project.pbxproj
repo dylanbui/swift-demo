@@ -107,6 +107,7 @@
 		BB54731F201789460055CAD9 /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB54731D201789460055CAD9 /* FirstViewController.swift */; };
 		BB547320201789460055CAD9 /* FirstViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB54731E201789460055CAD9 /* FirstViewController.xib */; };
 		BB5692402111A8220007757F /* Pz.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB56923F2111A8220007757F /* Pz.swift */; };
+		BB57378122DDB4CE00FFF56D /* MKMapView+ZoomLevel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB57378022DDB4CE00FFF56D /* MKMapView+ZoomLevel.swift */; };
 		BB5756B6219E7C48000BDACD /* KBScrollViewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5756B4219E7C48000BDACD /* KBScrollViewViewController.swift */; };
 		BB5756B7219E7C48000BDACD /* KBScrollViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB5756B5219E7C48000BDACD /* KBScrollViewViewController.xib */; };
 		BB581929206E432500E48DA4 /* DbButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB581928206E432500E48DA4 /* DbButton.swift */; };
@@ -497,6 +498,7 @@
 		BB54731D201789460055CAD9 /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
 		BB54731E201789460055CAD9 /* FirstViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FirstViewController.xib; sourceTree = "<group>"; };
 		BB56923F2111A8220007757F /* Pz.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pz.swift; sourceTree = "<group>"; };
+		BB57378022DDB4CE00FFF56D /* MKMapView+ZoomLevel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MKMapView+ZoomLevel.swift"; sourceTree = "<group>"; };
 		BB5756B4219E7C48000BDACD /* KBScrollViewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KBScrollViewViewController.swift; sourceTree = "<group>"; };
 		BB5756B5219E7C48000BDACD /* KBScrollViewViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = KBScrollViewViewController.xib; sourceTree = "<group>"; };
 		BB581928206E432500E48DA4 /* DbButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbButton.swift; sourceTree = "<group>"; };
@@ -1525,6 +1527,7 @@
 				BBEDCE8322DC5A370008ACF0 /* PropertySearchParams.swift */,
 				BBEDCE8722DC607F0008ACF0 /* PropertySearchApi.swift */,
 				BBEDCE8522DC5DA80008ACF0 /* PropertyUnit.swift */,
+				BB57378022DDB4CE00FFF56D /* MKMapView+ZoomLevel.swift */,
 			);
 			path = "Demo-ClusterKit-MapPins";
 			sourceTree = "<group>";
@@ -2393,6 +2396,7 @@
 				BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */,
 				BBD3CF111F70F80D0028425E /* RootViewController.swift in Sources */,
 				BB4E2369210EBD1F00524B0D /* UserSession.swift in Sources */,
+				BB57378122DDB4CE00FFF56D /* MKMapView+ZoomLevel.swift in Sources */,
 				BBDD9BA5207372B400217030 /* CategoriesViewController.swift in Sources */,
 				BB2163EF22A0D83100356271 /* DemoTipMenuViewController.swift in Sources */,
 				BBB569EE1F7BC8880014A7A9 /* TpPostsViewController.swift in Sources */,

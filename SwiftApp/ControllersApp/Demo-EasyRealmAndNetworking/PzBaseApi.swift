@@ -197,18 +197,22 @@ public class PzBaseApi
         var arr: [T] = []
         if let dataArr = data as? [Any] {
             for item in dataArr {
-                if let jsonResult = item as? Dictionary<String, Any> {
+                if let jsonResult = item as? Dictionary<String, Any>,
+                    let t = T(map: Map(mappingType: .fromJSON, JSON: jsonResult)) {
                     // do whatever with jsonResult
                     // arr.append(T(JSON: jsonResult)!)
-                    arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
+                    arr.append(t)
+                    // arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
                 }
             }
         } else if let jsonResult = data as? Dictionary<String, Any> {
             // -- Neu ton tai "list" key thi xu ly thang nay nhu 1 mang --
             if let dataArr = jsonResult["list"] as? [Any] {
                 for item in dataArr {
-                    if let jsonRes = item as? DictionaryType {
-                        arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonRes))!)
+                    if let jsonRes = item as? DictionaryType,
+                        let t = T(map: Map(mappingType: .fromJSON, JSON: jsonRes)) {
+                        arr.append(t)
+                        // arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonRes))!)
                     }
                 }
                 return arr

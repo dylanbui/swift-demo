@@ -20,6 +20,9 @@ class PropertySearchApi: PzBaseApi
         
         var arrPin: [MapKitPin] = []
         
+        print("--- Post data")
+        print("\(searchParam.postData.description)")
+        
         DbHTTP.requestFor(PzResponse.self, method: .post, url: strUrl, json: searchParam.postData, queue: pzBgNetworkQueue) { (pzResponse) in
             
             if !pzResponse.httpResult.ok {
@@ -33,7 +36,7 @@ class PropertySearchApi: PzBaseApi
                 return
             }
             
-            print("\(String(describing: dataArr))")
+             print("\(String(describing: dataArr))")
             
             // -- Neu ton tai "list" key thi xu ly thang nay nhu 1 mang --
             for item in dataArr {
@@ -48,6 +51,58 @@ class PropertySearchApi: PzBaseApi
             }
             completionHandler(true, arrPin.count, arrPin)
         }
+    }
+    
+    class func getPropertiesMapPinInAreas(searchParam: PropertySearchParam, completionHandler: @escaping (Bool ,Int, [MapKitPin]) -> ())
+    {
+        let strUrl = "http://app.propzy.vn:9090/sam/api/get-properties" // Lay du lieu server production
+        // -- Default value --
+        searchParam.forMap = true
+        
+        print("--- Post data")
+        // prettify == true => hien thi format json, nhung dinh \n khi luu
+        print("[JSON Query]: \(searchParam.postData.db_jsonString(prettify: true) ?? "")")
+        print("-------------")
+        
+        self.requestForList(strUrl: strUrl, method: .post, params: searchParam.postData, queue: pzBgNetworkQueue) { (arrPins: [MapKitPin]?, pzResponse: PzResponse) in
+            
+            guard let arrPins = arrPins else {
+                completionHandler(false, 0, [])
+                return
+            }
+            
+            completionHandler(true, arrPins.count, arrPins)
+        }
+        
+        // var arrPin: [MapKitPin] = []
+//        DbHTTP.requestFor(PzResponse.self, method: .post, url: strUrl, json: searchParam.postData, queue: pzBgNetworkQueue) { (pzResponse) in
+//
+//            if !pzResponse.httpResult.ok {
+//                completionHandler(false, 0, arrPin)
+//                return
+//            }
+//
+//            guard let jsonResult = pzResponse.data as? Dictionary<String, Any>,
+//                let dataArr = jsonResult["list"] as? [Any] else {
+//                    completionHandler(false, 0, arrPin)
+//                    return
+//            }
+//
+//            // print("\(String(describing: dataArr))")
+//
+//            // -- Neu ton tai "list" key thi xu ly thang nay nhu 1 mang --
+//            for item in dataArr {
+//                if let jsonRes = item as? DictionaryType {
+//                    if let unitProperty = PropertyUnit.init(map: Map(mappingType: .fromJSON, JSON: jsonRes)) {
+//                        //                        print("-> \(String(describing: unitProperty.title))")
+//                        //                        print("   unitLocation?.coordinate = \(String(describing: unitProperty.unitLocation?.coordinate))")
+//                        let pin = MapKitPin.init(property: unitProperty)
+//                        arrPin.append(pin)
+//                    }
+//                }
+//            }
+//            completionHandler(true, arrPin.count, arrPin)
+//        }
     }
 
     class func getListingForListView(searchParam: PropertySearchParam,
