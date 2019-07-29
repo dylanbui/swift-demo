@@ -19,12 +19,12 @@ public class PzResponse: NSObject, DbHTTPResponseProtocol, NSCoding
         aCoder.encode(self.httpResult, forKey: "httpResult")
     }
     
-    public required init?(coder aDecoder: NSCoder)
+    public required convenience init?(coder aDecoder: NSCoder)
     {
         let result = aDecoder.decodeObject(forKey: "httpResult") as! DbHTTPResult
-        self.httpResult = result
+        //self.httpResult = result
         
-        super.init()
+        self.init(result: result)
         self.parseResult()
     }
     
