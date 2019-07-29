@@ -86,6 +86,9 @@
 		BB407AD12181821A00C8E57F /* DbUIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407ACC2181821900C8E57F /* DbUIViewControllerExtensions.swift */; };
 		BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407AD22181835100C8E57F /* DbHtmlView.swift */; };
 		BB407AD52181835100C8E57F /* DbSpinner.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB407AD32181835100C8E57F /* DbSpinner.swift */; };
+		BB41A1CC22EECD5900F8A313 /* DemoGgApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB41A1CA22EECD5900F8A313 /* DemoGgApiViewController.swift */; };
+		BB41A1CD22EECD5900F8A313 /* DemoGgApiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB41A1CB22EECD5900F8A313 /* DemoGgApiViewController.xib */; };
+		BB41A1CF22EECD8800F8A313 /* DbGoogleServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB41A1CE22EECD8800F8A313 /* DbGoogleServices.swift */; };
 		BB48E20421F190CC002B2DEC /* DbSheetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */; };
 		BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */; };
 		BB48E20821F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */; };
@@ -477,6 +480,9 @@
 		BB407ACC2181821900C8E57F /* DbUIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		BB407AD22181835100C8E57F /* DbHtmlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbHtmlView.swift; sourceTree = "<group>"; };
 		BB407AD32181835100C8E57F /* DbSpinner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbSpinner.swift; sourceTree = "<group>"; };
+		BB41A1CA22EECD5900F8A313 /* DemoGgApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGgApiViewController.swift; sourceTree = "<group>"; };
+		BB41A1CB22EECD5900F8A313 /* DemoGgApiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoGgApiViewController.xib; sourceTree = "<group>"; };
+		BB41A1CE22EECD8800F8A313 /* DbGoogleServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbGoogleServices.swift; sourceTree = "<group>"; };
 		BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetCollectionView.swift; sourceTree = "<group>"; };
 		BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoDbSheetPickerViewController.swift; sourceTree = "<group>"; };
 		BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoDbSheetPickerViewController.xib; sourceTree = "<group>"; };
@@ -880,6 +886,9 @@
 				BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */,
 				BB12451522A8ED20003DF0ED /* Demo-HtmlWithAdvButton */,
 				BBC92C7B22D5A3D9009C571E /* Demo-ClusterKit-MapPins */,
+				BB41A1CA22EECD5900F8A313 /* DemoGgApiViewController.swift */,
+				BB41A1CB22EECD5900F8A313 /* DemoGgApiViewController.xib */,
+				BB41A1CE22EECD8800F8A313 /* DbGoogleServices.swift */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -1244,6 +1253,7 @@
 				BB26008321D60FD000D5F41D /* DbDropDownView */,
 				BB2FE66D2192C43F007470DD /* DbSemiModalViewController */,
 				BB3FDBEE217EFCB9002D570F /* DbStackScrollView */,
+				BBB1A53922005B920047293E /* DbLocationManager */,
 			);
 			path = DbUIControl;
 			sourceTree = "<group>";
@@ -1355,7 +1365,6 @@
 		BBB1A53021FFF8BE0047293E /* Demo-DbLocationManager */ = {
 			isa = PBXGroup;
 			children = (
-				BBB1A53922005B920047293E /* DbLocationManager */,
 				BBB1A53522004AF40047293E /* DemoDbLocationManagerViewController.swift */,
 				BBB1A53622004AF40047293E /* DemoDbLocationManagerViewController.xib */,
 			);
@@ -1369,7 +1378,8 @@
 				BBB1A53121FFF8EE0047293E /* DbLocationManager.swift */,
 				BBB1A53A22005BEA0047293E /* DbLocationManager.bundle */,
 			);
-			path = DbLocationManager;
+			name = DbLocationManager;
+			path = "../../ControllersApp/Demo-DbLocationManager/DbLocationManager";
 			sourceTree = "<group>";
 		};
 		BBB569D11F7B5B870014A7A9 /* Task-App */ = {
@@ -1916,6 +1926,7 @@
 				BBD3CEE91F70CFE50028425E /* Frameworks */,
 				BBD3CEEA1F70CFE50028425E /* Resources */,
 				CF9784C62F74003E6D5EC8DB /* [CP] Embed Pods Frameworks */,
+				493CB8C264D62A158B224E9E /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -2108,6 +2119,7 @@
 				BB7F3041203E857900185366 /* demo_6_line@2x.png in Resources */,
 				BB7F3045203E857900185366 /* main_gate_img@2x.png in Resources */,
 				BB9BC0C321EDE5F9004BC430 /* DemoActionSheetWindowViewController.xib in Resources */,
+				BB41A1CD22EECD5900F8A313 /* DemoGgApiViewController.xib in Resources */,
 				BBC63C7E227AEE3D00A0168D /* DemoCustomPullForProjectViewController.xib in Resources */,
 				BB2E8518222EEF4800CD8E28 /* DemoSurveyViewController.xib in Resources */,
 				BB4E2362210EBCAD00524B0D /* PzLoginViewController.xib in Resources */,
@@ -2130,6 +2142,30 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		493CB8C264D62A158B224E9E /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Maps/Frameworks/GoogleMaps.framework/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Resources/GooglePlaces.bundle",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		7C3818ABA36F1D0F7B8C83F2 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -2161,7 +2197,6 @@
 			);
 			inputPaths = (
 				"${PODS_ROOT}/Target Support Files/Pods-SwiftApp/Pods-SwiftApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework",
 				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
 				"${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework",
 				"${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework",
@@ -2193,7 +2228,6 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ActionSheetPicker_3_0.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ClusterKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CropViewController.framework",
@@ -2292,6 +2326,7 @@
 				BB28109F2216D42F003823FE /* DbPullLoader.swift in Sources */,
 				BB887C632244F20B0045BF2F /* FileUploader.swift in Sources */,
 				BBC38A52206DDE9500B11C7B /* IonIcons.swift in Sources */,
+				BB41A1CF22EECD8800F8A313 /* DbGoogleServices.swift in Sources */,
 				BBA1C8FB22534961008FF2FF /* UnitExtensions.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
 				BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */,
@@ -2426,6 +2461,7 @@
 				BBA9BBD5224CBFF50068FFDC /* DbHttpExtensions.swift in Sources */,
 				BB37B8D422A50148001EB15A /* DbAdvButton.swift in Sources */,
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
+				BB41A1CC22EECD5900F8A313 /* DemoGgApiViewController.swift in Sources */,
 				BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */,
 				BB407ACD2181821A00C8E57F /* DbUIImageExtensions.swift in Sources */,
 				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,

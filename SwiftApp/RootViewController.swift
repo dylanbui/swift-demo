@@ -66,7 +66,9 @@ class RootViewController: UIViewController
 //        let vcl = DemoNavBarViewController() // => Done
 //        let vcl = DemoHtmlWithAdvButtonViewController() // => Done
         
-        let vcl = MapKitViewController() // => Done
+        // let vcl = MapKitViewController() // => Done
+        
+        let vcl = DemoGgApiViewController() // => Done
         
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a
