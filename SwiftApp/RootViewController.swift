@@ -36,7 +36,7 @@ class RootViewController: UIViewController
 //        let vcl = CategoriesViewController()
 //        let vcl = PzLoginViewController()
 //        let vcl = PzListingViewController()
-//        let vcl = StackScrollViewController()
+//        let vcl = StackScrollViewController() // => Done
         //let vcl = KeyboarbHandleViewController()
 //        let vcl = KBScrollViewViewController()
         // let vcl = DemoDecimalTextFieldViewController()
@@ -48,9 +48,10 @@ class RootViewController: UIViewController
 //        let vcl = DemoDbPullToRefreshViewController() // => Done
 //        let vcl = DemoCustomPullForProjectViewController() // => Done
 //        let vcl = DemoLazyUploadViewController() // => Done
+        //let vcl = DemoUploadCollectionViewController() // => Done
         //let vcl = DemoSurveyViewController() // => Done
         //let vcl = DemoRealmViewController() // => Done
-         let vcl = DemoNetworkRealmViewController() // => Done
+//         let vcl = DemoNetworkRealmViewController() // => Done
 //        let vcl = DemoJustViewController()
 //         let vcl = DemoDbSelectBoxViewController() // => Done
 //        let vcl = RkMapViewController() // => Done
@@ -62,10 +63,12 @@ class RootViewController: UIViewController
         //let vcl = DemoWebViewViewController()
         //let vcl = DemoTipMenuViewController() // => Done
 //        let vcl = DemoTipMenuInTableViewController() // => Done
-
 //        let vcl = DemoNavBarViewController() // => Done
-        
 //        let vcl = DemoHtmlWithAdvButtonViewController() // => Done
+        
+        // let vcl = MapKitViewController() // => Done
+        
+        let vcl = DemoGgApiViewController() // => Done
         
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a

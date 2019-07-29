@@ -9,7 +9,7 @@
 import Foundation
 
 // MARK: Beta
-open class DStackCell: UIView, DbStackCellType {
+open class DbStackCell: UIView, DbStackCellType {
     
     open var shouldAnimateLayoutChanges: Bool = true
     

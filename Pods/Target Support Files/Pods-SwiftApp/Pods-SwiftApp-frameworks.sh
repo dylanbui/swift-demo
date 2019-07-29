@@ -153,13 +153,12 @@ strip_invalid_archs() {
 
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/EasyPeasy/EasyPeasy.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EasyRealm/EasyRealm.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EasyTipView/EasyTipView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework"
@@ -182,13 +181,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/ActionSheetPicker-3.0/ActionSheetPicker_3_0.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework"
+  install_framework "${BUILT_PRODUCTS_DIR}/ClusterKit/ClusterKit.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/CropViewController/CropViewController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DKCamera/DKCamera.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DKImagePickerController/DKImagePickerController.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/DKPhotoGallery/DKPhotoGallery.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/EasyPeasy/EasyPeasy.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EasyRealm/EasyRealm.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EasyTipView/EasyTipView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Eureka/Eureka.framework"

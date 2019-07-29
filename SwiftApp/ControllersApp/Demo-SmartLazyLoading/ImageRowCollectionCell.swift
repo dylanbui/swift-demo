@@ -28,7 +28,7 @@ class ImageRowCollectionCell: UICollectionViewCell
         self.progressBar.outlineColor = .black
         self.progressBar.outlineWidth = 0
         self.progressBar.spacing = 1
-        self.progressBar.progressColor = .white
+        self.progressBar.progressColor = .orange // .white
         self.progressBar.backgroundColor = .lightGray
         self.progressBar.value = 0.0
     }

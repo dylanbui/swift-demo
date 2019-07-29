@@ -16,6 +16,9 @@ target 'SwiftApp' do
     
     pod 'IQKeyboardManagerSwift', '6.2.0'
     pod 'SnapKit', '4.0.1' # Phien ban Swift 4 cua Masonry : http://snapkit.io/docs/
+    
+    pod 'GoogleMaps'
+    pod 'GooglePlaces'
 
     # Bo 4 di chung voi nhau
     pod 'ObjectMapper', '3.3.0'
@@ -51,7 +54,7 @@ target 'SwiftApp' do
     # pod 'APNumberPad', '1.2.2' # Use for DecimalTextField
     # pod 'INTULocationManager', '4.3.2'
     pod 'FSCalendar', '2.8.0'
-    pod 'ActionSheetPicker-3.0' #, '2.3.0'
+    #pod 'ActionSheetPicker-3.0' #, '2.3.0'
 
     # Libraries needed Swift 4
     pod 'DKImagePickerController', '4.1.3', :subspecs => ['PhotoGallery', 'Camera', 'InlineCamera']
@@ -60,7 +63,9 @@ target 'SwiftApp' do
     pod 'RevealingSplashView', '0.6.0'
     
     #pod 'StackScrollView', '1.2.0'
-    pod 'EasyPeasy', '1.7.0'
+    #pod 'EasyPeasy', '1.7.0'
+    #pod 'ClusterKit', '0.4.0'
+    pod 'ClusterKit/MapKit'
     
     # => updated 10/01/2019, Eureka chay khong on dinh trong cac phien ban < ios 11
     pod 'Eureka', '4.3.1'

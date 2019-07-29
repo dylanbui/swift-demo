@@ -10,7 +10,8 @@ import Foundation
 import ObjectMapper
 //import RealmSwift
 
-
+public let pzUtilNetworkQueue = DispatchQueue(label: "vn.propzy.uti.network", qos: .utility)
+public let pzBgNetworkQueue = DispatchQueue(label: "vn.propzy.bg.network", qos: .background)
 
 public class PzResponse: NSObject, DbHTTPResponseProtocol, NSCoding
 {
@@ -177,17 +178,16 @@ public class PzBaseApi
     
     class func requestForList<T: Mappable>(strUrl: String,
                                            method: DbHTTPMethod = .get,
-                                           params: [String: String]? = nil,
+                                           params: DictionaryType? = nil,
+                                           queue: DispatchQueue = DispatchQueue.main,
                                            completionHandler: DbPzListHandler<T>?)
     {
-        DbHTTP.requestFor(PzResponse.self, method: method, url: strUrl, json: params) { (pzResponse) in
-            DbUtils.dispatchToMainQueue {
-                if pzResponse.httpResult.ok {
-                    completionHandler?(parseToArray(T.self, data: pzResponse.data), pzResponse)
-                } else {
-                    // Xu ly loi
-                    completionHandler?(nil, pzResponse)
-                }
+        DbHTTP.requestFor(PzResponse.self, method: method, url: strUrl, json: params, queue: queue) { (pzResponse) in
+            if pzResponse.httpResult.ok {
+                completionHandler?(parseToArray(T.self, data: pzResponse.data), pzResponse)
+            } else {
+                // Xu ly loi
+                completionHandler?(nil, pzResponse)
             }
         }
     }
@@ -197,18 +197,22 @@ public class PzBaseApi
         var arr: [T] = []
         if let dataArr = data as? [Any] {
             for item in dataArr {
-                if let jsonResult = item as? Dictionary<String, Any> {
+                if let jsonResult = item as? Dictionary<String, Any>,
+                    let t = T(map: Map(mappingType: .fromJSON, JSON: jsonResult)) {
                     // do whatever with jsonResult
                     // arr.append(T(JSON: jsonResult)!)
-                    arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
+                    arr.append(t)
+                    // arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonResult))!)
                 }
             }
         } else if let jsonResult = data as? Dictionary<String, Any> {
             // -- Neu ton tai "list" key thi xu ly thang nay nhu 1 mang --
             if let dataArr = jsonResult["list"] as? [Any] {
                 for item in dataArr {
-                    if let jsonRes = item as? DictionaryType {
-                        arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonRes))!)
+                    if let jsonRes = item as? DictionaryType,
+                        let t = T(map: Map(mappingType: .fromJSON, JSON: jsonRes)) {
+                        arr.append(t)
+                        // arr.append(T(map: Map(mappingType: .fromJSON, JSON: jsonRes))!)
                     }
                 }
                 return arr

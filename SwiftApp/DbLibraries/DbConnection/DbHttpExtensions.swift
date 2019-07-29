@@ -74,15 +74,16 @@ public class MyGoogleResponse: DbHTTPResponseProtocol {
  Cac task khi hoan thanh deu o background thread. neu can update UI can chuyen len main thread
  
  DispatchQueue.main.async{
-    //put your code here
+    // put your code here
  }
+ 
+ hoac truyen DispatchQueue vao ham
  
  */
 
 
-extension ConnectionOf {
-    
-    @discardableResult
+extension ConnectionOf
+{
     public func requestFor<T: DbHTTPResponseProtocol>(
         _ typeObj: T.Type,
         method: DbHTTPMethod,
@@ -93,11 +94,11 @@ extension ConnectionOf {
         headers: [String: String] = [:],
         auth: (String, String)? = nil,
         cookies: [String: String] = [:],
+        queue: DispatchQueue? = nil,
         asyncProgressHandler: (DbTaskProgressHandler)? = nil,
-        asyncCompletionHandler: ((T) -> Void)? = nil
-        ) -> T {
-        
-        let result = adaptor.request(
+        asyncCompletionHandler: @escaping ((T) -> Void))
+    {
+        _ = adaptor.request(
             method,
             url: url,
             params: params,
@@ -111,91 +112,47 @@ extension ConnectionOf {
             timeout: nil,
             urlQuery: nil,
             requestBody: nil,
-            asyncProgressHandler: asyncProgressHandler)
-        { (httpResult) in
-            if let handle = asyncCompletionHandler {
+            asyncProgressHandler: asyncProgressHandler) { (httpResult) in
                 let res = typeObj.init(result: httpResult)
                 res.parseResult()
-                handle(res)
-            }
+                // (queue ?? DispatchQueue.global(qos: .utility)).async { handle(res) }
+                if let thread = queue {
+                    thread.async { asyncCompletionHandler(res) }
+                } else {
+                    asyncCompletionHandler(res)
+                }
         }
-        
-        let res = typeObj.init(result: result)
-        res.parseResult()
-        return res
     }
     
     public func jsonGetFor<T: DbHTTPResponseProtocol>(
         _ typeObj: T.Type,
         url: URLComponentsConvertible, // String Url
+        queue: DispatchQueue? = nil,
         asyncProgressHandler: (DbTaskProgressHandler)? = nil,
-        asyncCompletionHandler: @escaping ((T) -> Void)
-        ) {
-        
+        asyncCompletionHandler: @escaping ((T) -> Void))
+    {
         // -- DucBui 21/06/2019 : fix --
         self.requestFor(T.self, method: .get, url: url,
                         headers: ["content-type": "application/json"], // Nen set json
+            queue: queue,
             asyncProgressHandler: asyncProgressHandler,
             asyncCompletionHandler: asyncCompletionHandler)
-        
-        // -- Khong goi lai ham requestFor<Res: DbHTTPResponseProtocol> duoc --
-//        _ = adaptor.request(
-//            .get,
-//            url: url,
-//            params: [:],
-//            data: [:],
-//            json: nil,
-//            headers: ["content-type": "application/json"], // Nen set json
-//            files: [:],
-//            auth: nil,
-//            cookies: [:],
-//            redirects: true,
-//            timeout: nil,
-//            urlQuery: nil,
-//            requestBody: nil,
-//            asyncProgressHandler: asyncProgressHandler)
-//        { (httpResult) in
-//            let res = typeObj.init(result: httpResult)
-//            res.parseResult()
-//            asyncCompletionHandler(res)
-//        }
     }
     
     public func jsonPostFor<T: DbHTTPResponseProtocol>(
         _ typeObj: T.Type,
         url: URLComponentsConvertible, // String Url
         json: Any? = nil, // Post with json
+        queue: DispatchQueue? = nil,
         asyncProgressHandler: (DbTaskProgressHandler)? = nil,
-        asyncCompletionHandler: @escaping ((T) -> Void)
-        ) {
-        
+        asyncCompletionHandler: @escaping ((T) -> Void))
+    {
         // -- DucBui 21/06/2019 : fix --
         self.requestFor(T.self, method: .post, url: url, json: json,
                         headers: ["content-type": "application/json"], // Nen set json
+            queue: queue,
             asyncProgressHandler: asyncProgressHandler,
             asyncCompletionHandler: asyncCompletionHandler)
-        
-        // -- Khong goi lai ham requestFor<T: DbHTTPResponseProtocol> duoc --
-//        _ = adaptor.request(
-//            .post,
-//            url: url,
-//            params: [:],
-//            data: [:],
-//            json: json,
-//            headers: ["content-type": "application/json"], // Nen set json
-//            files: [:],
-//            auth: nil,
-//            cookies: [:],
-//            redirects: true,
-//            timeout: nil,
-//            urlQuery: nil,
-//            requestBody: nil,
-//            asyncProgressHandler: asyncProgressHandler)
-//        { (httpResult) in
-//            let res = typeObj.init(result: httpResult)
-//            res.parseResult()
-//            asyncCompletionHandler(res)
-//        }
     }
     
     public func jsonUploadFor<T: DbHTTPResponseProtocol>(
@@ -203,19 +160,18 @@ extension ConnectionOf {
         url: URLComponentsConvertible, // String Url
         json: Any? = nil, // Post with json
         files: [String: DbHTTPFile],
+        queue: DispatchQueue? = nil,
         asyncProgressHandler: @escaping DbTaskProgressHandler,
-        asyncCompletionHandler: @escaping ((T) -> Void)
-        ) {
-        
-        // -- Khong goi lai ham requestFor<T: DbHTTPResponseProtocol> vi la upload --
-        // -- requestFor ko co files --
+        asyncCompletionHandler: @escaping ((T) -> Void))
+    {
+        // -- Khong goi lai ham requestFor<T: DbHTTPResponseProtocol> vi la upload, requestFor ko co files --
         _ = adaptor.request(
             .post,
             url: url,
             params: [:],
             data: [:],
             json: json,
-            headers: [:],
+            headers: ["content-type": "application/json"], // Nen set json
             files: files,
             auth: nil,
             cookies: [:],
@@ -227,7 +183,12 @@ extension ConnectionOf {
         { (httpResult) in
             let res = typeObj.init(result: httpResult)
             res.parseResult()
-            asyncCompletionHandler(res)
+            // (queue ?? DispatchQueue.global(qos: .utility)).async { asyncCompletionHandler(res) }
+            if let thread = queue {
+                thread.async { asyncCompletionHandler(res) }
+            } else {
+                asyncCompletionHandler(res)
+            }
         }
     }
     
