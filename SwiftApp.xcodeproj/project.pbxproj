@@ -39,7 +39,6 @@
 		BB23604122A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB23603F22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib */; };
 		BB23604422A2EB6E002DDCE9 /* TipMenuViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB23604222A2EB6E002DDCE9 /* TipMenuViewCell.swift */; };
 		BB23604522A2EB6E002DDCE9 /* TipMenuViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB23604322A2EB6E002DDCE9 /* TipMenuViewCell.xib */; };
-		BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008221D60FD000D5F41D /* DbActionSheetPicker.swift */; };
 		BB26008A21D60FD100D5F41D /* demo.txt in Resources */ = {isa = PBXBuildFile; fileRef = BB26008421D60FD000D5F41D /* demo.txt */; };
 		BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008621D60FD000D5F41D /* DbDropDownViewCommon.swift */; };
 		BB26008C21D60FD100D5F41D /* DbDropDownView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB26008721D60FD000D5F41D /* DbDropDownView.swift */; };
@@ -433,7 +432,6 @@
 		BB23603F22A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoTipMenuInTableViewController.xib; sourceTree = "<group>"; };
 		BB23604222A2EB6E002DDCE9 /* TipMenuViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TipMenuViewCell.swift; sourceTree = "<group>"; };
 		BB23604322A2EB6E002DDCE9 /* TipMenuViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TipMenuViewCell.xib; sourceTree = "<group>"; };
-		BB26008221D60FD000D5F41D /* DbActionSheetPicker.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbActionSheetPicker.swift; sourceTree = "<group>"; };
 		BB26008421D60FD000D5F41D /* demo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = demo.txt; sourceTree = "<group>"; };
 		BB26008621D60FD000D5F41D /* DbDropDownViewCommon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbDropDownViewCommon.swift; sourceTree = "<group>"; };
 		BB26008721D60FD000D5F41D /* DbDropDownView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbDropDownView.swift; sourceTree = "<group>"; };
@@ -967,14 +965,6 @@
 			path = "Demo-TipMenuViewController";
 			sourceTree = "<group>";
 		};
-		BB26008121D60FD000D5F41D /* DbActionSheetPicker */ = {
-			isa = PBXGroup;
-			children = (
-				BB26008221D60FD000D5F41D /* DbActionSheetPicker.swift */,
-			);
-			path = DbActionSheetPicker;
-			sourceTree = "<group>";
-		};
 		BB26008321D60FD000D5F41D /* DbDropDownView */ = {
 			isa = PBXGroup;
 			children = (
@@ -1249,7 +1239,6 @@
 				BB37B8C722A4DE86001EB15A /* DbTipMenuView */,
 				BBDD202521F093D200788D3E /* DbActionSheet */,
 				BBA4670F2252216800E0749E /* DbClosureUIControl */,
-				BB26008121D60FD000D5F41D /* DbActionSheetPicker */,
 				BB26008321D60FD000D5F41D /* DbDropDownView */,
 				BB2FE66D2192C43F007470DD /* DbSemiModalViewController */,
 				BB3FDBEE217EFCB9002D570F /* DbStackScrollView */,
@@ -2296,7 +2285,6 @@
 				BB407AD12181821A00C8E57F /* DbUIViewControllerExtensions.swift in Sources */,
 				BB8BECC7222B068400EC7620 /* DbProgressBar.swift in Sources */,
 				BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */,
-				BB26008921D60FD100D5F41D /* DbActionSheetPicker.swift in Sources */,
 				BBA1C8EC22532164008FF2FF /* RkLocationMonitor.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
