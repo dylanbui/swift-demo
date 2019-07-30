@@ -213,10 +213,7 @@ open class GgPlaceDetail: CustomStringConvertible
 
 open class DbGoogleServices
 {
-    private static var apiKey: String?
-    
     public var placeType: GgPlaceType
-    public var securityByBundleId: String = "-none-"
     
     public static var shared: DbGoogleServices
     {
@@ -231,9 +228,13 @@ open class DbGoogleServices
         self.placeType = .All
     }
     
-    public static func provideAPI(Key key:String)
+    private static var apiKey: String?
+    private static var securityByBundleId: String?
+    
+    public static func provideAPI(Key key:String, BundleId: String? = nil)
     {
         DbGoogleServices.apiKey = key
+        DbGoogleServices.securityByBundleId = BundleId
     }
     
     public func requestPlaces(_ searchString: String, result: @escaping (([GgPlace]) -> Void))
@@ -243,10 +244,6 @@ open class DbGoogleServices
     
     public func requestPlaces(_ searchString: String, locationBias: GgLocationBias?, result: @escaping (([GgPlace]) -> Void))
     {
-        guard let apiKey = DbGoogleServices.apiKey else {
-            fatalError("Enter Google API Key.")
-        }
-        
         if (searchString == "") {
             return
         }
@@ -254,8 +251,6 @@ open class DbGoogleServices
         var params = [
             "input": searchString,
             "types": self.placeType.description,
-            "key": apiKey,
-            "securityByBundleId": self.securityByBundleId,
             "components": "country:VN"
         ]
         
@@ -264,7 +259,7 @@ open class DbGoogleServices
             params["radius"] = bias.radius.description
         }
         
-        DbGoogleServicesRequest.doRequest(
+        self.doRequest(
             url: "https://maps.googleapis.com/maps/api/place/autocomplete/json",
             params: params as [String : Any]
         ) { json, error in
@@ -283,16 +278,10 @@ open class DbGoogleServices
     
     public func requestPlaceDetail(_ placeId: String, result: @escaping ((GgPlaceDetail) -> Void))
     {
-        guard let apiKey = DbGoogleServices.apiKey else {
-            fatalError("Enter Google API Key.")
-        }
-        
-        DbGoogleServicesRequest.doRequest(
+        self.doRequest(
             url: "https://maps.googleapis.com/maps/api/place/details/json",
             params: [
                 "placeid": placeId,
-                "key": apiKey,
-                "securityByBundleId": self.securityByBundleId,
                 "components": "country:VN"
             ]
         ) { json, error in
@@ -310,16 +299,10 @@ open class DbGoogleServices
     
     public func retrieveAddressInfoFromAddress(_ strAddress: String, withCompletion result: @escaping ((GgPlaceDetail) -> Void))
     {
-        guard let apiKey = DbGoogleServices.apiKey else {
-            fatalError("Enter Google API Key.")
-        }
-
-        DbGoogleServicesRequest.doRequest(
+        self.doRequest(
             url: "https://maps.googleapis.com/maps/api/geocode/json",
             params: [
-                "address": strAddress,
-                "key": apiKey,
-                "securityByBundleId": self.securityByBundleId
+                "address": strAddress
             ]
         ) { json, error in
             if let json = json {
@@ -336,16 +319,10 @@ open class DbGoogleServices
     
     public func retrieveAddressInfoFromLocation(_ location: CLLocationCoordinate2D, withCompletion result: @escaping ((GgPlaceDetail) -> Void))
     {
-        guard let apiKey = DbGoogleServices.apiKey else {
-            fatalError("Enter Google API Key.")
-        }
-
-        DbGoogleServicesRequest.doRequest(
+        self.doRequest(
             url: "https://maps.googleapis.com/maps/api/geocode/json",
             params: [
-                "latlng": "\(location.latitude),\(location.longitude)",
-                "key": apiKey,
-                "securityByBundleId": self.securityByBundleId
+                "latlng": "\(location.latitude),\(location.longitude)"
             ]
         ) { json, error in
             if let json = json {
@@ -359,18 +336,18 @@ open class DbGoogleServices
             }
         }
     }
-}
-
-// MARK: - GooglePlacesRequestHelpers
-private class DbGoogleServicesRequest
-{
+    
     /**
      Build a query string from a dictionary
      - parameter parameters: Dictionary of query string parameters
      - returns: The properly escaped query string
      */
-    private class func query(_ parameters: [String: Any]) -> String
+    private func query(_ parameters: [String: Any]) -> String
     {
+        let escape = { (str: String) -> String in
+            return str.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        }
+        
         var components: [(String, String)] = []
         for key in Array(parameters.keys) {
             if let value = parameters[key] as? String {
@@ -381,25 +358,22 @@ private class DbGoogleServicesRequest
         return (components.map{"\($0)=\($1)"} as [String]).joined(separator:"&")
     }
     
-    private class func escape(_ string: String) -> String
-    {
-        return string.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-    }
+//    private func escape(_ string: String) -> String
+//    {
+//        return string.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+//    }
     
-    public class func doRequest(url: String, params: [String: Any], completion: @escaping ([String: Any]?, Error?) -> ())
+    public func doRequest(url: String, params: [String: Any], completion: @escaping ([String: Any]?, Error?) -> ())
     {
-        // -- Default value --
-        var paramsVal = params
-        paramsVal["language"] = "vi"
-        paramsVal["sensor"] = "true"
-        
-        var securityByBundleId: String? = nil
-        if let security = paramsVal["securityByBundleId"] as? String,
-            security != "-none-" {
-            securityByBundleId = security
+        guard let apiKey = DbGoogleServices.apiKey else {
+            fatalError("Enter Google API Key.")
         }
         
-        paramsVal.removeValue(forKey: "securityByBundleId")
+        // -- Default value --
+        var paramsVal = params
+        paramsVal["key"] = apiKey
+        paramsVal["language"] = "vi"
+        paramsVal["sensor"] = "true"
         
         var request = URLRequest(url: URL(string: url + "?" + self.query(paramsVal))!)
         request.timeoutInterval = 30
@@ -407,7 +381,7 @@ private class DbGoogleServicesRequest
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         request.httpMethod = "GET"
         
-        if let bundleId = securityByBundleId {
+        if let bundleId = DbGoogleServices.securityByBundleId {
             request.httpMethod = "POST"
             request.addValue(bundleId, forHTTPHeaderField: "X-Ios-Bundle-Identifier")
             // request.addValue("servicecontrol.googleapis.com/vn.propzy.SwiftApp", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
@@ -423,7 +397,7 @@ private class DbGoogleServicesRequest
         task.resume()
     }
     
-    private class func handleResponse(_ data: Data!, response: URLResponse!, error: Error!,
+    private func handleResponse(_ data: Data!, response: URLResponse!, error: Error!,
                                       completion: @escaping ([String: Any]?, Error?) -> ())
     {
         // Always return on the main thread...

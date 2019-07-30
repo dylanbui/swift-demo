@@ -169,6 +169,9 @@
 		BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */; };
 		BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */; };
 		BB8BECC7222B068400EC7620 /* DbProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC6222B068400EC7620 /* DbProgressBar.swift */; };
+		BB8D9CF122F02CDA00226705 /* DbSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8D9CF022F02CDA00226705 /* DbSearchTextField.swift */; };
+		BB8D9CF322F02D4200226705 /* DbPlaceSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8D9CF222F02D4200226705 /* DbPlaceSearchTextField.swift */; };
+		BB8D9CF522F0550B00226705 /* DbPlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8D9CF422F0550B00226705 /* DbPlaceSearchViewController.swift */; };
 		BB922A852287440300E09A6F /* MyCustomNavigationBarView.txt in Sources */ = {isa = PBXBuildFile; fileRef = BB922A842287440300E09A6F /* MyCustomNavigationBarView.txt */; };
 		BB922A882288174000E09A6F /* NavBarPushOneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB922A862288173F00E09A6F /* NavBarPushOneViewController.swift */; };
 		BB922A892288174000E09A6F /* NavBarPushOneViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB922A872288173F00E09A6F /* NavBarPushOneViewController.xib */; };
@@ -562,6 +565,9 @@
 		BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController_V1.swift; sourceTree = "<group>"; };
 		BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoLazyUploadViewController.xib; sourceTree = "<group>"; };
 		BB8BECC6222B068400EC7620 /* DbProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbProgressBar.swift; sourceTree = "<group>"; };
+		BB8D9CF022F02CDA00226705 /* DbSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSearchTextField.swift; sourceTree = "<group>"; };
+		BB8D9CF222F02D4200226705 /* DbPlaceSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPlaceSearchTextField.swift; sourceTree = "<group>"; };
+		BB8D9CF422F0550B00226705 /* DbPlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPlaceSearchViewController.swift; sourceTree = "<group>"; };
 		BB922A842287440300E09A6F /* MyCustomNavigationBarView.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = MyCustomNavigationBarView.txt; sourceTree = "<group>"; };
 		BB922A862288173F00E09A6F /* NavBarPushOneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavBarPushOneViewController.swift; sourceTree = "<group>"; };
 		BB922A872288173F00E09A6F /* NavBarPushOneViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NavBarPushOneViewController.xib; sourceTree = "<group>"; };
@@ -884,9 +890,7 @@
 				BB23604622A2F44F002DDCE9 /* Demo-TipMenuViewController */,
 				BB12451522A8ED20003DF0ED /* Demo-HtmlWithAdvButton */,
 				BBC92C7B22D5A3D9009C571E /* Demo-ClusterKit-MapPins */,
-				BB41A1CA22EECD5900F8A313 /* DemoGgApiViewController.swift */,
-				BB41A1CB22EECD5900F8A313 /* DemoGgApiViewController.xib */,
-				BB41A1CE22EECD8800F8A313 /* DbGoogleServices.swift */,
+				BB8D9CEE22F02CB200226705 /* Demo-PlaceSearchTextField */,
 			);
 			path = ControllersApp;
 			sourceTree = "<group>";
@@ -1245,6 +1249,27 @@
 				BBB1A53922005B920047293E /* DbLocationManager */,
 			);
 			path = DbUIControl;
+			sourceTree = "<group>";
+		};
+		BB8D9CEE22F02CB200226705 /* Demo-PlaceSearchTextField */ = {
+			isa = PBXGroup;
+			children = (
+				BB41A1CA22EECD5900F8A313 /* DemoGgApiViewController.swift */,
+				BB41A1CB22EECD5900F8A313 /* DemoGgApiViewController.xib */,
+				BB8D9CEF22F02CC600226705 /* DbSearchTextField */,
+			);
+			path = "Demo-PlaceSearchTextField";
+			sourceTree = "<group>";
+		};
+		BB8D9CEF22F02CC600226705 /* DbSearchTextField */ = {
+			isa = PBXGroup;
+			children = (
+				BB41A1CE22EECD8800F8A313 /* DbGoogleServices.swift */,
+				BB8D9CF022F02CDA00226705 /* DbSearchTextField.swift */,
+				BB8D9CF222F02D4200226705 /* DbPlaceSearchTextField.swift */,
+				BB8D9CF422F0550B00226705 /* DbPlaceSearchViewController.swift */,
+			);
+			path = DbSearchTextField;
 			sourceTree = "<group>";
 		};
 		BB92D865224E104B00B8F244 /* Demo-EasyRealmAndNetworking */ = {
@@ -2319,6 +2344,7 @@
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
 				BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */,
 				BB12451122A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift in Sources */,
+				BB8D9CF122F02CDA00226705 /* DbSearchTextField.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
 				BBF2368E2202FA620067952B /* DbTopAlertController.swift in Sources */,
 				BB9A193F22294CD100D7BE9A /* ImageDownloadManager.swift in Sources */,
@@ -2413,6 +2439,7 @@
 				BBC92C9F22D5A410009C571E /* TextViewStackCell.swift in Sources */,
 				BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
+				BB8D9CF522F0550B00226705 /* DbPlaceSearchViewController.swift in Sources */,
 				BBC92CA122D5A410009C571E /* NibToggerShow.swift in Sources */,
 				BBC1114920DB5158002B2293 /* DbNotificationExtensions.swift in Sources */,
 				BBD6A1A822A0483B00EB7208 /* DbTipMenuView.swift in Sources */,
@@ -2510,6 +2537,7 @@
 				BBA2A4392117FBA000618AEF /* PzListingItem.swift in Sources */,
 				BBA2A4372117FB8500618AEF /* PzListing.swift in Sources */,
 				BB06BC0E2201953E00227059 /* MasterCandySearchViewController.swift in Sources */,
+				BB8D9CF322F02D4200226705 /* DbPlaceSearchTextField.swift in Sources */,
 				BBDDD5DC219D651F00AC4940 /* KBBottomBarView.swift in Sources */,
 				BBFAA0FB200D1EF700718E95 /* DbAppDelegate.swift in Sources */,
 				BB32A3DD224B20EC006265B7 /* DbRequest.swift in Sources */,
