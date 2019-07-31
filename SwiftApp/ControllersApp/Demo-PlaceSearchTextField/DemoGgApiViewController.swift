@@ -17,6 +17,24 @@ class DemoGgApiViewController: DbViewController
     @IBOutlet weak var vwAddressContainer: UIView!
     @IBOutlet weak var txtAutoCompletePlace: DbPlaceSearchTextField!
     
+    lazy var placesSearchController: DbPlaceSearchViewController = {
+        let controller = DbPlaceSearchViewController(delegate: self, ggService: DbGoogleServices.shared,
+                                                     searchBarPlaceholder: "Start typing...")
+//        let controller = DbPlaceSearchViewController(delegate: self,
+//                                                      apiKey: GoogleMapsAPIServerKey,
+//                                                      placeType: .address
+//            // Optional: coordinate: CLLocationCoordinate2D(latitude: 55.751244, longitude: 37.618423),
+//            // Optional: radius: 10,
+//            // Optional: strictBounds: true,
+//            // Optional: searchBarPlaceholder: "Start typing..."
+//        )
+        //Optional: controller.searchBar.isTranslucent = false
+        //Optional: controller.searchBar.barStyle = .black
+        //Optional: controller.searchBar.tintColor = .white
+        //Optional: controller.searchBar.barTintColor = .black
+        return controller
+    }()
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
@@ -112,6 +130,11 @@ class DemoGgApiViewController: DbViewController
 //            }
 //        })
 //    }
+    
+    @IBAction func btnPlaceViewController_Click(_ sender: AnyObject)
+    {
+        self.present(self.placesSearchController, animated: true, completion: nil)
+    }
 
     // MARK: - Private Functions
     
@@ -138,19 +161,8 @@ class DemoGgApiViewController: DbViewController
         
     }
 
-
-}
-
-// MARK: - PlaceSearchTextFieldDelegate
-// MARK: -
-
-extension DemoGgApiViewController: DbPlaceSearchTextFieldDelegate
-{
-    func placeSearch(textField owner: DbPlaceSearchTextField, responseForSelectedPlace placeDetail: GgPlaceDetail)
+    private func showDebug(placeDetail: GgPlaceDetail)
     {
-        // -- Hide keyboard --
-        self.view.endEditing(true)
-        
         let address = placeDetail.formattedAddress
         let strCity = placeDetail.getAddressComponentsWithDefines(.kGGPlaceDetailCity)
         let strDistrict = placeDetail.getAddressComponentsWithDefines(.kGGPlaceDetailDistrict)
@@ -165,7 +177,33 @@ extension DemoGgApiViewController: DbPlaceSearchTextFieldDelegate
         print("strWard = \(strWard)")
         print("houseNumberRoad = \(houseNumberRoad)")
         print("coordinate = \(coordinate)")
+    }
+    
+
+}
+
+extension DemoGgApiViewController: DbPlaceSearchViewControllerDelegate
+{
+    func viewController(didAutocompleteWith placeDetail: GgPlaceDetail)
+    {
+        self.showDebug(placeDetail: placeDetail)
+        self.placesSearchController.isActive = false
+    }
+}
+
+// MARK: - PlaceSearchTextFieldDelegate
+// MARK: -
+
+extension DemoGgApiViewController: DbPlaceSearchTextFieldDelegate
+{
+    func placeSearch(textField owner: DbPlaceSearchTextField, responseForSelectedPlace placeDetail: GgPlaceDetail)
+    {
+        // -- Hide keyboard --
+        self.view.endEditing(true)
         
+        self.showDebug(placeDetail: placeDetail)
+        
+        let coordinate = placeDetail.location.coordinate
         // -- Move to location --
         self.mapView.setCenterCoordinate(coordinate, withZoomLevel: 18, animated: true)
     }

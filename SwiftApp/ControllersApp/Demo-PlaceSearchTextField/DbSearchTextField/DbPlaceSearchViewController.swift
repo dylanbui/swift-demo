@@ -22,6 +22,8 @@ open class DbPlaceSearchViewController: UISearchController, UISearchBarDelegate
     {
         let gpaViewController = GooglePlacesAutocompleteContainer.init(delegate: delegate, ggService: ggService,
                                                                        locationBias: locationBias)
+        gpaViewController.view.backgroundColor = UIColor.white
+        
         
         self.init(searchResultsController: gpaViewController)
         
@@ -29,6 +31,9 @@ open class DbPlaceSearchViewController: UISearchController, UISearchBarDelegate
         self.hidesNavigationBarDuringPresentation = false
         self.definesPresentationContext = true
         self.searchBar.placeholder = searchBarPlaceholder
+        
+        // -- Set background color --
+        // self.view.backgroundColor = UIColor.white
     }
 }
 
@@ -46,13 +51,8 @@ open class GooglePlacesAutocompleteContainer: UITableViewController
         }
     }
     
-//    public init() {
-//        super.init()
-//    }
-    
-//    init() {
-//        super.init(nibName: nil, bundle: plain.Plain)
-//    }
+    // Add a search text throttle property to your controller
+    private let queueThrottle = DbQueue.global(.background)
     
     public init(delegate: DbPlaceSearchViewControllerDelegate,
                 ggService: DbGoogleServices,
@@ -107,7 +107,7 @@ extension GooglePlacesAutocompleteContainer
 
 extension GooglePlacesAutocompleteContainer: UISearchBarDelegate, UISearchResultsUpdating
 {
-    fileprivate func searchInBackground(_ criteria: String)
+    @objc fileprivate func searchInBackground(_ criteria: String)
     {
         if criteria.count < 2 {
             return
@@ -124,13 +124,20 @@ extension GooglePlacesAutocompleteContainer: UISearchBarDelegate, UISearchResult
     {
         guard !searchText.isEmpty else { places = []; return }
         
-        self.searchInBackground(searchText)
+        queueThrottle.throttle(deadline: DispatchTime.now() + 0.75) {
+            self.searchInBackground(searchText)
+        }
     }
     
     public func updateSearchResults(for searchController: UISearchController)
     {
         guard let searchText = searchController.searchBar.text, !searchText.isEmpty else { places = []; return }
         
-        self.searchInBackground(searchText)
+        // Debug: hit text only run in here
+        queueThrottle.throttle(deadline: DispatchTime.now() + 0.75) {
+            self.searchInBackground(searchText)
+        }
     }
 }
+
+
