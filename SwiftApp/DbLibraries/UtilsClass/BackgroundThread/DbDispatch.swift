@@ -301,3 +301,73 @@ public extension DispatchQueue
         block()
     }
 }
+
+/* http://blog.flaviocaetano.com/post/the-simplest-throttle-slash-debounce-youll-ever-see/
+ One of these days I needed a debounce on Swift to ensure some block of code would only be executed once in a period of time. Debounces are quite simple so I implemented a first draft of it.
+ 
+ Not long after that, I also needed a throttle to skip repetitive calls to a different block of code. Not too different from a debouce, but not quite the same.
+ 
+ No se cancel cac su kien lien tuc goi vao throttle obj chi cho phep chay khi tiep tuc khi deadline. Ung dung search text khi user hit text speed (Auto complete place google)
+ 
+ // Class variable
+ private let queueThrottle = DbQueue.global(.background) // Or DbQueue.main // Or DispatchQueue.main
+ // Call in function
+ queueThrottle.throttle(deadline: DispatchTime.now() + 1.0) {
+ 
+     if Thread.isMainThread {
+        print("MAIN Thread")
+     } else {
+        print("SUBBBB Thread")
+     }
+ 
+    // Run code here
+ }
+ 
+ */
+
+private var throttleWorkItems = [AnyHashable: DispatchWorkItem]()
+private var lastDebounceCallTimes = [AnyHashable: DispatchTime]()
+private let nilContext: AnyHashable = arc4random()
+
+public extension DispatchQueue
+{
+    /**
+     - parameters:
+     - deadline: The timespan to delay a closure execution
+     - context: The context in which the throttle should be executed
+     - action: The closure to be executed
+     Delays a closure execution and ensures no other executions are made during deadline
+     */
+    func throttle(deadline: DispatchTime, context: AnyHashable? = nil, action: @escaping () -> Void) {
+        let worker = DispatchWorkItem {
+            defer { throttleWorkItems.removeValue(forKey: context ?? nilContext) }
+            action()
+        }
+        
+        asyncAfter(deadline: deadline, execute: worker)
+        
+        throttleWorkItems[context ?? nilContext]?.cancel()
+        throttleWorkItems[context ?? nilContext] = worker
+    }
+    
+    /**
+     - parameters:
+     - interval: The interval in which new calls will be ignored
+     - context: The context in which the debounce should be executed
+     - action: The closure to be executed
+     Executes a closure and ensures no other executions will be made during the interval.
+     */
+    func debounce(interval: Double, context: AnyHashable? = nil, action: @escaping () -> Void) {
+        if let last = lastDebounceCallTimes[context ?? nilContext], last + interval > .now() {
+            return
+        }
+        
+        lastDebounceCallTimes[context ?? nilContext] = .now()
+        async(execute: action)
+        
+        // Cleanup & release context
+        throttle(deadline: .now() + interval) {
+            lastDebounceCallTimes.removeValue(forKey: context ?? nilContext)
+        }
+    }
+}

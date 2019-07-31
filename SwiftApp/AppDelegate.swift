@@ -11,6 +11,9 @@ import UIKit
 //import RealmSwift
 import IQKeyboardManagerSwift
 
+import GoogleMaps
+import GooglePlaces
+
 @UIApplicationMain
 class AppDelegate: DbAppDelegate {
 
@@ -48,6 +51,9 @@ class AppDelegate: DbAppDelegate {
         
         // ServiceUrl.shared.serverMode = ServerMode.DEV_CONFIG
         ServiceUrl.shared.serverMode = .DEV_CONFIG
+        
+//        GMSServices.provideAPIKey("AIzaSyCXphR-i-FBqqtpR2t-2AYEAmLlY6w2GSE")
+//        GMSPlacesClient.provideAPIKey("AIzaSyCXphR-i-FBqqtpR2t-2AYEAmLlY6w2GSE")
         
         // -- Call parent --
         _ = super.application(application, didFinishLaunchingWithOptions: launchOptions)

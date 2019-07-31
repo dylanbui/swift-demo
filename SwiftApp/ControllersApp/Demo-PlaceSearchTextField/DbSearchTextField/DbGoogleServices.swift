@@ -4,12 +4,21 @@
 //
 //  Created by Dylan Bui on 7/29/19.
 //  Tham khao neu muon tao them chuc nang https://github.com/tryWabbit/Google-Api-Helper
-//  Note: Khi su dung api url thi trong the restrictions by bundle id
-// chi co the su dung no voi GooglePlaces (GMSPlacesClient)
+//  Da ho tro: the restrictions by bundle id same GooglePlaces (GMSPlacesClient)
+/* => Khi dang ky su dung cac Library API
+ Places API => Search Adrresss, auto complete address by text use Http
+ Geocoding API => Convert coordinater to address
+ Maps SDK for iOS => Show map for ios
+ Places SDK for iOS => use GooglePlaces (GMSPlacesClient)
+ 
+ Khi tao key tai muc "Application restrictions" => chon "iOS app", them cac bundle id app duoc phep su dung key nay
+ */
+
 
 import Foundation
 import UIKit
 import CoreLocation
+import GooglePlaces
 
 public let ErrorDomain: String! = "GooglePlacesAutocompleteErrorDomain"
 
@@ -210,22 +219,30 @@ open class GgPlaceDetail: CustomStringConvertible
 // MARK: - DbGoogleServices
 // MARK: -
 
-open class DbGoogleServices: NSObject
+open class DbGoogleServices
 {
-    var apiKey: String
-    var placeType: GgPlaceType
+    public var placeType: GgPlaceType
     
-    override public init()
+    public static var shared: DbGoogleServices
     {
-        self.apiKey = ""
+        struct Singleton {
+            static let instance = DbGoogleServices()
+        }
+        return Singleton.instance
+    }
+    
+    private init()
+    {
         self.placeType = .All
     }
     
-    convenience public init(apiKey: String, type: GgPlaceType = .All)
+    private static var apiKey: String?
+    private static var securityByBundleId: String?
+    
+    public static func provideAPI(Key key:String, BundleId: String? = nil)
     {
-        self.init()
-        self.apiKey = apiKey
-        self.placeType = type
+        DbGoogleServices.apiKey = key
+        DbGoogleServices.securityByBundleId = BundleId
     }
     
     public func requestPlaces(_ searchString: String, result: @escaping (([GgPlace]) -> Void))
@@ -242,7 +259,6 @@ open class DbGoogleServices: NSObject
         var params = [
             "input": searchString,
             "types": self.placeType.description,
-            "key": self.apiKey,
             "components": "country:VN"
         ]
         
@@ -251,9 +267,9 @@ open class DbGoogleServices: NSObject
             params["radius"] = bias.radius.description
         }
         
-        DbGoogleServicesRequest.doRequest(
+        self.doRequest(
             url: "https://maps.googleapis.com/maps/api/place/autocomplete/json",
-            params: params
+            params: params as [String : Any]
         ) { json, error in
             if let json = json {
                 if let predictions = json["predictions"] as? Array<[String: Any]> {
@@ -270,11 +286,10 @@ open class DbGoogleServices: NSObject
     
     public func requestPlaceDetail(_ placeId: String, result: @escaping ((GgPlaceDetail) -> Void))
     {
-        DbGoogleServicesRequest.doRequest(
+        self.doRequest(
             url: "https://maps.googleapis.com/maps/api/place/details/json",
             params: [
                 "placeid": placeId,
-                "key": self.apiKey,
                 "components": "country:VN"
             ]
         ) { json, error in
@@ -292,11 +307,10 @@ open class DbGoogleServices: NSObject
     
     public func retrieveAddressInfoFromAddress(_ strAddress: String, withCompletion result: @escaping ((GgPlaceDetail) -> Void))
     {
-        DbGoogleServicesRequest.doRequest(
+        self.doRequest(
             url: "https://maps.googleapis.com/maps/api/geocode/json",
             params: [
-                "address": strAddress,
-                "key": self.apiKey
+                "address": strAddress
             ]
         ) { json, error in
             if let json = json {
@@ -313,11 +327,10 @@ open class DbGoogleServices: NSObject
     
     public func retrieveAddressInfoFromLocation(_ location: CLLocationCoordinate2D, withCompletion result: @escaping ((GgPlaceDetail) -> Void))
     {
-        DbGoogleServicesRequest.doRequest(
+        self.doRequest(
             url: "https://maps.googleapis.com/maps/api/geocode/json",
             params: [
-                "latlng": "\(location.latitude),\(location.longitude)",
-                "key": self.apiKey
+                "latlng": "\(location.latitude),\(location.longitude)"
             ]
         ) { json, error in
             if let json = json {
@@ -331,18 +344,18 @@ open class DbGoogleServices: NSObject
             }
         }
     }
-}
-
-// MARK: - GooglePlacesRequestHelpers
-class DbGoogleServicesRequest
-{
+    
     /**
      Build a query string from a dictionary
      - parameter parameters: Dictionary of query string parameters
      - returns: The properly escaped query string
      */
-    private class func query(_ parameters: [String: Any]) -> String
+    private func query(_ parameters: [String: Any]) -> String
     {
+        let escape = { (str: String) -> String in
+            return str.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+        }
+        
         var components: [(String, String)] = []
         for key in Array(parameters.keys) {
             if let value = parameters[key] as? String {
@@ -353,35 +366,38 @@ class DbGoogleServicesRequest
         return (components.map{"\($0)=\($1)"} as [String]).joined(separator:"&")
     }
     
-    private class func escape(_ string: String) -> String
-    {
-        return string.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
-    }
+//    private func escape(_ string: String) -> String
+//    {
+//        return string.addingPercentEncoding(withAllowedCharacters: .urlHostAllowed)!
+//    }
     
-    public class func doRequest(url: String, params: [String: Any], completion: @escaping ([String: Any]?, Error?) -> ())
+    public func doRequest(url: String, params: [String: Any], completion: @escaping ([String: Any]?, Error?) -> ())
     {
+        guard let apiKey = DbGoogleServices.apiKey else {
+            fatalError("Enter Google API Key.")
+        }
+        
         // -- Default value --
         var paramsVal = params
+        paramsVal["key"] = apiKey
         paramsVal["language"] = "vi"
         paramsVal["sensor"] = "true"
         
-        let request = URLRequest(url: URL(string: url + "?" + self.query(paramsVal))!)
-        // request.addValue("org.cocoapods.demo.DbCrawlerSwift-Example", forHTTPHeaderField: "x-ios-bundle-identifier")
+        var request = URLRequest(url: URL(string: url + "?" + self.query(paramsVal))!)
+        request.timeoutInterval = 30
+        request.setValue("application/json", forHTTPHeaderField: "Accept")
+        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.httpMethod = "GET"
         
-//        Header x-ios-bundle-identifier
-//        Label servicecontrol.googleapis.com/ios_bundle_id
-//        request.addValue("servicecontrol.googleapis.com/vn.propzy.SwiftApp", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
-//        print("absoluteString = \(String(describing: request.url!.absoluteString))")
-//        request.timeoutInterval = 30
-//        request.httpMethod = "POST"
-//        request.setValue("application/json", forHTTPHeaderField: "Accept")
-//        request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-        // request.addValue("vn.propzy.SwiftApp", forHTTPHeaderField: "x-ios-bundle-identifier")
-        // request.addValue("servicecontrol.googleapis.com/vn.propzy.SwiftApp", forHTTPHeaderField: "x-ios-bundle-identifier")
-        // request.addValue("vn.propzy.SwiftApp", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
-//        request.addValue("servicecontrol.googleapis.com/vn.propzy.SwiftApp", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+        if let bundleId = DbGoogleServices.securityByBundleId {
+            request.httpMethod = "POST"
+            request.addValue(bundleId, forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+            // request.addValue("servicecontrol.googleapis.com/vn.propzy.SwiftApp", forHTTPHeaderField: "X-Ios-Bundle-Identifier")
+        }
         
         print("absoluteString = \(request.url?.absoluteString ?? "")")
+        print("method = \(request.httpMethod ?? "")")
+        
         let session = URLSession.shared
         let task = session.dataTask(with: request) { (data, response, error) in
             self.handleResponse(data, response: response, error: error, completion: completion)
@@ -389,7 +405,7 @@ class DbGoogleServicesRequest
         task.resume()
     }
     
-    private class func handleResponse(_ data: Data!, response: URLResponse!, error: Error!,
+    private func handleResponse(_ data: Data!, response: URLResponse!, error: Error!,
                                       completion: @escaping ([String: Any]?, Error?) -> ())
     {
         // Always return on the main thread...

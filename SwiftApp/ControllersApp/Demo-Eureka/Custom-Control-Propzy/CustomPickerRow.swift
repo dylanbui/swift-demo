@@ -8,7 +8,7 @@
 
 import Foundation
 import Eureka
-import ActionSheetPicker_3_0
+//import ActionSheetPicker_3_0
 
 public struct CustomPickerItem: Equatable {
     var id: Int
@@ -26,12 +26,12 @@ public func ==(lhs: CustomPickerItem, rhs: CustomPickerItem) -> Bool {
     return lhs.id == rhs.id
 }
 
-class CustomPickerCell: _FieldCell<String>, CellType, ActionSheetCustomPickerDelegate
+class CustomPickerCell: _FieldCell<String>, CellType //, ActionSheetCustomPickerDelegate
 {
     public var arrSources: [CustomPickerItem] = []
     public var itemSelected: CustomPickerItem?
     
-    private var customPicker: ActionSheetCustomPicker?
+//    private var customPicker: ActionSheetCustomPicker?
     
     required public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?)
     {
@@ -92,27 +92,27 @@ class CustomPickerCell: _FieldCell<String>, CellType, ActionSheetCustomPickerDel
         // -- Return if == 0 --
         if self.arrSources.count <= 0 { return }
         
-        // -- Cach khac --
-        var selectedIndex = 0
-        if let item = self.itemSelected {
-            if let index = self.arrSources.index(where: { (tuple) -> Bool in
-                return tuple.id == item.id
-            }) {
-                selectedIndex = index
-            }
-        }
-        
-        self.customPicker = nil
-        self.customPicker = ActionSheetCustomPicker.init(title: self.row.title,
-                                                         delegate: self,
-                                                         showCancelButton: true,
-                                                         origin: self, initialSelections: [selectedIndex])
-        // self.customPicker?.changeTitleOfButton()
-        self.customPicker?.tag = 1
-        self.customPicker?.tapDismissAction = .cancel
-        
-        // -- Show picker --
-        self.customPicker?.show()
+//        // -- Cach khac --
+//        var selectedIndex = 0
+//        if let item = self.itemSelected {
+//            if let index = self.arrSources.index(where: { (tuple) -> Bool in
+//                return tuple.id == item.id
+//            }) {
+//                selectedIndex = index
+//            }
+//        }
+//
+//        self.customPicker = nil
+//        self.customPicker = ActionSheetCustomPicker.init(title: self.row.title,
+//                                                         delegate: self,
+//                                                         showCancelButton: true,
+//                                                         origin: self, initialSelections: [selectedIndex])
+//        // self.customPicker?.changeTitleOfButton()
+//        self.customPicker?.tag = 1
+//        self.customPicker?.tapDismissAction = .cancel
+//
+//        // -- Show picker --
+//        self.customPicker?.show()
         // -- Scroll to middle when active --
         self.row.select(animated: true, scrollPosition: .middle)
     }
@@ -154,28 +154,28 @@ class CustomPickerCell: _FieldCell<String>, CellType, ActionSheetCustomPickerDel
         // -- Day la xu ly khi vua chon --
     }
     
-    public func actionSheetPickerDidSucceed(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!)
-    {
-        //        if let pickerView =  actionSheetPicker.pickerView as? UIPickerView {
-        //            let row = pickerView.selectedRow(inComponent: 0)
-        //        }
-        
-        guard let pickerView =  actionSheetPicker.pickerView as? UIPickerView else { return }
-        let rowIndex = pickerView.selectedRow(inComponent: 0)
-        let item = self.arrSources[rowIndex]
-        
-        // -- Choose value --
-        self.itemSelected = item
-        self.textField.text = item.title
-        
-        // -- Scroll to middle after choose --
-        // self.row.select(animated: true, scrollPosition: .middle)
-    }
-    
-    public func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!)
-    {
-        // self.cancelBlock?(self.customPicker!)
-    }
+//    public func actionSheetPickerDidSucceed(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!)
+//    {
+//        //        if let pickerView =  actionSheetPicker.pickerView as? UIPickerView {
+//        //            let row = pickerView.selectedRow(inComponent: 0)
+//        //        }
+//        
+//        guard let pickerView =  actionSheetPicker.pickerView as? UIPickerView else { return }
+//        let rowIndex = pickerView.selectedRow(inComponent: 0)
+//        let item = self.arrSources[rowIndex]
+//        
+//        // -- Choose value --
+//        self.itemSelected = item
+//        self.textField.text = item.title
+//        
+//        // -- Scroll to middle after choose --
+//        // self.row.select(animated: true, scrollPosition: .middle)
+//    }
+//    
+//    public func actionSheetPickerDidCancel(_ actionSheetPicker: AbstractActionSheetPicker!, origin: Any!)
+//    {
+//        // self.cancelBlock?(self.customPicker!)
+//    }
     
     
     
