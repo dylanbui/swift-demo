@@ -4,8 +4,16 @@
 //
 //  Created by Dylan Bui on 7/29/19.
 //  Tham khao neu muon tao them chuc nang https://github.com/tryWabbit/Google-Api-Helper
-//  Note: Khi su dung api url thi trong the restrictions by bundle id
-// chi co the su dung no voi GooglePlaces (GMSPlacesClient)
+//  Da ho tro: the restrictions by bundle id same GooglePlaces (GMSPlacesClient)
+/* => Khi dang ky su dung cac Library API
+ Places API => Search Adrresss, auto complete address by text use Http
+ Geocoding API => Convert coordinater to address
+ Maps SDK for iOS => Show map for ios
+ Places SDK for iOS => use GooglePlaces (GMSPlacesClient)
+ 
+ Khi tao key tai muc "Application restrictions" => chon "iOS app", them cac bundle id app duoc phep su dung key nay
+ */
+
 
 import Foundation
 import UIKit
