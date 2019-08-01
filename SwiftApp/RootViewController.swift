@@ -42,7 +42,7 @@ class RootViewController: UIViewController
         // let vcl = DemoDecimalTextFieldViewController()
 //        let vcl = DemoEurekaViewController()
 //        let vcl = DemoDbSheetPickerViewController() // => Done
-//        let vcl = DemoDbLocationManagerViewController() // Done
+        let vcl = DemoDbLocationManagerViewController() // Done
 //        let vcl = MasterCandySearchViewController() // Done
 //        let vcl = DemoEmptyDataSetViewController() // => Done
 //        let vcl = DemoDbPullToRefreshViewController() // => Done
@@ -68,7 +68,7 @@ class RootViewController: UIViewController
         
         // let vcl = MapKitViewController() // => Done
         
-        let vcl = DemoGgApiViewController() // => Done
+//        let vcl = DemoGgApiViewController() // => Done
         
         // localization project
 //        https://medium.com/@guerrix/info-plist-localization-ad5daaea732a

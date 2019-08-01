@@ -54,19 +54,13 @@ extension DbPlaceSearchViewController: UISearchBarDelegate
     public func searchBarBookmarkButtonClicked(_ searchBar: UISearchBar)
     {
         let manager: DbLocationManager = DbLocationManager.shared
-        manager.getCurrentLocation(withCompletion: { success, dictLocation, error in
-            
-            if let err = error {
-                print("Error = \(err)")
+        manager.getCurrentLocation(withCompletion: { cllocation, error in
+            guard let location = cllocation else {
+                print("Error = \(error.debugDescription)")
                 return
             }
-            
-            let coordinate: CLLocationCoordinate2D = CLLocationCoordinate2DMake(
-                (dictLocation[DB_LATITUDE] as? NSNumber)!.doubleValue,
-                (dictLocation[DB_LONGITUDE] as? NSNumber)!.doubleValue)
-
             // Geocoding API - Convert between addresses and geographic coordinates.
-            self.ggService?.retrieveAddressInfoFromLocation(coordinate, withCompletion: { (placeDetail) in
+            self.ggService?.retrieveAddressInfoFromLocation(location.coordinate, withCompletion: { (placeDetail) in
                 self.placeDelegate?.viewController(didAutocompleteWith: placeDetail)
             })
         })
