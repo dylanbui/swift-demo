@@ -97,6 +97,11 @@ class DemoDbLocationManagerViewController: UIViewController
             if let dbPlacemark = dbPlacemark {
                 self.logtext("Current Location GeoCode/Address: \(dbPlacemark.addressFullData.description)")
                 // self.showInMaps(withDictionary: addressDictionary, title: "Geocode/Address")
+                print("-----------------")
+                print("\(dbPlacemark.addressFullData["FormattedAddressLines"])")
+                print("-----------------")
+                print("\(dbPlacemark.formattedAddressLines)")
+                
             }
         })
     }

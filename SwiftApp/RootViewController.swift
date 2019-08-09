@@ -42,9 +42,9 @@ class RootViewController: UIViewController
         // let vcl = DemoDecimalTextFieldViewController()
 //        let vcl = DemoEurekaViewController()
 //        let vcl = DemoDbSheetPickerViewController() // => Done
-        let vcl = DemoDbLocationManagerViewController() // Done
+//        let vcl = DemoDbLocationManagerViewController() // Done
 //        let vcl = MasterCandySearchViewController() // Done
-//        let vcl = DemoEmptyDataSetViewController() // => Done
+        let vcl = DemoEmptyDataSetViewController() // => Done
 //        let vcl = DemoDbPullToRefreshViewController() // => Done
 //        let vcl = DemoCustomPullForProjectViewController() // => Done
 //        let vcl = DemoLazyUploadViewController() // => Done

@@ -37,14 +37,14 @@ public enum DbLocationTaskType : Int {
 
 public struct DbFencemark
 {
-    var eventType: DbFenceEventType = .none
-    var eventTimeStamp: String = ""
-    var fenceIDentifier: String = ""
-    var fenceCentralCoordinate: CLLocationCoordinate2D = kCLLocationCoordinate2DInvalid
-    var fenceRadious: CLLocationDistance = 0.0
+    public var eventType: DbFenceEventType = .none
+    public var eventTimeStamp: String = ""
+    public var fenceIDentifier: String = ""
+    public var fenceCentralCoordinate: CLLocationCoordinate2D = kCLLocationCoordinate2DInvalid
+    public var fenceRadious: CLLocationDistance = 0.0
     
     //uses DB_LATITUDE,  DB_LONGITUDE, DB_RADIOUS to wrap data for debug
-    var dictionary: DictionaryType {
+    public var dictionary: DictionaryType {
         get {
             return [
                 "eventType"             : self.eventType,
@@ -57,48 +57,77 @@ public struct DbFencemark
     }
 }
 
+/* Example : DbPlacemark addressFullData
+ ["CountryCode": VN,
+ "SubAdministrativeArea": Quận 11,
+ "Name": 182 Đường Lê Đại Hành,
+ "State": Thành Phố Hồ Chí Minh,
+ "Street": 182 Đường Lê Đại Hành,
+ "City": Hồ Chí Minh,
+ "Country": Việt Nam,
+ "SubLocality": Phường 15,
+ "SubThoroughfare": 182,
+ "Thoroughfare": Đường Lê Đại Hành,
+ "FormattedAddressLines": <__NSArrayM 0x28112aa00>(
+ 182 Đường Lê Đại Hành,
+ Phường 15,
+ Quận 11,
+ Thành Phố Hồ Chí Minh,
+ Việt Nam)]
+ 
+ Co su khong thong nhat du lieu trong CLPlacemark, nen su dung formattedAddressLines khi can lay du lieu dia chi dung MapKit
+ */
+
 public struct DbPlacemark
 {
-    var name: String {
+    public var name: String {
         get {
-            return self.clPlacemark.name ?? ""
+            return self.clPlacemark.name ?? "" // "Name": 182 Đường Lê Đại Hành,
         }
     }
-    var street: String {
+    public var street: String {
         get {
-            return self.clPlacemark.thoroughfare ?? ""
+            return self.clPlacemark.thoroughfare ?? "" // "Street": 182 Đường Lê Đại Hành,
         }
     }
-    var city: String {
+    public var city: String {
         get {
-            return self.clPlacemark.locality ?? ""
+            return self.clPlacemark.locality ?? "" // "City": Hồ Chí Minh,
         }
     }
-    var state: String {
+    public var state: String {
         get {
             return self.clPlacemark.administrativeArea ?? ""
         }
     }
-    var county: String {
+    public var county: String {
         get {
             return self.clPlacemark.country ?? self.clPlacemark.subAdministrativeArea ?? "" // Quan
         }
     }
-    var zipcode: String {
+    public var zipcode: String {
         get {
             return self.clPlacemark.postalCode ?? ""
         }
     }
-    var addressFullData: DictionaryType {
+    public var formattedAddressLines: Array<String> {
+        get {
+            if let arr = self.addressFullData["FormattedAddressLines"] as? [String] {
+                return arr
+            }
+            return []
+        }
+    }
+    public var addressFullData: DictionaryType {
         get {
             return self.clPlacemark.addressDictionary as? DictionaryType ?? [:]
         }
     }
     
-    let location: CLLocation
-    let clPlacemark: CLPlacemark
+    public let location: CLLocation
+    public let clPlacemark: CLPlacemark
     
-    init(location: CLLocation, placemark: CLPlacemark)
+    public init(location: CLLocation, placemark: CLPlacemark)
     {
         self.location = location
         self.clPlacemark = placemark

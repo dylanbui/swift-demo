@@ -139,13 +139,15 @@ extension DbEmptyStatusController {
         // -- Remove DbEmptyStatus View if have --
         containerView.viewWithTag(dbStatusViewTag)?.removeFromSuperview()
         
-        let view = sv.view
-        
-        let parentView = UIView.init(frame: containerView.frame)
+        // let parentView = UIView.init(frame: CGRect.init(origin: CGPoint(x: 0, y: 0), size: containerView.frame.size))
+        let parentView = UIView.init(frame: .zero)
+        print("parentView.frame.debugDescription = \(parentView.frame.debugDescription)")
         parentView.tag = dbStatusViewTag
-        parentView.backgroundColor = sv.status?.backgroundColor
+        parentView.backgroundColor = .blue //sv.status?.backgroundColor
         containerView.addSubview(parentView)
         parentView.translatesAutoresizingMaskIntoConstraints = false
+        //parentView.db_fillToSuperview()
+        
         NSLayoutConstraint.activate([
             parentView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
             parentView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: 0),
@@ -153,6 +155,7 @@ extension DbEmptyStatusController {
             parentView.bottomAnchor.constraint(equalTo: containerView.bottomAnchor, constant: 0),
             ])
         
+        let view = sv.view
         parentView.addSubview(view)
         view.translatesAutoresizingMaskIntoConstraints = false
         
@@ -175,6 +178,7 @@ extension DbEmptyStatusController {
             NSLayoutConstraint.activate([
                 view.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
                 view.topAnchor.constraint(equalTo: parentView.topAnchor, constant: offset) // Cach top 150 chua bao gom navigation bar
+                //view.centerYAnchor.constraint(equalTo: parentView.centerYAnchor) // Canh giua
                 ])
             
         } else {
