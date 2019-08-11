@@ -76,7 +76,7 @@ class DemoRealmViewController: BaseViewController
     {
         super.viewWillAppear(animated)
         // -- Tra ve tat ca --
-        self.arrTask = TaskItem.er.db_all(WithCondition: nil, sortedByKeyPath: "title")
+        self.arrTask = TaskItem.er.db_all(WithCondition: nil, SortedByKeyPath: "title")
         self.tblContent.reloadData()
     }
 

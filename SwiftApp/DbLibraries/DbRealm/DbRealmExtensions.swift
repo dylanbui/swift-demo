@@ -70,19 +70,105 @@ public class DbRealm {
  Extensions for EasyRealm
  */
 
+public typealias DbrmSelecteManyCompleted<T:Object> = ([T]?, Error?) -> Void
+public typealias DbrmSelecteCompleted<T:Object> = (T?, Error?) -> Void
+public typealias DbrmCompleted = (Error?) -> Void
+
 public extension EasyRealmStatic where T:Object {
     
-    func db_get<K>(withPrimaryKey key: K) -> T?
+    // -- Only change try ... catch by closure --
+    
+    // MARK: - Get row functions
+    // MARK: -
+    
+    func db_get<K>(WithPrimaryKey key: K) -> T?
     {
         do {
             return try self.fromRealm(with: key)
         } catch {
-            
         }
         return nil
     }
     
-    func db_delete(withPrimaryKey key: Any)
+    func db_get(WithCondition condition: String) -> T?
+    {
+        do {
+            return try self.all().filter(condition).first
+        } catch {
+        }
+        return nil
+    }
+    
+    // -- For detail error --
+    func db_get<K>(WithPrimaryKey key: K, Complete complete: DbrmSelecteCompleted<T>)
+    {
+        do {
+            let result = try self.fromRealm(with: key)
+            complete(result, nil)
+        } catch let error {
+            complete(nil, error)
+        }
+    }
+    
+    // -- For detail error --
+    func db_get(WithCondition condition: String, Complete complete: DbrmSelecteCompleted<T>)
+    {
+        self.db_all(WithCondition: condition) { (results, error) in
+            if let error = error {
+                complete(nil, error)
+                return
+            }
+            // -- co truong hop khong tim thay du lieu, result = nil, error = nil --
+            complete(results?.first, nil)
+        }
+    }
+    
+    // MARK: - Get all rows functions
+    // MARK: -
+    
+    func db_all(WithCondition condition: String? = nil,
+                SortedByKeyPath keyPath: String? = nil,
+                Ascending ascending: Bool = true) -> [T]
+    {
+        do {
+            var objects = try self.all()
+            if condition != nil {
+                objects = objects.filter(condition!)
+            }
+            if keyPath != nil {
+                objects = objects.sorted(byKeyPath: keyPath!, ascending: ascending)
+            }
+            return Array(objects)
+        } catch {
+        }
+        return []
+    }
+
+    // -- For detail error --
+    func db_all(WithCondition condition: String? = nil,
+                SortedByKeyPath keyPath: String? = nil,
+                Ascending ascending: Bool = true,
+                WithComplete complete: DbrmSelecteManyCompleted<T>)
+    {
+        do {
+            var objects = try self.all()
+            if condition != nil {
+                objects = objects.filter(condition!)
+            }
+            if keyPath != nil {
+                objects = objects.sorted(byKeyPath: keyPath!, ascending: ascending)
+            }
+            complete(Array(objects), nil)
+        } catch let error {
+//            fatalError("Delete condition: '\(condition)' error => \(String(describing: error))")
+            complete(nil, error)
+        }
+    }
+    
+    // MARK: - Delete row functions
+    // MARK: -
+    
+    func db_delete(WithPrimaryKey key: Any, WithComplete complete: DbrmCompleted? = nil)
     {
         var condition : String = ""
         let strPrimaryKey = T.self.primaryKey() ?? "_none_"
@@ -91,57 +177,70 @@ public extension EasyRealmStatic where T:Object {
         }else{
             condition = "\(strPrimaryKey) == \(key)"
         }
-        db_delete(WithCondition: condition)
+        db_delete(WithCondition: condition, WithComplete: complete)
     }
     
-    func db_all() -> [T]
-    {
-        return try! Array(self.all())
-    }
-    
-    func db_all(WithCondition condition: String? = nil, sortedByKeyPath keyPath: String? = nil, ascending: Bool = true) -> [T]
-    {
-        var objects = try! self.all()
-        if condition != nil {
-            objects = objects.filter(condition!)
-        }
-        if keyPath != nil {
-            objects = objects.sorted(byKeyPath: keyPath!, ascending: ascending)
-        }
-        return Array(objects)
-    }
-    
-    func db_delete(WithCondition condition: String)
+    func db_delete(WithCondition condition: String, WithComplete complete: DbrmCompleted? = nil)
     {
         do {
             let realm = try Realm()
             try realm.write {
                 realm.delete(try! self.all().filter(condition))
+                complete?(nil)
             }
         } catch let error {
-            fatalError("Delete condition: '\(condition)' error => \(String(describing: error))")
+            // fatalError("Delete condition: '\(condition)' error => \(String(describing: error))")
+            complete?(error)
         }
     }
 }
 
 public extension EasyRealm where T:Object
 {
-    func db_saveOrUpdate()
+    // MARK: - Save Or Update row functions
+    // MARK: -
+    
+    func db_saveOrUpdate(WithComplete complete: DbrmCompleted? = nil)
     {
-        let _ = try! self.saved(update: true)
+        // -- If exsited record with primary key, it will run update --
+        // let _ = try! self.saved(update: true)
+        do {
+            let _ = try self.saved(update: true)
+            complete?(nil)
+        } catch let error {
+            // fatalError("saveOrUpdate")
+            complete?(error)
+        }
     }
     
-    func db_edit(_ closure: @escaping (_ T:T) -> Void) {
-        
-        try! self.edit(closure)
-        
-        //self.isManaged ? try managed_edit(closure) : try unmanaged_dit(closure)
+    // MARK: - Edit row functions
+    // MARK: -
+    
+    func db_edit(_ closure: @escaping (_ T:T) -> Void, WithComplete complete: DbrmCompleted? = nil)
+    {
+        // try! self.edit(closure)
+        do {
+            try self.edit(closure)
+            complete?(nil)
+        } catch let error {
+            // fatalError("edit")
+            complete?(error)
+        }
     }
     
-    func db_delete()
+    // MARK: - Delete row functions
+    // MARK: -
+    
+    func db_delete(WithComplete complete: DbrmCompleted? = nil)
     {
-        try! self.delete()
-        
+        // try! self.delete()
+        do {
+            try self.delete()
+            complete?(nil)
+        } catch let error {
+            // fatalError("saveOrUpdate")
+            complete?(error)
+        }
     }
 }
 

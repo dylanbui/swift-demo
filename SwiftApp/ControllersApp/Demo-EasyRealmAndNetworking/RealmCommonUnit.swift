@@ -68,8 +68,8 @@ class DbCacheRealm {
     
     /// Read data for key
     public func readData(forKey key:String) -> Data?
-    {
-        if let record = CacheRecord.er.db_get(withPrimaryKey: key) {
+    {        
+        if let record = CacheRecord.er.db_get(WithCondition: key) {
             return record.content
         }
         return nil
@@ -111,7 +111,7 @@ class DbCacheRealm {
     /// Clean cache by key. This is an async operation.
     public func clean(byKey key: String) {
         // CacheRecord.er.db_delete(WithCondition: "key = '\(key)'")
-        CacheRecord.er.db_delete(withPrimaryKey: key)
+        CacheRecord.er.db_delete(WithPrimaryKey: key)
     }
 }
 
