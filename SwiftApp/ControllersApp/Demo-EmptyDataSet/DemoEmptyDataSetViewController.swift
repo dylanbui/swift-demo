@@ -27,7 +27,13 @@ class DemoEmptyDataSetViewController: BaseViewController
         return view
     }
     
+    override var emptyStatusOnView: UIView {
+        return self.headerView
+//        return self.tableView
+    }
+    
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var headerView: UIView!
     
     fileprivate struct CellIdentifier {
         static let reuseIdentifier = "Cell"
@@ -54,22 +60,31 @@ class DemoEmptyDataSetViewController: BaseViewController
         self.tableView.dataSource = self
         self.tableView.delegate = self
         
-        // let status = DbEmptyStatus(isLoading: true, description: "Loadinggggg …")
+        let status = DbEmptyStatus(isLoading: true,
+                                   backgroundColor: UIColor.lightGray, description: "Loadinggggg …",
+                                   verticalOffset: 5)
 //        let status = DbEmptyStatus(isLoading: true,
 //                                   spinnerColor: UIColor.red,
-//                                   backgroundColor: UIColor.white,
+//                                   backgroundColor: UIColor.lightGray,
 //                                   title: "Loading ...",
 //                                   description: "Loadinggggg …",
 //                                   verticalOffset: 5)
-        let status = DbEmptyStatus.simpleLoading
+        // let status = DbEmptyStatus.simpleLoading
         self.showEmptyView(WithStatus: status)
         
         self.fetchData()
     }
     
+    override func viewWillAppear(_ animated: Bool)
+    {
+        super.viewWillAppear(animated)
+        
+        print("debugDescription = \(self.tableView.frame.debugDescription)")
+    }
+    
     func fetchData(_ result: Bool = false)
     {
-        let delayTime = DispatchTime.now() + Double(Int64(4.5 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        let delayTime = DispatchTime.now() + Double(Int64(5.0 * Double(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
         DispatchQueue.main.asyncAfter(deadline: delayTime) { () -> Void in
             
             let done = result

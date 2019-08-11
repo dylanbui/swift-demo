@@ -9,18 +9,12 @@
 import Foundation
 import CoreLocation
 
-public typealias DbLocationInfo = [String: Any]
-
+let DB_DEFAULT_FENCE_RADIOUS = 100.0
 let kDbHorizontalAccuracyThresholdCity = CLLocationAccuracy(5000.0)         // in meters
 let kDbHorizontalAccuracyThresholdNeighborhood = CLLocationAccuracy(1000.0) // in meters
 let kDbHorizontalAccuracyThresholdBlock = CLLocationAccuracy(100.0) // in meters
 let kDbHorizontalAccuracyThresholdHouse = CLLocationAccuracy(15.0) // in meters
 let kDbHorizontalAccuracyThresholdRoom = CLLocationAccuracy(5.0) // in meters
-
-let DB_FENCE_EVENT_TYPE_KEY = "DBeventType"
-let DB_FENCE_EVENT_TIMESTAMP_KEY = "DBeventTimeStamp"
-let DB_FENCE_IDENTIFIER_KEY = "DBfenceIDentifier"
-let DB_FENCE_COORDINATE_KEY = "DBfenceCoordinate"
 
 public enum DbFenceEventType : String {
     case added      = "DbFenceEventAdded"
@@ -41,43 +35,107 @@ public enum DbLocationTaskType : Int {
     case none
 }
 
-public class DbFenceInfo: NSObject {
-    var eventType = ""
-    var eventTimeStamp = ""
-    var fenceIDentifier = ""
-    var fenceCoordinate: DbLocationInfo = [:]
+public struct DbFencemark
+{
+    public var eventType: DbFenceEventType = .none
+    public var eventTimeStamp: String = ""
+    public var fenceIDentifier: String = ""
+    public var fenceCentralCoordinate: CLLocationCoordinate2D = kCLLocationCoordinate2DInvalid
+    public var fenceRadious: CLLocationDistance = 0.0
     
-    //uses DB_LATITUDE,  DB_LONGITUDE, DB_RADIOUS to wrap data
-    var dictionary: DbLocationInfo {
+    //uses DB_LATITUDE,  DB_LONGITUDE, DB_RADIOUS to wrap data for debug
+    public var dictionary: DictionaryType {
         get {
             return [
-                DB_FENCE_EVENT_TYPE_KEY         : self.eventType,
-                DB_FENCE_EVENT_TIMESTAMP_KEY    : self.eventTimeStamp,
-                DB_FENCE_IDENTIFIER_KEY         : self.fenceIDentifier,
-                DB_FENCE_COORDINATE_KEY         : self.fenceCoordinate
+                "eventType"             : self.eventType,
+                "eventTimeStamp"        : self.eventTimeStamp,
+                "fenceIDentifier"       : self.fenceIDentifier,
+                "fenceCentralCoordinate": self.fenceCentralCoordinate,
+                "fenceRadious"          : self.fenceRadious
             ]
         }
     }
 }
 
-let DB_DEFAULT_FENCE_RADIOUS = 100.0
-let DB_LOCATION = "location"
-let DB_LATITUDE = "latitude"
-let DB_LONGITUDE = "longitude"
-let DB_ALTITUDE = "altitude"
-let DB_RADIOUS = "radious"
+/* Example : DbPlacemark addressFullData
+ ["CountryCode": VN,
+ "SubAdministrativeArea": Quận 11,
+ "Name": 182 Đường Lê Đại Hành,
+ "State": Thành Phố Hồ Chí Minh,
+ "Street": 182 Đường Lê Đại Hành,
+ "City": Hồ Chí Minh,
+ "Country": Việt Nam,
+ "SubLocality": Phường 15,
+ "SubThoroughfare": 182,
+ "Thoroughfare": Đường Lê Đại Hành,
+ "FormattedAddressLines": <__NSArrayM 0x28112aa00>(
+ 182 Đường Lê Đại Hành,
+ Phường 15,
+ Quận 11,
+ Thành Phố Hồ Chí Minh,
+ Việt Nam)]
+ 
+ Co su khong thong nhat du lieu trong CLPlacemark, nen su dung formattedAddressLines khi can lay du lieu dia chi dung MapKit
+ */
 
-let DB_ADDRESS_NAME = "address_name"
-let DB_ADDRESS_STREET = "address_street"
-let DB_ADDRESS_CITY = "address_city"
-let DB_ADDRESS_STATE = "address_state"
-let DB_ADDRESS_COUNTY = "address_county"
-let DB_ADDRESS_ZIPCODE = "address_zipcode"
-let DB_ADDRESS_COUNTRY = "address_country"
-let DB_ADDRESS_DICTIONARY = "address_full_dictionary"
+public struct DbPlacemark
+{
+    public var name: String {
+        get {
+            return self.clPlacemark.name ?? "" // "Name": 182 Đường Lê Đại Hành,
+        }
+    }
+    public var street: String {
+        get {
+            return self.clPlacemark.thoroughfare ?? "" // "Street": 182 Đường Lê Đại Hành,
+        }
+    }
+    public var city: String {
+        get {
+            return self.clPlacemark.locality ?? "" // "City": Hồ Chí Minh,
+        }
+    }
+    public var state: String {
+        get {
+            return self.clPlacemark.administrativeArea ?? ""
+        }
+    }
+    public var county: String {
+        get {
+            return self.clPlacemark.country ?? self.clPlacemark.subAdministrativeArea ?? "" // Quan
+        }
+    }
+    public var zipcode: String {
+        get {
+            return self.clPlacemark.postalCode ?? ""
+        }
+    }
+    public var formattedAddressLines: Array<String> {
+        get {
+            if let arr = self.addressFullData["FormattedAddressLines"] as? [String] {
+                return arr
+            }
+            return []
+        }
+    }
+    public var addressFullData: DictionaryType {
+        get {
+            return self.clPlacemark.addressDictionary as? DictionaryType ?? [:]
+        }
+    }
+    
+    public let location: CLLocation
+    public let clPlacemark: CLPlacemark
+    
+    public init(location: CLLocation, placemark: CLPlacemark)
+    {
+        self.location = location
+        self.clPlacemark = placemark
+    }
+}
 
-public typealias LocationUpdateBlock = (Bool, DbLocationInfo, Error?) -> Void
-public typealias GeoCodeUpdateBlock = (Bool, DbLocationInfo, Error?) -> Void
+public typealias LocationUpdateBlock = (CLLocation?, Error?) -> Void
+public typealias GeoCodeUpdateBlock = (DbPlacemark?, Error?) -> Void
 
 public protocol DbLocationManagerDelegate {    
     /**
@@ -88,7 +146,7 @@ public protocol DbLocationManagerDelegate {
      *   Gives an Location Dictionary using keys "latitude", "longitude" and "altitude". You can use these macros: DB_LATITUDE, DB_LONGITUDE and DB_ALTITUDE.
      *   Sample output dictionary @{ @"latitude" : 23.6850, "longitude" : 90.3563, "altitude" : 10.4604}
      */
-    func dbLocationManager(DidUpdateBestLocation latLongAltitudeDictionary: DbLocationInfo)
+    func dbLocationManager(DidUpdateBestLocation location: CLLocation)
     /**
      *   Fail get location
      */
@@ -96,32 +154,32 @@ public protocol DbLocationManagerDelegate {
     /**
      *   Gives an DbFenceInfo Object of the Fence which just added
      */
-    func dbLocationManager(DidAddFence fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidAddFence fencemark: DbFencemark?)
     /**
      *   Gives an DbFenceInfo Object of the Fence which just failed to monitor
      */
-    func dbLocationManager(DidFailedFence fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidFailedFence fencemark: DbFencemark?)
     /**
      *   Gives an DbFenceInfo Object of a Fence just entered
      */
-    func dbLocationManager(DidEnterFence fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidEnterFence fencemark: DbFencemark?)
     /**
      *   Gives an DbFenceInfo Object of a Exited Fence
      */
-    func dbLocationManager(DidExitFence fenceInfo: DbFenceInfo?)
+    func dbLocationManager(DidExitFence fencemark: DbFencemark?)
     /**
      *   Gives an Dictionary using current geocode or adress information with DB_ADDRESS_* keys
      */
-    func dbLocationManager(DidUpdateGeocodeAdress addressDictionary: DbLocationInfo?)
+    func dbLocationManager(DidUpdateGeocodeAdress placemark: DbPlacemark?)
 }
 
 // -- Optional --
 extension DbLocationManagerDelegate {
     func dbLocationManager(DidUpdateListLocations locations: [CLLocation]) {}
     func dbLocationManager(DidFailLocation withError: CLError) {}
-    func dbLocationManager(DidAddFence fenceInfo: DbFenceInfo?) {}
-    func dbLocationManager(DidFailedFence fenceInfo: DbFenceInfo?) {}
-    func dbLocationManager(DidEnterFence fenceInfo: DbFenceInfo?) {}
-    func dbLocationManager(DidExitFence fenceInfo: DbFenceInfo?) {}
-    func dbLocationManager(DidUpdateGeocodeAdress addressDictionary: DbLocationInfo?) {}
+    func dbLocationManager(DidAddFence fencemark: DbFencemark?) {}
+    func dbLocationManager(DidFailedFence fencemark: DbFencemark?) {}
+    func dbLocationManager(DidEnterFence fencemark: DbFencemark?) {}
+    func dbLocationManager(DidExitFence fencemark: DbFencemark?) {}
+    func dbLocationManager(DidUpdateGeocodeAdress placemark: DbPlacemark?) {}
 }

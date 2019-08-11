@@ -17,6 +17,10 @@ class BaseViewController: DbViewController, DbEmptyStatusController
         return CustomViewEmpty()
     }
     
+    var emptyStatusOnView: UIView {
+        return self.view
+    }
+    
     override init() {
         super.init()
     }

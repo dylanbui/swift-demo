@@ -18,7 +18,6 @@
 import Foundation
 import UIKit
 import CoreLocation
-import GooglePlaces
 
 public let ErrorDomain: String! = "GooglePlacesAutocompleteErrorDomain"
 
