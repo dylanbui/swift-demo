@@ -28,8 +28,11 @@ class DemoEmptyDataSetViewController: BaseViewController
     }
     
     override var emptyStatusOnView: UIView {
+//        return self.headerView
+        if let parent = self.tableView.superview {
+            return parent
+        }
         return self.headerView
-//        return self.tableView
     }
     
     @IBOutlet weak var tableView: UITableView!
