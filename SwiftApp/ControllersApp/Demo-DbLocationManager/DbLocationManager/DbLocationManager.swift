@@ -188,7 +188,14 @@ public class DbLocationManager : NSObject
         // INTULocationManager determines which level of permissions to request based on which description key is present in your app's Info.plist
         // If you provide values for both description keys, the more permissive "Always" level is requested.
         if status == .notDetermined {
-            let hasAlwaysKey: Bool = Bundle.main.object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") != nil
+            var hasAlwaysKey: Bool = false
+            if #available(iOS 11, *) {
+                // iOS 11 (or newer) Swift code
+                hasAlwaysKey = Bundle.main.object(forInfoDictionaryKey: "NSLocationAlwaysAndWhenInUseUsageDescription") != nil
+            } else {
+                // iOS 10 or older code
+                hasAlwaysKey = Bundle.main.object(forInfoDictionaryKey: "NSLocationAlwaysUsageDescription") != nil
+            }
             let hasWhenInUseKey: Bool = Bundle.main.object(forInfoDictionaryKey: "NSLocationWhenInUseUsageDescription") != nil
             if hasAlwaysKey {
                 self.locationManager.requestAlwaysAuthorization()
