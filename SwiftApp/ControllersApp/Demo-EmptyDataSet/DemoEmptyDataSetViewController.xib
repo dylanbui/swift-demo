@@ -22,9 +22,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xIi-Bp-vMr">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xIi-Bp-vMr">
                     <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="ucM-Wg-vFq">
                             <rect key="frame" x="0.0" y="0.0" width="375" height="367"/>
@@ -33,10 +32,12 @@
                         </tableView>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="367" id="l1D-dC-Kd6"/>
+                    </constraints>
                 </view>
-                <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7UR-Io-kM0">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7UR-Io-kM0">
                     <rect key="frame" x="0.0" y="367" width="375" height="300"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="header viewww" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JvF-nY-o7w">
                             <rect key="frame" x="94" y="97" width="188" height="21"/>
@@ -50,6 +51,16 @@
                 </view>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="7UR-Io-kM0" firstAttribute="top" secondItem="xIi-Bp-vMr" secondAttribute="bottom" id="1G0-s1-3Xo"/>
+                <constraint firstItem="xIi-Bp-vMr" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="APQ-xP-Cca"/>
+                <constraint firstItem="7UR-Io-kM0" firstAttribute="top" secondItem="xIi-Bp-vMr" secondAttribute="bottom" id="Nts-yz-gcp"/>
+                <constraint firstItem="7UR-Io-kM0" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="O05-p8-rqD"/>
+                <constraint firstItem="7UR-Io-kM0" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="OkG-0c-mJx"/>
+                <constraint firstItem="xIi-Bp-vMr" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="QsP-WY-qAb"/>
+                <constraint firstItem="7UR-Io-kM0" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="Spp-EH-Hzw"/>
+                <constraint firstItem="xIi-Bp-vMr" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="VUh-D2-bJq"/>
+            </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <point key="canvasLocation" x="133.59999999999999" y="154.27286356821591"/>
         </view>

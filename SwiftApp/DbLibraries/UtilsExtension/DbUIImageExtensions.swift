@@ -25,23 +25,61 @@ public extension UIImageView {
         placeholder: UIImage? = nil,
         completionHandler: ((UIImage?) -> Void)? = nil) {
         
-        image = placeholder
+        // -- Set contentMode --
         self.contentMode = contentMode
-        URLSession.shared.dataTask(with: url) { (data, response, _) in
-            guard
-                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
-                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
-                let data = data,
-                let image = UIImage(data: data)
-                else {
-                    completionHandler?(nil)
-                    return
-            }
+        
+        let cache =  URLCache.shared
+        let request = URLRequest(url: url)
+        // -- Check image in cache --
+        if let data = cache.cachedResponse(for: request)?.data,
+            let image = UIImage(data: data) {
             DispatchQueue.main.async {
+                // -- Have image in cache --
                 self.image = image
-                completionHandler?(image)
             }
-            }.resume()
+            return
+        }
+        
+        // -- If dont get from cache, begin set placeholder --
+        // -- Set contentMode --
+        self.image = placeholder
+        
+        // -- Load from url --
+        DispatchQueue.global(qos: .userInitiated).async {
+            URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+                if let data = data,
+                    let response = response,
+                    ((response as? HTTPURLResponse)?.statusCode ?? 500) < 300,
+                    let image = UIImage(data: data)
+                {
+                    let cachedData = CachedURLResponse(response: response, data: data)
+                    cache.storeCachedResponse(cachedData, for: request)
+                    DispatchQueue.main.async {
+                        self.db_changeImage(image)
+                        completionHandler?(image)
+                    }
+                }
+            }).resume()
+        }
+        
+//        image = placeholder
+//        self.contentMode = contentMode
+//        URLSession.shared.dataTask(with: url) { (data, response, _) in
+//            guard
+//                let httpURLResponse = response as? HTTPURLResponse, httpURLResponse.statusCode == 200,
+//                let mimeType = response?.mimeType, mimeType.hasPrefix("image"),
+//                let data = data,
+//                let image = UIImage(data: data)
+//                else {
+//                    completionHandler?(nil)
+//                    return
+//            }
+//            DispatchQueue.main.async {
+//                // self.image = image
+//                self.db_changeImage(image)
+//                completionHandler?(image)
+//            }
+//            }.resume()
     }
     
     /// SwifterSwift: Make image view blurry

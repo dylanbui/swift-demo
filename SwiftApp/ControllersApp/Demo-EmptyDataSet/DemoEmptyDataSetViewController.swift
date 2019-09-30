@@ -28,7 +28,6 @@ class DemoEmptyDataSetViewController: BaseViewController
     }
     
     override var emptyStatusOnView: UIView {
-//        return self.headerView
         if let parent = self.tableView.superview {
             return parent
         }
@@ -51,7 +50,7 @@ class DemoEmptyDataSetViewController: BaseViewController
     {
         super.viewDidLoad()
         title = "Loading"
-        //self.edgesForExtendedLayout = []
+        self.edgesForExtendedLayout = []
         
         print("edgesForExtendedLayout = \(String(describing: self.edgesForExtendedLayout))")
 //        if self.edgesForExtendedLayout.rawValue == 0 {
@@ -59,13 +58,16 @@ class DemoEmptyDataSetViewController: BaseViewController
             print("NO navigation bar")
         }
         
-        
         self.tableView.dataSource = self
         self.tableView.delegate = self
-        
-        let status = DbEmptyStatus(isLoading: true,
-                                   backgroundColor: UIColor.lightGray, description: "Loadinggggg …",
-                                   verticalOffset: 5)
+
+        // Center
+        let status = DbEmptyStatus(isLoading: true, description: "Loadinggggg …")
+        // verticalOffset = 5
+//        let status = DbEmptyStatus(isLoading: true,
+//                                   spinnerColor: UIColor.red,
+//                                   backgroundColor: UIColor.lightGray, description: "Loadinggggg …",
+//                                   verticalOffset: 5)
 //        let status = DbEmptyStatus(isLoading: true,
 //                                   spinnerColor: UIColor.red,
 //                                   backgroundColor: UIColor.lightGray,
@@ -75,12 +77,14 @@ class DemoEmptyDataSetViewController: BaseViewController
         // let status = DbEmptyStatus.simpleLoading
         self.showEmptyView(WithStatus: status)
         
-        self.fetchData()
+//        self.fetchData()
     }
     
     override func viewWillAppear(_ animated: Bool)
     {
         super.viewWillAppear(animated)
+        
+//        self.navigationController?.isNavigationBarHidden = true
         
         print("debugDescription = \(self.tableView.frame.debugDescription)")
     }

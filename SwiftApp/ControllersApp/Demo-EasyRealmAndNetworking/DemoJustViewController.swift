@@ -114,17 +114,31 @@ class DemoJustViewController: BaseViewController
 //            }
 //        }
         
+        let url = "http://cdn.propzy.vn:9090/file/api/upload"
+        let uploadData = ["file": DbHTTPFile.data("survey.png", UIImagePNGRepresentation(self.imgTest.image!)!, "image/png")]
+        
+//        let url = "http://45.117.162.49:8080/file/api/upload"
+//        let uploadData = ["large_file_2":DbHTTPFile.data("image", UIImagePNGRepresentation(self.imgTest.image!)!, "image/png")]
+        
         DbHTTP.jsonUploadFor(SimpleResponse.self,
-                             url: "http://45.117.162.49:8080/file/api/upload",
-                             files: ["large_file_2":DbHTTPFile.data("image", UIImagePNGRepresentation(self.imgTest.image!)!, "image/png")],
+                             url: url,
+                             data: ["type": "survey"], // Post with Dictionary Data
+                             files: uploadData,
                              asyncProgressHandler: { (progress) in
+                                print("progress.percent = \(String(format:"%.0f%%", (progress.percent*100)))")
                                 
         }) { (simpleResponse) in
             // finished
             if simpleResponse.httpResult.ok {
                 // finished
                 if let jsonData = simpleResponse.httpResult.json as? [String: Any] {
-                    print("jsonData.headers = \(jsonData["headers"] ?? "")")
+                    print("jsonData = \(jsonData)")
+                    /*
+                     jsonData = ["result": 1, "code": 200, "message": Thao tác thành công, "data": {
+                     "file_name" = "survey/large/2019/08/15/survey_2f591c24d046de8644816658af4913d5b683c855585f1880b9f188e08c0d9f27.jpg";
+                     link = "https://cdn.propzy.vn/survey/large/2019/08/15/survey_2f591c24d046de8644816658af4913d5b683c855585f1880b9f188e08c0d9f27.jpg";
+                     }]
+                     */
                 }
             }
             

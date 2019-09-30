@@ -158,6 +158,8 @@ extension ConnectionOf
     public func jsonUploadFor<T: DbHTTPResponseProtocol>(
         _ typeObj: T.Type,
         url: URLComponentsConvertible, // String Url
+        params: [String: Any] = [:], // Url get params
+        data: [String: Any] = [:], // Post with Dictionary
         json: Any? = nil, // Post with json
         files: [String: DbHTTPFile],
         queue: DispatchQueue? = nil,
@@ -168,8 +170,8 @@ extension ConnectionOf
         _ = adaptor.request(
             .post,
             url: url,
-            params: [:],
-            data: [:],
+            params: params,
+            data: data,
             json: json,
             headers: ["content-type": "application/json"], // Nen set json
             files: files,

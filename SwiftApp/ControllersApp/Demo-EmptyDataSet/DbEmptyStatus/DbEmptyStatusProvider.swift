@@ -6,7 +6,11 @@
 //  Copyright © 2019 Propzy Viet Nam. All rights reserved.
 //  Base on v1.2.10 : https://github.com/mariohahn/StatusProvider
 //  Da co thay doi nhieu chi dua tren y tuong
+//      Remove StatusViewContainer from the origin
 //  Rename function in protocol DbEmptyStatusController
+/*
+ Chu y : khi su ly tren UITableView, thi UITableView phai duoc chua trong UIView
+ */
 
 import Foundation
 import UIKit
@@ -113,7 +117,7 @@ public protocol DbEmptyStatusController {
     func hideEmptyViewStatus()
 }
 
-fileprivate let dbStatusViewTag = 666
+fileprivate let dbStatusViewTag = 6696
 
 extension DbEmptyStatusController {
     
@@ -135,18 +139,19 @@ extension DbEmptyStatusController {
         guard let sv = emptyStatusView else { return }
         sv.status = status
         
+        // -- DucBui 14/08/2019: Have been change from the origin --
+        
         let containerView: UIView = emptyStatusOnView
         // -- Remove DbEmptyStatus View if have --
         containerView.viewWithTag(dbStatusViewTag)?.removeFromSuperview()
         
-        // let parentView = UIView.init(frame: CGRect.init(origin: CGPoint(x: 0, y: 0), size: containerView.frame.size))
-        let parentView = UIView.init(frame: .zero)
-        print("parentView.frame.debugDescription = \(parentView.frame.debugDescription)")
+        let parentView = UIView.init(frame: CGRect.init(origin: CGPoint(x: 0, y: 0), size: containerView.frame.size))
+        // let parentView = UIView.init(frame: .zero)
+        // print("parentView.frame.debugDescription = \(parentView.frame.debugDescription)")
         parentView.tag = dbStatusViewTag
-        parentView.backgroundColor = .blue //sv.status?.backgroundColor
+        parentView.backgroundColor = sv.status?.backgroundColor
         containerView.addSubview(parentView)
         parentView.translatesAutoresizingMaskIntoConstraints = false
-        //parentView.db_fillToSuperview()
         
         NSLayoutConstraint.activate([
             parentView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 0),
@@ -177,7 +182,8 @@ extension DbEmptyStatusController {
             
             NSLayoutConstraint.activate([
                 view.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
-                view.topAnchor.constraint(equalTo: parentView.topAnchor, constant: offset) // Cach top 150 chua bao gom navigation bar
+                // Cach top <offset> chua bao gom navigation bar
+                view.topAnchor.constraint(equalTo: parentView.topAnchor, constant: offset)
                 //view.centerYAnchor.constraint(equalTo: parentView.centerYAnchor) // Canh giua
                 ])
             
@@ -185,18 +191,19 @@ extension DbEmptyStatusController {
             // -- DucBui 26/04/2019 : Kiem tra Tabbar size khi canh giua --
             var offset: CGFloat = 0.0
             // -- Kiem tra UIViewController co cover toan man hinh ko --
-            // Kiem tra the nao cung khong thay dung lam, nen khong su dung
-            if let viewController = self as? UIViewController {
-                // -- Khong can navigationBar vi canh giua tu giua len --
-                // Neu edgesForExtendedLayout.rawValue != 0 thi UIViewController se cover toan bo man hinh
-                if let nav = viewController.navigationController {
-                    if nav.isNavigationBarHidden == true {
-                        offset -= 44 // navigationBar
-                    } else if viewController.edgesForExtendedLayout.rawValue != 0 {
-                        offset -= 44 // navigationBar
-                    }
-                }
-            }
+            // DucBui 14/08/2019: Kiem tra the nao cung khong thay dung lam, nen khong su dung
+//            if let viewController = self as? UIViewController {
+//                // -- Khong can navigationBar vi canh giua tu giua len --
+//                // Neu edgesForExtendedLayout.rawValue != 0 thi UIViewController se cover toan bo man hinh
+//                if let nav = viewController.navigationController {
+//                    if nav.isNavigationBarHidden == true {
+//                        offset -= 44 // navigationBar
+//                    } else if viewController.edgesForExtendedLayout.rawValue != 0 {
+//                        offset -= 44 // navigationBar
+//                    }
+//                }
+//            }
+            
             // -- Kiem tra tabbar --
             if let viewController = self as? UIViewController {
                 if viewController.tabBarController != nil {
@@ -206,28 +213,26 @@ extension DbEmptyStatusController {
             
             NSLayoutConstraint.activate([
                 view.centerXAnchor.constraint(equalTo: parentView.centerXAnchor),
-                view.centerYAnchor.constraint(equalTo: parentView.centerYAnchor, constant: offset), // Canh giua
+                view.centerYAnchor.constraint(equalTo: parentView.centerYAnchor, constant: offset) // Canh giua
                 ])
         }
     }
 }
 
 
-extension DbEmptyStatusController where Self: UIView {
-    
+extension DbEmptyStatusController where Self: UIView
+{
     public var emptyStatusOnView: UIView {
         return self
     }
-    
-    
     
     public func showEmptyView(WithStatus emptyStatus: DbEmptyStatusModel) {
         _show(status: emptyStatus)
     }
 }
 
-extension DbEmptyStatusController where Self: UIViewController {
-    
+extension DbEmptyStatusController where Self: UIViewController
+{
     public var emptyStatusOnView: UIView {
         return view
     }
@@ -237,8 +242,8 @@ extension DbEmptyStatusController where Self: UIViewController {
     }
 }
 
-extension DbEmptyStatusController where Self: UITableViewController {
-    
+extension DbEmptyStatusController where Self: UITableViewController
+{
     public var emptyStatusOnView: UIView {
         if let backgroundView = tableView.backgroundView {
             return backgroundView

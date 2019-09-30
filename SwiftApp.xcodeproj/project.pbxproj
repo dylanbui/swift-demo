@@ -119,6 +119,24 @@
 		BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5CE03F214615D600C92DA0 /* DbScreenLoading.swift */; };
 		BB5E1426210AFDA10059A8C4 /* PropzyBaseApi.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */; };
 		BB5E1428210B200A0059A8C4 /* AppEvn.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB5E1427210B200A0059A8C4 /* AppEvn.swift */; };
+		BB601ADF233DF269006EE3E2 /* DbMvpCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601ACD233DF267006EE3E2 /* DbMvpCollectionViewDataSource.swift */; };
+		BB601AE0233DF269006EE3E2 /* DbMvpTableViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601ACE233DF267006EE3E2 /* DbMvpTableViewDataSource.swift */; };
+		BB601AE1233DF269006EE3E2 /* DbMvpViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AD0233DF267006EE3E2 /* DbMvpViewDataSource.swift */; };
+		BB601AE2233DF269006EE3E2 /* DbMvpViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AD1233DF267006EE3E2 /* DbMvpViewCell.swift */; };
+		BB601AE3233DF269006EE3E2 /* DbMvpPullToRefreshPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AD3233DF267006EE3E2 /* DbMvpPullToRefreshPresenter.swift */; };
+		BB601AE4233DF269006EE3E2 /* DbMvpPullToResfreshActionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AD4233DF267006EE3E2 /* DbMvpPullToResfreshActionView.swift */; };
+		BB601AE5233DF269006EE3E2 /* DbMvpPullToRefreshHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AD5233DF267006EE3E2 /* DbMvpPullToRefreshHandler.swift */; };
+		BB601AE6233DF269006EE3E2 /* DbMvpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AD7233DF267006EE3E2 /* DbMvpPresenter.swift */; };
+		BB601AE7233DF269006EE3E2 /* DbMvpCellTapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AD8233DF267006EE3E2 /* DbMvpCellTapPresenter.swift */; };
+		BB601AE8233DF269006EE3E2 /* DbMvpStructure.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AD9233DF268006EE3E2 /* DbMvpStructure.swift */; };
+		BB601AE9233DF269006EE3E2 /* DbMvpCollectionViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601ADB233DF268006EE3E2 /* DbMvpCollectionViewAction.swift */; };
+		BB601AEA233DF269006EE3E2 /* DbMvpPullToRefreshViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601ADC233DF268006EE3E2 /* DbMvpPullToRefreshViewAction.swift */; };
+		BB601AEB233DF269006EE3E2 /* DbMvpTableViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601ADD233DF268006EE3E2 /* DbMvpTableViewAction.swift */; };
+		BB601AEC233DF269006EE3E2 /* DbMvpViewAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601ADE233DF268006EE3E2 /* DbMvpViewAction.swift */; };
+		BB601AF0233DF2D9006EE3E2 /* MvpCharactersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AEE233DF2D8006EE3E2 /* MvpCharactersViewController.swift */; };
+		BB601AF1233DF2D9006EE3E2 /* MvpCharactersViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB601AEF233DF2D8006EE3E2 /* MvpCharactersViewController.xib */; };
+		BB601AF3233DF375006EE3E2 /* DbMvpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AF2233DF375006EE3E2 /* DbMvpViewController.swift */; };
+		BB601AF5233DFBED006EE3E2 /* MvpCharactersPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB601AF4233DFBED006EE3E2 /* MvpCharactersPresenter.swift */; };
 		BB61DA3F22CDEEFF006CE7C6 /* DemoUploadCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB61DA3D22CDEEFF006CE7C6 /* DemoUploadCollectionViewController.swift */; };
 		BB61DA4022CDEEFF006CE7C6 /* DemoUploadCollectionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB61DA3E22CDEEFF006CE7C6 /* DemoUploadCollectionViewController.xib */; };
 		BB626EC720DBADCE0057F0CF /* DbUIKitExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC020DBADCE0057F0CF /* DbUIKitExtensions.swift */; };
@@ -128,6 +146,9 @@
 		BB626ECB20DBADCE0057F0CF /* DbStdlibExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC420DBADCE0057F0CF /* DbStdlibExtensions.swift */; };
 		BB626ECC20DBADCE0057F0CF /* DbUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */; };
 		BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */; };
+		BB6D86442341A80D00ED89B5 /* DemoMvpConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D86432341A80D00ED89B5 /* DemoMvpConstant.swift */; };
+		BB6D86472341A90500ED89B5 /* MvpCharacterTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6D86452341A90500ED89B5 /* MvpCharacterTableViewCell.swift */; };
+		BB6D86482341A90500ED89B5 /* MvpCharacterTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB6D86462341A90500ED89B5 /* MvpCharacterTableViewCell.xib */; };
 		BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB6F6DE42011192100D81CA3 /* DbErrorView.swift */; };
 		BB7518FA2232879400413607 /* DemoRealmViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB7518F82232879400413607 /* DemoRealmViewController.swift */; };
 		BB7518FB2232879400413607 /* DemoRealmViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB7518F92232879400413607 /* DemoRealmViewController.xib */; };
@@ -515,6 +536,24 @@
 		BB5CE03F214615D600C92DA0 /* DbScreenLoading.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbScreenLoading.swift; sourceTree = "<group>"; };
 		BB5E1425210AFDA10059A8C4 /* PropzyBaseApi.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropzyBaseApi.swift; sourceTree = "<group>"; };
 		BB5E1427210B200A0059A8C4 /* AppEvn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEvn.swift; sourceTree = "<group>"; };
+		BB601ACD233DF267006EE3E2 /* DbMvpCollectionViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		BB601ACE233DF267006EE3E2 /* DbMvpTableViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpTableViewDataSource.swift; sourceTree = "<group>"; };
+		BB601AD0233DF267006EE3E2 /* DbMvpViewDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpViewDataSource.swift; sourceTree = "<group>"; };
+		BB601AD1233DF267006EE3E2 /* DbMvpViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpViewCell.swift; sourceTree = "<group>"; };
+		BB601AD3233DF267006EE3E2 /* DbMvpPullToRefreshPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpPullToRefreshPresenter.swift; sourceTree = "<group>"; };
+		BB601AD4233DF267006EE3E2 /* DbMvpPullToResfreshActionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpPullToResfreshActionView.swift; sourceTree = "<group>"; };
+		BB601AD5233DF267006EE3E2 /* DbMvpPullToRefreshHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpPullToRefreshHandler.swift; sourceTree = "<group>"; };
+		BB601AD7233DF267006EE3E2 /* DbMvpPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpPresenter.swift; sourceTree = "<group>"; };
+		BB601AD8233DF267006EE3E2 /* DbMvpCellTapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpCellTapPresenter.swift; sourceTree = "<group>"; };
+		BB601AD9233DF268006EE3E2 /* DbMvpStructure.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpStructure.swift; sourceTree = "<group>"; };
+		BB601ADB233DF268006EE3E2 /* DbMvpCollectionViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpCollectionViewAction.swift; sourceTree = "<group>"; };
+		BB601ADC233DF268006EE3E2 /* DbMvpPullToRefreshViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpPullToRefreshViewAction.swift; sourceTree = "<group>"; };
+		BB601ADD233DF268006EE3E2 /* DbMvpTableViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpTableViewAction.swift; sourceTree = "<group>"; };
+		BB601ADE233DF268006EE3E2 /* DbMvpViewAction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbMvpViewAction.swift; sourceTree = "<group>"; };
+		BB601AEE233DF2D8006EE3E2 /* MvpCharactersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpCharactersViewController.swift; sourceTree = "<group>"; };
+		BB601AEF233DF2D8006EE3E2 /* MvpCharactersViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MvpCharactersViewController.xib; sourceTree = "<group>"; };
+		BB601AF2233DF375006EE3E2 /* DbMvpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMvpViewController.swift; sourceTree = "<group>"; };
+		BB601AF4233DFBED006EE3E2 /* MvpCharactersPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpCharactersPresenter.swift; sourceTree = "<group>"; };
 		BB61DA3D22CDEEFF006CE7C6 /* DemoUploadCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoUploadCollectionViewController.swift; sourceTree = "<group>"; };
 		BB61DA3E22CDEEFF006CE7C6 /* DemoUploadCollectionViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoUploadCollectionViewController.xib; sourceTree = "<group>"; };
 		BB626EC020DBADCE0057F0CF /* DbUIKitExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIKitExtensions.swift; sourceTree = "<group>"; };
@@ -524,6 +563,9 @@
 		BB626EC420DBADCE0057F0CF /* DbStdlibExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStdlibExtensions.swift; sourceTree = "<group>"; };
 		BB626EC520DBADCE0057F0CF /* DbUIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbUIViewExtensions.swift; sourceTree = "<group>"; };
 		BB626EC620DBADCE0057F0CF /* DbStringExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbStringExtensions.swift; sourceTree = "<group>"; };
+		BB6D86432341A80D00ED89B5 /* DemoMvpConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoMvpConstant.swift; sourceTree = "<group>"; };
+		BB6D86452341A90500ED89B5 /* MvpCharacterTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpCharacterTableViewCell.swift; sourceTree = "<group>"; };
+		BB6D86462341A90500ED89B5 /* MvpCharacterTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MvpCharacterTableViewCell.xib; sourceTree = "<group>"; };
 		BB6F6DE42011192100D81CA3 /* DbErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbErrorView.swift; sourceTree = "<group>"; };
 		BB7518F82232879400413607 /* DemoRealmViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoRealmViewController.swift; sourceTree = "<group>"; };
 		BB7518F92232879400413607 /* DemoRealmViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoRealmViewController.xib; sourceTree = "<group>"; };
@@ -862,6 +904,7 @@
 		BB1079432071D47D00A99D9A /* ControllersApp */ = {
 			isa = PBXGroup;
 			children = (
+				BB601AED233DF280006EE3E2 /* Demo-MvpStructure */,
 				BBC92C7C22D5A410009C571E /* Demo-StackScrollView */,
 				BBF4EFC6228BB68600B3944D /* DemoWebViewViewController.swift */,
 				BBF4EFC7228BB68600B3944D /* DemoWebViewViewController.xib */,
@@ -1160,6 +1203,98 @@
 				BB8823422119847400A1BB76 /* JsonStringTransform.swift */,
 			);
 			path = DemoUsing;
+			sourceTree = "<group>";
+		};
+		BB601ACB233DF267006EE3E2 /* DbMvpStructure */ = {
+			isa = PBXGroup;
+			children = (
+				BB601AF2233DF375006EE3E2 /* DbMvpViewController.swift */,
+				BB601AD9233DF268006EE3E2 /* DbMvpStructure.swift */,
+				BB601ACC233DF267006EE3E2 /* ViewCell+DataSource */,
+				BB601AD2233DF267006EE3E2 /* Scrollview+PullToResfresh */,
+				BB601AD6233DF267006EE3E2 /* Presenter */,
+				BB601ADA233DF268006EE3E2 /* ViewAction */,
+			);
+			path = DbMvpStructure;
+			sourceTree = "<group>";
+		};
+		BB601ACC233DF267006EE3E2 /* ViewCell+DataSource */ = {
+			isa = PBXGroup;
+			children = (
+				BB601ACD233DF267006EE3E2 /* DbMvpCollectionViewDataSource.swift */,
+				BB601ACE233DF267006EE3E2 /* DbMvpTableViewDataSource.swift */,
+				BB601ACF233DF267006EE3E2 /* Base */,
+			);
+			path = "ViewCell+DataSource";
+			sourceTree = "<group>";
+		};
+		BB601ACF233DF267006EE3E2 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				BB601AD0233DF267006EE3E2 /* DbMvpViewDataSource.swift */,
+				BB601AD1233DF267006EE3E2 /* DbMvpViewCell.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		BB601AD2233DF267006EE3E2 /* Scrollview+PullToResfresh */ = {
+			isa = PBXGroup;
+			children = (
+				BB601AD3233DF267006EE3E2 /* DbMvpPullToRefreshPresenter.swift */,
+				BB601AD4233DF267006EE3E2 /* DbMvpPullToResfreshActionView.swift */,
+				BB601AD5233DF267006EE3E2 /* DbMvpPullToRefreshHandler.swift */,
+			);
+			path = "Scrollview+PullToResfresh";
+			sourceTree = "<group>";
+		};
+		BB601AD6233DF267006EE3E2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				BB601AD7233DF267006EE3E2 /* DbMvpPresenter.swift */,
+				BB601AD8233DF267006EE3E2 /* DbMvpCellTapPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		BB601ADA233DF268006EE3E2 /* ViewAction */ = {
+			isa = PBXGroup;
+			children = (
+				BB601ADB233DF268006EE3E2 /* DbMvpCollectionViewAction.swift */,
+				BB601ADC233DF268006EE3E2 /* DbMvpPullToRefreshViewAction.swift */,
+				BB601ADD233DF268006EE3E2 /* DbMvpTableViewAction.swift */,
+				BB601ADE233DF268006EE3E2 /* DbMvpViewAction.swift */,
+			);
+			path = ViewAction;
+			sourceTree = "<group>";
+		};
+		BB601AED233DF280006EE3E2 /* Demo-MvpStructure */ = {
+			isa = PBXGroup;
+			children = (
+				BB601ACB233DF267006EE3E2 /* DbMvpStructure */,
+				BB6D863F2341A76300ED89B5 /* Characters */,
+				BB6D86432341A80D00ED89B5 /* DemoMvpConstant.swift */,
+			);
+			path = "Demo-MvpStructure";
+			sourceTree = "<group>";
+		};
+		BB6D863F2341A76300ED89B5 /* Characters */ = {
+			isa = PBXGroup;
+			children = (
+				BB601AEE233DF2D8006EE3E2 /* MvpCharactersViewController.swift */,
+				BB601AEF233DF2D8006EE3E2 /* MvpCharactersViewController.xib */,
+				BB601AF4233DFBED006EE3E2 /* MvpCharactersPresenter.swift */,
+				BB6D86422341A79100ED89B5 /* TableView */,
+			);
+			path = Characters;
+			sourceTree = "<group>";
+		};
+		BB6D86422341A79100ED89B5 /* TableView */ = {
+			isa = PBXGroup;
+			children = (
+				BB6D86452341A90500ED89B5 /* MvpCharacterTableViewCell.swift */,
+				BB6D86462341A90500ED89B5 /* MvpCharacterTableViewCell.xib */,
+			);
+			path = TableView;
 			sourceTree = "<group>";
 		};
 		BB7C50DB2251BD1F0009E6F8 /* Demo-DropDownSelectBox */ = {
@@ -2090,7 +2225,9 @@
 				BBF9F349225F4009001EE7BB /* svgBlackArrowUp.svg in Resources */,
 				BBC92C9E22D5A410009C571E /* StackScrollViewController.xib in Resources */,
 				BBB569DD1F7B5B880014A7A9 /* TaskListViewController.xib in Resources */,
+				BB6D86482341A90500ED89B5 /* MvpCharacterTableViewCell.xib in Resources */,
 				BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */,
+				BB601AF1233DF2D9006EE3E2 /* MvpCharactersViewController.xib in Resources */,
 				BB7E580321E84AD5005C3FA6 /* floatLabelRow.gif in Resources */,
 				BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */,
 				BBB569DB1F7B5B880014A7A9 /* TaskDetailViewController.xib in Resources */,
@@ -2312,6 +2449,7 @@
 				BB26008B21D60FD100D5F41D /* DbDropDownViewCommon.swift in Sources */,
 				BBA1C8EC22532164008FF2FF /* RkLocationMonitor.swift in Sources */,
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
+				BB601AEB233DF269006EE3E2 /* DbMvpTableViewAction.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
 				BBF9F347225F33F5001EE7BB /* MapKitDelegate.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
@@ -2322,14 +2460,17 @@
 				BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */,
 				BB8BECC1222AEEEC00EC7620 /* ImageRowCollectionCell.swift in Sources */,
 				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
+				BB601AF5233DFBED006EE3E2 /* MvpCharactersPresenter.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
 				BB2810A22216DDA6003823FE /* DbPullLoaderNSLayoutConstraintExtensions.swift in Sources */,
 				BBC92C9722D5A410009C571E /* HeaderStackCell.swift in Sources */,
 				BBA467152252216800E0749E /* UIGestureRecognizer+Closures.swift in Sources */,
 				BBD3CF141F70F8480028425E /* DemoTableViewController.swift in Sources */,
+				BB601AE6233DF269006EE3E2 /* DbMvpPresenter.swift in Sources */,
 				BBC1114620DB4B45002B2293 /* DbUserDefaultsExtensions.swift in Sources */,
 				BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */,
 				BBD8343C20D7D36E008259D8 /* DbEventNotification.swift in Sources */,
+				BB601AF0233DF2D9006EE3E2 /* MvpCharactersViewController.swift in Sources */,
 				BB1E34E9201F0D44008F0679 /* ServiceUrl.swift in Sources */,
 				BB32A3DC224B20EC006265B7 /* DbConnection.swift in Sources */,
 				BBEDA76022DC3D6000AA84C3 /* MapKitViewController.swift in Sources */,
@@ -2363,6 +2504,7 @@
 				BB5756B6219E7C48000BDACD /* KBScrollViewViewController.swift in Sources */,
 				BBA467162252216800E0749E /* DbClosureHandler.swift in Sources */,
 				BBA467192252216800E0749E /* UIControl+Closures.swift in Sources */,
+				BB601AEC233DF269006EE3E2 /* DbMvpViewAction.swift in Sources */,
 				BB32A3E0224B2576006265B7 /* DemoJustViewController.swift in Sources */,
 				BB5CE03D2146117500C92DA0 /* CountryUnit.swift in Sources */,
 				BBACDF872273116700E664EF /* CustomPullLoadView.swift in Sources */,
@@ -2379,6 +2521,7 @@
 				BB06BC152201965400227059 /* CandySearchFooter.swift in Sources */,
 				BB7518FA2232879400413607 /* DemoRealmViewController.swift in Sources */,
 				BB1079482071D7B300A99D9A /* DemoUKitViewController.swift in Sources */,
+				BB601AE8233DF269006EE3E2 /* DbMvpStructure.swift in Sources */,
 				BBA467172252216800E0749E /* UIView+Closures.swift in Sources */,
 				BBF527702105949B007CFFB4 /* Student.swift in Sources */,
 				BB626ECD20DBADCE0057F0CF /* DbStringExtensions.swift in Sources */,
@@ -2395,12 +2538,14 @@
 				BB26008C21D60FD100D5F41D /* DbDropDownView.swift in Sources */,
 				BBB1A53722004AF40047293E /* DemoDbLocationManagerViewController.swift in Sources */,
 				BBC3D19E210471F4007675F9 /* DbRealmManagerExtensions.swift in Sources */,
+				BB601AE0233DF269006EE3E2 /* DbMvpTableViewDataSource.swift in Sources */,
 				BB228A502108302A00C5C6AA /* Actor.swift in Sources */,
 				BB06BC12220195F300227059 /* DetailCandySearchViewController.swift in Sources */,
 				BB54731B201789300055CAD9 /* SecondViewController.swift in Sources */,
 				BB2810A42216DDEC003823FE /* DbPullLoadView.swift in Sources */,
 				BBAF935922357F7B0086AC02 /* EditRealmViewController.swift in Sources */,
 				BBDD5E912011B18C0089DD32 /* DbSession.swift in Sources */,
+				BB601ADF233DF269006EE3E2 /* DbMvpCollectionViewDataSource.swift in Sources */,
 				BBC1114B20DB901E002B2293 /* DbCGRectExtensions.swift in Sources */,
 				BBC38A50206DDE9500B11C7B /* FontLoader.swift in Sources */,
 				BB2E8517222EEF4800CD8E28 /* DemoSurveyViewController.swift in Sources */,
@@ -2427,6 +2572,7 @@
 				BBF0A5FB2215102D00BFEAE2 /* DbEmptyCustomStatusView.swift in Sources */,
 				BBE35FBC22573D91004E5024 /* PlaceDoc.swift in Sources */,
 				BB92D860224E00BE00B8F244 /* DbRealmExtensions.swift in Sources */,
+				BB601AE5233DF269006EE3E2 /* DbMvpPullToRefreshHandler.swift in Sources */,
 				BB23604422A2EB6E002DDCE9 /* TipMenuViewCell.swift in Sources */,
 				BBEDCE8622DC5DA80008ACF0 /* PropertyUnit.swift in Sources */,
 				BBE813F420171DD000B21B1F /* UITextField+PasswordField.swift in Sources */,
@@ -2436,6 +2582,7 @@
 				BBD8343A20D7CCC9008259D8 /* DbUserDefault.swift in Sources */,
 				BB922A882288174000E09A6F /* NavBarPushOneViewController.swift in Sources */,
 				BBC92C9C22D5A410009C571E /* DatePickerStackCell.swift in Sources */,
+				BB601AE7233DF269006EE3E2 /* DbMvpCellTapPresenter.swift in Sources */,
 				BBC92C9F22D5A410009C571E /* TextViewStackCell.swift in Sources */,
 				BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
@@ -2459,6 +2606,7 @@
 				BB51AC542213F47300897CCC /* DbEmptyDefaultStatusView.swift in Sources */,
 				BBB569DE1F7B5B880014A7A9 /* TaskUpdateViewController.swift in Sources */,
 				BBC92C9922D5A410009C571E /* LabelStackCell.swift in Sources */,
+				BB601AE1233DF269006EE3E2 /* DbMvpViewDataSource.swift in Sources */,
 				BB7C50D92251BD1A0009E6F8 /* DemoDbSelectBoxViewController.swift in Sources */,
 				BBB5B150225B2B9200D16C53 /* RoadCarDoc.swift in Sources */,
 				BBC38A51206DDE9500B11C7B /* Iconic.swift in Sources */,
@@ -2470,6 +2618,7 @@
 				BBB569DC1F7B5B880014A7A9 /* TaskListViewController.swift in Sources */,
 				BBEDCE8822DC607F0008ACF0 /* PropertySearchApi.swift in Sources */,
 				BBF0312221F102460009C753 /* DbSheetDatePicker.swift in Sources */,
+				BB6D86442341A80D00ED89B5 /* DemoMvpConstant.swift in Sources */,
 				BB2FA67320158E7700590C94 /* DbPopupView.swift in Sources */,
 				BBD2E5D32019CC8E005C7C37 /* DbAlertController.swift in Sources */,
 				BBA1C8F0225337AA008FF2FF /* MapDelegate.swift in Sources */,
@@ -2478,12 +2627,14 @@
 				BBDD5E8F20119C4F0089DD32 /* DbObject.swift in Sources */,
 				BB41A1CC22EECD5900F8A313 /* DemoGgApiViewController.swift in Sources */,
 				BB5CE040214615D600C92DA0 /* DbScreenLoading.swift in Sources */,
+				BB601AE4233DF269006EE3E2 /* DbMvpPullToResfreshActionView.swift in Sources */,
 				BB407ACD2181821A00C8E57F /* DbUIImageExtensions.swift in Sources */,
 				BB4E236B210EC03300524B0D /* UserApi.swift in Sources */,
 				BB581929206E432500E48DA4 /* DbButton.swift in Sources */,
 				BB9A193D22294CA400D7BE9A /* PGOperation.swift in Sources */,
 				BB15F5CC2254965000597341 /* read_me.swift in Sources */,
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
+				BB601AE9233DF269006EE3E2 /* DbMvpCollectionViewAction.swift in Sources */,
 				BB61DA3F22CDEEFF006CE7C6 /* DemoUploadCollectionViewController.swift in Sources */,
 				BB2810A62216E211003823FE /* DbPullLoaderScrollViewExtensions.swift in Sources */,
 				BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */,
@@ -2494,6 +2645,7 @@
 				BBB569E01F7B5B880014A7A9 /* TaskViewCell.swift in Sources */,
 				BBC92C9622D5A410009C571E /* StackScrollViewController.swift in Sources */,
 				BB2229C92229AE7900A82EA5 /* PhotoUploadManager.swift in Sources */,
+				BB601AE2233DF269006EE3E2 /* DbMvpViewCell.swift in Sources */,
 				BBDDD5D5219D526D00AC4940 /* DbKeyboardHandler.swift in Sources */,
 				BBACDF892273128500E664EF /* PullUIScrollViewExtensions.swift in Sources */,
 				BB26008D21D60FD100D5F41D /* DbSelectBox.swift in Sources */,
@@ -2502,6 +2654,7 @@
 				BB5CE03E2146117500C92DA0 /* CountryUnitApi.swift in Sources */,
 				BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
+				BB601AF3233DF375006EE3E2 /* DbMvpViewController.swift in Sources */,
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
 				BB5692402111A8220007757F /* Pz.swift in Sources */,
 				BBA2A43E211826F000618AEF /* PzListingViewController.swift in Sources */,
@@ -2522,6 +2675,7 @@
 				BB922A95228891C300E09A6F /* MyCustomNavigationBarView.swift in Sources */,
 				BB28109B2216D3F6003823FE /* DemoDbPullToRefreshViewController.swift in Sources */,
 				BBC92CA522D5A410009C571E /* NibItemStackCell.swift in Sources */,
+				BB6D86472341A90500ED89B5 /* MvpCharacterTableViewCell.swift in Sources */,
 				BB9BC0C721EDFA0E004BC430 /* PickerField.swift in Sources */,
 				BB35CE79211AECEF00B88BEB /* PzLeftMenuViewController.swift in Sources */,
 				BBE35FBA22573D03004E5024 /* LocationDoc.swift in Sources */,
@@ -2549,11 +2703,13 @@
 				BB9E77AC222E22BC00BFC9C7 /* DemoLazyUploadViewController.swift in Sources */,
 				BBF1E8A02271DA31000D00BE /* RentInfoView.swift in Sources */,
 				BBEDCE8422DC5A370008ACF0 /* PropertySearchParams.swift in Sources */,
+				BB601AE3233DF269006EE3E2 /* DbMvpPullToRefreshPresenter.swift in Sources */,
 				BBA467182252216800E0749E /* UIBarButtonItem+Closures.swift in Sources */,
 				BBF0A5F922150F2E00BFEAE2 /* JTMaterialSpinner.swift in Sources */,
 				BB390FD12109B31C0091FB6D /* Category.swift in Sources */,
 				BBDDD5D8219D5DB400AC4940 /* KeyboarbHandleViewController.swift in Sources */,
 				BBCBDEE12286CD390026B9B1 /* DemoNavBarViewController.swift in Sources */,
+				BB601AEA233DF269006EE3E2 /* DbMvpPullToRefreshViewAction.swift in Sources */,
 				BB9A194222294D3100D7BE9A /* FlickrPhoto.swift in Sources */,
 				BBC92C9522D5A410009C571E /* SwitchStackCell.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,
