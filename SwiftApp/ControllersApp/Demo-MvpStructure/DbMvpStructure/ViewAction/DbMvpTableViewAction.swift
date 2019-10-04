@@ -10,7 +10,7 @@ import Foundation
 
 public protocol DbMvpTableViewAction: class
 {
-    var tableView: UITableView! { get }
+    var mvpTableView: UITableView! { get }
     
     associatedtype TableViewDataSource: DbMvpViewDataSource
     var dataSource: TableViewDataSource? { get set }
@@ -26,7 +26,7 @@ public extension DbMvpTableViewAction
     func show(items: [TableViewDataSource.ItemType])
     {
         dataSource?.items = items
-        tableView.reloadData()
+        mvpTableView.reloadData()
     }
 
 }

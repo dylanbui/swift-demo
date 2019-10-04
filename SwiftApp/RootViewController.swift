@@ -50,7 +50,7 @@ class RootViewController: UIViewController
 //        let vcl = DemoLazyUploadViewController() // => Done
         //let vcl = DemoUploadCollectionViewController() // => Done
         //let vcl = DemoSurveyViewController() // => Done
-        //let vcl = DemoRealmViewController() // => Done
+//        let vcl = DemoRealmViewController() // => Done
 //         let vcl = DemoNetworkRealmViewController() // => Done
 //        let vcl = DemoJustViewController()
 //         let vcl = DemoDbSelectBoxViewController() // => Done
@@ -70,7 +70,8 @@ class RootViewController: UIViewController
         
 //        let vcl = DemoGgApiViewController() // => Done
         
-        let vcl = MvpCharactersViewController()
+        // let vcl = MvpCharactersViewController()
+        let vcl = MvpSeriesViewController()
         // vcl.dataSource = DbMvpTableViewDataSource()
         
         // localization project

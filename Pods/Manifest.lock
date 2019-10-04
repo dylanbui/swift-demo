@@ -76,11 +76,11 @@ PODS:
     - ObjectMapper
     - ObjectMapperAdditions/Core
     - RealmSwift
-  - Realm (3.11.0):
-    - Realm/Headers (= 3.11.0)
-  - Realm/Headers (3.11.0)
-  - RealmSwift (3.11.0):
-    - Realm (= 3.11.0)
+  - Realm (3.17.1):
+    - Realm/Headers (= 3.17.1)
+  - Realm/Headers (3.17.1)
+  - RealmSwift (3.17.1):
+    - Realm (= 3.17.1)
   - RevealingSplashView (0.6.0)
   - SDWebImage/Core (4.4.6)
   - SDWebImage/GIF (4.4.6):
@@ -115,7 +115,7 @@ DEPENDENCIES:
   - "ObjectMapper+Realm (= 0.6)"
   - ObjectMapperAdditions/Core (= 4.2.1)
   - ObjectMapperAdditions/Realm (= 4.2.1)
-  - RealmSwift (= 3.11.0)
+  - RealmSwift (= 3.17.1)
   - RevealingSplashView (= 0.6.0)
   - SnapKit (= 4.0.1)
   - SwiftLocation (= 3.2.3)
@@ -183,8 +183,8 @@ SPEC CHECKSUMS:
   ObjectMapper: b612bf8c8e99c4dc0bb6013a51f7c27966ed5da9
   "ObjectMapper+Realm": 4cf44ed3202a73f08594e21e13eb3f8aa9b5a664
   ObjectMapperAdditions: e11586bce98cf1090a36c24d4628ae5720a95d85
-  Realm: 92f09a102692b96a9a10e9617f214f15c5ab85fc
-  RealmSwift: 5f0481cd658bb751c509314b964a35eaa264d2cf
+  Realm: c204f1a890f07dea43b14132a6aad118c054b8f2
+  RealmSwift: 4d3c9233544b9cd08a8913e0872b9038eb99b054
   RevealingSplashView: 40c5a770894459736acdc95655eeba0dd30ce91c
   SDWebImage: 3f3f0c02f09798048c47a5ed0a13f17b063572d8
   SnapKit: 0de968a9fec17499afa29683b05d0c775b6d1c29
@@ -192,6 +192,6 @@ SPEC CHECKSUMS:
   SwiftMessages: da7c981256a65b3e58022d9027a36584cf4eccf5
   SwiftyJSON: 070dabdcb1beb81b247c65ffa3a79dbbfb3b48aa
 
-PODFILE CHECKSUM: e636be210f6597d24b111d1abcf9783e758c17b0
+PODFILE CHECKSUM: 98f9fc4c8424c652186734700bf99794c87f01f8
 
 COCOAPODS: 1.6.1

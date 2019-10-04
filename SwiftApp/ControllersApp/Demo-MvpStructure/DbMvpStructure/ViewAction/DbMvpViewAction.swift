@@ -16,7 +16,7 @@ public protocol DbMvpViewAction: class
 public protocol DbMvpLoadingViewAction: DbMvpViewAction
 {
     var loadingView: UIView { get }
-    var containerLoadingView: UIView! { get }
+    var containerLoadingView: UIView { get }
     
     func showLoader()
     func hideLoader()
@@ -32,7 +32,8 @@ public extension DbMvpLoadingViewAction
         }
         
         loadingView.isHidden = false
-        loadingView.bounds = containerLoadingView.bounds
+        loadingView.bounds = UIScreen.main.bounds //Db.screenHeight() containerLoadingView.bounds
+        loadingView.backgroundColor = UIColor.yellow
         loadingView.autoresizingMask = [
             .flexibleBottomMargin,
             .flexibleLeftMargin,
@@ -41,6 +42,7 @@ public extension DbMvpLoadingViewAction
         ]
         
         containerLoadingView.addSubview(loadingView)
+        containerLoadingView.bringSubview(toFront: loadingView)
     }
     
     func hideLoader()

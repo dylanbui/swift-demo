@@ -21,11 +21,19 @@ target 'SwiftApp' do
     pod 'GooglePlaces'
 
     # Bo 4 di chung voi nhau
-    pod 'ObjectMapper', '3.3.0'
-    pod 'RealmSwift', '3.11.0'
+#    pod 'ObjectMapper', '3.3.0'
+    #pod 'RealmSwift', '3.11.0'
     # https://github.com/jakenberg/ObjectMapper-Realm
+#    pod 'ObjectMapper+Realm', '0.6'
+#    pod 'EasyRealm', '3.4.0'
+    
+    # Bo 3 di chung voi nhau
+
+    pod 'RealmSwift', '3.17.1' # Support Xcode 11
+    # https://github.com/jakenberg/ObjectMapper-Realm
+    pod 'ObjectMapper', '3.3.0' # Da bao gom SwiftyJSON (4.0.0)
     pod 'ObjectMapper+Realm', '0.6'
-    pod 'EasyRealm', '3.4.0'
+    pod 'EasyRealm', '3.4.0' # Realm support library
     
     pod 'ObjectMapperAdditions/Core', '4.2.1'
     pod 'ObjectMapperAdditions/Realm', '4.2.1'
@@ -40,9 +48,6 @@ target 'SwiftApp' do
 #    pod 'SwifterSwift/AppKit'
 #    pod 'SwifterSwift/CoreGraphics'
 
-    # Libraries system Objective C
-    #pod 'AFNetworking', '3.1.0' # Remove, replace by Alamofire
-    
     # pod 'LGButton', tot manh nhung chi cho ios > 9.0
 
     # SwiftMessages => hien thi message tren bar, can dung thang nay cho he thong luon

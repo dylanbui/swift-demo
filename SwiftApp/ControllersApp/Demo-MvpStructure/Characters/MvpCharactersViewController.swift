@@ -10,16 +10,11 @@ import UIKit
 
 class MvpCharactersViewController: DbMvpViewController<MvpCharactersPresenter>, DbMvpTableViewAction, MvpCharactersViewAction
 {
-    //typealias TableViewDataSource = DbMvpTableViewDataSource<MvpCharacter, MvpCharacterTableViewCell>
+    @IBOutlet weak var mvpTableView: UITableView!
     
-    @IBOutlet weak var tableView: UITableView!
-    // var dataSource: DbMvpTableViewDataSource<MvpCharacter, MvpCharacterTableViewCell>!
-    // Su dung default DataSource
-    // var dataSource: TableViewDataSource = TableViewDataSource()
+    // -- Su dung kieu ngam dinh thay cho :
+    // typealias dataSource = DbMvpTableViewDataSource<MvpCharacter, MvpCharacterTableViewCell> --
     var dataSource: DbMvpTableViewDataSource<MvpCharacter, MvpCharacterTableViewCell>?
-    // var delegate: UITableViewDelegate!
-    
-    //var dataSourceTest: DbMvpTableViewDataSource<MvpCharacter, MvpCharacterTableViewCell>?
     
     // -- Init property for Class (not UIControl) --
     override func initDbControllerData()
@@ -30,16 +25,16 @@ class MvpCharactersViewController: DbMvpViewController<MvpCharactersPresenter>, 
     override func beforeViewDidLoad()
     {
         super.beforeViewDidLoad()
-        
+        // -- Attach DbMvpPresenter child class --
         self.presenter.attach(viewAction: self)
-        
+        // -- Make data source for UITableView --
         dataSource = DbMvpTableViewDataSource()
-        dataSource?.registerCell(MvpCharacterTableViewCell.self, forTableView: tableView)
-        
-        tableView.dataSource = dataSource
-        tableView.delegate = self
-        tableView.tableFooterView = UIView()
-        tableView.accessibilityLabel = "CharactersTableView"
+        dataSource?.registerCell(MvpCharacterTableViewCell.self, forTableView: mvpTableView)
+        // -- Add property for UITableView --
+        mvpTableView.dataSource = dataSource
+        mvpTableView.delegate = self
+        mvpTableView.tableFooterView = UIView()
+        mvpTableView.accessibilityLabel = "CharactersTableView"
     }
     
     override func viewDidLoad()

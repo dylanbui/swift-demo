@@ -278,6 +278,15 @@
 		BBB5B14C225B051700D16C53 /* AnchorLocationDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5B14B225B051700D16C53 /* AnchorLocationDoc.swift */; };
 		BBB5B14E225B099C00D16C53 /* DateTransform.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5B14D225B099C00D16C53 /* DateTransform.swift */; };
 		BBB5B150225B2B9200D16C53 /* RoadCarDoc.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBB5B14F225B2B9200D16C53 /* RoadCarDoc.swift */; };
+		BBBBA196234729FF00234EB0 /* MvpSeriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBA194234729FF00234EB0 /* MvpSeriesViewController.swift */; };
+		BBBBA197234729FF00234EB0 /* MvpSeriesViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBBBA195234729FF00234EB0 /* MvpSeriesViewController.xib */; };
+		BBBBA19A23472A5200234EB0 /* MvpSeriesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBA19923472A5200234EB0 /* MvpSeriesPresenter.swift */; };
+		BBBBA19C23472A6200234EB0 /* MvpSeriesDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBA19B23472A6200234EB0 /* MvpSeriesDetailPresenter.swift */; };
+		BBBBA19E23472EA900234EB0 /* MvpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBA19D23472EA900234EB0 /* MvpModel.swift */; };
+		BBBBA1A32347328600234EB0 /* MvpSeriesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBA1A12347328600234EB0 /* MvpSeriesTableViewCell.swift */; };
+		BBBBA1A42347328600234EB0 /* MvpSeriesTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBBBA1A22347328600234EB0 /* MvpSeriesTableViewCell.xib */; };
+		BBBBA1A7234735F100234EB0 /* MvpLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBBBA1A6234735F100234EB0 /* MvpLoadingView.swift */; };
+		BBBBA1A92347360900234EB0 /* MvpLoadingView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBBBA1A82347360900234EB0 /* MvpLoadingView.xib */; };
 		BBC02E611F71747A0011FDE6 /* artists.json in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E541F71747A0011FDE6 /* artists.json */; };
 		BBC02E631F71747A0011FDE6 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E571F71747A0011FDE6 /* OpenSans-Bold.ttf */; };
 		BBC02E641F71747A0011FDE6 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBC02E581F71747A0011FDE6 /* OpenSans-BoldItalic.ttf */; };
@@ -695,6 +704,15 @@
 		BBB5B14B225B051700D16C53 /* AnchorLocationDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnchorLocationDoc.swift; sourceTree = "<group>"; };
 		BBB5B14D225B099C00D16C53 /* DateTransform.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateTransform.swift; sourceTree = "<group>"; };
 		BBB5B14F225B2B9200D16C53 /* RoadCarDoc.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoadCarDoc.swift; sourceTree = "<group>"; };
+		BBBBA194234729FF00234EB0 /* MvpSeriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpSeriesViewController.swift; sourceTree = "<group>"; };
+		BBBBA195234729FF00234EB0 /* MvpSeriesViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MvpSeriesViewController.xib; sourceTree = "<group>"; };
+		BBBBA19923472A5200234EB0 /* MvpSeriesPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpSeriesPresenter.swift; sourceTree = "<group>"; };
+		BBBBA19B23472A6200234EB0 /* MvpSeriesDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpSeriesDetailPresenter.swift; sourceTree = "<group>"; };
+		BBBBA19D23472EA900234EB0 /* MvpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpModel.swift; sourceTree = "<group>"; };
+		BBBBA1A12347328600234EB0 /* MvpSeriesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpSeriesTableViewCell.swift; sourceTree = "<group>"; };
+		BBBBA1A22347328600234EB0 /* MvpSeriesTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MvpSeriesTableViewCell.xib; sourceTree = "<group>"; };
+		BBBBA1A6234735F100234EB0 /* MvpLoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpLoadingView.swift; sourceTree = "<group>"; };
+		BBBBA1A82347360900234EB0 /* MvpLoadingView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MvpLoadingView.xib; sourceTree = "<group>"; };
 		BBC02E541F71747A0011FDE6 /* artists.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = artists.json; sourceTree = "<group>"; };
 		BBC02E571F71747A0011FDE6 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		BBC02E581F71747A0011FDE6 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
@@ -1270,9 +1288,12 @@
 		BB601AED233DF280006EE3E2 /* Demo-MvpStructure */ = {
 			isa = PBXGroup;
 			children = (
+				BBBBA1A6234735F100234EB0 /* MvpLoadingView.swift */,
+				BBBBA1A82347360900234EB0 /* MvpLoadingView.xib */,
 				BB601ACB233DF267006EE3E2 /* DbMvpStructure */,
 				BB6D863F2341A76300ED89B5 /* Characters */,
 				BB6D86432341A80D00ED89B5 /* DemoMvpConstant.swift */,
+				BBBBA19823472A0400234EB0 /* Series */,
 			);
 			path = "Demo-MvpStructure";
 			sourceTree = "<group>";
@@ -1569,6 +1590,44 @@
 				BBB569EA1F7BC5420014A7A9 /* Post.swift */,
 			);
 			path = "Models+Api";
+			sourceTree = "<group>";
+		};
+		BBBBA19823472A0400234EB0 /* Series */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBA194234729FF00234EB0 /* MvpSeriesViewController.swift */,
+				BBBBA195234729FF00234EB0 /* MvpSeriesViewController.xib */,
+				BBBBA1A52347329100234EB0 /* TableViewCell */,
+				BBBBA1A023472ECA00234EB0 /* Presenter+ViewAction */,
+				BBBBA19F23472EBF00234EB0 /* Model */,
+			);
+			path = Series;
+			sourceTree = "<group>";
+		};
+		BBBBA19F23472EBF00234EB0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBA19D23472EA900234EB0 /* MvpModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BBBBA1A023472ECA00234EB0 /* Presenter+ViewAction */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBA19923472A5200234EB0 /* MvpSeriesPresenter.swift */,
+				BBBBA19B23472A6200234EB0 /* MvpSeriesDetailPresenter.swift */,
+			);
+			path = "Presenter+ViewAction";
+			sourceTree = "<group>";
+		};
+		BBBBA1A52347329100234EB0 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				BBBBA1A12347328600234EB0 /* MvpSeriesTableViewCell.swift */,
+				BBBBA1A22347328600234EB0 /* MvpSeriesTableViewCell.xib */,
+			);
+			path = TableViewCell;
 			sourceTree = "<group>";
 		};
 		BBC02E531F71747A0011FDE6 /* Resources */ = {
@@ -2229,6 +2288,7 @@
 				BB7568512146F42E0006013C /* TaskLayoutViewCell.xib in Resources */,
 				BB601AF1233DF2D9006EE3E2 /* MvpCharactersViewController.xib in Resources */,
 				BB7E580321E84AD5005C3FA6 /* floatLabelRow.gif in Resources */,
+				BBBBA1A92347360900234EB0 /* MvpLoadingView.xib in Resources */,
 				BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */,
 				BBB569DB1F7B5B880014A7A9 /* TaskDetailViewController.xib in Resources */,
 				BB23604522A2EB6E002DDCE9 /* TipMenuViewCell.xib in Resources */,
@@ -2242,6 +2302,7 @@
 				BBF4EFD7228C225E00B3944D /* ic-check-utility.png in Resources */,
 				BB8BECC0222AEEEC00EC7620 /* ImageRowCollectionCell.xib in Resources */,
 				BB7C50E32251BE5A0009E6F8 /* CustomDropDownCell.xib in Resources */,
+				BBBBA1A42347328600234EB0 /* MvpSeriesTableViewCell.xib in Resources */,
 				BB7F303C203E857900185366 /* demo_5.png in Resources */,
 				BBF4EFD5228C20E300B3944D /* ic-dot-utility.png in Resources */,
 				BB7F3040203E857900185366 /* demo_6_line.png in Resources */,
@@ -2260,6 +2321,7 @@
 				BBE813FE2017458100B21B1F /* ic_show_password@2x.png in Resources */,
 				BBC02E6A1F71747A0011FDE6 /* OpenSans-Regular.ttf in Resources */,
 				BBE813F02016EBB800B21B1F /* DbAssets.xcassets in Resources */,
+				BBBBA197234729FF00234EB0 /* MvpSeriesViewController.xib in Resources */,
 				BB06BC13220195F300227059 /* DetailCandySearchViewController.xib in Resources */,
 				BBC02E671F71747A0011FDE6 /* OpenSans-Italic.ttf in Resources */,
 				BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */,
@@ -2495,9 +2557,12 @@
 				BB4E2365210EBCD800524B0D /* PzRegisterViewController.swift in Sources */,
 				BBD3CEF21F70CFE50028425E /* ViewController.swift in Sources */,
 				BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */,
+				BBBBA19A23472A5200234EB0 /* MvpSeriesPresenter.swift in Sources */,
+				BBBBA19E23472EA900234EB0 /* MvpModel.swift in Sources */,
 				BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BBC63C7D227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift in Sources */,
+				BBBBA1A32347328600234EB0 /* MvpSeriesTableViewCell.swift in Sources */,
 				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
 				BBC92CA822D5FDD2009C571E /* ShowMoreLabelStackCell.swift in Sources */,
 				BBA1C8FD225354C3008FF2FF /* FormatDisplay.swift in Sources */,
@@ -2565,6 +2630,7 @@
 				BBC38A57206DDE9500B11C7B /* SwiftIconFont.swift in Sources */,
 				BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift in Sources */,
 				BB7568502146F42E0006013C /* TaskLayoutViewCell.swift in Sources */,
+				BBBBA19C23472A6200234EB0 /* MvpSeriesDetailPresenter.swift in Sources */,
 				BB7C50E42251BE5A0009E6F8 /* CustomDropDownCell.swift in Sources */,
 				BBF0312021F0F0D90009C753 /* DbSheetTableView.swift in Sources */,
 				BB407AD42181835100C8E57F /* DbHtmlView.swift in Sources */,
@@ -2636,6 +2702,7 @@
 				BBA2A4422118270C00618AEF /* PzListingDetailViewController.swift in Sources */,
 				BB601AE9233DF269006EE3E2 /* DbMvpCollectionViewAction.swift in Sources */,
 				BB61DA3F22CDEEFF006CE7C6 /* DemoUploadCollectionViewController.swift in Sources */,
+				BBBBA1A7234735F100234EB0 /* MvpLoadingView.swift in Sources */,
 				BB2810A62216E211003823FE /* DbPullLoaderScrollViewExtensions.swift in Sources */,
 				BB9BC0B721ED9AF0004BC430 /* CustomDecimalRow.swift in Sources */,
 				BBA4828F201CEC1500824A39 /* DbSelectorActionSheet.swift in Sources */,
@@ -2653,6 +2720,7 @@
 				BBA2A43B2117FC6000618AEF /* PzListingApi.swift in Sources */,
 				BB5CE03E2146117500C92DA0 /* CountryUnitApi.swift in Sources */,
 				BB8823432119847400A1BB76 /* JsonStringTransform.swift in Sources */,
+				BBBBA196234729FF00234EB0 /* MvpSeriesViewController.swift in Sources */,
 				BBE813EB2016E93B00B21B1F /* DbTableViewCell.swift in Sources */,
 				BB601AF3233DF375006EE3E2 /* DbMvpViewController.swift in Sources */,
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,

@@ -12,7 +12,7 @@ import UIKit
 class DbMvpViewController<P: DbMvpPresenter>: DbViewController //UIViewController
 {
 //    open var presenter: P! = P.init(withViewAction: self)
-    public let presenter: P = P.init()
+    public var presenter: P = P.init()
     
 //    init()
 //    {
