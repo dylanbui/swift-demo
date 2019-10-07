@@ -33,9 +33,12 @@ class MvpSeriesPresenter: DbMvpPresenter
     
     func viewDidLoad()
     {
+        // self.ui?.setNavigationTitle("Title - SeriesPresenter")
+        self.ui?.setNavigationTitleWithAnimation("Title - SeriesPresenter")
+        
         self.ui?.showLoader()
         
-        DbDispatch.after(3.5) { () -> (Void) in
+        DbDispatch.after(0.5) { () -> (Void) in
             
             self.ui?.hideLoader()
             

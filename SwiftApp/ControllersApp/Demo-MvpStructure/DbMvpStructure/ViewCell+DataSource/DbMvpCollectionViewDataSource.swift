@@ -16,8 +16,13 @@ open class DbMvpCollectionViewDataSource<U, V: DbMvpViewCell>: NSObject, UIColle
     open func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell
     {
         let cell = collectionView.dequeueReusableCell(
-            withReuseIdentifier: V.reuseIdentifier,
+            withReuseIdentifier: V.identifier,
             for: indexPath)
+        
+        // collectionView.dequeueReusableCell(withReuseIdentifier: <#T##String#>, for: <#T##IndexPath#>)
+        
+        //let cell = tableView.dequeueReusableCell(withIdentifier: V.identifier, for: indexPath) as UITableViewCell
+        
         let item = self.item(at: indexPath)
         (cell as! V).configure(forItem: item)
         return cell

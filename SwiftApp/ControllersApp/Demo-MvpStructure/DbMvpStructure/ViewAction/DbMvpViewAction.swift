@@ -10,7 +10,16 @@ import Foundation
 
 public protocol DbMvpViewAction: class
 {
+    // -- Dat trung ten voi func in DbViewController --
+    func setNavigationTitleWithAnimation(_ title: String)
     
+    // -- Optional functions --
+    func setNavigationTitle(_ title: String)
+}
+
+public extension DbMvpViewAction
+{
+    func setNavigationTitle(_ title: String) {}
 }
 
 public protocol DbMvpLoadingViewAction: DbMvpViewAction
@@ -18,6 +27,7 @@ public protocol DbMvpLoadingViewAction: DbMvpViewAction
     var loadingView: UIView { get }
     var containerLoadingView: UIView { get }
     
+    // -- Optional functions --
     func showLoader()
     func hideLoader()
 }

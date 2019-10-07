@@ -17,7 +17,7 @@ protocol MvpSeriesDetailViewAction: DbMvpViewAction
     
     // Co y dat trung ten ham voi "extension DbMvpTableViewAction", thi khong can khai bao func cho MvpCharactersViewAction
     // vi no trung ten, no se tu dong goi DbMvpTableViewAction de loai lai TableView
-    func doReloadTableView(items: [MvpComic])
+    func doReloadCollectionView(items: [MvpComic])
 }
 
 class MvpSeriesDetailPresenter: DbMvpPresenter
@@ -28,6 +28,13 @@ class MvpSeriesDetailPresenter: DbMvpPresenter
     required init()
     {
         
+    }
+    
+    convenience init(ui: MvpSeriesDetailViewAction, seriesName: String)
+    {
+        self.init()
+        self.ui = ui
+        self.seriesName = seriesName
     }
     
     // -- Su dung kieu ngam dinh thay cho : typealias ViewAction = MvpSeriesDetailViewAction --
@@ -86,7 +93,7 @@ class MvpSeriesDetailPresenter: DbMvpPresenter
             ])
         
         self.ui?.configureHeader(series)
-        self.ui?.doReloadTableView(items: series.comics)
+        self.ui?.doReloadCollectionView(items: series.comics)
         // ui?.show(items: series.comics)
     }
     

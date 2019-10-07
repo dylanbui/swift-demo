@@ -18,6 +18,11 @@ public protocol DbMvpCollectionViewAction: class
 
 extension DbMvpCollectionViewAction
 {
+    func doReloadCollectionView(items: [CollectionViewDataSourceType.ItemType])
+    {
+        self.show(items: items)
+    }
+    
     public func show(items: [CollectionViewDataSourceType.ItemType])
     {
         dataSource.items = items

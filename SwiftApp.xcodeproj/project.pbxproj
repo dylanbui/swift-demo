@@ -190,6 +190,14 @@
 		BB8BECC4222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */; };
 		BB8BECC5222AEF1000EC7620 /* DemoLazyUploadViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */; };
 		BB8BECC7222B068400EC7620 /* DbProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8BECC6222B068400EC7620 /* DbProgressBar.swift */; };
+		BB8CEA10234AF23200CFCA02 /* MvpComicCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8CEA0E234AF23200CFCA02 /* MvpComicCollectionViewCell.swift */; };
+		BB8CEA11234AF23200CFCA02 /* MvpComicCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8CEA0F234AF23200CFCA02 /* MvpComicCollectionViewCell.xib */; };
+		BB8CEA14234AF40C00CFCA02 /* MvpSeriesDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8CEA12234AF40C00CFCA02 /* MvpSeriesDetailViewController.swift */; };
+		BB8CEA15234AF40C00CFCA02 /* MvpSeriesDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8CEA13234AF40C00CFCA02 /* MvpSeriesDetailViewController.xib */; };
+		BB8CEA17234AF56700CFCA02 /* MvpSeriesDetailCollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8CEA16234AF56700CFCA02 /* MvpSeriesDetailCollectionViewDataSource.swift */; };
+		BB8CEA1A234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8CEA18234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.swift */; };
+		BB8CEA1B234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB8CEA19234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.xib */; };
+		BB8CEA1D234B527A00CFCA02 /* DbMvpTableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8CEA1C234B527A00CFCA02 /* DbMvpTableViewDelegate.swift */; };
 		BB8D9CF122F02CDA00226705 /* DbSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8D9CF022F02CDA00226705 /* DbSearchTextField.swift */; };
 		BB8D9CF322F02D4200226705 /* DbPlaceSearchTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8D9CF222F02D4200226705 /* DbPlaceSearchTextField.swift */; };
 		BB8D9CF522F0550B00226705 /* DbPlaceSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB8D9CF422F0550B00226705 /* DbPlaceSearchViewController.swift */; };
@@ -616,6 +624,14 @@
 		BB8BECC2222AEF1000EC7620 /* DemoLazyUploadViewController_V1.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoLazyUploadViewController_V1.swift; sourceTree = "<group>"; };
 		BB8BECC3222AEF1000EC7620 /* DemoLazyUploadViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoLazyUploadViewController.xib; sourceTree = "<group>"; };
 		BB8BECC6222B068400EC7620 /* DbProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbProgressBar.swift; sourceTree = "<group>"; };
+		BB8CEA0E234AF23200CFCA02 /* MvpComicCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpComicCollectionViewCell.swift; sourceTree = "<group>"; };
+		BB8CEA0F234AF23200CFCA02 /* MvpComicCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MvpComicCollectionViewCell.xib; sourceTree = "<group>"; };
+		BB8CEA12234AF40C00CFCA02 /* MvpSeriesDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpSeriesDetailViewController.swift; sourceTree = "<group>"; };
+		BB8CEA13234AF40C00CFCA02 /* MvpSeriesDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MvpSeriesDetailViewController.xib; sourceTree = "<group>"; };
+		BB8CEA16234AF56700CFCA02 /* MvpSeriesDetailCollectionViewDataSource.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpSeriesDetailCollectionViewDataSource.swift; sourceTree = "<group>"; };
+		BB8CEA18234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MvpSeriesDetailCollectionHeaderView.swift; sourceTree = "<group>"; };
+		BB8CEA19234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MvpSeriesDetailCollectionHeaderView.xib; sourceTree = "<group>"; };
+		BB8CEA1C234B527A00CFCA02 /* DbMvpTableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbMvpTableViewDelegate.swift; sourceTree = "<group>"; };
 		BB8D9CF022F02CDA00226705 /* DbSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSearchTextField.swift; sourceTree = "<group>"; };
 		BB8D9CF222F02D4200226705 /* DbPlaceSearchTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPlaceSearchTextField.swift; sourceTree = "<group>"; };
 		BB8D9CF422F0550B00226705 /* DbPlaceSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbPlaceSearchViewController.swift; sourceTree = "<group>"; };
@@ -1239,8 +1255,9 @@
 		BB601ACC233DF267006EE3E2 /* ViewCell+DataSource */ = {
 			isa = PBXGroup;
 			children = (
-				BB601ACD233DF267006EE3E2 /* DbMvpCollectionViewDataSource.swift */,
+				BB8CEA1C234B527A00CFCA02 /* DbMvpTableViewDelegate.swift */,
 				BB601ACE233DF267006EE3E2 /* DbMvpTableViewDataSource.swift */,
+				BB601ACD233DF267006EE3E2 /* DbMvpCollectionViewDataSource.swift */,
 				BB601ACF233DF267006EE3E2 /* Base */,
 			);
 			path = "ViewCell+DataSource";
@@ -1277,10 +1294,10 @@
 		BB601ADA233DF268006EE3E2 /* ViewAction */ = {
 			isa = PBXGroup;
 			children = (
+				BB601ADE233DF268006EE3E2 /* DbMvpViewAction.swift */,
+				BB601ADD233DF268006EE3E2 /* DbMvpTableViewAction.swift */,
 				BB601ADB233DF268006EE3E2 /* DbMvpCollectionViewAction.swift */,
 				BB601ADC233DF268006EE3E2 /* DbMvpPullToRefreshViewAction.swift */,
-				BB601ADD233DF268006EE3E2 /* DbMvpTableViewAction.swift */,
-				BB601ADE233DF268006EE3E2 /* DbMvpViewAction.swift */,
 			);
 			path = ViewAction;
 			sourceTree = "<group>";
@@ -1597,6 +1614,8 @@
 			children = (
 				BBBBA194234729FF00234EB0 /* MvpSeriesViewController.swift */,
 				BBBBA195234729FF00234EB0 /* MvpSeriesViewController.xib */,
+				BB8CEA12234AF40C00CFCA02 /* MvpSeriesDetailViewController.swift */,
+				BB8CEA13234AF40C00CFCA02 /* MvpSeriesDetailViewController.xib */,
 				BBBBA1A52347329100234EB0 /* TableViewCell */,
 				BBBBA1A023472ECA00234EB0 /* Presenter+ViewAction */,
 				BBBBA19F23472EBF00234EB0 /* Model */,
@@ -1624,8 +1643,13 @@
 		BBBBA1A52347329100234EB0 /* TableViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				BB8CEA16234AF56700CFCA02 /* MvpSeriesDetailCollectionViewDataSource.swift */,
 				BBBBA1A12347328600234EB0 /* MvpSeriesTableViewCell.swift */,
 				BBBBA1A22347328600234EB0 /* MvpSeriesTableViewCell.xib */,
+				BB8CEA0E234AF23200CFCA02 /* MvpComicCollectionViewCell.swift */,
+				BB8CEA0F234AF23200CFCA02 /* MvpComicCollectionViewCell.xib */,
+				BB8CEA18234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.swift */,
+				BB8CEA19234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.xib */,
 			);
 			path = TableViewCell;
 			sourceTree = "<group>";
@@ -2230,6 +2254,7 @@
 				BBC38A66206DDEE500B11C7B /* map-icons.ttf in Resources */,
 				BB7E57FB21E842CE005C3FA6 /* DemoEurekaViewController.xib in Resources */,
 				BB7518FB2232879400413607 /* DemoRealmViewController.xib in Resources */,
+				BB8CEA15234AF40C00CFCA02 /* MvpSeriesDetailViewController.xib in Resources */,
 				BBC02E691F71747A0011FDE6 /* OpenSans-LightItalic.ttf in Resources */,
 				BB61DA4022CDEEFF006CE7C6 /* DemoUploadCollectionViewController.xib in Resources */,
 				BB7F303F203E857900185366 /* demo_6@2x.png in Resources */,
@@ -2247,6 +2272,7 @@
 				BBB1A53822004AF40047293E /* DemoDbLocationManagerViewController.xib in Resources */,
 				BB12451222A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.xib in Resources */,
 				BBA2A43F211826F000618AEF /* PzListingViewController.xib in Resources */,
+				BB8CEA1B234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.xib in Resources */,
 				BB7C50DA2251BD1A0009E6F8 /* DemoDbSelectBoxViewController.xib in Resources */,
 				BB2FA67820159F8400590C94 /* TpPostDetailView.xib in Resources */,
 				BBE813FF2017458100B21B1F /* ic_hide_password@2x.png in Resources */,
@@ -2327,6 +2353,7 @@
 				BB887DBF203EA05700DFC060 /* NetworkViewController.xib in Resources */,
 				BBC02E661F71747A0011FDE6 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				BBC38A53206DDE9500B11C7B /* LICENSE in Resources */,
+				BB8CEA11234AF23200CFCA02 /* MvpComicCollectionViewCell.xib in Resources */,
 				BBC02E651F71747A0011FDE6 /* OpenSans-ExtraBold.ttf in Resources */,
 				BB7F303D203E857900185366 /* demo_5_line.png in Resources */,
 				BB7F3041203E857900185366 /* demo_6_line@2x.png in Resources */,
@@ -2513,6 +2540,7 @@
 				BB197D4C200BD0AF005514C3 /* DbUINavigationControllerExtensions.swift in Sources */,
 				BB601AEB233DF269006EE3E2 /* DbMvpTableViewAction.swift in Sources */,
 				BB19FAF520441A6C005F2669 /* Reachability.swift in Sources */,
+				BB8CEA17234AF56700CFCA02 /* MvpSeriesDetailCollectionViewDataSource.swift in Sources */,
 				BBF9F347225F33F5001EE7BB /* MapKitDelegate.swift in Sources */,
 				BB626EC920DBADCE0057F0CF /* DbArrayExtensions.swift in Sources */,
 				BBA9BBD3224CB61E0068FFDC /* DbHttp.swift in Sources */,
@@ -2546,6 +2574,7 @@
 				BBA1C8FB22534961008FF2FF /* UnitExtensions.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
 				BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */,
+				BB8CEA10234AF23200CFCA02 /* MvpComicCollectionViewCell.swift in Sources */,
 				BB12451122A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift in Sources */,
 				BB8D9CF122F02CDA00226705 /* DbSearchTextField.swift in Sources */,
 				BB330BA71F7815D900BEEA9A /* Constant.swift in Sources */,
@@ -2559,6 +2588,7 @@
 				BBF2B73D21FACC6D00DFED0C /* DbSheetMonthYearPicker.swift in Sources */,
 				BBBBA19A23472A5200234EB0 /* MvpSeriesPresenter.swift in Sources */,
 				BBBBA19E23472EA900234EB0 /* MvpModel.swift in Sources */,
+				BB8CEA1A234AFDD300CFCA02 /* MvpSeriesDetailCollectionHeaderView.swift in Sources */,
 				BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BBC63C7D227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift in Sources */,
@@ -2651,6 +2681,7 @@
 				BB601AE7233DF269006EE3E2 /* DbMvpCellTapPresenter.swift in Sources */,
 				BBC92C9F22D5A410009C571E /* TextViewStackCell.swift in Sources */,
 				BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */,
+				BB8CEA1D234B527A00CFCA02 /* DbMvpTableViewDelegate.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BB8D9CF522F0550B00226705 /* DbPlaceSearchViewController.swift in Sources */,
 				BBC92CA122D5A410009C571E /* NibToggerShow.swift in Sources */,
@@ -2785,6 +2816,7 @@
 				BBA1C8E8225320EB008FF2FF /* RkMainViewController.swift in Sources */,
 				BBC38A56206DDE9500B11C7B /* Octicon.swift in Sources */,
 				BB5E1426210AFDA10059A8C4 /* PropzyBaseApi.swift in Sources */,
+				BB8CEA14234AF40C00CFCA02 /* MvpSeriesDetailViewController.swift in Sources */,
 				BBB5B14C225B051700D16C53 /* AnchorLocationDoc.swift in Sources */,
 				BB4E2361210EBCAD00524B0D /* PzLoginViewController.swift in Sources */,
 			);

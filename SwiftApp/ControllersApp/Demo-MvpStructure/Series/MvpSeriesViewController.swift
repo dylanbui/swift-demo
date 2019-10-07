@@ -10,6 +10,13 @@ import UIKit
 
 class MvpSeriesViewController: DbMvpViewController<MvpSeriesPresenter>, MvpSeriesViewAction, DbMvpTableViewAction
 {
+    // TODO: Con dang bi loi loading, se xu ly sau
+    
+//    func setNavigationTitle(_ title: String)
+//    {
+//        // -- Call UIViewController set Navigation Title --
+//        self.setNavigationTitleWithAnimation(title)
+//    }
     
     var containerLoadingView: UIView {
         return self.view
@@ -72,5 +79,12 @@ extension MvpSeriesViewController: UITableViewDelegate
         tableView.deselectRow(at: indexPath, animated: true)
         print("didSelectRowAt = \(indexPath)")
 //        let item = self.arr[indexPath.row] as? [String:Any]
+        
+        let item = self.dataSource?.item(at: indexPath)
+        
+        let vcl = MvpSeriesDetailViewController()
+        vcl.presenter = MvpSeriesDetailPresenter.init(ui: vcl, seriesName: item?.name ?? "")
+        self.navigationController?.pushViewController(vcl, animated: true)
+        
     }
 }
