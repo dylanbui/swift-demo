@@ -25,7 +25,7 @@ extension DbMvpCollectionViewAction
     
     public func show(items: [CollectionViewDataSourceType.ItemType])
     {
-        dataSource.items = items
-        collectionView.reloadData()
+        self.dataSource.items = items
+        self.collectionView.reloadData()
     }
 }

@@ -12,12 +12,6 @@ class MvpSeriesViewController: DbMvpViewController<MvpSeriesPresenter>, MvpSerie
 {
     // TODO: Con dang bi loi loading, se xu ly sau
     
-//    func setNavigationTitle(_ title: String)
-//    {
-//        // -- Call UIViewController set Navigation Title --
-//        self.setNavigationTitleWithAnimation(title)
-//    }
-    
     var containerLoadingView: UIView {
         return self.view
     }
@@ -33,6 +27,7 @@ class MvpSeriesViewController: DbMvpViewController<MvpSeriesPresenter>, MvpSerie
     // -- Su dung kieu ngam dinh thay cho :
     // typealias dataSource = DbMvpTableViewDataSource<MvpSeries, MvpSeriesTableViewCell> --
     var dataSource: DbMvpTableViewDataSource<MvpSeries, MvpSeriesTableViewCell>?
+    var delegate: UITableViewDelegate?
     
     // -- Init property for Class (not UIControl) --
     override func initDbControllerData()
@@ -43,6 +38,12 @@ class MvpSeriesViewController: DbMvpViewController<MvpSeriesPresenter>, MvpSerie
     override func beforeViewDidLoad()
     {
         super.beforeViewDidLoad()
+    }
+
+    override func viewDidLoad()
+    {
+        super.viewDidLoad()
+        
         // -- Attach DbMvpPresenter child class --
         self.presenter.attach(viewAction: self)
         // -- Make data source for UITableView --
@@ -50,41 +51,53 @@ class MvpSeriesViewController: DbMvpViewController<MvpSeriesPresenter>, MvpSerie
         self.dataSource?.registerCell(MvpSeriesTableViewCell.self, forTableView: mvpTableView)
         // -- Add property for UITableView --
         self.mvpTableView.dataSource = dataSource
-        self.mvpTableView.delegate = self
+        //        self.mvpTableView.delegate = self
+        // self.delegate = DbMvpTableViewDelegate(dataSource: self.dataSource!, presenter: self)
+        
+        self.delegate = DbMvpTableViewDelegate(dataSource: self.dataSource!, presenter: self)
+        self.mvpTableView.delegate = self.delegate
+        
         self.mvpTableView.tableFooterView = UIView()
         self.mvpTableView.accessibilityLabel = "SeriesTableView"
+        self.mvpTableView.rowHeight = 50 // Fix height size
         
         self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
-    }
-
-    override func viewDidLoad()
-    {
-        super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
 
 
 }
 
-extension MvpSeriesViewController: UITableViewDelegate
+extension MvpSeriesViewController: DbMvpTableViewPresenter
 {
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+    func itemWasTapped(_ item: MvpSeries, at indexPath: IndexPath)
     {
-        return 50
-    }
-    
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: true)
-        print("didSelectRowAt = \(indexPath)")
-//        let item = self.arr[indexPath.row] as? [String:Any]
-        
-        let item = self.dataSource?.item(at: indexPath)
-        
         let vcl = MvpSeriesDetailViewController()
-        vcl.presenter = MvpSeriesDetailPresenter.init(ui: vcl, seriesName: item?.name ?? "")
+        vcl.presenter = MvpSeriesDetailPresenter.init(ui: vcl, seriesName: item.name)
+        vcl.dataSource = MvpSeriesDetailCollectionViewDataSource()
         self.navigationController?.pushViewController(vcl, animated: true)
-        
     }
 }
+
+//extension MvpSeriesViewController: UITableViewDelegate
+//{
+//    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat
+//    {
+//        return 50
+//    }
+//
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath)
+//    {
+//        tableView.deselectRow(at: indexPath, animated: true)
+//        print("didSelectRowAt = \(indexPath)")
+////        let item = self.arr[indexPath.row] as? [String:Any]
+//
+//        let item = self.dataSource?.item(at: indexPath)
+//
+//        let vcl = MvpSeriesDetailViewController()
+//        vcl.presenter = MvpSeriesDetailPresenter.init(ui: vcl, seriesName: item?.name ?? "")
+//        self.navigationController?.pushViewController(vcl, animated: true)
+//
+//    }
+//}

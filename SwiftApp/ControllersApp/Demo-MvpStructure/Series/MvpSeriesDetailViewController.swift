@@ -23,7 +23,6 @@ class MvpSeriesDetailViewController: DbMvpViewController<MvpSeriesDetailPresente
     
     var dataSource: MvpSeriesDetailCollectionViewDataSource!
 
-
     // typealias dataSource = DbMvpTableViewDataSource<MvpSeries, MvpSeriesTableViewCell> --
     // var dataSource: DbMvpTableViewDataSource<MvpSeries, MvpSeriesTableViewCell>?
     
@@ -39,43 +38,25 @@ class MvpSeriesDetailViewController: DbMvpViewController<MvpSeriesDetailPresente
     
     override func viewDidLoad()
     {
-        self.configureNavigationBar()
-        self.configureCollectionView()
         super.viewDidLoad()
+        self.configureCollectionView()
     }
-    
-    override func viewWillDisappear(_ animated: Bool)
-    {
-        navigationController?.navigationBar.setBackgroundImage(nil, for: UIBarMetrics.default)
-        navigationController?.navigationBar.backgroundColor = UIColor.navigationBarColor
-        navigationController?.navigationBar.shadowImage = nil
-        navigationController?.navigationBar.isTranslucent = false
-        super.viewWillDisappear(animated)
-    }
-
 
     func configureHeader(_ series: MvpSeries)
     {
          dataSource.seriesHeader = series
     }
 
-    private func configureNavigationBar()
-    {
-        navigationController?.navigationBar.backgroundColor = UIColor.clear
-        navigationController?.navigationBar.isTranslucent = true
-        navigationController?.navigationBar.shadowImage = UIImage()
-        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-    }
-
     private func configureCollectionView()
     {
-        self.collectionView.register(MvpSeriesDetailCollectionHeaderView.self,
-                                     forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                     withReuseIdentifier: "MvpSeriesDetailCollectionHeaderViewReusableIdentifier")
-
-        self.collectionView.register(UINib(nibName: "MvpSeriesDetailCollectionHeaderView", bundle: nil),
-                                     forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
-                                     withReuseIdentifier: "MvpSeriesDetailCollectionHeaderViewReusableIdentifier")
+        // Khong hieu sao ko chay duoc vao ham 
+//        self.collectionView.register(MvpSeriesDetailCollectionHeaderView.self,
+//                                     forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+//                                     withReuseIdentifier: "MvpSeriesDetailCollectionHeaderViewReusableIdentifier")
+//
+//        self.collectionView.register(UINib(nibName: "MvpSeriesDetailCollectionHeaderView", bundle: nil),
+//                                     forSupplementaryViewOfKind: UICollectionElementKindSectionHeader,
+//                                     withReuseIdentifier: "MvpSeriesDetailCollectionHeaderViewReusableIdentifier")
         
         // MvpComicCollectionViewCellIdentifier
         
@@ -85,14 +66,17 @@ class MvpSeriesDetailViewController: DbMvpViewController<MvpSeriesDetailPresente
         self.collectionView.register(UINib(nibName: "MvpComicCollectionViewCell", bundle: nil),
                                      forCellWithReuseIdentifier: "MvpComicCollectionViewCellIdentifier")
 
-        self.dataSource = MvpSeriesDetailCollectionViewDataSource()
-        let navBarHeight = navigationController?.navigationBar.frame.height ?? 0
-        let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
-        let topInset = navBarHeight + statusBarHeight
+        //self.dataSource = MvpSeriesDetailCollectionViewDataSource()
+        // let navBarHeight = navigationController?.navigationBar.frame.height ?? 0
+        // let statusBarHeight = UIApplication.shared.statusBarFrame.size.height
+        // let topInset = navBarHeight + statusBarHeight
         collectionView.accessibilityLabel = "ComicsCollectionView"
-        collectionView.contentInset = UIEdgeInsetsMake(-topInset, 0, 0, 0)
-        collectionView.dataSource = dataSource
+        // collectionView.contentInset = UIEdgeInsetsMake(-topInset, 0, 0, 0)
+        collectionView.dataSource = self.dataSource
+        // collectionView.delegate = nil
+        
         let layout = UICollectionViewFlowLayout()
+        // layout.sectionHeadersPinToVisibleBounds = true
         layout.headerReferenceSize = CGSize(width: view.frame.width, height: CGFloat(Config.headerHeight))
         layout.itemSize = CGSize(
             width: view.frame.width / CGFloat(Config.numberOfColumns),

@@ -9,26 +9,30 @@
 import Foundation
 
 
-class MvpSeriesDetailCollectionViewDataSource: DbMvpCollectionViewDataSource<MvpComic, MvpComicCollectionViewCell>
+class MvpSeriesDetailCollectionViewDataSource: DbMvpCollectionViewDataSource<MvpComic, MvpComicCollectionViewCell>, UICollectionViewDelegateFlowLayout
 {
     var seriesHeader: MvpSeries?
     
+    func numberOfSections(in collectionView: UICollectionView) -> Int
+    {
+        return 1
+    }
+    
     func collectionView(_ collectionView: UICollectionView,
                         viewForSupplementaryElementOfKind kind: String,
-                        atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView
+                        at indexPath: IndexPath) -> UICollectionReusableView
     {
-            if kind == UICollectionElementKindSectionHeader {
-                let headerView =
-                collectionView.dequeueReusableSupplementaryView(ofKind: kind,
-                    withReuseIdentifier: "MvpSeriesDetailCollectionHeaderViewReusableIdentifier",
-                    for: indexPath as IndexPath)
-                    as! MvpSeriesDetailCollectionHeaderView
-                if let header = self.seriesHeader {
-                    headerView.configure(forItem: header)
-                }
-                return headerView
+        if kind == UICollectionElementKindSectionHeader {
+            let headerView = collectionView.dequeueReusableSupplementaryView(
+                ofKind: kind, withReuseIdentifier: "MvpSeriesDetailCollectionHeaderViewReusableIdentifier",
+                for: indexPath as IndexPath) as! MvpSeriesDetailCollectionHeaderView
+            if let header = self.seriesHeader {
+                headerView.configure(forItem: header)
             }
-            assert(false, "Unexpected element kind")
+            return headerView
+        }
+        assert(false, "Unexpected element kind")
     }
+
 
 }

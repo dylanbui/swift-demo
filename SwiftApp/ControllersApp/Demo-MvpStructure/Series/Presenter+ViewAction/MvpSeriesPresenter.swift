@@ -15,7 +15,7 @@ protocol MvpSeriesViewAction: DbMvpLoadingViewAction
     func doReloadTableView(items: [MvpSeries])
 }
 
-class MvpSeriesPresenter: DbMvpPresenter
+class MvpSeriesPresenter: DbMvpPresenter, DbMvpTableViewPresenter
 {
     private weak var ui: MvpSeriesViewAction?
     
@@ -30,8 +30,13 @@ class MvpSeriesPresenter: DbMvpPresenter
         self.ui = viewAction
         
     }
-    
+     
     func viewDidLoad()
+    {
+        
+    }
+    
+    func viewWillAppear()
     {
         // self.ui?.setNavigationTitle("Title - SeriesPresenter")
         self.ui?.setNavigationTitleWithAnimation("Title - SeriesPresenter")
@@ -62,5 +67,10 @@ class MvpSeriesPresenter: DbMvpPresenter
                 MvpSeries(name: "Death of Wolverine: Axis (2015 - Present)")
                 ])
         }
+    }
+    
+    func itemWasTapped(_ item: MvpSeries, at indexPath: IndexPath)
+    {
+        print("Da tap dung thang : \(indexPath.debugDescription)")
     }
 }

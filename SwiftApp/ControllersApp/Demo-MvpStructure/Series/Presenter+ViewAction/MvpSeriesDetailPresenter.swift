@@ -46,6 +46,10 @@ class MvpSeriesDetailPresenter: DbMvpPresenter
     func viewDidLoad()
     {
         self.ui?.title = self.seriesName?.uppercased()
+    }
+    
+    func viewWillAppear()
+    {
         self.loadSeriesDetail()
     }
     

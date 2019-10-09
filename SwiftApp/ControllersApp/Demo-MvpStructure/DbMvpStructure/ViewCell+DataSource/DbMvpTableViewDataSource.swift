@@ -8,22 +8,15 @@
 
 import Foundation
 
-open class DbMvpTableViewDataSource<U, V: DbMvpViewCell> : NSObject, UITableViewDataSource,
-    DbMvpViewDataSource where U == V.ItemType
+open class DbMvpTableViewDataSource<U, V: DbMvpViewCell> :
+    NSObject, UITableViewDataSource, DbMvpViewDataSource where U == V.ItemType
 {
-//    open func register(_ cellClass: AnyClass?, forCellReuseIdentifier identifier: String)
-//    open func register(_ nib: UINib?, forHeaderFooterViewReuseIdentifier identifier: String)
-
-    
     func registerCell(_ cellClass: AnyClass?, forTableView tableView: UITableView)
     {
         tableView.register(cellClass,
                            forCellReuseIdentifier: V.identifier)
         tableView.register(UINib(nibName: V.cellClassName, bundle: nil),
                            forCellReuseIdentifier: V.identifier)
-
-//        tableView.register(cellClass, forCellWithReuseIdentifier: V.identifier)
-//        tableView.register(cellClass, forCellReuseIdentifier: V.identifier)
     }
     
     open var items = [U]()
