@@ -8,9 +8,18 @@
 
 import UIKit
 
+// MARK: - Delegate
+
+protocol MvpSeriesViewControllerGotoDelegate: class
+{
+    func gotoMvpSeriesDetail(_ controller: MvpSeriesViewController, item: MvpSeries)
+}
+
 class MvpSeriesViewController: DbMvpViewController<MvpSeriesPresenter>, MvpSeriesViewAction, DbMvpTableViewAction
 {
     // TODO: Con dang bi loi loading, se xu ly sau
+    
+    weak var gotoDelegate: MvpSeriesViewControllerGotoDelegate?
     
     var containerLoadingView: UIView {
         return self.view
@@ -73,10 +82,13 @@ extension MvpSeriesViewController: DbMvpTableViewPresenter
 {
     func itemWasTapped(_ item: MvpSeries, at indexPath: IndexPath)
     {
-        let vcl = MvpSeriesDetailViewController()
-        vcl.presenter = MvpSeriesDetailPresenter.init(ui: vcl, seriesName: item.name)
-        vcl.dataSource = MvpSeriesDetailCollectionViewDataSource()
-        self.navigationController?.pushViewController(vcl, animated: true)
+        // -- Su dung NavigationDelegate --
+        self.gotoDelegate?.gotoMvpSeriesDetail(self, item: item)
+        // -- Van su dung duoc cach di chuyen cu, nhung chi nen dung voi cac control --
+//        let vcl = MvpSeriesDetailViewController()
+//        vcl.presenter = MvpSeriesDetailPresenter.init(ui: vcl, seriesName: item.name)
+//        vcl.dataSource = MvpSeriesDetailCollectionViewDataSource()
+//        self.navigationController?.pushViewController(vcl, animated: true)
     }
 }
 

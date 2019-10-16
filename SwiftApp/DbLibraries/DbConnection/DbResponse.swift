@@ -29,6 +29,23 @@ public protocol DbResponseProtocol {
     func parse(_ responseData: Any?, error: Error?) -> Void
     
 }
+
+struct DbError: Error
+{
+    let code: Int
+    let message: String
+    
+    init(_ code:Int, message: String) {
+        self.code = code
+        self.message = message
+    }
+    
+    public var localizedDescription: String {
+        return "Code : \(self.code) -- Message : \(self.message)"
+        // return message
+    }
+}
+
 // -- Moi lop con deu phai ke thua tu thang DbResponse --
 public class DbResponse: DbResponseProtocol {
 

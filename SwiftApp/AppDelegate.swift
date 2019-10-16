@@ -15,9 +15,11 @@ import GoogleMaps
 import GooglePlaces
 
 @UIApplicationMain
-class AppDelegate: DbAppDelegate {
-
+class AppDelegate: DbAppDelegate
+{
     // var window: UIWindow?
+    
+    var appCoordinator: AppSeriesCoordinator!
     
     override func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         
@@ -57,11 +59,16 @@ class AppDelegate: DbAppDelegate {
         
         // -- Call parent --
         _ = super.application(application, didFinishLaunchingWithOptions: launchOptions)
-        
+
+        // -- Use Coordinator patterm for router --
         self.window = UIWindow(frame: UIScreen.main.bounds)
-        let nav: UINavigationController = UINavigationController(rootViewController: RootViewController())
-        self.window?.rootViewController = nav
-        self.window?.makeKeyAndVisible()
+        self.appCoordinator = AppSeriesCoordinator.init(window: self.window!)
+        appCoordinator.start()
+        
+//        self.window = UIWindow(frame: UIScreen.main.bounds)
+//        let nav: UINavigationController = UINavigationController(rootViewController: RootViewController())
+//        self.window?.rootViewController = nav
+//        self.window?.makeKeyAndVisible()
         
         return true
         // return super.application(application, didFinishLaunchingWithOptions: launchOptions)

@@ -88,6 +88,8 @@
 		BB41A1CC22EECD5900F8A313 /* DemoGgApiViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB41A1CA22EECD5900F8A313 /* DemoGgApiViewController.swift */; };
 		BB41A1CD22EECD5900F8A313 /* DemoGgApiViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB41A1CB22EECD5900F8A313 /* DemoGgApiViewController.xib */; };
 		BB41A1CF22EECD8800F8A313 /* DbGoogleServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB41A1CE22EECD8800F8A313 /* DbGoogleServices.swift */; };
+		BB430E18235486AF00363F6E /* AppSeriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB430E17235486AF00363F6E /* AppSeriesCoordinator.swift */; };
+		BB430E1A235487CF00363F6E /* SeriesCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB430E19235487CF00363F6E /* SeriesCoordinator.swift */; };
 		BB48E20421F190CC002B2DEC /* DbSheetCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */; };
 		BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */; };
 		BB48E20821F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */; };
@@ -338,6 +340,12 @@
 		BBC63C7D227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC63C7B227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift */; };
 		BBC63C7E227AEE3D00A0168D /* DemoCustomPullForProjectViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BBC63C7C227AEE3D00A0168D /* DemoCustomPullForProjectViewController.xib */; };
 		BBC8ACE320DA026A001EBC8D /* DbNotificationDemo.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */; };
+		BBC8D6B02356FC5F00D5A748 /* DbCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D6AE2356FC5E00D5A748 /* DbCoordinator.swift */; };
+		BBC8D6B12356FC5F00D5A748 /* DbNavigator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D6AF2356FC5E00D5A748 /* DbNavigator.swift */; };
+		BBC8D6B3235713B700D5A748 /* AppPlaceholderCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D6B2235713B700D5A748 /* AppPlaceholderCoordinator.swift */; };
+		BBC8D6B6235713F300D5A748 /* PhUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D6B5235713F300D5A748 /* PhUser.swift */; };
+		BBC8D6B82357141000D5A748 /* PhPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D6B72357141000D5A748 /* PhPost.swift */; };
+		BBC8D6BB235716C300D5A748 /* PhApiService.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC8D6BA235716C300D5A748 /* PhApiService.swift */; };
 		BBC92C9222D5A410009C571E /* ButtonStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C7D22D5A410009C571E /* ButtonStackCell.swift */; };
 		BBC92C9322D5A410009C571E /* StackCellBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C7E22D5A410009C571E /* StackCellBase.swift */; };
 		BBC92C9422D5A410009C571E /* TapStackCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BBC92C7F22D5A410009C571E /* TapStackCell.swift */; };
@@ -522,6 +530,8 @@
 		BB41A1CA22EECD5900F8A313 /* DemoGgApiViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoGgApiViewController.swift; sourceTree = "<group>"; };
 		BB41A1CB22EECD5900F8A313 /* DemoGgApiViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoGgApiViewController.xib; sourceTree = "<group>"; };
 		BB41A1CE22EECD8800F8A313 /* DbGoogleServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbGoogleServices.swift; sourceTree = "<group>"; };
+		BB430E17235486AF00363F6E /* AppSeriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSeriesCoordinator.swift; sourceTree = "<group>"; };
+		BB430E19235487CF00363F6E /* SeriesCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeriesCoordinator.swift; sourceTree = "<group>"; };
 		BB48E20321F190CC002B2DEC /* DbSheetCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbSheetCollectionView.swift; sourceTree = "<group>"; };
 		BB48E20521F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoDbSheetPickerViewController.swift; sourceTree = "<group>"; };
 		BB48E20621F1B67B002B2DEC /* DemoDbSheetPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DemoDbSheetPickerViewController.xib; sourceTree = "<group>"; };
@@ -772,6 +782,12 @@
 		BBC63C7B227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoCustomPullForProjectViewController.swift; sourceTree = "<group>"; };
 		BBC63C7C227AEE3D00A0168D /* DemoCustomPullForProjectViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DemoCustomPullForProjectViewController.xib; sourceTree = "<group>"; };
 		BBC8ACE220DA026A001EBC8D /* DbNotificationDemo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DbNotificationDemo.swift; sourceTree = "<group>"; };
+		BBC8D6AE2356FC5E00D5A748 /* DbCoordinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbCoordinator.swift; sourceTree = "<group>"; };
+		BBC8D6AF2356FC5E00D5A748 /* DbNavigator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DbNavigator.swift; sourceTree = "<group>"; };
+		BBC8D6B2235713B700D5A748 /* AppPlaceholderCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppPlaceholderCoordinator.swift; sourceTree = "<group>"; };
+		BBC8D6B5235713F300D5A748 /* PhUser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhUser.swift; sourceTree = "<group>"; };
+		BBC8D6B72357141000D5A748 /* PhPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhPost.swift; sourceTree = "<group>"; };
+		BBC8D6BA235716C300D5A748 /* PhApiService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhApiService.swift; sourceTree = "<group>"; };
 		BBC92C7D22D5A410009C571E /* ButtonStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonStackCell.swift; sourceTree = "<group>"; };
 		BBC92C7E22D5A410009C571E /* StackCellBase.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StackCellBase.swift; sourceTree = "<group>"; };
 		BBC92C7F22D5A410009C571E /* TapStackCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TapStackCell.swift; sourceTree = "<group>"; };
@@ -1242,6 +1258,7 @@
 		BB601ACB233DF267006EE3E2 /* DbMvpStructure */ = {
 			isa = PBXGroup;
 			children = (
+				BBC8D6AD2356FC5E00D5A748 /* Coordinator */,
 				BB601AF2233DF375006EE3E2 /* DbMvpViewController.swift */,
 				BB601AD9233DF268006EE3E2 /* DbMvpStructure.swift */,
 				BB601ACC233DF267006EE3E2 /* ViewCell+DataSource */,
@@ -1305,6 +1322,7 @@
 		BB601AED233DF280006EE3E2 /* Demo-MvpStructure */ = {
 			isa = PBXGroup;
 			children = (
+				BBC8D6B4235713C300D5A748 /* AppPlaceholder */,
 				BBBBA1A6234735F100234EB0 /* MvpLoadingView.swift */,
 				BBBBA1A82347360900234EB0 /* MvpLoadingView.xib */,
 				BB601ACB233DF267006EE3E2 /* DbMvpStructure */,
@@ -1619,6 +1637,8 @@
 				BBBBA1A52347329100234EB0 /* TableViewCell */,
 				BBBBA1A023472ECA00234EB0 /* Presenter+ViewAction */,
 				BBBBA19F23472EBF00234EB0 /* Model */,
+				BB430E19235487CF00363F6E /* SeriesCoordinator.swift */,
+				BB430E17235486AF00363F6E /* AppSeriesCoordinator.swift */,
 			);
 			path = Series;
 			sourceTree = "<group>";
@@ -1759,6 +1779,34 @@
 				BBACDF882273128500E664EF /* PullUIScrollViewExtensions.swift */,
 			);
 			path = CustomForOtherProject;
+			sourceTree = "<group>";
+		};
+		BBC8D6AD2356FC5E00D5A748 /* Coordinator */ = {
+			isa = PBXGroup;
+			children = (
+				BBC8D6AE2356FC5E00D5A748 /* DbCoordinator.swift */,
+				BBC8D6AF2356FC5E00D5A748 /* DbNavigator.swift */,
+			);
+			path = Coordinator;
+			sourceTree = "<group>";
+		};
+		BBC8D6B4235713C300D5A748 /* AppPlaceholder */ = {
+			isa = PBXGroup;
+			children = (
+				BBC8D6B2235713B700D5A748 /* AppPlaceholderCoordinator.swift */,
+				BBC8D6B92357141600D5A748 /* Models */,
+				BBC8D6BA235716C300D5A748 /* PhApiService.swift */,
+			);
+			path = AppPlaceholder;
+			sourceTree = "<group>";
+		};
+		BBC8D6B92357141600D5A748 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				BBC8D6B5235713F300D5A748 /* PhUser.swift */,
+				BBC8D6B72357141000D5A748 /* PhPost.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		BBC92C7B22D5A3D9009C571E /* Demo-ClusterKit-MapPins */ = {
@@ -2549,6 +2597,7 @@
 				BB3FDBED217EFC88002D570F /* DbStackScrollView.swift in Sources */,
 				BB3FDBF1217EFD07002D570F /* DbStackCellType.swift in Sources */,
 				BB8BECC1222AEEEC00EC7620 /* ImageRowCollectionCell.swift in Sources */,
+				BBC8D6B3235713B700D5A748 /* AppPlaceholderCoordinator.swift in Sources */,
 				BB5CE03A2146115900C92DA0 /* PropzyResponse.swift in Sources */,
 				BB601AF5233DFBED006EE3E2 /* MvpCharactersPresenter.swift in Sources */,
 				BB6F6DE52011192100D81CA3 /* DbErrorView.swift in Sources */,
@@ -2573,6 +2622,8 @@
 				BB41A1CF22EECD8800F8A313 /* DbGoogleServices.swift in Sources */,
 				BBA1C8FB22534961008FF2FF /* UnitExtensions.swift in Sources */,
 				BB7E580721E857AE005C3FA6 /* DemoDecimalTextFieldViewController.swift in Sources */,
+				BBC8D6B02356FC5F00D5A748 /* DbCoordinator.swift in Sources */,
+				BBC8D6B6235713F300D5A748 /* PhUser.swift in Sources */,
 				BB48E20721F1B67B002B2DEC /* DemoDbSheetPickerViewController.swift in Sources */,
 				BB8CEA10234AF23200CFCA02 /* MvpComicCollectionViewCell.swift in Sources */,
 				BB12451122A8C1F9003DF0ED /* DemoHtmlWithAdvButtonViewController.swift in Sources */,
@@ -2592,6 +2643,7 @@
 				BBB1A53221FFF8EE0047293E /* DbLocationManager.swift in Sources */,
 				BB887DBE203EA05700DFC060 /* NetworkViewController.swift in Sources */,
 				BBC63C7D227AEE3D00A0168D /* DemoCustomPullForProjectViewController.swift in Sources */,
+				BBC8D6B82357141000D5A748 /* PhPost.swift in Sources */,
 				BBBBA1A32347328600234EB0 /* MvpSeriesTableViewCell.swift in Sources */,
 				BB7E57FA21E842CE005C3FA6 /* DemoEurekaViewController.swift in Sources */,
 				BBC92CA822D5FDD2009C571E /* ShowMoreLabelStackCell.swift in Sources */,
@@ -2629,6 +2681,7 @@
 				BB32A3DB224B20EC006265B7 /* DbResponse.swift in Sources */,
 				BB2FE66F2192C440007470DD /* UIViewController+DbSemiModalViewController.swift in Sources */,
 				BB10D3F41F79225100B7DF4B /* DbActionView.swift in Sources */,
+				BBC8D6BB235716C300D5A748 /* PhApiService.swift in Sources */,
 				BBF1E8992271A3E8000D00BE /* CustomViewEmpty.swift in Sources */,
 				BB26008C21D60FD100D5F41D /* DbDropDownView.swift in Sources */,
 				BBB1A53722004AF40047293E /* DemoDbLocationManagerViewController.swift in Sources */,
@@ -2682,6 +2735,7 @@
 				BBC92C9F22D5A410009C571E /* TextViewStackCell.swift in Sources */,
 				BB9E77AE222E335B00BFC9C7 /* DemoLazyUploadViewController_DONE_V1.swift in Sources */,
 				BB8CEA1D234B527A00CFCA02 /* DbMvpTableViewDelegate.swift in Sources */,
+				BB430E18235486AF00363F6E /* AppSeriesCoordinator.swift in Sources */,
 				BBA7C7561F721DAF00328377 /* BaseViewController.swift in Sources */,
 				BB8D9CF522F0550B00226705 /* DbPlaceSearchViewController.swift in Sources */,
 				BBC92CA122D5A410009C571E /* NibToggerShow.swift in Sources */,
@@ -2757,6 +2811,7 @@
 				BBE813F72017211A00B21B1F /* DecimalTextField.swift in Sources */,
 				BB5692402111A8220007757F /* Pz.swift in Sources */,
 				BBA2A43E211826F000618AEF /* PzListingViewController.swift in Sources */,
+				BB430E1A235487CF00363F6E /* SeriesCoordinator.swift in Sources */,
 				BB23604022A2EB3F002DDCE9 /* DemoTipMenuInTableViewController.swift in Sources */,
 				BB2E8514222EE8E200CD8E28 /* SurveyView.swift in Sources */,
 				BBDD9BA220736CEC00217030 /* CategoriesApi.swift in Sources */,
@@ -2813,6 +2868,7 @@
 				BBC92C9522D5A410009C571E /* SwitchStackCell.swift in Sources */,
 				BBC38A4F206DDE9500B11C7B /* FontAwesome.swift in Sources */,
 				BBB569EB1F7BC5420014A7A9 /* Post.swift in Sources */,
+				BBC8D6B12356FC5F00D5A748 /* DbNavigator.swift in Sources */,
 				BBA1C8E8225320EB008FF2FF /* RkMainViewController.swift in Sources */,
 				BBC38A56206DDE9500B11C7B /* Octicon.swift in Sources */,
 				BB5E1426210AFDA10059A8C4 /* PropzyBaseApi.swift in Sources */,
